@@ -6,15 +6,22 @@
 
 <html lang="en">
 
-
+<jsp:include page="fragments/headTag.jsp"/>
 
 <body>
+<jsp:include page="fragments/bodyHeader.jsp"/>
+<div class="mainbody">
+<div class="leftmenu"><jsp:include page="fragments/leftMenu.jsp"/></div>
 <div class="container">
+    
     <h2><fmt:message key="welcome"/></h2>
-    <h2>Hello, the spring world.</h2>
+    
+
     
 
 </div>
+</div>
+<jsp:include page="fragments/footer.jsp"/>
 </body>
 
 </html>

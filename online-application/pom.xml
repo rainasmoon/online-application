@@ -272,7 +272,7 @@
 							/integration/resources</extraClasspath>
 					</webAppConfig>
 
-					<scanIntervalSeconds>10</scanIntervalSeconds>
+					<scanIntervalSeconds>3</scanIntervalSeconds>
 					<stopKey> foo</stopKey>
 					<stopPort> 9999</stopPort>
 					<systemProperties>
