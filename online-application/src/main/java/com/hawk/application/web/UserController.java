@@ -72,11 +72,13 @@ public class UserController {
 		if (result.hasErrors()) {
 			return "user/login";
 		} else {
-			// TODO.
-			User user = new User();
-			user.setEmail("abc123@a.com");
-			user.setMobile("12341234");
-			user.setQq("0000");
+
+			User user = userService.login(loginVo);
+
+			if (user == null) {
+				// TODO add login error...
+				return "user/login";
+			}
 			session.setAttribute("user", user);
 			status.setComplete();
 			return "redirect:/";
@@ -116,8 +118,12 @@ public class UserController {
 		if (result.hasErrors()) {
 			return "user/changePassword";
 		} else {
-			// TODO.
 
+			if (!userService.changePassword(
+					(User) session.getAttribute("user"), changePasswordVo)) {
+				// TODO. add error msg.
+				return "user/changePassword";
+			}
 			status.setComplete();
 			return "redirect:/";
 		}

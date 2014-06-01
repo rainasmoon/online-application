@@ -22,6 +22,8 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.hawk.application.model.ChangePasswordVo;
+import com.hawk.application.model.LoginVo;
 import com.hawk.application.model.User;
 import com.hawk.application.repository.UserRepository;
 
@@ -48,4 +50,27 @@ public class UserServiceImpl implements UserService {
 		return userRepository.findAll();
 	}
 
+	@Transactional(readOnly = true)
+	public User login(LoginVo loginVo) {
+		User user = userRepository.findByEmail(loginVo.getEmail());
+
+		if (user != null && loginVo.getPassword().equals(user.getPassword())) {
+			return user;
+		}
+
+		return null;
+	}
+
+	public boolean changePassword(User loginUser,
+			ChangePasswordVo changePasswordVo) {
+		if (loginUser.getPassword().equals(changePasswordVo.getOldPassword())
+				&& changePasswordVo.getNewPassword().equals(
+						changePasswordVo.getConfirmPassword())) {
+			User user = userRepository.findOne(loginUser.getId());
+			user.setPassword(changePasswordVo.getNewPassword());
+			userRepository.save(user);
+			return true;
+		}
+		return false;
+	}
 }

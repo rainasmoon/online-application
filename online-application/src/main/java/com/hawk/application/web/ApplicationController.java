@@ -1,6 +1,9 @@
 package com.hawk.application.web;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -35,10 +38,23 @@ public class ApplicationController {
 		dataBinder.setDisallowedFields("id");
 	}
 
+	protected Map<String, Object> referenceData() {
+
+		Map<String, Object> referenceData = new HashMap<String, Object>();
+
+		List<String> platformList = new ArrayList<String>();
+		platformList.add("ios");
+
+		referenceData.put("platformList", platformList);
+
+		return referenceData;
+	}
+
 	@RequestMapping(value = "/applications/new", method = RequestMethod.GET)
 	public String initCreationForm(Map<String, Object> model) {
 		Application application = new Application();
 		model.put("application", application);
+		model.putAll(referenceData());
 		return "application/createApplication";
 	}
 

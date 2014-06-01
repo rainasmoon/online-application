@@ -28,8 +28,8 @@
 				<form:form modelAttribute="application" method="post"
 					class="form-horizontal" id="add-application-form">
 					<onlineapplication:inputField label="应用名称" name="applicationName" />
-					<onlineapplication:inputField label="应用平台"
-						name="applicationPlatform" />
+					
+					<label><form:radiobutton path="applicationPlatform" value="ios" /> ios</label>
 					<onlineapplication:inputField label="应用包名"
 						name="applicationPackageName" />
 					<div class="alert alert-info">packageName / bundle

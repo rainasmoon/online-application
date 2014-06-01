@@ -10,4 +10,6 @@ import com.hawk.application.model.User;
 public interface UserRepository extends CrudRepository<User, Integer> {
 
 	Collection<User> findAll() throws DataAccessException;
+
+	User findByEmail(String email);
 }
