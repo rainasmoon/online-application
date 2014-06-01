@@ -2,12 +2,19 @@
 
 
 <head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>on-line application</title>
 
 
-    <spring:url value="/webjars/bootstrap/2.3.0/css/bootstrap.min.css" var="bootstrapCss"/>
+    <spring:url value="/webjars/bootstrap/3.0.3/css/bootstrap.min.css" var="bootstrapCss"/>
     <link href="${bootstrapCss}" rel="stylesheet"/>
+    
+    <!-- jquery-ui.css file is not that big so we can afford to load it -->
+    <spring:url value="/webjars/jquery-ui/1.10.3/themes/base/jquery-ui.css" var="jQueryUiCss"/>
+    <link href="${jQueryUiCss}" rel="stylesheet"></link>
 
     <spring:url value="/resources/css/main.css" var="mainCss"/>
     <link href="${mainCss}" rel="stylesheet"/>
@@ -22,9 +29,9 @@
 	<spring:url value="/webjars/jquery-ui/1.10.3/ui/jquery.ui.datepicker.js" var="jQueryUiDatePicker"/>
     <script src="${jQueryUiDatePicker}"></script>
     
-    <!-- jquery-ui.css file is not that big so we can afford to load it -->
-    <spring:url value="/webjars/jquery-ui/1.10.3/themes/base/jquery-ui.css" var="jQueryUiCss"/>
-    <link href="${jQueryUiCss}" rel="stylesheet"></link>
+    <spring:url value="/webjars/bootstrap/3.0.3/js/bootstrap.min.js" var="bootstrap"/>
+    <script src="${bootstrap}"></script>
+    
 </head>
 
 

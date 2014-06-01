@@ -15,9 +15,6 @@ public class Application extends BaseEntity {
 	@Column(name = "application_id")
 	protected String applicationId;
 
-	@Column(name = "created_date")
-	protected Date createdDate;
-
 	@Column(name = "application_name")
 	@NotEmpty
 	protected String applicationName;
@@ -32,6 +29,18 @@ public class Application extends BaseEntity {
 
 	@Column(name = "status")
 	protected String status;
+
+	@Column(name = "created_date")
+	protected Date createdDate;
+
+	@Column(name = "updated_date")
+	protected Date updatedDate;
+
+	@Column(name = "created_by")
+	protected Integer createdBy;
+
+	@Column(name = "updated_by")
+	protected Integer updatedBy;
 
 	public String getApplicationName() {
 		return applicationName;
@@ -79,6 +88,30 @@ public class Application extends BaseEntity {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public Date getUpdatedDate() {
+		return updatedDate;
+	}
+
+	public void setUpdatedDate(Date updatedDate) {
+		this.updatedDate = updatedDate;
+	}
+
+	public Integer getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public Integer getUpdatedBy() {
+		return updatedBy;
+	}
+
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 
 }

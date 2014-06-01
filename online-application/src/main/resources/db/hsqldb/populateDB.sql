@@ -1,1 +1,1 @@
-INSERT INTO applications VALUES (1, '1234567890', '2010-09-07', 'my','my','my','my');
+INSERT INTO applications VALUES (1, '1234567890', 'my','my','my','my', '2010-09-07 10:10:10','2010-09-07 10:10:10', 1, 1);

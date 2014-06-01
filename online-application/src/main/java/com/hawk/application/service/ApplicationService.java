@@ -10,6 +10,8 @@ public interface ApplicationService {
 
 	void saveApplication(Application application) throws DataAccessException;
 
-	Collection<Application> findAllApplications();
+	Collection<Application> findAllApplications() throws DataAccessException;
+
+	void deleteApplicationById(int applicationId) throws DataAccessException;
 
 }

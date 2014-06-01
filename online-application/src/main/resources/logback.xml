@@ -5,9 +5,6 @@
         <resetJUL>true</resetJUL>
     </contextListener>
 
-    <!-- To enable JMX Management -->
-    <jmxConfigurator/>
-
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>%-5level %logger{0} - %msg%n</pattern>
@@ -15,7 +12,11 @@
     </appender>
 
 	<!--<logger name="org.hibernate" level="debug"/> -->
-    <logger name="org.springframework.samples.petclinic" level="debug"/>
+    <logger name="com.hawk.application" level="debug"/>
+    
+    
+  	<logger name="org.hibernate.type" level="ALL" />
+  	<logger name="org.hibernate" level="DEBUG" />
          
     <root level="info">
         <appender-ref ref="console"/>

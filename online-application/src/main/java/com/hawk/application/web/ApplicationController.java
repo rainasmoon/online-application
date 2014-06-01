@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -54,7 +55,7 @@ public class ApplicationController {
 	}
 
 	@RequestMapping(value = "/applications", method = RequestMethod.GET)
-	public String processFindeeForm(Map<String, Object> model) {
+	public String processFindAll(Map<String, Object> model) {
 
 		// find owners by last name
 		Collection<Application> results = this.applicationService
@@ -64,6 +65,16 @@ public class ApplicationController {
 		model.put("selections", results);
 		return "application/listApplication";
 
+	}
+
+	@RequestMapping(value = "/applications/{applicationId}/delete", method = RequestMethod.GET)
+	public String deleteApplication(
+			@PathVariable("applicationId") int applicationId,
+			Map<String, Object> model) {
+
+		this.applicationService.deleteApplicationById(applicationId);
+
+		return processFindAll(model);
 	}
 
 }

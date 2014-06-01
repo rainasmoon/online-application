@@ -1,7 +1,7 @@
 .container {
     padding-top: 10px;
     margin-left: 50px;
-    width: 700px;
+    width: 90%;
 }
 
 .form-horizontal {
@@ -16,10 +16,19 @@ input[type="text"] {
     color: #000000;
 }
 
-.leftnavbar .leftnav > li > a {
-    color: #000000;
-}
 
 .form-horizontal .control-label {
     text-align: left;
+}
+
+.banner {
+	width: 100%;
+	height: 100px;
+}
+
+.flot-chart-css {
+	width: 100%;
+	height: 100%;
+	font-size: 14px;
+	line-height: 1.2em;
 }

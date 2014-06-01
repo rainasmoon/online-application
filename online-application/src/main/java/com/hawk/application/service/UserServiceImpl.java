@@ -22,38 +22,30 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.hawk.application.model.Application;
-import com.hawk.application.repository.ApplicationRepository;
+import com.hawk.application.model.User;
+import com.hawk.application.repository.UserRepository;
 
 @Service
-public class ApplicationServiceImpl implements ApplicationService {
+public class UserServiceImpl implements UserService {
 
-	private ApplicationRepository applicationRepository;
+	private UserRepository userRepository;
 
 	@Autowired
-	public ApplicationServiceImpl(ApplicationRepository applicationRepository) {
-		this.applicationRepository = applicationRepository;
+	public UserServiceImpl(UserRepository userRepository) {
+		this.userRepository = userRepository;
 
 	}
 
 	@Transactional
-	public void saveApplication(Application application)
-			throws DataAccessException {
-		applicationRepository.save(application);
+	public void saveUser(User user) throws DataAccessException {
+		userRepository.save(user);
 
 	}
 
 	@Transactional(readOnly = true)
-	public Collection<Application> findAllApplications()
-			throws DataAccessException {
+	public Collection<User> findAllUsers() {
 
-		return applicationRepository.findAll();
-	}
-
-	@Transactional
-	public void deleteApplicationById(int applicationId) {
-		applicationRepository.delete(applicationId);
-
+		return userRepository.findAll();
 	}
 
 }
