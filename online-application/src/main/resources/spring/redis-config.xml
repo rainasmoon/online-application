@@ -14,10 +14,11 @@
          http://www.springframework.org/schema/jee/spring-jee.xsd">
 
 	<context:component-scan base-package="com.hawk.application.repository.redis" />
-	
+
 	<bean id="jedisConnFactory"
 		class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
-		p:use-pool="true" />
+		p:host-name="${redis.host}" p:port="${redis.port}" p:password="${redis.pass}" />
+
 
 	<!-- redis template definition -->
 	<bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate"
