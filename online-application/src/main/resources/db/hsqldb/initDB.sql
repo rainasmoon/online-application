@@ -19,7 +19,7 @@ CREATE TABLE applications (
 
 CREATE TABLE app_parameters (
   id INTEGER IDENTITY PRIMARY KEY,
-  application_id VARCHAR(40),
+  application_id INTEGER,
   param_name  VARCHAR(100),
   param_value  VARCHAR(100),
   created_date  TIMESTAMP,
