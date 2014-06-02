@@ -5,7 +5,7 @@ DROP TABLE users IF EXISTS;
 
 CREATE TABLE applications (
   id INTEGER IDENTITY PRIMARY KEY,
-  application_id VARCHAR(32),
+  application_id VARCHAR(40),
   application_name  VARCHAR(100),
   application_platform  VARCHAR(10),
   application_package_name  VARCHAR(500),

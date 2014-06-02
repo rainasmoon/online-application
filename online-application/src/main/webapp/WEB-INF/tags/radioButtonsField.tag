@@ -5,8 +5,8 @@
               description="Name of corresponding property in bean object" %>
 <%@ attribute name="label" required="true" rtexprvalue="true"
               description="Label appears in red color if input is considered as invalid after submission" %>
-<%@ attribute name="radioList" required="true" rtexprvalue="true"
-              description="options" %>
+<%@ attribute name="names" required="true" rtexprvalue="true" type="java.util.List"
+              description="Names in the list" %>
 
 <spring:bind path="${name}">
     <c:set var="cssGroup" value="control-group ${status.error ? 'error' : '' }"/>
@@ -14,8 +14,7 @@
         <label class="control-label">${label}</label>
 
         <div class="controls">
-            <form:input path="${name}"/>
-            <form:radiobuttons path="${name}" items="${radioList}" />
+            <form:radiobuttons path="${name}" items="${names}"/>
             <span class="help-inline">${status.errorMessage}</span>
         </div>
     </div>

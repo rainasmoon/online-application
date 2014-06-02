@@ -16,7 +16,7 @@
 	<!-- - POJOs labeled with the @Controller and @Service annotations are auto-detected. -->
 	<context:component-scan base-package="com.hawk.application.web" />
 
-	<mvc:annotation-driven/>
+	<mvc:annotation-driven  conversion-service="conversionService"/>
 
 	<!-- all resources inside folder src/main/webapp/resources are mapped so 
 		they can be refered to inside JSP files (see header.jsp for more details) -->
@@ -28,18 +28,26 @@
 		location="classpath:/META-INF/resources/webjars/" />
 
 	<mvc:view-controller path="/" view-name="redirect:welcome" />
-	
-	<mvc:interceptors>  
-        <mvc:interceptor>  
-            <mvc:mapping path="/*"/>  
-            <bean class="com.hawk.application.web.LoginInterceptor"></bean>  
-        </mvc:interceptor>  
-    </mvc:interceptors>  
+
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/*" />
+			<bean class="com.hawk.application.web.LoginInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
 
 	<!-- serve static resources (*.html, ...) from src/main/webapp/ -->
 	<mvc:default-servlet-handler />
 
-	
+	<bean id="conversionService"
+		class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+		<property name="formatters">
+			<set>
+				<bean class="com.hawk.application.web.PlatformTypeFormatter" />
+			</set>
+		</property>
+	</bean>
+
 	<!-- - Message source for this context, loaded from localized "messages_xx" 
 		files. - Files are stored inside src/main/resources -->
 	<bean id="messageSource"

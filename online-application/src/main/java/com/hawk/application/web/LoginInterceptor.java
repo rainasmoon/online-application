@@ -22,7 +22,6 @@ public class LoginInterceptor implements HandlerInterceptor {
 	public void postHandle(HttpServletRequest request,
 			HttpServletResponse response, Object obj, ModelAndView mav)
 			throws Exception {
-		// response.sendRedirect(request.getContextPath() + "/login.html");
 	}
 
 	public boolean preHandle(HttpServletRequest request,

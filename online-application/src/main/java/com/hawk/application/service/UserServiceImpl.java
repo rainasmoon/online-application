@@ -61,14 +61,15 @@ public class UserServiceImpl implements UserService {
 		return null;
 	}
 
+	@Transactional
 	public boolean changePassword(User loginUser,
 			ChangePasswordVo changePasswordVo) {
 		if (loginUser.getPassword().equals(changePasswordVo.getOldPassword())
 				&& changePasswordVo.getNewPassword().equals(
 						changePasswordVo.getConfirmPassword())) {
-			User user = userRepository.findOne(loginUser.getId());
-			user.setPassword(changePasswordVo.getNewPassword());
-			userRepository.save(user);
+
+			userRepository.updatePassword(loginUser.getId(),
+					changePasswordVo.getNewPassword());
 			return true;
 		}
 		return false;

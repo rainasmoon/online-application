@@ -16,6 +16,8 @@
 package com.hawk.application.service;
 
 import java.util.Collection;
+import java.util.Date;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -39,6 +41,12 @@ public class ApplicationServiceImpl implements ApplicationService {
 	@Transactional
 	public void saveApplication(Application application)
 			throws DataAccessException {
+		// TODO create the coressponding data in redis.
+		application.setApplicationId(generateAppId());
+		application.setCreatedDate(new Date());
+		application.setUpdatedDate(application.getCreatedDate());
+		application.setCreatedBy(0);
+		application.setUpdatedBy(0);
 		applicationRepository.save(application);
 
 	}
@@ -57,8 +65,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 	}
 
 	public String generateAppId() {
-		// TODO Auto-generated method stub
-		return null;
+		return UUID.randomUUID().toString();
 	}
 
 }

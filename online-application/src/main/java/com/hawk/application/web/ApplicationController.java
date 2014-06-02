@@ -1,9 +1,7 @@
 package com.hawk.application.web;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -13,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,6 +19,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.hawk.application.model.Application;
+import com.hawk.application.model.PlatformType;
 import com.hawk.application.service.ApplicationService;
 
 @Controller
@@ -38,23 +38,16 @@ public class ApplicationController {
 		dataBinder.setDisallowedFields("id");
 	}
 
-	protected Map<String, Object> referenceData() {
-
-		Map<String, Object> referenceData = new HashMap<String, Object>();
-
-		List<String> platformList = new ArrayList<String>();
-		platformList.add("ios");
-
-		referenceData.put("platformList", platformList);
-
-		return referenceData;
+	@ModelAttribute("platformTypes")
+	public Collection<PlatformType> populatePetTypes() {
+		return Arrays.asList(new PlatformType("iso"));
 	}
 
 	@RequestMapping(value = "/applications/new", method = RequestMethod.GET)
 	public String initCreationForm(Map<String, Object> model) {
 		Application application = new Application();
 		model.put("application", application);
-		model.putAll(referenceData());
+
 		return "application/createApplication";
 	}
 
