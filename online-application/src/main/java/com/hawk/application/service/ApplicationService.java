@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import org.springframework.dao.DataAccessException;
 
+import com.hawk.application.model.AppParameter;
 import com.hawk.application.model.Application;
 
 public interface ApplicationService {
@@ -15,5 +16,9 @@ public interface ApplicationService {
 	void deleteApplicationById(int applicationId) throws DataAccessException;
 
 	String generateAppId();
+
+	void deleteAppParameterById(int appParameterId);
+
+	Collection<AppParameter> findAllAppParameters();
 
 }

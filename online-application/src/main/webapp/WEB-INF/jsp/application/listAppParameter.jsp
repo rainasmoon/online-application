@@ -32,14 +32,14 @@
 					paginate="false" pageable="false" info="false" filterable="false" sortable="false"
 					lengthChange="false">
 
-					<datatables:column title="DIANJOY_APP_ID" property="dianjoyAppId" />
+					<datatables:column title="DIANJOY_APP_ID" property="application.dianjoyAppId" />
 					<datatables:column title="创建时间" property="createdDate" />
-					<datatables:column title="应用名称" property="applicationName" />
-					<datatables:column title="应用平台" property="applicationPlatform" />
+					<datatables:column title="应用名称" property="application.applicationName" />
+					<datatables:column title="应用平台" property="application.applicationPlatform" />
 					<datatables:column title="参数名" property="paramName" />
 					<datatables:column title="参数值" property="paramValue" />
 					<datatables:column title="操作">
-						<a href="applications/parameters/{appParameter.id}/delete">删除</a>
+						<a href="parameters/${appParameter.id}/delete">删除</a>
 					</datatables:column>
 				</datatables:table>
 				

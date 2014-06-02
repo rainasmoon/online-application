@@ -4,14 +4,17 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "app_parameter")
+@Table(name = "app_parameters")
 public class AppParameter extends BaseEntity {
 
-	@Column(name = "application_id")
-	protected String applicationId;
+	@ManyToOne
+	@JoinColumn(name = "application_id")
+	private Application application;
 
 	@Column(name = "param_name")
 	protected String paramName;
@@ -30,14 +33,6 @@ public class AppParameter extends BaseEntity {
 
 	@Column(name = "updated_by")
 	protected Integer updatedBy;
-
-	public String getApplicationId() {
-		return applicationId;
-	}
-
-	public void setApplicationId(String applicationId) {
-		this.applicationId = applicationId;
-	}
 
 	public Date getCreatedDate() {
 		return createdDate;
@@ -85,6 +80,14 @@ public class AppParameter extends BaseEntity {
 
 	public void setParamValue(String paramValue) {
 		this.paramValue = paramValue;
+	}
+
+	public Application getApplication() {
+		return application;
+	}
+
+	public void setApplication(Application application) {
+		this.application = application;
 	}
 
 }

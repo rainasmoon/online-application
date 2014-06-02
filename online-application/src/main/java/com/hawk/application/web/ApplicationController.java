@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import com.hawk.application.model.AppParameter;
 import com.hawk.application.model.Application;
 import com.hawk.application.model.PlatformType;
 import com.hawk.application.service.ApplicationService;
@@ -82,6 +83,27 @@ public class ApplicationController {
 		this.applicationService.deleteApplicationById(applicationId);
 
 		return processFindAll(model);
+	}
+
+	@RequestMapping(value = "/applications/parameters", method = RequestMethod.GET)
+	public String processFindAllParameters(Map<String, Object> model) {
+
+		Collection<AppParameter> results = this.applicationService
+				.findAllAppParameters();
+
+		model.put("selections", results);
+		return "application/listAppParameter";
+
+	}
+
+	@RequestMapping(value = "/applications/parameters/{appParameterId}/delete", method = RequestMethod.GET)
+	public String deleteAppParameter(
+			@PathVariable("appParameterId") int appParameterId,
+			Map<String, Object> model) {
+
+		this.applicationService.deleteAppParameterById(appParameterId);
+
+		return processFindAllParameters(model);
 	}
 
 }
