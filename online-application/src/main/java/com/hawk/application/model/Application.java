@@ -12,8 +12,8 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Table(name = "applications")
 public class Application extends BaseEntity {
 
-	@Column(name = "application_id")
-	protected String applicationId;
+	@Column(name = "dianjoy_app_id")
+	protected String dianjoyAppId;
 
 	@Column(name = "application_name")
 	@NotEmpty
@@ -66,14 +66,6 @@ public class Application extends BaseEntity {
 		this.applicationPackageName = applicationPackageName;
 	}
 
-	public String getApplicationId() {
-		return applicationId;
-	}
-
-	public void setApplicationId(String applicationId) {
-		this.applicationId = applicationId;
-	}
-
 	public Date getCreatedDate() {
 		return createdDate;
 	}
@@ -112,6 +104,14 @@ public class Application extends BaseEntity {
 
 	public void setUpdatedBy(Integer updatedBy) {
 		this.updatedBy = updatedBy;
+	}
+
+	public String getDianjoyAppId() {
+		return dianjoyAppId;
+	}
+
+	public void setDianjoyAppId(String dianjoyAppId) {
+		this.dianjoyAppId = dianjoyAppId;
 	}
 
 }

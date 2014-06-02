@@ -25,10 +25,10 @@
 			<div class="col-xs-12 col-sm-9">
 
 
-				<h2>全部应用</h2>
+				<h2>自定义参数</h2>
 
-				<datatables:table id="applications" data="${selections}" cdn="true"
-					row="application" theme="bootstrap2" cssClass="table table-striped"
+				<datatables:table id="appParameters" data="${selections}" cdn="true"
+					row="appParameter" theme="bootstrap2" cssClass="table table-striped"
 					paginate="false" pageable="false" info="false" filterable="false" sortable="false"
 					lengthChange="false">
 
@@ -36,9 +36,10 @@
 					<datatables:column title="创建时间" property="createdDate" />
 					<datatables:column title="应用名称" property="applicationName" />
 					<datatables:column title="应用平台" property="applicationPlatform" />
-					<datatables:column title="状态" property="status" />
+					<datatables:column title="参数名" property="paramName" />
+					<datatables:column title="参数值" property="paramValue" />
 					<datatables:column title="操作">
-						<a href="applications/${application.id}/delete">删除</a>
+						<a href="applications/parameters/{appParameter.id}/delete">删除</a>
 					</datatables:column>
 				</datatables:table>
 				

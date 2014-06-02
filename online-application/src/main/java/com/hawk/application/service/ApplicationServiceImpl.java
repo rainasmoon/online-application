@@ -42,7 +42,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 	public void saveApplication(Application application)
 			throws DataAccessException {
 		// TODO create the coressponding data in redis.
-		application.setApplicationId(generateAppId());
+		application.setDianjoyAppId(generateAppId());
 		application.setCreatedDate(new Date());
 		application.setUpdatedDate(application.getCreatedDate());
 		application.setCreatedBy(0);
