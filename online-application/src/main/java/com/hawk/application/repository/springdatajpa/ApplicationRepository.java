@@ -1,4 +1,4 @@
-package com.hawk.application.repository;
+package com.hawk.application.repository.springdatajpa;
 
 import java.util.Collection;
 

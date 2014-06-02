@@ -23,7 +23,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.hawk.application.model.Application;
-import com.hawk.application.repository.ApplicationRepository;
+import com.hawk.application.repository.springdatajpa.ApplicationRepository;
 
 @Service
 public class ApplicationServiceImpl implements ApplicationService {
@@ -54,6 +54,11 @@ public class ApplicationServiceImpl implements ApplicationService {
 	public void deleteApplicationById(int applicationId) {
 		applicationRepository.delete(applicationId);
 
+	}
+
+	public String generateAppId() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

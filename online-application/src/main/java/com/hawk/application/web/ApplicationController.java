@@ -73,11 +73,9 @@ public class ApplicationController {
 	@RequestMapping(value = "/applications", method = RequestMethod.GET)
 	public String processFindAll(Map<String, Object> model) {
 
-		// find owners by last name
 		Collection<Application> results = this.applicationService
 				.findAllApplications();
 
-		// multiple owners found
 		model.put("selections", results);
 		return "application/listApplication";
 

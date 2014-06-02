@@ -25,7 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.hawk.application.model.ChangePasswordVo;
 import com.hawk.application.model.LoginVo;
 import com.hawk.application.model.User;
-import com.hawk.application.repository.UserRepository;
+import com.hawk.application.repository.springdatajpa.UserRepository;
 
 @Service
 public class UserServiceImpl implements UserService {

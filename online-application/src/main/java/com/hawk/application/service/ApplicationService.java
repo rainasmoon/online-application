@@ -14,4 +14,6 @@ public interface ApplicationService {
 
 	void deleteApplicationById(int applicationId) throws DataAccessException;
 
+	String generateAppId();
+
 }
