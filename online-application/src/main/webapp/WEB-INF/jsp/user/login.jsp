@@ -26,6 +26,8 @@
         <onlineapplication:inputField label="邮箱" name="email"/>
         <onlineapplication:passwordField label="密码" name="password"/>
         <onlineapplication:inputField label="验证码" name="checkCode"/>
+        <img id="jcaptchaImg" src="<spring:url value="/jcaptcha.jpg" htmlEscape="true" />" />
+        <a href="javascript:refreshJcaptchaImg()">看不清？</a>
         <div class="form-actions">
 			
             <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
@@ -37,6 +39,12 @@
 
 </div>
 <jsp:include page="../fragments/footer.jsp"/>
+<script type="text/javascript">
+	function refreshJcaptchaImg() {
+		d = new Date();
+		$("#jcaptchaImg").attr("src", "./jcaptcha.jpg?"+d.getTime());
+	}
+</script>
 </body>
 
 </html>

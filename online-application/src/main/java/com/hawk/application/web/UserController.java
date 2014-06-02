@@ -2,6 +2,7 @@ package com.hawk.application.web;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -22,6 +23,7 @@ import com.hawk.application.model.ChangePasswordVo;
 import com.hawk.application.model.LoginVo;
 import com.hawk.application.model.User;
 import com.hawk.application.service.UserService;
+import com.octo.captcha.module.servlet.image.SimpleImageCaptchaServlet;
 
 @Controller
 @SessionAttributes(types = User.class)
@@ -68,10 +70,19 @@ public class UserController {
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String processLoginForm(@Valid LoginVo loginVo,
-			BindingResult result, HttpSession session, SessionStatus status) {
+			BindingResult result, HttpServletRequest request,
+			HttpSession session, SessionStatus status) {
 		if (result.hasErrors()) {
 			return "user/login";
 		} else {
+
+			boolean captchaPassed = SimpleImageCaptchaServlet.validateResponse(
+					request, loginVo.getCheckCode());
+			if (captchaPassed) {
+				LOGGER.info("captcha passed. " + loginVo.getCheckCode());
+			} else {
+				LOGGER.info("captcha failed. " + loginVo.getCheckCode());
+			}
 
 			User user = userService.login(loginVo);
 
