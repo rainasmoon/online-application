@@ -82,11 +82,15 @@
 					</div>
 				</div>
 				<br />
-				<div class="promotetrend">推广趋势</div>
-				<div id="promotetrend" class="flot-chart-css" style="height: 300px;"></div>
-
-
-
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h3 class="panel-title">推广趋势</h3>
+					</div>
+					<div class="panel-body">
+						<div id="promotetrend" class="flot-chart-css" style="height: 300px;"></div>
+					</div>
+				</div>
+				
 			</div>
 
 		</div>
