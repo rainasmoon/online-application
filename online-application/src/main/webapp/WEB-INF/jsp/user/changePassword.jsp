@@ -23,9 +23,9 @@
         重设密码
     </h2>
     <form:form modelAttribute="changePasswordVo" method="post" class="form-horizontal" id="login-form">
-        <onlineapplication:inputField label="旧密码" name="oldPassword"/>
-        <onlineapplication:inputField label="新密码" name="newPassword"/>
-        <onlineapplication:inputField label="确认密码" name="confirmPassword"/>
+        <onlineapplication:passwordField label="旧密码" name="oldPassword"/>
+        <onlineapplication:passwordField label="新密码" name="newPassword"/>
+        <onlineapplication:passwordField label="确认密码" name="confirmPassword"/>
         <div class="form-actions">
 
             <button class="btn btn-lg btn-primary btn-block" type="submit">修改</button>

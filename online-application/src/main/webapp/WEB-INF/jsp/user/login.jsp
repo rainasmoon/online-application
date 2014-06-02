@@ -24,7 +24,7 @@
     </h2>
     <form:form modelAttribute="loginVo" method="post" class="form-signin" id="login-form">
         <onlineapplication:inputField label="邮箱" name="email"/>
-        <onlineapplication:inputField label="密码" name="password"/>
+        <onlineapplication:passwordField label="密码" name="password"/>
         <onlineapplication:inputField label="验证码" name="checkCode"/>
         <div class="form-actions">
 			
