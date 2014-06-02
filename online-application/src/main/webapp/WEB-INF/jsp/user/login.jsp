@@ -22,7 +22,7 @@
     <h2 class="form-signin-heading">
         登录
     </h2>
-    <form:form modelAttribute="loginVo" method="post" class="form-signin" id="login-form">
+    <form:form modelAttribute="loginVo" method="post" class="form-horizontal" id="login-form">
         <onlineapplication:inputField label="邮箱" name="email"/>
         <onlineapplication:passwordField label="密码" name="password"/>
         <onlineapplication:inputField label="验证码" name="checkCode"/>

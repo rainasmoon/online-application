@@ -32,3 +32,7 @@ input[type="text"] {
 	font-size: 14px;
 	line-height: 1.2em;
 }
+.error{
+	color:#B94A48;
+	
+}
