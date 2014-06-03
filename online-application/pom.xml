@@ -252,8 +252,17 @@
 			<scope>runtime</scope>
 		</dependency>
 
-
 		<!-- Dandelion -->
+		<dependency>
+			<groupId>com.github.dandelion</groupId>
+			<artifactId>dandelion-jsp</artifactId>
+			<version>${dandelion.datatables.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.dandelion</groupId>
+			<artifactId>dandelion-webjars</artifactId>
+			<version>${dandelion.datatables.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>com.github.dandelion</groupId>
 			<artifactId>datatables-jsp</artifactId>

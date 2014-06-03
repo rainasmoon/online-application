@@ -1,0 +1,11 @@
+{
+   "bundle" : "flot",
+   "assets": [{
+      "name": "flot",
+      "version": "0.8.3",
+      "type": "js",
+      "locations": {
+         "webjar": "jquery.flot.js"
+      }
+   }]
+}

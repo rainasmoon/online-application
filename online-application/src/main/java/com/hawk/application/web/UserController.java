@@ -23,7 +23,6 @@ import com.hawk.application.model.ChangePasswordVo;
 import com.hawk.application.model.LoginVo;
 import com.hawk.application.model.User;
 import com.hawk.application.service.UserService;
-import com.octo.captcha.module.servlet.image.SimpleImageCaptchaServlet;
 
 @Controller
 @SessionAttributes(types = User.class)
@@ -52,6 +51,7 @@ public class UserController {
 	@RequestMapping(value = { "/users/new", "/register" }, method = RequestMethod.POST)
 	public String processCreationForm(@Valid User user, BindingResult result,
 			SessionStatus status) {
+		new RegisterValidator().validate(user, result);
 		if (result.hasErrors()) {
 			return "user/register";
 		} else {
@@ -73,16 +73,9 @@ public class UserController {
 			BindingResult result, HttpServletRequest request,
 			HttpSession session, SessionStatus status) {
 		if (result.hasErrors()) {
+
 			return "user/login";
 		} else {
-
-			boolean captchaPassed = SimpleImageCaptchaServlet.validateResponse(
-					request, loginVo.getCheckCode());
-			if (captchaPassed) {
-				LOGGER.info("captcha passed. " + loginVo.getCheckCode());
-			} else {
-				LOGGER.info("captcha failed. " + loginVo.getCheckCode());
-			}
 
 			User user = userService.login(loginVo);
 
