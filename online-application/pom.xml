@@ -60,8 +60,9 @@
 		<webjars-bootstrap.version>3.1.1</webjars-bootstrap.version>
 		<webjars-jquery-ui.version>1.10.3</webjars-jquery-ui.version>
 		<webjars-jquery.version>2.0.3-1</webjars-jquery.version>
-		<dandelion.datatables.version>0.9.3</dandelion.datatables.version>
+		<dandelion.datatables.version>0.10.0</dandelion.datatables.version>
 
+		<jcaptcha.version>2.0-alpha-1</jcaptcha.version>
 		<mysql.version>5.1.22</mysql.version>
 
 	</properties>
@@ -261,18 +262,19 @@
 
 		<dependency>
 			<groupId>com.github.dandelion</groupId>
-			<artifactId>datatables-servlet2</artifactId>
+			<artifactId>datatables-spring3</artifactId>
 			<version>${dandelion.datatables.version}</version>
 		</dependency>
+
 		<dependency>
 			<groupId>com.octo.captcha</groupId>
 			<artifactId>jcaptcha</artifactId>
-			<version>2.0-alpha-1</version>
+			<version>${jcaptcha.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.octo.captcha</groupId>
 			<artifactId>jcaptcha-integration-simple-servlet</artifactId>
-			<version>2.0-alpha-1</version>
+			<version>${jcaptcha.version}</version>
 		</dependency>
 
 
