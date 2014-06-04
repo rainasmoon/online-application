@@ -29,8 +29,8 @@ public class LoginInterceptor implements HandlerInterceptor {
 		String uri = request.getRequestURI().substring(
 				request.getRequestURI().lastIndexOf("/") + 1);
 		User user = (User) request.getSession(true).getAttribute("user");
-		LOGGER.debug("str=========>" + user);
-		LOGGER.debug("str=========>" + uri);
+		LOGGER.debug("current User=========>" + user);
+		LOGGER.debug("url:=========>" + uri);
 
 		if ("login".equals(uri) || "login.html".equals(uri)
 				|| "register".equals(uri) || "register.html".equals(uri)) {

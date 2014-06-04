@@ -16,4 +16,6 @@ public interface UserService {
 
 	boolean changePassword(User user, ChangePasswordVo changePasswordVo);
 
+	boolean isEmailExists(String email);
+
 }

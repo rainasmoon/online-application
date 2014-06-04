@@ -22,6 +22,7 @@
     <h2 class="form-signin-heading">
         登录
     </h2>
+    <span class="help-inline">${status.errorMessage}</span>
     <form:form modelAttribute="loginVo" method="post" class="form-horizontal" id="login-form">
         <onlineapplication:inputField label="邮箱" name="email"/>
         <onlineapplication:passwordField label="密码" name="password"/>

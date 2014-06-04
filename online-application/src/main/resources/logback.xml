@@ -5,11 +5,12 @@
         <resetJUL>true</resetJUL>
     </contextListener>
 
-    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder>
-            <pattern>%-5level %logger{0} - %msg%n</pattern>
-        </encoder>
-    </appender>
+    <appender name=console class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
 
 	<!--<logger name="org.hibernate" level="debug"/> -->
     <logger name="com.hawk.application" level="debug"/>
@@ -17,6 +18,8 @@
     
   	<logger name="org.hibernate.type" level="ALL" />
   	<logger name="org.hibernate" level="INFO" />
+  	<logger name="org.hibernate.type.descriptor.sql.BasicBinder"
+		level="TRACE" />
          
     <root level="info">
         <appender-ref ref="console"/>

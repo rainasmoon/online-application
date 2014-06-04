@@ -51,7 +51,7 @@ public class UserController {
 	@RequestMapping(value = { "/users/new", "/register" }, method = RequestMethod.POST)
 	public String processCreationForm(@Valid User user, BindingResult result,
 			SessionStatus status) {
-		new RegisterValidator().validate(user, result);
+		new RegisterValidator(userService).validate(user, result);
 		if (result.hasErrors()) {
 			return "user/register";
 		} else {
@@ -72,6 +72,7 @@ public class UserController {
 	public String processLoginForm(@Valid LoginVo loginVo,
 			BindingResult result, HttpServletRequest request,
 			HttpSession session, SessionStatus status) {
+		new LoginValidator().validate(request, loginVo, result);
 		if (result.hasErrors()) {
 
 			return "user/login";
@@ -80,7 +81,7 @@ public class UserController {
 			User user = userService.login(loginVo);
 
 			if (user == null) {
-				// TODO add login error...
+				result.reject("error.userNameOrPassword.invalid");
 				return "user/login";
 			}
 			session.setAttribute("user", user);
