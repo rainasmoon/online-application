@@ -7,25 +7,32 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.Digits;
+import javax.validation.constraints.Null;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "users")
 public class User extends BaseEntity {
 
 	@Column(name = "email")
+	@NotEmpty(message="{not.null}")
 	protected String email;
 
 	@Column(name = "password")
+	@NotEmpty(message="{not.null}")
 	protected String password;
 
 	@Transient
+	@NotEmpty(message="{not.null}")
 	protected String confirmPassword;
 
 	@Column(name = "qq")
 	protected String qq;
 
 	@Column(name = "mobile")
-	@Digits(fraction = 0, integer = 11)
+	@Pattern(regexp = "^[\\d]{4,19}$", message="{error.invaled}")  
 	protected String mobile;
 
 	@Column(name = "created_date")

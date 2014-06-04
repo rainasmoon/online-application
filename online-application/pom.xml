@@ -432,8 +432,8 @@
 					<stopPort> 9999</stopPort>
 					<systemProperties>
 						<systemProperty>
-							<name> org.apache.commons.logging.Log</name>
-							<value> org.apache.commons.logging.impl.SimpleLog</value>
+							<name>spring.profiles.active</name>
+							<value>spring-data-jpa</value>
 						</systemProperty>
 					</systemProperties>
 

@@ -16,7 +16,17 @@
 	<!-- - POJOs labeled with the @Controller and @Service annotations are auto-detected. -->
 	<context:component-scan base-package="com.hawk.application.web" />
 
+
 	<mvc:annotation-driven conversion-service="conversionService" >
+		<mvc:argument-resolvers>
+			<bean
+				class="com.github.dandelion.datatables.extras.spring3.ajax.DatatablesCriteriasMethodArgumentResolver" />
+		</mvc:argument-resolvers>
+	</mvc:annotation-driven>
+
+	<mvc:annotation-driven validator="validator"
+		conversion-service="conversionService" />
+
 		<mvc:argument-resolvers>
 			<bean
 				class="com.github.dandelion.datatables.extras.spring3.ajax.DatatablesCriteriasMethodArgumentResolver" />
@@ -57,8 +67,21 @@
 		files. - Files are stored inside src/main/resources -->
 	<bean id="messageSource"
 		class="org.springframework.context.support.ResourceBundleMessageSource"
-		p:basename="messages/messages" />
+		p:basename="messages/messages" p:defaultEncoding="UTF-8" />
 
+	<bean id="validator"
+		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+		<property name="providerClass" value="org.hibernate.validator.HibernateValidator" />
+		<!-- 如果不加默认到 使用classpath下的 ValidationMessages.properties -->
+		<property name="validationMessageSource" ref="messageSource" />
+	</bean>
+
+	<mvc:interceptors>  
+            <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />  
+    </mvc:interceptors>  
+  
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver" />  
+  
 	<!-- - This bean resolves specific types of exceptions to corresponding 
 		logical - view names for error views. -->
 	<bean
