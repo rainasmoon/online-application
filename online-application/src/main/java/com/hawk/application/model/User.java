@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.Digits;
+import javax.validation.constraints.Null;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -30,7 +32,7 @@ public class User extends BaseEntity {
 	protected String qq;
 
 	@Column(name = "mobile")
-	@Digits(fraction = 0, integer = 11)
+	@Pattern(regexp = "^[\\d]{4,19}$", message="{error.invaled}")  
 	protected String mobile;
 
 	@Column(name = "created_date")
