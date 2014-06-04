@@ -93,7 +93,7 @@ public class UserController {
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 		session.removeAttribute("user");
-
+		session.invalidate();
 		return "redirect:/";
 	}
 
@@ -126,7 +126,7 @@ public class UserController {
 
 			if (!userService.changePassword(
 					(User) session.getAttribute("user"), changePasswordVo)) {
-				// TODO. add error msg.
+				result.reject("error.passwordChange.failed");
 				return "user/changePassword";
 			}
 			status.setComplete();
