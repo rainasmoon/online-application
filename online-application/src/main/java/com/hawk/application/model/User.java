@@ -32,7 +32,6 @@ public class User extends BaseEntity {
 	protected String qq;
 
 	@Column(name = "mobile")
-	@Pattern(regexp = "^[\\d]{4,19}$", message="{error.invaled}")  
 	protected String mobile;
 
 	@Column(name = "created_date")
