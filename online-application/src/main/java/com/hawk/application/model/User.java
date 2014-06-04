@@ -8,17 +8,22 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.Digits;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 @Table(name = "users")
 public class User extends BaseEntity {
 
 	@Column(name = "email")
+	@NotEmpty(message="{not.null}")
 	protected String email;
 
 	@Column(name = "password")
+	@NotEmpty(message="{not.null}")
 	protected String password;
 
 	@Transient
+	@NotEmpty(message="{not.null}")
 	protected String confirmPassword;
 
 	@Column(name = "qq")

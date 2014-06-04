@@ -4,13 +4,13 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 public class ChangePasswordVo {
 
-	@NotEmpty
+	@NotEmpty(message="{not.null}")
 	protected String oldPassword;
 
-	@NotEmpty
+	@NotEmpty(message="{not.null}")
 	protected String newPassword;
 
-	@NotEmpty
+	@NotEmpty(message="{not.null}")
 	protected String confirmPassword;
 
 	public String getOldPassword() {

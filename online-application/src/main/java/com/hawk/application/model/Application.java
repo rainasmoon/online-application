@@ -16,15 +16,15 @@ public class Application extends BaseEntity {
 	protected String dianjoyAppId;
 
 	@Column(name = "application_name")
-	@NotEmpty
+	@NotEmpty(message="{not.null}")
 	protected String applicationName;
 
 	@Column(name = "application_platform")
-	@NotEmpty
+	@NotEmpty(message="{not.null}")
 	protected String applicationPlatform;
 
 	@Column(name = "application_package_name")
-	@NotEmpty
+	@NotEmpty(message="{not.null}")
 	protected String applicationPackageName;
 
 	@Column(name = "status")

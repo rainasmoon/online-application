@@ -7,10 +7,10 @@ public class LoginVo {
 	@NotEmpty(message="{not.null}")
 	protected String email;
 
-	@NotEmpty
+	@NotEmpty(message="{not.null}")
 	protected String password;
 
-	@NotEmpty
+	@NotEmpty(message="{not.null}")
 	protected String checkCode;
 
 	public String getEmail() {
