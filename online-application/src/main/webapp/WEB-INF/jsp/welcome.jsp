@@ -8,6 +8,7 @@
 <html lang="en">
 
 <jsp:include page="fragments/headTag.jsp" />
+<dandelion:bundle includes="flot" />
 
 <!--[if lte IE 8]><spring:url value="/webjars/excanvas/3/excanvas.js" var="excanvas"/>
     <script src="${excanvas}"></script><![endif]-->
