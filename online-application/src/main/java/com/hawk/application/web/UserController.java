@@ -9,6 +9,7 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
@@ -31,6 +32,9 @@ public class UserController {
 
 	Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 	private final UserService userService;
+	
+    @Autowired
+    protected MessageSource messageSource;
 
 	@Autowired
 	public UserController(UserService userService) {
@@ -73,6 +77,7 @@ public class UserController {
 			BindingResult result, HttpServletRequest request,
 			HttpSession session, SessionStatus status) {
 		if (result.hasErrors()) {
+			
 			return "user/login";
 		} else {
 

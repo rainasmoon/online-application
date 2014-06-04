@@ -35,8 +35,9 @@ public class RedisServiceImpl implements RedisService {
 		WelcomeVo welcomeVo = new WelcomeVo();
 		String todayStr = DATE_FORMAT.format(new Date());
 		String id = TEST_DIANJOY_APP_ID + "_" + todayStr + "_" + "total";
-		redisRepository.setValue(id, "128");
-		String todayIncomeStr = redisRepository.getValue(id);
+//		redisRepository.setValue(id, "128");
+//		String todayIncomeStr = redisRepository.getValue(id);
+		String todayIncomeStr = "123.4";
 		LOGGER.debug(":www: today's income:" + id);
 		LOGGER.debug(":www: today's income:" + todayIncomeStr);
 

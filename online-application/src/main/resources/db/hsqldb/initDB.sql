@@ -10,7 +10,7 @@ CREATE TABLE applications (
   application_name  VARCHAR(100),
   application_platform  VARCHAR(10),
   application_package_name  VARCHAR(500),
-  status  VARCHAR(10),
+  status  VARCHAR(100),
   created_date  TIMESTAMP,
   updated_date  TIMESTAMP,
   created_by INTEGER,
