@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -41,6 +42,9 @@ public class Application extends BaseEntity {
 
 	@Column(name = "updated_by")
 	protected Integer updatedBy;
+	
+	@Transient
+	protected String error;
 
 	public String getApplicationName() {
 		return applicationName;
@@ -112,6 +116,14 @@ public class Application extends BaseEntity {
 
 	public void setDianjoyAppId(String dianjoyAppId) {
 		this.dianjoyAppId = dianjoyAppId;
+	}
+
+	public String getError() {
+		return error;
+	}
+
+	public void setError(String error) {
+		this.error = error;
 	}
 
 }

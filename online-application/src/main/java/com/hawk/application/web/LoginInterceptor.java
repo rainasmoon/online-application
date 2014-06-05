@@ -37,15 +37,15 @@ public class LoginInterceptor implements HandlerInterceptor {
 			session = request.getSession(true);			
 		}
 		LOGGER.debug("Session Id:" + session.getId());
-		User user = (User) session.getAttribute("user");
-		LOGGER.debug("current User=========>" + user);
+		String userEmail = (String) session.getAttribute("userEmail");
+		LOGGER.debug("current User=========>" + userEmail);
 		LOGGER.debug("request url:=========>" + uri);
 
 		if ("login".equals(uri) || "login.html".equals(uri)
 				|| "register".equals(uri) || "register.html".equals(uri)) {
 			return true;
 		}
-		if (user != null && user.getEmail() != null) {
+		if (userEmail != null && !userEmail.isEmpty()) {
 			return true;
 		}
 		response.sendRedirect(request.getContextPath() + "/login.html");

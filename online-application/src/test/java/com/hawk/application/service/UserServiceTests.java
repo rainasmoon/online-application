@@ -38,7 +38,7 @@ public class UserServiceTests {
 		changePasswordVo.setNewPassword("new");
 		changePasswordVo.setConfirmPassword("new");
 
-		userService.changePassword(user, changePasswordVo);
+		userService.changePassword(user.getEmail(), changePasswordVo);
 
 		user = userRepository.findOne(user.getId());
 

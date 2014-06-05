@@ -13,8 +13,10 @@ public interface UserService {
 	Collection<User> findAllUsers();
 
 	User login(LoginVo loginVo);
+	
+	User findUserByEmail(String email);
 
-	boolean changePassword(User user, ChangePasswordVo changePasswordVo);
+	boolean changePassword(String userEmail, ChangePasswordVo changePasswordVo);
 
 	boolean isEmailExists(String email);
 

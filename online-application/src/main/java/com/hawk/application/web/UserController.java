@@ -49,14 +49,13 @@ public class UserController {
 	}
 
 	@RequestMapping(value = { "/users/new", "/register" }, method = RequestMethod.POST)
-	public String processCreationForm(@Valid User user, BindingResult result,
-			SessionStatus status) {
+	public String processCreationForm(@Valid User user, BindingResult result) {
 		new RegisterValidator(userService).validate(user, result);
 		if (result.hasErrors()) {
 			return "user/register";
 		} else {
 			this.userService.saveUser(user);
-			status.setComplete();
+//			status.setComplete();
 			return "redirect:/";
 		}
 	}
@@ -71,7 +70,7 @@ public class UserController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String processLoginForm(@Valid LoginVo loginVo,
 			BindingResult result, HttpServletRequest request,
-			HttpSession session, SessionStatus status, Map<String, Object> model) {
+			HttpSession session, Map<String, Object> model) {
 		new LoginValidator().validate(request, loginVo, result);
 		if (result.hasErrors()) {			
 			LOGGER.debug("Login has error.");
@@ -86,17 +85,18 @@ public class UserController {
 				return "user/login";
 			}
 			
-			session.setAttribute("user", user);
+			session.setAttribute("userEmail", user.getEmail());
 			LOGGER.debug("Session ID:" + session.getId());
-			LOGGER.debug("Set User in session:" + user);
-			status.setComplete();
+			LOGGER.debug("Set User in session:" + user);			
 			return "redirect:/";
 		}
 	}
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
-		session.removeAttribute("user");
+		LOGGER.debug("Logout running...");
+		LOGGER.debug("Session ID:" + session.getId());		
+		session.removeAttribute("userEmail");
 		session.invalidate();
 		return "redirect:/";
 	}
@@ -104,7 +104,8 @@ public class UserController {
 	@RequestMapping(value = "/viewMe", method = RequestMethod.GET)
 	public ModelAndView viewMe(HttpSession session) {
 		ModelAndView mav = new ModelAndView("user/view");
-		User user = (User) session.getAttribute("user");
+		String userEmail = (String) session.getAttribute("userEmail");
+		 User user = userService.findUserByEmail(userEmail);
 		LOGGER.debug("view User:" + user);
 
 		mav.addObject(user);
@@ -123,17 +124,16 @@ public class UserController {
 	@RequestMapping(value = "/changePassword", method = RequestMethod.POST)
 	public String processChangePasswordForm(
 			@Valid ChangePasswordVo changePasswordVo, BindingResult result,
-			HttpSession session, SessionStatus status) {
+			HttpSession session) {
 		if (result.hasErrors()) {
 			return "user/changePassword";
 		} else {
 
 			if (!userService.changePassword(
-					(User) session.getAttribute("user"), changePasswordVo)) {
-				result.reject("error.passwordChange.failed");
+					(String) session.getAttribute("userEmail"), changePasswordVo)) {
+				result.rejectValue("error", "error.passwordChange.failed");
 				return "user/changePassword";
-			}
-			status.setComplete();
+			}			
 			return "redirect:/";
 		}
 	}

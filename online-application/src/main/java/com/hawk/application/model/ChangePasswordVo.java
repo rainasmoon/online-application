@@ -1,5 +1,7 @@
 package com.hawk.application.model;
 
+import javax.persistence.Transient;
+
 import org.hibernate.validator.constraints.NotEmpty;
 
 public class ChangePasswordVo {
@@ -12,6 +14,9 @@ public class ChangePasswordVo {
 
 	@NotEmpty(message="{not.null}")
 	protected String confirmPassword;
+	
+	@Transient
+	protected String error;
 
 	public String getOldPassword() {
 		return oldPassword;
@@ -35,5 +40,13 @@ public class ChangePasswordVo {
 
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
+	}
+
+	public String getError() {
+		return error;
+	}
+
+	public void setError(String error) {
+		this.error = error;
 	}
 }

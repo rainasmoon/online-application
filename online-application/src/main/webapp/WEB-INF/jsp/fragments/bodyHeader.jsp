@@ -30,7 +30,7 @@
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 			<li class="dropdown"><a data-toggle="dropdown"
-				class="dropdown-toggle" href="#"><c:out value="${user.email}" /><b
+				class="dropdown-toggle" href="#"><c:out value="${userEmail}" /><b
 					class="caret"></b></a>
 				<ul class="dropdown-menu">
 					<li><a

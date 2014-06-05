@@ -62,8 +62,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Transactional
-	public boolean changePassword(User loginUser,
+	public boolean changePassword(String userEmail,
 			ChangePasswordVo changePasswordVo) {
+		User loginUser = userRepository.findByEmail(userEmail);
 		if (loginUser.getPassword().equals(changePasswordVo.getOldPassword())
 				&& changePasswordVo.getNewPassword().equals(
 						changePasswordVo.getConfirmPassword())) {
@@ -81,4 +82,12 @@ public class UserServiceImpl implements UserService {
 		User user = userRepository.findByEmail(email);
 		return user != null;
 	}
+
+	@Override
+	public User findUserByEmail(String email) {
+		
+		return userRepository.findByEmail(email);
+	}
+
+
 }

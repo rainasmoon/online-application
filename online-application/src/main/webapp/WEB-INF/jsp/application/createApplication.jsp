@@ -17,7 +17,7 @@
 
 <body>
 	<jsp:include page="../fragments/bodyHeader.jsp" />
-	<div class="container" >
+	<div class="container">
 		<div class="row">
 			<div class="col-xs-6 col-sm-3 sidebar-offcanvas" role="navigation">
 				<jsp:include page="../fragments/leftMenu.jsp" /></div>
@@ -27,8 +27,17 @@
 				<h2>创建应用</h2>
 				<form:form modelAttribute="application" method="post"
 					class="form-horizontal" id="add-application-form">
+					<span class="help-inline"> <c:if test="${not empty message}">
+							<div id="message" class="success">${message}</div>
+						</c:if> <spring:bind path="error">
+							<c:if test="${status.error}">
+								<div id="message" class="error">${status.errorMessage}</div>
+							</c:if>
+						</spring:bind>
+					</span>
 					<onlineapplication:inputField label="应用名称" name="applicationName" />
-					<onlineapplication:radioButtonsField label="应用平台" name="applicationPlatform" names="${platformTypes}" />
+					<onlineapplication:radioButtonsField label="应用平台"
+						name="applicationPlatform" names="${platformTypes}" />
 					<onlineapplication:inputField label="应用包名"
 						name="applicationPackageName" />
 					<div class="alert alert-info">packageName / bundle

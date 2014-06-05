@@ -54,12 +54,11 @@ public class ApplicationController {
 
 	@RequestMapping(value = "/applications/new", method = RequestMethod.POST)
 	public String processCreationForm(@Valid Application application,
-			BindingResult result, SessionStatus status) {
+			BindingResult result) {
 		if (result.hasErrors()) {
 			return "application/createApplication";
 		} else {
-			this.applicationService.saveApplication(application);
-			status.setComplete();
+			this.applicationService.saveApplication(application);			
 			return "redirect:/applications";
 		}
 	}
