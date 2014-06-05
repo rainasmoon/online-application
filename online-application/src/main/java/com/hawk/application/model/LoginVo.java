@@ -12,6 +12,8 @@ public class LoginVo {
 
 	@NotEmpty(message="{not.null}")
 	protected String checkCode;
+	
+	protected String error;
 
 	public String getEmail() {
 		return email;
@@ -35,5 +37,13 @@ public class LoginVo {
 
 	public void setCheckCode(String checkCode) {
 		this.checkCode = checkCode;
+	}
+
+	public String getError() {
+		return error;
+	}
+
+	public void setError(String error) {
+		this.error = error;
 	}
 }

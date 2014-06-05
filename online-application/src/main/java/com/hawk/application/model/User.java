@@ -45,7 +45,7 @@ public class User extends BaseEntity {
 
 	@Column(name = "updated_by")
 	protected Integer updatedBy;
-
+	
 	public String getEmail() {
 		return email;
 	}

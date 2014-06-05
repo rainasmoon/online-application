@@ -71,20 +71,24 @@ public class UserController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String processLoginForm(@Valid LoginVo loginVo,
 			BindingResult result, HttpServletRequest request,
-			HttpSession session, SessionStatus status) {
+			HttpSession session, SessionStatus status, Map<String, Object> model) {
 		new LoginValidator().validate(request, loginVo, result);
-		if (result.hasErrors()) {
-
+		if (result.hasErrors()) {			
+			LOGGER.debug("Login has error.");
 			return "user/login";
 		} else {
 
 			User user = userService.login(loginVo);
 
 			if (user == null) {
-				result.reject("error.userNameOrPassword.invalid");
+				result.rejectValue("error", "error.userNameOrPassword.invalid");
+				LOGGER.warn("login failed. with no user in db." );
 				return "user/login";
 			}
+			
 			session.setAttribute("user", user);
+			LOGGER.debug("Session ID:" + session.getId());
+			LOGGER.debug("Set User in session:" + user);
 			status.setComplete();
 			return "redirect:/";
 		}
