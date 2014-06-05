@@ -9,6 +9,7 @@ import javax.persistence.Transient;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Null;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -18,10 +19,12 @@ public class User extends BaseEntity {
 
 	@Column(name = "email")
 	@NotEmpty(message="{not.null}")
+	@Size(max = 100, message="{error.too.lang}")
 	protected String email;
 
 	@Column(name = "password")
 	@NotEmpty(message="{not.null}")
+	@Size(max = 100, message="{error.too.lang}")
 	protected String password;
 
 	@Transient
@@ -29,9 +32,11 @@ public class User extends BaseEntity {
 	protected String confirmPassword;
 
 	@Column(name = "qq")
+	@Size(max = 30, message="{error.too.lang}")
 	protected String qq;
 
 	@Column(name = "mobile")
+	@Size(max = 50, message="{error.too.lang}")
 	protected String mobile;
 
 	@Column(name = "created_date")

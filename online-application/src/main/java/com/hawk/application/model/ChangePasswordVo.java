@@ -1,18 +1,22 @@
 package com.hawk.application.model;
 
 import javax.persistence.Transient;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
 public class ChangePasswordVo {
 
 	@NotEmpty(message="{not.null}")
+	@Size(max = 100, message="{error.too.lang}")
 	protected String oldPassword;
 
 	@NotEmpty(message="{not.null}")
+	@Size(max = 100, message="{error.too.lang}")
 	protected String newPassword;
 
 	@NotEmpty(message="{not.null}")
+	@Size(max = 100, message="{error.too.lang}")
 	protected String confirmPassword;
 	
 	@Transient
