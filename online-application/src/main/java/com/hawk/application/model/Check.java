@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "checks")
@@ -26,6 +27,12 @@ public class Check extends BaseEntity {
 	protected Double applyAmount;
 	@Column(name = "status")
 	protected String status;
+	
+	@Transient
+	protected Double remainder;
+	
+	@Transient
+	protected String error;
 	
 
 	public String getBankName() {
@@ -75,6 +82,18 @@ public class Check extends BaseEntity {
 	}
 	public void setContactIdNumber(String contactIdNumber) {
 		this.contactIdNumber = contactIdNumber;
+	}
+	public Double getRemainder() {
+		return remainder;
+	}
+	public void setRemainder(Double remainder) {
+		this.remainder = remainder;
+	}
+	public String getError() {
+		return error;
+	}
+	public void setError(String error) {
+		this.error = error;
 	}
 	
 }

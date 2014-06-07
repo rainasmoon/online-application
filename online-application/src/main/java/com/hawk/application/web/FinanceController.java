@@ -3,8 +3,10 @@ package com.hawk.application.web;
 import java.util.Collection;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.hawk.application.model.Application;
 import com.hawk.application.model.User;
 import com.hawk.application.service.ApplicationService;
+import com.hawk.application.service.UserService;
 
 import com.hawk.application.model.*;
 import com.hawk.application.service.*;
@@ -22,9 +25,12 @@ import com.hawk.application.service.*;
 @Controller
 @SessionAttributes(types = Check.class)
 public class FinanceController {
-	
-	
+		
 	private final FinanceService financeService;
+	@Autowired
+	private UserService userService;
+    @Autowired
+    private Mapper dozerBeanMapper;
 	
 	@Autowired
 	public FinanceController(FinanceService financeService) {
@@ -32,8 +38,12 @@ public class FinanceController {
 	}
 
 	@RequestMapping(value = "/checks/new", method = RequestMethod.GET)
-	public String initCreationForm(Map<String, Object> model) {
-		Check check = new Check();
+	public String initCreationForm(HttpSession session, Map<String, Object> model) {
+		
+		String userEmail = (String) session.getAttribute("userEmail");
+		User user = userService.findUserByEmail(userEmail);
+		
+		Check check = dozerBeanMapper.map(user, Check.class);
 		model.put("check", check);
 
 		return "finance/applyCheck";
