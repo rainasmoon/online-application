@@ -8,7 +8,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="onlineapplication" tagdir="/WEB-INF/tags"%>
+<%@ taglib prefix="datatables"
+	uri="http://github.com/dandelion/datatables"%>
 
 
 <html lang="en">
@@ -24,27 +25,16 @@
 				<jsp:include page="../fragments/leftMenu.jsp" /></div>
 			<div class="col-xs-12 col-sm-9">
 
-				<h2>重设密码</h2>
-				<form:form modelAttribute="changePasswordVo" method="post"
-					class="form-horizontal" id="login-form">
-					<span class="help-inline"> <c:if test="${not empty message}">
-							<div id="message" class="success">${message}</div>
-						</c:if> <spring:bind path="error">
-							<c:if test="${status.error}">
-								<div id="message" class="error">${status.errorMessage}</div>
-							</c:if>
-						</spring:bind>
-					</span>
-					<onlineapplication:passwordField label="旧密码" name="oldPassword" />
-					<onlineapplication:passwordField label="新密码" name="newPassword" />
-					<onlineapplication:passwordField label="确认密码"
-						name="confirmPassword" />
-					<div class="form-actions">
+				<h2>奖励统计</h2>
+				<datatables:table id="bonuses" data="${selections}" cdn="true"
+					row="bonus" theme="bootstrap2" cssClass="table table-striped"
+					paginate="false" pageable="false" info="false" filterable="false" sortable="false"
+					lengthChange="false">
 
-						<button class="btn btn-lg btn-primary btn-block" type="submit">修改</button>
-
-					</div>
-				</form:form>
+					<datatables:column title="授奖日期" property="createdDate" />
+					<datatables:column title="授奖内容" property="amount" />
+					<datatables:column title="授奖原因" property="reason" />					
+				</datatables:table>
 
 
 			</div>

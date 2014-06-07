@@ -7,6 +7,10 @@ INSERT INTO app_parameters VALUES (1, 1, 'chet', 'false', '2012-09-07 10:10:10',
 INSERT INTO users VALUES (1, 'testemail@test.com', 'test', '12345', '101 1988 2983', '个人', 'hawk', '1111 1111 1111', '中国工商银行', 1, 1, '新街口支行', '6995 8808 3728', '/path/id-front', '/path/id-back',  '2013-09-07 10:10:10','2010-09-07 10:10:10', 1, 1);
 INSERT INTO users VALUES (2, 'test', 'test', '12345', '101 1988 2983',  '个人', 'hawk', '1111 1111 1111', '中国工商银行', 1, 1, '新街口支行', '6995 8808 3728', '/path/id-front', '/path/id-back', '2013-09-07 10:10:10','2010-09-07 10:10:10', 1, 1);
 
+INSERT INTO bonus VALUES (1, 100, '开发者注册送50', '2013-09-07 10:10:10','2010-09-07 10:10:10', 1, 1);
+
+INSERT INTO checks VALUES (1, 'glen', '1111 111', 'city bank', 'china bj wangfujing street', '1115 1230 1897 2222', 10000.00, 'passed', '2013-09-07 10:10:10','2010-09-07 10:10:10', 1, 1);
+
 INSERT INTO dictionary VALUES (1, 'province', null, '北京');
 INSERT INTO dictionary VALUES (2, 'province', null, '河北');
 INSERT INTO dictionary VALUES (3, 'city', 1, '北京');

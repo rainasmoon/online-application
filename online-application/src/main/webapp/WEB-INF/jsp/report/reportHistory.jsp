@@ -25,26 +25,7 @@
 			<div class="col-xs-12 col-sm-9">
 
 				<h2>重设密码</h2>
-				<form:form modelAttribute="changePasswordVo" method="post"
-					class="form-horizontal" id="login-form">
-					<span class="help-inline"> <c:if test="${not empty message}">
-							<div id="message" class="success">${message}</div>
-						</c:if> <spring:bind path="error">
-							<c:if test="${status.error}">
-								<div id="message" class="error">${status.errorMessage}</div>
-							</c:if>
-						</spring:bind>
-					</span>
-					<onlineapplication:passwordField label="旧密码" name="oldPassword" />
-					<onlineapplication:passwordField label="新密码" name="newPassword" />
-					<onlineapplication:passwordField label="确认密码"
-						name="confirmPassword" />
-					<div class="form-actions">
-
-						<button class="btn btn-lg btn-primary btn-block" type="submit">修改</button>
-
-					</div>
-				</form:form>
+				
 
 
 			</div>

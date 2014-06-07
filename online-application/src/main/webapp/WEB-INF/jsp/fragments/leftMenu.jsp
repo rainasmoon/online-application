@@ -21,11 +21,11 @@
                　分日统计</a>
                <a class="list-group-item active" href="#">
                　财务管理</a>
-               <a class="list-group-item" href="<spring:url value="/" htmlEscape="true" />">
+               <a class="list-group-item" href="<spring:url value="/checks/new.html" htmlEscape="true" />">
                　申请汇款</a>
-               <a class="list-group-item" href="<spring:url value="/" htmlEscape="true" />">
+               <a class="list-group-item" href="<spring:url value="/checks.html" htmlEscape="true" />">
                　汇款详单</a>
-               <a class="list-group-item" href="<spring:url value="/" htmlEscape="true" />">
+               <a class="list-group-item" href="<spring:url value="/bonus.html" htmlEscape="true" />">
                　奖励统计</a>
                <a class="list-group-item" href="<spring:url value="/" htmlEscape="true" />">
                　个人收入速查</a>
