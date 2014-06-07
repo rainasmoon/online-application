@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.Digits;
@@ -26,10 +28,6 @@ public class User extends BaseEntity {
 	@NotEmpty(message="{not.null}")
 	@Size(max = 100, message="{error.too.lang}")
 	protected String password;
-
-	@Transient
-	@NotEmpty(message="{not.null}")
-	protected String confirmPassword;
 
 	@Column(name = "qq")
 	@Size(max = 20, message="{error.too.lang}")
@@ -54,12 +52,14 @@ public class User extends BaseEntity {
 	@Column(name = "bank_name")
 	@Size(max = 100, message="{error.too.lang}")
 	protected String bankName;
-	
-	@Column(name = "province_id")
-	protected Integer provinceId;
-	
-	@Column(name = "city_id")
-	protected Integer cityId;
+
+	@ManyToOne
+	@JoinColumn(name = "province_id")
+	private Dictionary province;
+
+	@ManyToOne
+	@JoinColumn(name = "city_id")
+	private Dictionary city;
 	
 	@Column(name = "branch_name")
 	@Size(max = 200, message="{error.too.lang}")
@@ -86,6 +86,9 @@ public class User extends BaseEntity {
 
 	@Column(name = "updated_by")
 	protected Integer updatedBy;
+	
+	@Transient
+	protected String error;
 	
 	public String getEmail() {
 		return email;
@@ -151,14 +154,6 @@ public class User extends BaseEntity {
 		this.updatedBy = updatedBy;
 	}
 
-	public String getConfirmPassword() {
-		return confirmPassword;
-	}
-
-	public void setConfirmPassword(String confirmPassword) {
-		this.confirmPassword = confirmPassword;
-	}
-
 	public String getContactType() {
 		return contactType;
 	}
@@ -191,22 +186,6 @@ public class User extends BaseEntity {
 		this.bankName = bankName;
 	}
 
-	public Integer getProvinceId() {
-		return provinceId;
-	}
-
-	public void setProvinceId(Integer provinceId) {
-		this.provinceId = provinceId;
-	}
-
-	public Integer getCityId() {
-		return cityId;
-	}
-
-	public void setCityId(Integer cityId) {
-		this.cityId = cityId;
-	}
-
 	public String getBranchName() {
 		return branchName;
 	}
@@ -237,6 +216,30 @@ public class User extends BaseEntity {
 
 	public void setIdCardBackPath(String idCardBackPath) {
 		this.idCardBackPath = idCardBackPath;
+	}
+
+	public Dictionary getProvince() {
+		return province;
+	}
+
+	public void setProvince(Dictionary province) {
+		this.province = province;
+	}
+
+	public Dictionary getCity() {
+		return city;
+	}
+
+	public void setCity(Dictionary city) {
+		this.city = city;
+	}
+
+	public String getError() {
+		return error;
+	}
+
+	public void setError(String error) {
+		this.error = error;
 	}
 
 }

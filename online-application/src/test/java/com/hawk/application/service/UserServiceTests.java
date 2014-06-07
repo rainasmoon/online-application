@@ -30,7 +30,6 @@ public class UserServiceTests {
 		User user = new User();
 		user.setEmail("test@t.t");
 		user.setPassword("old");
-		user.setConfirmPassword("old");
 		userService.saveUser(user);
 
 		ChangePasswordVo changePasswordVo = new ChangePasswordVo();

@@ -52,11 +52,17 @@
 	</div>
 	<jsp:include page="../fragments/footer.jsp" />
 	<script type="text/javascript">
-	function refreshJcaptchaImg() {
+ 
+		$(function() {
+			$('input, textarea').placeholder();
+			$('#email').focus();
+		});
+		function refreshJcaptchaImg() {
 		d = new Date();
 		$("#jcaptchaImg").attr("src", "./jcaptcha.jpg?"+d.getTime());
 	}
-</script>
+	</script>
+
 </body>
 
 </html>

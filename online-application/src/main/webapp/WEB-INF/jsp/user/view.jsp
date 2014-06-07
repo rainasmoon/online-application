@@ -24,7 +24,7 @@
 				<jsp:include page="../fragments/leftMenu.jsp" /></div>
 			<div class="col-xs-12 col-sm-9">
 
-				<h2>基本信息/<a href="">编辑资料信息</a></h2>
+				<h2>基本信息/<a href="<spring:url value="/changePersonalInformation.html" htmlEscape="true" />">编辑资料信息</a></h2>
 				<table class="table table-striped" style="width: 600px;">
 					<tr>
 						<th>开发者性质</th>
@@ -35,7 +35,7 @@
 						<td><b><c:out value="${user.contactName} " /></b></td>
 					</tr>					
 					<tr>
-						<th>qq</th>
+						<th>QQ</th>
 						<td><c:out value="${user.qq}" /></td>
 					</tr>
 					<tr>
@@ -52,11 +52,11 @@
 					</tr>
 					<tr>
 						<th>开户行所在省</th>
-						<td><b><c:out value="${user.provinceId} " /></b></td>
+						<td><b><c:out value="${user.province.dictionaryValue} " /></b></td>
 					</tr>
 					<tr>
 						<th>开户行所在市</th>
-						<td><b><c:out value="${user.cityId} " /></b></td>
+						<td><b><c:out value="${user.city.dictionaryValue} " /></b></td>
 					</tr>
 					<tr>
 						<th>具体支行</th>

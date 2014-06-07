@@ -40,7 +40,7 @@ public class ApplicationController {
 	}
 
 	@ModelAttribute("platformTypes")
-	public Collection<PlatformType> populatePetTypes() {
+	public Collection<PlatformType> populatePlatformTypes() {
 		return Arrays.asList(new PlatformType("iso"));
 	}
 

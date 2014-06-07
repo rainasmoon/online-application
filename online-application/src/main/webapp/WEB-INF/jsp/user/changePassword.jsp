@@ -44,6 +44,13 @@
 
 	</div>
 	<jsp:include page="../fragments/footer.jsp" />
+	<script type="text/javascript">
+ 
+		$(function() {
+			$('input, textarea').placeholder();
+			$('#oldPassword').focus();
+		});
+	</script>
 </body>
 
 </html>

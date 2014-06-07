@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.Errors;
 
+import com.hawk.application.model.RegistorVo;
 import com.hawk.application.model.User;
 import com.hawk.application.service.UserService;
 
@@ -17,7 +18,7 @@ public class RegisterValidator {
 		this.userService = userService;
 	}
 
-	public void validate(User user, Errors errors) {
+	public void validate(RegistorVo user, Errors errors) {
 		String email = user.getEmail();
 		// name validaation
 		if (!StringUtils.hasLength(email)) {

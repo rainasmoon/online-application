@@ -23,6 +23,9 @@
 <spring:url value="/webjars/jquery/2.0.3/jquery.js" var="jQuery" />
 <script src="${jQuery}"></script>
 
+<spring:url value="/webjars/jquery/2.0.7/jquery.placeholder.js" var="jQueryPlaceholder" />
+<script src="${jQueryPlaceholder}"></script>
+
 <!-- jquery-ui.js file is really big so we only load what we need instead of loading everything -->
 <spring:url value="/webjars/jquery-ui/1.10.3/ui/jquery.ui.core.js"
 	var="jQueryUiCore" />

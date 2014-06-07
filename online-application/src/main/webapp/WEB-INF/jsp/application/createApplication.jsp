@@ -57,6 +57,13 @@
 		</div>
 		<jsp:include page="../fragments/footer.jsp" />
 	</div>
+	<script type="text/javascript">
+ 
+		$(function() {
+			$('input, textarea').placeholder();
+			$('#applicationName').focus();
+		});
+	</script>
 </body>
 
 </html>
