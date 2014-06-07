@@ -11,7 +11,7 @@
                　创建应用</a>
                <a class="list-group-item" href="<spring:url value="/applications.html" htmlEscape="true" />">
                　全部应用</a>
-               <a class="list-group-item" href="<spring:url value="//applications/parameters.html" htmlEscape="true" />">
+               <a class="list-group-item" href="<spring:url value="/applications/parameters.html" htmlEscape="true" />">
                　自定义参数</a>
                <a class="list-group-item active" href="#">
                　数据报表</a>

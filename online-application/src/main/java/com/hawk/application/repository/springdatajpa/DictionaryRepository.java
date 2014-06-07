@@ -14,4 +14,9 @@ import com.hawk.application.model.User;
 
 public interface DictionaryRepository extends Repository<Dictionary, Integer> {
 
+	@Query("select d from Dictionary d where d.dataType='province'")
+	Collection<Dictionary> findProvinces();
+	
+	@Query("select d from Dictionary d where d.dataType='city' and d.dictionaryKey=:provinceId")
+	Collection<Dictionary> findCitys(@Param("provinceId") Integer provinceId);
 }

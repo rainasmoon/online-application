@@ -12,7 +12,7 @@ public class Dictionary  extends BaseEntity {
 	protected String dataType;
 	
 	@Column(name = "dictionary_key")
-	protected String dictionaryKey;
+	protected Integer dictionaryKey;
 	
 	@Column(name = "dictionary_value")
 	protected String dictionaryValue;
@@ -25,11 +25,11 @@ public class Dictionary  extends BaseEntity {
 		this.dataType = dataType;
 	}
 
-	public String getDictionaryKey() {
+	public Integer getDictionaryKey() {
 		return dictionaryKey;
 	}
 
-	public void setDictionaryKey(String dictionaryKey) {
+	public void setDictionaryKey(Integer dictionaryKey) {
 		this.dictionaryKey = dictionaryKey;
 	}
 

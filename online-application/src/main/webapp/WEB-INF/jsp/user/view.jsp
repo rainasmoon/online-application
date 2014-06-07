@@ -13,32 +13,75 @@
 
 <html lang="en">
 
-<jsp:include page="../fragments/headTag.jsp"/>
+<jsp:include page="../fragments/headTag.jsp" />
 
 <body>
+	<jsp:include page="../fragments/bodyHeader.jsp" />
 
 	<div class="container">
+		<div class="row">
+			<div class="col-xs-6 col-sm-3 sidebar-offcanvas" role="navigation">
+				<jsp:include page="../fragments/leftMenu.jsp" /></div>
+			<div class="col-xs-12 col-sm-9">
 
-		<h2>基本信息</h2>
-		<table class="table table-striped" style="width: 600px;">
-			<tr>
-				<th>邮箱</th>
-				<td><b><c:out value="${user.email} " /></b></td>
-			</tr>
-			<tr>
-				<th>qq</th>
-				<td><c:out value="${user.qq}" /></td>
-			</tr>
-			<tr>
-				<th>mobile</th>
-				<td><c:out value="${user.mobile}" /></td>
-			</tr>
-		</table>
+				<h2>基本信息/<a href="">编辑资料信息</a></h2>
+				<table class="table table-striped" style="width: 600px;">
+					<tr>
+						<th>开发者性质</th>
+						<td><b><c:out value="${user.contactType} " /></b></td>
+					</tr>
+					<tr>
+						<th>联系人姓名</th>
+						<td><b><c:out value="${user.contactName} " /></b></td>
+					</tr>					
+					<tr>
+						<th>qq</th>
+						<td><c:out value="${user.qq}" /></td>
+					</tr>
+					<tr>
+						<th>手机号码</th>
+						<td><c:out value="${user.mobile}" /></td>
+					</tr>
+					<tr>
+						<th>身份证号码</th>
+						<td><b><c:out value="${user.contactIdNumber} " /></b></td>
+					</tr>
+					<tr>
+						<th>开户行</th>
+						<td><b><c:out value="${user.bankName} " /></b></td>
+					</tr>
+					<tr>
+						<th>开户行所在省</th>
+						<td><b><c:out value="${user.provinceId} " /></b></td>
+					</tr>
+					<tr>
+						<th>开户行所在市</th>
+						<td><b><c:out value="${user.cityId} " /></b></td>
+					</tr>
+					<tr>
+						<th>具体支行</th>
+						<td><b><c:out value="${user.branchName} " /></b></td>
+					</tr>
+					<tr>
+						<th>银行卡号</th>
+						<td><b><c:out value="${user.accountNumber} " /></b></td>
+					</tr>
+					<tr>
+						<th>身份证扫描件正面</th>
+						<td><b><c:out value="${user.idCardFrontPath} " /></b></td>
+					</tr>
+					<tr>
+						<th>身份证扫描件反面</th>
+						<td><b><c:out value="${user.idCardBackPath} " /></b></td>
+					</tr>
+				</table>
 
 
 
+			</div>
+		</div>
+		<jsp:include page="../fragments/footer.jsp" />
 	</div>
-	<jsp:include page="../fragments/footer.jsp" />
 </body>
 
 </html>
