@@ -15,9 +15,9 @@
                　自定义参数</a>
                <a class="list-group-item active" href="#">
                　数据报表</a>
-               <a class="list-group-item" href="<spring:url value="/" htmlEscape="true" />">
+               <a class="list-group-item" href="<spring:url value="/reportNow.html" htmlEscape="true" />">
                　实时统计</a>
-               <a class="list-group-item" href="<spring:url value="/" htmlEscape="true" />">
+               <a class="list-group-item" href="<spring:url value="/reportPast.html" htmlEscape="true" />">
                　分日统计</a>
                <a class="list-group-item active" href="#">
                　财务管理</a>

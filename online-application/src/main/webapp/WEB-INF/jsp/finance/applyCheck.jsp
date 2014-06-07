@@ -91,7 +91,7 @@
  
 		$(function() {
 			$('input, textarea').placeholder();
-			$('#oldPassword').focus();
+			$('#applyAmount').focus();
 		});
 	</script>
 </body>

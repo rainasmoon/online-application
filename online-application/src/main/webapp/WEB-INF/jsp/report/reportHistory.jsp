@@ -24,10 +24,22 @@
 				<jsp:include page="../fragments/leftMenu.jsp" /></div>
 			<div class="col-xs-12 col-sm-9">
 
-				<h2>重设密码</h2>
-				
+				<h2>分日数据</h2>
+				<datatables:table id="reports" data="${selections}" cdn="true"
+					row="report" theme="bootstrap2" cssClass="table table-striped"
+					paginate="false" pageable="false" info="false" filterable="false" sortable="false"
+					lengthChange="false">
 
+					<datatables:column title="日期" property="dateString" />
+					<datatables:column title="新增用户" property="newUsers" />
+					<datatables:column title="活跃用户" property="activeUsers" />					
+					<datatables:column title="激活收入" property="actvationIncome" />
+					<datatables:column title="深度任务收入" property="taskIncome" />
+					<datatables:column title="推广收入" property="promoteIncome" />
+								
+				</datatables:table>
 
+				-表示该数据该项为隔日统计，当日数据请于明日查看
 			</div>
 		</div>
 		<jsp:include page="../fragments/footer.jsp" />

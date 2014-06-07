@@ -15,4 +15,10 @@ public class DateTest {
 	public void test() {
 		LOGGER.debug(new SimpleDateFormat("yyyyMMdd").format(new Date()));
 	}
+	
+	@Test
+	public void testTodayAndYesterday() {
+		LOGGER.debug(new SimpleDateFormat("yyyyMMddhhmmssSSS").format(new Date()));
+		LOGGER.debug(new SimpleDateFormat("yyyyMMddhhmmssSSS").format(new Date(new Date().getTime() - 24*60*60*1000)));
+	}
 }

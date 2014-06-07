@@ -1,8 +1,13 @@
 package com.hawk.application.service;
 
-import com.hawk.application.model.WelcomeVo;
+import java.util.List;
+
+import com.hawk.application.model.*;
+
 
 public interface RedisService {
 
 	WelcomeVo retriveWelcomeInfo();
+	
+	List<Report> retriveFinancialReport();
 }
