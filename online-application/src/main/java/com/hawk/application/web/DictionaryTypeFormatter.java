@@ -2,7 +2,7 @@ package com.hawk.application.web;
 
 import java.text.ParseException;
 import java.util.Arrays;
-import java.util.Collection;
+import java.util.List;
 import java.util.Locale;
 
 import org.slf4j.Logger;

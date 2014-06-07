@@ -1,6 +1,6 @@
 package com.hawk.application.repository.springdatajpa;
 
-import java.util.Collection;
+import java.util.List;
 
 
 import org.springframework.dao.DataAccessException;
@@ -11,5 +11,5 @@ import com.hawk.application.model.*;
 public interface BonusRepository extends
 		CrudRepository<Bonus, Integer> {
 
-	Collection<Bonus> findAll() throws DataAccessException;
+	List<Bonus> findAll() throws DataAccessException;
 }

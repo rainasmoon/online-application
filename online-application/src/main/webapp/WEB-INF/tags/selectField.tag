@@ -6,9 +6,14 @@
 <%@ attribute name="label" required="true" rtexprvalue="true"
               description="Label appears in red color if input is considered as invalid after submission" %>
 <%@ attribute name="names" required="true" rtexprvalue="true" type="java.util.List"
-              description="Names in the list" %>
+              description="Names in the list" %>              
 <%@ attribute name="size" required="true" rtexprvalue="true"
               description="Size of Select" %>
+<%@ attribute name="itemValue" required="false" rtexprvalue="true"%>
+<%@ attribute name="itemLabel" required="false" rtexprvalue="true"%>
+              
+<c:set var="itemValue" value="${(empty itemValue) ? 'toString' : itemValue}" />
+<c:set var="itemLabel" value="${(empty itemLabel) ? 'toString' : itemLabel}" />
 
 <spring:bind path="${name}">
     <c:set var="cssGroup" value="control-group ${status.error ? 'error' : '' }"/>
@@ -16,7 +21,7 @@
         <label class="control-label">${label}</label>
 
         <div class="controls">
-            <form:select path="${name}" items="${names}" size="${size}"/>
+            <form:select path="${name}" items="${names}" itemValue="${itemValue }" itemLabel="${itemLabel }" size="${size}"/>
             <span class="help-inline">${status.errorMessage}</span>
         </div>
     </div>

@@ -1,6 +1,6 @@
 package com.hawk.application.service;
 
-import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,12 +24,12 @@ public class FinanceServiceImpl implements FinanceService {
 	}
 
 	@Override
-	public Collection<Check> findAllChecks() {		
+	public List<Check> findAllChecks() {		
 		return checkRepository.findAll();
 	}
 
 	@Override
-	public Collection<Bonus> findAllBonus() {		
+	public List<Bonus> findAllBonus() {		
 		return bonusRepository.findAll();
 	}
 

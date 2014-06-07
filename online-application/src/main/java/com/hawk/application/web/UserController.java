@@ -1,7 +1,7 @@
 package com.hawk.application.web;
 
 import java.util.Arrays;
-import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -57,17 +57,17 @@ public class UserController {
 	}
 
 	@ModelAttribute("contactTypes")
-	public Collection<String> populateContactTypes() {
+	public List<String> populateContactTypes() {
 		return Arrays.asList("个人", "公司");
 	}
 	
 	@ModelAttribute("provinceTypes")
-	public Collection<Dictionary> populateProvinceTypes() {
+	public List<Dictionary> populateProvinceTypes() {
 		return dictionaryService.getProvinces();
 	}
 	
 	@ModelAttribute("cityTypes")
-	public Collection<Dictionary> populateCityTypes(HttpSession session) {
+	public List<Dictionary> populateCityTypes(HttpSession session) {
 		String userEmail = (String) session.getAttribute("userEmail");
 		User user = userService.findUserByEmail(userEmail);
 		return dictionaryService.getAllCitys();

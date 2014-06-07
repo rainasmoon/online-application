@@ -10,6 +10,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="datatables"
 	uri="http://github.com/dandelion/datatables"%>
+<%@ taglib prefix="onlineapplication" tagdir="/WEB-INF/tags"%>
 
 
 <html lang="en">
@@ -24,13 +25,15 @@
 			<div class="col-xs-6 col-sm-3 sidebar-offcanvas" role="navigation">
 				<jsp:include page="../fragments/leftMenu.jsp" /></div>
 			<div class="col-xs-12 col-sm-9">
-
+			<form:form modelAttribute="searchReportVo" method="post"
+					class="form-horizontal" >
+				<onlineapplication:selectField label=""
+						name="application" names="${allApplications}" itemValue="id" itemLabel="applicationName" size="1" />
 				<h2>今日数据</h2>
 				<datatables:table id="reports" data="${selections}" cdn="true"
 					row="report" theme="bootstrap2" cssClass="table table-striped"
 					paginate="false" pageable="false" info="false" filterable="false" sortable="false"
 					lengthChange="false">
-
 					<datatables:column title="日期" property="dateString" />
 					<datatables:column title="新增用户" property="newUsers" />
 					<datatables:column title="活跃用户" property="activeUsers" />
@@ -42,6 +45,7 @@
 				</datatables:table>
 
 				-表示该数据该项为隔日统计，当日数据请于明日查看
+				</form:form>
 			</div>
 		</div>
 		<jsp:include page="../fragments/footer.jsp" />

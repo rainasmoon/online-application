@@ -1,6 +1,6 @@
 package com.hawk.application.service;
 
-import java.util.Collection;
+import java.util.List;
 
 import com.hawk.application.model.Bonus;
 import com.hawk.application.model.Check;
@@ -9,8 +9,8 @@ public interface FinanceService {
 
 	void saveCheck(Check check);
 
-	Collection<Check> findAllChecks();
+	List<Check> findAllChecks();
 
-	Collection<Bonus> findAllBonus();
+	List<Bonus> findAllBonus();
 
 }

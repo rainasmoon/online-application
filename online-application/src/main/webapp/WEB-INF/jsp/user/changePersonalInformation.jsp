@@ -45,9 +45,9 @@
 					<onlineapplication:inputField label="开户行" name="bankName" />
 					<div class="alert alert-info">注意：点乐目前不支持邮政银行，请选择其它银行</div>
 					<onlineapplication:selectField label="开户行所在省"
-						name="province.dictionaryValue" names="${provinceTypes}" size="1" />
+						name="province.dictionaryValue" names="${provinceTypes}" itemValue="id" itemLabel="dictionaryValue"  size="1" />
 					<onlineapplication:selectField label="开户行所在市"
-						name="city.dictionaryValue" names="${cityTypes}" size="1" />
+						name="city.dictionaryValue" names="${cityTypes}"  itemValue="id" itemLabel="dictionaryValue" size="1" />
 					<onlineapplication:inputField label="具体支行" name="branchName" />
 					<onlineapplication:inputField label="银行卡号" name="accountNumber" />
 	

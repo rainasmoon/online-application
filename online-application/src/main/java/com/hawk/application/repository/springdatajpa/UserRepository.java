@@ -1,6 +1,6 @@
 package com.hawk.application.repository.springdatajpa;
 
-import java.util.Collection;
+import java.util.List;
 
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.jpa.repository.Modifying;
@@ -12,7 +12,7 @@ import com.hawk.application.model.User;
 
 public interface UserRepository extends CrudRepository<User, Integer> {
 
-	Collection<User> findAll() throws DataAccessException;
+	List<User> findAll() throws DataAccessException;
 
 	User findByEmail(String email);
 

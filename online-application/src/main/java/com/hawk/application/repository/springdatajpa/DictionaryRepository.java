@@ -1,6 +1,6 @@
 package com.hawk.application.repository.springdatajpa;
 
-import java.util.Collection;
+import java.util.List;
 
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.jpa.repository.Modifying;
@@ -15,11 +15,11 @@ import com.hawk.application.model.User;
 public interface DictionaryRepository extends Repository<Dictionary, Integer> {
 
 	@Query("select d from Dictionary d where d.dataType='province'")
-	Collection<Dictionary> findProvinces();
+	List<Dictionary> findProvinces();
 	
 	@Query("select d from Dictionary d where d.dataType='city' and d.dictionaryKey=:provinceId")
-	Collection<Dictionary> findCitys(@Param("provinceId") Integer provinceId);
+	List<Dictionary> findCitys(@Param("provinceId") Integer provinceId);
 
 	@Query("select d from Dictionary d where d.dataType='city'")
-	Collection<Dictionary> findAllCitys();
+	List<Dictionary> findAllCitys();
 }

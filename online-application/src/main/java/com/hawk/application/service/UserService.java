@@ -1,6 +1,6 @@
 package com.hawk.application.service;
 
-import java.util.Collection;
+import java.util.List;
 
 import com.hawk.application.model.ChangePasswordVo;
 import com.hawk.application.model.LoginVo;
@@ -10,7 +10,7 @@ public interface UserService {
 
 	void saveUser(User user);
 
-	Collection<User> findAllUsers();
+	List<User> findAllUsers();
 
 	User login(LoginVo loginVo);
 	

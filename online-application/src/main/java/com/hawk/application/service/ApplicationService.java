@@ -1,6 +1,7 @@
 package com.hawk.application.service;
 
-import java.util.Collection;
+import java.util.List;
+import java.util.List;
 
 import org.springframework.dao.DataAccessException;
 
@@ -11,7 +12,7 @@ public interface ApplicationService {
 
 	void saveApplication(Application application) throws DataAccessException;
 
-	Collection<Application> findAllApplications() throws DataAccessException;
+	List<Application> findAllApplications() throws DataAccessException;
 
 	void deleteApplicationById(int applicationId) throws DataAccessException;
 
@@ -19,6 +20,6 @@ public interface ApplicationService {
 
 	void deleteAppParameterById(int appParameterId);
 
-	Collection<AppParameter> findAllAppParameters();
+	List<AppParameter> findAllAppParameters();
 
 }

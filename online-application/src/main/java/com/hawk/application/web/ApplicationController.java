@@ -1,7 +1,8 @@
 package com.hawk.application.web;
 
 import java.util.Arrays;
-import java.util.Collection;
+import java.util.List;
+import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -40,7 +41,7 @@ public class ApplicationController {
 	}
 
 	@ModelAttribute("platformTypes")
-	public Collection<PlatformType> populatePlatformTypes() {
+	public List<PlatformType> populatePlatformTypes() {
 		return Arrays.asList(new PlatformType("iso"));
 	}
 
@@ -66,7 +67,7 @@ public class ApplicationController {
 	@RequestMapping(value = "/applications", method = RequestMethod.GET)
 	public String processFindAll(Map<String, Object> model) {
 
-		Collection<Application> results = this.applicationService
+		List<Application> results = this.applicationService
 				.findAllApplications();
 
 		model.put("selections", results);
@@ -87,7 +88,7 @@ public class ApplicationController {
 	@RequestMapping(value = "/applications/parameters", method = RequestMethod.GET)
 	public String processFindAllParameters(Map<String, Object> model) {
 
-		Collection<AppParameter> results = this.applicationService
+		List<AppParameter> results = this.applicationService
 				.findAllAppParameters();
 
 		model.put("selections", results);

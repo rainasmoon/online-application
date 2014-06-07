@@ -1,6 +1,6 @@
 package com.hawk.application.repository.springdatajpa;
 
-import java.util.Collection;
+import java.util.List;
 import java.util.List;
 
 import org.springframework.dao.DataAccessException;

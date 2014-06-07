@@ -1,6 +1,6 @@
 package com.hawk.application.service;
 
-import java.util.Collection;
+import java.util.List;
 import java.util.Date;
 import java.util.UUID;
 
@@ -43,7 +43,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 	}
 
 	@Transactional(readOnly = true)
-	public Collection<Application> findAllApplications()
+	public List<Application> findAllApplications()
 			throws DataAccessException {
 
 		return applicationRepository.findAll();
@@ -66,7 +66,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 	}
 
 	@Transactional(readOnly = true)
-	public Collection<AppParameter> findAllAppParameters() {
+	public List<AppParameter> findAllAppParameters() {
 		return appParameterRepository.findAll();
 	}
 

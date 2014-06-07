@@ -1,6 +1,6 @@
 package com.hawk.application.web;
 
-import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -63,7 +63,7 @@ public class FinanceController {
 	@RequestMapping(value = "/checks", method = RequestMethod.GET)
 	public String processFindAllChecks(Map<String, Object> model) {
 
-		Collection<Check> results = this.financeService
+		List<Check> results = this.financeService
 				.findAllChecks();
 
 		model.put("selections", results);
@@ -74,7 +74,7 @@ public class FinanceController {
 	@RequestMapping(value = "/bonus", method = RequestMethod.GET)
 	public String processFindAllBonus(Map<String, Object> model) {
 
-		Collection<Bonus> results = this.financeService
+		List<Bonus> results = this.financeService
 				.findAllBonus();
 
 		model.put("selections", results);
