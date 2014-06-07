@@ -24,7 +24,7 @@
 				<jsp:include page="../fragments/leftMenu.jsp" /></div>
 			<div class="col-xs-12 col-sm-9">
 
-				<h2>重设密码</h2>
+				<h2>常见问题</h2>
 				
 
 

@@ -18,13 +18,13 @@
 		<ul class="nav navbar-nav">
 			<li style="width: 100px;"><a
 				href="<spring:url value="/" htmlEscape="true" />"><i
-					class="icon-home"></i> 首页</a></li>
+					class="icon-home"></i>首页</a></li>
 			<li style="width: 130px;"><a
-				href="<spring:url value="/" htmlEscape="true" />"><i
-					class="icon-search"></i> 常见问题</a></li>
+				href="<spring:url value="/faq.html" htmlEscape="true" />"><i
+					class="icon-search"></i>常见问题</a></li>
 			<li style="width: 140px;"><a
-				href="<spring:url value="/" htmlEscape="true" />"><i
-					class="icon-th-list"></i> 下载ＳＤＫ</a></li>
+				href="<spring:url value="/sdks.html" htmlEscape="true" />"><i
+					class="icon-th-list"></i>下载ＳＤＫ</a></li>
 
 
 		</ul>

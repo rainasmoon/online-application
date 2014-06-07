@@ -9,7 +9,7 @@ public class Report {
 	protected Integer newUsers;
 	protected Integer activeUsers;
 	protected Integer actvation;
-	protected Double activationIncome;
+	protected Double actvationIncome;
 	protected Double taskIncome;
 	protected Double promoteIncome;
 	
@@ -56,11 +56,11 @@ public class Report {
 	public void setActvation(Integer actvation) {
 		this.actvation = actvation;
 	}
-	public Double getActivationIncome() {
-		return activationIncome;
+	public Double getActvationIncome() {
+		return actvationIncome;
 	}
-	public void setActivationIncome(Double activationIncome) {
-		this.activationIncome = activationIncome;
+	public void setActvationIncome(Double actvationIncome) {
+		this.actvationIncome = actvationIncome;
 	}
 	public Double getTaskIncome() {
 		return taskIncome;

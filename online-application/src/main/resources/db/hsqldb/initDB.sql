@@ -7,6 +7,8 @@ DROP TABLE app_parameters IF EXISTS;
 DROP TABLE checks IF EXISTS;
 DROP TABLE bonus IF EXISTS;
 
+DROP TABLE sdks IF EXISTS;
+
 DROP TABLE dictionary IF EXISTS;
 
 CREATE TABLE users (
@@ -79,6 +81,14 @@ CREATE TABLE bonus (
   updated_date  TIMESTAMP,
   created_by INTEGER,
   updated_by INTEGER
+);
+
+CREATE TABLE sdks (
+  id INTEGER IDENTITY PRIMARY KEY,
+  platform VARCHAR(10),
+  sdk_type VARCHAR(50),
+  version VARCHAR(20),
+  download_path VARCHAR(100)
 );
 
 CREATE TABLE dictionary (

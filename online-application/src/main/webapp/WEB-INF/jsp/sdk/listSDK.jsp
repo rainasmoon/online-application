@@ -8,7 +8,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="onlineapplication" tagdir="/WEB-INF/tags"%>
+<%@ taglib prefix="datatables"
+	uri="http://github.com/dandelion/datatables"%>
 
 
 <html lang="en">
@@ -24,8 +25,18 @@
 				<jsp:include page="../fragments/leftMenu.jsp" /></div>
 			<div class="col-xs-12 col-sm-9">
 
-				<h2>重设密码</h2>
-				
+				<h2>下载SDK</h2>
+				<datatables:table id="s" data="${selections}" cdn="true"
+					row="sdk" theme="bootstrap2" cssClass="table table-striped"
+					paginate="false" pageable="false" info="false" filterable="false" sortable="false"
+					lengthChange="false">
+
+					<datatables:column title="平台" property="platform" />
+					<datatables:column title="类型" property="sdkType" />
+					<datatables:column title="版本" property="version" />
+					<datatables:column title="下载" property="downloadPath" />
+								
+				</datatables:table>
 
 
 			</div>
