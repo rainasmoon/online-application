@@ -52,6 +52,7 @@
 		<property name="formatters">
 			<set>
 				<bean class="com.hawk.application.web.PlatformTypeFormatter" />
+				<bean class="com.hawk.application.web.DictionaryTypeFormatter" />
 			</set>
 		</property>
 	</bean>

@@ -26,4 +26,9 @@ public class DictionaryServiceImpl implements DictionaryService {
 		return dictionaryRepository.findCitys(province.getId());
 	}
 
+	@Override
+	public Collection<Dictionary> getAllCitys() {
+		return dictionaryRepository.findAllCitys();
+	}
+
 }

@@ -25,10 +25,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.hawk.application.model.ChangePasswordVo;
 import com.hawk.application.model.ChangeUserInformationVo;
+import com.hawk.application.model.Dictionary;
 import com.hawk.application.model.LoginVo;
 import com.hawk.application.model.PlatformType;
 import com.hawk.application.model.RegistorVo;
 import com.hawk.application.model.User;
+import com.hawk.application.service.DictionaryService;
 import com.hawk.application.service.UserService;
 
 @Controller
@@ -40,6 +42,9 @@ public class UserController {
 	
     @Autowired
     private Mapper dozerBeanMapper;
+    
+    @Autowired
+    private DictionaryService dictionaryService;
 
 	@Autowired
 	public UserController(UserService userService) {
@@ -57,13 +62,15 @@ public class UserController {
 	}
 	
 	@ModelAttribute("provinceTypes")
-	public Collection<String> populateProvinceTypes() {
-		return Arrays.asList("个人", "公司");
+	public Collection<Dictionary> populateProvinceTypes() {
+		return dictionaryService.getProvinces();
 	}
 	
 	@ModelAttribute("cityTypes")
-	public Collection<String> populateCityTypes() {
-		return Arrays.asList("个人", "公司");
+	public Collection<Dictionary> populateCityTypes(HttpSession session) {
+		String userEmail = (String) session.getAttribute("userEmail");
+		User user = userService.findUserByEmail(userEmail);
+		return dictionaryService.getAllCitys();
 	}
 	
 	@RequestMapping(value = { "/users/new", "/register" }, method = RequestMethod.GET)

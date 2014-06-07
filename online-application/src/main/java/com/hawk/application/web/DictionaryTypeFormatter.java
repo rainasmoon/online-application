@@ -1,0 +1,22 @@
+package com.hawk.application.web;
+
+import java.text.ParseException;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Locale;
+
+import org.springframework.format.Formatter;
+
+import com.hawk.application.model.Dictionary;
+import com.hawk.application.model.PlatformType;
+
+public class DictionaryTypeFormatter implements Formatter<Dictionary> {
+
+	public String print(Dictionary dictionary, Locale locale) {
+		return dictionary.getDictionaryValue();
+	}
+
+	public Dictionary parse(String text, Locale locale) throws ParseException {
+		return new Dictionary();
+	}
+}

@@ -19,4 +19,7 @@ public interface DictionaryRepository extends Repository<Dictionary, Integer> {
 	
 	@Query("select d from Dictionary d where d.dataType='city' and d.dictionaryKey=:provinceId")
 	Collection<Dictionary> findCitys(@Param("provinceId") Integer provinceId);
+
+	@Query("select d from Dictionary d where d.dataType='city'")
+	Collection<Dictionary> findAllCitys();
 }

@@ -8,4 +8,5 @@ public interface DictionaryService {
 
 	Collection<Dictionary> getProvinces();
 	Collection<Dictionary> getCitys(Dictionary province);
+	Collection<Dictionary> getAllCitys();
 }
