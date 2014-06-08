@@ -23,7 +23,7 @@
 <spring:url value="/webjars/jquery/2.0.3/jquery.js" var="jQuery" />
 <script src="${jQuery}"></script>
 
-<spring:url value="/webjars/jquery/2.0.7/jquery.placeholder.js" var="jQueryPlaceholder" />
+<spring:url value="/webjars/jquery-placeholder/2.0.7/jquery.placeholder.js" var="jQueryPlaceholder" />
 <script src="${jQueryPlaceholder}"></script>
 
 <!-- jquery-ui.js file is really big so we only load what we need instead of loading everything -->
@@ -34,12 +34,6 @@
 <spring:url value="/webjars/bootstrap/3.1.1/js/bootstrap.min.js"
 	var="bootstrap" />
 <script src="${bootstrap}"></script>
-
-<spring:url value="/webjars/jquery-file-upload/9.5.4/js/jquery.iframe-transport.js" var="jQueryIframe" />
-<script src="${jQueryIframe}"></script>
-
-<spring:url value="/webjars/jquery-file-upload/9.5.4/js/jquery.fileupload.js" var="jQueryFileUpload" />
-<script src="${jQueryFileUpload}"></script>
 
 <spring:url value="/webjars/jquery-ui/1.10.3/ui/jquery.ui.datepicker.js"
 	var="jQueryUiDatePicker" />
