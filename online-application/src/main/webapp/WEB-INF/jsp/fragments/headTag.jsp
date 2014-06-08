@@ -31,13 +31,19 @@
 	var="jQueryUiCore" />
 <script src="${jQueryUiCore}"></script>
 
-<spring:url value="/webjars/jquery-ui/1.10.3/ui/jquery.ui.datepicker.js"
-	var="jQueryUiDatePicker" />
-<script src="${jQueryUiDatePicker}"></script>
-
 <spring:url value="/webjars/bootstrap/3.1.1/js/bootstrap.min.js"
 	var="bootstrap" />
 <script src="${bootstrap}"></script>
+
+<spring:url value="/webjars/jquery-file-upload/9.5.4/js/jquery.iframe-transport.js" var="jQueryIframe" />
+<script src="${jQueryIframe}"></script>
+
+<spring:url value="/webjars/jquery-file-upload/9.5.4/js/jquery.fileupload.js" var="jQueryFileUpload" />
+<script src="${jQueryFileUpload}"></script>
+
+<spring:url value="/webjars/jquery-ui/1.10.3/ui/jquery.ui.datepicker.js"
+	var="jQueryUiDatePicker" />
+<script src="${jQueryUiDatePicker}"></script>
 
 </head>
 

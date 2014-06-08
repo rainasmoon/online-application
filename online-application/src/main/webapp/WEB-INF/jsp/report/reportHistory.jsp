@@ -30,8 +30,8 @@
 					<onlineapplication:selectField label="" name="application"
 						names="${allApplications}" itemValue="id"
 						itemLabel="applicationName" size="1" />
-					<button type="button">过去一周</button>
-					<button type="button">过去一月</button>
+					<button id="lastWeek" type="button">过去一周</button>
+					<button id="lastMonth" type="button">过去一月</button>
 					<form:input path="dateFrom" size="10"
 														placeholder="yyyy-mm-dd" maxLength="10" minLength="10"/>
 					<form:input path="dateTo" size="10"
@@ -58,11 +58,16 @@
 		<jsp:include page="../fragments/footer.jsp" />
 	</div>
 	<script type="text/javascript">
- 
-		$(function() {
+ 		$(function() {
 			$('input, textarea').placeholder();
 			$('#dateFrom').datepicker({dateFormat: 'yy-mm-dd'});
 			$('#dateTo').datepicker({dateFormat: 'yy-mm-dd'});
+			$("#lastWeek").click(function() {
+				$('#dateFrom')='1991-01-01';
+			});
+			$("#lastMonth").click(function() {
+
+			});
 		});
 	</script>
 </body>

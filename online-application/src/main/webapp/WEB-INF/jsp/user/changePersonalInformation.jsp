@@ -27,7 +27,7 @@
 				<h2>编辑资料信息</h2>
 
 				<form:form modelAttribute="user" method="post"
-					class="form-horizontal" id="change-user-form">
+					class="form-horizontal" id="change-user-form" enctype="multipart/form-data">
 					<span class="help-inline"> <c:if test="${not empty message}">
 							<div id="message" class="success">${message}</div>
 						</c:if> <spring:bind path="*">
@@ -74,6 +74,7 @@
 		$(function() {
 			$('input, textarea').placeholder();
 			$('#contactTypes').focus();
+			
 		});
 	</script>
 </body>
