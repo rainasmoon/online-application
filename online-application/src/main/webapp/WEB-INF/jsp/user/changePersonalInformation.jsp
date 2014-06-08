@@ -52,10 +52,9 @@
 					<onlineapplication:inputField label="银行卡号" name="accountNumber" />
 	
 					<label>身份证扫描件正面</label>
-					<input id="file" type="file" name="file" /><p><button type="button">Upload</button></p>
+					<input id="fileIdCardFront" type="file" name="fileIdCardFront" />
 					<label>身份证扫描件反面</label>
-					<input id="file" type="file" name="file" /><p><button type="button">Upload</button></p>
-					
+					<input id="fileIdCardBack" type="file" name="fileIdCardBack" />					
 
 					<div class="form-actions">
 

@@ -38,8 +38,8 @@ public class RedisServiceImpl implements RedisService {
 		WelcomeVo welcomeVo = new WelcomeVo();
 		String todayStr = DATE_FORMAT.format(new Date());
 		String id = TEST_DIANJOY_APP_ID + "_" + todayStr + "_" + "total";
-//		redisRepository.setValue(id, "128");
-//		String todayIncomeStr = redisRepository.getValue(id);
+		// redisRepository.setValue(id, "128");
+		// String todayIncomeStr = redisRepository.getValue(id);
 		String todayIncomeStr = "123.4";
 		LOGGER.debug(":www: today's income:" + id);
 		LOGGER.debug(":www: today's income:" + todayIncomeStr);
@@ -47,15 +47,28 @@ public class RedisServiceImpl implements RedisService {
 		if (todayIncomeStr != null) {
 			welcomeVo.setTodayIncome(Double.parseDouble(todayIncomeStr));
 		}
+		welcomeVo.setTodayPromotedUsers(100);
+		welcomeVo.setTodayUsers(50);
+		welcomeVo.setTotalBanlance(10000);
+		welcomeVo.setYesterdayIncome(900);
+		welcomeVo.setYesterdayPromotedUsers(80);
+		welcomeVo.setYesterdayUsers(70);
 
 		return welcomeVo;
 	}
 
 	@Override
 	public List<Report> retriveFinancialReport() {
-		List<Report>  l = new ArrayList<Report>();
+		List<Report> l = new ArrayList<Report>();
 		Report report = new Report();
 		report.setDate(new Date());
+		report.setNewUsers(30);
+		report.setActiveUsers(90);
+		report.setActvation(127);
+		report.setActvationIncome(500.0);
+		report.setTaskIncome(20.0);
+		report.setPromoteIncome(1000.0);
+
 		l.add(report);
 		return l;
 	}

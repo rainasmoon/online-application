@@ -158,22 +158,41 @@ public class UserController {
 
 	@RequestMapping(value = "/changePersonalInformation.html", method = RequestMethod.POST)
 	public String processPersonalInformationForm(@Valid User user,
-			@RequestParam(required = false) MultipartFile file,
+			@RequestParam(required = false) MultipartFile fileIdCardFront,
+			@RequestParam(required = false) MultipartFile fileIdCardBack,
 			BindingResult result) throws IOException {
-		if (file != null) {
-			if (file.getSize() > 500000) {
-				result.rejectValue("error", "error.file.too.large");
-			}
-		}
+
 		if (result.hasErrors()) {
 			LOGGER.debug("field error. when changing personal information");
 			LOGGER.debug(result.toString());
 			return "user/changePersonalInformation";
 		} else {
-			Files.write(file.getBytes(),
-					new File(File.separator + file.getOriginalFilename()));
-			LOGGER.debug("POST request for file upload {}",
-					file.getOriginalFilename());
+			if (fileIdCardFront != null) {
+				if (fileIdCardFront.getSize() > 500000) {
+					result.rejectValue("error", "error.file.too.large");
+				} else {
+					Files.write(
+							fileIdCardFront.getBytes(),
+							new File(File.separator
+									+ fileIdCardFront.getOriginalFilename()));
+					LOGGER.debug("POST request for file upload {}",
+							fileIdCardFront.getOriginalFilename());
+				}
+			}
+
+			if (fileIdCardBack != null) {
+				if (fileIdCardBack.getSize() > 500000) {
+					result.rejectValue("error", "error.file.too.large");
+				} else {
+					Files.write(
+							fileIdCardBack.getBytes(),
+							new File(File.separator
+									+ fileIdCardBack.getOriginalFilename()));
+					LOGGER.debug("POST request for file upload {}",
+							fileIdCardBack.getOriginalFilename());
+				}
+			}
+
 			this.userService.saveUser(user);
 			return "redirect:/viewMe.html";
 		}

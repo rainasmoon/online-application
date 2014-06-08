@@ -36,6 +36,7 @@
 														placeholder="yyyy-mm-dd" maxLength="10" minLength="10"/>
 					<form:input path="dateTo" size="10"
 														placeholder="yyyy-mm-dd" maxLength="10" minLength="10"/>
+					<button id="search" type="button">Search</button>
 					<h2>分日数据</h2>
 					<datatables:table id="reports" data="${selections}" cdn="true"
 						row="report" theme="bootstrap2" cssClass="table table-striped"
