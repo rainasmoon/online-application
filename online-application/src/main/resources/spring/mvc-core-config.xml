@@ -73,7 +73,7 @@
 	
 	<bean id="multipartResolver"
 				class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
-				p:maxUploadSize="500000" />
+				p:maxUploadSize="10000000" />
 
 	<mvc:interceptors>
 		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />

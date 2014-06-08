@@ -160,6 +160,11 @@ public class UserController {
 	public String processPersonalInformationForm(@Valid User user,
 			@RequestParam(required = false) MultipartFile file,
 			BindingResult result) throws IOException {
+		if (file != null) {
+			if (file.getSize() > 500000) {
+				result.rejectValue("error", "error.file.too.large");
+			}
+		}
 		if (result.hasErrors()) {
 			LOGGER.debug("field error. when changing personal information");
 			LOGGER.debug(result.toString());
