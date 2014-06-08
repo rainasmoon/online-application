@@ -33,8 +33,10 @@
 
 					<datatables:column title="平台" property="platform" />
 					<datatables:column title="类型" property="sdkType" />
-					<datatables:column title="版本" property="version" />
-					<datatables:column title="下载" property="downloadPath" />
+					<datatables:column title="版本" property="version" />					
+					<datatables:column title="下载">
+						<a href="download/1">下载联盟工厂积分墙SDK</a>
+					</datatables:column>
 								
 				</datatables:table>
 
