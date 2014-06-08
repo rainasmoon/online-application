@@ -7,6 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 @Entity
 @Table(name = "app_parameters")
@@ -22,9 +27,13 @@ public class AppParameter extends BaseEntity {
 	@Column(name = "param_value")
 	protected String paramValue;
 
+	@Temporal(TemporalType.TIMESTAMP)
+	@CreatedDate
 	@Column(name = "created_date")
 	protected Date createdDate;
 
+	@Temporal(TemporalType.TIMESTAMP)
+	@LastModifiedDate
 	@Column(name = "updated_date")
 	protected Date updatedDate;
 

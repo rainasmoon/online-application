@@ -167,7 +167,7 @@ public class UserController {
 			LOGGER.debug(result.toString());
 			return "user/changePersonalInformation";
 		} else {
-			if (fileIdCardFront != null) {
+			if (fileIdCardFront != null && !fileIdCardFront.isEmpty()) {
 				if (fileIdCardFront.getSize() > 500000) {
 					result.rejectValue("error", "error.file.too.large");
 				} else {
@@ -180,7 +180,7 @@ public class UserController {
 				}
 			}
 
-			if (fileIdCardBack != null) {
+			if (fileIdCardBack != null && !fileIdCardBack.isEmpty()) {
 				if (fileIdCardBack.getSize() > 500000) {
 					result.rejectValue("error", "error.file.too.large");
 				} else {

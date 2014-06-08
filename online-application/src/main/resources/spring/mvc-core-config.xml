@@ -50,10 +50,24 @@
 
 	<bean id="conversionService"
 		class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+		<property name="registerDefaultFormatters" value="false" />
 		<property name="formatters">
 			<set>
 				<bean class="com.hawk.application.web.PlatformTypeFormatter" />
-				<bean class="com.hawk.application.web.DictionaryTypeFormatter" />
+				<bean
+					class="org.springframework.format.number.NumberFormatAnnotationFormatterFactory" />
+			</set>
+		</property>
+		<property name="formatterRegistrars">
+			<set>
+				<bean
+					class="org.springframework.format.datetime.DateFormatterRegistrar">
+					<property name="formatter">
+						<bean class="org.springframework.format.datetime.DateFormatter">
+							<property name="pattern" value="yyyy-MM-dd" />
+						</bean>
+					</property>
+				</bean>
 			</set>
 		</property>
 	</bean>

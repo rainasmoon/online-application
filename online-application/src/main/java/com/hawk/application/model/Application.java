@@ -5,10 +5,14 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 @Entity
 @Table(name = "applications")
@@ -18,26 +22,30 @@ public class Application extends BaseEntity {
 	protected String dianjoyAppId;
 
 	@Column(name = "application_name")
-	@NotEmpty(message="{not.null}")
-	@Size(max = 100, message="{error.too.lang}")
+	@NotEmpty(message = "{not.null}")
+	@Size(max = 100, message = "{error.too.lang}")
 	protected String applicationName;
 
 	@Column(name = "application_platform")
-	@NotEmpty(message="{not.null}")
-	@Size(max = 10, message="{error.too.lang}")
+	@NotEmpty(message = "{not.null}")
+	@Size(max = 10, message = "{error.too.lang}")
 	protected String applicationPlatform;
 
 	@Column(name = "application_package_name")
-	@NotEmpty(message="{not.null}")
-	@Size(max = 500, message="{error.too.lang}")
+	@NotEmpty(message = "{not.null}")
+	@Size(max = 500, message = "{error.too.lang}")
 	protected String applicationPackageName;
 
 	@Column(name = "status")
 	protected String status;
 
+	@Temporal(TemporalType.TIMESTAMP)
+	@CreatedDate
 	@Column(name = "created_date")
 	protected Date createdDate;
 
+	@Temporal(TemporalType.TIMESTAMP)
+	@LastModifiedDate
 	@Column(name = "updated_date")
 	protected Date updatedDate;
 
@@ -46,7 +54,7 @@ public class Application extends BaseEntity {
 
 	@Column(name = "updated_by")
 	protected Integer updatedBy;
-	
+
 	@Transient
 	protected String error;
 

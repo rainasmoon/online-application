@@ -7,50 +7,51 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.Null;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 @Entity
 @Table(name = "users")
 public class User extends BaseEntity {
 
 	@Column(name = "email")
-	@NotEmpty(message="{not.null}")
-	@Size(max = 100, message="{error.too.lang}")
+	@NotEmpty(message = "{not.null}")
+	@Size(max = 100, message = "{error.too.lang}")
 	protected String email;
 
 	@Column(name = "password")
-	@NotEmpty(message="{not.null}")
-	@Size(max = 100, message="{error.too.lang}")
+	@NotEmpty(message = "{not.null}")
+	@Size(max = 100, message = "{error.too.lang}")
 	protected String password;
 
 	@Column(name = "qq")
-	@Size(max = 20, message="{error.too.lang}")
+	@Size(max = 20, message = "{error.too.lang}")
 	protected String qq;
 
 	@Column(name = "mobile")
-	@Size(max = 20, message="{error.too.lang}")
+	@Size(max = 20, message = "{error.too.lang}")
 	protected String mobile;
-	
+
 	@Column(name = "contact_type")
-	@Size(max = 20, message="{error.too.lang}")
+	@Size(max = 20, message = "{error.too.lang}")
 	protected String contactType;
-	
+
 	@Column(name = "contact_name")
-	@Size(max = 100, message="{error.too.lang}")
+	@Size(max = 100, message = "{error.too.lang}")
 	protected String contactName;
-	
+
 	@Column(name = "contact_id_number")
-	@Size(max = 20, message="{error.too.lang}")
+	@Size(max = 20, message = "{error.too.lang}")
 	protected String contactIdNumber;
-	
+
 	@Column(name = "bank_name")
-	@Size(max = 100, message="{error.too.lang}")
+	@Size(max = 100, message = "{error.too.lang}")
 	protected String bankName;
 
 	@ManyToOne
@@ -60,24 +61,28 @@ public class User extends BaseEntity {
 	@ManyToOne
 	@JoinColumn(name = "city_id")
 	private Dictionary city;
-	
+
 	@Column(name = "branch_name")
-	@Size(max = 200, message="{error.too.lang}")
+	@Size(max = 200, message = "{error.too.lang}")
 	protected String branchName;
-	
+
 	@Column(name = "account_number")
-	@Size(max = 50, message="{error.too.lang}")
+	@Size(max = 50, message = "{error.too.lang}")
 	protected String accountNumber;
-	
+
 	@Column(name = "id_card_front_path")
 	protected String idCardFrontPath;
-	
-	@Column(name = "id_card_back_path")
-	protected String idCardBackPath;	
 
+	@Column(name = "id_card_back_path")
+	protected String idCardBackPath;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@CreatedDate
 	@Column(name = "created_date")
 	protected Date createdDate;
 
+	@Temporal(TemporalType.TIMESTAMP)
+	@LastModifiedDate
 	@Column(name = "updated_date")
 	protected Date updatedDate;
 
@@ -86,10 +91,10 @@ public class User extends BaseEntity {
 
 	@Column(name = "updated_by")
 	protected Integer updatedBy;
-	
+
 	@Transient
 	protected String error;
-	
+
 	public String getEmail() {
 		return email;
 	}
