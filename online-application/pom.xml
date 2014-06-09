@@ -492,7 +492,7 @@
 				<version>2.0</version>
 				<configuration>
 					<server>tomcat-development-server1</server>
-					<port>9967</port>
+					<port>9968</port>
 					<path>/onlineapp</path>
 				</configuration>
 			</plugin>

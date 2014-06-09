@@ -2,11 +2,21 @@ package com.hawk.application.model;
 
 import java.util.Date;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 public class SearchReportVo {
 
 	private Application application;
 	private Date dateFrom;
 	private Date dateTo;
+
+	@Override
+	public String toString() {
+		return ReflectionToStringBuilder.toString(this,
+				ToStringStyle.SHORT_PREFIX_STYLE);
+
+	}
 
 	public Application getApplication() {
 		return application;
