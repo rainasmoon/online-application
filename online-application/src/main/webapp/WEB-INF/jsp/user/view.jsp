@@ -24,7 +24,10 @@
 				<jsp:include page="../fragments/leftMenu.jsp" /></div>
 			<div class="col-xs-12 col-sm-9">
 
-				<h2>基本信息/<a href="<spring:url value="/changePersonalInformation.html" htmlEscape="true" />">编辑资料信息</a></h2>
+				<h2>
+					基本信息/<a
+						href="<spring:url value="/changePersonalInformation.html" htmlEscape="true" />">编辑资料信息</a>
+				</h2>
 				<table class="table table-striped" style="width: 600px;">
 					<tr>
 						<th>开发者性质</th>
@@ -33,7 +36,7 @@
 					<tr>
 						<th>联系人姓名</th>
 						<td><b><c:out value="${user.contactName} " /></b></td>
-					</tr>					
+					</tr>
 					<tr>
 						<th>QQ</th>
 						<td><c:out value="${user.qq}" /></td>
@@ -68,11 +71,15 @@
 					</tr>
 					<tr>
 						<th>身份证扫描件正面</th>
-						<td><b><c:out value="${user.idCardFrontPath} " /></b></td>
+						<td><b> <spring:url value="/idcard/${user.id}/front"
+									htmlEscape="true" var="frontImage" /> <img src="${frontImage}" />
+						</b></td>
 					</tr>
 					<tr>
 						<th>身份证扫描件反面</th>
-						<td><b><c:out value="${user.idCardBackPath} " /></b></td>
+						<td><b><spring:url value="/idcard/${user.id}/back"
+									htmlEscape="true" var="backImage" /> <img src="${backImage}" />
+						</b></td>
 					</tr>
 				</table>
 
