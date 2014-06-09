@@ -4,8 +4,8 @@ INSERT INTO applications VALUES (3, '1234567892', 'great war','ios','com.app.me'
 
 INSERT INTO app_parameters VALUES (1, 1, 'chet', 'false', '2012-09-07 10:10:10','2210-09-07 10:10:10', 1, 1);
 
-INSERT INTO users VALUES (1, 'testemail@test.com', 'test', '12345', '101 1988 2983', '个人', 'hawk', '1111 1111 1111', '中国工商银行', 1, 1, '新街口支行', '6995 8808 3728', '/path/id-front', '/path/id-back',  '2013-09-07 10:10:10','2010-09-07 10:10:10', 1, 1);
-INSERT INTO users VALUES (2, 'test', 'test', '12345', '101 1988 2983',  '个人', 'hawk', '1111 1111 1111', '中国工商银行', 1, 1, '新街口支行', '6995 8808 3728', '/path/id-front', '/path/id-back', '2013-09-07 10:10:10','2010-09-07 10:10:10', 1, 1);
+INSERT INTO users VALUES (1, 'testemail@test.com', 'test', '12345', '101 1988 2983', '个人', 'hawk', '1111 1111 1111', '中国工商银行', 5, 39, '新街口支行', '6995 8808 3728', '/path/id-front', '/path/id-back',  '2013-09-07 10:10:10','2010-09-07 10:10:10', 1, 1);
+INSERT INTO users VALUES (2, 'test', 'test', '12345', '101 1988 2983',  '个人', 'hawk', '1111 1111 1111', '中国工商银行', 5, 39, '新街口支行', '6995 8808 3728', '/path/id-front', '/path/id-back', '2013-09-07 10:10:10','2010-09-07 10:10:10', 1, 1);
 
 INSERT INTO bonus VALUES (1, 100, '开发者注册送50', '2013-09-07 10:10:10','2010-09-07 10:10:10', 1, 1);
 

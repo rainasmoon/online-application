@@ -28,7 +28,7 @@
 				<c:url var="actionUrl" value="reportPast.html" />
 				<form:form action="${actionUrl}" modelAttribute="searchReportVo" method="post"
 					class="form-horizontal" id="search-past-form">
-					<onlineapplication:selectField label="应用" name="application.id"
+					<onlineapplication:selectField label="应用" id="selectApplication" name="application.id"
 						names="${allApplications}" itemValue="id"
 						itemLabel="applicationName" size="1" />
 					<button id="lastWeek" type="button">过去一周</button>

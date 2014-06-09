@@ -11,9 +11,11 @@
               description="Size of Select" %>
 <%@ attribute name="itemValue" required="false" rtexprvalue="true"%>
 <%@ attribute name="itemLabel" required="false" rtexprvalue="true"%>
+<%@ attribute name="id" required="false" rtexprvalue="true"%>
               
 <c:set var="itemValue" value="${(empty itemValue) ? 'toString' : itemValue}" />
 <c:set var="itemLabel" value="${(empty itemLabel) ? 'toString' : itemLabel}" />
+<c:set var="id" value="${(empty id) ? name : id}" />
 
 <spring:bind path="${name}">
     <c:set var="cssGroup" value="control-group ${status.error ? 'error' : '' }"/>
@@ -21,7 +23,7 @@
         <label class="control-label">${label}</label>
 
         <div class="controls">
-            <form:select path="${name}" items="${names}" itemValue="${itemValue }" itemLabel="${itemLabel }" size="${size}"/>
+            <form:select id="${id }" path="${name}" items="${names}" itemValue="${itemValue }" itemLabel="${itemLabel }" size="${size}"/>
             <span class="help-inline">${status.errorMessage}</span>
         </div>
     </div>
