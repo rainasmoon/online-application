@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,9 @@ public class ImageController {
 	private static final Logger LOGGER = LoggerFactory
 			.getLogger(ImageController.class);
 
+	@Value("#{idcard.pic.location}")
+	private static String SYS_PIC_PATH;
+
 	@ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "File not found")
 	@ExceptionHandler(ImageNotFoundException.class)
 	public void fileNotFound(Exception e) {
@@ -38,7 +42,8 @@ public class ImageController {
 			ImageNotFoundException {
 		FileInputStream fileInputStream = null;
 		try {
-			File file = new File("C:/files/1234_id_card_front.jpg");
+			File file = new File(SYS_PIC_PATH + File.separator + id
+					+ "_id_card_" + picType);
 			fileInputStream = new FileInputStream(file);
 
 			response.setHeader("Content-Disposition", "attachment; filename="

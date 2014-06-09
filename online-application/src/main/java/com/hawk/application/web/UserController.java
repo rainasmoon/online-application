@@ -14,6 +14,7 @@ import org.dozer.Mapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
@@ -47,6 +48,9 @@ public class UserController {
 
 	@Autowired
 	private DictionaryService dictionaryService;
+
+	@Value("#{idcard.pic.location}")
+	private String SYS_PIC_PATH;
 
 	@Autowired
 	public UserController(UserService userService) {
@@ -171,10 +175,9 @@ public class UserController {
 				if (fileIdCardFront.getSize() > 500000) {
 					result.rejectValue("error", "error.file.too.large");
 				} else {
-					Files.write(
-							fileIdCardFront.getBytes(),
-							new File(File.separator
-									+ fileIdCardFront.getOriginalFilename()));
+					Files.write(fileIdCardFront.getBytes(), new File(
+							SYS_PIC_PATH + File.separator + user.getId()
+									+ "_id_card_front"));
 					LOGGER.debug("POST request for file upload {}",
 							fileIdCardFront.getOriginalFilename());
 				}
@@ -184,10 +187,9 @@ public class UserController {
 				if (fileIdCardBack.getSize() > 500000) {
 					result.rejectValue("error", "error.file.too.large");
 				} else {
-					Files.write(
-							fileIdCardBack.getBytes(),
-							new File(File.separator
-									+ fileIdCardBack.getOriginalFilename()));
+					Files.write(fileIdCardBack.getBytes(), new File(
+							SYS_PIC_PATH + File.separator + user.getId()
+									+ "_id_card_back"));
 					LOGGER.debug("POST request for file upload {}",
 							fileIdCardBack.getOriginalFilename());
 				}
