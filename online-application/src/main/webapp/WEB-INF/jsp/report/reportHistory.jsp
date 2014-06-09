@@ -32,10 +32,10 @@
 						itemLabel="applicationName" size="1" />
 					<button id="lastWeek" type="button">过去一周</button>
 					<button id="lastMonth" type="button">过去一月</button>
-					<form:input path="dateFrom" size="10"
-														placeholder="yyyy-mm-dd" maxLength="10" minLength="10"/>
-					<form:input path="dateTo" size="10"
-														placeholder="yyyy-mm-dd" maxLength="10" minLength="10"/>
+					<form:input path="dateFrom" size="10" placeholder="yyyy-mm-dd"
+						maxLength="10" minLength="10" />
+					<form:input path="dateTo" size="10" placeholder="yyyy-mm-dd"
+						maxLength="10" minLength="10" />
 					<button id="search" type="button">Search</button>
 					<h2>分日数据</h2>
 					<datatables:table id="reports" data="${selections}" cdn="true"
@@ -64,10 +64,26 @@
 			$('#dateFrom').datepicker({dateFormat: 'yy-mm-dd'});
 			$('#dateTo').datepicker({dateFormat: 'yy-mm-dd'});
 			$("#lastWeek").click(function() {
-				$('#dateFrom')='1991-01-01';
+				var currentTime = new Date();
+                var month = currentTime.getMonth() + 1
+                var day = currentTime.getDate();
+                var last_week_day = currentTime.getDate() - 7;
+                var year = currentTime.getFullYear();
+                var lastWeek = year + "-" + month + "-" + last_week_day;
+                var today =  year + "-" + month + "-" + day;
+				$('#dateFrom').val(lastWeek);
+				$("#dateTo").val(today);
 			});
 			$("#lastMonth").click(function() {
-
+				var currentTime = new Date();
+				var month = currentTime.getMonth() + 1
+                var last_month = currentTime.getMonth()
+                var day = currentTime.getDate();
+                var year = currentTime.getFullYear();
+                var lastMonth = year + "-" + last_month + "-" + day;
+                var today =  year + "-" + month + "-" + day;
+				$('#dateFrom').val(lastMonth);				
+				$("#dateTo").val(today);
 			});
 		});
 	</script>
