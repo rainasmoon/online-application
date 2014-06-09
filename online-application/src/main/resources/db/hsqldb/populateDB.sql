@@ -11,7 +11,7 @@ INSERT INTO bonus VALUES (1, 100, '开发者注册送50', '2013-09-07 10:10:10',
 
 INSERT INTO checks VALUES (1, 'glen', '1111 111', 'city bank', 'china bj wangfujing street', '1115 1230 1897 2222', 10000.00, 'passed', '2013-09-07 10:10:10','2010-09-07 10:10:10', 1, 1);
 
-INSERT INTO sdks VALUES (1, 'IOS', '积分墙', 'V8.8.8.8', '/path_to_download');
+INSERT INTO sdks VALUES (1, 'IOS', '积分墙', 'V8.8.8.8', '/path_to_download', '下载联盟工厂积分墙SDK');
 
 INSERT INTO dictionary VALUES (1, 'province', null, '北京');
 INSERT INTO dictionary VALUES (2, 'province', null, '河北');

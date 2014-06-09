@@ -88,7 +88,8 @@ CREATE TABLE sdks (
   platform VARCHAR(10),
   sdk_type VARCHAR(50),
   version VARCHAR(20),
-  download_path VARCHAR(100)
+  download_path VARCHAR(100),
+  download_name VARCHAR(500)
 );
 
 CREATE TABLE dictionary (

@@ -3,9 +3,6 @@ package com.hawk.application.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
-
-import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "sdks")
@@ -13,15 +10,18 @@ public class Sdk extends BaseEntity {
 
 	@Column(name = "platform")
 	protected String platform;
-	
+
 	@Column(name = "sdk_type")
 	protected String sdkType;
-	
+
 	@Column(name = "version")
 	protected String version;
-	
+
 	@Column(name = "download_path")
 	protected String downloadPath;
+
+	@Column(name = "download_name")
+	protected String downloadName;
 
 	public String getPlatform() {
 		return platform;
@@ -53,5 +53,13 @@ public class Sdk extends BaseEntity {
 
 	public void setDownloadPath(String downloadPath) {
 		this.downloadPath = downloadPath;
+	}
+
+	public String getDownloadName() {
+		return downloadName;
+	}
+
+	public void setDownloadName(String downloadName) {
+		this.downloadName = downloadName;
 	}
 }
