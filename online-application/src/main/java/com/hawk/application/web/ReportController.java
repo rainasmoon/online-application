@@ -59,7 +59,6 @@ public class ReportController {
 
 		List<Report> results = this.redisService.retriveFinancialReport();
 
-		model.put("searchReportVo", searchReportVo);
 		model.put("selections", results);
 		return "report/reportToday";
 
