@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hawk.application.model.Report;
+import com.hawk.application.model.SearchReportVo;
 import com.hawk.application.model.WelcomeVo;
 import com.hawk.application.repository.redis.RedisRepository;
 
@@ -58,7 +59,7 @@ public class RedisServiceImpl implements RedisService {
 	}
 
 	@Override
-	public List<Report> retriveFinancialReport() {
+	public List<Report> retriveFinancialReport(SearchReportVo searchReportVo) {
 		List<Report> l = new ArrayList<Report>();
 		Report report = new Report();
 		report.setDate(new Date());

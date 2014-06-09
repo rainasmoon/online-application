@@ -1,6 +1,7 @@
 package com.hawk.application.web;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -45,7 +46,8 @@ public class ReportController {
 
 		SearchReportVo searchReportVo = new SearchReportVo.Builder().build();
 
-		List<Report> results = this.redisService.retriveFinancialReport();
+		List<Report> results = this.redisService
+				.retriveFinancialReport(searchReportVo);
 
 		model.put("searchReportVo", searchReportVo);
 		model.put("selections", results);
@@ -57,7 +59,13 @@ public class ReportController {
 	public String processFindNowReport(SearchReportVo searchReportVo,
 			Map<String, Object> model) {
 
-		List<Report> results = this.redisService.retriveFinancialReport();
+		Date today = new Date();
+		searchReportVo.setDateFrom(new Date(today.getTime() - 24 * 60 * 60
+				* 1000));
+		searchReportVo.setDateTo(today);
+
+		List<Report> results = this.redisService
+				.retriveFinancialReport(searchReportVo);
 
 		model.put("selections", results);
 		return "report/reportToday";
@@ -69,7 +77,8 @@ public class ReportController {
 
 		SearchReportVo searchReportVo = new SearchReportVo.Builder().build();
 
-		List<Report> results = this.redisService.retriveFinancialReport();
+		List<Report> results = this.redisService
+				.retriveFinancialReport(searchReportVo);
 
 		model.put("searchReportVo", searchReportVo);
 		model.put("selections", results);
@@ -81,9 +90,9 @@ public class ReportController {
 	public String processFindPastReport(SearchReportVo searchReportVo,
 			Map<String, Object> model) {
 
-		List<Report> results = this.redisService.retriveFinancialReport();
+		List<Report> results = this.redisService
+				.retriveFinancialReport(searchReportVo);
 
-		model.put("searchReportVo", searchReportVo);
 		model.put("selections", results);
 		return "report/reportHistory";
 
