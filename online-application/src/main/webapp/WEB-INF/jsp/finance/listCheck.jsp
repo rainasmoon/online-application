@@ -30,8 +30,10 @@
 					row="check" theme="bootstrap2" cssClass="table table-striped"
 					paginate="false" pageable="false" info="false" filterable="false" sortable="false"
 					lengthChange="false">
-
-					<datatables:column title="申请时间" property="createdDate" />
+					<datatables:column title="申请时间">
+						<fmt:formatDate pattern="yyyy-MM-dd"
+							value="${check.createdDate}" />
+					</datatables:column>
 					<datatables:column title="申请金额" property="applyAmount" />
 					<datatables:column title="状态" property="status" />
 					<datatables:column title="操作">

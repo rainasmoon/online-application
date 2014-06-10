@@ -30,8 +30,10 @@
 					row="bonus" theme="bootstrap2" cssClass="table table-striped"
 					paginate="false" pageable="false" info="false" filterable="false" sortable="false"
 					lengthChange="false">
-
-					<datatables:column title="授奖日期" property="createdDate" />
+					<datatables:column title="授奖日期">
+						<fmt:formatDate pattern="yyyy-MM-dd"
+							value="${bonus.createdDate}" />
+					</datatables:column>
 					<datatables:column title="授奖内容" property="amount" />
 					<datatables:column title="授奖原因" property="reason" />					
 				</datatables:table>

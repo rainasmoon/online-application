@@ -1,5 +1,7 @@
 package com.hawk.application.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -8,12 +10,9 @@ import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 
-import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.NotEmpty;
-import org.joda.time.DateTime;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "applications")
@@ -43,16 +42,12 @@ public class Application extends BaseEntity {
 	@Temporal(TemporalType.TIMESTAMP)
 	@CreatedDate
 	@Column(name = "created_date")
-	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private DateTime createdDate;
+	private Date createdDate;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@LastModifiedDate
 	@Column(name = "updated_date")
-	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private DateTime updatedDate;
+	private Date updatedDate;
 
 	@Column(name = "created_by")
 	protected Integer createdBy;
@@ -87,11 +82,11 @@ public class Application extends BaseEntity {
 		this.applicationPackageName = applicationPackageName;
 	}
 
-	public DateTime getCreatedDate() {
+	public Date getCreatedDate() {
 		return createdDate;
 	}
 
-	public void setCreatedDate(DateTime createdDate) {
+	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
 
@@ -103,11 +98,11 @@ public class Application extends BaseEntity {
 		this.status = status;
 	}
 
-	public DateTime getUpdatedDate() {
+	public Date getUpdatedDate() {
 		return updatedDate;
 	}
 
-	public void setUpdatedDate(DateTime updatedDate) {
+	public void setUpdatedDate(Date updatedDate) {
 		this.updatedDate = updatedDate;
 	}
 

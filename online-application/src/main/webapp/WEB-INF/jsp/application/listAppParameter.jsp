@@ -33,7 +33,10 @@
 					lengthChange="false">
 
 					<datatables:column title="DIANJOY_APP_ID" property="application.dianjoyAppId" />
-					<datatables:column title="创建时间" property="createdDate" />
+					<datatables:column title="创建时间">
+						<fmt:formatDate pattern="yyyy-MM-dd"
+							value="${appParameter.createdDate}" />
+					</datatables:column>
 					<datatables:column title="应用名称" property="application.applicationName" />
 					<datatables:column title="应用平台" property="application.applicationPlatform" />
 					<datatables:column title="参数名" property="paramName" />

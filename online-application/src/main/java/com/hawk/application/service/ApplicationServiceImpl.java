@@ -1,9 +1,9 @@
 package com.hawk.application.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.dao.DataAccessException;
@@ -35,7 +35,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 			throws DataAccessException {
 		// TODO create the coressponding data in redis.
 		application.setDianjoyAppId(generateAppId());
-		application.setCreatedDate(new DateTime());
+		application.setCreatedDate(new Date());
 		application.setUpdatedDate(application.getCreatedDate());
 		applicationRepository.save(application);
 

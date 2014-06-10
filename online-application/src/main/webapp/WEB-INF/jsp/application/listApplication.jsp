@@ -18,7 +18,7 @@
 <body>
 	<jsp:include page="../fragments/bodyHeader.jsp" />
 
-	<div class="container" >
+	<div class="container">
 		<div class="row">
 			<div class="col-xs-6 col-sm-3 sidebar-offcanvas" role="navigation">
 				<jsp:include page="../fragments/leftMenu.jsp" /></div>
@@ -29,11 +29,15 @@
 
 				<datatables:table id="applications" data="${selections}" cdn="true"
 					row="application" theme="bootstrap2" cssClass="table table-striped"
-					paginate="false" pageable="false" info="false" filterable="false" sortable="false"
-					lengthChange="false">
+					paginate="false" pageable="false" info="false" filterable="false"
+					sortable="false" lengthChange="false">
 
 					<datatables:column title="DIANJOY_APP_ID" property="dianjoyAppId" />
-					<datatables:column title="创建时间" property="createdDate" />
+					<datatables:column title="创建时间">
+						<fmt:formatDate pattern="yyyy-MM-dd"
+							value="${application.createdDate}" />
+					</datatables:column>
+
 					<datatables:column title="应用名称" property="applicationName" />
 					<datatables:column title="应用平台" property="applicationPlatform" />
 					<datatables:column title="状态" property="status" />
@@ -41,9 +45,9 @@
 						<a href="applications/${application.id}/delete">删除</a>
 					</datatables:column>
 				</datatables:table>
-				
+
 				<div class="alert alert-warning">测试用DIANJOY_APP_ID:TEST_DIANJOY_APP_ID可以测试流程,但不计费</div>
-				
+
 
 			</div>
 		</div>
