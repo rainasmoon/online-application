@@ -101,6 +101,7 @@ CREATE TABLE IF NOT EXISTS dictionary (
   data_type VARCHAR(20),
   dictionary_key INT(4) UNSIGNED,
   dictionary_value VARCHAR(200),
+  INDEX(dictionary_key),
   FOREIGN KEY (dictionary_key) REFERENCES dictionary(id)
 ) engine=InnoDB;
 

@@ -114,4 +114,5 @@ CREATE TABLE dictionary (
   dictionary_value VARCHAR(200)
 );
 
+CREATE INDEX dictionary_dictionary_key ON dictionary (dictionary_key);
 ALTER TABLE dictionary ADD CONSTRAINT fk_dictionary_dictionary_key FOREIGN KEY (dictionary_key) REFERENCES dictionary (id);
