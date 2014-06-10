@@ -2,8 +2,6 @@ a new beginning.
 
 https://github.com/rainasmoon/online-application.git
 
-
-
     redis-server：Redis服务器的daemon启动程序
     redis-cli：Redis命令行操作工具。当然，你也可以用telnet根据其纯文本协议来操作
     redis-benchmark：Redis性能测试工具，测试Redis在你的系统及你的配置下的读写性能
@@ -17,7 +15,6 @@ no sql test
 uuid
 capcha
 error msg.
-login is not good.
 验证码
 webjar
 dandelion
@@ -27,24 +24,29 @@ spring data jpa
 validator
 logback
 upload & download
-
 dandelion core
 bootstrap
 bind select list
 tag
 
-下拉列表，
-继续完成数据报表。
-上传下载的文件夹问题。可配置。
-过去一周和过去一月。
-
 MD5
-
 -XX:PermSize=64M -XX:MaxPermSize=128M
-
 hbm2ddl 
 
+/***********************************************************************************/
+/*** deploy to prod
+/***********************************************************************************/
 
+1 change web.xml 's profile to 'prod'.
+2 make sure you have the right value in data-access.properties.
+
+/***********************************************************************************/
+/*** next step
+/***********************************************************************************/
+
+only get login user's data...
+继续完成数据报表。
+MD5
 
 
 
