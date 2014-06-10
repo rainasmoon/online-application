@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS applications (
   application_name  VARCHAR(100),
   application_platform  VARCHAR(10),
   application_package_name  VARCHAR(500),
-  app_status  VARCHAR(50),
+  status  VARCHAR(50),
   created_date  TIMESTAMP,
   updated_date  TIMESTAMP,
   created_by INT(4) UNSIGNED,
