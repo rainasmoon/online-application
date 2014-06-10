@@ -34,8 +34,6 @@ CREATE TABLE users (
 );
 
 CREATE INDEX users_email ON users (email);
-ALTER TABLE users ADD CONSTRAINT fk_users_created_by FOREIGN KEY (created_by) REFERENCES users (id);
-ALTER TABLE users ADD CONSTRAINT fk_users_updated_by FOREIGN KEY (updated_by) REFERENCES users (id);
 
 CREATE TABLE applications (
   id INTEGER IDENTITY PRIMARY KEY,

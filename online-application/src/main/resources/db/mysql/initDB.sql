@@ -5,7 +5,7 @@ USE onlineapp;
 
 CREATE TABLE IF NOT EXISTS users (
   id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  email VARCHAR(100),
+  email VARCHAR(100),  
   password  VARCHAR(100),
   qq  VARCHAR(20),
   mobile  VARCHAR(20),
@@ -22,11 +22,9 @@ CREATE TABLE IF NOT EXISTS users (
   created_date  TIMESTAMP,
   updated_date  TIMESTAMP,
   created_by INT(4),
-  updated_by INT(4),
-  INDEX(email),
-  FOREIGN KEY (created_by) REFERENCES users(id),
-  FOREIGN KEY (updated_by) REFERENCES users(id)
-) engine=InnoDB;
+  updated_by INT(4),  
+  INDEX(email)
+) engine=InnoDB CHARSET=utf8;
 
 
 CREATE TABLE IF NOT EXISTS applications (
@@ -35,14 +33,14 @@ CREATE TABLE IF NOT EXISTS applications (
   application_name  VARCHAR(100),
   application_platform  VARCHAR(10),
   application_package_name  VARCHAR(500),
-  status  VARCHAR(50),
+  app_status  VARCHAR(50),
   created_date  TIMESTAMP,
   updated_date  TIMESTAMP,
-  created_by INT(4) DEFAULT NULL,
-  updated_by INT(4) DEFAULT NULL,
+  created_by INT(4) UNSIGNED,
+  updated_by INT(4) UNSIGNED,
   FOREIGN KEY (created_by) REFERENCES users(id),
   FOREIGN KEY (updated_by) REFERENCES users(id)
-) engine=InnoDB;
+) engine=InnoDB CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS app_parameters (
   id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -51,11 +49,11 @@ CREATE TABLE IF NOT EXISTS app_parameters (
   param_value  VARCHAR(100),
   created_date  TIMESTAMP,
   updated_date  TIMESTAMP,
-  created_by INT(4),
-  updated_by INT(4),
+  created_by INT(4) UNSIGNED,
+  updated_by INT(4) UNSIGNED,
   FOREIGN KEY (created_by) REFERENCES users(id),
   FOREIGN KEY (updated_by) REFERENCES users(id)
-) engine=InnoDB;
+) engine=InnoDB CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS checks (
   id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -72,7 +70,7 @@ CREATE TABLE IF NOT EXISTS checks (
   updated_by INT(4) UNSIGNED,
   FOREIGN KEY (created_by) REFERENCES users(id),
   FOREIGN KEY (updated_by) REFERENCES users(id)
-) engine=InnoDB;
+) engine=InnoDB CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS bonus (
   id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -84,7 +82,7 @@ CREATE TABLE IF NOT EXISTS bonus (
   updated_by INT(4) UNSIGNED,
   FOREIGN KEY (created_by) REFERENCES users(id),
   FOREIGN KEY (updated_by) REFERENCES users(id)
-  ) engine=InnoDB;
+  ) engine=InnoDB CHARSET=utf8;
 
 
 CREATE TABLE IF NOT EXISTS sdks (
@@ -94,7 +92,7 @@ CREATE TABLE IF NOT EXISTS sdks (
   version VARCHAR(20),
   download_path VARCHAR(100),
   download_name VARCHAR(500)
-) engine=InnoDB;
+) engine=InnoDB CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS dictionary (
   id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -103,5 +101,5 @@ CREATE TABLE IF NOT EXISTS dictionary (
   dictionary_value VARCHAR(200),
   INDEX(dictionary_key),
   FOREIGN KEY (dictionary_key) REFERENCES dictionary(id)
-) engine=InnoDB;
+) engine=InnoDB CHARSET=utf8;
 

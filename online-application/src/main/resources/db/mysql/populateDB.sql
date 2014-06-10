@@ -1,11 +1,11 @@
+INSERT IGNORE INTO users VALUES (1, 'testemail@test.com', 'test', '12345', '101 1988 2983', '个人', 'hawk', '1111 1111 1111', '中国工商银行', 5, 39, '新街口支行', '6995 8808 3728', '/path/id-front', '/path/id-back',  '2013-09-07','2010-09-07', 1, 1);
+INSERT IGNORE INTO users VALUES (2, 'test', 'test', '12345', '101 1988 2983',  '个人', 'hawk', '1111 1111 1111', '中国工商银行', 5, 39, '新街口支行', '6995 8808 3728', '/path/id-front', '/path/id-back', '2013-09-07','2010-09-07', 1, 1);
+
 INSERT IGNORE INTO applications VALUES (1, '1234567890', 'petpet','ios','com.app.me','APP_ID\u5BA1\u6279\u4E2D', '2010-09-07','2010-09-07', 1, 1);
 INSERT IGNORE INTO applications VALUES (2, '1234567891', 'chetme','ios','com.app.me','\u5BA1\u6279\u4E2D', '2011-09-07','2014-09-07', 1, 1);
 INSERT IGNORE INTO applications VALUES (3, '1234567892', 'great war','ios','com.app.me','APP_ID\u5BA1\u6279\u4E2D', '2012-09-07','2210-09-07', 1, 1);
 
 INSERT IGNORE INTO app_parameters VALUES (1, 1, 'chet', 'false', '2012-09-07','2210-09-07 10:10:10', 1, 1);
-
-INSERT IGNORE INTO users VALUES (1, 'testemail@test.com', 'test', '12345', '101 1988 2983', '个人', 'hawk', '1111 1111 1111', '中国工商银行', 5, 39, '新街口支行', '6995 8808 3728', '/path/id-front', '/path/id-back',  '2013-09-07','2010-09-07', 1, 1);
-INSERT IGNORE INTO users VALUES (2, 'test', 'test', '12345', '101 1988 2983',  '个人', 'hawk', '1111 1111 1111', '中国工商银行', 5, 39, '新街口支行', '6995 8808 3728', '/path/id-front', '/path/id-back', '2013-09-07','2010-09-07', 1, 1);
 
 INSERT IGNORE INTO bonus VALUES (1, 100, '开发者注册送50', '2013-09-07','2010-09-07', 1, 1);
 
@@ -51,12 +51,12 @@ INSERT IGNORE INTO dictionary VALUES(32, 'province', null, '内蒙古自治区')
 INSERT IGNORE INTO dictionary VALUES(33, 'province', null, '澳门特别行政区') ;
 INSERT IGNORE INTO dictionary VALUES(34, 'province', null, '香港特别行政区') ;
 
---插入各个省的dictionary 数据 --4个直辖市 ;
+##插入各个省的dictionary 数据 ##4个直辖市 ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(35, 'city', '北京市',1) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(36, 'city', '天津市',2) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(37, 'city', '上海市',3) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(38, 'city', '重庆市',4) ;
---5河北省(2005年辖：11个地级市，36个市辖区、22个县级市、108个县、6个自治县) ;
+##5河北省(2005年辖：11个地级市，36个市辖区、22个县级市、108个县、6个自治县) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(39, 'city', '石家庄市',5) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(40, 'city', '唐山市',5) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(41, 'city', '秦皇岛市',5) ;
@@ -68,7 +68,7 @@ INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) V
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(47, 'city', '沧州市',5) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(48, 'city', '廊坊市',5) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(49, 'city', '衡水市',5) ;
---6山西省11个dictionary  ;
+##6山西省11个dictionary  ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(51, 'city', '太原市',6) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(52, 'city', '大同市',6) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(53, 'city', '阳泉市',6) ;
@@ -80,7 +80,7 @@ INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) V
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(59, 'city', '忻州市',6) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(60, 'city', '临汾市',6) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(61, 'city', '吕梁市',6) ;
---7台湾省(台湾本岛和澎湖共设7市、16县，其中台北市和高雄市为“院辖市”，直属“行政院”，其余属台湾省；市下设区，县下设市（县辖市）、镇、乡，合称区市镇乡。) ;
+##7台湾省(台湾本岛和澎湖共设7市、16县，其中台北市和高雄市为“院辖市”，直属“行政院”，其余属台湾省；市下设区，县下设市（县辖市）、镇、乡，合称区市镇乡。) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(71, 'city', '台北市',7) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(72, 'city', '高雄市',7) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(73, 'city', '基隆市',7) ;
@@ -104,7 +104,7 @@ INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) V
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(91, 'city', '澎湖县',7) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(92, 'city', '台东县',7) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(93, 'city', '花莲县',7) ;
---8辽宁省(2006年，辖：14个地级市；56个市辖区、17个县级市、19个县、8个自治县。) ;
+##8辽宁省(2006年，辖：14个地级市；56个市辖区、17个县级市、19个县、8个自治县。) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(101, 'city', '沈阳市',8) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(102, 'city', '大连市',8) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(103, 'city', '鞍山市',8) ;
@@ -119,7 +119,7 @@ INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) V
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(112, 'city', '铁岭市',8) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(113, 'city', '朝阳市',8) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(114, 'city', '葫芦岛市',8) ;
---9吉林省(2006年，辖：8个地级市、1个自治州；20个市辖区、20个县级市、17个县、3个自治县。) ;
+##9吉林省(2006年，辖：8个地级市、1个自治州；20个市辖区、20个县级市、17个县、3个自治县。) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(121, 'city', '长春市',9) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(122, 'city', '吉林市',9) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(123, 'city', '四平市',9) ;
@@ -129,7 +129,7 @@ INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) V
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(127, 'city', '松原市',9) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(128, 'city', '白城市',9) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(129, 'city', '延边朝鲜族自治州',9);
---10黑龙江省(2006年，辖：12地级市、1地区；64市辖区、18县级市、45县、1自治县) ;
+##10黑龙江省(2006年，辖：12地级市、1地区；64市辖区、18县级市、45县、1自治县) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(131, 'city', '哈尔滨市',10) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(132, 'city', '齐齐哈尔市',10) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(133, 'city', '鹤 岗 市',10) ;
@@ -143,7 +143,7 @@ INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) V
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(141, 'city', '黑 河 市',10) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(142, 'city', '绥 化 市',10) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(143, 'city', '大兴安岭地区',10) ;
---11江苏省(2005年辖：13个地级市；54个市辖区、27个县级市、25个县) ;
+##11江苏省(2005年辖：13个地级市；54个市辖区、27个县级市、25个县) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(151, 'city', '南京市',11) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(152, 'city', '无锡市',11) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(153, 'city', '徐州市',11) ;
@@ -157,7 +157,7 @@ INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) V
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(161, 'city', '镇江市',11) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(162, 'city', '泰州市',11) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(163, 'city', '宿迁市',11) ;
---12浙江省(2006年，辖：11个地级市；32个市辖区、22个县级市、35个县、1个自治县。) ;
+##12浙江省(2006年，辖：11个地级市；32个市辖区、22个县级市、35个县、1个自治县。) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(171, 'city', '杭州市',12) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(172, 'city', '宁波市',12) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(173, 'city', '温州市',12) ;
@@ -169,7 +169,7 @@ INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) V
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(179, 'city', '舟山市',12) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(180, 'city', '台州市',12) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(181, 'city', '丽水市',12) ;
---13安徽省(2005年辖：17个地级市；44个市辖区、5县个级市、56个县。) ;
+##13安徽省(2005年辖：17个地级市；44个市辖区、5县个级市、56个县。) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(191, 'city', '合肥市',13) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(192, 'city', '芜湖市',13) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(193, 'city', '蚌埠市',13) ;
@@ -187,7 +187,7 @@ INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) V
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(205, 'city', '亳州市',13) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(206, 'city', '池州市',13) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(207, 'city', '宣城市',13) ;
---14福建省(2006年辖：9个地级市；26个市辖区、14个县级市、45个县。) ;
+##14福建省(2006年辖：9个地级市；26个市辖区、14个县级市、45个县。) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(211, 'city', '福州市',14) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(212, 'city', '厦门市',14) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(213, 'city', '莆田市',14) ;
@@ -197,7 +197,7 @@ INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) V
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(217, 'city', '南平市',14) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(218, 'city', '龙岩市',14) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(219, 'city', '宁德市',14) ;
---15江西省(2006年全省辖：11个地级市；19个市辖区、10个县级市、70个县。) ;
+##15江西省(2006年全省辖：11个地级市；19个市辖区、10个县级市、70个县。) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(221, 'city', '南昌市',15) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(222, 'city', '景德镇市',15) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(223, 'city', '萍乡市',15) ;
@@ -209,7 +209,7 @@ INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) V
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(229, 'city', '宜春市',15) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(230, 'city', '抚州市',15) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(231, 'city', '上饶市',15) ;
---16山东省(2005年，辖：17个地级市；49个市辖区、31个县级市、60个县。) ;
+##16山东省(2005年，辖：17个地级市；49个市辖区、31个县级市、60个县。) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(241, 'city', '济南市',16) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(242, 'city', '青岛市',16) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(243, 'city', '淄博市',16) ;
@@ -227,7 +227,7 @@ INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) V
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(255, 'city', '聊城市',16) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(256, 'city', '滨州市',16) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(257, 'city', '菏泽市',16) ;
---17河南省（2005年辖：17个地级市；50个市辖区、21个县级市、88个县。）;
+##17河南省（2005年辖：17个地级市；50个市辖区、21个县级市、88个县。）;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(261, 'city', '郑州市',17) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(262, 'city', '开封市',17) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(263, 'city', '洛阳市',17) ;
@@ -246,7 +246,7 @@ INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) V
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(276, 'city', '周口市',17) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(277, 'city', '驻马店市',17) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(278, 'city', '济源市',17) ;
---18湖北省（截至2005年12月31日，全省辖13个地级单位（12个地级市、1个自治州）；102县级单位（38个市辖区、24个县级市、37个县、2个自治县、1个林区），共有1220个乡级单位（277个街道、733个镇、210个乡）。） ;
+##18湖北省（截至2005年12月31日，全省辖13个地级单位（12个地级市、1个自治州）；102县级单位（38个市辖区、24个县级市、37个县、2个自治县、1个林区），共有1220个乡级单位（277个街道、733个镇、210个乡）。） ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(281, 'city', '武汉市',18) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(282, 'city', '黄石市',18) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(283, 'city', '十堰市',18);
@@ -264,7 +264,7 @@ INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) V
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(295, 'city', '潜江市',18) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(296, 'city', '神农架林区',18) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(297, 'city', '恩施土家族苗族自治州',18) ;
---19湖南省（2005年辖：13个地级市、1个自治州；34个市辖区、16个县级市、65个县、7个自治县。） ;
+##19湖南省（2005年辖：13个地级市、1个自治州；34个市辖区、16个县级市、65个县、7个自治县。） ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(301, 'city', '长沙市',19) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(302, 'city', '株洲市',19) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(303, 'city', '湘潭市',19) ;
@@ -279,7 +279,7 @@ INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) V
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(312, 'city', '怀化市',19) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(313, 'city', '娄底市',19) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(314, 'city', '湘西土家族苗族自治州',19) ;
---20广东省（截至2005年12月31日，广东省辖：21个地级市，54个市辖区、23个县级市、41个县、3个自治县，429个街道办事处、1145个镇、4个乡、7个民族乡。） ;
+##20广东省（截至2005年12月31日，广东省辖：21个地级市，54个市辖区、23个县级市、41个县、3个自治县，429个街道办事处、1145个镇、4个乡、7个民族乡。） ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(321, 'city', '广州市',20) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(322, 'city', '深圳市',20) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(323, 'city', '珠海市',20) ;
@@ -301,7 +301,7 @@ INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) V
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(339, 'city', '潮州市',20) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(340, 'city', '揭阳市',20) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(341, 'city', '云浮市',20) ;
---21甘肃省（2006年辖：12个地级市、2个自治州；17个市辖区、4个县级市、58个县、7个自治县。） ;
+##21甘肃省（2006年辖：12个地级市、2个自治州；17个市辖区、4个县级市、58个县、7个自治县。） ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(351, 'city', '兰州市',21) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(352, 'city', '金昌市',21) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(353, 'city', '白银市',21) ;
@@ -316,7 +316,7 @@ INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) V
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(362, 'city', '陇南市',21) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(363, 'city', '临夏回族自治州',21) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(364, 'city', '甘南藏族自治州',21) ;
---22四川省（2006年辖：18个地级市、3个自治州；43个市辖区、14个县级市、120个县、4个自治县。） ;
+##22四川省（2006年辖：18个地级市、3个自治州；43个市辖区、14个县级市、120个县、4个自治县。） ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(371, 'city', '成都市',22) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(372, 'city', '自贡市',22) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(373, 'city', '攀枝花市',22) ;
@@ -338,7 +338,7 @@ INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) V
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(389, 'city', '阿坝藏族羌族自治州',22) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(390, 'city', '甘孜藏族自治州',22) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(391, 'city', '凉山彝族自治州',22) ;
---23贵州省(2006年辖：4个地级市、2个地区、3个自治州；10个市辖区、9个县级市、56个县、11个自治县、2个特区。) ;
+##23贵州省(2006年辖：4个地级市、2个地区、3个自治州；10个市辖区、9个县级市、56个县、11个自治县、2个特区。) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(401, 'city', '贵阳市',23) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(402, 'city', '六盘水市',23) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(403, 'city', '遵义市',23) ;
@@ -348,7 +348,7 @@ INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) V
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(407, 'city', '黔西南布依族苗族自治州',23) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(408, 'city', '黔东南苗族侗族自治州',23) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(409, 'city', '黔南布依族苗族自治州',23) ;
---24海南省(2003－2005年　全省有2个地级市，6个县级市，4个县，6个民族自治县，4个市辖区，1个办事处（西南中沙群岛办事处，县级）。) ;
+##24海南省(2003－2005年　全省有2个地级市，6个县级市，4个县，6个民族自治县，4个市辖区，1个办事处（西南中沙群岛办事处，县级）。) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(411, 'city', '海口市',24) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(412, 'city', '三亚市',24) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(413, 'city', '五指山市',24) ;
@@ -367,7 +367,7 @@ INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) V
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(426, 'city', '陵水黎族自治县',24) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(427, 'city', '保亭黎族苗族自治县',24) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(428, 'city', '琼中黎族苗族自治县',24);
---25云南省(2006年辖：8个地级市、8个自治州；12个市辖区、9个县级市、79个县、29个自治县。) ;
+##25云南省(2006年辖：8个地级市、8个自治州；12个市辖区、9个县级市、79个县、29个自治县。) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(431, 'city', '昆明市',25) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(432, 'city', '曲靖市',25) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(433, 'city', '玉溪市',25) ;
@@ -384,7 +384,7 @@ INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) V
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(444, 'city', '德宏傣族景颇族自治州',25) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(445, 'city', '怒江傈傈族自治州',25) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(446, 'city', '迪庆藏族自治州',25) ;
---26青海省(2006年辖：1个地级市、1个地区、6个自治州；4个市辖区、2个县级市、30个县、7个自治县。) ;
+##26青海省(2006年辖：1个地级市、1个地区、6个自治州；4个市辖区、2个县级市、30个县、7个自治县。) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(451, 'city', '西宁市',26) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(452, 'city', '海东地区',26) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(453, 'city', '海北藏族自治州',26) ;
@@ -393,7 +393,7 @@ INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) V
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(456, 'city', '果洛藏族自治州',26) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(457, 'city', '玉树藏族自治州',26) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(458, 'city', '海西蒙古族藏族自治州',26) ;
---27陕西省(2006年辖：10个地级市；24个市辖区、3个县级市、80个县。) ;
+##27陕西省(2006年辖：10个地级市；24个市辖区、3个县级市、80个县。) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(461, 'city', '西安市',27) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(462, 'city', '铜川市',27) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(463, 'city', '宝鸡市',27) ;
@@ -404,7 +404,7 @@ INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) V
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(468, 'city', '榆林市',27) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(469, 'city', '安康市',27) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(470, 'city', '商洛市',27) ;
---28广西壮族自治区(2005年辖：14个地级市；34个市辖区、7个县级市、56个县、12个自治县。) ;
+##28广西壮族自治区(2005年辖：14个地级市；34个市辖区、7个县级市、56个县、12个自治县。) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(471, 'city', '南宁市',28) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(472, 'city', '柳州市',28) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(473, 'city', '桂林市',28) ;
@@ -419,7 +419,7 @@ INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) V
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(482, 'city', '河池市',28) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(483, 'city', '来宾市',28) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(484, 'city', '崇左市',28) ;
---29西藏自治区(2005年辖：1个地级市、6个地区；1个市辖区、1个县级市、71个县。) ;
+##29西藏自治区(2005年辖：1个地级市、6个地区；1个市辖区、1个县级市、71个县。) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(491, 'city', '拉萨市',29) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(492, 'city', '那曲地区',29) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(493, 'city', '昌都地区',29) ;
@@ -427,13 +427,13 @@ INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) V
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(495, 'city', '日喀则地区',29) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(496, 'city', '阿里地区',29) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(497, 'city', '林芝地区',29) ;
---30宁夏回族自治区 ;
+##30宁夏回族自治区 ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(501, 'city', '银川市',30) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(502, 'city', '石嘴山市',30) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(503, 'city', '吴忠市',30) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(504, 'city', '固原市',30) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(505, 'city', '中卫市',30) ;
---31新疆维吾尔自治区(2005年辖：2个地级市、7个地区、5个自治州；11个市辖区、20个县级市、62个县、6个自治县) ;
+##31新疆维吾尔自治区(2005年辖：2个地级市、7个地区、5个自治州；11个市辖区、20个县级市、62个县、6个自治县) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(511, 'city', '乌鲁木齐市',31) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(512, 'city', '克拉玛依市',31) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(513, 'city', '石河子市　',31) ;
@@ -456,7 +456,7 @@ INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) V
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(530, 'city', '塔城市',31) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(531, 'city', '乌苏市',31) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(532, 'city', '阿勒泰市',31) ;
---32内蒙古自治区(2006年，辖：9个地级市、3个盟；21个市辖区、11个县级市、17个县、49个旗、3个自治旗。);
+##32内蒙古自治区(2006年，辖：9个地级市、3个盟；21个市辖区、11个县级市、17个县、49个旗、3个自治旗。);
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(541, 'city', '呼和浩特市',32) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(542, 'city', '包头市',32) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(543, 'city', '乌海市',32) ;
@@ -469,9 +469,9 @@ INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) V
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(550, 'city', '锡林郭勒盟',32) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(551, 'city', '兴安盟',32) ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(552, 'city', '阿拉善盟',32) ;
---33澳门特别行政区 ;
+##33澳门特别行政区 ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(561, 'city', '澳门特别行政区',33) ;
---34香港特别行政区 ;
+##34香港特别行政区 ;
 INSERT IGNORE INTO dictionary(id, data_type, dictionary_value, dictionary_key) VALUES(571, 'city', '香港特别行政区',34) ;
 
 
