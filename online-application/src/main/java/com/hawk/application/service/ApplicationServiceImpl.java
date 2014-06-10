@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -41,6 +42,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 	}
 
 	@Transactional(readOnly = true)
+	@Cacheable(value = "applications")
 	public List<Application> findAllApplications() throws DataAccessException {
 
 		return applicationRepository.findAll();
