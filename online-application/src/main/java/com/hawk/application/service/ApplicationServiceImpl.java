@@ -1,7 +1,7 @@
 package com.hawk.application.service;
 
-import java.util.List;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,15 +36,12 @@ public class ApplicationServiceImpl implements ApplicationService {
 		application.setDianjoyAppId(generateAppId());
 		application.setCreatedDate(new Date());
 		application.setUpdatedDate(application.getCreatedDate());
-		application.setCreatedBy(0);
-		application.setUpdatedBy(0);
 		applicationRepository.save(application);
 
 	}
 
 	@Transactional(readOnly = true)
-	public List<Application> findAllApplications()
-			throws DataAccessException {
+	public List<Application> findAllApplications() throws DataAccessException {
 
 		return applicationRepository.findAll();
 	}

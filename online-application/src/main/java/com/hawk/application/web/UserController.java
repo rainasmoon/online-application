@@ -49,7 +49,7 @@ public class UserController {
 	@Autowired
 	private DictionaryService dictionaryService;
 
-	@Value("#{idcard.pic.location}")
+	@Value("#{propertyConfigurer['idcard.pic.location']}")
 	private String SYS_PIC_PATH;
 
 	@Autowired

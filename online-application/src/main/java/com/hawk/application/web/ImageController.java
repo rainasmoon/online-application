@@ -25,7 +25,7 @@ public class ImageController {
 	private static final Logger LOGGER = LoggerFactory
 			.getLogger(ImageController.class);
 
-	@Value("#{idcard.pic.location}")
+	@Value("#{propertyConfigurer['idcard.pic.location']}")
 	private static String SYS_PIC_PATH;
 
 	@ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "File not found")

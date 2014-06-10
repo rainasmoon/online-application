@@ -33,6 +33,9 @@ CREATE TABLE users (
   updated_by INTEGER
 );
 
+CREATE INDEX users_email ON users (email);
+ALTER TABLE users ADD CONSTRAINT fk_users_created_by FOREIGN KEY (created_by) REFERENCES users (id);
+ALTER TABLE users ADD CONSTRAINT fk_users_updated_by FOREIGN KEY (updated_by) REFERENCES users (id);
 
 CREATE TABLE applications (
   id INTEGER IDENTITY PRIMARY KEY,
@@ -43,9 +46,12 @@ CREATE TABLE applications (
   status  VARCHAR(50),
   created_date  TIMESTAMP,
   updated_date  TIMESTAMP,
-  created_by INTEGER,
-  updated_by INTEGER
+  created_by INTEGER DEFAULT NULL,
+  updated_by INTEGER DEFAULT NULL
 );
+
+ALTER TABLE applications ADD CONSTRAINT fk_applications_created_by FOREIGN KEY (created_by) REFERENCES applications (id);
+ALTER TABLE applications ADD CONSTRAINT fk_applications_updated_by FOREIGN KEY (updated_by) REFERENCES applications (id);
 
 CREATE TABLE app_parameters (
   id INTEGER IDENTITY PRIMARY KEY,
@@ -57,6 +63,9 @@ CREATE TABLE app_parameters (
   created_by INTEGER,
   updated_by INTEGER
 );
+
+ALTER TABLE app_parameters ADD CONSTRAINT fk_app_parameters_created_by FOREIGN KEY (created_by) REFERENCES app_parameters (id);
+ALTER TABLE app_parameters ADD CONSTRAINT fk_app_parameters_updated_by FOREIGN KEY (updated_by) REFERENCES app_parameters (id);
 
 CREATE TABLE checks (
   id INTEGER IDENTITY PRIMARY KEY,
@@ -73,6 +82,9 @@ CREATE TABLE checks (
   updated_by INTEGER
 );
 
+ALTER TABLE checks ADD CONSTRAINT fk_checks_created_by FOREIGN KEY (created_by) REFERENCES checks (id);
+ALTER TABLE checks ADD CONSTRAINT fk_checks_updated_by FOREIGN KEY (updated_by) REFERENCES checks (id);
+
 CREATE TABLE bonus (
   id INTEGER IDENTITY PRIMARY KEY,
   amount DOUBLE,
@@ -82,6 +94,9 @@ CREATE TABLE bonus (
   created_by INTEGER,
   updated_by INTEGER
 );
+
+ALTER TABLE bonus ADD CONSTRAINT fk_bonus_created_by FOREIGN KEY (created_by) REFERENCES bonus (id);
+ALTER TABLE bonus ADD CONSTRAINT fk_bonus_updated_by FOREIGN KEY (updated_by) REFERENCES bonus (id);
 
 CREATE TABLE sdks (
   id INTEGER IDENTITY PRIMARY KEY,
@@ -98,3 +113,5 @@ CREATE TABLE dictionary (
   dictionary_key INTEGER,
   dictionary_value VARCHAR(200)
 );
+
+ALTER TABLE dictionary ADD CONSTRAINT fk_dictionary_dictionary_key FOREIGN KEY (dictionary_key) REFERENCES dictionary (id);

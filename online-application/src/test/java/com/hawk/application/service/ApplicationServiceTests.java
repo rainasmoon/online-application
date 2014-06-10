@@ -92,6 +92,7 @@ public class ApplicationServiceTests {
 		application.setApplicationName("test");
 		application.setApplicationPlatform("iso");
 		application.setApplicationPackageName("a.b.c");
+
 		return application;
 	}
 }
