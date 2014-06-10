@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-    Application context definition for PetClinic Datasource.
--->
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:p="http://www.springframework.org/schema/p"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
-       xmlns:jee="http://www.springframework.org/schema/jee"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
+<!-- Application context definition for PetClinic Datasource. -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:jee="http://www.springframework.org/schema/jee"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
          http://www.springframework.org/schema/beans/spring-beans.xsd
          http://www.springframework.org/schema/context
          http://www.springframework.org/schema/context/spring-context.xsd
@@ -16,21 +13,30 @@
          http://www.springframework.org/schema/jee
          http://www.springframework.org/schema/jee/spring-jee.xsd">
 
-    <!-- ========================= DATASOURCE DEFINITION ========================= -->
+	<!-- ========================= DATASOURCE DEFINITION ========================= -->
 
-    <!-- DataSource configuration for the tomcat jdbc connection pool 
-    See here for more details on commons-dbcp versus tomcat-jdbc: 
-    http://blog.ippon.fr/2013/03/13/improving-the-performance-of-the-spring-petclinic-sample-application-part-3-of-5/-->
-    <bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource"
-          p:driverClassName="${jdbc.driverClassName}" p:url="${jdbc.url}"
-          p:username="${jdbc.username}" p:password="${jdbc.password}"/>
+	<!-- DataSource configuration for the tomcat jdbc connection pool See here 
+		for more details on commons-dbcp versus tomcat-jdbc: http://blog.ippon.fr/2013/03/13/improving-the-performance-of-the-spring-petclinic-sample-application-part-3-of-5/ -->
 
-    <!-- Database initializer. If any of the script fails, the initialization stops. -->
-    <!-- As an alternative, for embedded databases see <jdbc:embedded-database/>. -->
-    <jdbc:initialize-database data-source="dataSource">
-        <jdbc:script location="${jdbc.initLocation}" encoding="UTF-8"/>
-        <jdbc:script location="${jdbc.dataLocation}" encoding="UTF-8"/>
-    </jdbc:initialize-database>
 
-   
+	<beans profile="dev">
+		<bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource"
+			p:driverClassName="${dev.jdbc.driverClassName}" p:url="${dev.jdbc.url}"
+			p:username="${dev.jdbc.username}" p:password="${dev.jdbc.password}" />
+
+		<!-- Database initializer. If any of the script fails, the initialization 
+			stops. -->
+		<!-- As an alternative, for embedded databases see <jdbc:embedded-database/>. -->
+		<jdbc:initialize-database data-source="dataSource">
+			<jdbc:script location="${dev.jdbc.initLocation}" encoding="UTF-8" />
+			<jdbc:script location="${dev.jdbc.dataLocation}" encoding="UTF-8" />
+		</jdbc:initialize-database>
+	</beans>
+	
+	<beans profile="prod">
+		<bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource"
+			p:driverClassName="${prod.jdbc.driverClassName}" p:url="${prod.jdbc.url}"
+			p:username="${prod.jdbc.username}" p:password="${prod.jdbc.password}" />		
+	</beans>
+
 </beans>

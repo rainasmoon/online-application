@@ -20,7 +20,7 @@ import com.hawk.application.repository.springdatajpa.ApplicationRepository;
 
 @ContextConfiguration(locations = { "classpath:spring/business-config.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)
-@ActiveProfiles("spring-data-jpa")
+@ActiveProfiles("dev")
 public class ApplicationServiceTests {
 
 	Logger LOGGER = LoggerFactory.getLogger(ApplicationServiceTests.class);

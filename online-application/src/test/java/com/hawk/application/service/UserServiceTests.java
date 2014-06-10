@@ -15,7 +15,7 @@ import com.hawk.application.repository.springdatajpa.UserRepository;
 
 @ContextConfiguration(locations = { "classpath:spring/business-config.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)
-@ActiveProfiles("spring-data-jpa")
+@ActiveProfiles("dev")
 public class UserServiceTests {
 
 	@Autowired

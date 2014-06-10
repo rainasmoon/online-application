@@ -16,8 +16,7 @@
 	<!-- (in this case, JDBC-related settings for the dataSource definition 
 		below) -->
 	<context:property-placeholder location="classpath:spring/data-access.properties"
-		system-properties-mode="OVERRIDE"/>
-
+		system-properties-mode="OVERRIDE" />
 
 	<!-- import the dataSource definition -->
 	<import resource="datasource-config.xml" />
@@ -29,18 +28,14 @@
 	<!-- enables scanning for @Transactional annotations -->
 	<tx:annotation-driven />
 
-
-	<!-- ================== 3 Profiles to choose from =================== - 
-		jdbc (uses Spring" JdbcTemplate) - jpa - spring-data-jpa ============================================================================= -->
-
-	<beans profile="spring-data-jpa">
-		<!-- JPA EntityManagerFactory -->
+	<!-- JPA EntityManagerFactory -->
+	<beans profile="dev">
 		<bean id="entityManagerFactory"
 			class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
 			p:dataSource-ref="dataSource">
 			<property name="jpaVendorAdapter">
 				<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"
-					p:database="${jpa.database}" p:showSql="${jpa.showSql}" />
+					p:database="${dev.jpa.database}" p:showSql="${dev.jpa.showSql}" />
 				<!-- the 'database' parameter refers to the database dialect being used. 
 					By default, Hibernate will use a 'HSQL' dialect because 'jpa.database' has 
 					been set to 'HSQL' inside file spring/data-access.properties -->
@@ -50,7 +45,26 @@
 			<property name="persistenceUnitName" value="onlineapplication" />
 			<property name="packagesToScan" value="com.hawk.application.model" />
 		</bean>
+	</beans>
+	<beans profile="prod">
+		<bean id="entityManagerFactory"
+			class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+			p:dataSource-ref="dataSource">
+			<property name="jpaVendorAdapter">
+				<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"
+					p:database="${prod.jpa.database}" p:showSql="${prod.jpa.showSql}" />
+				<!-- the 'database' parameter refers to the database dialect being used. 
+					By default, Hibernate will use a 'HSQL' dialect because 'jpa.database' has 
+					been set to 'HSQL' inside file spring/data-access.properties -->
+			</property>
+			<!-- gDickens: BOTH Persistence Unit and Packages to Scan are NOT compatible, 
+				persistenceUnit will win -->
+			<property name="persistenceUnitName" value="onlineapplication" />
+			<property name="packagesToScan" value="com.hawk.application.model" />
+		</bean>
+	</beans>
 
+	<beans profile="dev,prod">
 		<!-- Transaction manager for a single JPA EntityManagerFactory (alternative 
 			to JTA) -->
 		<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"
@@ -63,12 +77,7 @@
 		<bean
 			class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
 
-	</beans>
-
-
-	<beans profile="spring-data-jpa">
 		<jpa:repositories base-package="com.hawk.application.repository.springdatajpa" />
 	</beans>
-
 
 </beans>

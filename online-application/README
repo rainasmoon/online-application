@@ -42,6 +42,8 @@ MD5
 
 -XX:PermSize=64M -XX:MaxPermSize=128M
 
+hbm2ddl 
+
 
 
 
