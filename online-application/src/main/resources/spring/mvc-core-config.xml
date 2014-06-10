@@ -10,7 +10,7 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
-
+		
 	<import resource="mvc-view-config.xml" />
 
 	<!-- - POJOs labeled with the @Controller and @Service annotations are auto-detected. -->
@@ -18,12 +18,12 @@
 
 	<mvc:annotation-driven validator="validator"
 		conversion-service="conversionService">
-		<mvc:argument-resolvers>			
+		<mvc:argument-resolvers>
 			<bean
 				class="com.github.dandelion.datatables.extras.spring3.ajax.DatatablesCriteriasMethodArgumentResolver" />
 		</mvc:argument-resolvers>
 	</mvc:annotation-driven>
-	
+
 
 	<!-- all resources inside folder src/main/webapp/resources are mapped so 
 		they can be refered to inside JSP files (see header.jsp for more details) -->
@@ -60,8 +60,7 @@
 		</property>
 		<property name="formatterRegistrars">
 			<set>
-				<bean
-					class="org.springframework.format.datetime.DateFormatterRegistrar">
+				<bean class="org.springframework.format.datetime.DateFormatterRegistrar">
 					<property name="formatter">
 						<bean class="org.springframework.format.datetime.DateFormatter">
 							<property name="pattern" value="yyyy-MM-dd" />
@@ -84,10 +83,10 @@
 		<!-- 如果不加默认到 使用classpath下的 ValidationMessages.properties -->
 		<property name="validationMessageSource" ref="messageSource" />
 	</bean>
-	
+
 	<bean id="multipartResolver"
-				class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
-				p:maxUploadSize="10000000" />
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
+		p:maxUploadSize="10000000" />
 
 	<mvc:interceptors>
 		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />

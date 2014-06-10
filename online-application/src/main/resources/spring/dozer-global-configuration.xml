@@ -5,7 +5,7 @@
 
 	<configuration>
 		<stop-on-errors>true</stop-on-errors>
-<!-- 		<date-format>dd/MM/yyyy</date-format> -->
+<!-- 		<date-format>yyyy-MM-dd</date-format> -->
 		<!-- try to map all fields -->
 		<wildcard>true</wildcard>
 		<trim-strings>true</trim-strings>

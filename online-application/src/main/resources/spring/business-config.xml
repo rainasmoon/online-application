@@ -18,6 +18,7 @@
 	<context:property-placeholder location="classpath:spring/data-access.properties"
 		system-properties-mode="OVERRIDE"/>
 
+
 	<!-- import the dataSource definition -->
 	<import resource="datasource-config.xml" />
 

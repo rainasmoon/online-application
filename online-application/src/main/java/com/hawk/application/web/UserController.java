@@ -14,7 +14,8 @@ import org.dozer.Mapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
@@ -38,6 +39,7 @@ import com.hawk.application.service.UserService;
 
 @Controller
 @SessionAttributes(types = User.class)
+@PropertySource("classpath:/spring/data-access.properties")
 public class UserController {
 
 	Logger LOGGER = LoggerFactory.getLogger(UserController.class);
@@ -49,7 +51,9 @@ public class UserController {
 	@Autowired
 	private DictionaryService dictionaryService;
 
-	@Value("#{propertyConfigurer['idcard.pic.location']}")
+	@Autowired
+	Environment env;
+
 	private String SYS_PIC_PATH;
 
 	@Autowired
@@ -171,6 +175,9 @@ public class UserController {
 			LOGGER.debug(result.toString());
 			return "user/changePersonalInformation";
 		} else {
+			SYS_PIC_PATH = env.getProperty("idcard.pic.location");
+
+			LOGGER.debug("the SYS_PIC_PATH is :" + SYS_PIC_PATH);
 			if (fileIdCardFront != null && !fileIdCardFront.isEmpty()) {
 				if (fileIdCardFront.getSize() > 500000) {
 					result.rejectValue("error", "error.file.too.large");

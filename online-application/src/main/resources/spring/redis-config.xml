@@ -15,13 +15,6 @@
 
 	<context:component-scan base-package="com.hawk.application.repository.redis" />
 
-	<!-- Configurer that replaces ${...} placeholders with values from a properties 
-		file -->
-	<!-- (in this case, JDBC-related settings for the dataSource definition 
-		below) -->
-	<context:property-placeholder location="classpath:spring/data-access.properties"
-		system-properties-mode="OVERRIDE" />
-
 	<bean id="jedisConnFactory"
 		class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
 		p:host-name="${redis.host}" p:port="${redis.port}" p:password="${redis.pass}" />
