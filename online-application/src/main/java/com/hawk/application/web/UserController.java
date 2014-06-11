@@ -85,8 +85,8 @@ public class UserController {
 
 	@RequestMapping(value = { "/users/new", "/register" }, method = RequestMethod.GET)
 	public String initCreationForm(Map<String, Object> model) {
-		RegistorVo user = new RegistorVo();
-		model.put("user", user);
+		RegistorVo registorVo = new RegistorVo();
+		model.put("registorVo", registorVo);
 		return "user/register";
 	}
 

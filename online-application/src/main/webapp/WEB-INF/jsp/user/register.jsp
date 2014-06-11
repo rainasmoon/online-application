@@ -20,7 +20,7 @@
 	<div class="container">
 
 		<h2>注册用户</h2>
-		<form:form modelAttribute="user" method="post" class="form-horizontal"
+		<form:form modelAttribute="registorVo" method="post" class="form-horizontal"
 			id="add-user-form">
 			<onlineapplication:inputField label="邮箱" name="email" />
 			<onlineapplication:passwordField label="密码" name="password" />
