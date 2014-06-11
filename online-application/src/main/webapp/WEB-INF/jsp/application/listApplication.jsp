@@ -28,21 +28,21 @@
 				<h2>全部应用</h2>
 
 				<datatables:table id="applications" data="${selections}" cdn="true"
-					row="application" theme="bootstrap2" cssClass="table table-striped"
+					row="aapplication" theme="bootstrap2" cssClass="table table-striped"
 					paginate="false" pageable="false" info="false" filterable="false"
 					sortable="false" lengthChange="false">
 
 					<datatables:column title="DIANJOY_APP_ID" property="dianjoyAppId" />
 					<datatables:column title="创建时间">
 						<fmt:formatDate pattern="yyyy-MM-dd"
-							value="${application.createdDate}" />
+							value="${aapplication.createdDate}" />
 					</datatables:column>
 
 					<datatables:column title="应用名称" property="applicationName" />
 					<datatables:column title="应用平台" property="applicationPlatform" />
 					<datatables:column title="状态" property="status" />
 					<datatables:column title="操作">
-						<a href="applications/${application.id}/delete">删除</a>
+						<a href="applications/${aapplication.id}/delete">删除</a>
 					</datatables:column>
 				</datatables:table>
 

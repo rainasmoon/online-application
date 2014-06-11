@@ -33,6 +33,12 @@
 		</jdbc:initialize-database>
 	</beans>
 	
+	<beans profile="mysql">
+		<bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource"
+			p:driverClassName="${mysql.jdbc.driverClassName}" p:url="${mysql.jdbc.url}"
+			p:username="${mysql.jdbc.username}" p:password="${mysql.jdbc.password}" />		
+	</beans>
+	
 	<beans profile="prod">
 		<bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource"
 			p:driverClassName="${prod.jdbc.driverClassName}" p:url="${prod.jdbc.url}"

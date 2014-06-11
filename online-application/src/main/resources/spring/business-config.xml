@@ -46,6 +46,23 @@
 			<property name="packagesToScan" value="com.hawk.application.model" />
 		</bean>
 	</beans>
+	<beans profile="mysql">
+		<bean id="entityManagerFactory"
+			class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+			p:dataSource-ref="dataSource">
+			<property name="jpaVendorAdapter">
+				<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"
+					p:database="${mysql.jpa.database}" p:showSql="${mysql.jpa.showSql}" />
+				<!-- the 'database' parameter refers to the database dialect being used. 
+					By default, Hibernate will use a 'HSQL' dialect because 'jpa.database' has 
+					been set to 'HSQL' inside file spring/data-access.properties -->
+			</property>
+			<!-- gDickens: BOTH Persistence Unit and Packages to Scan are NOT compatible, 
+				persistenceUnit will win -->
+			<property name="persistenceUnitName" value="onlineapplication" />
+			<property name="packagesToScan" value="com.hawk.application.model" />
+		</bean>
+	</beans>
 	<beans profile="prod">
 		<bean id="entityManagerFactory"
 			class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
@@ -64,7 +81,7 @@
 		</bean>
 	</beans>
 
-	<beans profile="dev,prod">
+	<beans profile="dev,prod,mysql">
 		<!-- Transaction manager for a single JPA EntityManagerFactory (alternative 
 			to JTA) -->
 		<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"

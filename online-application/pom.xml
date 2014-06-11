@@ -563,7 +563,7 @@
 					<systemProperties>
 						<systemProperty>
 							<name>spring.profiles.active</name>
-							<value>dev</value>
+							<value>mysql</value>
 						</systemProperty>
 					</systemProperties>
 
