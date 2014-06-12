@@ -79,7 +79,7 @@
 		<!-- Maven plugins -->
 		<maven-compiler-plugin.version>3.0</maven-compiler-plugin.version>
 		<tomcat7-maven-plugin.version>2.2</tomcat7-maven-plugin.version>
-		<jetty-maven-plugin.version>8.1.8.v20121106</jetty-maven-plugin.version>
+		<jetty-maven-plugin.version>7.0.0.pre5</jetty-maven-plugin.version>
 
 	</properties>
 
@@ -485,7 +485,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.0</version>
+				<version>${maven-compiler-plugin.version}</version>
 				<configuration>
 					<compilerArguments>
 						<Xlint />
@@ -553,23 +553,17 @@
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
-				<version>2.2</version>
+				<version>${tomcat7-maven-plugin.version}</version>
 				<configuration>
 					<server>tomcat-development-server</server>
 					<port>9968</port>
 					<path>/onlineapp</path>
-					<systemProperties>
-						<systemProperty>
-							<name>spring.profiles.active</name>
-							<value>mysql</value>
-						</systemProperty>
-					</systemProperties>
 				</configuration>
 			</plugin>
 			<plugin>
-				<groupId> org.mortbay.jetty</groupId>
+				<groupId>org.mortbay.jetty</groupId>
 				<artifactId>maven-jetty-plugin</artifactId>
-				<version>6.1.26</version>
+				<version>${jetty-maven-plugin.version}</version>
 				<configuration>
 					<webAppConfig>
 						<extraClasspath>${basedir}/target/test-classes/;${ basedir}/src
@@ -585,13 +579,12 @@
 							<value>dev</value>
 						</systemProperty>
 					</systemProperties>
-
 				</configuration>
 				<dependencies>
 					<dependency>
 						<groupId>org.mortbay.jetty</groupId>
-						<artifactId>servlet-api-2.5</artifactId>
-						<version>6.1.9</version>
+						<artifactId>servlet-api-3.0</artifactId>
+						<version>7.0.0pre2</version>
 					</dependency>
 					<dependency>
 						<groupId>org.eclipse.jetty.aggregate</groupId>

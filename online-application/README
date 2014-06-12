@@ -33,6 +33,9 @@ MD5
 -XX:PermSize=64M -XX:MaxPermSize=128M
 hbm2ddl 
 
+-Xms256m -Xmx512m -XX:MaxPermSize=128m -Dfile.encoding=UTF-8 -Djava.net.preferIPv4Stack=true
+
+
 /***********************************************************************************/
 /*** deploy to prod
 /***********************************************************************************/
