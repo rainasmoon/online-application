@@ -8,12 +8,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>on-line application</title>
 
+<spring:eval expression="@applicationProps['application.version']" var="applicationVersion"/>
+
+<spring:url value="/resources-{applicationVersion}" var="resourceUrl">
+    <spring:param name="applicationVersion" value="${applicationVersion}"/>
+</spring:url>
+
+<spring:url value="${resourceUrl}/css/main.css" var="mainCss" />
+<link href="${mainCss}" rel="stylesheet" />
+
 <spring:url value="/webjars/bootstrap/3.1.1/css/bootstrap.min.css"
 	var="bootstrapCss" />
 <link href="${bootstrapCss}" rel="stylesheet" />
-
-<spring:url value="/resources/css/main.css" var="mainCss" />
-<link href="${mainCss}" rel="stylesheet" />
 
 <!-- jquery-ui.css file is not that big so we can afford to load it -->
 <spring:url value="/webjars/jquery-ui/1.10.3/themes/base/jquery-ui.css"
