@@ -25,10 +25,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.google.common.io.Files;
-import com.hawk.application.model.ChangePasswordVo;
 import com.hawk.application.model.Dictionary;
 import com.hawk.application.model.User;
 import com.hawk.application.service.DictionaryService;
@@ -80,17 +78,6 @@ public class UserController {
 		return dictionaryService.getAllCitys();
 	}
 
-	@RequestMapping(value = "/viewMe", method = RequestMethod.GET)
-	public ModelAndView viewMe(HttpSession session) {
-		ModelAndView mav = new ModelAndView("user/view");
-		String userEmail = (String) session.getAttribute("userEmail");
-		User user = userService.findUserByEmail(userEmail);
-		LOGGER.debug("view User:" + user);
-
-		mav.addObject(user);
-		return mav;
-	}
-
 	@RequestMapping(value = "/changePersonalInformation.html", method = RequestMethod.GET)
 	public String initPersonalInformationForm(HttpSession session,
 			Map<String, Object> model) {
@@ -140,33 +127,6 @@ public class UserController {
 
 			this.userService.saveUser(user);
 			return "redirect:/viewMe.html";
-		}
-	}
-
-	@RequestMapping(value = "/changePassword", method = RequestMethod.GET)
-	public String initChangePasswordForm(Map<String, Object> model) {
-
-		ChangePasswordVo changePasswordVo = new ChangePasswordVo();
-		model.put("changePasswordVo", changePasswordVo);
-
-		return "user/changePassword";
-	}
-
-	@RequestMapping(value = "/changePassword", method = RequestMethod.POST)
-	public String processChangePasswordForm(
-			@Valid ChangePasswordVo changePasswordVo, BindingResult result,
-			HttpSession session) {
-		if (result.hasErrors()) {
-			return "user/changePassword";
-		} else {
-
-			if (!userService.changePassword(
-					(String) session.getAttribute("userEmail"),
-					changePasswordVo)) {
-				result.rejectValue("error", "error.passwordChange.failed");
-				return "user/changePassword";
-			}
-			return "redirect:/";
 		}
 	}
 

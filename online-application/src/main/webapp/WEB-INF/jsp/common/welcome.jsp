@@ -8,7 +8,7 @@
 
 <html lang="en">
 
-<jsp:include page="fragments/headTag.jsp" />
+<jsp:include page="../fragments/headTag.jsp" />
 
 <dandelion:bundle includes="flot" />
 
@@ -18,11 +18,11 @@
 <script src="${flot}"></script>
 
 <body>
-	<jsp:include page="fragments/bodyHeader.jsp" />
+	<jsp:include page="../fragments/bodyHeader.jsp" />
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-6 col-sm-3 sidebar-offcanvas" role="navigation">
-				<jsp:include page="fragments/leftMenu.jsp" /></div>
+				<jsp:include page="../fragments/leftMenu.jsp" /></div>
 			<div class="col-xs-12 col-sm-9">
 				<div class="page-header">
 					<h1>
@@ -97,7 +97,7 @@
 			</div>
 
 		</div>
-		<jsp:include page="fragments/footer.jsp" />
+		<jsp:include page="../fragments/footer.jsp" />
 	</div>
 	<script type="text/javascript">
 		$(function() {

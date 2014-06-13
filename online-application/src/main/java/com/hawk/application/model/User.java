@@ -55,11 +55,11 @@ public class User extends BaseEntity {
 	@Size(max = 100, message = "{error.too.lang}")
 	protected String bankName;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "province_id")
 	private Dictionary province;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "city_id")
 	private Dictionary city;
 

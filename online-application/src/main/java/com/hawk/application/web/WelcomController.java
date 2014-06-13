@@ -22,6 +22,6 @@ public class WelcomController {
 	public String initCreationForm(Map<String, Object> model) {
 
 		model.put("welcomeVo", redisService.retriveWelcomeInfo());
-		return "welcome";
+		return "common/welcome";
 	}
 }
