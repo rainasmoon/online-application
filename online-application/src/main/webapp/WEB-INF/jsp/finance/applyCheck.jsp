@@ -63,9 +63,10 @@
 							<th>未提现余额</th>
 							<td><b><c:out value="${check.remainder} " /></b></td>
 						</tr>
-						<tr>							
-							<td colspan="2"><b><onlineapplication:inputField label="提现"
-										name="applyAmount" />元</b> 请仔细核对以上信息，最少提现为100元，最多提现为535元。</td>
+						<tr>
+							<td colspan="2"><b><onlineapplication:inputField
+										label="提现" name="applyAmount" />元</b>
+								请仔细核对以上信息，最少提现为100元，最多提现为535元。</td>
 						</tr>
 
 					</table>
@@ -76,19 +77,20 @@
 
 					</div>
 				</form:form>
-				<div>结算说明 1.账户余额满100元即可申请取款。 2.每周三12点前申请取款，每周五进行汇款，如遇节假日顺延。
-					3.确认取款提交成功后3个工作日内将相应款项汇入登记帐户。
-					4.如果收款方为个人账户，汇款时将代扣0.5%的汇款手续费和5.5%的营业税。如果收款方为
-					对公账户，需要在汇款之前开具相应金额的发票，免扣税及手续费。
-					5.开发者应承担的税款(5.5%)和汇款手续费(0.5%)全部由联盟工场平台承担。 申请汇款</div>
-
-
+				<div>
+					<h3>结算说明</h3>
+					<p>1.账户余额满100元即可申请取款。</p>
+					<p>2.每周三12点前申请取款，每周五进行汇款，如遇节假日顺延。</p>
+					<p>3.确认取款提交成功后3个工作日内将相应款项汇入登记帐户。</p>
+					<p>4.如果收款方为个人账户，汇款时将代扣0.5%的汇款手续费和5.5%的营业税。如果收款方为
+						对公账户，需要在汇款之前开具相应金额的发票，免扣税及手续费。</p>
+					<p>5.开发者应承担的税款(5.5%)和汇款手续费(0.5%)全部由联盟工场平台承担。 申请汇款</p>
+				</div>
 			</div>
 		</div>
 		<jsp:include page="../fragments/footer.jsp" />
 	</div>
-	<script type="text/javascript">
- 
+	<script type="text/javascript"> 
 		$(function() {
 			$('input, textarea').placeholder();
 			$('#applyAmount').focus();
