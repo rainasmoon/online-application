@@ -6,7 +6,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -31,8 +30,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.google.common.io.Files;
 import com.hawk.application.model.ChangePasswordVo;
 import com.hawk.application.model.Dictionary;
-import com.hawk.application.model.LoginVo;
-import com.hawk.application.model.RegistorVo;
 import com.hawk.application.model.User;
 import com.hawk.application.service.DictionaryService;
 import com.hawk.application.service.UserService;
@@ -81,67 +78,6 @@ public class UserController {
 		String userEmail = (String) session.getAttribute("userEmail");
 		User user = userService.findUserByEmail(userEmail);
 		return dictionaryService.getAllCitys();
-	}
-
-	@RequestMapping(value = { "/users/new", "/register" }, method = RequestMethod.GET)
-	public String initCreationForm(Map<String, Object> model) {
-		RegistorVo registorVo = new RegistorVo();
-		model.put("registorVo", registorVo);
-		return "user/register";
-	}
-
-	@RequestMapping(value = { "/users/new", "/register" }, method = RequestMethod.POST)
-	public String processCreationForm(@Valid RegistorVo registorVo,
-			BindingResult result) {
-		new RegisterValidator(userService).validate(registorVo, result);
-		if (result.hasErrors()) {
-			return "user/register";
-		} else {
-			User user = dozerBeanMapper.map(registorVo, User.class);
-			this.userService.saveUser(user);
-			return "redirect:/";
-		}
-	}
-
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String initLoginForm(Map<String, Object> model) {
-		LoginVo loginVo = new LoginVo();
-		model.put("loginVo", loginVo);
-		return "user/login";
-	}
-
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String processLoginForm(@Valid LoginVo loginVo,
-			BindingResult result, HttpServletRequest request,
-			HttpSession session, Map<String, Object> model) {
-		new LoginValidator().validate(request, loginVo, result);
-		if (result.hasErrors()) {
-			LOGGER.debug("Login has error.");
-			return "user/login";
-		} else {
-
-			User user = userService.login(loginVo);
-
-			if (user == null) {
-				result.rejectValue("error", "error.userNameOrPassword.invalid");
-				LOGGER.warn("login failed. with no user in db.");
-				return "user/login";
-			}
-
-			session.setAttribute("userEmail", user.getEmail());
-			LOGGER.debug("Session ID:" + session.getId());
-			LOGGER.debug("Set User in session:" + user);
-			return "redirect:/";
-		}
-	}
-
-	@RequestMapping(value = "/logout", method = RequestMethod.GET)
-	public String logout(HttpSession session) {
-		LOGGER.debug("Logout running...");
-		LOGGER.debug("Session ID:" + session.getId());
-		session.removeAttribute("userEmail");
-		session.invalidate();
-		return "redirect:/";
 	}
 
 	@RequestMapping(value = "/viewMe", method = RequestMethod.GET)

@@ -13,11 +13,10 @@
 	</appender>
 
     <logger name="com.hawk.application" level="info"/>
-       
-  	<logger name="org.hibernate.type" level="info" />
+
   	<logger name="org.hibernate" level="info" />
   	<logger name="org.hibernate.type.descriptor.sql.BasicBinder"
-		level="info" />
+		level="TRACE" />
          
     <root level="info">
         <appender-ref ref="console"/>
