@@ -570,6 +570,9 @@
 					<server>tomcat-development-server</server>
 					<port>9968</port>
 					<path>/onlineapp</path>
+					<systemProperties>
+						<spring.profiles.active>mysql</spring.profiles.active>
+					</systemProperties>
 				</configuration>
 			</plugin>
 			<plugin>
