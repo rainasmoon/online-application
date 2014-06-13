@@ -64,6 +64,10 @@
 	<filter>
 		<filter-name>dandelionFilter</filter-name>
 		<filter-class>com.github.dandelion.core.web.DandelionFilter</filter-class>
+		<init-param>
+			<param-name>dandelion.mode</param-name>
+			<param-value>production</param-value>
+		</init-param>
 	</filter>
 
 
