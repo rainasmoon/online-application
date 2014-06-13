@@ -51,7 +51,9 @@ only get login user's data...
 继续完成数据报表。
 MD5
 
-
+db lazy load.
+use seperate controller to avoid unnessesary db access.
+use catch for no modified data.
 
 
 
