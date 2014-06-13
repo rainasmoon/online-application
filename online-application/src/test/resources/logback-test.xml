@@ -11,12 +11,9 @@
         </encoder>
     </appender>
 
-	<!--<logger name="org.hibernate" level="debug"/> -->
     <logger name="com.hawk" level="debug"/>
-    
-    
-  	<logger name="org.hibernate.type" level="ALL" />
-  	<logger name="org.hibernate" level="DEBUG" />
+ 
+   	<logger name="org.hibernate" level="DEBUG" />
          
     <root level="info">
         <appender-ref ref="console"/>
