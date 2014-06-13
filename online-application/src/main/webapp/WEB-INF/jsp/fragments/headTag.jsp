@@ -14,8 +14,7 @@
     <spring:param name="applicationVersion" value="${applicationVersion}"/>
 </spring:url>
 
-<spring:url value="${resourceUrl}/css/main.css" var="mainCss" />
-<link href="${mainCss}" rel="stylesheet" />
+<link href="${resourceUrl}/css/main.css" rel="stylesheet" />
 
 <spring:url value="/webjars/bootstrap/3.1.1/css/bootstrap.min.css"
 	var="bootstrapCss" />
@@ -25,14 +24,6 @@
 <spring:url value="/webjars/jquery-ui/1.10.3/themes/base/jquery-ui.css"
 	var="jQueryUiCss" />
 <link href="${jQueryUiCss}" rel="stylesheet"></link>
-
-<spring:url value="/webjars/datatables/1.10.0/css/jquery.dataTables.css"
-	var="jQueryDataTablesCss" />
-<link href="${jQueryDataTablesCss}" rel="stylesheet"></link>
-
-<spring:url value="/webjars/datatables-bootstrap/2-20120201/DT_bootstrap.css"
-	var="bootstrapDTCss" />
-<link href="${bootstrapDTCss}" rel="stylesheet"></link>
 
 <spring:url value="/webjars/jquery/2.0.3/jquery.js" var="jQuery" />
 <script src="${jQuery}"></script>

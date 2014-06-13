@@ -578,10 +578,9 @@
 				<version>${jetty-maven-plugin.version}</version>
 				<configuration>
 					<webAppConfig>
-						<extraClasspath>${basedir}/target/test-classes/;${ basedir}/src
+						<extraClasspath>${basedir}/target/test-classes/;${basedir}/src
 							/integration/resources</extraClasspath>
 					</webAppConfig>
-
 					<scanIntervalSeconds>3</scanIntervalSeconds>
 					<stopKey>foo</stopKey>
 					<stopPort>9999</stopPort>
