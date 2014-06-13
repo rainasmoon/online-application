@@ -271,6 +271,18 @@
 
 		<dependency>
 			<groupId>org.webjars</groupId>
+			<artifactId>datatables</artifactId>
+			<version>1.10.0-1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>datatables-bootstrap</artifactId>
+			<version>2-20120202-2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.webjars</groupId>
 			<artifactId>jquery-file-upload</artifactId>
 			<version>9.5.4</version>
 		</dependency>
@@ -281,12 +293,12 @@
 			<version>2.0.7</version>
 		</dependency>
 
-
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>flot</artifactId>
 			<version>0.8.3</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>excanvas</artifactId>

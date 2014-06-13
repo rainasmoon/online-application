@@ -26,6 +26,14 @@
 	var="jQueryUiCss" />
 <link href="${jQueryUiCss}" rel="stylesheet"></link>
 
+<spring:url value="/webjars/datatables/1.10.0/css/jquery.dataTables.css"
+	var="jQueryDataTablesCss" />
+<link href="${jQueryDataTablesCss}" rel="stylesheet"></link>
+
+<spring:url value="/webjars/datatables-bootstrap/2-20120201/DT_bootstrap.css"
+	var="bootstrapDTCss" />
+<link href="${bootstrapDTCss}" rel="stylesheet"></link>
+
 <spring:url value="/webjars/jquery/2.0.3/jquery.js" var="jQuery" />
 <script src="${jQuery}"></script>
 
@@ -44,6 +52,14 @@
 <spring:url value="/webjars/jquery-ui/1.10.3/ui/jquery.ui.datepicker.js"
 	var="jQueryUiDatePicker" />
 <script src="${jQueryUiDatePicker}"></script>
+
+<%-- <spring:url value="/webjars/datatables/1.10.0/js/jquery.dataTables.min.js"
+	var="jQueryDataTables" />
+<script src="${jQueryDataTables}"></script>
+
+<spring:url value="/webjars/datatables-bootstrap/2-20120201/DT_bootstrap.js"
+	var="bootstrapDT" />
+<script src="${bootstrapDT}"></script> --%>
 
 </head>
 
