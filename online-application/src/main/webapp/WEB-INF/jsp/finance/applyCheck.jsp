@@ -66,7 +66,7 @@
 						<tr>
 							<td colspan="2"><b><onlineapplication:inputField
 										label="提现" name="applyAmount" />元</b>
-								请仔细核对以上信息，最少提现为100元，最多提现为535元。</td>
+								请仔细核对以上信息，最少提现为100元，最多提现为${check.remainder}元。</td>
 						</tr>
 
 					</table>
