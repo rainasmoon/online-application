@@ -123,5 +123,11 @@
 			</list>
 		</property>
 	</bean>
+	
+	<bean id="jsonCollectionConverter" class="com.hawk.application.web.JsonCollectionConverter">
+		<property name="mapper" ref="mapperBean" />
+	</bean>
+	
+	<bean id="mapperBean" class="com.fasterxml.jackson.databind.ObjectMapper" />
 
 </beans>

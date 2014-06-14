@@ -27,7 +27,8 @@
 				<h2>编辑资料信息</h2>
 
 				<form:form modelAttribute="user" method="post"
-					class="form-horizontal" id="change-user-form" enctype="multipart/form-data">
+					class="form-horizontal" id="change-user-form"
+					enctype="multipart/form-data">
 					<span class="help-inline"> <c:if test="${not empty message}">
 							<div id="message" class="success">${message}</div>
 						</c:if> <spring:bind path="*">
@@ -44,17 +45,19 @@
 					<onlineapplication:inputField label="身份证号码" name="contactIdNumber" />
 					<onlineapplication:inputField label="开户行" name="bankName" />
 					<div class="alert alert-info">注意：点乐目前不支持邮政银行，请选择其它银行</div>
-					<onlineapplication:selectField label="开户行所在省"
-						name="province.id" names="${provinceTypes}" itemValue="id" itemLabel="dictionaryValue"  size="1" />
-					<onlineapplication:selectField label="开户行所在市"
-						name="city.id" names="${cityTypes}"  itemValue="id" itemLabel="dictionaryValue" size="1" />
+					<onlineapplication:selectField id="selectProvince" label="开户行所在省"
+						name="province.id" names="${provinceTypes}" itemValue="id"
+						itemLabel="dictionaryValue" size="1" />
+					<onlineapplication:selectField id="selectCity" label="开户行所在市"
+						name="city.id" names="${cityTypes}" itemValue="id"
+						itemLabel="dictionaryValue" size="1" />
 					<onlineapplication:inputField label="具体支行" name="branchName" />
 					<onlineapplication:inputField label="银行卡号" name="accountNumber" />
-	
+
 					<label>身份证扫描件正面</label>
 					<input id="fileIdCardFront" type="file" name="fileIdCardFront" />
 					<label>身份证扫描件反面</label>
-					<input id="fileIdCardBack" type="file" name="fileIdCardBack" />					
+					<input id="fileIdCardBack" type="file" name="fileIdCardBack" />
 
 					<div class="form-actions">
 
@@ -73,8 +76,29 @@
 		$(function() {
 			$('input, textarea').placeholder();
 			$('#contactTypes').focus();
-			
+			var cityTypes=new Array();
+			<c:forEach items="${cityTypes}" var="cityType">
+				var c = {id:'${cityType.id}', dictionaryKey:'${cityType.dictionaryKey}', dictionaryValue:'${cityType.dictionaryValue}'};
+				console.log("id" + c.id + "dictionaryKey:" + c.dictionaryKey +"value:" +c.dictionaryValue);
+				cityTypes.push(c);
+			</c:forEach>
+			$("#selectProvince").change(function() {
+					var selectedProvinceValue = $("#selectProvince :selected").val();													                 	
+					filterDocumentTypes(selectedProvinceValue, cityTypes);			
+			});
 		});
+		
+		function filterDocumentTypes(selectedProvinceValue, cityTypes) {
+			$('select[id=selectCity]').html('');
+
+			$.each(cityTypes, function (index, cityType) {
+						console.log("select:" +selectedProvinceValue+ "cityType:" + cityType.dictionaryKey);	
+				if (selectedProvinceValue == cityType.dictionaryKey) {
+					console.log("select:" +selectedProvinceValue+ "cityType" + cityType.dictionaryValue);
+					$('select[id=selectCity]').append($('<option>').text(cityType.dictionaryValue).attr('value', cityType.id));
+				}
+			});
+		}
 	</script>
 </body>
 
