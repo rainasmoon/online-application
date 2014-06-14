@@ -42,7 +42,7 @@
 				
 				<h2>分日数据</h2>
 				<datatables:table id="reports" data="${selections}" cdn="true"
-					row="report" theme="bootstrap2" cssClass="table table-striped"
+					row="report" theme="bootstrap3" cssClass="table table-striped"
 					paginate="false" pageable="false" info="false" filterable="false"
 					sortable="false" lengthChange="false">
 

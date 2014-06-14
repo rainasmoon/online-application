@@ -28,7 +28,7 @@
 				<h2>自定义参数</h2>
 
 				<datatables:table id="appParameters" data="${selections}" cdn="true"
-					row="appParameter" theme="bootstrap2" cssClass="table table-striped"
+					row="appParameter" theme="bootstrap3" cssClass="table table-striped"
 					paginate="false" pageable="false" info="false" filterable="false" sortable="false"
 					lengthChange="false">
 

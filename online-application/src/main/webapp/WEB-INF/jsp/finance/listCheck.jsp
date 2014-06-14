@@ -27,7 +27,7 @@
 
 				<h2>汇款详单</h2>
 				<datatables:table id="checks" data="${selections}" cdn="true"
-					row="check" theme="bootstrap2" cssClass="table table-striped"
+					row="check" theme="bootstrap3" cssClass="table table-striped"
 					paginate="false" pageable="false" info="false" filterable="false" sortable="false"
 					lengthChange="false">
 					<datatables:column title="申请时间">

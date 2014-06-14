@@ -27,7 +27,7 @@
 
 				<h2>下载SDK</h2>
 				<datatables:table id="s" data="${selections}" cdn="true"
-					row="sdk" theme="bootstrap2" cssClass="table table-striped"
+					row="sdk" theme="bootstrap3" cssClass="table table-striped"
 					paginate="false" pageable="false" info="false" filterable="false" sortable="false"
 					lengthChange="false">
 

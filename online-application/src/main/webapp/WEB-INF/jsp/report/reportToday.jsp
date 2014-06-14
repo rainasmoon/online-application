@@ -31,7 +31,7 @@
 						name="application.id" id="selectApplication" names="${allApplications}" itemValue="id" itemLabel="applicationName" size="1" />
 				<h2>今日数据</h2>
 				<datatables:table id="reports" data="${selections}" cdn="true"
-					row="report" theme="bootstrap2" cssClass="table table-striped"
+					row="report" theme="bootstrap3" cssClass="table table-striped"
 					paginate="false" pageable="false" info="false" filterable="false" sortable="false"
 					lengthChange="false">
 					<datatables:column title="日期" property="dateString" />

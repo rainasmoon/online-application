@@ -27,7 +27,7 @@
 
 				<h2>奖励统计</h2>
 				<datatables:table id="bonuses" data="${selections}" cdn="true"
-					row="bonus" theme="bootstrap2" cssClass="table table-striped"
+					row="bonus" theme="bootstrap3" cssClass="table table-striped"
 					paginate="false" pageable="false" info="false" filterable="false" sortable="false"
 					lengthChange="false">
 					<datatables:column title="授奖日期">

@@ -44,13 +44,6 @@
 	var="jQueryUiDatePicker" />
 <script src="${jQueryUiDatePicker}"></script>
 
-<%-- <spring:url value="/webjars/datatables/1.10.0/js/jquery.dataTables.min.js"
-	var="jQueryDataTables" />
-<script src="${jQueryDataTables}"></script>
-
-<spring:url value="/webjars/datatables-bootstrap/2-20120201/DT_bootstrap.js"
-	var="bootstrapDT" />
-<script src="${bootstrapDT}"></script> --%>
 
 </head>
 

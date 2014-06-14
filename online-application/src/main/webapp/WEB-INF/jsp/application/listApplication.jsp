@@ -28,7 +28,7 @@
 				<h2>全部应用</h2>
 
 				<datatables:table id="applications" data="${selections}" cdn="true"
-					row="aapplication" theme="bootstrap2" cssClass="table table-striped"
+					row="aapplication" theme="bootstrap3" cssClass="table table-striped"
 					paginate="false" pageable="false" info="false" filterable="false"
 					sortable="false" lengthChange="false">
 
