@@ -40,10 +40,6 @@
 	var="bootstrap" />
 <script src="${bootstrap}"></script>
 
-<spring:url value="/webjars/jquery-ui/1.10.3/ui/jquery.ui.datepicker.js"
-	var="jQueryUiDatePicker" />
-<script src="${jQueryUiDatePicker}"></script>
-
 
 </head>
 

@@ -26,10 +26,10 @@
 				<jsp:include page="../fragments/leftMenu.jsp" /></div>
 			<div class="col-xs-12 col-sm-9">
 				<c:url var="actionUrl" value="reportPast.html" />
-				<form:form action="${actionUrl}" modelAttribute="searchReportVo" method="post"
-					class="form-horizontal" id="search-past-form">
-					<onlineapplication:selectField label="应用" id="selectApplication" name="application.id"
-						names="${allApplications}" itemValue="id"
+				<form:form action="${actionUrl}" modelAttribute="searchReportVo"
+					method="post" class="form-horizontal" id="search-past-form">
+					<onlineapplication:selectField label="应用" id="selectApplication"
+						name="application.id" names="${allApplications}" itemValue="id"
 						itemLabel="applicationName" size="1" />
 					<button id="lastWeek" type="button">过去一周</button>
 					<button id="lastMonth" type="button">过去一月</button>
@@ -39,7 +39,7 @@
 						maxLength="10" minLength="10" />
 					<button id="search" type="submit">Search</button>
 				</form:form>
-				
+
 				<h2>分日数据</h2>
 				<datatables:table id="reports" data="${selections}" cdn="true"
 					row="report" theme="bootstrap3" cssClass="table table-striped"
@@ -61,31 +61,39 @@
 		</div>
 		<jsp:include page="../fragments/footer.jsp" />
 	</div>
+	<spring:url
+		value="/webjars/jquery-ui/1.10.3/ui/jquery.ui.datepicker.js"
+		var="jQueryUiDatePicker" />
+	<script src="${jQueryUiDatePicker}"></script>
 	<script type="text/javascript">
- 		$(function() {
+		$(function() {
 			$('input, textarea').placeholder();
-			$('#dateFrom').datepicker({dateFormat: 'yy-mm-dd'});
-			$('#dateTo').datepicker({dateFormat: 'yy-mm-dd'});
+			$('#dateFrom').datepicker({
+				dateFormat : 'yy-mm-dd'
+			});
+			$('#dateTo').datepicker({
+				dateFormat : 'yy-mm-dd'
+			});
 			$("#lastWeek").click(function() {
 				var currentTime = new Date();
-                var month = currentTime.getMonth() + 1
-                var day = currentTime.getDate();
-                var last_week_day = currentTime.getDate() - 7;
-                var year = currentTime.getFullYear();
-                var lastWeek = year + "-" + month + "-" + last_week_day;
-                var today =  year + "-" + month + "-" + day;
+				var month = currentTime.getMonth() + 1
+				var day = currentTime.getDate();
+				var last_week_day = currentTime.getDate() - 7;
+				var year = currentTime.getFullYear();
+				var lastWeek = year + "-" + month + "-" + last_week_day;
+				var today = year + "-" + month + "-" + day;
 				$('#dateFrom').val(lastWeek);
 				$("#dateTo").val(today);
 			});
 			$("#lastMonth").click(function() {
 				var currentTime = new Date();
 				var month = currentTime.getMonth() + 1
-                var last_month = currentTime.getMonth()
-                var day = currentTime.getDate();
-                var year = currentTime.getFullYear();
-                var lastMonth = year + "-" + last_month + "-" + day;
-                var today =  year + "-" + month + "-" + day;
-				$('#dateFrom').val(lastMonth);				
+				var last_month = currentTime.getMonth()
+				var day = currentTime.getDate();
+				var year = currentTime.getFullYear();
+				var lastMonth = year + "-" + last_month + "-" + day;
+				var today = year + "-" + month + "-" + day;
+				$('#dateFrom').val(lastMonth);
 				$("#dateTo").val(today);
 			});
 		});
