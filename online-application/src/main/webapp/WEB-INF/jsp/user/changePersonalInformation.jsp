@@ -79,9 +79,11 @@
 			var cityTypes=new Array();
 			<c:forEach items="${cityTypes}" var="cityType">
 				var c = {id:'${cityType.id}', dictionaryKey:'${cityType.dictionaryKey}', dictionaryValue:'${cityType.dictionaryValue}'};
-				console.log("id" + c.id + "dictionaryKey:" + c.dictionaryKey +"value:" +c.dictionaryValue);
+				//console.log("id" + c.id + "dictionaryKey:" + c.dictionaryKey +"value:" +c.dictionaryValue);
 				cityTypes.push(c);
 			</c:forEach>
+			var selectedProvinceValue = $("#selectProvince :selected").val();													                 	
+			filterDocumentTypes(selectedProvinceValue, cityTypes);
 			$("#selectProvince").change(function() {
 					var selectedProvinceValue = $("#selectProvince :selected").val();													                 	
 					filterDocumentTypes(selectedProvinceValue, cityTypes);			
@@ -92,9 +94,9 @@
 			$('select[id=selectCity]').html('');
 
 			$.each(cityTypes, function (index, cityType) {
-						console.log("select:" +selectedProvinceValue+ "cityType:" + cityType.dictionaryKey);	
+				//console.log("select:" +selectedProvinceValue+ "cityType:" + cityType.dictionaryKey);	
 				if (selectedProvinceValue == cityType.dictionaryKey) {
-					console.log("select:" +selectedProvinceValue+ "cityType" + cityType.dictionaryValue);
+					//console.log("select:" +selectedProvinceValue+ "cityType" + cityType.dictionaryValue);
 					$('select[id=selectCity]').append($('<option>').text(cityType.dictionaryValue).attr('value', cityType.id));
 				}
 			});
