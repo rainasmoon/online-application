@@ -1,6 +1,5 @@
 package com.hawk.application.web;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -38,7 +37,7 @@ public class ApplicationCreateController {
 
 	@ModelAttribute("platformTypes")
 	public List<PlatformType> populatePlatformTypes() {
-		return Arrays.asList(new PlatformType("iso"));
+		return PlatformType.getAllPlatformTypes();
 	}
 
 	@RequestMapping(value = "/applications/new", method = RequestMethod.GET)

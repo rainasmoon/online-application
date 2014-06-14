@@ -1,7 +1,6 @@
 package com.hawk.application.web;
 
 import java.text.ParseException;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
@@ -16,8 +15,8 @@ public class PlatformTypeFormatter implements Formatter<PlatformType> {
 	}
 
 	public PlatformType parse(String text, Locale locale) throws ParseException {
-		List<PlatformType> findPlatformTypes = Arrays
-				.asList(new PlatformType("iso"));
+		List<PlatformType> findPlatformTypes = PlatformType
+				.getAllPlatformTypes();
 		for (PlatformType type : findPlatformTypes) {
 			if (type.getName().equals(text)) {
 				return type;
