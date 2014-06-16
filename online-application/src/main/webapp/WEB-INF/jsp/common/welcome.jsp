@@ -17,6 +17,9 @@
 <spring:url value="/webjars/flot/0.8.3/jquery.flot.js" var="flot" />
 <script src="${flot}"></script>
 
+<spring:url value="/webjars/flot/0.8.3/jquery.flot.time.js" var="flotTime" />
+<script src="${flotTime}"></script>
+
 <body>
 	<jsp:include page="../fragments/bodyHeader.jsp" />
 	<div class="container">
@@ -105,12 +108,23 @@
 		<jsp:include page="../fragments/footer.jsp" />
 	</div>
 	<script type="text/javascript">
+	
+		function rmbFormatter(v, axis) {
+			return "¥" + v.toFixed(axis.tickDecimals);
+		}
+	
 		$(function() {
-			console.log("${ welcomeVo.promotedUsersTrendArrayString }");
 			var promotedUsersTrend = ${ welcomeVo.promotedUsersTrendArrayString };
 			var promotedIncomeTrend = ${ welcomeVo.promotedIncomeTrendArrayString };
 			
-			$.plot("#promotetrend", [ {data: promotedUsersTrend, label:"推广量" },  {data:promotedIncomeTrend, label:"推广收入"}], {
+			$.plot("#promotetrend", [ {data: promotedUsersTrend, label:"推广量" },  {data:promotedIncomeTrend, label:"推广收入", yaxis: 2}], {
+				xaxes: [ { mode: "time" } ],
+				yaxes: [ { min: 0 }, {
+					alignTicksWithAxis: 1,
+					position: 1,
+					tickFormatter: rmbFormatter
+				} ],
+				legend: { position: "ne" },				
 				series: {
 					lines: {
 						show: true
@@ -149,8 +163,6 @@
 					}
 				
 			});
-
-
 		});
 	</script>
 </body>
