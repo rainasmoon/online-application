@@ -112,13 +112,19 @@
 		function rmbFormatter(v, axis) {
 			return "¥" + v.toFixed(axis.tickDecimals);
 		}
-	
-		$(function() {
+		
+		function showChart(date) {
 			var promotedUsersTrend = ${ welcomeVo.promotedUsersTrendArrayString };
 			var promotedIncomeTrend = ${ welcomeVo.promotedIncomeTrendArrayString };
 			
 			$.plot("#promotetrend", [ {data: promotedUsersTrend, label:"推广量" },  {data:promotedIncomeTrend, label:"推广收入", yaxis: 2}], {
-				xaxes: [ { mode: "time" } ],
+				xaxes: [ { 
+					mode: "time",
+					minTickSize: [1, "day"],
+					min: date.getTime(),
+					max: (new Date()).getTime(),
+					timeformat: "%m-%d"				
+				 } ],
 				yaxes: [ { min: 0 }, {
 					alignTicksWithAxis: 1,
 					position: 1,
@@ -155,7 +161,7 @@
 						var x = item.datapoint[0].toFixed(2),
 							y = item.datapoint[1].toFixed(2);
 	
-						$("#tooltip").html(item.series.label + " of " + x + " = " + y)
+						$("#tooltip").html(item.series.label + " : " + y)
 							.css({top: item.pageY+5, left: item.pageX+5})
 							.fadeIn(200);
 					} else {
@@ -163,6 +169,30 @@
 					}
 				
 			});
+		}
+	
+		$(function() {
+						
+			$("#lastWeek").click(function() {
+				var currentTime = new Date();
+				var month = currentTime.getMonth();
+				var last_week_day = currentTime.getDate() - 7;
+				var year = currentTime.getFullYear();
+				var lastWeek = new Date(year, month, last_week_day);
+				showChart(lastWeek);
+			});
+			$("#lastMonth").click(function() {
+				var currentTime = new Date();
+				var last_month = currentTime.getMonth() -1;
+				var pre_day = currentTime.getDate() + 1;
+				var year = currentTime.getFullYear();
+				var lastMonth = new Date(year, last_month, pre_day);
+				showChart(lastMonth);
+			});
+			
+			$("#lastMonth").click();
+			
+
 		});
 	</script>
 </body>

@@ -76,7 +76,7 @@
 			});
 			$("#lastWeek").click(function() {
 				var currentTime = new Date();
-				var month = currentTime.getMonth() + 1
+				var month = currentTime.getMonth() + 1;
 				var day = currentTime.getDate();
 				var last_week_day = currentTime.getDate() - 7;
 				var year = currentTime.getFullYear();
@@ -87,8 +87,8 @@
 			});
 			$("#lastMonth").click(function() {
 				var currentTime = new Date();
-				var month = currentTime.getMonth() + 1
-				var last_month = currentTime.getMonth()
+				var month = currentTime.getMonth() + 1;
+				var last_month = currentTime.getMonth();
 				var day = currentTime.getDate();
 				var year = currentTime.getFullYear();
 				var lastMonth = year + "-" + last_month + "-" + day;
