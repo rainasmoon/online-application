@@ -19,7 +19,7 @@ public class RadisTest {
 	@Test
 	public void test() {
 		Jedis jedis = new Jedis("localhost");
-		jedis.set("foo", "bar");
+		jedis.jedis.set("foo", "bar");
 		String value = jedis.get("foo");
 
 		LOGGER.debug("test:" + value);
