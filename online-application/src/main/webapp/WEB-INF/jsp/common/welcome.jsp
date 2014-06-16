@@ -4,7 +4,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="dandelion" uri="http://github.com/dandelion" %>
+<%@ taglib prefix="dandelion" uri="http://github.com/dandelion"%>
 
 <html lang="en">
 
@@ -90,10 +90,15 @@
 						<h3 class="panel-title">推广趋势</h3>
 					</div>
 					<div class="panel-body">
-						<div id="promotetrend" class="flot-chart-css" style="height: 300px;"></div>
+						<p>
+							<button id="lastWeek">最近一周</button>
+							<button id="lastMonth">最近一月</button>
+						</p>
+						<div id="promotetrend" class="flot-chart-css"
+							style="height: 300px;"></div>
 					</div>
 				</div>
-				
+
 			</div>
 
 		</div>
@@ -101,19 +106,50 @@
 	</div>
 	<script type="text/javascript">
 		$(function() {
+			console.log("${ welcomeVo.promotedUsersTrendArrayString }");
+			var promotedUsersTrend = ${ welcomeVo.promotedUsersTrendArrayString };
+			var promotedIncomeTrend = ${ welcomeVo.promotedIncomeTrendArrayString };
+			
+			$.plot("#promotetrend", [ {data: promotedUsersTrend, label:"推广量" },  {data:promotedIncomeTrend, label:"推广收入"}], {
+				series: {
+					lines: {
+						show: true
+					},
+					points: {
+						show: true
+					}
+				},
+				grid: {
+					hoverable: true,
+					clickable: true
+				}
+			});
+			
+				
+			$("<div id='tooltip'></div>").css({
+				position: "absolute",
+				display: "none",
+				border: "1px solid #fdd",
+				padding: "2px",
+				"background-color": "#fee",
+				opacity: 0.80
+			}).appendTo("body");
+	
+			$("#promotetrend").bind("plothover", function (event, pos, item) {
 
-			var d1 = [];
-			for (var i = 0; i < 14; i += 0.5) {
-				d1.push([ i, Math.sin(i) ]);
-			}
+					if (item) {
+						var x = item.datapoint[0].toFixed(2),
+							y = item.datapoint[1].toFixed(2);
+	
+						$("#tooltip").html(item.series.label + " of " + x + " = " + y)
+							.css({top: item.pageY+5, left: item.pageX+5})
+							.fadeIn(200);
+					} else {
+						$("#tooltip").hide();
+					}
+				
+			});
 
-			var d2 = [ [ 0, 3 ], [ 4, 8 ], [ 8, 5 ], [ 9, 13 ] ];
-
-			// A null signifies separate line segments
-
-			var d3 = [ [ 0, 12 ], [ 7, 12 ], null, [ 7, 2.5 ], [ 12, 2.5 ] ];
-
-			$.plot("#promotetrend", [ d1, d2, d3 ]);
 
 		});
 	</script>

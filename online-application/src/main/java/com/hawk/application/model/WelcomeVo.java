@@ -10,8 +10,8 @@ public class WelcomeVo {
 	protected int yesterdayUsers;
 	protected double totalBanlance;
 
-	protected String[][] promotedUsersTrend;
-	protected String[][] usersTrend;
+	protected String promotedUsersTrendArrayString;
+	protected String promotedIncomeTrendArrayString;
 
 	public double getTodayIncome() {
 		return todayIncome;
@@ -69,19 +69,22 @@ public class WelcomeVo {
 		this.totalBanlance = totalBanlance;
 	}
 
-	public String[][] getPromotedUsersTrend() {
-		return promotedUsersTrend;
+	public String getPromotedUsersTrendArrayString() {
+		return promotedUsersTrendArrayString;
 	}
 
-	public void setPromotedUsersTrend(String[][] promotedUsersTrend) {
-		this.promotedUsersTrend = promotedUsersTrend;
+	public void setPromotedUsersTrendArrayString(
+			String promotedUsersTrendArrayString) {
+		this.promotedUsersTrendArrayString = promotedUsersTrendArrayString;
 	}
 
-	public String[][] getUsersTrend() {
-		return usersTrend;
+	public String getPromotedIncomeTrendArrayString() {
+		return promotedIncomeTrendArrayString;
 	}
 
-	public void setUsersTrend(String[][] usersTrend) {
-		this.usersTrend = usersTrend;
+	public void setPromotedIncomeTrendArrayString(
+			String promotedIncomeTrendArrayString) {
+		this.promotedIncomeTrendArrayString = promotedIncomeTrendArrayString;
 	}
+
 }

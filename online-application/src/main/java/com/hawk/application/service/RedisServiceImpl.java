@@ -55,6 +55,9 @@ public class RedisServiceImpl implements RedisService {
 		welcomeVo.setYesterdayPromotedUsers(80);
 		welcomeVo.setYesterdayUsers(70);
 
+		welcomeVo.setPromotedUsersTrendArrayString("[[1, 2],[3, 4]]");
+		welcomeVo.setPromotedIncomeTrendArrayString("[[1, 1],[3, 2]]");
+
 		return welcomeVo;
 	}
 
