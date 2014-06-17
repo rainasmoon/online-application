@@ -1,6 +1,5 @@
 package com.hawk.application.service;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -21,10 +20,6 @@ public class RedisServiceImpl implements RedisService {
 
 	Logger LOGGER = LoggerFactory.getLogger(RedisServiceImpl.class);
 
-	private static final String TEST_DIANJOY_APP_ID = "TEST_DIANJOY_APP_ID";
-	private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat(
-			"yyyyMMdd");
-
 	private RedisRepository redisRepository;
 
 	@Autowired
@@ -38,12 +33,11 @@ public class RedisServiceImpl implements RedisService {
 		// find each applications's today's income.
 		// add them together.
 		WelcomeVo welcomeVo = new WelcomeVo();
-		String todayStr = DATE_FORMAT.format(new Date());
-		String id = TEST_DIANJOY_APP_ID + "_" + todayStr + "_" + "total";
-		// redisRepository.setValue(id, "128");
-		// String todayIncomeStr = redisRepository.getValue(id);
-		String todayIncomeStr = "123.4";
-		LOGGER.debug(":www: today's income:" + id);
+		String todayIncomeStr = redisRepository.getValue(RedisKeyUtils
+				.getAppTodayIncome(RedisKeyUtils.TEST_DIANJOY_APP_ID));
+		LOGGER.debug(":www: today's id:"
+				+ RedisKeyUtils
+						.getAppTodayIncome(RedisKeyUtils.TEST_DIANJOY_APP_ID));
 		LOGGER.debug(":www: today's income:" + todayIncomeStr);
 
 		if (todayIncomeStr != null) {

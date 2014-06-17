@@ -12,7 +12,7 @@
 		</encoder>
 	</appender>
 
-    <logger name="com.hawk.application" level="info"/>
+    <logger name="com.hawk.application" level="debug"/>
 
   	<logger name="org.hibernate" level="info" />
   	<logger name="org.hibernate.type.descriptor.sql.BasicBinder"

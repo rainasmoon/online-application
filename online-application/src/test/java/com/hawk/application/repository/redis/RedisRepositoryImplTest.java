@@ -21,7 +21,7 @@ public class RedisRepositoryImplTest {
 
 	@Test
 	public void testSaveData() {
-		redisRepository.setValue("me", "test");
+		redisRepository.setValue("me", "test i am YOU.");
 
 		LOGGER.debug("the me is:" + redisRepository.getValue("me"));
 	}
