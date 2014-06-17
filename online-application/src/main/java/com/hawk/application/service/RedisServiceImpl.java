@@ -84,6 +84,8 @@ public class RedisServiceImpl implements RedisService {
 	@Override
 	public List<Report> retriveFinancialReport(SearchReportVo searchReportVo) {
 		LOGGER.debug("Search critire: " + searchReportVo.toString());
+		// TODO: need to get a total amount.
+
 		List<Report> l = new ArrayList<Report>();
 		Report report = new Report();
 		report.setDate(new Date());

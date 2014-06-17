@@ -17,12 +17,14 @@
 
 	<bean id="jedisConnFactory"
 		class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
-		 p:use-pool="true"/>
+		p:use-pool="true" p:host-name="${redis.host}" p:port="${redis.port}"
+		p:password="${redis.pass}" p:database="${redis.database}" />
 
 
 	<!-- redis template definition -->
-	<bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate"
-		p:connection-factory-ref="jedisConnFactory" />
+	<bean id="redisTemplate" class="org.springframework.data.redis.core.StringRedisTemplate"
+		p:connection-factory-ref="jedisConnFactory">
+	</bean>
 
 
 </beans>
