@@ -85,8 +85,8 @@ public class RedisServiceImpl implements RedisService {
 		report.setDate(new Date());
 		report.setNewUsers(30);
 		report.setActiveUsers(90);
-		report.setActvation(127);
-		report.setActvationIncome(500.0);
+		report.setActvation(null);
+		report.setActvationIncome(null);
 		report.setTaskIncome(20.0);
 		report.setPromoteIncome(1000.0);
 

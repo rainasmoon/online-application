@@ -35,12 +35,12 @@
 					paginate="false" pageable="false" info="false" filterable="false" sortable="false"
 					lengthChange="false">
 					<datatables:column title="日期" property="dateString" />
-					<datatables:column title="新增用户" property="newUsers" />
-					<datatables:column title="活跃用户" property="activeUsers" />
-					<datatables:column title="激活数" property="actvation" />
-					<datatables:column title="激活收入" property="actvationIncome" />
-					<datatables:column title="深度任务收入" property="taskIncome" />
-					<datatables:column title="推广收入" property="promoteIncome" />
+					<datatables:column title="新增用户" property="newUsers" default="-"/>
+					<datatables:column title="活跃用户" property="activeUsers" default="-"/>
+					<datatables:column title="激活数" property="actvation" default="-"/>
+					<datatables:column title="激活收入" property="actvationIncome" default="-"/>
+					<datatables:column title="深度任务收入" property="taskIncome" default="-"/>
+					<datatables:column title="推广收入" property="promoteIncome" default="-"/>
 								
 				</datatables:table>
 
