@@ -15,8 +15,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.hawk.application.model.AppParameter;
 import com.hawk.application.model.Application;
+import com.hawk.application.model.User;
 import com.hawk.application.repository.springdatajpa.AppParameterRepository;
 import com.hawk.application.repository.springdatajpa.ApplicationRepository;
+import com.hawk.application.repository.springdatajpa.UserRepository;
 
 @ContextConfiguration(locations = { "classpath:spring/business-config.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -34,12 +36,19 @@ public class ApplicationServiceTests {
 	@Autowired
 	protected AppParameterRepository appParameterRepository;
 
+	@Autowired
+	protected UserRepository userRepository;
+
 	@Test
 	public void shouldSaveApplication() {
 
-		Application application = givenAapplication();
+		User loginUser = new User();
+		loginUser.setEmail("testEmail");
+		loginUser.setPassword("123");
+		userRepository.save(loginUser);
 
-		applicationService.saveApplication(application);
+		Application application = givenAapplication();
+		applicationService.saveApplication("testEmail", application);
 
 		application = applicationRepository.findOne(application.getId());
 

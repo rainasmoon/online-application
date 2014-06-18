@@ -48,6 +48,8 @@ CREATE TABLE applications (
   updated_by INTEGER DEFAULT NULL
 );
 
+CREATE INDEX applications_created_by ON applications (created_by);
+
 ALTER TABLE applications ADD CONSTRAINT fk_applications_created_by FOREIGN KEY (created_by) REFERENCES applications (id);
 ALTER TABLE applications ADD CONSTRAINT fk_applications_updated_by FOREIGN KEY (updated_by) REFERENCES applications (id);
 
@@ -61,6 +63,8 @@ CREATE TABLE app_parameters (
   created_by INTEGER,
   updated_by INTEGER
 );
+
+CREATE INDEX app_parameters_created_by ON app_parameters (created_by);
 
 ALTER TABLE app_parameters ADD CONSTRAINT fk_app_parameters_created_by FOREIGN KEY (created_by) REFERENCES app_parameters (id);
 ALTER TABLE app_parameters ADD CONSTRAINT fk_app_parameters_updated_by FOREIGN KEY (updated_by) REFERENCES app_parameters (id);
@@ -80,6 +84,8 @@ CREATE TABLE checks (
   updated_by INTEGER
 );
 
+CREATE INDEX checks_created_by ON checks (created_by);
+
 ALTER TABLE checks ADD CONSTRAINT fk_checks_created_by FOREIGN KEY (created_by) REFERENCES checks (id);
 ALTER TABLE checks ADD CONSTRAINT fk_checks_updated_by FOREIGN KEY (updated_by) REFERENCES checks (id);
 
@@ -92,6 +98,8 @@ CREATE TABLE bonus (
   created_by INTEGER,
   updated_by INTEGER
 );
+
+CREATE INDEX bonus_created_by ON bonus (created_by);
 
 ALTER TABLE bonus ADD CONSTRAINT fk_bonus_created_by FOREIGN KEY (created_by) REFERENCES bonus (id);
 ALTER TABLE bonus ADD CONSTRAINT fk_bonus_updated_by FOREIGN KEY (updated_by) REFERENCES bonus (id);

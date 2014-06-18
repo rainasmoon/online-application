@@ -38,6 +38,7 @@ CREATE TABLE IF NOT EXISTS applications (
   updated_date  TIMESTAMP,
   created_by INT(4) UNSIGNED,
   updated_by INT(4) UNSIGNED,
+  INDEX(created_by),
   FOREIGN KEY (created_by) REFERENCES users(id),
   FOREIGN KEY (updated_by) REFERENCES users(id)
 ) engine=InnoDB CHARSET=utf8;
@@ -51,6 +52,7 @@ CREATE TABLE IF NOT EXISTS app_parameters (
   updated_date  TIMESTAMP,
   created_by INT(4) UNSIGNED,
   updated_by INT(4) UNSIGNED,
+  INDEX(created_by),
   FOREIGN KEY (created_by) REFERENCES users(id),
   FOREIGN KEY (updated_by) REFERENCES users(id)
 ) engine=InnoDB CHARSET=utf8;
@@ -68,6 +70,7 @@ CREATE TABLE IF NOT EXISTS checks (
   updated_date  TIMESTAMP,
   created_by INT(4) UNSIGNED,
   updated_by INT(4) UNSIGNED,
+  INDEX(created_by),
   FOREIGN KEY (created_by) REFERENCES users(id),
   FOREIGN KEY (updated_by) REFERENCES users(id)
 ) engine=InnoDB CHARSET=utf8;
@@ -80,6 +83,7 @@ CREATE TABLE IF NOT EXISTS bonus (
   updated_date  TIMESTAMP,
   created_by INT(4) UNSIGNED,
   updated_by INT(4) UNSIGNED,
+  INDEX(created_by),
   FOREIGN KEY (created_by) REFERENCES users(id),
   FOREIGN KEY (updated_by) REFERENCES users(id)
   ) engine=InnoDB CHARSET=utf8;

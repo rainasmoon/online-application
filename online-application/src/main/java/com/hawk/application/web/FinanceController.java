@@ -22,7 +22,7 @@ import com.hawk.application.service.UserService;
 
 @Controller
 @SessionAttributes(types = Check.class)
-public class FinanceController {
+public class FinanceController extends BaseController {
 
 	private final FinanceService financeService;
 	@Autowired
@@ -54,7 +54,7 @@ public class FinanceController {
 		if (result.hasErrors()) {
 			return "finance/applyCheck";
 		} else {
-			this.financeService.saveCheck(check);
+			this.financeService.saveCheck(getLoginEmail(), check);
 			return "redirect:/checks";
 		}
 	}
@@ -62,7 +62,8 @@ public class FinanceController {
 	@RequestMapping(value = "/checks", method = RequestMethod.GET)
 	public String processFindAllChecks(Map<String, Object> model) {
 
-		List<Check> results = this.financeService.findAllChecks();
+		List<Check> results = this.financeService
+				.findAllChecks(getLoginEmail());
 
 		model.put("selections", results);
 		return "finance/listCheck";
@@ -72,7 +73,7 @@ public class FinanceController {
 	@RequestMapping(value = "/bonus", method = RequestMethod.GET)
 	public String processFindAllBonus(Map<String, Object> model) {
 
-		List<Bonus> results = this.financeService.findAllBonus();
+		List<Bonus> results = this.financeService.findAllBonus(getLoginEmail());
 
 		model.put("selections", results);
 		return "finance/listBonus";

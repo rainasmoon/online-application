@@ -1,7 +1,5 @@
 package com.hawk.application.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
@@ -27,12 +25,6 @@ public class UserServiceImpl implements UserService {
 	public void saveUser(User user) throws DataAccessException {
 		userRepository.save(user);
 
-	}
-
-	@Transactional(readOnly = true)
-	public List<User> findAllUsers() {
-
-		return userRepository.findAll();
 	}
 
 	@Transactional(readOnly = true)

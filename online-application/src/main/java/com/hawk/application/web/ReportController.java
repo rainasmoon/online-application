@@ -5,8 +5,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -22,7 +20,7 @@ import com.hawk.application.service.RedisService;
 
 @Controller
 @SessionAttributes(types = SearchReportVo.class)
-public class ReportController {
+public class ReportController extends BaseController {
 
 	@Autowired
 	private RedisService redisService;
@@ -31,13 +29,13 @@ public class ReportController {
 	private ApplicationService applicationService;
 
 	@ModelAttribute("allApplications")
-	public List<Application> populateAllApplicationTypes(HttpSession session) {
-		String userEmail = (String) session.getAttribute("userEmail");
+	public List<Application> populateAllApplicationTypes() {
+
 		List<Application> result = new ArrayList<Application>();
 		Application all = new Application();
 		all.setApplicationName("全部");
 		result.add(all);
-		result.addAll(applicationService.findAllApplications());
+		result.addAll(applicationService.findAllApplications(getLoginEmail()));
 		return result;
 	}
 

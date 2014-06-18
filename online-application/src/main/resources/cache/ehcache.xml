@@ -2,11 +2,7 @@
 	xsi:noNamespaceSchemaLocation="ehcache.xsd" updateCheck="false">
 	<diskStore path="java.io.tmpdir" />
 
-	<!-- objects are evicted from the cache every 60 seconds -->
-	<cache name="applications" timeToLiveSeconds="60"
-		maxElementsInMemory="100" eternal="false" overflowToDisk="false"
-		maxElementsOnDisk="10000000" diskPersistent="false"
-		diskExpiryThreadIntervalSeconds="1" memoryStoreEvictionPolicy="LRU" />
+	<!-- objects are evicted from the cache every 600 seconds -->
 
 	<cache name="provinces" timeToLiveSeconds="600"
 		maxElementsInMemory="100" eternal="false" overflowToDisk="false"

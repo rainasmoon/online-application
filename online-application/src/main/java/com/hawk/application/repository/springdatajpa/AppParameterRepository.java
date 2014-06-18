@@ -10,5 +10,6 @@ import com.hawk.application.model.AppParameter;
 public interface AppParameterRepository extends
 		CrudRepository<AppParameter, Integer> {
 
-	List<AppParameter> findAll() throws DataAccessException;
+	List<AppParameter> findByCreatedBy(Integer createdBy)
+			throws DataAccessException;
 }

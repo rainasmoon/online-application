@@ -16,7 +16,7 @@ import com.hawk.application.service.ApplicationService;
 
 @Controller
 @SessionAttributes(types = Application.class)
-public class ApplicationController {
+public class ApplicationController extends BaseController {
 
 	private final ApplicationService applicationService;
 
@@ -29,7 +29,7 @@ public class ApplicationController {
 	public String processFindAll(Map<String, Object> model) {
 
 		List<Application> results = this.applicationService
-				.findAllApplications();
+				.findAllApplications(getLoginEmail());
 
 		model.put("selections", results);
 		return "application/listApplication";
@@ -50,7 +50,7 @@ public class ApplicationController {
 	public String processFindAllParameters(Map<String, Object> model) {
 
 		List<AppParameter> results = this.applicationService
-				.findAllAppParameters();
+				.findAllAppParameters(getLoginEmail());
 
 		model.put("selections", results);
 		return "application/listAppParameter";

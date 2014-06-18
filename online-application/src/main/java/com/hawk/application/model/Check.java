@@ -5,9 +5,14 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 @Entity
 @Table(name = "checks")
@@ -15,17 +20,18 @@ public class Check extends BaseEntity {
 
 	@Column(name = "contact_name")
 	protected String contactName;
+
 	@Column(name = "contact_id_number")
 	protected String contactIdNumber;
+
 	@Column(name = "bank_name")
 	protected String bankName;
+
 	@Column(name = "bank_address")
 	protected String bankAddress;
+
 	@Column(name = "account_number")
 	protected String accountNumber;
-
-	@Column(name = "created_date")
-	protected Date createdDate;
 
 	@NotNull
 	@Min(100)
@@ -34,6 +40,22 @@ public class Check extends BaseEntity {
 
 	@Column(name = "status")
 	protected String status;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@CreatedDate
+	@Column(name = "created_date")
+	private Date createdDate;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@LastModifiedDate
+	@Column(name = "updated_date")
+	private Date updatedDate;
+
+	@Column(name = "created_by")
+	protected Integer createdBy;
+
+	@Column(name = "updated_by")
+	protected Integer updatedBy;
 
 	@Transient
 	protected Double remainder;
@@ -119,6 +141,30 @@ public class Check extends BaseEntity {
 
 	public void setError(String error) {
 		this.error = error;
+	}
+
+	public Date getUpdatedDate() {
+		return updatedDate;
+	}
+
+	public void setUpdatedDate(Date updatedDate) {
+		this.updatedDate = updatedDate;
+	}
+
+	public Integer getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public Integer getUpdatedBy() {
+		return updatedBy;
+	}
+
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 
 }

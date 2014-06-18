@@ -5,15 +5,16 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.hawk.application.model.AppParameter;
 import com.hawk.application.model.Application;
+import com.hawk.application.model.User;
 import com.hawk.application.repository.springdatajpa.AppParameterRepository;
 import com.hawk.application.repository.springdatajpa.ApplicationRepository;
+import com.hawk.application.repository.springdatajpa.UserRepository;
 
 @Service
 public class ApplicationServiceImpl implements ApplicationService {
@@ -21,6 +22,9 @@ public class ApplicationServiceImpl implements ApplicationService {
 	private ApplicationRepository applicationRepository;
 
 	private AppParameterRepository appParameterRepository;
+
+	@Autowired
+	private UserRepository userRepository;
 
 	@Autowired
 	public ApplicationServiceImpl(ApplicationRepository applicationRepository,
@@ -31,21 +35,28 @@ public class ApplicationServiceImpl implements ApplicationService {
 	}
 
 	@Transactional
-	public void saveApplication(Application application)
+	public void saveApplication(String email, Application application)
 			throws DataAccessException {
 		// TODO create the coressponding data in redis.
 		application.setDianjoyAppId(generateAppId());
 		application.setCreatedDate(new Date());
 		application.setUpdatedDate(application.getCreatedDate());
+		User loginUser = userRepository.findByEmail(email);
+		if (loginUser != null) {
+			Integer createdBy = loginUser.getCreatedBy();
+			application.setCreatedBy(createdBy);
+			application.setUpdatedBy(createdBy);
+		}
 		applicationRepository.save(application);
 
 	}
 
 	@Transactional(readOnly = true)
-	@Cacheable(value = "applications")
-	public List<Application> findAllApplications() throws DataAccessException {
+	public List<Application> findAllApplications(String email)
+			throws DataAccessException {
 
-		return applicationRepository.findAll();
+		Integer createdBy = userRepository.findByEmail(email).getCreatedBy();
+		return applicationRepository.findByCreatedBy(createdBy);
 	}
 
 	@Transactional
@@ -65,8 +76,9 @@ public class ApplicationServiceImpl implements ApplicationService {
 	}
 
 	@Transactional(readOnly = true)
-	public List<AppParameter> findAllAppParameters() {
-		return appParameterRepository.findAll();
+	public List<AppParameter> findAllAppParameters(String email) {
+		Integer createdBy = userRepository.findByEmail(email).getCreatedBy();
+		return appParameterRepository.findByCreatedBy(createdBy);
 	}
 
 }

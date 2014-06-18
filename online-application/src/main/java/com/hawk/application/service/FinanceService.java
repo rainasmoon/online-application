@@ -7,10 +7,10 @@ import com.hawk.application.model.Check;
 
 public interface FinanceService {
 
-	void saveCheck(Check check);
+	void saveCheck(String email, Check check);
 
-	List<Check> findAllChecks();
+	List<Check> findAllChecks(String email);
 
-	List<Bonus> findAllBonus();
+	List<Bonus> findAllBonus(String email);
 
 }

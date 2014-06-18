@@ -10,5 +10,6 @@ import com.hawk.application.model.Application;
 public interface ApplicationRepository extends
 		CrudRepository<Application, Integer> {
 
-	List<Application> findAll() throws DataAccessException;
+	List<Application> findByCreatedBy(Integer createdBy)
+			throws DataAccessException;
 }

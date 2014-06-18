@@ -21,7 +21,7 @@ import com.hawk.application.service.ApplicationService;
 
 @Controller
 @SessionAttributes(types = Application.class)
-public class ApplicationCreateController {
+public class ApplicationCreateController extends BaseController {
 
 	private final ApplicationService applicationService;
 
@@ -54,7 +54,8 @@ public class ApplicationCreateController {
 		if (result.hasErrors()) {
 			return "application/createApplication";
 		} else {
-			this.applicationService.saveApplication(application);
+			this.applicationService.saveApplication(getLoginEmail(),
+					application);
 			return "redirect:/applications";
 		}
 	}
