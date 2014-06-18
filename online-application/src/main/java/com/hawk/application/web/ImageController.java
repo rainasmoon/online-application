@@ -67,7 +67,7 @@ public class ImageController {
 
 		} catch (IOException ex) {
 			LOGGER.error("Error writing file content to output stream");
-			throw new SdkNotFoundException(
+			throw new ImageNotFoundException(
 					"IOError writing file to output stream");
 		} finally {
 			IOUtils.closeQuietly(fileInputStream);

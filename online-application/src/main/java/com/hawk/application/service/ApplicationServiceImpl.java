@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
@@ -15,9 +17,13 @@ import com.hawk.application.model.User;
 import com.hawk.application.repository.springdatajpa.AppParameterRepository;
 import com.hawk.application.repository.springdatajpa.ApplicationRepository;
 import com.hawk.application.repository.springdatajpa.UserRepository;
+import com.hawk.application.web.ImageController;
 
 @Service
 public class ApplicationServiceImpl implements ApplicationService {
+
+	private static final Logger LOGGER = LoggerFactory
+			.getLogger(ImageController.class);
 
 	private ApplicationRepository applicationRepository;
 
@@ -41,9 +47,10 @@ public class ApplicationServiceImpl implements ApplicationService {
 		application.setDianjoyAppId(generateAppId());
 		application.setCreatedDate(new Date());
 		application.setUpdatedDate(application.getCreatedDate());
+		LOGGER.debug("the email is when save:" + email);
 		User loginUser = userRepository.findByEmail(email);
 		if (loginUser != null) {
-			Integer createdBy = loginUser.getCreatedBy();
+			Integer createdBy = loginUser.getId();
 			application.setCreatedBy(createdBy);
 			application.setUpdatedBy(createdBy);
 		}
@@ -55,7 +62,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 	public List<Application> findAllApplications(String email)
 			throws DataAccessException {
 
-		Integer createdBy = userRepository.findByEmail(email).getCreatedBy();
+		Integer createdBy = userRepository.findByEmail(email).getId();
 		return applicationRepository.findByCreatedBy(createdBy);
 	}
 
@@ -77,7 +84,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 
 	@Transactional(readOnly = true)
 	public List<AppParameter> findAllAppParameters(String email) {
-		Integer createdBy = userRepository.findByEmail(email).getCreatedBy();
+		Integer createdBy = userRepository.findByEmail(email).getId();
 		return appParameterRepository.findByCreatedBy(createdBy);
 	}
 

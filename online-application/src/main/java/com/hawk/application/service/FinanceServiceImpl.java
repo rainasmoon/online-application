@@ -25,7 +25,7 @@ public class FinanceServiceImpl implements FinanceService {
 
 	@Override
 	public void saveCheck(String email, Check check) {
-		Integer createdBy = userRepository.findByEmail(email).getCreatedBy();
+		Integer createdBy = userRepository.findByEmail(email).getId();
 		check.setCreatedBy(createdBy);
 		check.setUpdatedBy(createdBy);
 		checkRepository.save(check);
@@ -33,13 +33,13 @@ public class FinanceServiceImpl implements FinanceService {
 
 	@Override
 	public List<Check> findAllChecks(String email) {
-		Integer createdBy = userRepository.findByEmail(email).getCreatedBy();
+		Integer createdBy = userRepository.findByEmail(email).getId();
 		return checkRepository.findByCreatedBy(createdBy);
 	}
 
 	@Override
 	public List<Bonus> findAllBonus(String email) {
-		Integer createdBy = userRepository.findByEmail(email).getCreatedBy();
+		Integer createdBy = userRepository.findByEmail(email).getId();
 		return bonusRepository.findByCreatedBy(createdBy);
 	}
 
