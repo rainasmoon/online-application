@@ -13,24 +13,12 @@ public class RedisKeyUtils {
 		return appId + "_total";
 	}
 
-	public static String getAppTodayIncome(String appId) {
-		return getAppDayIncome(appId, new Date());
-	}
-
 	public static String getAppDayIncome(String appId, Date day) {
 		return appId + "_" + DATE_FORMAT.format(day) + "_total";
 	}
 
-	public static String getAppTodayPromotions(String appId) {
-		return getAppDayPromotions(appId, new Date());
-	}
-
 	public static String getAppDayPromotions(String appId, Date day) {
 		return appId + "_" + DATE_FORMAT.format(day) + "_total_promotion";
-	}
-
-	public static String getAppTodayNewUsers(String appId) {
-		return getAppDayNewUsers(appId, new Date());
 	}
 
 	public static String getAppDayNewUsers(String appId, Date day) {

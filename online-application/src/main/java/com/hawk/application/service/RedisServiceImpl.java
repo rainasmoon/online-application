@@ -3,7 +3,6 @@ package com.hawk.application.service;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Random;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,6 +13,7 @@ import com.hawk.application.model.Report;
 import com.hawk.application.model.SearchReportVo;
 import com.hawk.application.model.WelcomeVo;
 import com.hawk.application.repository.redis.RedisRepository;
+import com.hawk.application.util.DayBuilder;
 
 @Service
 public class RedisServiceImpl implements RedisService {
@@ -33,44 +33,35 @@ public class RedisServiceImpl implements RedisService {
 		// find each applications's today's income.
 		// add them together.
 		WelcomeVo welcomeVo = new WelcomeVo();
-		String todayIncomeStr = redisRepository.getValue(RedisKeyUtils
-				.getAppTodayIncome(RedisKeyUtils.TEST_DIANJOY_APP_ID));
-		LOGGER.debug(":www: today's id:"
-				+ RedisKeyUtils
-						.getAppTodayIncome(RedisKeyUtils.TEST_DIANJOY_APP_ID));
-		LOGGER.debug(":www: today's income:" + todayIncomeStr);
 
-		if (todayIncomeStr != null) {
-			welcomeVo.setTodayIncome(Double.parseDouble(todayIncomeStr));
-		}
-		welcomeVo.setTodayPromotedUsers(100);
-		welcomeVo.setTodayUsers(50);
-		welcomeVo.setTotalBanlance(10000);
-		welcomeVo.setYesterdayIncome(900);
-		welcomeVo.setYesterdayPromotedUsers(80);
-		welcomeVo.setYesterdayUsers(70);
+		DayBuilder dayBuilder = new DayBuilder();
 
-		long today = new Date().getTime();
-		long aday = 24 * 3600 * 1000;
+		welcomeVo.setTodayIncome(redisRepository.getValueAsDouble(RedisKeyUtils
+				.getAppDayIncome(RedisKeyUtils.TEST_DIANJOY_APP_ID,
+						dayBuilder.getToday())));
 
-		Random rand = new Random();
-
-		String s = "[";
-		for (int i = 0; i < 30; i++) {
-			s += "[" + (today - (30 - i) * aday) + ", "
-					+ (rand.nextInt(100) + 20) + "], ";
-		}
-		s += "[" + today + ", " + (rand.nextInt(100) + 20) + "]]";
-
-		String ss = "[";
-		for (int i = 0; i < 30; i++) {
-			ss += "[" + (today - (30 - i) * aday) + ", "
-					+ (rand.nextDouble() * 10 + 10) + "], ";
-		}
-		ss += "[" + today + ", " + (rand.nextDouble() * 10 + 10) + "]]";
-
-		welcomeVo.setPromotedUsersTrendArrayString(s);
-		welcomeVo.setPromotedIncomeTrendArrayString(ss);
+		welcomeVo.setTodayPromotedUsers(redisRepository
+				.getValueAsInteger(RedisKeyUtils.getAppDayPromotions(
+						RedisKeyUtils.TEST_DIANJOY_APP_ID,
+						dayBuilder.getToday())));
+		welcomeVo.setTodayUsers(redisRepository.getValueAsInteger(RedisKeyUtils
+				.getAppDayNewUsers(RedisKeyUtils.TEST_DIANJOY_APP_ID,
+						dayBuilder.getToday())));
+		welcomeVo.setTotalBanlance(redisRepository
+				.getValueAsDouble(RedisKeyUtils
+						.getAppTotolIncome(RedisKeyUtils.TEST_DIANJOY_APP_ID)));
+		welcomeVo.setYesterdayIncome(redisRepository
+				.getValueAsDouble(RedisKeyUtils.getAppDayIncome(
+						RedisKeyUtils.TEST_DIANJOY_APP_ID,
+						dayBuilder.getYesterday())));
+		welcomeVo.setYesterdayPromotedUsers(redisRepository
+				.getValueAsInteger(RedisKeyUtils.getAppDayIncome(
+						RedisKeyUtils.TEST_DIANJOY_APP_ID,
+						dayBuilder.getYesterday())));
+		welcomeVo.setYesterdayUsers(redisRepository
+				.getValueAsInteger(RedisKeyUtils.getAppDayIncome(
+						RedisKeyUtils.TEST_DIANJOY_APP_ID,
+						dayBuilder.getYesterday())));
 
 		return welcomeVo;
 	}

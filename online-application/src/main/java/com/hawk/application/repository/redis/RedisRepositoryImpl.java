@@ -35,6 +35,22 @@ public class RedisRepositoryImpl implements RedisRepository {
 		return valueOps.get(id);
 	}
 
+	public Double getValueAsDouble(String id) {
+		String value = valueOps.get(id);
+		if (value == null) {
+			return null;
+		}
+		return Double.parseDouble(value);
+	}
+
+	public Integer getValueAsInteger(String id) {
+		String value = valueOps.get(id);
+		if (value == null) {
+			return null;
+		}
+		return Integer.parseInt(value);
+	}
+
 	public void setValue(String id, String value) {
 		valueOps.set(id, value);
 
