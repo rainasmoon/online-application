@@ -8,7 +8,7 @@ import com.hawk.application.model.WelcomeVo;
 
 public interface RedisService {
 
-	WelcomeVo retriveWelcomeInfo();
+	WelcomeVo retriveWelcomeInfo(String email);
 
 	List<Report> retriveFinancialReport(SearchReportVo searchReportVo);
 }

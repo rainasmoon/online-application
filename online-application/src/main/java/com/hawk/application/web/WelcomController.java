@@ -13,7 +13,7 @@ import com.hawk.application.service.RedisService;
 
 @Controller
 @SessionAttributes(types = WelcomeVo.class)
-public class WelcomController {
+public class WelcomController extends BaseController {
 
 	@Autowired
 	private RedisService redisService;
@@ -21,7 +21,7 @@ public class WelcomController {
 	@RequestMapping(value = { "/", "/welcome", "/welcome.html" }, method = RequestMethod.GET)
 	public String initCreationForm(Map<String, Object> model) {
 
-		model.put("welcomeVo", redisService.retriveWelcomeInfo());
+		model.put("welcomeVo", redisService.retriveWelcomeInfo(getLoginEmail()));
 		return "common/welcome";
 	}
 }

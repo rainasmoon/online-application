@@ -41,4 +41,12 @@ public class RedisKeyUtils {
 		return appId + "_" + DATE_FORMAT.format(day) + "_task_income";
 	}
 
+	public static String getUserTotalIncome(Integer userId) {
+
+		if (userId == null) {
+			throw new KeyGenerateException("userId is null.");
+		}
+		return userId + "_total";
+	}
+
 }
