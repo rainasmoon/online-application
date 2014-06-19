@@ -12,12 +12,54 @@ public class Report {
 	protected Date date;
 	protected Integer newUsers;
 	protected Integer activeUsers;
-	protected Integer actvation;
-	protected Double actvationIncome;
+	protected Integer activation;
+	protected Double activationIncome;
 	protected Double taskIncome;
-	protected Double promoteIncome;
 
 	private SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+
+	public void addReport(Report report) {
+		if (report.newUsers != null) {
+			if (this.newUsers == null) {
+				this.newUsers = report.newUsers;
+			} else {
+				this.newUsers += report.newUsers;
+			}
+		}
+
+		if (report.activeUsers != null) {
+			if (this.activeUsers == null) {
+				this.activeUsers = report.activeUsers;
+			} else {
+				this.activeUsers += report.activeUsers;
+			}
+		}
+
+		if (report.activation != null) {
+			if (this.activation == null) {
+				this.activation = report.activation;
+			} else {
+				this.activation += report.activation;
+			}
+		}
+
+		if (report.activationIncome != null) {
+			if (this.activationIncome == null) {
+				this.activationIncome = report.activationIncome;
+			} else {
+				this.activationIncome += report.activationIncome;
+			}
+		}
+
+		if (report.taskIncome != null) {
+			if (this.taskIncome == null) {
+				this.taskIncome = report.taskIncome;
+			} else {
+				this.taskIncome += report.taskIncome;
+			}
+		}
+
+	}
 
 	public String getDateString() {
 		if (getDate() == null) {
@@ -61,20 +103,12 @@ public class Report {
 		this.activeUsers = activeUsers;
 	}
 
-	public Integer getActvation() {
-		return actvation;
+	public Integer getActivation() {
+		return activation;
 	}
 
-	public void setActvation(Integer actvation) {
-		this.actvation = actvation;
-	}
-
-	public Double getActvationIncome() {
-		return actvationIncome;
-	}
-
-	public void setActvationIncome(Double actvationIncome) {
-		this.actvationIncome = actvationIncome;
+	public void setActivation(Integer activation) {
+		this.activation = activation;
 	}
 
 	public Double getTaskIncome() {
@@ -86,10 +120,19 @@ public class Report {
 	}
 
 	public Double getPromoteIncome() {
-		return promoteIncome;
+		if (activationIncome == null && taskIncome == null) {
+			return null;
+		}
+		return (activationIncome == null ? 0.0 : activationIncome)
+				+ (taskIncome == null ? 0.0 : taskIncome);
 	}
 
-	public void setPromoteIncome(Double promoteIncome) {
-		this.promoteIncome = promoteIncome;
+	public Double getActivationIncome() {
+		return activationIncome;
 	}
+
+	public void setActivationIncome(Double activationIncome) {
+		this.activationIncome = activationIncome;
+	}
+
 }

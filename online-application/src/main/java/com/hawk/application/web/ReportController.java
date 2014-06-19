@@ -44,8 +44,13 @@ public class ReportController extends BaseController {
 
 		SearchReportVo searchReportVo = new SearchReportVo.Builder().build();
 
-		List<Report> results = this.redisService
-				.retriveFinancialReport(searchReportVo);
+		Date today = new Date();
+		searchReportVo.setDateFrom(new Date(today.getTime() - 24 * 60 * 60
+				* 1000));
+		searchReportVo.setDateTo(today);
+
+		List<Report> results = this.redisService.retriveFinancialReport(
+				getLoginEmail(), searchReportVo);
 
 		model.put("searchReportVo", searchReportVo);
 		model.put("selections", results);
@@ -62,8 +67,8 @@ public class ReportController extends BaseController {
 				* 1000));
 		searchReportVo.setDateTo(today);
 
-		List<Report> results = this.redisService
-				.retriveFinancialReport(searchReportVo);
+		List<Report> results = this.redisService.retriveFinancialReport(
+				getLoginEmail(), searchReportVo);
 
 		model.put("selections", results);
 		return "report/reportToday";
@@ -75,8 +80,13 @@ public class ReportController extends BaseController {
 
 		SearchReportVo searchReportVo = new SearchReportVo.Builder().build();
 
-		List<Report> results = this.redisService
-				.retriveFinancialReport(searchReportVo);
+		Date today = new Date();
+		searchReportVo.setDateFrom(new Date(today.getTime() - 7 * 24 * 60 * 60
+				* 1000));
+		searchReportVo.setDateTo(today);
+
+		List<Report> results = this.redisService.retriveFinancialReport(
+				getLoginEmail(), searchReportVo);
 
 		model.put("searchReportVo", searchReportVo);
 		model.put("selections", results);
@@ -88,8 +98,8 @@ public class ReportController extends BaseController {
 	public String processFindPastReport(SearchReportVo searchReportVo,
 			Map<String, Object> model) {
 
-		List<Report> results = this.redisService
-				.retriveFinancialReport(searchReportVo);
+		List<Report> results = this.redisService.retriveFinancialReport(
+				getLoginEmail(), searchReportVo);
 
 		model.put("selections", results);
 		return "report/reportHistory";

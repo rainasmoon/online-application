@@ -74,39 +74,47 @@ public class RedisServiceImpl implements RedisService {
 		return welcomeVo;
 	}
 
-	private String generatePromotedUsersTrendArrayString(
-			List<Application> myApplications, Date lastMonthDay, Date today) {
+	@Override
+	public List<Report> retriveFinancialReport(String email,
+			SearchReportVo searchReportVo) {
+		LOGGER.debug("Search critire: " + searchReportVo.toString());
+		List<Report> l = new ArrayList<Report>();
+		List<Application> myApplications = new ArrayList<Application>();
+		if (searchReportVo.isSelectedAllApp()) {
+			Integer userId = userRepository.findByEmail(email).getId();
+			LOGGER.debug("user id is:" + userId);
+			myApplications = applicationRepository.findByCreatedBy(userId);
+			LOGGER.debug("the apps is:" + myApplications);
 
-		StringBuffer sb = new StringBuffer();
-		sb.append("[");
-		for (Date day = lastMonthDay; day.before(today); day = new Date(
-				day.getTime() + 24 * 3600 * 1000)) {
-			int value = retriveDayPromotedUsers(myApplications, day);
-			sb.append("[" + day.getTime() + "," + value + "]");
-			if (new Date(day.getTime() + 24 * 3600 * 1000).before(today)) {
-				sb.append(", ");
-			}
+		} else {
+			myApplications.add(searchReportVo.getApplication());
 		}
-		sb.append("]");
+		for (Date day = searchReportVo.getDateFrom(); day.before(new Date(
+				searchReportVo.getDateTo().getTime() + 1)); day = new Date(
+				day.getTime() + 24 * 3600 * 1000)) {
+			Report report = new Report();
+			report.setDate(day);
 
-		return sb.toString();
+			report.setNewUsers(retriveDayUsers(myApplications, day));
+			report.setActiveUsers(retriveActiveUsers(myApplications, day));
+			report.setActivation(retriveActivation(myApplications, day));
+			report.setActivationIncome(retriveActvationIncome(myApplications,
+					day));
+			report.setTaskIncome(retriveTaskIncome(myApplications, day));
+
+			l.add(report);
+		}
+
+		l.add(cauculateTotalRecord(l));
+		return l;
 	}
 
-	private String generatePromotedIncomeTrendArrayString(
-			List<Application> myApplications, Date lastMonthDay, Date today) {
-		StringBuffer sb = new StringBuffer();
-		sb.append("[");
-		for (Date day = lastMonthDay; day.before(today); day = new Date(
-				day.getTime() + 24 * 3600 * 1000)) {
-			double value = retriveDayIncome(myApplications, day);
-			sb.append("[" + day.getTime() + "," + value + "]");
-			if (new Date(day.getTime() + 24 * 3600 * 1000).before(today)) {
-				sb.append(", ");
-			}
+	private Report cauculateTotalRecord(List<Report> l) {
+		Report result = new Report();
+		for (Report r : l) {
+			result.addReport(r);
 		}
-		sb.append("]");
-
-		return sb.toString();
+		return result;
 	}
 
 	private int retriveDayUsers(List<Application> myApplications, Date day) {
@@ -152,10 +160,26 @@ public class RedisServiceImpl implements RedisService {
 	}
 
 	private double retriveDayIncome(List<Application> myApplications, Date day) {
+		double r = 0;
+		for (Application app : myApplications) {
+			String key = RedisKeyUtils.getAppDayIncome(app.getDianjoyAppId(),
+					day);
+			Double temp = redisRepository.getValueAsDouble(key);
+			if (temp == null) {
+				LOGGER.warn("there is no date in redis for key: " + key);
+				temp = 0.0;
+			}
+			r += temp;
+		}
+		return r;
+	}
+
+	private Integer retriveActiveUsers(List<Application> myApplications,
+			Date day) {
 		int r = 0;
 		for (Application app : myApplications) {
-			String key = RedisKeyUtils.getAppDayNewUsers(app.getDianjoyAppId(),
-					day);
+			String key = RedisKeyUtils.getAppDayActiveUsers(
+					app.getDianjoyAppId(), day);
 			Integer temp = redisRepository.getValueAsInteger(key);
 			if (temp == null) {
 				LOGGER.warn("there is no date in redis for key: " + key);
@@ -166,22 +190,92 @@ public class RedisServiceImpl implements RedisService {
 		return r;
 	}
 
-	@Override
-	public List<Report> retriveFinancialReport(SearchReportVo searchReportVo) {
-		LOGGER.debug("Search critire: " + searchReportVo.toString());
-		// TODO: need to get a total amount.
+	private Double retriveTaskIncome(List<Application> myApplications, Date day) {
+		Double r = null;
+		for (Application app : myApplications) {
+			String key = RedisKeyUtils.getAppDayTaskIncome(
+					app.getDianjoyAppId(), day);
+			Double temp = redisRepository.getValueAsDouble(key);
+			if (temp == null) {
+				LOGGER.warn("there is no date in redis for key: " + key);
+			} else {
+				if (r == null) {
+					r = temp;
+				} else {
+					r += temp;
+				}
+			}
+		}
+		return r;
+	}
 
-		List<Report> l = new ArrayList<Report>();
-		Report report = new Report();
-		report.setDate(new Date());
-		report.setNewUsers(30);
-		report.setActiveUsers(90);
-		report.setActvation(null);
-		report.setActvationIncome(null);
-		report.setTaskIncome(20.0);
-		report.setPromoteIncome(1000.0);
+	private Double retriveActvationIncome(List<Application> myApplications,
+			Date day) {
+		Double r = null;
+		for (Application app : myApplications) {
+			String key = RedisKeyUtils.getAppDayActivationIncome(
+					app.getDianjoyAppId(), day);
+			Double temp = redisRepository.getValueAsDouble(key);
+			if (temp == null) {
+				LOGGER.warn("there is no date in redis for key: " + key);
+			} else {
+				if (r == null) {
+					r = temp;
+				} else {
+					r += temp;
+				}
+			}
+		}
+		return r;
+	}
 
-		l.add(report);
-		return l;
+	private Integer retriveActivation(List<Application> myApplications, Date day) {
+		int r = 0;
+		for (Application app : myApplications) {
+			String key = RedisKeyUtils.getAppDayActivation(
+					app.getDianjoyAppId(), day);
+			Integer temp = redisRepository.getValueAsInteger(key);
+			if (temp == null) {
+				LOGGER.warn("there is no date in redis for key: " + key);
+				temp = 0;
+			}
+			r += temp;
+		}
+		return r;
+	}
+
+	private String generatePromotedUsersTrendArrayString(
+			List<Application> myApplications, Date lastMonthDay, Date today) {
+
+		StringBuffer sb = new StringBuffer();
+		sb.append("[");
+		for (Date day = lastMonthDay; day.before(today); day = new Date(
+				day.getTime() + 24 * 3600 * 1000)) {
+			int value = retriveDayPromotedUsers(myApplications, day);
+			sb.append("[" + day.getTime() + "," + value + "]");
+			if (new Date(day.getTime() + 24 * 3600 * 1000).before(today)) {
+				sb.append(", ");
+			}
+		}
+		sb.append("]");
+
+		return sb.toString();
+	}
+
+	private String generatePromotedIncomeTrendArrayString(
+			List<Application> myApplications, Date lastMonthDay, Date today) {
+		StringBuffer sb = new StringBuffer();
+		sb.append("[");
+		for (Date day = lastMonthDay; day.before(today); day = new Date(
+				day.getTime() + 24 * 3600 * 1000)) {
+			double value = retriveDayIncome(myApplications, day);
+			sb.append("[" + day.getTime() + "," + value + "]");
+			if (new Date(day.getTime() + 24 * 3600 * 1000).before(today)) {
+				sb.append(", ");
+			}
+		}
+		sb.append("]");
+
+		return sb.toString();
 	}
 }

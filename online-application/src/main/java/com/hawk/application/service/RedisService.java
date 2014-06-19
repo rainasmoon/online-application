@@ -10,5 +10,6 @@ public interface RedisService {
 
 	WelcomeVo retriveWelcomeInfo(String email);
 
-	List<Report> retriveFinancialReport(SearchReportVo searchReportVo);
+	List<Report> retriveFinancialReport(String email,
+			SearchReportVo searchReportVo);
 }

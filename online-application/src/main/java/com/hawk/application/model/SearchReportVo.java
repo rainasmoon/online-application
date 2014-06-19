@@ -42,6 +42,11 @@ public class SearchReportVo {
 		this.dateTo = dateTo;
 	}
 
+	public boolean isSelectedAllApp() {
+
+		return application == null || application.getId() == null;
+	}
+
 	public static class Builder {
 		private Application application;
 		private Date dateFrom;
@@ -72,4 +77,5 @@ public class SearchReportVo {
 		this.dateFrom = builder.dateFrom;
 		this.dateTo = builder.dateTo;
 	}
+
 }
