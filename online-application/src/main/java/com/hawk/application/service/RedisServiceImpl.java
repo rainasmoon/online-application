@@ -87,7 +87,10 @@ public class RedisServiceImpl implements RedisService {
 			LOGGER.debug("the apps is:" + myApplications);
 
 		} else {
-			myApplications.add(searchReportVo.getApplication());
+			Application application = applicationRepository
+					.findOne(searchReportVo.getApplication().getId());
+
+			myApplications.add(application);
 		}
 		for (Date day = searchReportVo.getDateFrom(); day.before(new Date(
 				searchReportVo.getDateTo().getTime() + 1)); day = new Date(

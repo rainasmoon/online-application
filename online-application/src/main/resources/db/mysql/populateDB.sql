@@ -1,9 +1,6 @@
-INSERT IGNORE INTO users VALUES (1, 'testemail@test.com', 'test', '12345', '101 1988 2983', '个人', 'hawk', '1111 1111 1111', '中国工商银行', 5, 39, '新街口支行', '6995 8808 3728', '/path/id-front', '/path/id-back',  '2013-09-07','2010-09-07', 1, 1);
-INSERT IGNORE INTO users VALUES (2, 'test', 'test', '12345', '101 1988 2983',  '个人', 'hawk', '1111 1111 1111', '中国工商银行', 5, 39, '新街口支行', '6995 8808 3728', '/path/id-front', '/path/id-back', '2013-09-07','2010-09-07', 1, 1);
+INSERT IGNORE INTO users VALUES (1, 'test', 'test', '12345', '101 1988 2983',  '个人', 'hawk', '1111 1111 1111', '中国工商银行', 5, 39, '新街口支行', '6995 8808 3728', '/path/id-front', '/path/id-back', '2013-09-07','2010-09-07', 1, 1);
 
-INSERT IGNORE INTO applications VALUES (1, '1234567890', 'petpet','ios','com.app.me','APP_ID\u5BA1\u6279\u4E2D', '2010-09-07','2010-09-07', 1, 1);
-INSERT IGNORE INTO applications VALUES (2, '1234567891', 'chetme','ios','com.app.me','\u5BA1\u6279\u4E2D', '2011-09-07','2014-09-07', 1, 1);
-INSERT IGNORE INTO applications VALUES (3, '1234567892', 'great war','ios','com.app.me','APP_ID\u5BA1\u6279\u4E2D', '2012-09-07','2210-09-07', 1, 1);
+INSERT IGNORE INTO applications VALUES (1, 'TEST_DIANJOY_APP_ID', 'petpet','ios','com.app.me','APP_ID\u5BA1\u6279\u4E2D', '2010-09-07','2010-09-07', 1, 1);
 
 INSERT IGNORE INTO app_parameters VALUES (1, 1, 'chet', 'false', '2012-09-07','2210-09-07', 1, 1);
 
@@ -12,9 +9,6 @@ INSERT IGNORE INTO bonus VALUES (1, 100, '开发者注册送50', '2013-09-07','2
 INSERT IGNORE INTO checks VALUES (1, 'glen', '1111 111', 'city bank', 'china bj wangfujing street', '1115 1230 1897 2222', 10000.00, 'passed', '2013-09-07','2010-09-07', 1, 1);
 
 INSERT IGNORE INTO sdks VALUES (1, 'IOS', '积分墙', 'V8.8.8.8', '/path_to_download', '下载联盟工厂积分墙SDK');
-
-
-
 
 INSERT IGNORE INTO dictionary VALUES(1, 'province', null, '北京市') ;
 INSERT IGNORE INTO dictionary VALUES(2, 'province', null, '天津市');
