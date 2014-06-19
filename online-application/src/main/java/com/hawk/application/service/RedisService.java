@@ -12,4 +12,6 @@ public interface RedisService {
 
 	List<Report> retriveFinancialReport(String email,
 			SearchReportVo searchReportVo);
+
+	double getUserTotalIncome(String email);
 }

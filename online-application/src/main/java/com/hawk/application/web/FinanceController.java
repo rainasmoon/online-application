@@ -18,6 +18,7 @@ import com.hawk.application.model.Bonus;
 import com.hawk.application.model.Check;
 import com.hawk.application.model.User;
 import com.hawk.application.service.FinanceService;
+import com.hawk.application.service.RedisService;
 import com.hawk.application.service.UserService;
 
 @Controller
@@ -27,6 +28,10 @@ public class FinanceController extends BaseController {
 	private final FinanceService financeService;
 	@Autowired
 	private UserService userService;
+
+	@Autowired
+	private RedisService redisService;
+
 	@Autowired
 	private Mapper dozerBeanMapper;
 
@@ -44,13 +49,17 @@ public class FinanceController extends BaseController {
 
 		Check check = dozerBeanMapper.map(user, Check.class);
 		check.setId(null);
-		model.put("check", check);
+		check.setRemainder(redisService.getUserTotalIncome(getLoginEmail()));
 
+		model.put("check", check);
 		return "finance/applyCheck";
 	}
 
 	@RequestMapping(value = "/checks/new", method = RequestMethod.POST)
 	public String processCreationForm(@Valid Check check, BindingResult result) {
+		new CheckValidator()
+				.validate(redisService.getUserTotalIncome(getLoginEmail()),
+						check, result);
 		if (result.hasErrors()) {
 			return "finance/applyCheck";
 		} else {

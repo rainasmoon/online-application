@@ -112,6 +112,22 @@ public class RedisServiceImpl implements RedisService {
 		return l;
 	}
 
+	@Override
+	public double getUserTotalIncome(String email) {
+		Integer userId = userRepository.findByEmail(email).getId();
+		return retriveUserTotalIncome(userId);
+	}
+
+	public double retriveUserTotalIncome(Integer userId) {
+		String key = RedisKeyUtils.getUserTotalIncome(userId);
+		Double r = redisRepository.getValueAsDouble(key);
+		if (r == null) {
+			LOGGER.warn("there is no date in redis for key: " + key);
+			r = 0.0;
+		}
+		return r;
+	}
+
 	private Report cauculateTotalRecord(List<Report> l) {
 		Report result = new Report();
 		for (Report r : l) {
@@ -150,16 +166,6 @@ public class RedisServiceImpl implements RedisService {
 		}
 		return r;
 
-	}
-
-	private double retriveUserTotalIncome(Integer userId) {
-		String key = RedisKeyUtils.getUserTotalIncome(userId);
-		Double r = redisRepository.getValueAsDouble(key);
-		if (r == null) {
-			LOGGER.warn("there is no date in redis for key: " + key);
-			r = 0.0;
-		}
-		return r;
 	}
 
 	private double retriveDayIncome(List<Application> myApplications, Date day) {
