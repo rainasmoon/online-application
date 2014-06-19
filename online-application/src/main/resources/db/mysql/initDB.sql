@@ -1,3 +1,5 @@
+drop database if exists onlineapp;
+
 CREATE DATABASE IF NOT EXISTS onlineapp;
 GRANT ALL PRIVILEGES ON onlineapp.* TO pc@localhost IDENTIFIED BY 'pc';
 
