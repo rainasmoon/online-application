@@ -1,5 +1,6 @@
 package com.hawk.application.web;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.hawk.application.model.Application;
-import com.hawk.application.model.PlatformType;
 import com.hawk.application.service.ApplicationService;
 
 @Controller
@@ -36,8 +36,8 @@ public class ApplicationCreateController extends BaseController {
 	}
 
 	@ModelAttribute("platformTypes")
-	public List<PlatformType> populatePlatformTypes() {
-		return PlatformType.getAllPlatformTypes();
+	public List<String> populatePlatformTypes() {
+		return Arrays.asList("iso");
 	}
 
 	@RequestMapping(value = "/applications/new", method = RequestMethod.GET)

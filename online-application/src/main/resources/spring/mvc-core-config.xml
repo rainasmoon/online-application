@@ -61,8 +61,7 @@
 		class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
 		<property name="registerDefaultFormatters" value="false" />
 		<property name="formatters">
-			<set>
-				<bean class="com.hawk.application.web.PlatformTypeFormatter" />
+			<set>				
 				<bean
 					class="org.springframework.format.number.NumberFormatAnnotationFormatterFactory" />
 			</set>
