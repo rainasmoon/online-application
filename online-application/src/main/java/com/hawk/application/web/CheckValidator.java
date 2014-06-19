@@ -11,7 +11,8 @@ public class CheckValidator {
 
 	public void validate(double remainder, Check check, Errors errors) {
 
-		if (check.getApplyAmount() > remainder) {
+		if (check.getApplyAmount() != null
+				&& check.getApplyAmount() > remainder) {
 			errors.rejectValue("applyAmount", "error.check.amount.too.big");
 		}
 
