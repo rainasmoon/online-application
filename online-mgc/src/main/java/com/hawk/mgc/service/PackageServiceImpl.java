@@ -1,5 +1,6 @@
 package com.hawk.mgc.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +23,14 @@ public class PackageServiceImpl implements PackageService {
 	}
 
 	@Transactional
-	public void savePackage(MgcPackage apcakage) throws DataAccessException {
-		packageRepository.save(apcakage);
+	public void savePackage(MgcPackage apacakage) throws DataAccessException {
+		if (apacakage.isNew()) {
+			apacakage.setCreatedDate(new Date());
+			apacakage.setUpdatedDate(apacakage.getCreatedDate());
+		} else {
+			apacakage.setUpdatedDate(new Date());
+		}
+		packageRepository.save(apacakage);
 
 	}
 
