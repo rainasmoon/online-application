@@ -8,6 +8,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="onlineapplication" tagdir="/WEB-INF/tags"%>
 <%@ taglib prefix="datatables"
 	uri="http://github.com/dandelion/datatables"%>
 
@@ -24,7 +25,21 @@
 			<div class="col-xs-6 col-sm-3 sidebar-offcanvas" role="navigation">
 				<jsp:include page="../fragments/leftMenu.jsp" /></div>
 			<div class="col-xs-12 col-sm-9">
-
+				<c:url var="actionUrl" value="packages.html" />
+				<form:form action="${actionUrl}" modelAttribute="searchMgcPackageVo"
+					method="post" class="form-horizontal" id="search-mgcpackage-form">
+					<onlineapplication:selectField label="推广包" 
+						name="mgcPackage.id" names="${allMgcPackages}" itemValue="id"
+						itemLabel="packageName" size="1" />
+					<onlineapplication:selectField label="产品" 
+						name="mgcProduct.id" names="${allMgcPackages}" itemValue="id"
+						itemLabel="productionName" size="1" />					
+					<form:input path="dateFrom" size="10" placeholder="yyyy-mm-dd"
+						maxLength="10" minLength="10" />
+					<form:input path="dateTo" size="10" placeholder="yyyy-mm-dd"
+						maxLength="10" minLength="10" />
+					<button id="search" type="submit">Search</button>
+				</form:form>
 				<h2>数据统计</h2>
 				<datatables:table id="mgcPackageTable" data="${selections}" cdn="true"
 					row="mgcPackage" theme="bootstrap3" cssClass="table table-striped"
