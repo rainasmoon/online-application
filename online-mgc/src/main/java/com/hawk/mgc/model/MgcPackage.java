@@ -8,6 +8,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+import javax.validation.constraints.Size;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -17,9 +18,11 @@ import org.springframework.data.annotation.LastModifiedDate;
 public class MgcPackage extends BaseEntity {
 
 	@Column(name = "package_name")
+	@Size(max = 100, message = "{error.too.lang}")
 	protected String packageName;
 
 	@Column(name = "production_name")
+	@Size(max = 100, message = "{error.too.lang}")
 	protected String productionName;
 
 	@Column(name = "installations")

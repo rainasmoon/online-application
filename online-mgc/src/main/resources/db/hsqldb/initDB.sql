@@ -18,8 +18,8 @@ CREATE INDEX users_user_name ON users (user_name);
 
 CREATE TABLE packages (
   id INTEGER IDENTITY PRIMARY KEY,
-  package_name VARCHAR(40),
-  production_name VARCHAR(40),
+  package_name VARCHAR(100),
+  production_name VARCHAR(100),
   installations INTEGER,
   activations INTEGER,
   created_date  TIMESTAMP,
