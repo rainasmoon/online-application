@@ -16,7 +16,7 @@
 
 	<div class="navbar-collapse collapse">
 		<ul class="nav navbar-nav navbar-right">
-			<li><c:out value="${userEmail}" /></li>
+			<li><a><c:out value="${userName}" /></a></li>
 			<li><a
 				href="<spring:url value="/logout.html" htmlEscape="true" />">退出</a></li>
 		</ul>
