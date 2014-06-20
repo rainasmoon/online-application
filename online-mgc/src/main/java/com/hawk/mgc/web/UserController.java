@@ -77,6 +77,7 @@ public class UserController {
 	public String initUpdateForm(@PathVariable("userId") int userId,
 			Map<String, Object> model) {
 		User user = userService.findUserById(userId);
+		LOGGER.debug("the user is:" + user);
 		model.put("user", user);
 
 		return "user/createOrUpdateUser";
@@ -87,6 +88,7 @@ public class UserController {
 		if (result.hasErrors()) {
 			return "user/createOrUpdateUser";
 		} else {
+			LOGGER.debug("the user after is:" + user);
 			this.userService.saveUser(user);
 			return "redirect:/users";
 		}

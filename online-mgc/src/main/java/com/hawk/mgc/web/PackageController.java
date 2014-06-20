@@ -22,11 +22,10 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.hawk.mgc.model.MgcPackage;
 import com.hawk.mgc.model.SearchMgcPackageVo;
-import com.hawk.mgc.model.User;
 import com.hawk.mgc.service.PackageService;
 
 @Controller
-@SessionAttributes(types = SearchMgcPackageVo.class)
+@SessionAttributes(types = MgcPackage.class)
 public class PackageController {
 
 	Logger LOGGER = LoggerFactory.getLogger(UserController.class);
@@ -71,8 +70,8 @@ public class PackageController {
 
 	@RequestMapping(value = "/packages/new", method = RequestMethod.GET)
 	public String initCreationForm(Map<String, Object> model) {
-		User user = new User();
-		model.put("user", user);
+		MgcPackage mgcPackage = new MgcPackage();
+		model.put("mgcPackage", mgcPackage);
 
 		return "package/createOrUpdatePackage";
 	}
@@ -92,6 +91,7 @@ public class PackageController {
 	public String initUpdateForm(@PathVariable("packageId") int packageId,
 			Map<String, Object> model) {
 		MgcPackage mgcPackage = packageService.findPackageById(packageId);
+		LOGGER.debug("the mgcPackage before is" + mgcPackage);
 		model.put("mgcPackage", mgcPackage);
 
 		return "package/createOrUpdatePackage";
@@ -100,6 +100,7 @@ public class PackageController {
 	@RequestMapping(value = "/packages/{packageId}/edit", method = RequestMethod.POST)
 	public String processUpdateForm(@Valid MgcPackage mgcPackage,
 			BindingResult result) {
+		LOGGER.debug("the mgcPackage is" + mgcPackage);
 		if (result.hasErrors()) {
 			return "package/createOrUpdatePackage";
 		} else {
