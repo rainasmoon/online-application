@@ -107,4 +107,12 @@ public class User extends BaseEntity {
 		this.error = error;
 	}
 
+	public String getUserRole() {
+		return userRole;
+	}
+
+	public void setUserRole(String userRole) {
+		this.userRole = userRole;
+	}
+
 }

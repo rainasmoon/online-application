@@ -19,7 +19,7 @@
 
 	<div class="container">
 
-		<h2 class="form-signin-heading">登录</h2>
+		<h2 class="form-signin-heading">MGC数据开放系统</h2>
 
 		<form:form modelAttribute="loginVo" method="post"
 			class="form-horizontal" id="login-form">
@@ -31,23 +31,14 @@
 					</c:if>
 				</spring:bind>
 			</span>
-			<onlineapplication:inputField label="邮箱" name="email" />
-			<onlineapplication:passwordField label="密码" name="password" />
-			<onlineapplication:inputField label="验证码" name="checkCode" />
-			<img id="jcaptchaImg"
-				src="<spring:url value="/jcaptcha.jpg" htmlEscape="true" />" />
-			<a href="javascript:refreshJcaptchaImg()">看不清？</a>
+			<onlineapplication:inputField label="账号" name="userName" />
+			<onlineapplication:passwordField label="密码" name="password" />			
 			<div class="form-actions">
 
-				<button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+				<button class="btn btn-lg btn-primary btn-block" type="submit">登录系统</button>
 
 			</div>
 		</form:form>
-
-		<div>
-			<a href="<spring:url value="/register.html" htmlEscape="true" />">
-				注册</a>
-		</div>
 
 	</div>
 	<jsp:include page="../fragments/footer.jsp" />
@@ -55,12 +46,8 @@
  
 		$(function() {
 			$('input, textarea').placeholder();
-			$('#email').focus();
-		});
-		function refreshJcaptchaImg() {
-		d = new Date();
-		$("#jcaptchaImg").attr("src", "./jcaptcha.jpg?"+d.getTime());
-	}
+			$('#userName').focus();
+		});		
 	</script>
 
 </body>
