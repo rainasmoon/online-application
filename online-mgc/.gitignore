@@ -3,6 +3,6 @@
 .project
 /.settings/
 *~
-
+~*
 /Test_Only.file
 /test_download_file.zip
