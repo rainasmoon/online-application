@@ -28,18 +28,20 @@
 				<h2>用户管理</h2>
 				<datatables:table id="userTable" data="${selections}" cdn="true"
 					row="user" theme="bootstrap3" cssClass="table table-striped"
-					paginate="false" pageable="false" info="false" filterable="false" sortable="false"
-					lengthChange="false">
+					paginate="false" pageable="false" info="false" filterable="false"
+					sortable="false" lengthChange="false">
 
 					<datatables:column title="账号" property="userName" />
-					<datatables:column title="角色" property="userRole" />									
+					<datatables:column title="角色" property="userRole" />
 					<datatables:column title="操作">
 						<a href="">修改</a>
 						<a href=""></a>
 					</datatables:column>
-								
+
 				</datatables:table>
 
+				<br /> <a href='<spring:url value="/users/new" htmlEscape="true"/>'>Add
+					User</a>
 
 			</div>
 		</div>

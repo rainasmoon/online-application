@@ -4,10 +4,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -48,6 +51,25 @@ public class UserController {
 		model.put("selections", results);
 		return "user/listUser";
 
+	}
+
+	@RequestMapping(value = "/users/new", method = RequestMethod.GET)
+	public String initCreationForm(Map<String, Object> model) {
+		User user = new User();
+		model.put("user", user);
+
+		return "user/createOrUpdateUser";
+	}
+
+	@RequestMapping(value = "/users/new", method = RequestMethod.POST)
+	public String processCreationForm(@Valid User user, BindingResult result) {
+		new CreateUserValidator(userService).validate(user, result);
+		if (result.hasErrors()) {
+			return "user/createOrUpdateUser";
+		} else {
+			this.userService.saveUser(user);
+			return "redirect:/users";
+		}
 	}
 
 }
