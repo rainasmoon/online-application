@@ -14,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -70,6 +71,34 @@ public class UserController {
 			this.userService.saveUser(user);
 			return "redirect:/users";
 		}
+	}
+
+	@RequestMapping(value = "/users/{userId}/edit", method = RequestMethod.GET)
+	public String initUpdateForm(@PathVariable("userId") int userId,
+			Map<String, Object> model) {
+		User user = userService.findUserById(userId);
+		model.put("user", user);
+
+		return "user/createOrUpdateUser";
+	}
+
+	@RequestMapping(value = "/users/{userId}/edit", method = RequestMethod.POST)
+	public String processUpdateForm(@Valid User user, BindingResult result) {
+		if (result.hasErrors()) {
+			return "user/createOrUpdateUser";
+		} else {
+			this.userService.saveUser(user);
+			return "redirect:/users";
+		}
+	}
+
+	@RequestMapping(value = "/users/{userId}/delete", method = RequestMethod.GET)
+	public String deleteApplication(@PathVariable("userId") int userId,
+			Map<String, Object> model) {
+
+		this.userService.deleteUserById(userId);
+
+		return processFindAll(model);
 	}
 
 }

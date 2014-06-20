@@ -27,15 +27,15 @@
 
 				<h2>用户管理</h2>
 				<datatables:table id="userTable" data="${selections}" cdn="true"
-					row="user" theme="bootstrap3" cssClass="table table-striped"
+					row="auser" theme="bootstrap3" cssClass="table table-striped"
 					paginate="false" pageable="false" info="false" filterable="false"
 					sortable="false" lengthChange="false">
 
 					<datatables:column title="账号" property="userName" />
 					<datatables:column title="角色" property="userRole" />
 					<datatables:column title="操作">
-						<a href="">修改</a>
-						<a href=""></a>
+						<a href="users/${auser.id}/edit">修改</a>
+						<a href="users/${auser.id}/delete">删除</a>
 					</datatables:column>
 
 				</datatables:table>
