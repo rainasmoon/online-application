@@ -4,26 +4,29 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
-import javax.validation.constraints.Size;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 @Entity
-@Table(name = "packages")
-public class MgcPackage extends BaseEntity {
+@Table(name = "package_details")
+public class MgcPackageDetail extends BaseEntity {
 
-	@Column(name = "package_name")
-	@Size(max = 100, message = "{error.too.lang}")
-	protected String packageName;
+	@ManyToOne
+	@JoinColumn(name = "package_id")
+	protected MgcPackage mgcPackage;
 
-	@Column(name = "production_name")
-	@Size(max = 100, message = "{error.too.lang}")
-	protected String productionName;
+	@Column(name = "installations")
+	protected Integer installations;
+
+	@Column(name = "activations")
+	protected Integer activations;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@CreatedDate
@@ -44,20 +47,28 @@ public class MgcPackage extends BaseEntity {
 	@Transient
 	protected String error;
 
-	public String getPackageName() {
-		return packageName;
+	public MgcPackage getMgcPackage() {
+		return mgcPackage;
 	}
 
-	public void setPackageName(String packageName) {
-		this.packageName = packageName;
+	public void setMgcPackage(MgcPackage mgcPackage) {
+		this.mgcPackage = mgcPackage;
 	}
 
-	public String getProductionName() {
-		return productionName;
+	public Integer getInstallations() {
+		return installations;
 	}
 
-	public void setProductionName(String productionName) {
-		this.productionName = productionName;
+	public void setInstallations(Integer installations) {
+		this.installations = installations;
+	}
+
+	public Integer getActivations() {
+		return activations;
+	}
+
+	public void setActivations(Integer activations) {
+		this.activations = activations;
 	}
 
 	public Date getCreatedDate() {
@@ -99,5 +110,4 @@ public class MgcPackage extends BaseEntity {
 	public void setError(String error) {
 		this.error = error;
 	}
-
 }

@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.hawk.mgc.model.MgcPackage;
+import com.hawk.mgc.model.MgcPackageDetail;
 import com.hawk.mgc.model.SearchMgcPackageVo;
 import com.hawk.mgc.service.PackageService;
 
@@ -28,7 +29,7 @@ import com.hawk.mgc.service.PackageService;
 @SessionAttributes(types = MgcPackage.class)
 public class PackageController {
 
-	Logger LOGGER = LoggerFactory.getLogger(UserController.class);
+	Logger LOGGER = LoggerFactory.getLogger(PackageController.class);
 	private final PackageService packageService;
 
 	@Autowired
@@ -54,13 +55,22 @@ public class PackageController {
 
 	@ModelAttribute("productionTypes")
 	public List<String> populateContactTypes() {
-		return Arrays.asList("全部", "大家赚");
+		return Arrays.asList("大家赚");
 	}
 
 	@RequestMapping(value = "/packages", method = RequestMethod.GET)
+	public String processFindAllPackages(Map<String, Object> model) {
+		List<MgcPackage> results = this.packageService.findAllPackages();
+		model.put("selections", results);
+		return "package/listPackage";
+
+	}
+
+	@RequestMapping(value = "/channels", method = RequestMethod.GET)
 	public String processFindAll(Map<String, Object> model) {
 
-		List<MgcPackage> results = this.packageService.findAllPackages();
+		List<MgcPackageDetail> results = this.packageService
+				.findAllPackageDetails();
 		SearchMgcPackageVo searchMgcPackageVo = new SearchMgcPackageVo();
 		model.put("searchMgcPackageVo", searchMgcPackageVo);
 		model.put("selections", results);
@@ -68,12 +78,12 @@ public class PackageController {
 
 	}
 
-	@RequestMapping(value = "/packages", method = RequestMethod.POST)
+	@RequestMapping(value = "/channels", method = RequestMethod.POST)
 	public String processSearchAll(SearchMgcPackageVo searchMgcPackageVo,
 			Map<String, Object> model) {
 
-		List<MgcPackage> results = this.packageService
-				.searchPackages(searchMgcPackageVo);
+		List<MgcPackageDetail> results = this.packageService
+				.searchPackageDetails(searchMgcPackageVo);
 
 		model.put("selections", results);
 		return "package/listChannel";
@@ -129,4 +139,5 @@ public class PackageController {
 
 		return processFindAll(model);
 	}
+
 }

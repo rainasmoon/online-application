@@ -26,36 +26,31 @@
 				<jsp:include page="../fragments/leftMenu.jsp" /></div>
 			<div class="col-xs-12 col-sm-9">
 				<c:url var="actionUrl" value="packages.html" />
-				<form:form action="${actionUrl}" modelAttribute="searchMgcPackageVo"
-					method="post" class="form-horizontal" id="search-mgcpackage-form">
-					<onlineapplication:selectField label="推广包" name="mgcPackage.id"
-						names="${allMgcPackages}" itemValue="id" itemLabel="packageName"
-						size="1" />
-					<onlineapplication:selectField label="产品" name="mgcProduct"
-						names="${productionTypes}" size="1" />
-					<form:input path="dateFrom" size="10" placeholder="yyyy-mm-dd"
-						maxLength="10" minLength="10" />
-					<form:input path="dateTo" size="10" placeholder="yyyy-mm-dd"
-						maxLength="10" minLength="10" />
-					<button id="search" type="submit">Search</button>
-				</form:form>
-				<h2>数据统计</h2>
+
+				<h2>全部Package</h2>
 				<datatables:table id="mgcPackageTable" data="${selections}"
-					cdn="true" row="mgcPackageDetail" theme="bootstrap3"
+					cdn="true" row="mgcPackage" theme="bootstrap3"
 					cssClass="table table-striped" paginate="false" pageable="false"
 					info="false" filterable="false" sortable="false"
 					lengthChange="false">
 
 					<datatables:column title="日期">
 						<fmt:formatDate pattern="yyyy-MM-dd"
-							value="${mgcPackageDetail.createdDate}" />
+							value="${mgcPackage.createdDate}" />
 					</datatables:column>
-					<datatables:column title="推广包" property="mgcPackage.packageName" />
-					<datatables:column title="产品名" property="mgcPackage.productionName" />
-					<datatables:column title="安装量" property="installations" />
-					<datatables:column title="激活量" property="activations" />					
+					<datatables:column title="推广包" property="packageName" />
+					<datatables:column title="产品名" property="productionName" />
+					<datatables:column title="操作">
+						<a href="packages/${mgcPackage.id}/listDetails.html">查看明细</a>
+						<a href="packages/${mgcPackage.id}/edit.html">修改</a>
+						<a href="packages/${mgcPackage.id}/delete.html">删除</a>
+					</datatables:column>
 
 				</datatables:table>
+
+				<br /> <a
+					href='<spring:url value="/packages/new" htmlEscape="true"/>'>Add
+					Package</a>
 
 			</div>
 		</div>
@@ -66,15 +61,8 @@
 		var="jQueryUiDatePicker" />
 	<script src="${jQueryUiDatePicker}"></script>
 	<script type="text/javascript">
- 
 		$(function() {
-			$('input, textarea').placeholder();
-			$('#dateFrom').datepicker({
-				dateFormat : 'yy-mm-dd'
-			});
-			$('#dateTo').datepicker({
-				dateFormat : 'yy-mm-dd'
-			});
+			
 		});
 	</script>
 </body>

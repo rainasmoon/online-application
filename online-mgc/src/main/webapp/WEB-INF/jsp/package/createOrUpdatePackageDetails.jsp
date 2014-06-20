@@ -26,7 +26,7 @@
 
 				<h2>包</h2>
 
-				<form:form modelAttribute="mgcPackage" method="post"
+				<form:form modelAttribute="mgcPackageDetail" method="post"
 					class="form-horizontal" id="change-package-form"
 					>
 					<span class="help-inline"> <c:if test="${not empty message}">
@@ -37,9 +37,10 @@
 							</c:if>
 						</spring:bind>
 					</span>
+					
+					<onlineapplication:inputField label="安装量" name="installations" />
+					<onlineapplication:inputField label="激活量" name="activations" />
 
-					<onlineapplication:inputField label="包名" name="packageName" />
-					<onlineapplication:inputField label="产品名" name="productionName" />
 					<div class="form-actions">
 
 						<button class="btn btn-lg btn-primary btn-block" type="submit">提交</button>
@@ -56,9 +57,10 @@
  
 		$(function() {
 			$('input, textarea').placeholder();
-			$('#packageName').focus();
+			$('#installations').focus();
 			
-		});		
+		});
+		
 		
 	</script>
 </body>

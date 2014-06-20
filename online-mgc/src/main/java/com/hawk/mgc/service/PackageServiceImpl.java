@@ -9,17 +9,22 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.hawk.mgc.model.MgcPackage;
+import com.hawk.mgc.model.MgcPackageDetail;
 import com.hawk.mgc.model.SearchMgcPackageVo;
+import com.hawk.mgc.repository.springdatajpa.PackageDetailRepository;
 import com.hawk.mgc.repository.springdatajpa.PackageRepository;
 
 @Service
 public class PackageServiceImpl implements PackageService {
 
 	private PackageRepository packageRepository;
+	private PackageDetailRepository packageDetailRepository;
 
 	@Autowired
-	public PackageServiceImpl(PackageRepository packageRepository) {
+	public PackageServiceImpl(PackageRepository packageRepository,
+			PackageDetailRepository packageDetailRepository) {
 		this.packageRepository = packageRepository;
+		this.packageDetailRepository = packageDetailRepository;
 
 	}
 
@@ -57,10 +62,55 @@ public class PackageServiceImpl implements PackageService {
 	}
 
 	@Override
+	@Transactional
+	public void savePackageDetail(int mgcPackageId,
+			MgcPackageDetail mgcPackageDetail) {
+		MgcPackage mgcPackage = new MgcPackage();
+		mgcPackage.setId(mgcPackageId);
+		mgcPackageDetail.setMgcPackage(mgcPackage);
+
+		savePackageDetail(mgcPackageDetail);
+
+	}
+
+	@Override
+	@Transactional
+	public void savePackageDetail(MgcPackageDetail mgcPackageDetail) {
+		packageDetailRepository.save(mgcPackageDetail);
+
+	}
+
+	@Override
 	@Transactional(readOnly = true)
-	public List<MgcPackage> searchPackages(SearchMgcPackageVo searchMgcPackageVo) {
-		// TODO need to create the right method.
-		return packageRepository.findAll();
+	public MgcPackageDetail findPackageDetailById(int detailId) {
+
+		return packageDetailRepository.findOne(detailId);
+	}
+
+	@Override
+	@Transactional
+	public void deletePackageDetailById(int packageDetailId) {
+		packageDetailRepository.delete(packageDetailId);
+
+	}
+
+	@Override
+	public List<MgcPackageDetail> searchPackageDetails(
+			SearchMgcPackageVo searchMgcPackageVo) {
+		// TODO
+		return null;
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<MgcPackageDetail> findPackageDetails(int packageId) {
+		return packageDetailRepository.findByPackageId(packageId);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<MgcPackageDetail> findAllPackageDetails() {
+		return packageDetailRepository.findAll();
 	}
 
 }
