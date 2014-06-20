@@ -47,12 +47,14 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public User findUserByUserName(String userName) {
 
 		return userRepository.findByUserName(userName);
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public List<User> findAllUsers() {
 
 		return userRepository.findAll();

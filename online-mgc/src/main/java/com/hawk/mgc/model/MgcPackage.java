@@ -14,7 +14,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 @Entity
 @Table(name = "packages")
-public class Package extends BaseEntity {
+public class MgcPackage extends BaseEntity {
 
 	@Column(name = "package_name")
 	protected String packageName;

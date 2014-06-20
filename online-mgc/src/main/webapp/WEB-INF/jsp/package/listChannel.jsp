@@ -25,17 +25,22 @@
 				<jsp:include page="../fragments/leftMenu.jsp" /></div>
 			<div class="col-xs-12 col-sm-9">
 
-				<h2>下载SDK</h2>
-				<datatables:table id="s" data="${selections}" cdn="true"
-					row="sdk" theme="bootstrap3" cssClass="table table-striped"
+				<h2>数据统计</h2>
+				<datatables:table id="mgcPackageTable" data="${selections}" cdn="true"
+					row="mgcPackage" theme="bootstrap3" cssClass="table table-striped"
 					paginate="false" pageable="false" info="false" filterable="false" sortable="false"
 					lengthChange="false">
 
-					<datatables:column title="平台" property="platform" />
-					<datatables:column title="类型" property="sdkType" />
-					<datatables:column title="版本" property="version" />					
-					<datatables:column title="下载">
-						<a href="download/1"><c:out value="${sdk.downloadName }"></c:out></a>
+					<datatables:column title="日期">
+						<fmt:formatDate pattern="yyyy-MM-dd"
+							value="${mgcPackage.createdDate}" />
+					</datatables:column>
+					<datatables:column title="推广包" property="packageName" />
+					<datatables:column title="产品名" property="productionName" />
+					<datatables:column title="安装量" property="installations" />
+					<datatables:column title="激活量" property="activations" />					
+					<datatables:column title="操作">
+						<a href="download/1">修改</a>
 					</datatables:column>
 								
 				</datatables:table>
