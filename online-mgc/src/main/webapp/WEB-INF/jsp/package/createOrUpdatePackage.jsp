@@ -24,11 +24,11 @@
 				<jsp:include page="../fragments/leftMenu.jsp" /></div>
 			<div class="col-xs-12 col-sm-9">
 
-				<h2>编辑资料信息</h2>
+				<h2>包</h2>
 
-				<form:form modelAttribute="user" method="post"
-					class="form-horizontal" id="change-user-form"
-					enctype="multipart/form-data">
+				<form:form modelAttribute="mgcPackage" method="post"
+					class="form-horizontal" id="change-package-form"
+					>
 					<span class="help-inline"> <c:if test="${not empty message}">
 							<div id="message" class="success">${message}</div>
 						</c:if> <spring:bind path="*">
@@ -37,27 +37,11 @@
 							</c:if>
 						</spring:bind>
 					</span>
-					<onlineapplication:radioButtonsField label="开发者性质"
-						name="contactType" names="${contactTypes}" />
-					<onlineapplication:inputField label="联系人姓名" name="contactName" />
-					<onlineapplication:inputField label="QQ" name="qq" />
-					<onlineapplication:inputField label="手机号码" name="mobile" />
-					<onlineapplication:inputField label="身份证号码" name="contactIdNumber" />
-					<onlineapplication:inputField label="开户行" name="bankName" />
-					<div class="alert alert-info">注意：点乐目前不支持邮政银行，请选择其它银行</div>
-					<onlineapplication:selectField id="selectProvince" label="开户行所在省"
-						name="province.id" names="${provinceTypes}" itemValue="id"
-						itemLabel="dictionaryValue" size="1" />
-					<onlineapplication:selectField id="selectCity" label="开户行所在市"
-						name="city.id" names="${cityTypes}" itemValue="id"
-						itemLabel="dictionaryValue" size="1" />
-					<onlineapplication:inputField label="具体支行" name="branchName" />
-					<onlineapplication:inputField label="银行卡号" name="accountNumber" />
 
-					<label>身份证扫描件正面</label>
-					<input id="fileIdCardFront" type="file" name="fileIdCardFront" />
-					<label>身份证扫描件反面</label>
-					<input id="fileIdCardBack" type="file" name="fileIdCardBack" />
+					<onlineapplication:inputField label="包名" name="packageName" />
+					<onlineapplication:inputField label="产品名" name="productionName" />
+					<onlineapplication:inputField label="安装量" name="installations" />
+					<onlineapplication:inputField label="激活量" name="activations" />
 
 					<div class="form-actions">
 

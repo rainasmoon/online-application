@@ -34,4 +34,18 @@ public class PackageServiceImpl implements PackageService {
 		return packageRepository.findAll();
 	}
 
+	@Override
+	@Transactional(readOnly = true)
+	public MgcPackage findPackageById(int packageId) {
+
+		return packageRepository.findOne(packageId);
+	}
+
+	@Override
+	@Transactional
+	public void deletePackageById(int packageId) {
+		packageRepository.delete(packageId);
+
+	}
+
 }

@@ -55,11 +55,14 @@
 					<datatables:column title="安装量" property="installations" />
 					<datatables:column title="激活量" property="activations" />
 					<datatables:column title="操作">
-						<a href="download/1">修改</a>
+						<a href="packages/${mgcPackage.id}/edit">修改</a>
+						<a href="packages/${mgcPackage.id}/delete">删除</a>
 					</datatables:column>
 
 				</datatables:table>
 
+				<br /> <a href='<spring:url value="/packages/new" htmlEscape="true"/>'>Add
+					Package</a>
 
 			</div>
 		</div>

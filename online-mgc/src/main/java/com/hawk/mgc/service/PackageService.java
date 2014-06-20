@@ -10,4 +10,8 @@ public interface PackageService {
 
 	List<MgcPackage> findAllPackages();
 
+	MgcPackage findPackageById(int packageId);
+
+	void deletePackageById(int packageId);
+
 }

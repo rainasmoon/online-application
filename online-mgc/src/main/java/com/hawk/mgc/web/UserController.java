@@ -93,7 +93,7 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/users/{userId}/delete", method = RequestMethod.GET)
-	public String deleteApplication(@PathVariable("userId") int userId,
+	public String deleteUser(@PathVariable("userId") int userId,
 			Map<String, Object> model) {
 
 		this.userService.deleteUserById(userId);

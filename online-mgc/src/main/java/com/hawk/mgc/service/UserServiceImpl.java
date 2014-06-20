@@ -61,11 +61,13 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	@Transactional
 	public void deleteUserById(int userId) {
 		userRepository.delete(userId);
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public User findUserById(int userId) {
 		return userRepository.findOne(userId);
 	}
