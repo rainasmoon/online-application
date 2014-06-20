@@ -25,17 +25,17 @@
 				<jsp:include page="../fragments/leftMenu.jsp" /></div>
 			<div class="col-xs-12 col-sm-9">
 
-				<h2>下载SDK</h2>
-				<datatables:table id="s" data="${selections}" cdn="true"
-					row="sdk" theme="bootstrap3" cssClass="table table-striped"
+				<h2>用户管理</h2>
+				<datatables:table id="userTable" data="${selections}" cdn="true"
+					row="user" theme="bootstrap3" cssClass="table table-striped"
 					paginate="false" pageable="false" info="false" filterable="false" sortable="false"
 					lengthChange="false">
 
-					<datatables:column title="平台" property="platform" />
-					<datatables:column title="类型" property="sdkType" />
-					<datatables:column title="版本" property="version" />					
-					<datatables:column title="下载">
-						<a href="download/1"><c:out value="${sdk.downloadName }"></c:out></a>
+					<datatables:column title="账号" property="userName" />
+					<datatables:column title="角色" property="userRole" />									
+					<datatables:column title="操作">
+						<a href="">修改</a>
+						<a href=""></a>
 					</datatables:column>
 								
 				</datatables:table>

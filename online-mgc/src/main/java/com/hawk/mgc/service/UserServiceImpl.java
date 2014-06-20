@@ -1,5 +1,7 @@
 package com.hawk.mgc.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
@@ -48,6 +50,12 @@ public class UserServiceImpl implements UserService {
 	public User findUserByUserName(String userName) {
 
 		return userRepository.findByUserName(userName);
+	}
+
+	@Override
+	public List<User> findAllUsers() {
+
+		return userRepository.findAll();
 	}
 
 }
