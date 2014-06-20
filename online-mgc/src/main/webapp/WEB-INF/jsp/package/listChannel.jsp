@@ -31,9 +31,8 @@
 					<onlineapplication:selectField label="推广包" name="mgcPackage.id"
 						names="${allMgcPackages}" itemValue="id" itemLabel="packageName"
 						size="1" />
-					<onlineapplication:selectField label="产品" name="mgcProduct.id"
-						names="${allMgcPackages}" itemValue="id"
-						itemLabel="productionName" size="1" />
+					<onlineapplication:selectField label="产品" name="mgcProduct"
+						names="${productionTypes}" size="1" />
 					<form:input path="dateFrom" size="10" placeholder="yyyy-mm-dd"
 						maxLength="10" minLength="10" />
 					<form:input path="dateTo" size="10" placeholder="yyyy-mm-dd"

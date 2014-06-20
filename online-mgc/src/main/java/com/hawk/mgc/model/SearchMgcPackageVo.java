@@ -8,7 +8,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 public class SearchMgcPackageVo {
 
 	private MgcPackage mgcPackage;
-	private MgcPackage mgcProduct;
+	private String mgcProduct;
 	private Date dateFrom;
 	private Date dateTo;
 
@@ -48,11 +48,11 @@ public class SearchMgcPackageVo {
 		this.mgcPackage = mgcPackage;
 	}
 
-	public MgcPackage getMgcProduct() {
+	public String getMgcProduct() {
 		return mgcProduct;
 	}
 
-	public void setMgcProduct(MgcPackage mgcProduct) {
+	public void setMgcProduct(String mgcProduct) {
 		this.mgcProduct = mgcProduct;
 	}
 

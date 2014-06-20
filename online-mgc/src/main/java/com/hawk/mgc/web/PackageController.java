@@ -1,6 +1,7 @@
 package com.hawk.mgc.web;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -46,6 +47,11 @@ public class PackageController {
 		result.add(all);
 		result.addAll(packageService.findAllPackages());
 		return result;
+	}
+
+	@ModelAttribute("productionTypes")
+	public List<String> populateContactTypes() {
+		return Arrays.asList("全部", "大家赚");
 	}
 
 	@RequestMapping(value = "/packages", method = RequestMethod.GET)
