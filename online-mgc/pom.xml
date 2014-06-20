@@ -568,7 +568,7 @@
 				<configuration>
 					<server>tomcat-development-server</server>
 					<port>9968</port>
-					<path>/onlineapp</path>
+					<path>/onlinemgc</path>
 					<systemProperties>
 						<spring.profiles.active>mysql</spring.profiles.active>
 					</systemProperties>
