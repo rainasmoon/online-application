@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.hawk.mgc.model.MgcPackage;
+import com.hawk.mgc.model.SearchMgcPackageVo;
 import com.hawk.mgc.repository.springdatajpa.PackageRepository;
 
 @Service
@@ -53,6 +54,13 @@ public class PackageServiceImpl implements PackageService {
 	public void deletePackageById(int packageId) {
 		packageRepository.delete(packageId);
 
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<MgcPackage> searchPackages(SearchMgcPackageVo searchMgcPackageVo) {
+		// TODO need to create the right method.
+		return packageRepository.findAll();
 	}
 
 }

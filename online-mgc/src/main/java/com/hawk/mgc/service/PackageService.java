@@ -3,6 +3,7 @@ package com.hawk.mgc.service;
 import java.util.List;
 
 import com.hawk.mgc.model.MgcPackage;
+import com.hawk.mgc.model.SearchMgcPackageVo;
 
 public interface PackageService {
 
@@ -13,5 +14,7 @@ public interface PackageService {
 	MgcPackage findPackageById(int packageId);
 
 	void deletePackageById(int packageId);
+
+	List<MgcPackage> searchPackages(SearchMgcPackageVo searchMgcPackageVo);
 
 }

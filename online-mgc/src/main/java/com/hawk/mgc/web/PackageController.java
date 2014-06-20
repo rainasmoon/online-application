@@ -68,6 +68,18 @@ public class PackageController {
 
 	}
 
+	@RequestMapping(value = "/packages", method = RequestMethod.POST)
+	public String processSearchAll(SearchMgcPackageVo searchMgcPackageVo,
+			Map<String, Object> model) {
+
+		List<MgcPackage> results = this.packageService
+				.searchPackages(searchMgcPackageVo);
+
+		model.put("selections", results);
+		return "package/listChannel";
+
+	}
+
 	@RequestMapping(value = "/packages/new", method = RequestMethod.GET)
 	public String initCreationForm(Map<String, Object> model) {
 		MgcPackage mgcPackage = new MgcPackage();
