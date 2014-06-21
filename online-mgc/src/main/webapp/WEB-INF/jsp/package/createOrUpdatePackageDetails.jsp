@@ -36,9 +36,8 @@
 								<div id="message" class="error">${status.errorMessage}</div>
 							</c:if>
 						</spring:bind>
-					</span>
-					<form:input path="detailDate" size="10" placeholder="yyyy-mm-dd"
-						maxLength="10" minLength="10" />
+					</span>					
+					<onlineapplication:inputField label="日期" name="detailDate" />
 					<onlineapplication:inputField label="安装量" name="installations" />
 					<onlineapplication:inputField label="激活量" name="activations" />
 
@@ -54,6 +53,10 @@
 		</div>
 		<jsp:include page="../fragments/footer.jsp" />
 	</div>
+	<spring:url
+		value="/webjars/jquery-ui/1.10.3/ui/jquery.ui.datepicker.js"
+		var="jQueryUiDatePicker" />
+	<script src="${jQueryUiDatePicker}"></script>
 	<script type="text/javascript">
  
 		$(function() {
