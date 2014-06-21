@@ -11,6 +11,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -23,6 +24,7 @@ public class MgcPackageDetail extends BaseEntity {
 	protected MgcPackage mgcPackage;
 
 	@Temporal(TemporalType.TIMESTAMP)
+	@NotEmpty(message = "{not.null}")
 	@Column(name = "detail_date")
 	protected Date detailDate;
 

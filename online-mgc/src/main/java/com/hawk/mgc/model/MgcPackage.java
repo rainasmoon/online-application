@@ -10,6 +10,7 @@ import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -18,10 +19,12 @@ import org.springframework.data.annotation.LastModifiedDate;
 public class MgcPackage extends BaseEntity {
 
 	@Column(name = "package_name")
+	@NotEmpty(message = "{not.null}")
 	@Size(max = 100, message = "{error.too.lang}")
 	protected String packageName;
 
 	@Column(name = "production_name")
+	@NotEmpty(message = "{not.null}")
 	@Size(max = 100, message = "{error.too.lang}")
 	protected String productionName;
 
