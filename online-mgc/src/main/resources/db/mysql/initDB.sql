@@ -21,9 +21,7 @@ CREATE TABLE IF NOT EXISTS users (
 CREATE TABLE IF NOT EXISTS packages (
   id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   package_name VARCHAR(100),
-  production_name VARCHAR(100),
-  installations INT(4) UNSIGNED,
-  activations INT(4) UNSIGNED,
+  production_name VARCHAR(100),  
   created_date  TIMESTAMP,
   updated_date  TIMESTAMP,
   created_by INT(4) UNSIGNED,
@@ -31,5 +29,20 @@ CREATE TABLE IF NOT EXISTS packages (
   INDEX(package_name),
   INDEX(production_name),
   INDEX(created_date)
+ ) engine=InnoDB CHARSET=utf8;
+ 
+ CREATE TABLE IF NOT EXISTS package_details (
+  id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  package_id INT(4) UNSIGNED,
+  detail_day TIMESTAMP,
+  installations INT(4) UNSIGNED,
+  activations INT(4) UNSIGNED,
+  created_date  TIMESTAMP,
+  updated_date  TIMESTAMP,
+  created_by INT(4) UNSIGNED,
+  updated_by INT(4) UNSIGNED,
+  INDEX(package_id),
+  INDEX(detail_day),
+  FOREIGN KEY (package_id) REFERENCES packages(id)
  ) engine=InnoDB CHARSET=utf8;
 
