@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS packages (
  CREATE TABLE IF NOT EXISTS package_details (
   id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   package_id INT(4) UNSIGNED,
-  detail_day TIMESTAMP,
+  detail_date TIMESTAMP,
   installations INT(4) UNSIGNED,
   activations INT(4) UNSIGNED,
   created_date  TIMESTAMP,
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS packages (
   created_by INT(4) UNSIGNED,
   updated_by INT(4) UNSIGNED,
   INDEX(package_id),
-  INDEX(detail_day),
+  INDEX(detail_date),
   FOREIGN KEY (package_id) REFERENCES packages(id)
  ) engine=InnoDB CHARSET=utf8;
 

@@ -35,7 +35,7 @@ CREATE INDEX packages_created_date ON packages (created_date);
 CREATE TABLE package_details (
   id INTEGER IDENTITY PRIMARY KEY,
   package_id INTEGER,
-  detail_day TIMESTAMP,
+  detail_date TIMESTAMP,
   installations INTEGER,
   activations INTEGER,
   created_date  TIMESTAMP,
@@ -45,7 +45,7 @@ CREATE TABLE package_details (
 );
 
 CREATE INDEX package_details_package_id ON package_details (package_id);
-CREATE INDEX package_details_detail_day ON package_details (detail_day);
+CREATE INDEX package_details_detail_date ON package_details (detail_date);
 ALTER TABLE package_details ADD CONSTRAINT fk_package_details_package_id FOREIGN KEY (package_id) REFERENCES packages (id);
 
 
