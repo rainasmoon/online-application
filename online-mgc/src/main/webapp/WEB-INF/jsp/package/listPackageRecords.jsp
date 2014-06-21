@@ -35,13 +35,13 @@
 
 					<datatables:column title="日期">
 						<fmt:formatDate pattern="yyyy-MM-dd"
-							value="${mgcPackageDetail.createdDate}" />
+							value="${mgcPackageDetail.detailDate}" />
 					</datatables:column>
 					<datatables:column title="安装量" property="installations" />
 					<datatables:column title="激活量" property="activations" />
 					<datatables:column title="操作">
-						<a href="packages/${mgcPackageId}/listDetails/${mgcPackageDetail.id }/edit">修改</a>
-						<a href="packages/${mgcPackageId}/listDetails/${mgcPackageDetail.id }/delete">删除</a>
+						<a href="listDetails/${mgcPackageDetail.id }/edit">修改</a>
+						<a href="listDetails/${mgcPackageDetail.id }/delete">删除</a>
 					</datatables:column>
 
 				</datatables:table>

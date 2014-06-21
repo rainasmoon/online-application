@@ -39,7 +39,8 @@
 					</span>
 
 					<onlineapplication:inputField label="包名" name="packageName" />
-					<onlineapplication:inputField label="产品名" name="productionName" />
+					<onlineapplication:selectField label="产品" name="productionName"
+						names="${productionTypes}" size="1" />
 					<div class="form-actions">
 
 						<button class="btn btn-lg btn-primary btn-block" type="submit">提交</button>

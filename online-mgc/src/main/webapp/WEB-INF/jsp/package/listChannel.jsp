@@ -48,7 +48,7 @@
 
 					<datatables:column title="日期">
 						<fmt:formatDate pattern="yyyy-MM-dd"
-							value="${mgcPackageDetail.createdDate}" />
+							value="${mgcPackageDetail.detailDate}" />
 					</datatables:column>
 					<datatables:column title="推广包" property="mgcPackage.packageName" />
 					<datatables:column title="产品名" property="mgcPackage.productionName" />

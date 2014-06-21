@@ -37,7 +37,8 @@
 							</c:if>
 						</spring:bind>
 					</span>
-					
+					<form:input path="detailDate" size="10" placeholder="yyyy-mm-dd"
+						maxLength="10" minLength="10" />
 					<onlineapplication:inputField label="安装量" name="installations" />
 					<onlineapplication:inputField label="激活量" name="activations" />
 
@@ -58,7 +59,9 @@
 		$(function() {
 			$('input, textarea').placeholder();
 			$('#installations').focus();
-			
+			$('#detailDate').datepicker({
+				dateFormat : 'yy-mm-dd'
+			});
 		});
 		
 		

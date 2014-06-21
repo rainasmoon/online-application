@@ -22,6 +22,10 @@ public class MgcPackageDetail extends BaseEntity {
 	@JoinColumn(name = "package_id")
 	protected MgcPackage mgcPackage;
 
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "detail_date")
+	protected Date detailDate;
+
 	@Column(name = "installations")
 	protected Integer installations;
 
@@ -109,5 +113,13 @@ public class MgcPackageDetail extends BaseEntity {
 
 	public void setError(String error) {
 		this.error = error;
+	}
+
+	public Date getDetailDate() {
+		return detailDate;
+	}
+
+	public void setDetailDate(Date detailDate) {
+		this.detailDate = detailDate;
 	}
 }
