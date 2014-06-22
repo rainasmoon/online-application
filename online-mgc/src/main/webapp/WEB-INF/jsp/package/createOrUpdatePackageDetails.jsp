@@ -44,6 +44,8 @@
 					<div class="form-actions">
 
 						<button class="btn btn-lg btn-primary btn-block" type="submit">提交</button>
+						<c:if test="${mgcPackageDetail['new']}"><button class="btn btn-lg btn-primary btn-block" type="button">返回</button> </c:if>
+						
 
 					</div>
 				</form:form>

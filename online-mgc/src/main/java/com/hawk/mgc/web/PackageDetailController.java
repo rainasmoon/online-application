@@ -52,13 +52,15 @@ public class PackageDetailController {
 	@RequestMapping(value = "packages/{mgcPackageId}/listDetails/new", method = RequestMethod.POST)
 	public String processDetailCreationForm(
 			@PathVariable("mgcPackageId") int mgcPackageId,
-			@Valid MgcPackageDetail mgcPackageDetail, BindingResult result) {
+			@Valid MgcPackageDetail mgcPackageDetail, BindingResult result,
+			Map<String, Object> model) {
 		if (result.hasErrors()) {
 			return "package/createOrUpdatePackageDetails";
 		} else {
 			this.packageService.savePackageDetail(mgcPackageId,
 					mgcPackageDetail);
-			return "redirect:/packages/" + mgcPackageId + "/listDetails";
+			model.put("message", "save successfully.");
+			return "redirect:/packages/" + mgcPackageId + "/listDetails/new";
 		}
 	}
 
