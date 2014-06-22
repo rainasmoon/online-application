@@ -1,3 +1,5 @@
+USE onlineapp;
+
 INSERT IGNORE INTO users VALUES (1, 'test', 'test', '12345', '101 1988 2983',  '个人', 'hawk', '1111 1111 1111', '中国工商银行', 5, 39, '新街口支行', '6995 8808 3728', '/path/id-front', '/path/id-back', '2013-09-07','2010-09-07', 1, 1);
 
 INSERT IGNORE INTO applications VALUES (1, 'TEST_DIANJOY_APP_ID', 'petpet','ios','com.app.me','APP_ID\u5BA1\u6279\u4E2D', '2010-09-07','2010-09-07', 1, 1);

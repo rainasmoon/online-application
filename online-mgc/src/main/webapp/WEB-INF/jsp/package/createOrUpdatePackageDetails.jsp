@@ -26,7 +26,7 @@
 
 				<h2>包</h2>
 
-				<form:form modelAttribute="mgcPackage" method="post"
+				<form:form modelAttribute="mgcPackageDetail" method="post"
 					class="form-horizontal" id="change-package-form"
 					>
 					<span class="help-inline"> <c:if test="${not empty message}">
@@ -36,14 +36,16 @@
 								<div id="message" class="error">${status.errorMessage}</div>
 							</c:if>
 						</spring:bind>
-					</span>
+					</span>					
+					<onlineapplication:inputField label="日期" name="detailDate" />
+					<onlineapplication:inputField label="安装量" name="installations" />
+					<onlineapplication:inputField label="激活量" name="activations" />
 
-					<onlineapplication:inputField label="包名" name="packageName" />
-					<onlineapplication:selectField label="产品" name="productionName"
-						names="${productionTypes}" size="1" />
 					<div class="form-actions">
 
 						<button class="btn btn-lg btn-primary btn-block" type="submit">提交</button>
+						<c:if test="${mgcPackageDetail['new']}"><button class="btn btn-lg btn-primary btn-block" type="button">返回</button> </c:if>
+						
 
 					</div>
 				</form:form>
@@ -53,13 +55,20 @@
 		</div>
 		<jsp:include page="../fragments/footer.jsp" />
 	</div>
+	<spring:url
+		value="/webjars/jquery-ui/1.10.3/ui/jquery.ui.datepicker.js"
+		var="jQueryUiDatePicker" />
+	<script src="${jQueryUiDatePicker}"></script>
 	<script type="text/javascript">
  
 		$(function() {
 			$('input, textarea').placeholder();
-			$('#packageName').focus();
-			
-		});		
+			$('#installations').focus();
+			$('#detailDate').datepicker({
+				dateFormat : 'yy-mm-dd'
+			});
+		});
+		
 		
 	</script>
 </body>

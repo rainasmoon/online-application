@@ -423,7 +423,7 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<version>2.3</version>
 				<configuration>
-					<warName>onlineapp</warName>
+					<warName>onlinemgc</warName>
 				</configuration>
 			</plugin>
 			<plugin>
