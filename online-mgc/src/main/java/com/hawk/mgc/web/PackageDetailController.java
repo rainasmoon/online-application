@@ -45,7 +45,6 @@ public class PackageDetailController {
 	public String initDetailCreationForm(Map<String, Object> model) {
 		MgcPackageDetail mgcPackageDetail = new MgcPackageDetail();
 		model.put("mgcPackageDetail", mgcPackageDetail);
-
 		return "package/createOrUpdatePackageDetails";
 	}
 
@@ -59,8 +58,9 @@ public class PackageDetailController {
 		} else {
 			this.packageService.savePackageDetail(mgcPackageId,
 					mgcPackageDetail);
-			model.put("message", "save successfully.");
-			return "redirect:/packages/" + mgcPackageId + "/listDetails/new";
+			String message = "save successfully.";
+			model.put("message", message);
+			return initDetailCreationForm(model);
 		}
 	}
 
