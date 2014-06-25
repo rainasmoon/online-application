@@ -41,6 +41,8 @@
 
 		<!-- Bean validation -->
 		<hibernate-validator.version>4.3.1.Final</hibernate-validator.version>
+		<hibernate-jpa.version>1.0.1.Final</hibernate-jpa.version>
+
 
 		<!-- Database access -->
 		<tomcat-jdbc.version>7.0.42</tomcat-jdbc.version>
@@ -73,7 +75,7 @@
 
 		<jcaptcha.version>2.0-alpha-1</jcaptcha.version>
 
-		<mysql.version>5.1.22</mysql.version>
+		<mysql.version>5.1.31</mysql.version>
 
 		<!-- Maven plugins -->
 		<maven-compiler-plugin.version>3.0</maven-compiler-plugin.version>
@@ -193,8 +195,6 @@
 			<version>${jadira-usertype-core.version}</version>
 		</dependency>
 
-		<!-- Database connection pool See here for more details on commons-dbcp 
-			versus tomcat-jdbc: http://blog.ippon.fr/2013/03/13/improving-the-performance-of-the-spring-petclinic-sample-application-part-3-of-5/ -->
 		<dependency>
 			<groupId>org.apache.tomcat</groupId>
 			<artifactId>tomcat-jdbc</artifactId>
@@ -225,15 +225,30 @@
 		<!-- HIBERNATE -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>asm</groupId>
+					<artifactId>asm-attrs</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>${hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.0-api</artifactId>
+			<version>${hibernate-jpa.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<version>${hibernate-validator.version}</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-ehcache</artifactId>
@@ -569,6 +584,7 @@
 					<server>tomcat-development-server</server>
 					<port>9968</port>
 					<path>/onlineapp</path>
+					<protocol>org.apache.coyote.http11.Http11NioProtocol</protocol>
 					<systemProperties>
 						<spring.profiles.active>mysql</spring.profiles.active>
 					</systemProperties>

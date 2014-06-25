@@ -63,6 +63,49 @@ MD5
 the create application page's radio binding...
 the message.properties i18n.
 
+jit compiler
+
+
+
+1 put log to an error level.
+2 use my sql.
+3 jmeter test.
+ paginated. 
+ warm up JIT compiler.
+ 
+4 heap. the dandelion. 1G of heap
+jProfiler YourKit.
+
+dandelion
+
+5 go stateless, [use http session as kind of cache.]
+6 lower the amount of data stored in the user's HTTP session.
+* remove sessionattribute and use id.
+7 nio instead of io in tomcat.
+8 jvm will lock some thread.
+tomcat-jdbc instead of commons-dbcp. max and initalsize.
+webjars.
+static resources, CDN
+
+9 use cache 
+10 lazy load and open session in view.
+
+11 cache, last name is not change frequently, like clause is very slow on db. so we cache this result for 60 seconds.
+12 showSql = true to see if there is any unnecessary sql request.
+
+creating a "real" test case
+removing data in the http sessions.
+removing the jvm locks
+tuning the persistence layer
+adding a cache.
+
+
+
+
+
+
+
+
 
 
 

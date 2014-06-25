@@ -42,7 +42,8 @@
 	<beans profile="prod">
 		<bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource"
 			p:driverClassName="${prod.jdbc.driverClassName}" p:url="${prod.jdbc.url}"
-			p:username="${prod.jdbc.username}" p:password="${prod.jdbc.password}" />		
+			p:username="${prod.jdbc.username}" p:password="${prod.jdbc.password}" 
+			p:maxActive="30" p:initialSize="10"/>		
 	</beans>
 
 </beans>
