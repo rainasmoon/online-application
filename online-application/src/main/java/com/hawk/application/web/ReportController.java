@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.hawk.application.model.Application;
 import com.hawk.application.model.Report;
@@ -19,7 +18,6 @@ import com.hawk.application.service.ApplicationService;
 import com.hawk.application.service.RedisService;
 
 @Controller
-@SessionAttributes(types = SearchReportVo.class)
 public class ReportController extends BaseController {
 
 	@Autowired

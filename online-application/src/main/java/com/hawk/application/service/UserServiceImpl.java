@@ -22,6 +22,15 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Transactional
+	public void saveUser(String userEmail, User user)
+			throws DataAccessException {
+		User loginUser = userRepository.findByEmail(userEmail);
+		user.setId(loginUser.getId());
+		userRepository.save(user);
+
+	}
+
+	@Transactional
 	public void saveUser(User user) throws DataAccessException {
 		userRepository.save(user);
 

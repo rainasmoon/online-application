@@ -12,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.hawk.application.model.Bonus;
 import com.hawk.application.model.Check;
@@ -22,7 +21,6 @@ import com.hawk.application.service.RedisService;
 import com.hawk.application.service.UserService;
 
 @Controller
-@SessionAttributes(types = Check.class)
 public class FinanceController extends BaseController {
 
 	private final FinanceService financeService;
