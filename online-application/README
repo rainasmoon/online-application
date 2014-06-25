@@ -53,6 +53,11 @@ el
 1 change web.xml 's profile to 'prod'.
 2 make sure you have the right value in data-access.properties.
 
+ssh hawk@www.hawkeyetu.com
+export JAVA_HOME=/opt/mgcdeveloper/jdk1.8.0_05
+scp ./onlineapp.war hawk@www.hawkeyetu.com:/opt/mgcdeveloper/tomcat/webapps
+
+
 /***********************************************************************************/
 /*** next step
 /***********************************************************************************/
