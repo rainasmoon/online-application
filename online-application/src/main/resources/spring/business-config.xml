@@ -44,6 +44,14 @@
 				persistenceUnit will win -->
 			<property name="persistenceUnitName" value="onlineapplication" />
 			<property name="packagesToScan" value="com.hawk.application.model" />
+			<property name="jpaProperties">
+				<props>
+					<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory
+					</prop>
+					<prop key="hibernate.cache.use_second_level_cache">true</prop>
+					<prop key="hibernate.cache.use_query_cache">false</prop>
+				</props>
+			</property>
 		</bean>
 	</beans>
 	<beans profile="mysql">
@@ -61,6 +69,14 @@
 				persistenceUnit will win -->
 			<property name="persistenceUnitName" value="onlineapplication" />
 			<property name="packagesToScan" value="com.hawk.application.model" />
+			<property name="jpaProperties">
+				<props>
+					<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory
+					</prop>
+					<prop key="hibernate.cache.use_second_level_cache">true</prop>
+					<prop key="hibernate.cache.use_query_cache">false</prop>
+				</props>
+			</property>
 		</bean>
 	</beans>
 	<beans profile="prod">

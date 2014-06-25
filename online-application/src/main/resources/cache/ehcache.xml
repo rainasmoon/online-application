@@ -8,9 +8,30 @@
 		maxElementsInMemory="100" eternal="false" overflowToDisk="false"
 		maxElementsOnDisk="10000000" diskPersistent="false"
 		diskExpiryThreadIntervalSeconds="1" memoryStoreEvictionPolicy="LRU" />
-	<cache name="citys" timeToLiveSeconds="600"
-		maxElementsInMemory="100" eternal="false" overflowToDisk="false"
-		maxElementsOnDisk="10000000" diskPersistent="false"
-		diskExpiryThreadIntervalSeconds="1" memoryStoreEvictionPolicy="LRU" />
+	<cache name="citys" timeToLiveSeconds="600" maxElementsInMemory="100"
+		eternal="false" overflowToDisk="false" maxElementsOnDisk="10000000"
+		diskPersistent="false" diskExpiryThreadIntervalSeconds="1"
+		memoryStoreEvictionPolicy="LRU" />
+
+	<cache name="com.hawk.application.model.Application" timeToLiveSeconds="600"
+		maxElementsInMemory="100000" />
+
+	<cache name="com.hawk.application.model.AppParameter" timeToLiveSeconds="600"
+		maxElementsInMemory="100000" />
+
+	<cache name="com.hawk.application.model.Bonus" timeToLiveSeconds="600"
+		maxElementsInMemory="100000" />
+
+	<cache name="com.hawk.application.model.Check" timeToLiveSeconds="600"
+		maxElementsInMemory="100000" />
+
+	<cache name="com.hawk.application.model.Dictionary" timeToLiveSeconds="600"
+		maxElementsInMemory="100000" />
+
+	<cache name="com.hawk.application.model.Sdk" timeToLiveSeconds="600"
+		maxElementsInMemory="100000" />
+
+	<cache name="com.hawk.application.model.User" timeToLiveSeconds="600"
+		maxElementsInMemory="100000" />
 
 </ehcache>

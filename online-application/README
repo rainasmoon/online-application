@@ -57,12 +57,14 @@ el
 /*** next step
 /***********************************************************************************/
 
-only get login user's data... : application, parameters, apply check, checks, bonus.
-继续完成数据报表。 
+functional test.
+stateless.
 MD5
-the create application page's radio binding...
-the message.properties i18n.
 
+
+/***********************************************************************************/
+/*** performance
+/***********************************************************************************/
 jit compiler
 
 
