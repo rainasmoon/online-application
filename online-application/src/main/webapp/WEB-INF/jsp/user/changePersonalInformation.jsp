@@ -1,4 +1,4 @@
-<%@page session="false" %>
+
 <%@ page language="java" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -12,7 +12,7 @@
 
 
 <html lang="en">
-
+<meta http-equiv="Content-Type" content="text/html charset=UTF-8">
 <jsp:include page="../fragments/headTag.jsp" />
 
 <body>

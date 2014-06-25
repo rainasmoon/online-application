@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.google.common.io.Files;
@@ -32,6 +33,7 @@ import com.hawk.application.service.DictionaryService;
 import com.hawk.application.service.UserService;
 
 @Controller
+@SessionAttributes(types = User.class)
 @PropertySource("classpath:/spring/data-access.properties")
 public class UserController extends BaseController {
 
@@ -126,7 +128,7 @@ public class UserController extends BaseController {
 				}
 			}
 
-			this.userService.saveUser(getLoginEmail(), user);
+			this.userService.saveUser(user);
 			return "redirect:/viewMe.html";
 		}
 	}

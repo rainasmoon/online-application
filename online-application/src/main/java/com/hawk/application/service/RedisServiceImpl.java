@@ -17,6 +17,7 @@ import com.hawk.application.repository.redis.RedisRepository;
 import com.hawk.application.repository.springdatajpa.ApplicationRepository;
 import com.hawk.application.repository.springdatajpa.UserRepository;
 import com.hawk.application.util.DayBuilder;
+import com.hawk.application.util.RedisKeyUtils;
 
 @Service
 public class RedisServiceImpl implements RedisService {
@@ -122,7 +123,7 @@ public class RedisServiceImpl implements RedisService {
 		String key = RedisKeyUtils.getUserTotalIncome(userId);
 		Double r = redisRepository.getValueAsDouble(key);
 		if (r == null) {
-			LOGGER.warn("there is no date in redis for key: " + key);
+			LOGGER.debug("there is no date in redis for key: " + key);
 			r = 0.0;
 		}
 		return r;
@@ -143,7 +144,7 @@ public class RedisServiceImpl implements RedisService {
 					day);
 			Integer temp = redisRepository.getValueAsInteger(key);
 			if (temp == null) {
-				LOGGER.warn("there is no date in redis for key: " + key);
+				LOGGER.debug("there is no date in redis for key: " + key);
 				temp = 0;
 			}
 			r += temp;
@@ -159,7 +160,7 @@ public class RedisServiceImpl implements RedisService {
 					app.getDianjoyAppId(), day);
 			Integer temp = redisRepository.getValueAsInteger(key);
 			if (temp == null) {
-				LOGGER.warn("there is no date in redis for key: " + key);
+				LOGGER.debug("there is no date in redis for key: " + key);
 				temp = 0;
 			}
 			r += temp;
@@ -175,7 +176,7 @@ public class RedisServiceImpl implements RedisService {
 					day);
 			Double temp = redisRepository.getValueAsDouble(key);
 			if (temp == null) {
-				LOGGER.warn("there is no date in redis for key: " + key);
+				LOGGER.debug("there is no date in redis for key: " + key);
 				temp = 0.0;
 			}
 			r += temp;
@@ -191,7 +192,7 @@ public class RedisServiceImpl implements RedisService {
 					app.getDianjoyAppId(), day);
 			Integer temp = redisRepository.getValueAsInteger(key);
 			if (temp == null) {
-				LOGGER.warn("there is no date in redis for key: " + key);
+				LOGGER.debug("there is no date in redis for key: " + key);
 				temp = 0;
 			}
 			r += temp;
@@ -206,7 +207,7 @@ public class RedisServiceImpl implements RedisService {
 					app.getDianjoyAppId(), day);
 			Double temp = redisRepository.getValueAsDouble(key);
 			if (temp == null) {
-				LOGGER.warn("there is no date in redis for key: " + key);
+				LOGGER.debug("there is no date in redis for key: " + key);
 			} else {
 				if (r == null) {
 					r = temp;
@@ -226,7 +227,7 @@ public class RedisServiceImpl implements RedisService {
 					app.getDianjoyAppId(), day);
 			Double temp = redisRepository.getValueAsDouble(key);
 			if (temp == null) {
-				LOGGER.warn("there is no date in redis for key: " + key);
+				LOGGER.debug("there is no date in redis for key: " + key);
 			} else {
 				if (r == null) {
 					r = temp;
@@ -245,7 +246,7 @@ public class RedisServiceImpl implements RedisService {
 					app.getDianjoyAppId(), day);
 			Integer temp = redisRepository.getValueAsInteger(key);
 			if (temp == null) {
-				LOGGER.warn("there is no date in redis for key: " + key);
+				LOGGER.debug("there is no date in redis for key: " + key);
 				temp = 0;
 			}
 			r += temp;

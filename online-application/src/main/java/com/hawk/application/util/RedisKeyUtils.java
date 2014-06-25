@@ -1,7 +1,9 @@
-package com.hawk.application.service;
+package com.hawk.application.util;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import com.hawk.application.service.KeyGenerateException;
 
 public class RedisKeyUtils {
 
