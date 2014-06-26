@@ -1,4 +1,4 @@
-<%@page session="false" %>
+<%@page session="false"%>
 <%@ page language="java" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -35,14 +35,15 @@
 							</c:if>
 						</spring:bind>
 					</span>
-					<onlineapplication:inputField label="应用名称" name="applicationName" />
-					<onlineapplication:radioButtonsField label="应用平台"
-						name="applicationPlatform" names="${platformTypes}" />
-					<onlineapplication:inputField label="应用包名"
-						name="applicationPackageName" />
-					<div class="alert alert-info">packageName / bundle
-						identifier,如com.example.helloworld</div>
-
+					<fieldset>
+						<onlineapplication:inputField label="应用名称" name="applicationName" />
+						<onlineapplication:radioButtonsField label="应用平台"
+							name="applicationPlatform" names="${platformTypes}" />
+						<onlineapplication:inputField label="应用包名"
+							name="applicationPackageName" />
+						<div class="alert alert-info">packageName / bundle
+							identifier,如com.example.helloworld</div>
+					</fieldset>
 					<div class="form-actions">
 
 						<button class="btn btn-lg btn-primary btn-block" type="submit">创建应用</button>

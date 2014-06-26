@@ -1,4 +1,4 @@
-<%@page session="false" %>
+<%@page session="false"%>
 <%@ page language="java" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -35,15 +35,17 @@
 							</c:if>
 						</spring:bind>
 					</span>
-					<onlineapplication:passwordField label="旧密码" name="oldPassword" />
-					<onlineapplication:passwordField label="新密码" name="newPassword" />
-					<onlineapplication:passwordField label="确认密码"
-						name="confirmPassword" />
-					<div class="form-actions">
+					<fieldset>
+						<onlineapplication:passwordField label="旧密码" name="oldPassword" />
+						<onlineapplication:passwordField label="新密码" name="newPassword" />
+						<onlineapplication:passwordField label="确认密码"
+							name="confirmPassword" />
+						<div class="form-actions">
 
-						<button class="btn btn-lg btn-primary btn-block" type="submit">修改</button>
+							<button class="btn btn-lg btn-primary btn-block" type="submit">修改</button>
 
-					</div>
+						</div>
+					</fieldset>
 				</form:form>
 
 

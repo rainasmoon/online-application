@@ -15,7 +15,7 @@
     <spring:param name="applicationVersion" value="${applicationVersion}"/>
 </spring:url>
 
-<spring:url value="/webjars/bootstrap/3.1.1/css/bootstrap.min.css"
+<spring:url value="/webjars/bootstrap/3.1.1/css/bootstrap.css"
 	var="bootstrapCss" />
 <link href="${bootstrapCss}" rel="stylesheet" />
 
@@ -37,7 +37,7 @@
 	var="jQueryUiCore" />
 <script src="${jQueryUiCore}"></script>
 
-<spring:url value="/webjars/bootstrap/3.1.1/js/bootstrap.min.js"
+<spring:url value="/webjars/bootstrap/3.1.1/js/bootstrap.js"
 	var="bootstrap" />
 <script src="${bootstrap}"></script>
 

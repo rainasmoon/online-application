@@ -37,31 +37,32 @@
 							</c:if>
 						</spring:bind>
 					</span>
-					<onlineapplication:radioButtonsField label="开发者性质"
-						name="contactType" names="${contactTypes}" />
-					<onlineapplication:inputField label="联系人姓名" name="contactName" />
-					<onlineapplication:inputField label="QQ" name="qq" />
-					<onlineapplication:inputField label="手机号码" name="mobile" />
-					<onlineapplication:inputField label="身份证号码" name="contactIdNumber" />
-					<onlineapplication:inputField label="开户行" name="bankName" />
-					<div class="alert alert-info">注意：点乐目前不支持邮政银行，请选择其它银行</div>
-					<onlineapplication:selectField id="selectProvince" label="开户行所在省"
-						name="province.id" names="${provinceTypes}" itemValue="id"
-						itemLabel="dictionaryValue" size="1" />
-					<onlineapplication:selectField id="selectCity" label="开户行所在市"
-						name="city.id" names="${cityTypes}" itemValue="id"
-						itemLabel="dictionaryValue" size="1" />
-					<onlineapplication:inputField label="具体支行" name="branchName" />
-					<onlineapplication:inputField label="银行卡号" name="accountNumber" />
+					<fieldset>
+						<onlineapplication:radioButtonsField label="开发者性质"
+							name="contactType" names="${contactTypes}" />
+						<onlineapplication:inputField label="联系人姓名" name="contactName" />
+						<onlineapplication:inputField label="QQ" name="qq" />
+						<onlineapplication:inputField label="手机号码" name="mobile" />
+						<onlineapplication:inputField label="身份证号码" name="contactIdNumber" />
+						<onlineapplication:inputField label="开户行" name="bankName" />
+						<div class="alert alert-info">注意：点乐目前不支持邮政银行，请选择其它银行</div>
+						<onlineapplication:selectField id="selectProvince" label="开户行所在省"
+							name="province.id" names="${provinceTypes}" itemValue="id"
+							itemLabel="dictionaryValue" size="1" />
+						<onlineapplication:selectField id="selectCity" label="开户行所在市"
+							name="city.id" names="${cityTypes}" itemValue="id"
+							itemLabel="dictionaryValue" size="1" />
+						<onlineapplication:inputField label="具体支行" name="branchName" />
+						<onlineapplication:inputField label="银行卡号" name="accountNumber" />
 
-					<label>身份证扫描件正面</label>
-					<input id="fileIdCardFront" type="file" name="fileIdCardFront" />
-					<label>身份证扫描件反面</label>
-					<input id="fileIdCardBack" type="file" name="fileIdCardBack" />
+						<label>身份证扫描件正面</label> <input id="fileIdCardFront" type="file"
+							name="fileIdCardFront" /> <label>身份证扫描件反面</label> <input
+							id="fileIdCardBack" type="file" name="fileIdCardBack" />
 
-					<div class="form-actions">
-						<button class="btn btn-lg btn-primary btn-block" type="submit">提交</button>
-					</div>
+						<div class="form-actions">
+							<button class="btn btn-lg btn-primary btn-block" type="submit">提交</button>
+						</div>
+					</fieldset>
 				</form:form>
 			</div>
 		</div>

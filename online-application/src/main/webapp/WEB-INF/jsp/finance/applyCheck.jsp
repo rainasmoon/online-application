@@ -1,4 +1,4 @@
-<%@page session="false" %>
+<%@page session="false"%>
 <%@ page language="java" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -70,14 +70,19 @@
 						</tr>
 
 					</table>
-					<div class="form-actions">
-
-						<button class="btn btn-lg btn-primary btn-block" type="submit">提交</button>
-						<button class="btn btn-lg btn-primary btn-block" type="button">修改个人信息</button>
-
+					<div class="row">
+						<div class="col-md-6">
+							<button class="btn btn-lg btn-primary btn-block" type="submit">提交</button>
+						</div>
+						<div class="col-md-6">
+							<a class="btn btn-lg btn-primary btn-block"
+								href="<spring:url value="/changePersonalInformation.html" htmlEscape="true" />">
+								修改个人信息</a>
+						</div>
 					</div>
 				</form:form>
-				<div>
+				<br/>
+				<div class="well">
 					<h3>结算说明</h3>
 					<p>1.账户余额满100元即可申请取款。</p>
 					<p>2.每周三12点前申请取款，每周五进行汇款，如遇节假日顺延。</p>

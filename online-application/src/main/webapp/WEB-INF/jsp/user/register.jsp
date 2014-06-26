@@ -22,16 +22,18 @@
 		<h2>注册用户</h2>
 		<form:form modelAttribute="registorVo" method="post"
 			class="form-horizontal" id="add-user-form">
-			<onlineapplication:inputField label="邮箱" name="email" />
-			<onlineapplication:passwordField label="密码" name="password" />
-			<onlineapplication:passwordField label="确认密码" name="confirmPassword" />
-			<onlineapplication:inputField label="ＱＱ" name="qq" />
-			<onlineapplication:inputField label="手机" name="mobile" />
-			<div class="form-actions">
+			<fieldset>
+				<onlineapplication:inputField label="邮箱" name="email" />
+				<onlineapplication:passwordField label="密码" name="password" />
+				<onlineapplication:passwordField label="确认密码" name="confirmPassword" />
+				<onlineapplication:inputField label="ＱＱ" name="qq" />
+				<onlineapplication:inputField label="手机" name="mobile" />
+				<div class="form-actions">
 
-				<button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
+					<button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
 
-			</div>
+				</div>
+			</fieldset>
 		</form:form>
 
 		<jsp:include page="../fragments/footer.jsp" />

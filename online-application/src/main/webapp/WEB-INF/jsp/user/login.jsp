@@ -24,12 +24,13 @@
 					</c:if>
 				</spring:bind>
 			</span>
-			<onlineapplication:inputField label="邮箱" name="email" />
-			<onlineapplication:passwordField label="密码" name="password" />
-			<onlineapplication:inputField label="验证码" name="checkCode" />
+			<fieldset>
+				<onlineapplication:inputField label="邮箱" name="email" />
+				<onlineapplication:passwordField label="密码" name="password" />
+				<onlineapplication:inputField label="验证码" name="checkCode" />
+			</fieldset>
 			<div>
-				<br/>
-				<img id="jcaptchaImg"
+				<br /> <img id="jcaptchaImg"
 					src="<spring:url value="/jcaptcha.jpg" htmlEscape="true" />" /> <a
 					href="javascript:refreshJcaptchaImg()">看不清？</a>
 			</div>
