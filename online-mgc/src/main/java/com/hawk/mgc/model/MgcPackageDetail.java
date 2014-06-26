@@ -1,5 +1,6 @@
 package com.hawk.mgc.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -50,6 +51,14 @@ public class MgcPackageDetail extends BaseEntity {
 
 	@Transient
 	protected String error;
+
+	public String toShortString() {
+		String dateString = detailDate == null ? null : new SimpleDateFormat(
+				"yyyy-MM-dd").format(detailDate);
+		String shortString = "[日期：" + dateString + "； 安装量：" + installations
+				+ "； 激活量：" + activations + "]";
+		return shortString;
+	}
 
 	public MgcPackage getMgcPackage() {
 		return mgcPackage;

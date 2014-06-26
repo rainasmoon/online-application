@@ -30,8 +30,8 @@
 					class="form-horizontal" id="change-package-form"
 					>
 					<span class="help-inline"> <c:if test="${not empty message}">
-							<div id="message" class="success">${message}</div>
-						</c:if> <spring:bind path="*">
+							<div id="message" class="alert alert-success">${message}</div>
+						</c:if> <spring:bind path="error">
 							<c:if test="${status.error}">
 								<div id="message" class="error">${status.errorMessage}</div>
 							</c:if>

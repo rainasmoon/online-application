@@ -58,7 +58,8 @@ public class PackageDetailController {
 		} else {
 			this.packageService.savePackageDetail(mgcPackageId,
 					mgcPackageDetail);
-			String message = "save successfully.";
+			String message = mgcPackageDetail.toShortString()
+					+ " save successfully.";
 			model.put("message", message);
 			return initDetailCreationForm(model);
 		}
