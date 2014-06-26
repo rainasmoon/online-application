@@ -72,13 +72,13 @@
 					<tr>
 						<th>身份证扫描件正面</th>
 						<td><b> <spring:url value="/idcard/${user.id}/front"
-									htmlEscape="true" var="frontImage" /> <img src="${frontImage}" />
+									htmlEscape="true" var="frontImage" /> <img src="${frontImage}" class="img-thumbnail"/>
 						</b></td>
 					</tr>
 					<tr>
 						<th>身份证扫描件反面</th>
 						<td><b><spring:url value="/idcard/${user.id}/back"
-									htmlEscape="true" var="backImage" /> <img src="${backImage}" />
+									htmlEscape="true" var="backImage" /> <img src="${backImage}" class="img-thumbnail"/>
 						</b></td>
 					</tr>
 				</table>
