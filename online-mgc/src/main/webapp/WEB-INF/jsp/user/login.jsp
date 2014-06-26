@@ -16,13 +16,10 @@
 <jsp:include page="../fragments/headTag.jsp" />
 
 <body>
-
 	<div class="container">
-
-		<h2 class="form-signin-heading">MGC数据开放系统</h2>
-
-		<form:form modelAttribute="loginVo" method="post"
-			class="form-horizontal" id="login-form">
+		<form:form modelAttribute="loginVo" method="post" class="form-signin"
+			id="login-form">
+			<h2 class="form-signin-heading">MGC数据开放系统</h2>
 			<span class="help-inline"> <c:if test="${not empty message}">
 					<div id="message" class="success">${message}</div>
 				</c:if> <spring:bind path="error">
@@ -32,16 +29,15 @@
 				</spring:bind>
 			</span>
 			<onlineapplication:inputField label="账号" name="userName" />
-			<onlineapplication:passwordField label="密码" name="password" />			
-			<div class="form-actions">
+			<onlineapplication:passwordField label="密码" name="password" />
+			<div class="">
 
 				<button class="btn btn-lg btn-primary btn-block" type="submit">登录系统</button>
 
 			</div>
 		</form:form>
-
+		<jsp:include page="../fragments/footer.jsp" />
 	</div>
-	<jsp:include page="../fragments/footer.jsp" />
 	<script type="text/javascript">
  
 		$(function() {
