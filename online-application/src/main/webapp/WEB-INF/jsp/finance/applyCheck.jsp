@@ -72,10 +72,10 @@
 					</table>
 					<div class="row">
 						<div class="col-md-6">
-							<button class="btn btn-lg btn-primary btn-block" type="submit">提交</button>
+							<button class="btn btn-lg btn-primary " type="submit">提交</button>
 						</div>
 						<div class="col-md-6">
-							<a class="btn btn-lg btn-primary btn-block"
+							<a class="btn btn-lg btn-primary "
 								href="<spring:url value="/changePersonalInformation.html" htmlEscape="true" />">
 								修改个人信息</a>
 						</div>

@@ -32,7 +32,7 @@
 			<onlineapplication:passwordField label="密码" name="password" />
 			<div class="">
 
-				<button class="btn btn-lg btn-primary btn-block" type="submit">登录系统</button>
+				<button class="btn btn-lg btn-primary " type="submit">登录系统</button>
 
 			</div>
 		</form:form>

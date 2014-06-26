@@ -42,7 +42,7 @@
 							name="confirmPassword" />
 						<div class="form-actions">
 
-							<button class="btn btn-lg btn-primary btn-block" type="submit">修改</button>
+							<button class="btn btn-lg btn-primary " type="submit">修改</button>
 
 						</div>
 					</fieldset>

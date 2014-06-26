@@ -46,7 +46,7 @@
 					</fieldset>
 					<div class="form-actions">
 
-						<button class="btn btn-lg btn-primary btn-block" type="submit">创建应用</button>
+						<button class="btn btn-lg btn-primary " type="submit">创建应用</button>
 
 					</div>
 				</form:form>

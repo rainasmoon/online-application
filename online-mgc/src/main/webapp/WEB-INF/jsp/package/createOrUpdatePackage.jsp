@@ -43,7 +43,7 @@
 						names="${productionTypes}" size="1" />
 					<div class="form-actions">
 
-						<button class="btn btn-lg btn-primary btn-block" type="submit">提交</button>
+						<button class="btn btn-lg btn-primary " type="submit">提交</button>
 
 					</div>
 				</form:form>

@@ -36,10 +36,10 @@
 			</div>
 			<div class="row">
 				<div class="col-md-6">
-					<button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+					<button class="btn btn-lg btn-primary " type="submit">登录</button>
 				</div>
 				<div class="col-md-6">
-					<a class="btn btn-lg btn-primary btn-block"
+					<a class="btn btn-lg btn-primary "
 						href="<spring:url value="/register.html" htmlEscape="true" />">
 						注册</a>
 				</div>
