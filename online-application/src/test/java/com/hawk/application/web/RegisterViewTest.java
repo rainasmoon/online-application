@@ -1,8 +1,9 @@
 package com.hawk.application.web;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -36,11 +37,13 @@ public class RegisterViewTest {
 	}
 
 	@Test
-	public void getVisitsXml() throws Exception {
-		ResultActions actions = this.mockMvc.perform(get("/register.html")
-				.accept(MediaType.TEXT_HTML));
+	public void registerPage() throws Exception {
+		ResultActions actions = this.mockMvc.perform(post("/register.html")
+				.param("email", "test@abc").param("password", "123")
+				.param("confirmPassword", "123").accept(MediaType.TEXT_HTML));
 		actions.andDo(print()); // action is logged into the console
-		actions.andExpect(status().isOk());
+		actions.andExpect(status().isFound());
+		actions.andExpect(view().name("redirect:/"));
 
 	}
 }
