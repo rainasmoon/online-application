@@ -1,4 +1,4 @@
-<%@page session="false" %>
+<%@page session="false"%>
 <%@ page language="java" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -20,8 +20,8 @@
 	<div class="container">
 
 		<h2>注册用户</h2>
-		<form:form modelAttribute="registorVo" method="post" class="form-horizontal"
-			id="add-user-form">
+		<form:form modelAttribute="registorVo" method="post"
+			class="form-horizontal" id="add-user-form">
 			<onlineapplication:inputField label="邮箱" name="email" />
 			<onlineapplication:passwordField label="密码" name="password" />
 			<onlineapplication:passwordField label="确认密码" name="confirmPassword" />
@@ -34,9 +34,9 @@
 			</div>
 		</form:form>
 
-
+		<jsp:include page="../fragments/footer.jsp" />
 	</div>
-	<jsp:include page="../fragments/footer.jsp" />
+
 	<script type="text/javascript">
  
 		$(function() {

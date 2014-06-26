@@ -60,13 +60,9 @@
 					<input id="fileIdCardBack" type="file" name="fileIdCardBack" />
 
 					<div class="form-actions">
-
 						<button class="btn btn-lg btn-primary btn-block" type="submit">提交</button>
-
 					</div>
 				</form:form>
-
-
 			</div>
 		</div>
 		<jsp:include page="../fragments/footer.jsp" />
