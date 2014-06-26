@@ -64,9 +64,14 @@
 							<td><b><c:out value="${check.remainder} " /></b></td>
 						</tr>
 						<tr>
-							<td colspan="2"><b><onlineapplication:inputField
-										label="提现" name="applyAmount" />元</b>
-								请仔细核对以上信息，最少提现为100元，最多提现为${check.remainder}元。</td>
+							<td colspan="2">
+								<div class="input-group">
+									<onlineapplication:inputField label="提现"
+										name="applyAmount" /><span
+										class="input-group-addon">元</span>
+								</div> 
+								请仔细核对以上信息，最少提现为100元，最多提现为${check.remainder}元。
+							</td>
 						</tr>
 
 					</table>
@@ -81,7 +86,7 @@
 						</div>
 					</div>
 				</form:form>
-				<br/>
+				<br />
 				<div class="well">
 					<h3>结算说明</h3>
 					<p>1.账户余额满100元即可申请取款。</p>
@@ -95,7 +100,7 @@
 		</div>
 		<jsp:include page="../fragments/footer.jsp" />
 	</div>
-	<script type="text/javascript"> 
+	<script type="text/javascript">
 		$(function() {
 			$('input, textarea').placeholder();
 			$('#applyAmount').focus();
