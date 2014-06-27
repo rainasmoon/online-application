@@ -59,11 +59,6 @@ input[type="text"] {
     color: #000000;
 }
 
-
-.form-horizontal .control-label {
-    text-align: left;
-}
-
 .banner {
 	width: 100%;
 	height: 100px;
@@ -74,8 +69,4 @@ input[type="text"] {
 	height: 100%;
 	font-size: 14px;
 	line-height: 1.2em;
-}
-
-.error{
-	color:#B94A48;	
 }
