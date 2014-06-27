@@ -25,11 +25,11 @@
 			<c:choose>
 				<c:when test="${(empty itemValue)}">
 					<form:select id="${id }" path="${name}" items="${names}"
-						size="${size}" />
+						size="${size}" class="form-control"/>
 				</c:when>
 				<c:otherwise>
 					<form:select id="${id }" path="${name}" items="${names}"
-						itemValue="${itemValue }" itemLabel="${itemLabel }" size="${size}" />
+						itemValue="${itemValue }" itemLabel="${itemLabel }" size="${size}" class="form-control"/>
 				</c:otherwise>
 			</c:choose>
 			<span class="help-inline">${status.errorMessage}</span>
