@@ -33,15 +33,20 @@
 
 					<datatables:column title="账号" property="userName" />
 					<datatables:column title="角色" property="userRole" />
+					<c:if test="${userRole == 'manager' }">
 					<datatables:column title="操作">
 						<a href="users/${auser.id}/edit">修改</a>
 						<a href="users/${auser.id}/delete">删除</a>
 					</datatables:column>
+					</c:if>
 
 				</datatables:table>
 
-				<br /> <a href='<spring:url value="/users/new" htmlEscape="true"/>'>Add
+				<br /> 
+				<c:if test="${userRole == 'manager' }">
+				<a href='<spring:url value="/users/new" htmlEscape="true"/>'>Add
 					User</a>
+				</c:if>
 
 			</div>
 		</div>
