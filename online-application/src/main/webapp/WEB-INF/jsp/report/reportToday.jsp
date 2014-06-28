@@ -26,7 +26,7 @@
 				<jsp:include page="../fragments/leftMenu.jsp" /></div>
 			<div class="col-xs-12 col-sm-9">
 			<form:form modelAttribute="searchReportVo" method="post"
-					class="form-horizontal" id="search-report-today-form">
+					class="form-inline" id="search-report-today-form">
 				<onlineapplication:selectField label=""
 						name="application.id" id="selectApplication" names="${allApplications}" itemValue="id" itemLabel="applicationName" size="1" />
 				<h2>今日数据</h2>
