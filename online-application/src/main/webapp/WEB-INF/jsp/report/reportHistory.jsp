@@ -1,4 +1,4 @@
-<%@page session="false" %>
+<%@page session="false"%>
 <%@ page language="java" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -25,6 +25,7 @@
 			<div class="col-xs-6 col-sm-3 sidebar-offcanvas" role="navigation">
 				<jsp:include page="../fragments/leftMenu.jsp" /></div>
 			<div class="col-xs-12 col-sm-9">
+				<h2>分日数据</h2>
 				<c:url var="actionUrl" value="reportPast.html" />
 				<form:form action="${actionUrl}" modelAttribute="searchReportVo"
 					method="post" class="form-inline" id="search-past-form">
@@ -33,26 +34,26 @@
 						itemLabel="applicationName" size="1" />
 					<button id="lastWeek" class="btn btn-primary" type="button">过去一周</button>
 					<button id="lastMonth" class="btn btn-primary" type="button">过去一月</button>
-					从<form:input path="dateFrom" class="form-control" size="10" placeholder="yyyy-mm-dd"
-						maxLength="10" minLength="10" />
+					从<form:input path="dateFrom" class="form-control" size="10"
+						placeholder="yyyy-mm-dd" maxLength="10" minLength="10" />
 					到
-					<form:input path="dateTo" class="form-control" size="10" placeholder="yyyy-mm-dd"
-						maxLength="10" minLength="10" />
+					<form:input path="dateTo" class="form-control" size="10"
+						placeholder="yyyy-mm-dd" maxLength="10" minLength="10" />
 					<button id="search" class="btn btn-primary" type="submit">Search</button>
 				</form:form>
-
-				<h2>分日数据</h2>
 				<datatables:table id="reports" data="${selections}" cdn="true"
 					row="report" theme="bootstrap3" cssClass="table table-striped"
 					paginate="false" pageable="false" info="false" filterable="false"
 					sortable="false" lengthChange="false">
 
 					<datatables:column title="日期" property="dateString" />
-					<datatables:column title="新增用户" property="newUsers" default="-"/>
-					<datatables:column title="活跃用户" property="activeUsers" default="-"/>
-					<datatables:column title="激活收入" property="activationIncome" default="-"/>
-					<datatables:column title="深度任务收入" property="taskIncome" default="-"/>
-					<datatables:column title="推广收入" property="promoteIncome" default="-"/>
+					<datatables:column title="新增用户" property="newUsers" default="-" />
+					<datatables:column title="活跃用户" property="activeUsers" default="-" />
+					<datatables:column title="激活收入" property="activationIncome"
+						default="-" />
+					<datatables:column title="深度任务收入" property="taskIncome" default="-" />
+					<datatables:column title="推广收入" property="promoteIncome"
+						default="-" />
 
 				</datatables:table>
 
