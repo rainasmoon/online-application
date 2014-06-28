@@ -25,6 +25,7 @@
 			<div class="col-xs-6 col-sm-3 sidebar-offcanvas" role="navigation">
 				<jsp:include page="../fragments/leftMenu.jsp" /></div>
 			<div class="col-xs-12 col-sm-9">
+				<h2>数据统计</h2>
 				<c:url var="actionUrl" value="channels.html" />
 				<form:form action="${actionUrl}" modelAttribute="searchMgcPackageVo"
 					method="post" class="form-inline" id="search-mgcpackage-form">
@@ -33,13 +34,12 @@
 						size="1" />
 					<onlineapplication:selectField label="产品" name="mgcProduct"
 						names="${productionTypes}" size="1" />
-					从<form:input path="dateFrom"  class="form-control" size="10" placeholder="yyyy-mm-dd"
-						maxLength="10" minLength="10" />
-					到<form:input path="dateTo"  class="form-control" size="10" placeholder="yyyy-mm-dd"
-						maxLength="10" minLength="10" />
-					<button id="search"  class="btn btn-primary" type="submit">Search</button>
+					从<form:input path="dateFrom" class="form-control" size="10"
+						placeholder="yyyy-mm-dd" maxLength="10" minLength="10" />
+					到<form:input path="dateTo" class="form-control" size="10"
+						placeholder="yyyy-mm-dd" maxLength="10" minLength="10" />
+					<button id="search" class="btn btn-primary" type="submit">Search</button>
 				</form:form>
-				<h2>数据统计</h2>
 				<datatables:table id="mgcPackageTable" data="${selections}"
 					cdn="true" row="mgcPackageDetail" theme="bootstrap3"
 					cssClass="table table-striped" paginate="false" pageable="false"
@@ -53,7 +53,7 @@
 					<datatables:column title="推广包" property="mgcPackage.packageName" />
 					<datatables:column title="产品名" property="mgcPackage.productionName" />
 					<datatables:column title="安装量" property="installations" />
-					<datatables:column title="激活量" property="activations" />					
+					<datatables:column title="激活量" property="activations" />
 
 				</datatables:table>
 
