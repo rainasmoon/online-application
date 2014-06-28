@@ -33,9 +33,9 @@
 						size="1" />
 					<onlineapplication:selectField label="产品" name="mgcProduct"
 						names="${productionTypes}" size="1" />
-					<form:input path="dateFrom"  class="form-control" size="10" placeholder="yyyy-mm-dd"
+					从<form:input path="dateFrom"  class="form-control" size="10" placeholder="yyyy-mm-dd"
 						maxLength="10" minLength="10" />
-					<form:input path="dateTo"  class="form-control" size="10" placeholder="yyyy-mm-dd"
+					到<form:input path="dateTo"  class="form-control" size="10" placeholder="yyyy-mm-dd"
 						maxLength="10" minLength="10" />
 					<button id="search"  class="btn btn-primary" type="submit">Search</button>
 				</form:form>
