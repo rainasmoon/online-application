@@ -94,9 +94,9 @@
 						<h3 class="panel-title">推广趋势</h3>
 					</div>
 					<div class="panel-body">
-						<p>
-							<button id="lastWeek">最近一周</button>
-							<button id="lastMonth">最近一月</button>
+						<p class="text-right">
+							<button id="lastWeek" class="btn btn-primary">最近一周</button>
+							<button id="lastMonth" class="btn btn-primary">最近一月</button>
 						</p>
 						<div id="promotetrend" class="flot-chart-css"
 							style="height: 300px;"></div>

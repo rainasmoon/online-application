@@ -11,6 +11,10 @@ public class SearchReportVo {
 	private Date dateFrom;
 	private Date dateTo;
 
+	public SearchReportVo() {
+
+	}
+
 	@Override
 	public String toString() {
 		return ReflectionToStringBuilder.toString(this,
