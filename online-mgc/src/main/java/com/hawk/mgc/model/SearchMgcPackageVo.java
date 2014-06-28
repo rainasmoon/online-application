@@ -12,6 +12,10 @@ public class SearchMgcPackageVo {
 	private Date dateFrom;
 	private Date dateTo;
 
+	public SearchMgcPackageVo() {
+
+	}
+
 	@Override
 	public String toString() {
 		return ReflectionToStringBuilder.toString(this,

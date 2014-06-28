@@ -25,7 +25,7 @@
 			<div class="col-xs-6 col-sm-3 sidebar-offcanvas" role="navigation">
 				<jsp:include page="../fragments/leftMenu.jsp" /></div>
 			<div class="col-xs-12 col-sm-9">
-				<c:url var="actionUrl" value="packages.html" />
+				<c:url var="actionUrl" value="channels.html" />
 				<form:form action="${actionUrl}" modelAttribute="searchMgcPackageVo"
 					method="post" class="form-inline" id="search-mgcpackage-form">
 					<onlineapplication:selectField label="推广包" name="mgcPackage.id"

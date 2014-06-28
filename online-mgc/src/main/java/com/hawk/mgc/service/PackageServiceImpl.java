@@ -97,8 +97,8 @@ public class PackageServiceImpl implements PackageService {
 	@Override
 	public List<MgcPackageDetail> searchPackageDetails(
 			SearchMgcPackageVo searchMgcPackageVo) {
-		// TODO
-		return null;
+		// TODO need to implement the real meathod.
+		return packageDetailRepository.findAll();
 	}
 
 	@Override
