@@ -67,7 +67,7 @@
 							<td colspan="2">
 								<div class="input-group">
 									<onlineapplication:inputField label="提现"
-										name="applyAmount" /><span
+										name="applyAmount" required="true" /><span
 										class="input-group-addon">元</span>
 								</div> 
 								请仔细核对以上信息，最少提现为100元，最多提现为${check.remainder}元。

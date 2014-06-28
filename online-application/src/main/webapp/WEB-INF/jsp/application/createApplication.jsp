@@ -36,11 +36,11 @@
 						</spring:bind>
 					</span>
 					<fieldset>
-						<onlineapplication:inputField label="应用名称" name="applicationName" />
+						<onlineapplication:inputField label="应用名称" name="applicationName" required="true" />
 						<onlineapplication:radioButtonsField label="应用平台"
 							name="applicationPlatform" names="${platformTypes}" />
 						<onlineapplication:inputField label="应用包名"
-							name="applicationPackageName" />
+							name="applicationPackageName" required="true" />
 						<div class="alert alert-info">packageName / bundle
 							identifier,如com.example.helloworld</div>
 					</fieldset>

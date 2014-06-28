@@ -36,10 +36,10 @@
 						</spring:bind>
 					</span>
 					<fieldset>
-						<onlineapplication:passwordField label="旧密码" name="oldPassword" />
-						<onlineapplication:passwordField label="新密码" name="newPassword" />
+						<onlineapplication:passwordField label="旧密码" name="oldPassword" required="true" />
+						<onlineapplication:passwordField label="新密码" name="newPassword" required="true" />
 						<onlineapplication:passwordField label="确认密码"
-							name="confirmPassword" />
+							name="confirmPassword" required="true" />
 						<div class="form-actions">
 
 							<button class="btn btn-lg btn-primary " type="submit">修改</button>

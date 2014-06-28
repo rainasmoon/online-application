@@ -23,9 +23,9 @@
 		<form:form modelAttribute="registorVo" method="post"
 			class="form-horizontal" id="add-user-form">
 			<fieldset>
-				<onlineapplication:inputField label="邮箱" name="email" />
-				<onlineapplication:passwordField label="密码" name="password" />
-				<onlineapplication:passwordField label="确认密码" name="confirmPassword" />
+				<onlineapplication:inputField label="邮箱" name="email" required="true" />
+				<onlineapplication:passwordField label="密码" name="password" required="true" />
+				<onlineapplication:passwordField label="确认密码" name="confirmPassword" required="true" />
 				<onlineapplication:inputField label="ＱＱ" name="qq" />
 				<onlineapplication:inputField label="手机" name="mobile" />
 				<div class="form-actions">

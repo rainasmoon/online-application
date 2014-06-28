@@ -13,6 +13,7 @@
 <jsp:include page="../fragments/headTag.jsp" />
 <body>
 	<div class="container">
+
 		<form:form modelAttribute="loginVo" method="post" class="form-signin"
 			id="login-form" role="form">
 			<h2 class="form-signin-heading">登录</h2>
@@ -25,9 +26,12 @@
 				</spring:bind>
 			</span>
 			<fieldset>
-				<onlineapplication:inputField label="邮箱" name="email" />
-				<onlineapplication:passwordField label="密码" name="password" />
-				<onlineapplication:inputField label="验证码" name="checkCode" />
+				<onlineapplication:inputField label="邮箱" name="email"
+					required="true" />
+				<onlineapplication:passwordField label="密码" name="password"
+					required="true" />
+				<onlineapplication:inputField label="验证码" name="checkCode"
+					required="true" />
 			</fieldset>
 			<div>
 				<br /> <img id="jcaptchaImg"
