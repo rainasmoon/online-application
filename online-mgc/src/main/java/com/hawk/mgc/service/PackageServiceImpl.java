@@ -97,8 +97,12 @@ public class PackageServiceImpl implements PackageService {
 	@Override
 	public List<MgcPackageDetail> searchPackageDetails(
 			SearchMgcPackageVo searchMgcPackageVo) {
-		// TODO need to implement the real meathod.
-		return packageDetailRepository.findAll();
+		if (searchMgcPackageVo.getDateTo() != null) {
+			searchMgcPackageVo
+					.setDateTo(convertDateToEndOfThatDay(searchMgcPackageVo
+							.getDateTo()));
+		}
+		return packageDetailRepository.searchPackageDetails(searchMgcPackageVo);
 	}
 
 	@Override
@@ -111,6 +115,11 @@ public class PackageServiceImpl implements PackageService {
 	@Transactional(readOnly = true)
 	public List<MgcPackageDetail> findAllPackageDetails() {
 		return packageDetailRepository.findAll();
+	}
+
+	private Date convertDateToEndOfThatDay(Date dateTo) {
+
+		return new Date(dateTo.getTime() + 24 * 60 * 60 * 1000 - 1);
 	}
 
 }

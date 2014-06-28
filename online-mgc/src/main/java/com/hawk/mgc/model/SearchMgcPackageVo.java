@@ -23,6 +23,44 @@ public class SearchMgcPackageVo {
 
 	}
 
+	public static class Builder {
+		private MgcPackage mgcPackage;
+		private String mgcProduct;
+		private Date dateFrom;
+		private Date dateTo;
+
+		public Builder mgcPackage(MgcPackage mgcPackage) {
+			this.mgcPackage = mgcPackage;
+			return this;
+		}
+
+		public Builder mgcProduct(String mgcProduct) {
+			this.mgcProduct = mgcProduct;
+			return this;
+		}
+
+		public Builder dateFrom(Date dateFrom) {
+			this.dateFrom = dateFrom;
+			return this;
+		}
+
+		public Builder dateTo(Date dateTo) {
+			this.dateTo = dateTo;
+			return this;
+		}
+
+		public SearchMgcPackageVo build() {
+			return new SearchMgcPackageVo(this);
+		}
+	}
+
+	private SearchMgcPackageVo(Builder builder) {
+		this.mgcPackage = builder.mgcPackage;
+		this.mgcProduct = builder.mgcProduct;
+		this.dateFrom = builder.dateFrom;
+		this.dateTo = builder.dateTo;
+	}
+
 	public Date getDateFrom() {
 		return dateFrom;
 	}

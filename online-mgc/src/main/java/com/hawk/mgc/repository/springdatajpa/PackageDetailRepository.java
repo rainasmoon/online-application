@@ -9,7 +9,8 @@ import org.springframework.data.repository.query.Param;
 import com.hawk.mgc.model.MgcPackageDetail;
 
 public interface PackageDetailRepository extends
-		CrudRepository<MgcPackageDetail, Integer> {
+		CrudRepository<MgcPackageDetail, Integer>,
+		PackageDetailRepositoryCustom {
 
 	List<MgcPackageDetail> findAll();
 
