@@ -11,6 +11,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -25,12 +26,15 @@ public class MgcPackageDetail extends BaseEntity {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "detail_date")
+	@NotNull(message = "{not.null}")
 	protected Date detailDate;
 
 	@Column(name = "installations")
+	@NotNull(message = "{not.null}")
 	protected Integer installations;
 
 	@Column(name = "activations")
+	@NotNull(message = "{not.null}")
 	protected Integer activations;
 
 	@Temporal(TemporalType.TIMESTAMP)

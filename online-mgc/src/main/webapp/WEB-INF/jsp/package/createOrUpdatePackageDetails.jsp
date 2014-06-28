@@ -24,7 +24,7 @@
 				<jsp:include page="../fragments/leftMenu.jsp" /></div>
 			<div class="col-xs-12 col-sm-9">
 
-				<h2>包</h2>
+				<h2>每日数据</h2>
 
 				<form:form modelAttribute="mgcPackageDetail" method="post"
 					class="form-horizontal" id="change-package-form"
@@ -44,7 +44,7 @@
 					<div class="form-actions">
 
 						<button class="btn btn-lg btn-primary " type="submit">提交</button>
-						<c:if test="${mgcPackageDetail['new']}"><a href="../listDetails.html">返回</a> </c:if>
+						<c:if test="${mgcPackageDetail['new']}"><a  class="btn btn-lg btn-primary "  href="../listDetails.html">返回</a> </c:if>
 						
 
 					</div>

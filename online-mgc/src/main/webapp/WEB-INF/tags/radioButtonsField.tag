@@ -9,13 +9,13 @@
               description="Names in the list" %>
 
 <spring:bind path="${name}">
-    <c:set var="cssGroup" value="control-group ${status.error ? 'error' : '' }"/>
+    <c:set var="cssGroup" value="control-group ${status.error ? 'has-error' : '' }"/>
     <div class="${cssGroup}">
         <label class="control-label">${label}</label>
 
-        <div class="controls">
-            <form:radiobuttons path="${name}" items="${names}"/>
-            <span class="help-inline">${status.errorMessage}</span>
+        <div>
+            <form:radiobuttons path="${name}" items="${names}" />
+            <span class="control-label">${status.errorMessage}</span>
         </div>
     </div>
 </spring:bind>

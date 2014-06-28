@@ -5,13 +5,20 @@
 	description="Name of corresponding property in bean object"%>
 <%@ attribute name="label" required="true" rtexprvalue="true"
 	description="Label appears in red color if input is considered as invalid after submission"%>
+<%@ attribute name="required" required="false" rtexprvalue="true"%>
+<%@ attribute name="autofocus" required="false" rtexprvalue="true"%>
+<%@ attribute name="placeholder" required="false" rtexprvalue="true"%>
+<%@ attribute name="type" required="false" rtexprvalue="true"%>
 
 <spring:bind path="${name}">
 	<c:set var="cssGroup"
-		value="form-group ${status.error ? 'has-error' : '' }" />
+		value="control-group ${status.error ? 'has-error' : '' }" />
 	<div class="${cssGroup}">
-		<label>${label}</label>
-		<form:input path="${name}" class="form-control" />
-		<span>${status.errorMessage}</span>
+		<label class="control-label">${label}</label>
+		<form:input path="${name}" class="form-control"
+			placeholder="${ placeholder }"
+			required="${required ? 'required' : '' }"
+			autofocus="${autofocus ? 'autofocus' : '' }" type="${type }"/>
+		<span class="control-label">${status.errorMessage}</span>
 	</div>
 </spring:bind>

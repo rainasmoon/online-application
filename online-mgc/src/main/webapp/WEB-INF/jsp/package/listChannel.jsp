@@ -27,17 +27,17 @@
 			<div class="col-xs-12 col-sm-9">
 				<c:url var="actionUrl" value="packages.html" />
 				<form:form action="${actionUrl}" modelAttribute="searchMgcPackageVo"
-					method="post" class="form-horizontal" id="search-mgcpackage-form">
+					method="post" class="form-inline" id="search-mgcpackage-form">
 					<onlineapplication:selectField label="推广包" name="mgcPackage.id"
 						names="${allMgcPackages}" itemValue="id" itemLabel="packageName"
 						size="1" />
 					<onlineapplication:selectField label="产品" name="mgcProduct"
 						names="${productionTypes}" size="1" />
-					<form:input path="dateFrom" size="10" placeholder="yyyy-mm-dd"
+					<form:input path="dateFrom"  class="form-control" size="10" placeholder="yyyy-mm-dd"
 						maxLength="10" minLength="10" />
-					<form:input path="dateTo" size="10" placeholder="yyyy-mm-dd"
+					<form:input path="dateTo"  class="form-control" size="10" placeholder="yyyy-mm-dd"
 						maxLength="10" minLength="10" />
-					<button id="search" type="submit">Search</button>
+					<button id="search"  class="btn btn-primary" type="submit">Search</button>
 				</form:form>
 				<h2>数据统计</h2>
 				<datatables:table id="mgcPackageTable" data="${selections}"
