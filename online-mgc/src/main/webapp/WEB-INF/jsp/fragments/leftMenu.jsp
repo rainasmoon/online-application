@@ -16,8 +16,11 @@
 	<a class="list-group-item active" href="#"> 合作商管理</a> <a
 		class="list-group-item"
 		href="<spring:url value="/channels.html" htmlEscape="true" />">
-		渠道查询</a> <a class="list-group-item"
-		href="<spring:url value="/users.html" htmlEscape="true" />"> 用户查询</a>
+		渠道查询</a>
+	<c:if test="${userRole == 'manager' }">
+		<a class="list-group-item"
+			href="<spring:url value="/users.html" htmlEscape="true" />"> 用户查询</a>
+	</c:if>
 
 </div>
 

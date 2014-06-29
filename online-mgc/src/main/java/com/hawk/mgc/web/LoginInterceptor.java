@@ -1,5 +1,8 @@
 package com.hawk.mgc.web;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -37,6 +40,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 		}
 		LOGGER.debug("Session Id:" + session.getId());
 		String userEmail = (String) session.getAttribute("userName");
+		String userRole = (String) session.getAttribute("userRole");
 		LOGGER.debug("current User=========>" + userEmail);
 		LOGGER.debug("request url:=========>" + uri);
 
@@ -45,9 +49,35 @@ public class LoginInterceptor implements HandlerInterceptor {
 			return true;
 		}
 		if (userEmail != null && !userEmail.isEmpty()) {
-			return true;
+			if (checkRole(uri, userRole)) {
+				return true;
+			}
 		}
+
 		response.sendRedirect(request.getContextPath() + "/login.html");
 		return false;
+	}
+
+	private boolean checkRole(String uri, String userRole) {
+		List<String> managerRoleUri = new ArrayList<String>();
+		managerRoleUri.add("users");
+		managerRoleUri.add("users.html");
+		managerRoleUri.add("packages");
+		managerRoleUri.add("packages.html");
+		managerRoleUri.add("edit");
+		managerRoleUri.add("edit.html");
+		managerRoleUri.add("add.html");
+		managerRoleUri.add("add");
+		managerRoleUri.add("new.html");
+		managerRoleUri.add("new");
+		managerRoleUri.add("delete.html");
+		managerRoleUri.add("delete");
+		managerRoleUri.add("listDetails");
+		managerRoleUri.add("listDetails.html");
+
+		if (managerRoleUri.contains(uri) && !"manager".equals(userRole)) {
+			return false;
+		}
+		return true;
 	}
 }
