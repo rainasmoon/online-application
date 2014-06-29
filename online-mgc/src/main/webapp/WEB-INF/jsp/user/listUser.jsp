@@ -8,9 +8,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="datatables"
-	uri="http://github.com/dandelion/datatables"%>
-
 
 <html lang="en">
 
@@ -26,26 +23,30 @@
 			<div class="col-xs-12 col-sm-9">
 
 				<h2>用户管理</h2>
-				<datatables:table id="userTable" data="${selections}" cdn="true"
-					row="auser" theme="bootstrap3" cssClass="table table-striped"
-					paginate="false" pageable="false" info="false" filterable="false"
-					sortable="false" lengthChange="false">
 
-					<datatables:column title="账号" property="userName" />
-					<datatables:column title="角色" property="userRole" />
-					<c:if test="${userRole == 'manager' }">
-					<datatables:column title="操作">
-						<a href="users/${auser.id}/edit">修改</a>
-						<a href="users/${auser.id}/delete">删除</a>
-					</datatables:column>
-					</c:if>
-
-				</datatables:table>
-
-				<br /> 
+				<table id="tableDatas" class="table table-stripped">
+					<thead>
+						<tr>
+							<th>账号</th>
+							<th>角色</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="arow" items="${selections}">
+							<tr>
+								<td><c:out value="${arow.userName}" /></td>
+								<td><c:out value="${arow.userRole}" /></td>
+								<td><a href="users/${arow.id}/edit">修改</a> <a
+									href="users/${arow.id}/delete">删除</a></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+				<br />
 				<c:if test="${userRole == 'manager' }">
-				<a href='<spring:url value="/users/new" htmlEscape="true"/>'>Add
-					User</a>
+					<a href='<spring:url value="/users/new" htmlEscape="true"/>'>Add
+						User</a>
 				</c:if>
 
 			</div>
@@ -53,9 +54,8 @@
 		<jsp:include page="../fragments/footer.jsp" />
 	</div>
 	<script type="text/javascript">
- 
 		$(function() {
-			
+
 		});
 	</script>
 </body>

@@ -9,9 +9,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="onlineapplication" tagdir="/WEB-INF/tags"%>
-<%@ taglib prefix="datatables"
-	uri="http://github.com/dandelion/datatables"%>
-
 
 <html lang="en">
 
@@ -56,6 +53,31 @@
 					<datatables:column title="激活量" property="activations" />
 
 				</datatables:table>
+				<table id="tableDatas" class="table table-stripped">
+					<thead>
+						<tr>
+							<th>日期</th>
+							<th>推广包</th>
+							<th>产品名</th>
+							<th>安装量</th>
+							<th>激活量</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="arow" items="${selections}">
+							<tr>
+
+								<td><fmt:formatDate pattern="yyyy-MM-dd"
+										value="${arow.detailDate}" /></td>
+								<td><c:out value="${arow.mgcPackage.packageName}" /></td>
+								<td><c:out value="${arow.mgcPackage.productionName}" /></td>
+								<td><c:out value="${arow.installations}" /></td>
+								<td><c:out value="${arow.activations}" /></td>
+
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
 
 			</div>
 		</div>
@@ -66,7 +88,6 @@
 		var="jQueryUiDatePicker" />
 	<script src="${jQueryUiDatePicker}"></script>
 	<script type="text/javascript">
- 
 		$(function() {
 			$('input, textarea').placeholder();
 			$('#dateFrom').datepicker({

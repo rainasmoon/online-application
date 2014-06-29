@@ -9,9 +9,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="onlineapplication" tagdir="/WEB-INF/tags"%>
-<%@ taglib prefix="datatables"
-	uri="http://github.com/dandelion/datatables"%>
-
 
 <html lang="en">
 
@@ -28,26 +25,30 @@
 				<c:url var="actionUrl" value="packages.html" />
 
 				<h2>全部Package</h2>
-				<datatables:table id="mgcPackageTable" data="${selections}"
-					cdn="true" row="mgcPackage" theme="bootstrap3"
-					cssClass="table table-striped" paginate="false" pageable="false"
-					info="false" filterable="false" sortable="false"
-					lengthChange="false">
-
-					<datatables:column title="日期">
-						<fmt:formatDate pattern="yyyy-MM-dd"
-							value="${mgcPackage.createdDate}" />
-					</datatables:column>
-					<datatables:column title="推广包" property="packageName" />
-					<datatables:column title="产品名" property="productionName" />
-					<datatables:column title="操作">
-						<a href="packages/${mgcPackage.id}/listDetails.html">查看明细</a>
-						<a href="packages/${mgcPackage.id}/edit.html">修改</a>
-						<a href="packages/${mgcPackage.id}/delete.html">删除</a>
-					</datatables:column>
-
-				</datatables:table>
-
+				
+				<table id="tableDatas" class="table table-stripped">
+					<thead>
+						<tr>
+							<th>日期</th>
+							<th>推广包</th>
+							<th>产品名</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="arow" items="${selections}">
+							<tr>
+								<td><fmt:formatDate pattern="yyyy-MM-dd"
+										value="${arow.createdDate}" /></td>
+								<td><c:out value="${arow.packageName}" /></td>
+								<td><c:out value="${arow.productionName}" /></td>
+								<td><a href="packages/${arow.id}/listDetails.html">查看明细</a>
+									<a href="packages/${arow.id}/edit.html">修改</a> <a
+									href="packages/${arow.id}/delete.html">删除</a></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
 				<br /> <a
 					href='<spring:url value="/packages/new" htmlEscape="true"/>'>Add
 					Package</a>
@@ -62,7 +63,7 @@
 	<script src="${jQueryUiDatePicker}"></script>
 	<script type="text/javascript">
 		$(function() {
-			
+
 		});
 	</script>
 </body>
