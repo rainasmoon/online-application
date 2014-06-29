@@ -1,4 +1,4 @@
-<%@page session="false" %>
+<%@page session="false"%>
 <%@ page language="java" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -8,9 +8,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="datatables"
-	uri="http://github.com/dandelion/datatables"%>
-
 
 <html lang="en">
 
@@ -26,29 +23,36 @@
 			<div class="col-xs-12 col-sm-9">
 
 				<h2>下载SDK</h2>
-				<datatables:table id="s" data="${selections}" cdn="true"
-					row="sdk" theme="bootstrap3" cssClass="table table-striped"
-					paginate="false" pageable="false" info="false" filterable="false" sortable="false"
-					lengthChange="false">
-
-					<datatables:column title="平台" property="platform" />
-					<datatables:column title="类型" property="sdkType" />
-					<datatables:column title="版本" property="version" />					
-					<datatables:column title="下载">
-						<a href="download/1"><c:out value="${sdk.downloadName }"></c:out></a>
-					</datatables:column>
-								
-				</datatables:table>
-
+				
+				<table id="tableDatas" class="table table-stripped">
+					<thead>
+						<tr>
+							<th>平台</th>
+							<th>类型</th>
+							<th>版本</th>
+							<th>下载</th>
+						
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="arow" items="${selections}">
+							<tr>
+								<td><c:out value="${arow.platform}" /></td>								
+								<td><c:out value="${arow.sdkType}" /></td>
+								<td><c:out value="${arow.version}" /></td>
+								<td><a href="download/1"><c:out value="${arow.downloadName }"></c:out></a></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
 
 			</div>
 		</div>
 		<jsp:include page="../fragments/footer.jsp" />
 	</div>
 	<script type="text/javascript">
- 
 		$(function() {
-			
+
 		});
 	</script>
 </body>

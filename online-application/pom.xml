@@ -71,7 +71,6 @@
 		<webjars-bootstrap.version>3.1.1</webjars-bootstrap.version>
 		<webjars-jquery-ui.version>1.10.3</webjars-jquery-ui.version>
 		<webjars-jquery.version>2.0.3-1</webjars-jquery.version>
-		<dandelion.datatables.version>0.10.0</dandelion.datatables.version>
 
 		<jcaptcha.version>2.0-alpha-1</jcaptcha.version>
 
@@ -237,7 +236,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate.javax.persistence</groupId>
-	<artifactId>hibernate-jpa-2.1-api</artifactId>
+			<artifactId>hibernate-jpa-2.1-api</artifactId>
 			<version>${hibernate-jpa.version}</version>
 		</dependency>
 		<dependency>
@@ -371,33 +370,6 @@
 			<scope>runtime</scope>
 		</dependency>
 
-		<!-- Dandelion -->
-		<dependency>
-			<groupId>com.github.dandelion</groupId>
-			<artifactId>dandelion-core</artifactId>
-			<version>${dandelion.datatables.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.github.dandelion</groupId>
-			<artifactId>dandelion-jsp</artifactId>
-			<version>${dandelion.datatables.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.github.dandelion</groupId>
-			<artifactId>dandelion-webjars</artifactId>
-			<version>${dandelion.datatables.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.github.dandelion</groupId>
-			<artifactId>datatables-jsp</artifactId>
-			<version>${dandelion.datatables.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.github.dandelion</groupId>
-			<artifactId>datatables-spring3</artifactId>
-			<version>${dandelion.datatables.version}</version>
-		</dependency>
 
 		<dependency>
 			<groupId>com.octo.captcha</groupId>

@@ -18,10 +18,6 @@
 
 	<mvc:annotation-driven validator="validator"
 		conversion-service="conversionService">
-		<mvc:argument-resolvers>
-			<bean
-				class="com.github.dandelion.datatables.extras.spring3.ajax.DatatablesCriteriasMethodArgumentResolver" />
-		</mvc:argument-resolvers>
 	</mvc:annotation-driven>
 
 	<bean id="applicationProps"
@@ -122,11 +118,5 @@
 			</list>
 		</property>
 	</bean>
-	
-	<bean id="jsonCollectionConverter" class="com.hawk.application.web.JsonCollectionConverter">
-		<property name="mapper" ref="mapperBean" />
-	</bean>
-	
-	<bean id="mapperBean" class="com.fasterxml.jackson.databind.ObjectMapper" />
 
 </beans>

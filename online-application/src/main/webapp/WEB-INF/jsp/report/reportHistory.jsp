@@ -8,8 +8,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="datatables"
-	uri="http://github.com/dandelion/datatables"%>
+
 <%@ taglib prefix="onlineapplication" tagdir="/WEB-INF/tags"%>
 
 
@@ -41,22 +40,30 @@
 						placeholder="yyyy-mm-dd" maxLength="10" minLength="10" />
 					<button id="search" class="btn btn-primary" type="submit">Search</button>
 				</form:form>
-				<datatables:table id="reports" data="${selections}" cdn="true"
-					row="report" theme="bootstrap3" cssClass="table table-striped"
-					paginate="false" pageable="false" info="false" filterable="false"
-					sortable="false" lengthChange="false">
-
-					<datatables:column title="日期" property="dateString" />
-					<datatables:column title="新增用户" property="newUsers" default="-" />
-					<datatables:column title="活跃用户" property="activeUsers" default="-" />
-					<datatables:column title="激活收入" property="activationIncome"
-						default="-" />
-					<datatables:column title="深度任务收入" property="taskIncome" default="-" />
-					<datatables:column title="推广收入" property="promoteIncome"
-						default="-" />
-
-				</datatables:table>
-
+				<table id="tableDatas" class="table table-stripped">
+					<thead>
+						<tr>
+							<th>日期</th>
+							<th>新增用户</th>
+							<th>活跃用户</th>
+							<th>激活收入</th>
+							<th>深度任务收入</th>
+							<th>推广收入</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="arow" items="${selections}">
+							<tr>
+								<td><c:out value="${arow.dateString}" /></td>
+								<td><c:out value="${arow.newUsers}" /></td>
+								<td><c:out value="${arow.activeUsers}" /></td>
+								<td><c:out value="${arow.activationIncome}" /></td>
+								<td><c:out value="${arow.taskIncome}" /></td>
+								<td><c:out value="${arow.promoteIncome}" /></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
 				-表示该数据该项为隔日统计，当日数据请于明日查看
 
 			</div>

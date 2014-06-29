@@ -49,9 +49,6 @@ public class UserController extends BaseController {
 	@Autowired
 	Environment env;
 
-	@Autowired
-	private JsonCollectionConverter jsonCollectionConverter;
-
 	private String SYS_PIC_PATH;
 
 	@Autowired

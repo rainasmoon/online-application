@@ -1,4 +1,4 @@
-<%@page session="false" %>
+<%@page session="false"%>
 <%@ page language="java" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -7,9 +7,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="datatables"
-	uri="http://github.com/dandelion/datatables"%>
-
 
 <html lang="en">
 
@@ -27,25 +24,31 @@
 
 				<h2>全部应用</h2>
 
-				<datatables:table id="applications" data="${selections}" cdn="true"
-					row="aapplication" theme="bootstrap3" cssClass="table table-striped"
-					paginate="false" pageable="false" info="false" filterable="false"
-					sortable="false" lengthChange="false">
-
-					<datatables:column title="DIANJOY_APP_ID" property="dianjoyAppId" />
-					<datatables:column title="创建时间">
-						<fmt:formatDate pattern="yyyy-MM-dd"
-							value="${aapplication.createdDate}" />
-					</datatables:column>
-
-					<datatables:column title="应用名称" property="applicationName" />
-					<datatables:column title="应用平台" property="applicationPlatform" />
-					<datatables:column title="状态" property="status" />
-					<datatables:column title="操作">
-						<a href="applications/${aapplication.id}/delete">删除</a>
-					</datatables:column>
-				</datatables:table>
-
+				<table id="tableDatas" class="table table-stripped">
+					<thead>
+						<tr>
+							<th>DIANJOY_APP_ID</th>
+							<th>创建时间</th>
+							<th>应用名称</th>
+							<th>应用平台</th>
+							<th>状态</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="arow" items="${selections}">
+							<tr>
+								<td><c:out value="${arow.dianjoyAppId}" /></td>
+								<td><fmt:formatDate pattern="yyyy-MM-dd"
+										value="${arow.createdDate}" /></td>
+								<td><c:out value="${arow.applicationName}" /></td>
+								<td><c:out value="${arow.applicationPlatform}" /></td>
+								<td><c:out value="${arow.status}" /></td>
+								<td><a href="applications/${arow.id}/delete">删除</a></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
 				<div class="alert alert-warning">测试用DIANJOY_APP_ID:TEST_DIANJOY_APP_ID可以测试流程,但不计费</div>
 
 
