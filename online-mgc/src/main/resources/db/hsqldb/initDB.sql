@@ -10,6 +10,8 @@ CREATE TABLE users (
   user_name VARCHAR(100),
   password  VARCHAR(100),
   user_role VARCHAR(50),
+  fail_times INTEGER,
+  is_locked BOOLEAN,
   created_date  TIMESTAMP,
   updated_date  TIMESTAMP,
   created_by INTEGER,

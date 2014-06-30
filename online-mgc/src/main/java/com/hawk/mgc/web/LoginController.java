@@ -50,6 +50,12 @@ public class LoginController {
 				return "user/login";
 			}
 
+			if (user.isLocked()) {
+				result.rejectValue("error", "error.userName.islocked");
+				LOGGER.warn("login failed. user locked." + user.getUserName());
+				return "user/login";
+			}
+
 			session.setAttribute("userName", user.getUserName());
 			session.setAttribute("userRole", user.getUserRole());
 

@@ -28,12 +28,23 @@ public class UserServiceImpl implements UserService {
 
 	}
 
-	@Transactional(readOnly = true)
+	@Transactional
 	public User login(LoginVo loginVo) {
 		User user = userRepository.findByUserName(loginVo.getUserName());
 
-		if (user != null && loginVo.getPassword().equals(user.getPassword())) {
-			return user;
+		if (user != null) {
+			if (loginVo.getPassword().equals(user.getPassword())) {
+				return user;
+			} else {
+				if (user.isManager()) {
+					user.addFailedTimes();
+					if (user.getFailTimes() >= 2) {
+						user.lock();
+					}
+					userRepository.save(user);
+				}
+			}
+
 		}
 
 		return null;

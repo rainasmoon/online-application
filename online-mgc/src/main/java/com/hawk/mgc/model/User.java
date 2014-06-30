@@ -32,6 +32,12 @@ public class User extends BaseEntity {
 	@NotEmpty(message = "{not.null}")
 	protected String userRole;
 
+	@Column(name = "fail_times")
+	protected Integer failTimes;
+
+	@Column(name = "is_locked")
+	protected Boolean isLocked;
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@CreatedDate
 	@Column(name = "created_date")
@@ -50,6 +56,27 @@ public class User extends BaseEntity {
 
 	@Transient
 	protected String error;
+
+	public boolean isLocked() {
+		return isLocked == null ? false : isLocked;
+	}
+
+	public void addFailedTimes() {
+		if (failTimes == null) {
+			failTimes = 0;
+		}
+
+		failTimes++;
+
+	}
+
+	public void lock() {
+		isLocked = true;
+	}
+
+	public boolean isManager() {
+		return userRole != null && userRole.equals("manager");
+	}
 
 	public String getUserName() {
 		return userName;
@@ -113,6 +140,22 @@ public class User extends BaseEntity {
 
 	public void setUserRole(String userRole) {
 		this.userRole = userRole;
+	}
+
+	public Integer getFailTimes() {
+		return failTimes;
+	}
+
+	public void setFailTimes(Integer failTimes) {
+		this.failTimes = failTimes;
+	}
+
+	public Boolean getIsLocked() {
+		return isLocked;
+	}
+
+	public void setIsLocked(Boolean isLocked) {
+		this.isLocked = isLocked;
 	}
 
 }
