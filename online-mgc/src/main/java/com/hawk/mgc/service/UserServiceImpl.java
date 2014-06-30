@@ -34,6 +34,10 @@ public class UserServiceImpl implements UserService {
 
 		if (user != null) {
 			if (loginVo.getPassword().equals(user.getPassword())) {
+				if (user.getFailTimes() != null && user.getFailTimes() > 0) {
+					user.setFailTimes(0);
+					userRepository.save(user);
+				}
 				return user;
 			} else {
 				if (user.isManager()) {

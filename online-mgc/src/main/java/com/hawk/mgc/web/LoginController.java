@@ -41,18 +41,19 @@ public class LoginController {
 			LOGGER.debug("Login has error.");
 			return "user/login";
 		} else {
+			User user = userService.findUserByUserName(loginVo.getUserName());
 
-			User user = userService.login(loginVo);
+			if (user != null && user.isLocked()) {
+				result.rejectValue("error", "error.userName.islocked");
+				LOGGER.warn("login failed. user locked." + user.getUserName());
+				return "user/login";
+			}
+
+			user = userService.login(loginVo);
 
 			if (user == null) {
 				result.rejectValue("error", "error.userNameOrPassword.invalid");
 				LOGGER.warn("login failed. with no user in db.");
-				return "user/login";
-			}
-
-			if (user.isLocked()) {
-				result.rejectValue("error", "error.userName.islocked");
-				LOGGER.warn("login failed. user locked." + user.getUserName());
 				return "user/login";
 			}
 
