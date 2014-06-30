@@ -10,10 +10,12 @@ CREATE TABLE IF NOT EXISTS users (
   user_name VARCHAR(100),
   password  VARCHAR(100),
   user_role VARCHAR(50),
+  fail_times INT(4) UNSIGNED,
+  is_locked  TINYINT(1),
   created_date  TIMESTAMP,
   updated_date  TIMESTAMP,
-  created_by INT(4),
-  updated_by INT(4),  
+  created_by INT(4) UNSIGNED,
+  updated_by INT(4) UNSIGNED,  
   INDEX(user_name)
 ) engine=InnoDB CHARSET=utf8;
 
