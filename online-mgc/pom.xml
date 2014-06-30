@@ -214,13 +214,6 @@
 			<scope>runtime</scope>
 		</dependency>
 
-		<!-- For MySql only -->
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>${mysql.version}</version>
-		</dependency>
-
 		<!-- HIBERNATE -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
