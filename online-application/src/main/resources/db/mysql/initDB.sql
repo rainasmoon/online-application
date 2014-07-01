@@ -15,16 +15,17 @@ CREATE TABLE IF NOT EXISTS users (
   contact_name VARCHAR(100),
   contact_id_number VARCHAR(20),
   bank_name VARCHAR(100),
-  province_id INT(4),
-  city_id INT(4),
+  province_id INT(4) UNSIGNED,
+  city_id INT(4) UNSIGNED,
   branch_name VARCHAR(200),
   account_number VARCHAR(50),
   id_card_front_path VARCHAR(100),
   id_card_back_path VARCHAR(100),
   created_date  TIMESTAMP,
   updated_date  TIMESTAMP,
-  created_by INT(4),
-  updated_by INT(4),  
+  created_by INT(4) UNSIGNED,
+  updated_by INT(4) UNSIGNED,  
+  UNIQUE (email),
   INDEX(email)
 ) engine=InnoDB CHARSET=utf8;
 
@@ -47,7 +48,7 @@ CREATE TABLE IF NOT EXISTS applications (
 
 CREATE TABLE IF NOT EXISTS app_parameters (
   id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  application_id INT(4),
+  application_id INT(4) UNSIGNED ,
   param_name  VARCHAR(100),
   param_value  VARCHAR(100),
   created_date  TIMESTAMP,

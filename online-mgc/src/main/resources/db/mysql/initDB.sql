@@ -15,7 +15,8 @@ CREATE TABLE IF NOT EXISTS users (
   created_date  TIMESTAMP,
   updated_date  TIMESTAMP,
   created_by INT(4) UNSIGNED,
-  updated_by INT(4) UNSIGNED,  
+  updated_by INT(4) UNSIGNED, 
+  UNIQUE (user_name),
   INDEX(user_name)
 ) engine=InnoDB CHARSET=utf8;
 
