@@ -1,4 +1,4 @@
-
+<%@page session="false"%>
 <%@ page language="java" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -43,11 +43,9 @@
 						</c:forEach>
 					</tbody>
 				</table>
-				<br />
-				<c:if test="${userRole == 'manager' }">
-					<a href='<spring:url value="/users/new" htmlEscape="true"/>'>Add
-						User</a>
-				</c:if>
+				<br /> <a href='<spring:url value="/users/new" htmlEscape="true"/>'>Add
+					User</a>
+
 
 			</div>
 		</div>
