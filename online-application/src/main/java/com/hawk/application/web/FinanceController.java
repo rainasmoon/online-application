@@ -58,7 +58,9 @@ public class FinanceController extends BaseController {
 		new CheckValidator()
 				.validate(redisService.getUserTotalIncome(getLoginEmail()),
 						check, result);
+
 		if (result.hasErrors()) {
+			LOGGER.debug(result.toString());
 			return "finance/applyCheck";
 		} else {
 			this.financeService.saveCheck(getLoginEmail(), check);

@@ -8,6 +8,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
@@ -36,6 +37,7 @@ public class Check extends BaseEntity {
 	protected String accountNumber;
 
 	@NotNull
+	@Digits(fraction = 4, integer = 10)
 	@Min(100)
 	@Column(name = "apply_amount")
 	protected Double applyAmount;
