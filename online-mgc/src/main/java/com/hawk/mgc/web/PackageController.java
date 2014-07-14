@@ -68,12 +68,8 @@ public class PackageController {
 
 	@RequestMapping(value = "/channels", method = RequestMethod.GET)
 	public String processFindAll(Map<String, Object> model) {
-
-		List<MgcPackageDetail> results = this.packageService
-				.findAllPackageDetails();
 		SearchMgcPackageVo searchMgcPackageVo = new SearchMgcPackageVo();
 		model.put("searchMgcPackageVo", searchMgcPackageVo);
-		model.put("selections", results);
 		return "package/listChannel";
 
 	}
