@@ -435,6 +435,7 @@
 					<server>tomcat-development-server</server>
 					<port>9968</port>
 					<path>/onlinemgc</path>
+					<protocol>org.apache.coyote.http11.Http11NioProtocol</protocol>
 					<systemProperties>
 						<spring.profiles.active>mysql</spring.profiles.active>
 					</systemProperties>
