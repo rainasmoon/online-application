@@ -1,0 +1,15 @@
+ssh weblogic@10.196.112.26
+
+jar xvf web.war
+rm -rf `ls | grep -v "web.war"`
+./startWebLogic.sh & > nohup.out
+
+./stopWebLogic.sh
+
+测试地址：
+http://10.196.112.26:7001/
+
+后台管理：
+http://10.196.112.26:7001/CindaSevManager/
+用户名：pengfei 
+密码：12
