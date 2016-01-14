@@ -61,7 +61,7 @@ public class RemoteUserServiceTest {
 		userDto.setEnChannel(ChannelEnum.WANLIAN);
 		userDto.setChannelUserId("testChannelUserId");
 		userDto.setCreateDate(new Date());
-		userService.add(userDto);
+		userService.add(userDto, "", "");
 		System.out.println(1);
 	}
 
@@ -81,8 +81,7 @@ public class RemoteUserServiceTest {
 
 		UserDto r = userService.getByUserId(userId);
 		assertNotNull(r);
-		assertNotNull(r.getUserLogin());
-		assertEquals("testData", r.getUserLogin().getLastLoginAppnum());
+
 	}
 
 	@Test
@@ -130,6 +129,14 @@ public class RemoteUserServiceTest {
 	}
 
 	@Test
+	public void login_v2() {
+		UserDto userDto = userService.login("testGlen", "111111", "127.0.0.1", "rewfr345red");
+
+		assertNotNull(userDto);
+		assertEquals("testGlen", userDto.getUserAccount());
+	}
+
+	@Test
 	public void existAccountName() {
 		Boolean flag = userService.existAccountName("test1");
 		System.out.println(flag);
@@ -159,8 +166,6 @@ public class RemoteUserServiceTest {
 
 		UserDto result = userService.getByUserId(r);
 		assertNotNull(result);
-		assertNotNull(result.getUserLogin());
-		assertEquals("test3rdloginappclient", result.getUserLogin().getLastLoginAppnum());
 
 	}
 
@@ -173,13 +178,11 @@ public class RemoteUserServiceTest {
 		String r = userService.login3rdUser(userDto, "1.1.2.4", "test3rdloginappclient");
 		assertNotNull(r);
 
-		r = userService.login3rdUser(userDto);
+		r = userService.login3rdUser(userDto, "1.1.2.4", "test3rdloginappclient");
 		assertNotNull(r);
 
 		UserDto result = userService.getByUserId(r);
 		assertNotNull(result);
-		assertNotNull(result.getUserLogin());
-		assertEquals("test3rdloginappclient", result.getUserLogin().getLastLoginAppnum());
 
 	}
 
@@ -272,16 +275,9 @@ public class RemoteUserServiceTest {
 	}
 
 	@Test
-	public void login_v2() {
-		UserDto userDto = userService.login("testGlen", "111111", "127.0.0.1", "rewfr345red");
-
-		assertNotNull(userDto);
-		assertEquals("testGlen", userDto.getUserAccount());
-	}
-
-	@Test
 	public void testLog() {
 		log.info("hi log...");
 	}
+
 
 }
