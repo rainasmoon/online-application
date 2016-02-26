@@ -1,0 +1,34 @@
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="ehcache.xsd" updateCheck="false">
+	<diskStore path="java.io.tmpdir" />
+
+	<!-- objects are evicted from the cache every 600 seconds -->
+
+
+	<cache name="provinces" timeToLiveSeconds="600"
+		maxElementsInMemory="100000" />
+
+	<cache name="citys" timeToLiveSeconds="600" maxElementsInMemory="100000" />
+
+	<cache name="com.hawk.application.model.Application"
+		timeToLiveSeconds="600" maxElementsInMemory="100000" />
+
+	<cache name="com.hawk.application.model.AppParameter"
+		timeToLiveSeconds="600" maxElementsInMemory="100000" />
+
+	<cache name="com.hawk.application.model.Bonus" timeToLiveSeconds="600"
+		maxElementsInMemory="100000" />
+
+	<cache name="com.hawk.application.model.Check" timeToLiveSeconds="600"
+		maxElementsInMemory="100000" />
+
+	<cache name="com.hawk.application.model.Dictionary"
+		timeToLiveSeconds="600" maxElementsInMemory="100000" />
+
+	<cache name="com.hawk.application.model.Sdk" timeToLiveSeconds="600"
+		maxElementsInMemory="100000" />
+
+	<cache name="com.hawk.application.model.User" timeToLiveSeconds="600"
+		maxElementsInMemory="100000" />
+
+</ehcache>
