@@ -10,25 +10,25 @@
 
 	<cache name="citys" timeToLiveSeconds="600" maxElementsInMemory="100000" />
 
-	<cache name="com.hawk.application.model.Application"
+	<cache name="com.rainasmoon.onepay.model.Application"
 		timeToLiveSeconds="600" maxElementsInMemory="100000" />
 
-	<cache name="com.hawk.application.model.AppParameter"
+	<cache name="com.rainasmoon.onepay.model.AppParameter"
 		timeToLiveSeconds="600" maxElementsInMemory="100000" />
 
-	<cache name="com.hawk.application.model.Bonus" timeToLiveSeconds="600"
+	<cache name="com.rainasmoon.onepay.model.Bonus" timeToLiveSeconds="600"
 		maxElementsInMemory="100000" />
 
-	<cache name="com.hawk.application.model.Check" timeToLiveSeconds="600"
+	<cache name="com.rainasmoon.onepay.model.Check" timeToLiveSeconds="600"
 		maxElementsInMemory="100000" />
 
-	<cache name="com.hawk.application.model.Dictionary"
+	<cache name="com.rainasmoon.onepay.model.Dictionary"
 		timeToLiveSeconds="600" maxElementsInMemory="100000" />
 
-	<cache name="com.hawk.application.model.Sdk" timeToLiveSeconds="600"
+	<cache name="com.rainasmoon.onepay.model.Sdk" timeToLiveSeconds="600"
 		maxElementsInMemory="100000" />
 
-	<cache name="com.hawk.application.model.User" timeToLiveSeconds="600"
+	<cache name="com.rainasmoon.onepay.model.User" timeToLiveSeconds="600"
 		maxElementsInMemory="100000" />
 
 </ehcache>

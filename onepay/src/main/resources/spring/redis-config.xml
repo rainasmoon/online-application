@@ -13,7 +13,7 @@
          http://www.springframework.org/schema/jee
          http://www.springframework.org/schema/jee/spring-jee.xsd">
 
-	<context:component-scan base-package="com.hawk.application.repository.redis" />
+	<context:component-scan base-package="com.rainasmoon.onepay.repository.redis" />
 
 	<bean id="jedisConnFactory"
 		class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"

@@ -14,7 +14,7 @@
 	<import resource="mvc-view-config.xml" />
 
 	<!-- - POJOs labeled with the @Controller and @Service annotations are auto-detected. -->
-	<context:component-scan base-package="com.hawk.application.web" />
+	<context:component-scan base-package="com.rainasmoon.onepay.web" />
 
 	<mvc:annotation-driven validator="validator"
 		conversion-service="conversionService">
@@ -46,7 +46,7 @@
 			<mvc:exclude-mapping path="/resources/**" />
 			<mvc:exclude-mapping path="/resources*/**" />
 			<mvc:exclude-mapping path="/webjars/**" />
-			<bean class="com.hawk.application.web.LoginInterceptor"></bean>
+			<bean class="com.rainasmoon.onepay.web.LoginInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
 

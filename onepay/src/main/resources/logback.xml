@@ -37,7 +37,7 @@
 		</encoder>
 	</appender>
 
-    <logger name="com.hawk.application" level="info"/>
+    <logger name="com.rainasmoon.onepay" level="info"/>
     
     <!-- business log 使用独立的appender，不继承Root的appender -->
 	<logger name="business" level="INFO" additivity="false">
