@@ -4,11 +4,9 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.Errors;
 
 import com.hawk.application.model.LoginVo;
-import com.hawk.application.service.UserService;
 import com.octo.captcha.module.servlet.image.SimpleImageCaptchaServlet;
 
 public class LoginValidator {

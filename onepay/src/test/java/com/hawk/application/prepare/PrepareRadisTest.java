@@ -43,6 +43,8 @@ public class PrepareRadisTest {
 		jedis.set(
 				"b984a862-c66f-47b3-bf38-fdccfaf2192f_20140519_total_promotion",
 				"105");
+
+		jedis.close();
 	}
 
 }

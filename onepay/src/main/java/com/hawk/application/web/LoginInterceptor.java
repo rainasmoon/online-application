@@ -11,8 +11,6 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.hawk.application.model.User;
-
 public class LoginInterceptor implements HandlerInterceptor {
 
 	Logger LOGGER = LoggerFactory.getLogger(LoginInterceptor.class);

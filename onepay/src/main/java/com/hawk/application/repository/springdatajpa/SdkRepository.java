@@ -1,8 +1,6 @@
 package com.hawk.application.repository.springdatajpa;
 
 import java.util.List;
-import java.util.List;
-
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.repository.CrudRepository;
 

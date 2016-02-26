@@ -25,6 +25,8 @@ public class RadisTest {
 		String value = jedis.get("foo");
 
 		LOGGER.debug("test:" + value);
+
+		jedis.close();
 	}
 
 	@Test

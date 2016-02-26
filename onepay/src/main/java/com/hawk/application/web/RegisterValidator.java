@@ -1,11 +1,9 @@
 package com.hawk.application.web;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.Errors;
 
 import com.hawk.application.model.RegistorVo;
-import com.hawk.application.model.User;
 import com.hawk.application.service.UserService;
 
 

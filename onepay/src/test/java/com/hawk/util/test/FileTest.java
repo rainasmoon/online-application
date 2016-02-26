@@ -20,5 +20,7 @@ public class FileTest {
 
 		FileInputStream fis = new FileInputStream(f);
 		LOGGER.debug(fis.toString());
+
+		fis.close();
 	}
 }

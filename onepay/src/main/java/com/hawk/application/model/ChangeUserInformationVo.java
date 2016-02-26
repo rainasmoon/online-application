@@ -1,8 +1,5 @@
 package com.hawk.application.model;
 
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.validation.constraints.Size;
 
 public class ChangeUserInformationVo {
