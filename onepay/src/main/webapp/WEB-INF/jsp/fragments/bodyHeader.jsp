@@ -13,17 +13,17 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.jsp">一元网</a>
+          <a class="navbar-brand" href="welcome.html">一元网</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="index.jsp">Home</a></li>
-                <li><a href="listproduct.jsp">Products</a></li>
-                <li><a href="top10users.jsp">Top 10 users</a></li>
-                <li><a href="login.jsp">login/register</a></li>
-                <li><a href="myfavorites.jsp">我的收藏</a></li>
-                <li><a href="mysales.jsp">我的出售</a></li>
-                <li><a href="addproduct.jsp">上传货品</a></li>
+            <li class="active"><a href="welcome.html">Home</a></li>
+                <li><a href="listproducts.html">Products</a></li>
+                <li><a href="top10users.html">Top 10 users</a></li>
+                <li><a href="login.html">login/register</a></li>
+                <li><a href="myfavorites.html">我的收藏</a></li>
+                <li><a href="mysales.html">我的出售</a></li>
+                <li><a href="addproduct.html">上传货品</a></li>
           </ul>
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
