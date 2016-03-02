@@ -1,3 +1,6 @@
+<%@page session="false"%>
+<%@ page language="java" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
@@ -15,7 +18,7 @@
     <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/listproduct.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -25,26 +28,7 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-fixed-top navbar-inverse">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Project name</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div><!-- /.nav-collapse -->
-      </div><!-- /.container -->
-    </nav><!-- /.navbar -->
+   <jsp:include page="./fragments/bodyHeader.jsp" />
 
     <div class="container">
 
@@ -93,32 +77,16 @@
         </div><!--/.col-xs-12.col-sm-9-->
 
         <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
-          <ul class="list-group">
-            <a href="#" class="list-group-item active">用户排行榜</a>
-            <li href="#" class="list-group-item">rainasmoon 5000</li>
-            
-          </ul>
+          
         </div><!--/.sidebar-offcanvas-->
       </div><!--/row-->
 
       <hr>
 
-      <footer>
-        <p>&copy; Company 2014</p>
-      </footer>
+    		<jsp:include page="./fragments/footer.jsp" />
 
-    </div><!--/.container-->
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
-    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
-
+	</div>
+	<!-- /.container -->
     <script src="js/listproduct.js"></script>
   </body>
 </html>
