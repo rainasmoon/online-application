@@ -15,25 +15,25 @@
 
 		<div class="row placeholders">
 			<div class="col-xs-6 col-sm-3 placeholder">
-				<img data-src="holder.js/200x200/auto/sky" class="img-responsive"
+				<img src="pic/7.jpg" class="img-responsive"
 					alt="Generic placeholder thumbnail">
 				<h4>Label</h4>
 				<span class="text-muted">Something else</span>
 			</div>
 			<div class="col-xs-6 col-sm-3 placeholder">
-				<img data-src="holder.js/200x200/auto/vine" class="img-responsive"
+				<img src="pic/8.jpg" class="img-responsive"
 					alt="Generic placeholder thumbnail">
 				<h4>Label</h4>
 				<span class="text-muted">Something else</span>
 			</div>
 			<div class="col-xs-6 col-sm-3 placeholder">
-				<img data-src="holder.js/200x200/auto/sky" class="img-responsive"
+				<img src="pic/9.jpg" class="img-responsive"
 					alt="Generic placeholder thumbnail">
 				<h4>Label</h4>
 				<span class="text-muted">Something else</span>
 			</div>
 			<div class="col-xs-6 col-sm-3 placeholder">
-				<img data-src="holder.js/200x200/auto/vine" class="img-responsive"
+				<img src="pic/10.jpg" class="img-responsive"
 					alt="Generic placeholder thumbnail">
 				<h4>Label</h4>
 				<span class="text-muted">Something else</span>

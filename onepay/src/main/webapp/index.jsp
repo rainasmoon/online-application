@@ -12,8 +12,7 @@ body {
 
 <jsp:include page="./fragments/bodyHeader.jsp" />
 
-<!-- Carousel
-    ================================================== -->
+
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
 	<!-- Indicators -->
 	<ol class="carousel-indicators">
@@ -28,13 +27,9 @@ body {
 				alt="First slide">
 			<div class="container">
 				<div class="carousel-caption">
-					<h1>Example headline.</h1>
+					<h1>注册就送100猿.</h1>
 					<p>
-						Note: If you're viewing this page via a
-						<code>file://</code>
-						URL, the "next" and "previous" Glyphicon buttons on the left and
-						right might not load/display properly due to web browser security
-						rules.
+						没啥特别的，新人要有礼
 					</p>
 					<p>
 						<a class="btn btn-lg btn-primary" href="login.jsp" role="button">Sign
@@ -49,10 +44,8 @@ body {
 				alt="Second slide">
 			<div class="container">
 				<div class="carousel-caption">
-					<h1>Another example headline.</h1>
-					<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-						Donec id elit non mi porta gravida at eget metus. Nullam id dolor
-						id nibh ultricies vehicula ut id elit.</p>
+					<h1>一元启拍网</h1>
+					<p>就是要便宜。</p>
 					<p>
 						<a class="btn btn-lg btn-primary" href="#" role="button">Learn
 							more</a>
@@ -66,10 +59,8 @@ body {
 				alt="Third slide">
 			<div class="container">
 				<div class="carousel-caption">
-					<h1>One more for good measure.</h1>
-					<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-						Donec id elit non mi porta gravida at eget metus. Nullam id dolor
-						id nibh ultricies vehicula ut id elit.</p>
+					<h1>这件怎么样？</h1>
+					<p>这里还有很多哦</p>
 					<p>
 						<a class="btn btn-lg btn-primary" href="#" role="button">Browse
 							gallery</a>
@@ -99,7 +90,7 @@ body {
 	<div class="row">
 		<div class="col-lg-4">
 			<img class="img-circle"
-				src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
+				src="pic/1.jpg"
 				alt="Generic placeholder image" width="140" height="140">
 			<h2>Heading</h2>
 			<p>Donec sed odio dui. Etiam porta sem malesuada magna mollis
@@ -114,7 +105,7 @@ body {
 		<!-- /.col-lg-4 -->
 		<div class="col-lg-4">
 			<img class="img-circle"
-				src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
+				src="pic/2.jpg"
 				alt="Generic placeholder image" width="140" height="140">
 			<h2>Heading</h2>
 			<p>Duis mollis, est non commodo luctus, nisi erat porttitor
@@ -129,7 +120,7 @@ body {
 		<!-- /.col-lg-4 -->
 		<div class="col-lg-4">
 			<img class="img-circle"
-				src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
+				src="pic/3.gif"
 				alt="Generic placeholder image" width="140" height="140">
 			<h2>Heading</h2>
 			<p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in,
@@ -163,7 +154,7 @@ body {
 		</div>
 		<div class="col-md-5">
 			<img class="featurette-image img-responsive center-block"
-				data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+				src="pic/4.jpeg" alt="Generic placeholder image">
 		</div>
 	</div>
 
@@ -182,7 +173,7 @@ body {
 		</div>
 		<div class="col-md-5 col-md-pull-7">
 			<img class="featurette-image img-responsive center-block"
-				data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+				src="pic/5.jpeg" alt="Generic placeholder image">
 		</div>
 	</div>
 
@@ -200,7 +191,7 @@ body {
 		</div>
 		<div class="col-md-5">
 			<img class="featurette-image img-responsive center-block"
-				data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+				src="pic/6.jpeg" alt="Generic placeholder image">
 		</div>
 	</div>
 
