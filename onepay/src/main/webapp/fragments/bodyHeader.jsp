@@ -1,4 +1,8 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
+
+</head>
+
+<body>
     
     <nav class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
@@ -24,3 +28,5 @@
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
     </nav><!-- /.navbar -->
+    
+    	<div class="container">

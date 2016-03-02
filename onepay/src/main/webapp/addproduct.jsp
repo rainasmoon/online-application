@@ -1,94 +1,90 @@
 <%@page session="false"%>
 <%@ page language="java" pageEncoding="UTF-8"%>
 
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-<meta name="description" content="">
-<meta name="author" content="">
+<jsp:include page="./fragments/headTag.jsp" />
+<title>添加个东西</title>
 
-<title>Signin Template for Bootstrap</title>
-
-<!-- Bootstrap core CSS -->
-<link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css"
-	rel="stylesheet">
-
-<!-- Custom styles for this template -->
-<link href="css/main.css" rel="stylesheet">
-
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-      <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-</head>
-
-<body>
 <jsp:include page="./fragments/bodyHeader.jsp" />
-	<div class="container">
 
-		<form>
-			<div class="form-group">
-				<label for="exampleInputEmail1">商品名称</label> <input type="email"
-					class="form-control" id="exampleInputEmail1" placeholder="Email">
-			</div>
-
-			<div class="form-group">
-				<label for="exampleInputFile">图片</label> <input type="file"
-					id="exampleInputFile">
-				<p class="help-block">Example block-level help text here.</p>
-			</div>
-			<div class="radio">
-				<label> <input type="radio" name="optionsRadios"
-					id="optionsRadios1" value="option1" checked> 定时秒杀拍
-				</label>
-			</div>
-			<div class="radio">
-				<label> <input type="radio" name="optionsRadios"
-					id="optionsRadios2" value="option2">3天内拍
-				</label>
-			</div>
-			<div class="radio">
-				<label> <input type="radio" name="optionsRadios"
-					id="optionsRadios2" value="option2">猜价拍
-				</label>
-			</div>
-			<div aria-label="Toolbar with button groups" role="toolbar"
-				class="btn-toolbar">
-				<div aria-label="First group" role="group" class="btn-group">
-					<button class="btn btn-default" type="button">1</button>
-					<button class="btn btn-default" type="button">2</button>
-					<button class="btn btn-default" type="button">3</button>
-					<button class="btn btn-default" type="button">4</button>
-				</div>
-				<div aria-label="Second group" role="group" class="btn-group">
-					<button class="btn btn-default" type="button">5</button>
-					<button class="btn btn-default" type="button">6</button>
-					<button class="btn btn-default" type="button">7</button>
-				</div>
-				<div aria-label="Third group" role="group" class="btn-group">
-					<button class="btn btn-default" type="button">8</button>
-				</div>
-			</div>
-			<textarea class="form-control" rows="3"></textarea>
-			<span class="label label-info">电器</span> <span
-				class="label label-info">全新</span> <span class="label label-info">未拆封</span>
-			<div class="checkbox">
-				<label> <input type="checkbox"> Check me out
-				</label>
-			</div>
-			<button type="submit" class="btn btn-default">Submit</button>
-		</form>
-
-	
-
-		<jsp:include page="./fragments/footer.jsp" />
-
+<form>
+	<div class="form-group">
+		<label for="exampleInputEmail1">商品名称</label> <input type="email"
+			class="form-control" id="exampleInputEmail1" placeholder="Email">
 	</div>
-	<!-- /.container -->
-</body>
-</html>
+
+	<div class="form-group">
+		<label for="exampleInputFile">图片</label> <input type="file"
+			id="exampleInputFile">
+		<p class="help-block">上传图片有助于客户更好的了解产品.</p>
+	</div>
+	<div class="form-group">
+		<label for="exampleInputFile">拍卖类型</label>
+		<div class="radio">
+			<label> <input type="radio" name="optionsRadios"
+				id="optionsRadios1" value="option1" checked> 定时秒杀拍
+			</label>
+		</div>
+		<div class="radio">
+			<label> <input type="radio" name="optionsRadios"
+				id="optionsRadios2" value="option2">3天内拍
+			</label>
+		</div>
+		<div class="radio">
+			<label> <input type="radio" name="optionsRadios"
+				id="optionsRadios2" value="option2">猜价拍
+			</label>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="exampleInputFile">新旧程度</label>
+		<div aria-label="Toolbar with button groups" role="toolbar"
+			class="btn-toolbar">
+			<div aria-label="First group" role="group" class="btn-group">
+				<button class="btn btn-default" type="button">1</button>
+				<button class="btn btn-default" type="button">2</button>
+				<button class="btn btn-default" type="button">3</button>
+				<button class="btn btn-default" type="button">4</button>
+			</div>
+			<div aria-label="Second group" role="group" class="btn-group">
+				<button class="btn btn-default" type="button">5</button>
+				<button class="btn btn-default" type="button">6</button>
+				<button class="btn btn-default" type="button">7</button>
+			</div>
+			<div aria-label="Third group" role="group" class="btn-group">
+				<button class="btn btn-default" type="button">8</button>
+				<button class="btn btn-default" type="button">9</button>
+				<button class="btn btn-default" type="button">10</button>
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="exampleInputFile">描述</label>
+		<textarea class="form-control" rows="3"></textarea>
+	</div>
+	<div class="form-group">
+		<label for="exampleInputFile">标签</label> <span
+			class="label label-info">电器</span> <span class="label label-info">全新</span>
+		<span class="label label-info">未拆封</span>
+		<form class="form-inline">
+			<div class="form-group">
+				<label class="sr-only" for="exampleInputAmount">Amount (in
+					dollars)</label>
+				<div class="input-group">
+					<div class="input-group-addon">标签</div>
+					<input type="text" class="form-control" id="exampleInputAmount"
+						placeholder="Amount">
+				</div>
+			</div>
+			<button type="submit" class="btn btn-primary">添加</button>
+		</form>
+	</div>
+	<div class="checkbox">
+		<label> <input type="checkbox"> 同意一元网的条款
+		</label>
+	</div>
+	<button type="submit" class="btn btn-default">Submit</button>
+</form>
+
+<jsp:include page="./fragments/footer.jsp" />
+
+
