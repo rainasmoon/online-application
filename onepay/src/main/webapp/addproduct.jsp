@@ -8,8 +8,8 @@
 
 <form>
 	<div class="form-group">
-		<label for="exampleInputEmail1">商品名称</label> <input type="email"
-			class="form-control" id="exampleInputEmail1" placeholder="Email">
+		<label for="inputProductName">商品名称</label> <input type="text"
+			class="form-control" id="inputProductName" placeholder="商品名称">
 	</div>
 
 	<div class="form-group">
