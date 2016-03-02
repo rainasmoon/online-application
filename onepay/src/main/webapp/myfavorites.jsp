@@ -2,7 +2,7 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 
 <jsp:include page="./fragments/headTag.jsp" />
-<title>Off Canvas Template for Bootstrap</title>
+<title>我的收藏</title>
 <link href="css/listproduct.css" rel="stylesheet">
 
 <jsp:include page="./fragments/bodyHeader.jsp" />

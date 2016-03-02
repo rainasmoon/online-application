@@ -2,7 +2,7 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 
 <jsp:include page="./fragments/headTag.jsp" />
-<title>Off Canvas Template for Bootstrap</title>
+<title>list product</title>
 
 <link href="css/listproduct.css" rel="stylesheet">
 
@@ -101,6 +101,10 @@
 		<ul class="list-group">
 			<a href="#" class="list-group-item active">用户排行榜</a>
 			<li href="#" class="list-group-item">rainasmoon 5000</li>
+			<li href="#" class="list-group-item">rainasmoon 5000</li>
+			<li href="#" class="list-group-item">rainasmoon 5000</li>
+			<li href="#" class="list-group-item">rainasmoon 5000</li>
+			<li href="#" class="list-group-item">rainasmoon 5000</li>
 
 		</ul>
 	</div>
@@ -112,6 +116,4 @@
 
 <script src="js/listproduct.js"></script>
 <jsp:include page="./fragments/footer.jsp" />
-
-
 

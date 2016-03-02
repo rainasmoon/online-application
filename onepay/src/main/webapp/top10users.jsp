@@ -3,7 +3,7 @@
 
 <jsp:include page="./fragments/headTag.jsp" />
 
-<title>Off Canvas Template for Bootstrap</title>
+<title>英雄榜</title>
 <link href="css/top10users.css" rel="stylesheet">
 
 <jsp:include page="./fragments/bodyHeader.jsp" />
