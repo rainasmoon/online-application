@@ -24,7 +24,7 @@ body {
 	<ol class="carousel-indicators">
 		<c:forEach var="arow" items="${vo.ads}" varStatus="status">
 			<li data-target="#myCarousel"
-				data-slide-to="<c:out value="${status.index}"/>"
+				data-slide-to="${status.index}"
 				<c:if test="${status.first}"> class="active"</c:if>></li>
 	</c:forEach>
 
@@ -32,7 +32,7 @@ body {
 	<div class="carousel-inner" role="listbox">
 	<c:forEach var="arow" items="${vo.ads}"  varStatus="status">
 		<div class="item <c:if test="${status.first}">active</c:if>">
-			<img class="first-slide" src="pic/10.jpg" alt="First slide">
+			<img class="first-slide" src="${arow.picPath }" alt="First slide">
 			<div class="container">
 				<div class="carousel-caption">
 					<h1>注册就送100猿.</h1>
@@ -67,7 +67,7 @@ body {
 	<div class="row">
 		<c:forEach var="arow" items="${vo.top3}">
 			<div class="col-lg-4">
-				<img class="img-circle" src="pic/1.jpg"
+				<img class="img-circle" src="${arow.picPath }"
 					alt="Generic placeholder image" width="140" height="140">
 				<h2>Heading</h2>
 				<p>Donec sed odio dui. Etiam porta sem malesuada magna mollis
@@ -104,7 +104,7 @@ body {
 				</div>
 				<div class="col-md-5">
 					<img class="featurette-image img-responsive center-block"
-						src="pic/4.jpeg" alt="Generic placeholder image">
+						src="${arow.picPath }" alt="Generic placeholder image">
 				</div>
 			</c:if>
 				<c:if test="${status.count%2 != '0'}">
@@ -120,7 +120,7 @@ body {
 				</div>
 				<div class="col-md-5 col-md-pull-7">
 					<img class="featurette-image img-responsive center-block"
-						src="pic/4.jpeg" alt="Generic placeholder image">
+						src="${arow.picPath }" alt="Generic placeholder image">
 				</div>
 			</c:if>
 </div>

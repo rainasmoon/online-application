@@ -21,6 +21,7 @@ public class WelcomController extends BaseController {
 		List<AdVo> ads = new ArrayList<AdVo>();
 		for (int i = 0; i < 3; i++) {
 			AdVo ad = new AdVo();
+			ad.setPicPath("pic/1.jpg");
 			ads.add(ad);
 		}
 		vo.setAds(ads);
@@ -28,6 +29,7 @@ public class WelcomController extends BaseController {
 		List<AdVo> top3 = new ArrayList<AdVo>();
 		for (int i = 0; i < 3; i++) {
 			AdVo ad = new AdVo();
+			ad.setPicPath("pic/1.jpg");
 			top3.add(ad);
 		}
 		vo.setTop3(top3);
@@ -35,6 +37,7 @@ public class WelcomController extends BaseController {
 		List<AdVo> imp3 = new ArrayList<AdVo>();
 		for (int i = 0; i < 3; i++) {
 			AdVo ad = new AdVo();
+			ad.setPicPath("pic/1.jpg");
 			imp3.add(ad);
 		}
 		vo.setImp3(imp3);
