@@ -14,6 +14,7 @@ call D:/apache-maven-3.0.3/bin/mvn clean install
 
 set JAVA_HOME=D:/jdk1.6.0_10
 cd D:/workspace/platform/core/trunk/mc
+cp D:/workspace/platform/core/trunk/mc/mc-user/src/test/resources/sqlmap/*.* D:/workspace/platform/core/trunk/mc/mc-war/src/main/resources/sqlmap 
 call D:/apache-maven-3.0.3/bin/mvn clean install
 
 
