@@ -2,7 +2,6 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 
 <jsp:include page="./fragments/headTag.jsp" />
-<link href="css/bid.css" rel="stylesheet">
 <title>竞价</title>
 
 <jsp:include page="./fragments/bodyHeader.jsp" />

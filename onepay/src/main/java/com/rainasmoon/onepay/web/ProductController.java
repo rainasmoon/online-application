@@ -32,4 +32,16 @@ public class ProductController extends BaseController {
 
 		return "addproduct";
 	}
+
+	@RequestMapping(value = { "/bid.html" }, method = RequestMethod.GET)
+	public String bid(Map<String, Object> model) {
+
+		return "bid";
+	}
+
+	@RequestMapping(value = { "/guessprice.html" }, method = RequestMethod.GET)
+	public String guessPrice(Map<String, Object> model) {
+
+		return "guessprice";
+	}
 }

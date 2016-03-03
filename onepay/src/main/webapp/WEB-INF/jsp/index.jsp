@@ -98,7 +98,7 @@ body {
 				Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
 				Praesent commodo cursus magna.</p>
 			<p>
-				<a class="btn btn-default" href="bid.jsp" role="button">View
+				<a class="btn btn-default" href="bid.html" role="button">View
 					details &raquo;</a>
 			</p>
 		</div>
@@ -113,7 +113,7 @@ body {
 				purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo,
 				tortor mauris condimentum nibh.</p>
 			<p>
-				<a class="btn btn-default" href="guessprice.jsp" role="button">View
+				<a class="btn btn-default" href="guessprice.html" role="button">View
 					details &raquo;</a>
 			</p>
 		</div>
