@@ -1,3 +1,4 @@
+
 package com.wanlianjin.mc.war;
 
 import static org.junit.Assert.assertEquals;
@@ -30,7 +31,7 @@ import com.wanlianjin.mc.user.enums.ChannelEnum;
 import com.wanlianjin.mc.user.service.UserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath*:remoting-client.xml", "classpath*:app-db-test.xml" })
+@ContextConfiguration(locations = { "classpath*:remoting-client-sit.xml", "classpath*:app-db-test.xml" })
 @Rollback(true)
 @Sql(value = { "classpath:insert-test-data.sql" }, config = @SqlConfig(encoding = "utf-8", separator = ";", commentPrefix = "--", dataSource = "dataSource", transactionManager = "transactionManager") )
 
@@ -61,8 +62,8 @@ public class RemoteUserServiceTest {
 		userDto.setEnChannel(ChannelEnum.WANLIAN);
 		userDto.setChannelUserId("testChannelUserId");
 		userDto.setCreateDate(new Date());
-		userService.add(userDto, "", "");
-		System.out.println(1);
+		String userId = userService.add(userDto, "", "");
+		System.out.println(userId);
 	}
 
 	@Test

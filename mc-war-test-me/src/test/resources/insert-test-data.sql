@@ -1,5 +1,5 @@
 delete from T_MC_USER_CHANNEL where user_id = '11112';
-delete from T_MC_USER where user_id = '11112' or mobile_phone = '13690000123' or user_account = 'testThirdAccount';
+delete from T_MC_USER where user_id = '11112' or mobile_phone = '13690000123' or user_account = 'testThirdAccount' or user_account = 'test';
 delete from t_Mc_User_Login where user_id = '11112';
 
 --111111

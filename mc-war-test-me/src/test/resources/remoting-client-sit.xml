@@ -2,7 +2,7 @@
 <beans>
 	<bean id="userService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
 		<property name="serviceUrl"
-			value="http://100.35.151.131:8080/mc-war/remoting/userService" />
+			value="http://10.196.112.26:7001/mc-war/remoting/userService" />
 		<property name="serviceInterface" value="com.wanlianjin.mc.user.service.UserService" />
 		<property name="overloadEnabled" value="true"></property>
 	</bean>
