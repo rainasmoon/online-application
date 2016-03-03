@@ -1,6 +1,12 @@
 <%@page session="false"%>
 <%@ page language="java" pageEncoding="UTF-8"%>
 
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <jsp:include page="./fragments/headTag.jsp" />
 <title>1元启拍旧货网</title>
 
@@ -16,12 +22,16 @@ body {
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
 	<!-- Indicators -->
 	<ol class="carousel-indicators">
-		<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-		<li data-target="#myCarousel" data-slide-to="1"></li>
-		<li data-target="#myCarousel" data-slide-to="2"></li>
+		<c:forEach var="arow" items="${vo.ads}" varStatus="status">
+			<li data-target="#myCarousel"
+				data-slide-to="<c:out value="${status.index}"/>"
+				<c:if test="${status.first}"> class="active"</c:if>></li>
+	</c:forEach>
+
 	</ol>
 	<div class="carousel-inner" role="listbox">
-		<div class="item active">
+	<c:forEach var="arow" items="${vo.ads}"  varStatus="status">
+		<div class="item <c:if test="${status.first}">active</c:if>">
 			<img class="first-slide" src="pic/10.jpg" alt="First slide">
 			<div class="container">
 				<div class="carousel-caption">
@@ -34,32 +44,7 @@ body {
 				</div>
 			</div>
 		</div>
-		<div class="item">
-			<img class="second-slide" src="pic/11.jpg" alt="Second slide">
-			<div class="container">
-				<div class="carousel-caption">
-					<h1>一元启拍网</h1>
-					<p>就是要便宜。</p>
-					<p>
-						<a class="btn btn-lg btn-primary" href="#" role="button">Learn
-							more</a>
-					</p>
-				</div>
-			</div>
-		</div>
-		<div class="item">
-			<img class="third-slide" src="pic/12.jpg" alt="Third slide">
-			<div class="container">
-				<div class="carousel-caption">
-					<h1>这件怎么样？</h1>
-					<p>这里还有很多哦</p>
-					<p>
-						<a class="btn btn-lg btn-primary" href="#" role="button">Browse
-							gallery</a>
-					</p>
-				</div>
-			</div>
-		</div>
+	</c:forEach>			
 	</div>
 	<a class="left carousel-control" href="#myCarousel" role="button"
 		data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"
@@ -80,7 +65,7 @@ body {
 
 	<!-- Three columns of text below the carousel -->
 	<div class="row">
-		<c:forEach var="arow" items="${products}">
+		<c:forEach var="arow" items="${vo.top3}">
 			<div class="col-lg-4">
 				<img class="img-circle" src="pic/1.jpg"
 					alt="Generic placeholder image" width="140" height="140">
@@ -104,45 +89,47 @@ body {
 
 	<hr class="featurette-divider">
 
-	<div class="row featurette">
-		<div class="col-md-7">
-			<h2 class="featurette-heading">
-				First featurette heading. <span class="text-muted">It'll blow
-					your mind.</span>
-			</h2>
-			<p class="lead">Donec ullamcorper nulla non metus auctor
-				fringilla. Vestibulum id ligula porta felis euismod semper. Praesent
-				commodo cursus magna, vel scelerisque nisl consectetur. Fusce
-				dapibus, tellus ac cursus commodo.</p>
-		</div>
-		<div class="col-md-5">
-			<img class="featurette-image img-responsive center-block"
-				src="pic/4.jpeg" alt="Generic placeholder image">
-		</div>
-	</div>
+	<c:forEach var="arow" items="${vo.imp3}" varStatus="status">
+		<div class="row featurette">
+			<c:if test="${status.count%2 == '0'}">
+				<div class="col-md-7">
+					<h2 class="featurette-heading">
+						First featurette heading. <span class="text-muted">It'll
+							blow your mind.</span>
+					</h2>
+					<p class="lead">Donec ullamcorper nulla non metus auctor
+						fringilla. Vestibulum id ligula porta felis euismod semper.
+						Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+						Fusce dapibus, tellus ac cursus commodo.</p>
+				</div>
+				<div class="col-md-5">
+					<img class="featurette-image img-responsive center-block"
+						src="pic/4.jpeg" alt="Generic placeholder image">
+				</div>
+			</c:if>
+				<c:if test="${status.count%2 != '0'}">
+				<div class="col-md-7 col-md-push-5">
+					<h2 class="featurette-heading">
+						First featurette heading. <span class="text-muted">It'll
+							blow your mind.</span>
+					</h2>
+					<p class="lead">Donec ullamcorper nulla non metus auctor
+						fringilla. Vestibulum id ligula porta felis euismod semper.
+						Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+						Fusce dapibus, tellus ac cursus commodo.</p>
+				</div>
+				<div class="col-md-5 col-md-pull-7">
+					<img class="featurette-image img-responsive center-block"
+						src="pic/4.jpeg" alt="Generic placeholder image">
+				</div>
+			</c:if>
+</div>
+
+<hr class="featurette-divider">
+</c:forEach>
 
 
-	<hr class="featurette-divider">
 
-	<div class="row featurette">
-		<div class="col-md-7 col-md-push-5">
-			<h2 class="featurette-heading">
-				First featurette heading. <span class="text-muted">It'll blow
-					your mind.</span>
-			</h2>
-			<p class="lead">Donec ullamcorper nulla non metus auctor
-				fringilla. Vestibulum id ligula porta felis euismod semper. Praesent
-				commodo cursus magna, vel scelerisque nisl consectetur. Fusce
-				dapibus, tellus ac cursus commodo.</p>
-		</div>
-		<div class="col-md-5 col-md-pull-7">
-			<img class="featurette-image img-responsive center-block"
-				src="pic/4.jpeg" alt="Generic placeholder image">
-		</div>
-	</div>
-
-	<hr class="featurette-divider">
-
-	<!-- /END THE FEATURETTES -->
+<!-- /END THE FEATURETTES -->
 </div>
 <jsp:include page="./fragments/footer.jsp" />

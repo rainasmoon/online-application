@@ -45,9 +45,9 @@
 				</thead>
 				<tbody>
 
-					<c:forEach var="arow" items="${top10users}">
+					<c:forEach var="arow" items="${top10users}" varStatus="status">
 						<tr>
-							<td>1,001</td>
+							<td><c:out value="${status.count}"/></td>
 							<td><c:out value="${arow.nickName}"/></td>
 							<td><c:out value="${arow.buyAmount}" /></td>
 							<td><c:out value="${arow.sellAmount}" /></td>

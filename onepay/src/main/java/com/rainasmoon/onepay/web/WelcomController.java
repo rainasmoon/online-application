@@ -19,10 +19,24 @@ public class WelcomController extends BaseController {
 		WelcomeVo vo = new WelcomeVo();
 
 		List<AdVo> ads = new ArrayList<AdVo>();
+		for (int i = 0; i < 3; i++) {
+			AdVo ad = new AdVo();
+			ads.add(ad);
+		}
 		vo.setAds(ads);
+
 		List<AdVo> top3 = new ArrayList<AdVo>();
+		for (int i = 0; i < 3; i++) {
+			AdVo ad = new AdVo();
+			top3.add(ad);
+		}
 		vo.setTop3(top3);
+
 		List<AdVo> imp3 = new ArrayList<AdVo>();
+		for (int i = 0; i < 3; i++) {
+			AdVo ad = new AdVo();
+			imp3.add(ad);
+		}
 		vo.setImp3(imp3);
 
 		model.put("vo", vo);
