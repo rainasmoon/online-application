@@ -18,5 +18,6 @@ public class Product {
 
 	// 几成新？10：全新；1：1成新。
 	private int aging;
+
 	private String description;
 }

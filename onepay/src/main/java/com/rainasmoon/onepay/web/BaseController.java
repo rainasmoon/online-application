@@ -11,10 +11,11 @@ public class BaseController {
 
 	Logger LOGGER = LoggerFactory.getLogger(BaseController.class);
 
+	public static String SYS_PIC_PATH;
+
 	public String getLoginEmail() {
 
-		HttpSession session = ((ServletRequestAttributes) RequestContextHolder
-				.getRequestAttributes()).getRequest().getSession();
+		HttpSession session = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getSession();
 		return (String) session.getAttribute("userEmail");
 
 	}
