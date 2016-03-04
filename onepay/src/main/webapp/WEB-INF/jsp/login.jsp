@@ -1,26 +1,44 @@
 <%@page session="false"%>
 <%@ page language="java" pageEncoding="UTF-8"%>
 
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="onlineapplication" tagdir="/WEB-INF/tags"%>
+
 <jsp:include page="./fragments/headTag.jsp" />
 <title>Signin</title>
-<link href="css/signin.css" rel="stylesheet">
+<link href="css/signin.css" rel="stylesheet" />
 
 <jsp:include page="./fragments/bodyHeader.jsp" />
 
-<form class="form-signin">
+<form:form modelAttribute="loginVo" method="post" class="form-signin"
+	id="login-form" role="form">
 	<h2 class="form-signin-heading">Please sign in</h2>
-	<label for="inputAccount" class="sr-only">手机号|邮箱</label> <input
-		type="text" id="inputAccount" class="form-control" placeholder="手机号|邮箱"
-		required autofocus> <label for="inputPassword" class="sr-only">Password</label>
-	<input type="password" id="inputPassword" class="form-control"
-		placeholder="Password" required>
+	<span class="help-inline"> <c:if test="${not empty message}">
+			<div id="message" class="success">${message}</div>
+		</c:if> <spring:bind path="error">
+			<c:if test="${status.error}">
+				<div id="message" class="alert alert-danger" role="alert">${status.errorMessage}</div>
+			</c:if>
+		</spring:bind>
+	</span>
+
+	<fieldset>
+		<onlineapplication:inputField label="手机号|邮箱" name="account"
+			required="true" autofocus="true"/>
+		<onlineapplication:passwordField label="密码" name="password"
+			required="true" />
+	</fieldset>
+
 	<div class="checkbox">
-		<label> <input type="checkbox" value="remember-me">
+		<label> <input type="checkbox" value="remember-me" />
 			Remember me
 		</label>
 	</div>
 	<button class="btn btn-lg btn-primary btn-block" type="submit">登录|注册</button>
-</form>
+</form:form>
 
 <jsp:include page="./fragments/footer.jsp" />
-

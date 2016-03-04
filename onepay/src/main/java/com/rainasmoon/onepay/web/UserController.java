@@ -14,12 +14,6 @@ import com.rainasmoon.onepay.vo.AdVo;
 @Controller
 public class UserController extends BaseController {
 
-	@RequestMapping(value = { "/login.html" }, method = RequestMethod.GET)
-	public String login(Map<String, Object> model) {
-
-		return "login";
-	}
-
 	@RequestMapping(value = { "/top10users.html" }, method = RequestMethod.GET)
 	public String listTop10Users(Map<String, Object> model) {
 

@@ -25,16 +25,6 @@
 		<property name="location" value="classpath:spring/data-access.properties" />
 	</bean>
 
-	<!-- all resources inside folder src/main/webapp/resources are mapped so 
-		they can be refered to inside JSP files (see header.jsp for more details) -->
-	<mvc:resources
-		mapping="/resources-#{applicationProps['application.version']}/**"
-		location="/resources/" cache-period="31556926" />
-
-	<!-- uses WebJars so Javascript and CSS libs can be declared as Maven dependencies 
-		(Bootstrap, jQuery...) -->
-	<mvc:resources mapping="/webjars/**"
-		location="classpath:/META-INF/resources/webjars/" cache-period="31556926" />
 
 	<mvc:view-controller path="/" view-name="redirect:welcome" />
 
@@ -45,13 +35,13 @@
 		class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
 		<property name="registerDefaultFormatters" value="false" />
 		<property name="formatters">
-			<set>				
+			<list>				
 				<bean
 					class="org.springframework.format.number.NumberFormatAnnotationFormatterFactory" />
-			</set>
+			</list>
 		</property>
 		<property name="formatterRegistrars">
-			<set>
+			<list>
 				<bean class="org.springframework.format.datetime.DateFormatterRegistrar">
 					<property name="formatter">
 						<bean class="org.springframework.format.datetime.DateFormatter">
@@ -59,7 +49,7 @@
 						</bean>
 					</property>
 				</bean>
-			</set>
+			</list>
 		</property>
 	</bean>
 
