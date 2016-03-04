@@ -43,14 +43,10 @@
 				<button class="btn btn-default" type="button">1</button>
 				<button class="btn btn-default" type="button">2</button>
 				<button class="btn btn-default" type="button">3</button>
-				<button class="btn btn-default" type="button">4</button>
-			</div>
-			<div aria-label="Second group" role="group" class="btn-group">
+				<button class="btn btn-default" type="button">4</button>			
 				<button class="btn btn-default" type="button">5</button>
 				<button class="btn btn-default" type="button">6</button>
-				<button class="btn btn-default" type="button">7</button>
-			</div>
-			<div aria-label="Third group" role="group" class="btn-group">
+				<button class="btn btn-default" type="button">7</button>			
 				<button class="btn btn-default" type="button">8</button>
 				<button class="btn btn-default" type="button">9</button>
 				<button class="btn btn-default" type="button">10</button>
@@ -66,23 +62,21 @@
 			class="label label-info">电器</span> <span class="label label-info">全新</span>
 		<span class="label label-info">未拆封</span>
 		<form class="form-inline">
-			<div class="form-group">
-				<label class="sr-only" for="exampleInputAmount">Amount (in
-					dollars)</label>
+			<div class="form-group">				
 				<div class="input-group">
 					<div class="input-group-addon">标签</div>
 					<input type="text" class="form-control" id="exampleInputAmount"
-						placeholder="Amount">
+						placeholder="新标签"><div class="input-group-addon"><button type="submit" class="btn btn-default">添加</button></div>
 				</div>
 			</div>
-			<button type="submit" class="btn btn-primary">添加</button>
+			
 		</form>
 	</div>
 	<div class="checkbox">
 		<label> <input type="checkbox"> 同意一元网的条款
 		</label>
 	</div>
-	<button type="submit" class="btn btn-default">Submit</button>
+	<button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
 <jsp:include page="./fragments/footer.jsp" />
