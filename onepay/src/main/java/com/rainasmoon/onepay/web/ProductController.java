@@ -114,7 +114,8 @@ public class ProductController extends BaseController {
 			LOGGER.debug(result.toString());
 			return "addproduct";
 		} else {
-			SYS_PIC_PATH = env.getProperty("product.pic.location");
+			// SYS_PIC_PATH = env.getProperty("product.pic.location");
+			SYS_PIC_PATH = "./file";
 
 			LOGGER.debug("the SYS_PIC_PATH is :" + SYS_PIC_PATH);
 			if (inputPicFile != null && !inputPicFile.isEmpty()) {

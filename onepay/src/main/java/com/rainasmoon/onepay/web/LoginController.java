@@ -29,6 +29,11 @@ public class LoginController extends BaseController {
 	public String processLoginForm(@Valid LoginVo loginVo, BindingResult result, HttpServletRequest request, HttpSession session, Map<String, Object> model) {
 
 		LOGGER.debug("Session:www:" + loginVo);
+
+		// if exist -> login. else create
+
+		// 1 check if userAccount exist. yes -> check password. no -> ask user what to do... create or relogin.
+
 		return "redirect:/";
 
 	}
