@@ -1,5 +1,7 @@
 package com.rainasmoon.onepay.vo;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 import org.hibernate.validator.constraints.NotEmpty;
 
 public class LoginVo {
@@ -10,6 +12,8 @@ public class LoginVo {
 	@NotEmpty(message = "{not.null}")
 	protected String password;
 
+	private String confirmPassword;
+
 	@NotEmpty(message = "{not.null}")
 	protected String checkCode;
 
@@ -17,7 +21,8 @@ public class LoginVo {
 
 	@Override
 	public String toString() {
-		return "LoginVo [account=" + account + ", password=" + password + ", checkCode=" + checkCode + ", error=" + error + "]";
+		return ReflectionToStringBuilder.toString(this, ToStringStyle.SHORT_PREFIX_STYLE);
+
 	}
 
 	public String getPassword() {

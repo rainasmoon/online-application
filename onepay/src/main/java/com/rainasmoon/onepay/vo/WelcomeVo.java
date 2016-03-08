@@ -2,11 +2,20 @@ package com.rainasmoon.onepay.vo;
 
 import java.util.List;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 public class WelcomeVo {
 
 	private List<AdVo> ads;
 	private List<AdVo> top3;
 	private List<AdVo> imp3;
+
+	@Override
+	public String toString() {
+		return ReflectionToStringBuilder.toString(this, ToStringStyle.SHORT_PREFIX_STYLE);
+
+	}
 
 	public List<AdVo> getAds() {
 		return ads;

@@ -1,5 +1,8 @@
 package com.rainasmoon.onepay.vo;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 public class AdVo {
 
 	private String picPath;
@@ -7,6 +10,12 @@ public class AdVo {
 	private String adDescription;
 	private String urlName;
 	private String urlLink;
+
+	@Override
+	public String toString() {
+		return ReflectionToStringBuilder.toString(this, ToStringStyle.SHORT_PREFIX_STYLE);
+
+	}
 
 	public String getPicPath() {
 		return picPath;

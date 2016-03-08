@@ -12,7 +12,7 @@
 <link rel="icon" href="favicon.ico">
 
 <!-- Bootstrap core CSS -->
-<link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css"
+<link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.css"
 	rel="stylesheet">
 
 <!-- Custom styles for this template -->

@@ -63,4 +63,12 @@ public class UserRepositoryTest {
 		assertNull(r);
 
 	}
+
+	@Test
+	public void shouldSaveUser() {
+		User u = new User();
+
+		User r = repository.save(u);
+		assertNotNull(r.getId());
+	}
 }

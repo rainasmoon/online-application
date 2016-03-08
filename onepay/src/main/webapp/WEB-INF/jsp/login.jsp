@@ -18,7 +18,7 @@
 	id="login-form" role="form">
 	<h2 class="form-signin-heading">Please sign in</h2>
 	<span class="help-inline"> <c:if test="${not empty message}">
-			<div id="message" class="success">${message}</div>
+			<div id="message" class="alert alert-success" role="alert">${message}</div>
 		</c:if> <spring:bind path="error">
 			<c:if test="${status.error}">
 				<div id="message" class="alert alert-danger" role="alert">${status.errorMessage}</div>
