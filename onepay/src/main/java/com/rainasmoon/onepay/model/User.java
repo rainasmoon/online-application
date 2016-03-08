@@ -11,8 +11,6 @@ import javax.persistence.Transient;
 @Table(name = "users")
 public class User extends BaseEntity {
 
-	@Column(name = "login_name")
-	private String loginName;
 	@Column(name = "email")
 	private String email;
 	@Column(name = "phone")
@@ -32,14 +30,6 @@ public class User extends BaseEntity {
 	private Integer totalAmount;
 	@Column(name = "level")
 	private Integer level;
-
-	public String getLoginName() {
-		return loginName;
-	}
-
-	public void setLoginName(String loginName) {
-		this.loginName = loginName;
-	}
 
 	public String getEmail() {
 		return email;
