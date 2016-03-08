@@ -1,8 +1,7 @@
 package com.rainasmoon.onepay.model;
 
-public class Address {
+public class Address extends BaseEntity {
 
-	private long id;
 	private String name;
 	private String phone;
 	private String address;

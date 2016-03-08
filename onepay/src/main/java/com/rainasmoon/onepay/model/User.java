@@ -2,29 +2,36 @@ package com.rainasmoon.onepay.model;
 
 import java.util.List;
 
-public class User {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
-	private long id;
+@Entity
+@Table(name = "users")
+public class User extends BaseEntity {
+
+	@Column(name = "login_name")
 	private String loginName;
+	@Column(name = "email")
 	private String email;
+	@Column(name = "phone")
 	private String phone;
+	@Column(name = "password")
 	private String password;
-
+	@Column(name = "nick_name")
 	private String nickName;
-	private List tags;
-	private int sellAmount;
-	private int buyAmount;
-	private int totalAmount;
 
-	private int level;
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
+	@Transient
+	private List<Tag> tags;
+	@Column(name = "sell_amount")
+	private Integer sellAmount;
+	@Column(name = "buy_amount")
+	private Integer buyAmount;
+	@Column(name = "total_amount")
+	private Integer totalAmount;
+	@Column(name = "level")
+	private Integer level;
 
 	public String getLoginName() {
 		return loginName;
@@ -66,43 +73,43 @@ public class User {
 		this.nickName = nickName;
 	}
 
-	public List getTags() {
+	public List<Tag> getTags() {
 		return tags;
 	}
 
-	public void setTags(List tags) {
+	public void setTags(List<Tag> tags) {
 		this.tags = tags;
 	}
 
-	public int getSellAmount() {
+	public Integer getSellAmount() {
 		return sellAmount;
 	}
 
-	public void setSellAmount(int sellAmount) {
+	public void setSellAmount(Integer sellAmount) {
 		this.sellAmount = sellAmount;
 	}
 
-	public int getBuyAmount() {
+	public Integer getBuyAmount() {
 		return buyAmount;
 	}
 
-	public void setBuyAmount(int buyAmount) {
+	public void setBuyAmount(Integer buyAmount) {
 		this.buyAmount = buyAmount;
 	}
 
-	public int getTotalAmount() {
+	public Integer getTotalAmount() {
 		return totalAmount;
 	}
 
-	public void setTotalAmount(int totalAmount) {
+	public void setTotalAmount(Integer totalAmount) {
 		this.totalAmount = totalAmount;
 	}
 
-	public int getLevel() {
+	public Integer getLevel() {
 		return level;
 	}
 
-	public void setLevel(int level) {
+	public void setLevel(Integer level) {
 		this.level = level;
 	}
 

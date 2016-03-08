@@ -2,11 +2,10 @@ package com.rainasmoon.onepay.model;
 
 import java.util.Date;
 
-public class BidLog {
+public class BidLog extends BaseEntity {
 
-	private long id;
-	private long userId;
-	private long productId;
-	private int price;
+	private Long userId;
+	private Long productId;
+	private Integer price;
 	private Date createTime;
 }

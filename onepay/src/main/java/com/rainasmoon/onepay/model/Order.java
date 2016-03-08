@@ -2,12 +2,11 @@ package com.rainasmoon.onepay.model;
 
 import java.util.Date;
 
-public class Order {
+public class Order extends BaseEntity {
 
-	private long id;
-	private long userId;
-	private long productId;
-	private int price;
-	private int status;
+	private Long userId;
+	private Long productId;
+	private Integer price;
+	private Integer status;
 	private Date createTime;
 }
