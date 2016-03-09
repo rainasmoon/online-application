@@ -109,6 +109,12 @@ public class ProductController extends BaseController {
 			LOGGER.debug(result.toString());
 			return "addproduct";
 		} else {
+
+			Product product = new Product();
+			product.setName(productVo.getProductName());
+
+			productService.addProduct(product);
+
 			SYS_PIC_PATH = env.getProperty(CommonConstants.PRODUCT_PIC_PATH_ID);
 
 			LOGGER.debug("the SYS_PIC_PATH is :" + SYS_PIC_PATH);
@@ -116,17 +122,16 @@ public class ProductController extends BaseController {
 				if (inputPicFile.getSize() > 500000) {
 					result.rejectValue("error", "error.file.too.large");
 				} else {
-					Files.write(inputPicFile.getBytes(), new File(SYS_PIC_PATH + File.separator + "testfilename" + "_id_card_front"));
+					String picPath = "p" + product.getId() + "_disc_1";
+					Files.write(inputPicFile.getBytes(), new File(SYS_PIC_PATH + File.separator + picPath));
 					LOGGER.debug("POST request for file upload {}", inputPicFile.getOriginalFilename());
+
+					productService.addPicture(product.getId(), picPath);
 				}
 			} else {
 				LOGGER.debug("Upload File is empty...");
 			}
 
-			Product product = new Product();
-			product.setName(productVo.getProductName());
-
-			productService.addProduct(product);
 			model.put("message", "add product success.");
 			model.put("product", new ProductVo());
 			return "addproduct";

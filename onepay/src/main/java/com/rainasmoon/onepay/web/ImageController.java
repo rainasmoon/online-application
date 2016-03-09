@@ -43,16 +43,16 @@ public class ImageController {
 		LOGGER.warn("Request raised a FileNotFoundException: {}", e.getMessage());
 	}
 
-	@RequestMapping(value = "/idcard/{id}/{picType}", method = RequestMethod.GET)
-	public void getFile(@PathVariable("id") Long id, @PathVariable("picType") String picType, HttpServletResponse response) throws DataAccessException, ImageNotFoundException {
+	@RequestMapping(value = "/product_pic/{pic_path}", method = RequestMethod.GET)
+	public void getFile(@PathVariable("pic_path") String picPath, HttpServletResponse response) throws DataAccessException, ImageNotFoundException {
 		FileInputStream fileInputStream = null;
 		try {
 
 			SYS_PIC_PATH = env.getProperty(CommonConstants.PRODUCT_PIC_PATH_ID);
 
 			LOGGER.debug("!!!!!the SYS_PIC_PATH is " + SYS_PIC_PATH);
-			File file = new File(SYS_PIC_PATH + File.separator + "testfilename" + "_id_card_front");
-			LOGGER.debug("the file name is:" + SYS_PIC_PATH + File.separator + id + "_id_card_" + picType);
+			File file = new File(SYS_PIC_PATH + File.separator + picPath);
+			LOGGER.debug("the file name is:" + SYS_PIC_PATH + File.separator + picPath);
 			fileInputStream = new FileInputStream(file);
 
 			response.setHeader("Content-Disposition", "attachment; filename=" + file.getName());

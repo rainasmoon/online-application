@@ -1,5 +1,6 @@
 DROP TABLE users IF EXISTS;
 DROP TABLE products IF EXISTS;
+DROP TABLE pictures IF EXISTS;
 DROP TABLE tags IF EXISTS;
 
 CREATE TABLE users (
@@ -23,6 +24,14 @@ CREATE TABLE products (
   sale_model INTEGER,
   aging INTEGER,
   description VARCHAR(100)
+);
+
+CREATE TABLE pictures (
+  id INTEGER IDENTITY PRIMARY KEY,
+  product_id INTEGER,
+  pic_path VARCHAR(100),
+  create_date TIMESTAMP
+  
 );
 
 CREATE TABLE tags (
