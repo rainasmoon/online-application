@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -40,17 +41,33 @@ public class LoginController extends BaseController {
 		if (userService.checkUserIfExists(loginVo.getAccount())) {
 			if (userService.checkLogin(loginVo.getAccount(), loginVo.getPassword())) {
 				// login success
+				return "redirect:/";
 			} else {
 				// account or password wrong...
+				result.rejectValue("error", "error.userNameOrPassword.invalid");
+				LOGGER.warn("login failed. with no user in db.");
+				model.put("loginVo", loginVo);
+				return "login";
 			}
 		} else {
 			// ask if create a new user or relogin.
-			model.put("message", "账号不存在，是否创建？");
-			model.put("loginVo", loginVo);
-			return "login";
+			if (StringUtils.isBlank(loginVo.getConfirmPassword())) {
+				model.put("message", "账号不存在，是否创建？");
+				model.put("loginVo", loginVo);
+				return "login_register";
+			} else {
+				if (!loginVo.getConfirmPassword().equals(loginVo.getPassword())) {
+					result.rejectValue("error", "error.confirmPassword.invalid");
+					model.put("loginVo", loginVo);
+					return "login_register";
+				} else {
+					userService.addUser(loginVo.getAccount(), loginVo.getPassword());
+					model.put("message", "创建账号成功");
+					model.put("loginVo", loginVo);
+					return "login_register_success";
+				}
+			}
 		}
-
-		return "redirect:/";
 
 	}
 }
