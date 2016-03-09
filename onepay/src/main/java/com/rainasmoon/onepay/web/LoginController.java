@@ -13,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.rainasmoon.onepay.model.User;
 import com.rainasmoon.onepay.service.UserService;
 import com.rainasmoon.onepay.vo.LoginVo;
 
@@ -39,8 +40,10 @@ public class LoginController extends BaseController {
 		// if exist -> login. else create
 		// 1 check if userAccount exist. yes -> check password. no -> ask user what to do... create or relogin.
 		if (userService.checkUserIfExists(loginVo.getAccount())) {
-			if (userService.checkLogin(loginVo.getAccount(), loginVo.getPassword())) {
+			User loginUser = userService.login(loginVo.getAccount(), loginVo.getPassword());
+			if (loginUser != null) {
 				// login success
+				session.setAttribute("userId", loginUser.getId());
 				return "redirect:/";
 			} else {
 				// account or password wrong...
@@ -69,5 +72,14 @@ public class LoginController extends BaseController {
 			}
 		}
 
+	}
+
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(HttpSession session) {
+		LOGGER.debug("Logout running...");
+		LOGGER.debug("Session ID:" + session.getId());
+		session.removeAttribute("userId");
+		session.invalidate();
+		return "redirect:/";
 	}
 }

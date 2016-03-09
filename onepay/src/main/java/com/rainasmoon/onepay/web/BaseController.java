@@ -16,7 +16,7 @@ public class BaseController {
 	public String getLoginEmail() {
 
 		HttpSession session = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getSession();
-		return (String) session.getAttribute("userEmail");
+		return (String) session.getAttribute("userId");
 
 	}
 }

@@ -6,7 +6,7 @@ public interface UserService {
 
 	boolean checkUserIfExists(String loginName);
 
-	boolean checkLogin(String loginName, String password);
+	User login(String loginName, String password);
 
 	User addUser(String loginName, String password);
 }
