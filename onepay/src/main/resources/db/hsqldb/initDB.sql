@@ -1,4 +1,5 @@
 DROP TABLE users IF EXISTS;
+DROP TABLE products IF EXISTS;
 DROP TABLE tags IF EXISTS;
 
 CREATE TABLE users (
@@ -11,6 +12,17 @@ CREATE TABLE users (
   buy_amount INTEGER,
   total_amount INTEGER,
   level INTEGER
+);
+
+CREATE TABLE products (
+  id INTEGER IDENTITY PRIMARY KEY,
+  name VARCHAR(100),
+  price INTEGER,
+  current_bider_count INTEGER,
+  current_bider_id INTEGER,
+  sale_model INTEGER,
+  aging INTEGER,
+  description VARCHAR(100)
 );
 
 CREATE TABLE tags (
