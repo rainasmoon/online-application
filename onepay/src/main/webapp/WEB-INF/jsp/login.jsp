@@ -21,7 +21,7 @@
 			<div id="message" class="alert alert-success" role="alert">${message}</div>
 		</c:if> <spring:bind path="error">
 			<c:if test="${status.error}">
-				<div id="message" class="alert alert-danger" role="alert">${status.errorMessage}</div>
+				<div id="error" class="alert alert-danger" role="alert">${status.errorMessage}</div>
 			</c:if>
 		</spring:bind>
 	</span>

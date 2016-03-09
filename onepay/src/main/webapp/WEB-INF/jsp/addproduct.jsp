@@ -16,10 +16,10 @@
 <form:form modelAttribute="product" method="post" class="form-horizontal"
 	id="add-product-form" enctype="multipart/form-data">
 	<span class="help-inline"> <c:if test="${not empty message}">
-			<div id="message" class="success">${message}</div>
+			<div id="message" class="alert alert-success" role="alert">${message}</div>
 		</c:if> <spring:bind path="*">
 			<c:if test="${status.error}">
-				<div id="message" class="error">${status.errorMessage}</div>
+				<div id="error" class="alert alert-danger" role="alert">${status.errorMessage}</div>
 			</c:if>
 		</spring:bind>
 	</span>
@@ -28,7 +28,7 @@
 
 		<div class="form-group">
 			<label for="inputPicFile">图片</label> <input type="file"
-				id="inputPicFile">
+				id="inputPicFile" name="inputPicFile">
 			<p class="help-block">上传图片有助于客户更好的了解产品.</p>
 		</div>
 		<hr />

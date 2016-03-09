@@ -40,6 +40,8 @@
 		<div class="row">
 			<c:forEach var="arow" items="${vo.products}">
 				<div class="col-xs-6 col-lg-4">
+				<img class="img-circle" src="idcard/1111/front"
+					alt="Generic placeholder image" width="140" height="140">
 					<h2>
 						<c:out value="${arow.adTitle}" />
 					</h2>

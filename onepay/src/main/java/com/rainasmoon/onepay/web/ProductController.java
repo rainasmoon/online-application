@@ -109,7 +109,7 @@ public class ProductController extends BaseController {
 			return "addproduct";
 		} else {
 			// SYS_PIC_PATH = env.getProperty("product.pic.location");
-			SYS_PIC_PATH = "./file";
+			SYS_PIC_PATH = "./files";
 
 			LOGGER.debug("the SYS_PIC_PATH is :" + SYS_PIC_PATH);
 			if (inputPicFile != null && !inputPicFile.isEmpty()) {
@@ -119,14 +119,17 @@ public class ProductController extends BaseController {
 					Files.write(inputPicFile.getBytes(), new File(SYS_PIC_PATH + File.separator + "testfilename" + "_id_card_front"));
 					LOGGER.debug("POST request for file upload {}", inputPicFile.getOriginalFilename());
 				}
+			} else {
+				LOGGER.debug("Upload File is empty...");
 			}
 
 			Product product = new Product();
 			product.setName(productVo.getProductName());
+
 			productService.addProduct(product);
 			model.put("message", "add product success.");
 			model.put("product", new ProductVo());
-			return "redirect:addproduct.html";
+			return "addproduct";
 		}
 	}
 
