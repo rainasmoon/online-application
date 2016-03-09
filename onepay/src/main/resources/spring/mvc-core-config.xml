@@ -14,7 +14,7 @@
 	<import resource="mvc-view-config.xml" />
 
 	<!-- - POJOs labeled with the @Controller and @Service annotations are auto-detected. -->
-	<context:component-scan base-package="com.rainasmoon.onepay.web" />
+	<context:component-scan base-package="com.rainasmoon.onepay.web,com.rainasmoon.onepay.rest" />
 
 	<mvc:annotation-driven validator="validator"
 		conversion-service="conversionService">
