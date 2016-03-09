@@ -24,7 +24,7 @@
 		</spring:bind>
 	</span>
 	<fieldset>		
-		<onlineapplication:inputField label="商品名称" name="ProductName" autofocus="true"/>
+		<onlineapplication:inputField label="商品名称" name="ProductName" autofocus="true" required="true"/>
 
 		<div class="form-group">
 			<label for="inputPicFile">图片</label> <input type="file"

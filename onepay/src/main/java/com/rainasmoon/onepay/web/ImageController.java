@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import com.rainasmoon.onepay.util.CommonConstants;
+
 @Controller
 @PropertySource("classpath:/spring/data-access.properties")
 public class ImageController {
@@ -46,8 +48,7 @@ public class ImageController {
 		FileInputStream fileInputStream = null;
 		try {
 
-			// SYS_PIC_PATH = env.getProperty("idcard.pic.location");
-			SYS_PIC_PATH = "./files";
+			SYS_PIC_PATH = env.getProperty(CommonConstants.PRODUCT_PIC_PATH_ID);
 
 			LOGGER.debug("!!!!!the SYS_PIC_PATH is " + SYS_PIC_PATH);
 			File file = new File(SYS_PIC_PATH + File.separator + "testfilename" + "_id_card_front");

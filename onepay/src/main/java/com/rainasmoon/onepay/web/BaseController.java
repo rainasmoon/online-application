@@ -13,7 +13,7 @@ public class BaseController {
 
 	public static String SYS_PIC_PATH;
 
-	public String getLoginEmail() {
+	public String getLoginUserId() {
 
 		HttpSession session = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getSession();
 		return (String) session.getAttribute("userId");

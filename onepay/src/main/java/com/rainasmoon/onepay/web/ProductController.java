@@ -24,6 +24,7 @@ import com.google.common.io.Files;
 import com.rainasmoon.onepay.model.Product;
 import com.rainasmoon.onepay.service.ProductService;
 import com.rainasmoon.onepay.service.UserService;
+import com.rainasmoon.onepay.util.CommonConstants;
 import com.rainasmoon.onepay.vo.AdVo;
 import com.rainasmoon.onepay.vo.ProductListPageVo;
 import com.rainasmoon.onepay.vo.ProductVo;
@@ -108,8 +109,7 @@ public class ProductController extends BaseController {
 			LOGGER.debug(result.toString());
 			return "addproduct";
 		} else {
-			// SYS_PIC_PATH = env.getProperty("product.pic.location");
-			SYS_PIC_PATH = "./files";
+			SYS_PIC_PATH = env.getProperty(CommonConstants.PRODUCT_PIC_PATH_ID);
 
 			LOGGER.debug("the SYS_PIC_PATH is :" + SYS_PIC_PATH);
 			if (inputPicFile != null && !inputPicFile.isEmpty()) {
