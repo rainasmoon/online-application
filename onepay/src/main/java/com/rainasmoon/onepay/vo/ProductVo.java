@@ -5,7 +5,7 @@ import javax.validation.constraints.Size;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-public class ProductVo extends AdVo {
+public class ProductVo {
 
 	@Size(max = 100, message = "{error.too.lang}")
 	protected String productName;

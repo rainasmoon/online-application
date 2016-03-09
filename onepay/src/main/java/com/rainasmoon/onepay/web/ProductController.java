@@ -21,13 +21,22 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.google.common.io.Files;
-import com.rainasmoon.onepay.model.User;
+import com.rainasmoon.onepay.model.Product;
+import com.rainasmoon.onepay.service.ProductService;
+import com.rainasmoon.onepay.service.UserService;
+import com.rainasmoon.onepay.vo.AdVo;
 import com.rainasmoon.onepay.vo.ProductListPageVo;
 import com.rainasmoon.onepay.vo.ProductVo;
 
 @Controller
 @PropertySource("classpath:/spring/data-access.properties")
 public class ProductController extends BaseController {
+
+	@Autowired
+	private ProductService productService;
+
+	@Autowired
+	private UserService userService;
 
 	@Autowired
 	private Environment env;
@@ -44,24 +53,9 @@ public class ProductController extends BaseController {
 		vo.setTotalAmount(1000000000);
 		vo.setTodayAmount(1000000);
 
-		List<User> activeTop5Users = new ArrayList<User>();
-		for (int i = 0; i < 10; i++) {
-			User t = new User();
-			t.setNickName("Glen" + i);
-			t.setBuyAmount(100);
-			t.setSellAmount(1000);
-			t.setTotalAmount(10000 * i);
+		vo.setActiveTop5Users(userService.listActiveTop5Users());
 
-			activeTop5Users.add(t);
-		}
-		vo.setActiveTop5Users(activeTop5Users);
-		List<ProductVo> products = new ArrayList<ProductVo>();
-		for (int i = 0; i < 50; i++) {
-			ProductVo p = new ProductVo();
-			p.setAdTitle("Good" + i);
-			products.add(p);
-		}
-		vo.setProducts(products);
+		vo.setProducts(productService.listAllProductsPage());
 
 		model.put("vo", vo);
 
@@ -71,9 +65,9 @@ public class ProductController extends BaseController {
 	@RequestMapping(value = { "/myfavorites.html" }, method = RequestMethod.GET)
 	public String listMyFavorites(Map<String, Object> model) {
 
-		List<ProductVo> products = new ArrayList<ProductVo>();
+		List<AdVo> products = new ArrayList<AdVo>();
 		for (int i = 0; i < 50; i++) {
-			ProductVo p = new ProductVo();
+			AdVo p = new AdVo();
 			p.setAdTitle("Good" + i);
 			products.add(p);
 		}
@@ -86,9 +80,9 @@ public class ProductController extends BaseController {
 	@RequestMapping(value = { "/mysales.html" }, method = RequestMethod.GET)
 	public String listMySales(Map<String, Object> model) {
 
-		List<ProductVo> products = new ArrayList<ProductVo>();
+		List<AdVo> products = new ArrayList<AdVo>();
 		for (int i = 0; i < 50; i++) {
-			ProductVo p = new ProductVo();
+			AdVo p = new AdVo();
 			p.setAdTitle("Good" + i);
 			products.add(p);
 		}
@@ -107,7 +101,7 @@ public class ProductController extends BaseController {
 	}
 
 	@RequestMapping(value = "/addproduct.html", method = RequestMethod.POST)
-	public String saveProduct(@Valid ProductVo productVo, @RequestParam(required = false) MultipartFile inputPicFile, BindingResult result) throws IOException {
+	public String saveProduct(@Valid ProductVo productVo, @RequestParam(required = false) MultipartFile inputPicFile, BindingResult result, Map<String, Object> model) throws IOException {
 
 		if (result.hasErrors()) {
 			LOGGER.debug("field error. when changing personal information");
@@ -127,6 +121,11 @@ public class ProductController extends BaseController {
 				}
 			}
 
+			Product product = new Product();
+			product.setName(productVo.getProductName());
+			productService.addProduct(product);
+			model.put("message", "add product success.");
+			model.put("product", new ProductVo());
 			return "redirect:addproduct.html";
 		}
 	}

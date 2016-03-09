@@ -1,5 +1,8 @@
 package com.rainasmoon.onepay.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,6 +41,16 @@ public class UserServiceImpl implements UserService {
 		user.setPassword(password);
 
 		return userRepository.save(user);
+	}
+
+	@Override
+	public List<User> listActiveTop5Users() {
+		Iterable<User> users = userRepository.findAll();
+		List<User> result = new ArrayList<User>();
+		for (User u : users) {
+			result.add(u);
+		}
+		return result;
 	}
 
 }

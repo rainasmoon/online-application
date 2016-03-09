@@ -17,7 +17,7 @@ public class ProductListPageVo {
 
 	private List<User> activeTop5Users;
 
-	private List<ProductVo> products;
+	private List<AdVo> products;
 
 	@Override
 	public String toString() {
@@ -73,11 +73,11 @@ public class ProductListPageVo {
 		this.activeTop5Users = activeTop5Users;
 	}
 
-	public List<ProductVo> getProducts() {
+	public List<AdVo> getProducts() {
 		return products;
 	}
 
-	public void setProducts(List<ProductVo> products) {
+	public void setProducts(List<AdVo> products) {
 		this.products = products;
 	}
 
