@@ -5,6 +5,7 @@ import java.util.List;
 import com.rainasmoon.onepay.model.Picture;
 import com.rainasmoon.onepay.model.Product;
 import com.rainasmoon.onepay.vo.AdVo;
+import com.rainasmoon.onepay.vo.BidProductVo;
 
 public interface ProductService {
 
@@ -13,4 +14,6 @@ public interface ProductService {
 	Picture addPicture(Long productId, String picPath);
 
 	List<AdVo> listAllProductsPage();
+
+	BidProductVo findProduct(Long productId);
 }

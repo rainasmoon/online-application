@@ -26,6 +26,7 @@ import com.rainasmoon.onepay.service.ProductService;
 import com.rainasmoon.onepay.service.UserService;
 import com.rainasmoon.onepay.util.CommonConstants;
 import com.rainasmoon.onepay.vo.AdVo;
+import com.rainasmoon.onepay.vo.BidProductVo;
 import com.rainasmoon.onepay.vo.ProductListPageVo;
 import com.rainasmoon.onepay.vo.ProductVo;
 
@@ -151,9 +152,10 @@ public class ProductController extends BaseController {
 	}
 
 	@RequestMapping(value = { "/bid.html" }, method = RequestMethod.GET)
-	public String bid(Map<String, Object> model) {
-
-		return "bid";
+	public String bid(Long productId, Map<String, Object> model) {
+		BidProductVo productVo = productService.findProduct(productId);
+		model.put("productVo", productVo);
+		return "bid_fixed_time";
 	}
 
 	@RequestMapping(value = { "/guessprice.html" }, method = RequestMethod.GET)

@@ -13,6 +13,7 @@ import com.rainasmoon.onepay.repository.springdatajpa.PictureRepository;
 import com.rainasmoon.onepay.repository.springdatajpa.ProductRepository;
 import com.rainasmoon.onepay.service.ProductService;
 import com.rainasmoon.onepay.vo.AdVo;
+import com.rainasmoon.onepay.vo.BidProductVo;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -35,6 +36,7 @@ public class ProductServiceImpl implements ProductService {
 		List<AdVo> result = new ArrayList<AdVo>();
 		for (Product p : allProducts) {
 			AdVo adVo = new AdVo();
+			adVo.setObjId(p.getId());
 			adVo.setAdTitle(p.getName());
 			adVo.setPicPath(getCoverPicture(p.getId()).getPicPath());
 			result.add(adVo);
@@ -56,6 +58,15 @@ public class ProductServiceImpl implements ProductService {
 		List<Picture> pics = pictureRepository.findPictures(productId);
 
 		return pics.get(0);
+	}
+
+	@Override
+	public BidProductVo findProduct(Long productId) {
+		BidProductVo productVo = new BidProductVo();
+		Product product = repository.findOne(productId);
+		productVo.setPicPath(getCoverPicture(productId).getPicPath());
+		productVo.setProductTitle(product.getName());
+		return productVo;
 	}
 
 }

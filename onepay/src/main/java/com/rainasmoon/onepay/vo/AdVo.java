@@ -5,6 +5,9 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 public class AdVo {
 
+	private Long objId;
+	// user; product.
+	private Integer type;
 	private String picPath;
 	private String adTitle;
 	private String adDescription;
@@ -55,6 +58,22 @@ public class AdVo {
 
 	public void setUrlLink(String urlLink) {
 		this.urlLink = urlLink;
+	}
+
+	public Long getObjId() {
+		return objId;
+	}
+
+	public void setObjId(Long objId) {
+		this.objId = objId;
+	}
+
+	public Integer getType() {
+		return type;
+	}
+
+	public void setType(Integer type) {
+		this.type = type;
 	}
 
 }
