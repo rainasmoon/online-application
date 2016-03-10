@@ -66,6 +66,10 @@ public class ProductController extends BaseController {
 	@RequestMapping(value = { "/myfavorites.html" }, method = RequestMethod.GET)
 	public String listMyFavorites(Map<String, Object> model) {
 
+		if (!isLogin()) {
+			return "redirect:login.html";
+		}
+
 		List<AdVo> products = new ArrayList<AdVo>();
 		for (int i = 0; i < 50; i++) {
 			AdVo p = new AdVo();
@@ -80,6 +84,9 @@ public class ProductController extends BaseController {
 
 	@RequestMapping(value = { "/mysales.html" }, method = RequestMethod.GET)
 	public String listMySales(Map<String, Object> model) {
+		if (!isLogin()) {
+			return "redirect:login.html";
+		}
 
 		List<AdVo> products = new ArrayList<AdVo>();
 		for (int i = 0; i < 50; i++) {
@@ -95,6 +102,11 @@ public class ProductController extends BaseController {
 
 	@RequestMapping(value = { "/addproduct.html" }, method = RequestMethod.GET)
 	public String addProduct(Map<String, Object> model) {
+
+		if (!isLogin()) {
+			return "redirect:login.html";
+		}
+
 		ProductVo product = new ProductVo();
 
 		model.put("product", product);

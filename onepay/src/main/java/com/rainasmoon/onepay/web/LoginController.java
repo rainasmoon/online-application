@@ -3,7 +3,6 @@ package com.rainasmoon.onepay.web;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.commons.lang3.StringUtils;
@@ -33,7 +32,7 @@ public class LoginController extends BaseController {
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String processLoginForm(@Valid LoginVo loginVo, BindingResult result, HttpServletRequest request, HttpSession session, Map<String, Object> model) {
+	public String processLoginForm(@Valid LoginVo loginVo, BindingResult result, HttpServletRequest request, Map<String, Object> model) {
 
 		LOGGER.debug("Session:www:" + loginVo);
 
@@ -43,7 +42,7 @@ public class LoginController extends BaseController {
 			User loginUser = userService.login(loginVo.getAccount(), loginVo.getPassword());
 			if (loginUser != null) {
 				// login success
-				session.setAttribute("userId", loginUser.getId());
+				setSessionLoginUser(loginUser.getId().toString());
 				return "redirect:/";
 			} else {
 				// account or password wrong...
@@ -75,11 +74,8 @@ public class LoginController extends BaseController {
 	}
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
-	public String logout(HttpSession session) {
-		LOGGER.debug("Logout running...");
-		LOGGER.debug("Session ID:" + session.getId());
-		session.removeAttribute("userId");
-		session.invalidate();
+	public String logout() {
+		setSessionOut();
 		return "redirect:/";
 	}
 }
