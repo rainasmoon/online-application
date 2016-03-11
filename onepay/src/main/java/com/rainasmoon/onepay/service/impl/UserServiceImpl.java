@@ -53,4 +53,10 @@ public class UserServiceImpl implements UserService {
 		return result;
 	}
 
+	@Override
+	public User findUser(Long userId) {
+
+		return userRepository.findOne(userId);
+	}
+
 }

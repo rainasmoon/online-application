@@ -4,15 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.rainasmoon.onepay.model.User;
+import com.rainasmoon.onepay.service.UserService;
 import com.rainasmoon.onepay.vo.AdVo;
 
 @Controller
 public class UserController extends BaseController {
+
+	@Autowired
+	private UserService userService;
 
 	@RequestMapping(value = { "/top10users.html" }, method = RequestMethod.GET)
 	public String listTop10Users(Map<String, Object> model) {
@@ -49,5 +54,13 @@ public class UserController extends BaseController {
 		model.put("top10users", results);
 
 		return "top10users";
+	}
+
+	@RequestMapping(value = { "/viewme.html" }, method = RequestMethod.GET)
+	public String viewMe(Map<String, Object> model) {
+		User loginUser = userService.findUser(getLoginUserId());
+
+		model.put("user", loginUser);
+		return "view_me";
 	}
 }

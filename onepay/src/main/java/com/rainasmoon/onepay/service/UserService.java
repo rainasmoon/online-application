@@ -13,4 +13,6 @@ public interface UserService {
 	User addUser(String loginName, String password);
 
 	List<User> listActiveTop5Users();
+
+	User findUser(Long userId);
 }

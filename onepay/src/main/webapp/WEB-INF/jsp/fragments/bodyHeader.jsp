@@ -24,7 +24,7 @@
 					<li><a href="top10users.html">Top 10 users</a></li>
 					<li><a href="login.html">login/register</a></li>
 					<c:if test="${not empty userId}">
-						<li><a href="#"><c:out value="${userId}" /></a></li>
+						<li><a href="viewme.html"><c:out value="${userId}" /></a></li>
 						<li><a href="logout.html">logout</a></li>
 					</c:if>
 					<li><a href="myfavorites.html">我的收藏</a></li>
