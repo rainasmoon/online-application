@@ -57,6 +57,9 @@ public class ProductServiceImpl implements ProductService {
 	private Picture getCoverPicture(Long productId) {
 		List<Picture> pics = pictureRepository.findPictures(productId);
 
+		if (pics.size() <= 0) {
+			return Picture.noPicture();
+		}
 		return pics.get(0);
 	}
 

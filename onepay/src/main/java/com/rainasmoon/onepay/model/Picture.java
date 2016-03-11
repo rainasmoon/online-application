@@ -17,6 +17,12 @@ public class Picture extends BaseEntity {
 	@Column(name = "create_date")
 	private Date createDate;
 
+	public static Picture noPicture() {
+		Picture picture = new Picture();
+		picture.setPicPath("nopic");
+		return picture;
+	}
+
 	public Long getProductId() {
 		return productId;
 	}

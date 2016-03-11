@@ -9,3 +9,5 @@ tomcat7:run
 hibernate 5 will not run with spring... wait for hibernate next release
 
 
+1 add bid
+2 add test data : user, product.

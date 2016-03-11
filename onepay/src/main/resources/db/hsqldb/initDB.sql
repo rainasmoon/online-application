@@ -3,6 +3,8 @@ DROP TABLE products IF EXISTS;
 DROP TABLE pictures IF EXISTS;
 DROP TABLE tags IF EXISTS;
 
+DROP TABLE bidlogs IF EXISTS;
+
 CREATE TABLE users (
   id INTEGER IDENTITY PRIMARY KEY,
   email VARCHAR(100),
@@ -42,3 +44,11 @@ CREATE TABLE tags (
   
 );
 
+CREATE TABLE bidlogs (
+  id INTEGER IDENTITY PRIMARY KEY,
+  user_id INTEGER,
+  product_id INTEGER,
+  price INTEGER,
+  create_date TIMESTAMP
+  
+);
