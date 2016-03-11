@@ -30,6 +30,8 @@ public class User extends BaseEntity {
 	private Integer totalAmount;
 	@Column(name = "level")
 	private Integer level;
+	@Column(name = "credit")
+	private Integer credit;
 
 	public String getEmail() {
 		return email;
@@ -101,6 +103,14 @@ public class User extends BaseEntity {
 
 	public void setLevel(Integer level) {
 		this.level = level;
+	}
+
+	public Integer getCredit() {
+		return credit;
+	}
+
+	public void setCredit(Integer credit) {
+		this.credit = credit;
 	}
 
 }

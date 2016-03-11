@@ -23,11 +23,39 @@
 			</tr>
 			<tr>
 				<td>邮箱</td>
-				<td><c:out value="${user.id}" /></td>
+				<td><c:out value="${user.email}" /></td>
 			</tr>
 			<tr>
 				<td>手机</td>
+				<td><c:out value="${user.phone}" /></td>
+			</tr>
+			<tr>
+				<td>昵称</td>
+				<td><c:out value="${user.nickName}" /></td>
+			</tr>
+			<tr>
+				<td>标签</td>
 				<td><c:out value="${user.id}" /></td>
+			</tr>
+			<tr>
+				<td>卖出总额</td>
+				<td><c:out value="${user.sellAmount}" /></td>
+			</tr>
+			<tr>
+				<td>买入总额</td>
+				<td><c:out value="${user.buyAmount}" /></td>
+			</tr>
+			<tr>
+				<td>合计</td>
+				<td><c:out value="${user.totalAmount}" /></td>
+			</tr>
+			<tr>
+				<td>级别</td>
+				<td><c:out value="${user.level}" /></td>
+			</tr>
+			<tr>
+				<td>信用</td>
+				<td><c:out value="${user.credit}" /></td>
 			</tr>
 		</tbody>
 	</table>
