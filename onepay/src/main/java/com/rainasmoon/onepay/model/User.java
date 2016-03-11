@@ -19,9 +19,6 @@ public class User extends BaseEntity {
 	private String password;
 	@Column(name = "nick_name")
 	private String nickName;
-
-	@Transient
-	private List<Tag> tags;
 	@Column(name = "sell_amount")
 	private Integer sellAmount;
 	@Column(name = "buy_amount")
@@ -64,15 +61,7 @@ public class User extends BaseEntity {
 	public void setNickName(String nickName) {
 		this.nickName = nickName;
 	}
-
-	public List<Tag> getTags() {
-		return tags;
-	}
-
-	public void setTags(List<Tag> tags) {
-		this.tags = tags;
-	}
-
+	
 	public Integer getSellAmount() {
 		return sellAmount;
 	}

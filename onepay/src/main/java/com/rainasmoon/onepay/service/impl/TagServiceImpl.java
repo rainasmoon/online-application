@@ -36,14 +36,12 @@ public class TagServiceImpl implements TagService {
 
 	@Override
 	public List<Tag> findUserTags(Long userId) {
-		// TODO Auto-generated method stub
-		return null;
+		return repository.findTags(userId, TagTypes.USER.getCode());
 	}
 
 	@Override
 	public List<Tag> findProductTags(Long productId) {
-		// TODO Auto-generated method stub
-		return null;
+		return repository.findTags(productId, TagTypes.PRODUCT.getCode());
 	}
 
 }
