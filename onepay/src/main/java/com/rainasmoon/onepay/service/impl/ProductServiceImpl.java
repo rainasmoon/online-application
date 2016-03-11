@@ -67,6 +67,7 @@ public class ProductServiceImpl implements ProductService {
 	public BidProductVo findProduct(Long productId) {
 		BidProductVo productVo = new BidProductVo();
 		Product product = repository.findOne(productId);
+		productVo.setProductId(productId);
 		productVo.setPicPath(getCoverPicture(productId).getPicPath());
 		productVo.setProductTitle(product.getName());
 		return productVo;
