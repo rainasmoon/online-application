@@ -41,7 +41,7 @@ CREATE TABLE tags (
   id INTEGER IDENTITY PRIMARY KEY,
   obj_id INTEGER,
   name VARCHAR(100),
-  tag_type VARCHAR(100)
+  tag_type INTEGER
   
 );
 

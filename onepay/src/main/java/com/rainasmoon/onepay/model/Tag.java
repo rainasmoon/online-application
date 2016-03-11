@@ -15,5 +15,31 @@ public class Tag extends BaseEntity {
 
 	// for user, for product.
 	@Column(name = "tag_type")
-	private String type;
+	private Integer type;
+
+	public Long getObjId() {
+		return objId;
+	}
+
+	public void setObjId(Long objId) {
+		this.objId = objId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Integer getType() {
+		return type;
+	}
+
+	public void setType(Integer type) {
+		this.type = type;
+	}
+
+	
 }

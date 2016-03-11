@@ -44,7 +44,10 @@
 			</tr>
 			<tr>
 				<td>标签</td>
-				<td><c:out value="${user.id}" /><a>添加</a></td>
+				<td><c:out value="${user.id}" />
+					<div id="addTag">
+						<a href="javascript:addTag()"> | add </a>
+					</div></td>
 			</tr>
 			<tr>
 				<td>卖出总额</td>
@@ -70,6 +73,11 @@
 	</table>
 </div>
 <script type="text/javascript">
+	function addTag() {
+		$("#addTag")
+				.html(
+						"<input id='newInputTag'/><button onclick='saveUserTag()'>保存</button>");
+	}
 	function modifyEmail() {
 		$("#modifyEmail")
 				.html(
@@ -84,6 +92,15 @@
 		$("#modifyNickName")
 				.html(
 						"<input id='newInputNickName'/><button onclick='saveUserInfoNickName()'>保存</button>");
+	}
+	function saveUserTag() {
+		$.post("saveUserTag", {
+			userId : '${user.id}',
+			value : $("#newInputTag").val()
+		}, function(data, status) {
+			$("#addTag").html(
+					data + ' | <a href="javascript:addTag()">add</a>');
+		});
 	}
 	function saveUserInfoEmail() {
 		$.post("saveUserInfo", {

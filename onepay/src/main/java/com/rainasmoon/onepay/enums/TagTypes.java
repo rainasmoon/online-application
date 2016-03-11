@@ -1,11 +1,9 @@
 package com.rainasmoon.onepay.enums;
 
-public enum SaleModels {
-	FIXTIMEAUCTION(1), THREEDAYSALE(2), GUESSPRICE(3);
-
+public enum TagTypes {
+	USER(1), PRODUCT(2);
 	private int code;
-
-	private SaleModels(int code) {
+	private TagTypes(int code) {
 		this.code = code;
 	}
 	
