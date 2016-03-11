@@ -30,4 +30,12 @@ public class TagRepositoryTest {
 
 		LOGGER.info(":WWW:" + r.toString());
 	}
+	
+	@Test
+	public void shouldFindTags() {
+		Iterable<Tag> r = repository.findTags(1L, 0);
+		assertNotNull(r);
+
+		LOGGER.info(":WWW:" + r.toString());
+	}
 }

@@ -44,7 +44,7 @@
 			</tr>
 			<tr>
 				<td>标签</td>
-				<td><c:out value="${user.id}" />
+				<td><c:out value="${user.tags}" />
 					<div id="addTag">
 						<a href="javascript:addTag()"> | add </a>
 					</div></td>

@@ -1,5 +1,7 @@
 package com.rainasmoon.onepay.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +26,22 @@ public class TagServiceImpl implements TagService {
 
 	@Override
 	public Tag addProductTag(Long productId, String tag) {
+		Tag atag= new Tag();
+		atag.setObjId(productId);
+		atag.setName(tag);
+		atag.setType(TagTypes.PRODUCT.getCode());
+		atag = repository.save(atag);
+		return atag;
+	}
+
+	@Override
+	public List<Tag> findUserTags(Long userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Tag> findProductTags(Long productId) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.rainasmoon.onepay.model.User;
+import com.rainasmoon.onepay.service.TagService;
 import com.rainasmoon.onepay.service.UserService;
 import com.rainasmoon.onepay.vo.AdVo;
 
@@ -18,6 +19,9 @@ public class UserController extends BaseController {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private TagService tagService;
 
 	@RequestMapping(value = { "/top10users.html" }, method = RequestMethod.GET)
 	public String listTop10Users(Map<String, Object> model) {
@@ -59,7 +63,7 @@ public class UserController extends BaseController {
 	@RequestMapping(value = { "/viewme.html" }, method = RequestMethod.GET)
 	public String viewMe(Map<String, Object> model) {
 		User loginUser = userService.findUser(getLoginUserId());
-
+		loginUser.setTags(tagService.findUserTags(getLoginUserId()));
 		model.put("user", loginUser);
 		return "view_me";
 	}
