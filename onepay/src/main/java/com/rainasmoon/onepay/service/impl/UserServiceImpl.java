@@ -59,4 +59,10 @@ public class UserServiceImpl implements UserService {
 		return userRepository.findOne(userId);
 	}
 
+	@Override
+	public User updateUser(User user) {
+		
+		return userRepository.save(user);
+	}
+
 }

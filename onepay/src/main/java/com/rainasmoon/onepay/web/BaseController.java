@@ -9,7 +9,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 public class BaseController {
 
-	Logger LOGGER = LoggerFactory.getLogger(BaseController.class);
+	public static Logger LOGGER = LoggerFactory.getLogger(BaseController.class);
 
 	public static String SYS_PIC_PATH;
 
