@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.rainasmoon.onepay.model.Tag;
 import com.rainasmoon.onepay.model.User;
 import com.rainasmoon.onepay.service.TagService;
 import com.rainasmoon.onepay.service.UserService;
@@ -63,8 +64,9 @@ public class UserController extends BaseController {
 	@RequestMapping(value = { "/viewme.html" }, method = RequestMethod.GET)
 	public String viewMe(Map<String, Object> model) {
 		User loginUser = userService.findUser(getLoginUserId());
-		loginUser.setTags(tagService.findUserTags(getLoginUserId()));
+		List<Tag> tags = tagService.findUserTags(getLoginUserId());
 		model.put("user", loginUser);
+		model.put("userTags", tags);
 		return "view_me";
 	}
 }

@@ -1,6 +1,8 @@
 package com.rainasmoon.onepay.repository.springdatajpa;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
+
+import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -37,5 +39,22 @@ public class TagRepositoryTest {
 		assertNotNull(r);
 
 		LOGGER.info(":WWW:" + r.toString());
+		
+	}
+	
+	@Test
+	public void shouldSave() {
+		Tag tag = new Tag();
+		tag.setObjId(1L);
+		tag.setName("myTestTag");
+		tag.setType(-1);
+		repository.save(tag);
+		
+		assertNotNull(tag.getId());
+		
+		List<Tag> tags = repository.findTags(1L, -1);
+		
+		assertTrue(tags.size() == 1);
+		assertEquals("myTestTag", tags.get(0).getName());
 	}
 }

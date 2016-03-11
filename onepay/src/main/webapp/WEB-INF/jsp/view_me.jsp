@@ -25,28 +25,30 @@
 				<td>邮箱</td>
 				<td><div id="modifyEmail">
 						<c:out value="${user.email}" />
-						<a href="javascript:modifyEmail()"> | 编辑</a>
+						| <a href="javascript:modifyEmail()">编辑</a>
 					</div></td>
 			</tr>
 			<tr>
 				<td>手机</td>
 				<td><div id="modifyPhone">
 						<c:out value="${user.phone}" />
-						<a href="javascript:modifyPhone()"> | 编辑</a>
+						| <a href="javascript:modifyPhone()">编辑</a>
 					</div></td>
 			</tr>
 			<tr>
 				<td>昵称</td>
 				<td><div id="modifyNickName">
 						<c:out value="${user.nickName}" />
-						<a href="javascript:modifyNickName()"> | 编辑</a>
+						| <a href="javascript:modifyNickName()">编辑</a>
 					</div></td>
 			</tr>
 			<tr>
 				<td>标签</td>
-				<td><c:out value="${user.tags}" />
+				<td><c:forEach var="arow" items="${userTags}">
+						<c:out value="${arow.name}" />
+					</c:forEach>
 					<div id="addTag">
-						<a href="javascript:addTag()"> | add </a>
+						| <a href="javascript:addTag()">add </a>
 					</div></td>
 			</tr>
 			<tr>
@@ -76,7 +78,7 @@
 	function addTag() {
 		$("#addTag")
 				.html(
-						"<input id='newInputTag'/><button onclick='saveUserTag()'>保存</button>");
+						"<input id='newInputTag' autofocus/><button onclick='saveUserTag()'>保存</button>");
 	}
 	function modifyEmail() {
 		$("#modifyEmail")
@@ -98,8 +100,8 @@
 			userId : '${user.id}',
 			value : $("#newInputTag").val()
 		}, function(data, status) {
-			$("#addTag").html(
-					data + ' | <a href="javascript:addTag()">add</a>');
+			$("#addTag")
+					.html(data + ' | <a href="javascript:addTag()">add</a>');
 		});
 	}
 	function saveUserInfoEmail() {
