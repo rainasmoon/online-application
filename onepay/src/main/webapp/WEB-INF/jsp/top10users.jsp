@@ -23,7 +23,7 @@
 
 			<c:forEach var="arow" items="${vip4users}">
 				<div class="col-xs-6 col-sm-3 placeholder">
-					<img src="<c:out value="${arow.picPath}"/>" class="img-responsive"
+					<img src="${arow.picPath}" class="img-responsive"
 						alt="Generic placeholder thumbnail">
 					<h4><c:out value="${arow.adTitle}"/></h4>
 					<span class="text-muted"><c:out value="${arow.urlName}"/></span>
