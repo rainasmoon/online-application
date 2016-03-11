@@ -5,6 +5,7 @@ import java.util.List;
 
 public class BidProductVo {
 
+	private Long productId;
 	private String productTitle;
 	private String biders;
 	private String currentOwer;
@@ -94,6 +95,14 @@ public class BidProductVo {
 
 	public void setOriginalPrice(Integer originalPrice) {
 		this.originalPrice = originalPrice;
+	}
+
+	public Long getProductId() {
+		return productId;
+	}
+
+	public void setProductId(Long productId) {
+		this.productId = productId;
 	}
 
 }

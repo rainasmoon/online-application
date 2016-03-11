@@ -30,4 +30,11 @@ public class BidLogRepositoryTest {
 
 		LOGGER.info(":WWW:" + r.toString());
 	}
+
+	@Test
+	public void shouldSave() {
+		BidLog bidLog = new BidLog();
+		bidLog = repository.save(bidLog);
+		assertNotNull(bidLog.getId());
+	}
 }

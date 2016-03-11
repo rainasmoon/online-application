@@ -39,6 +39,7 @@
 function addMoney(amount){
 	  $.post("bid",
 	  {
+		productId:'${productVo.productId}',
 	    money:amount	    
 	  },
 	  function(data,status){

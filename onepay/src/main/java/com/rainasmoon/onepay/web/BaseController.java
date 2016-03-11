@@ -2,7 +2,6 @@ package com.rainasmoon.onepay.web;
 
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -14,14 +13,14 @@ public class BaseController {
 
 	public static String SYS_PIC_PATH;
 
-	public String getLoginUserId() {
+	public Long getLoginUserId() {
 
 		HttpSession session = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getSession();
-		return (String) session.getAttribute("userId");
+		return (Long) session.getAttribute("userId");
 
 	}
 
-	public void setSessionLoginUser(String userId) {
+	public void setSessionLoginUser(Long userId) {
 
 		HttpSession session = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getSession();
 		session.setAttribute("userId", userId);
@@ -37,6 +36,6 @@ public class BaseController {
 	}
 
 	public boolean isLogin() {
-		return StringUtils.isNotBlank(getLoginUserId());
+		return getLoginUserId() != null;
 	}
 }

@@ -42,7 +42,7 @@ public class LoginController extends BaseController {
 			User loginUser = userService.login(loginVo.getAccount(), loginVo.getPassword());
 			if (loginUser != null) {
 				// login success
-				setSessionLoginUser(loginUser.getId().toString());
+				setSessionLoginUser(loginUser.getId());
 				return "redirect:/";
 			} else {
 				// account or password wrong...

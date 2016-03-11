@@ -27,6 +27,11 @@ public class Product extends BaseEntity {
 	@Column(name = "description")
 	private String description;
 
+	public void addPrice(Integer addMoney) {
+		price = price + addMoney;
+
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -82,4 +87,5 @@ public class Product extends BaseEntity {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 }
