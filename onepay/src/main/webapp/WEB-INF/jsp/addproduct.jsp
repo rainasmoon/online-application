@@ -13,8 +13,9 @@
 
 <jsp:include page="./fragments/bodyHeader.jsp" />
 
-<form:form modelAttribute="product" method="post" class="form-horizontal"
-	id="add-product-form" enctype="multipart/form-data">
+<form:form modelAttribute="product" method="post"
+	class="form-horizontal" id="add-product-form"
+	enctype="multipart/form-data">
 	<span class="help-inline"> <c:if test="${not empty message}">
 			<div id="message" class="alert alert-success" role="alert">${message}</div>
 		</c:if> <spring:bind path="*">
@@ -23,8 +24,9 @@
 			</c:if>
 		</spring:bind>
 	</span>
-	<fieldset>		
-		<onlineapplication:inputField label="商品名称" name="ProductName" autofocus="true" required="true"/>
+	<fieldset>
+		<onlineapplication:inputField label="商品名称" name="ProductName"
+			autofocus="true" required="true" />
 
 		<div class="form-group">
 			<label for="inputPicFile">图片</label> <input type="file"
@@ -32,9 +34,24 @@
 			<p class="help-block">上传图片有助于客户更好的了解产品.</p>
 		</div>
 		<hr />
-		<onlineapplication:radioButtonsField label="拍卖类型"
-							name="saleType" names="${saleTypes}" />
-		
+		<label class="radio-inline"> <input type="radio"
+			name="saleModel" id="saleModel1" value="fix_time"> 定時秒杀拍
+		</label> <label class="radio-inline"> <input type="radio"
+			name="saleModel" id="saleModel2" value="three_days"> 3天内拍
+		</label> <label class="radio-inline"> <input type="radio"
+			name="saleModel" id="saleModel3" value="guess_price"> 猜假拍
+		</label>
+		<div>
+			从
+			<form:input path="dateFrom" class="form-control" size="10"
+				placeholder="yyyy-mm-dd" maxLength="10" minLength="10" />
+			到
+			<form:input path="dateTo" class="form-control" size="10"
+				placeholder="yyyy-mm-dd" maxLength="10" minLength="10" />
+		</div>
+		<div>
+			<onlineapplication:inputField label="底价" name="price" />
+		</div>
 		<hr />
 		<div class="form-group">
 			<label for=inputAging>新旧程度</label>
@@ -72,7 +89,16 @@
 		<button type="submit" class="btn btn-primary">Submit</button>
 	</fieldset>
 </form:form>
-
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script type="text/javascript">
+	$('#dateFrom').datepicker({
+		dateFormat : 'yy-mm-dd'
+	});
+	$('#dateTo').datepicker({
+		dateFormat : 'yy-mm-dd'
+	});
+</script>
 <jsp:include page="./fragments/footer.jsp" />
 
 

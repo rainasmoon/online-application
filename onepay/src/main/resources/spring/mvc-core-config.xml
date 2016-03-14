@@ -25,6 +25,7 @@
 		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
 		<property name="location" value="classpath:spring/data-access.properties" />
 	</bean>
+	
 	<!-- all resources inside folder src/main/webapp/resources are mapped so 
 		they can be refered to inside JSP files (see header.jsp for more details) -->
 	<mvc:resources

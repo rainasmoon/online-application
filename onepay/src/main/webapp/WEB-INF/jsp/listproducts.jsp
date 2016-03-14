@@ -21,22 +21,22 @@
 			<button type="button" class="btn btn-primary btn-xs"
 				data-toggle="offcanvas">Toggle nav</button>
 		</p>
-		<div class="jumbotron">
-			<h1>
-				总成交额：
-				<c:out value="${vo.totalAmount}" />
-			</h1>
-			<p>
-				今日成交：
-				<c:out value="${vo.todayAmount}" />
-				；注册用户数：
-				<c:out value="${vo.totalUserCount}" />
-				；在线人数：
-				<c:out value="${vo.onlineUserCount}" />
-				；总商品数：
-				<c:out value="${vo.totalGoodCount}" />
-			</p>
-		</div>
+<!-- 		<div class="jumbotron"> -->
+<!-- 			<h1> -->
+<!-- 				总成交额： -->
+<%-- 				<c:out value="${vo.totalAmount}" /> --%>
+<!-- 			</h1> -->
+<!-- 			<p> -->
+<!-- 				今日成交： -->
+<%-- 				<c:out value="${vo.todayAmount}" /> --%>
+<!-- 				；注册用户数： -->
+<%-- 				<c:out value="${vo.totalUserCount}" /> --%>
+<!-- 				；在线人数： -->
+<%-- 				<c:out value="${vo.onlineUserCount}" /> --%>
+<!-- 				；总商品数： -->
+<%-- 				<c:out value="${vo.totalGoodCount}" /> --%>
+<!-- 			</p> -->
+<!-- 		</div> -->
 		<div class="row">
 			<c:forEach var="arow" items="${vo.products}">
 				<div class="col-xs-6 col-lg-4">

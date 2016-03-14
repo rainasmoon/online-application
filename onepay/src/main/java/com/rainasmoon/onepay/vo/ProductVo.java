@@ -1,5 +1,7 @@
 package com.rainasmoon.onepay.vo;
 
+import java.util.Date;
+
 import javax.validation.constraints.Size;
 
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
@@ -11,7 +13,13 @@ public class ProductVo {
 	protected String productName;
 
 	@Size(max = 20, message = "{error.too.lang}")
-	protected String saleType;
+	protected String saleModel;
+
+	private Date dateFrom;
+
+	private Date dateTo;
+
+	private Integer price;
 
 	@Override
 	public String toString() {
@@ -27,11 +35,36 @@ public class ProductVo {
 		this.productName = productName;
 	}
 
-	public String getSaleType() {
-		return saleType;
+	public String getSaleModel() {
+		return saleModel;
 	}
 
-	public void setSaleType(String saleType) {
-		this.saleType = saleType;
+	public void setSaleModel(String saleModel) {
+		this.saleModel = saleModel;
 	}
+
+	public Date getDateFrom() {
+		return dateFrom;
+	}
+
+	public void setDateFrom(Date dateFrom) {
+		this.dateFrom = dateFrom;
+	}
+
+	public Date getDateTo() {
+		return dateTo;
+	}
+
+	public void setDateTo(Date dateTo) {
+		this.dateTo = dateTo;
+	}
+
+	public Integer getPrice() {
+		return price;
+	}
+
+	public void setPrice(Integer price) {
+		this.price = price;
+	}
+
 }

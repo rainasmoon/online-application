@@ -19,16 +19,18 @@
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="welcome.html">Home</a></li>
-					<li><a href="listproducts.html">Products</a></li>
-					<li><a href="top10users.html">Top 10 users</a></li>
-					<li><a href="login.html">login/register</a></li>
+<!-- 					<li class="active"><a href="welcome.html">Home</a></li> -->
+					<li class="active"><a href="listproducts.html">Products</a></li>
+<!-- 					<li><a href="top10users.html">Top 10 users</a></li> -->
+					<c:if test="${empty userId}">
+						<li><a href="login.html">login/register</a></li>
+					</c:if>
 					<c:if test="${not empty userId}">
 						<li><a href="viewme.html"><c:out value="${userId}" /></a></li>
 						<li><a href="logout.html">logout</a></li>
 					</c:if>
-					<li><a href="myfavorites.html">我的收藏</a></li>
-					<li><a href="mysales.html">我的出售</a></li>
+<!-- 					<li><a href="myfavorites.html">我的收藏</a></li> -->
+<!-- 					<li><a href="mysales.html">我的出售</a></li> -->
 					<li><a href="addproduct.html">上传货品</a></li>
 				</ul>
 			</div>

@@ -43,6 +43,7 @@ public class WelcomController extends BaseController {
 		vo.setImp3(imp3);
 
 		model.put("vo", vo);
-		return "index";
+		// TODO glen the real is "index"
+		return "redirect:listproducts.html";
 	}
 }
