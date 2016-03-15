@@ -14,10 +14,10 @@ public class Product extends BaseEntity {
 	private String name;
 	@Column(name = "price")
 	private Integer price;
-	@Column(name = "current_bider_count")
-	private Integer currentBiderCount;
+	@Column(name = "owner_id")
+	private Long ownerId;
 	@Column(name = "current_bider_id")
-	private Integer currentBiderId;
+	private Long currentBiderId;
 
 	// 定时秒杀拍；3天内拍；给个底价拍。
 	@Column(name = "sale_model")
@@ -55,19 +55,11 @@ public class Product extends BaseEntity {
 		this.price = price;
 	}
 
-	public Integer getCurrentBiderCount() {
-		return currentBiderCount;
-	}
-
-	public void setCurrentBiderCount(Integer currentBiderCount) {
-		this.currentBiderCount = currentBiderCount;
-	}
-
-	public Integer getCurrentBiderId() {
+	public Long getCurrentBiderId() {
 		return currentBiderId;
 	}
 
-	public void setCurrentBiderId(Integer currentBiderId) {
+	public void setCurrentBiderId(Long currentBiderId) {
 		this.currentBiderId = currentBiderId;
 	}
 
@@ -109,6 +101,14 @@ public class Product extends BaseEntity {
 
 	public void setDateTo(Date dateTo) {
 		this.dateTo = dateTo;
+	}
+
+	public Long getOwnerId() {
+		return ownerId;
+	}
+
+	public void setOwnerId(Long ownerId) {
+		this.ownerId = ownerId;
 	}
 
 }

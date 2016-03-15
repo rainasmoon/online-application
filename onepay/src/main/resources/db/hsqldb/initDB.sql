@@ -22,7 +22,7 @@ CREATE TABLE products (
   id INTEGER IDENTITY PRIMARY KEY,
   name VARCHAR(100),
   price INTEGER,
-  current_bider_count INTEGER,
+  owner_id INTEGER,
   current_bider_id INTEGER,
   sale_model INTEGER,
   date_from TIMESTAMP,

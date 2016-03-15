@@ -63,7 +63,7 @@
 			</select>
 		</div>
 		<div>
-			<onlineapplication:inputField label="底价" name="price" />
+			<onlineapplication:inputField label="底价" name="price" type="number"/>
 		</div>
 		<hr />
 		<div class="form-group">
@@ -121,6 +121,11 @@
 	}
 	
 	function addNewTag() {
+		
+		if ($('#inputNewTag').val() == '') {
+			return;
+		}
+		
 		$('#tags_session').append('<label><input type="checkbox" name="tags" value="' + $('#inputNewTag').val() + '" checked/><label class="label label-info"> ' + $('#inputNewTag').val() + '</label></label>');
 		$('#inputNewTag').val('');
 	}

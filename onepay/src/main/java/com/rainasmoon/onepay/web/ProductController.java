@@ -123,6 +123,7 @@ public class ProductController extends BaseController {
 			LOGGER.debug("www:" + productVo);
 			Product product = new Product();
 			product.setName(productVo.getProductName());
+			product.setOwnerId(getLoginUserId());
 			if (productVo.getSaleModel() != null) {
 				product.setSaleModel(SaleModels.valueOfStr(productVo.getSaleModel()).getCode());
 			}

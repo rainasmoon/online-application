@@ -1,10 +1,13 @@
+<%@page session="false"%>
+<%@ page language="java" pageEncoding="UTF-8"%>
+
 		<!-- FOOTER -->
 		<footer>
 			<p class="pull-right">
 				<a href="#">Back to top</a>
 			</p>
 			<p>
-				&copy; 2014 Company, Inc. 
+				&copy; <a href="mailto:rainasmoon@126.com">给我写邮件</a> 
 			</p>
 		</footer>
 		
