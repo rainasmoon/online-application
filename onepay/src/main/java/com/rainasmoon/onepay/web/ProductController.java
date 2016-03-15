@@ -3,7 +3,6 @@ package com.rainasmoon.onepay.web;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -14,15 +13,16 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.google.common.io.Files;
+import com.rainasmoon.onepay.enums.SaleModels;
 import com.rainasmoon.onepay.model.Product;
 import com.rainasmoon.onepay.service.ProductService;
+import com.rainasmoon.onepay.service.TagService;
 import com.rainasmoon.onepay.service.UserService;
 import com.rainasmoon.onepay.util.CommonConstants;
 import com.rainasmoon.onepay.vo.AdVo;
@@ -41,12 +41,10 @@ public class ProductController extends BaseController {
 	private UserService userService;
 
 	@Autowired
-	private Environment env;
+	private TagService tagService;
 
-	@ModelAttribute("saleTypes")
-	public List<String> populateContactTypes() {
-		return Arrays.asList("定时秒杀拍", "3天内拍", "猜价拍");
-	}
+	@Autowired
+	private Environment env;
 
 	@RequestMapping(value = { "/listproducts.html" }, method = RequestMethod.GET)
 	public String listProducts(Map<String, Object> model) {
@@ -125,8 +123,20 @@ public class ProductController extends BaseController {
 			LOGGER.debug("www:" + productVo);
 			Product product = new Product();
 			product.setName(productVo.getProductName());
+			product.setSaleModel(SaleModels.valueOfStr(productVo.getSaleModel()).getCode());
+			product.setAging(productVo.getAging());
+			product.setDescription(productVo.getDescription());
+			if (SaleModels.GUESSPRICE == SaleModels.valueOfStr(productVo.getSaleModel())) {
+				product.setPrice(productVo.getPrice());
+			} else {
+				product.setPrice(1);
+			}
 
-			productService.addProduct(product);
+			product = productService.addProduct(product);
+
+			for (String tag : productVo.getTags()) {
+				tagService.addUserTag(product.getId(), tag);
+			}
 
 			SYS_PIC_PATH = env.getProperty(CommonConstants.PRODUCT_PIC_PATH_ID);
 

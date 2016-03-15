@@ -1,5 +1,7 @@
 package com.rainasmoon.onepay.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -20,6 +22,11 @@ public class Product extends BaseEntity {
 	// 定时秒杀拍；3天内拍；给个底价拍。
 	@Column(name = "sale_model")
 	private Integer saleModel;
+
+	@Column(name = "date_from")
+	private Date dateFrom;
+	@Column(name = "date_to")
+	private Date dateTo;
 
 	// 几成新？10：全新；1：1成新。
 	@Column(name = "aging")
@@ -86,6 +93,22 @@ public class Product extends BaseEntity {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public Date getDateFrom() {
+		return dateFrom;
+	}
+
+	public void setDateFrom(Date dateFrom) {
+		this.dateFrom = dateFrom;
+	}
+
+	public Date getDateTo() {
+		return dateTo;
+	}
+
+	public void setDateTo(Date dateTo) {
+		this.dateTo = dateTo;
 	}
 
 }

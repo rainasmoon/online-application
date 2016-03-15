@@ -25,6 +25,8 @@ CREATE TABLE products (
   current_bider_count INTEGER,
   current_bider_id INTEGER,
   sale_model INTEGER,
+  date_from TIMESTAMP,
+  date_to TIMESTAMP,
   aging INTEGER,
   description VARCHAR(100)
 );
