@@ -136,8 +136,10 @@ public class ProductController extends BaseController {
 
 			product = productService.addProduct(product);
 
-			for (String tag : productVo.getTags()) {
-				tagService.addProductTag(product.getId(), tag);
+			if (productVo.getTags() != null) {
+				for (String tag : productVo.getTags()) {
+					tagService.addProductTag(product.getId(), tag);
+				}
 			}
 
 			SYS_PIC_PATH = env.getProperty(CommonConstants.PRODUCT_PIC_PATH_ID);

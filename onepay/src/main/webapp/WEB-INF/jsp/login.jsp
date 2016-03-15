@@ -34,9 +34,9 @@
 	</fieldset>
 
 	<div class="checkbox">
-		<label> <input type="checkbox" value="remember-me" />
-			Remember me
-		</label>
+<!-- 		<label> <input type="checkbox" value="remember-me" /> -->
+<!-- 			Remember me -->
+<!-- 		</label> -->
 	</div>
 	<button class="btn btn-lg btn-primary btn-block" type="submit">登录|注册</button>
 </form:form>

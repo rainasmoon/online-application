@@ -56,13 +56,6 @@
 		<jodatime.version>2.3</jodatime.version>
 		<jadira-usertype-core.version>3.1.0.CR10</jadira-usertype-core.version>
 
-		<!-- Web dependencies -->
-		<webjars-bootstrap.version>3.3.6</webjars-bootstrap.version>
-		<webjars-jquery-ui.version>1.11.4</webjars-jquery-ui.version>
-		<webjars-jquery.version>2.2.1</webjars-jquery.version>
-
-
-
 		<mysql.version>5.1.38</mysql.version>
 
 		<!-- Maven plugins -->
@@ -247,65 +240,6 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-
-		<!-- Webjars (static dependencies distributed as JAR files) -->
-		<dependency>
-			<groupId>org.webjars</groupId>
-			<artifactId>bootstrap</artifactId>
-			<version>${webjars-bootstrap.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.webjars</groupId>
-			<artifactId>jquery-ui</artifactId>
-			<version>${webjars-jquery-ui.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.webjars</groupId>
-			<artifactId>jquery-ui</artifactId>
-			<version>1.10.3</version>
-		</dependency>
-		<dependency>
-			<groupId>org.webjars</groupId>
-			<artifactId>jquery</artifactId>
-			<version>${webjars-jquery.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.webjars</groupId>
-			<artifactId>datatables</artifactId>
-			<version>1.10.0-1</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.webjars</groupId>
-			<artifactId>datatables-bootstrap</artifactId>
-			<version>2-20120202-2</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.webjars</groupId>
-			<artifactId>jquery-file-upload</artifactId>
-			<version>9.5.4</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.webjars</groupId>
-			<artifactId>jquery-placeholder</artifactId>
-			<version>2.0.7</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.webjars</groupId>
-			<artifactId>flot</artifactId>
-			<version>0.8.3</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.webjars</groupId>
-			<artifactId>excanvas</artifactId>
-			<version>3</version>
-		</dependency>
-
 
 		<!-- Test Artifacts -->
 		<dependency>
