@@ -38,6 +38,7 @@ public class ProductServiceImpl implements ProductService {
 			AdVo adVo = new AdVo();
 			adVo.setObjId(p.getId());
 			adVo.setAdTitle(p.getName());
+			adVo.setAdDescription(p.getDescription());
 			adVo.setPicPath(getCoverPicture(p.getId()).getPicPath());
 			result.add(adVo);
 		}
@@ -70,6 +71,7 @@ public class ProductServiceImpl implements ProductService {
 		productVo.setProductId(productId);
 		productVo.setPicPath(getCoverPicture(productId).getPicPath());
 		productVo.setProductTitle(product.getName());
+		productVo.setPrice(product.getPrice());
 		return productVo;
 	}
 

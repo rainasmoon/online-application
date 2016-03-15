@@ -20,7 +20,7 @@
 	</div>
 	<p class="lead">
 		<c:forEach var="arow" items="${productTags}">
-			<c:out value="${arow.name}" />
+			<label class="label label-info"><c:out value="${arow.name}" /></label>
 		</c:forEach>
 	</p>
 	<p>
