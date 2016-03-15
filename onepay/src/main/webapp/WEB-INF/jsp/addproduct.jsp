@@ -45,9 +45,22 @@
 			从
 			<form:input path="dateFrom" class="form-control" size="10"
 				placeholder="yyyy-mm-dd" maxLength="10" minLength="10" />
-			到
+			<select id="timeFrom" name="timeFrom" class="form-control">
+				<option value="10:00">10:00</option>
+				<option>12:00</option>
+				<option>17:00</option>
+				<option>20:00</option>
+				<option>22:00</option>
+			</select> 到
 			<form:input path="dateTo" class="form-control" size="10"
 				placeholder="yyyy-mm-dd" maxLength="10" minLength="10" />
+			<select id="timeTo" name="timeTo" class="form-control">
+				<option value="10:00">10:00</option>
+				<option>12:00</option>
+				<option>17:00</option>
+				<option>20:00</option>
+				<option>22:00</option>
+			</select>
 		</div>
 		<div>
 			<onlineapplication:inputField label="底价" name="price" />
@@ -55,32 +68,35 @@
 		<hr />
 		<div class="form-group">
 			<label for=inputAging>新旧程度</label>
+			<input id="aging" name="aging" type="hidden" value="10"/>
 			<div aria-label="Toolbar with button groups" role="toolbar"
 				class="btn-toolbar">
 				<div aria-label="First group" role="group" class="btn-group">
-					<button class="btn btn-default" type="button">1</button>
-					<button class="btn btn-default" type="button">2</button>
-					<button class="btn btn-default" type="button">3</button>
-					<button class="btn btn-default" type="button">4</button>
-					<button class="btn btn-default" type="button">5</button>
-					<button class="btn btn-default" type="button">6</button>
-					<button class="btn btn-default" type="button">7</button>
-					<button class="btn btn-default" type="button">8</button>
-					<button class="btn btn-default" type="button">9</button>
-					<button class="btn btn-default" type="button">10</button>
+					<button class="btn btn-default" type="button" onclick="setAging(1)">1</button>
+					<button class="btn btn-default" type="button" onclick="setAging(2)">2</button>
+					<button class="btn btn-default" type="button" onclick="setAging(3)">3</button>
+					<button class="btn btn-default" type="button" onclick="setAging(4)">4</button>
+					<button class="btn btn-default" type="button" onclick="setAging(5)">5</button>
+					<button class="btn btn-default" type="button" onclick="setAging(6)">6</button>
+					<button class="btn btn-default" type="button" onclick="setAging(7)">7</button>
+					<button class="btn btn-default" type="button" onclick="setAging(8)">8</button>
+					<button class="btn btn-default" type="button" onclick="setAging(9)">9</button>
+					<button class="btn btn-default" type="button" onclick="setAging(10)">10</button>
 				</div>
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="inputDescription">描述</label>
-			<textarea class="form-control" rows="3"></textarea>
+			<textarea id="description" name="description" class="form-control" rows="3"></textarea>
 		</div>
 		<div class="form-group">
-			<label for="inputTags">标签</label> <span class="label label-info">电器</span>
-			<span class="label label-info">全新</span> <span
-				class="label label-info">未拆封</span> <input type="text"
-				class="form-control" id="inputNewTag" placeholder="新标签">
-			<button type="submit" class="btn btn-default">添加</button>
+			<label for="inputTags">标签</label>
+			<div id="tags_session" class="checkbox">
+
+			</div>
+			<input type="text" class="form-control" id="inputNewTag"
+				placeholder="新标签">
+			<button type="button" class="btn btn-default" onclick="addNewTag()">添加</button>
 		</div>
 		<div class="checkbox">
 			<label> <input type="checkbox"> 同意一元网的条款
@@ -89,7 +105,8 @@
 		<button type="submit" class="btn btn-primary">Submit</button>
 	</fieldset>
 </form:form>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script type="text/javascript">
 	$('#dateFrom').datepicker({
@@ -98,6 +115,14 @@
 	$('#dateTo').datepicker({
 		dateFormat : 'yy-mm-dd'
 	});
+	
+	function setAging(age) {
+		$('#aging').val(age);
+	}
+	
+	function addNewTag() {
+		$('#tags_session').append('<label class=""> <input type="checkbox" name="tags" value="' + $('#inputNewTag').val() + '" checked>' + $('#inputNewTag').val() + '</label>');
+	}
 </script>
 <jsp:include page="./fragments/footer.jsp" />
 

@@ -19,7 +19,16 @@ public class ProductVo {
 
 	private Date dateTo;
 
+	private String timeFrom;
+	private String timeTo;
+
 	private Integer price;
+
+	private Integer aging;
+
+	private String description;
+
+	private String[] tags;
 
 	@Override
 	public String toString() {
@@ -65,6 +74,46 @@ public class ProductVo {
 
 	public void setPrice(Integer price) {
 		this.price = price;
+	}
+
+	public String getTimeFrom() {
+		return timeFrom;
+	}
+
+	public void setTimeFrom(String timeFrom) {
+		this.timeFrom = timeFrom;
+	}
+
+	public String getTimeTo() {
+		return timeTo;
+	}
+
+	public void setTimeTo(String timeTo) {
+		this.timeTo = timeTo;
+	}
+
+	public Integer getAging() {
+		return aging;
+	}
+
+	public void setAging(Integer aging) {
+		this.aging = aging;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String[] getTags() {
+		return tags;
+	}
+
+	public void setTags(String[] tags) {
+		this.tags = tags;
 	}
 
 }

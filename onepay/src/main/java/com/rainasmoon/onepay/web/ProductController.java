@@ -118,11 +118,11 @@ public class ProductController extends BaseController {
 	public String saveProduct(@Valid ProductVo productVo, @RequestParam(required = false) MultipartFile inputPicFile, BindingResult result, Map<String, Object> model) throws IOException {
 
 		if (result.hasErrors()) {
-			LOGGER.debug("field error. when changing personal information");
+			LOGGER.warn("field error. when changing personal information");
 			LOGGER.debug(result.toString());
 			return "addproduct";
 		} else {
-
+			LOGGER.debug("www:" + productVo);
 			Product product = new Product();
 			product.setName(productVo.getProductName());
 
