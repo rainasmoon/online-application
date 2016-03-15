@@ -44,9 +44,9 @@
 			</tr>
 			<tr>
 				<td>标签</td>
-				<td><c:forEach var="arow" items="${userTags}">
-						<c:out value="${arow.name}" />
-					</c:forEach>
+				<td><div id="listTags"><c:forEach var="arow" items="${userTags}">
+						<label class="label label-info"><c:out value="${arow.name}" /></label>
+					</c:forEach></div>
 					<div id="addTag">
 						| <a href="javascript:addTag()">add </a>
 					</div></td>
@@ -101,7 +101,8 @@
 			value : $("#newInputTag").val()
 		}, function(data, status) {
 			$("#addTag")
-					.html(data + ' | <a href="javascript:addTag()">add</a>');
+					.html(' | <a href="javascript:addTag()">add</a>');
+			$("#listTags").append('<label class="label label-info">' + data + '</label>');
 		});
 	}
 	function saveUserInfoEmail() {
