@@ -10,15 +10,20 @@ import com.rainasmoon.onepay.service.TagService;
 import com.rainasmoon.onepay.web.BaseController;
 
 @RestController
-public class TagRestful  extends BaseController{
-	
-	
+public class TagRestful extends BaseController {
+
 	@Autowired
 	private TagService tagService;
-	
+
 	@RequestMapping("/saveUserTag")
 	public String saveUserTag(@RequestParam(value = "value") String value) {
 		Tag tag = tagService.addUserTag(getLoginUserId(), value);
+		return value;
+	}
+
+	@RequestMapping("/saveProductTag")
+	public String saveProductTag(Long productId, @RequestParam(value = "value") String value) {
+		Tag tag = tagService.addProductTag(productId, value);
 		return value;
 	}
 }

@@ -13,7 +13,15 @@ public interface ProductService {
 
 	Picture addPicture(Long productId, String picPath);
 
+	Product updateProduct(Product product);
+
 	List<AdVo> listAllProductsPage();
 
-	BidProductVo findProduct(Long productId);
+	List<Product> listMySalesProductsPage(Long loginUserId);
+
+	List<AdVo> listMyFavoritesProductsPage(Long loginUserId);
+
+	BidProductVo findBidProductVo(Long productId);
+
+	Product findProduct(Long productId);
 }

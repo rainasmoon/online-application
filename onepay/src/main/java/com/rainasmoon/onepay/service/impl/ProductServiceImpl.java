@@ -65,7 +65,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public BidProductVo findProduct(Long productId) {
+	public BidProductVo findBidProductVo(Long productId) {
 		BidProductVo productVo = new BidProductVo();
 		Product product = repository.findOne(productId);
 		productVo.setProductId(productId);
@@ -73,6 +73,30 @@ public class ProductServiceImpl implements ProductService {
 		productVo.setProductTitle(product.getName());
 		productVo.setPrice(product.getPrice());
 		return productVo;
+	}
+
+	@Override
+	public Product findProduct(Long productId) {
+
+		return repository.findOne(productId);
+	}
+
+	@Override
+	public List<Product> listMySalesProductsPage(Long loginUserId) {
+
+		return repository.findByOwnerId(loginUserId);
+	}
+
+	@Override
+	public List<AdVo> listMyFavoritesProductsPage(Long loginUserId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Product updateProduct(Product product) {
+
+		return repository.save(product);
 	}
 
 }

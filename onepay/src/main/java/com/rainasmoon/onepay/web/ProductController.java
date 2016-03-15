@@ -87,14 +87,7 @@ public class ProductController extends BaseController {
 			return "redirect:login.html";
 		}
 
-		List<AdVo> products = new ArrayList<AdVo>();
-		for (int i = 0; i < 50; i++) {
-			AdVo p = new AdVo();
-			p.setAdTitle("Good" + i);
-			products.add(p);
-		}
-
-		model.put("products", products);
+		model.put("products", productService.listMySalesProductsPage(getLoginUserId()));
 
 		return "mysales";
 	}
@@ -115,6 +108,10 @@ public class ProductController extends BaseController {
 	@RequestMapping(value = "/addproduct.html", method = RequestMethod.POST)
 	public String saveProduct(@Valid ProductVo productVo, @RequestParam(required = false) MultipartFile inputPicFile, BindingResult result, Map<String, Object> model) throws IOException {
 
+		if (!isLogin()) {
+			return "redirect:login.html";
+		}
+
 		if (result.hasErrors()) {
 			LOGGER.warn("field error. when changing personal information");
 			LOGGER.debug(result.toString());
@@ -134,6 +131,9 @@ public class ProductController extends BaseController {
 			} else {
 				product.setPrice(1);
 			}
+
+			product.setDateFrom(productVo.getDateFrom());
+			product.setDateTo(productVo.getDateTo());
 
 			product = productService.addProduct(product);
 
@@ -166,9 +166,16 @@ public class ProductController extends BaseController {
 		}
 	}
 
+	@RequestMapping(value = { "/view_product.html" }, method = RequestMethod.GET)
+	public String viewProduct(Long productId, Map<String, Object> model) {
+		model.put("product", productService.findProduct(productId));
+		model.put("productTags", tagService.findProductTags(productId));
+		return "view_product";
+	}
+
 	@RequestMapping(value = { "/bid.html" }, method = RequestMethod.GET)
 	public String bid(Long productId, Map<String, Object> model) {
-		BidProductVo productVo = productService.findProduct(productId);
+		BidProductVo productVo = productService.findBidProductVo(productId);
 		model.put("productTags", tagService.findProductTags(productId));
 		model.put("productVo", productVo);
 		return "bid_fixed_time";

@@ -24,25 +24,34 @@
 			<h1>我的出售</h1>
 			<p>今天也努力卖东西</p>
 		</div>
-		<div class="row">
-			<c:forEach var="arow" items="${products}">
-				<div class="col-xs-6 col-lg-4">
-					<h2>
-						<c:out value="${arow.adTitle}" />
-					</h2>
-					<p>Donec id elit non mi porta gravida at eget metus. Fusce
-						dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-						ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui.</p>
-					<p>
-						<a class="btn btn-default" href="#" role="button">View details
-							&raquo;</a>
-					</p>
-				</div>
-				<!--/.col-xs-6.col-lg-4-->
-			</c:forEach>
+		<h2 class="sub-header">我的出售货品</h2>
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Name</th>
+						<th>current bider</th>
+						<th>sale model</th>
+						<th>price</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+
+					<c:forEach var="arow" items="${products}" varStatus="status">
+						<tr>
+							<td><c:out value="${status.count}"/></td>
+							<td><a href="view_product.html?productId=${arow.id }"><c:out value="${arow.name}"/></a></td>
+							<td><c:out value="${arow.currentBiderId}" /></td>
+							<td><c:out value="${arow.saleModel}" /></td>
+							<td><c:out value="${arow.price}" /></td>
+							<td><c:out value="${arow.price}" /></td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
 		</div>
-		<!--/row-->
 	</div>
 	<!--/.col-xs-12.col-sm-9-->
 

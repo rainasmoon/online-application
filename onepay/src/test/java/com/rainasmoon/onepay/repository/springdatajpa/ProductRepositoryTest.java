@@ -2,6 +2,8 @@ package com.rainasmoon.onepay.repository.springdatajpa;
 
 import static org.junit.Assert.assertNotNull;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -40,10 +42,17 @@ public class ProductRepositoryTest {
 	}
 
 	@Test
-	public void shouldSaveUser() {
+	public void shouldSaveProduct() {
 		Product u = new Product();
 
 		Product r = repository.save(u);
 		assertNotNull(r.getId());
+	}
+
+	@Test
+	public void shouldFindMySales() {
+		List<Product> r = repository.findByOwnerId(1L);
+
+		assertNotNull(r);
 	}
 }
