@@ -99,4 +99,10 @@ public class ProductServiceImpl implements ProductService {
 		return repository.save(product);
 	}
 
+	@Override
+	public List<Picture> findProductPics(Long productId) {
+
+		return pictureRepository.findPictures(productId);
+	}
+
 }

@@ -25,8 +25,8 @@
 				<td>图片</td>
 				<td><div id="listPics">
 						<c:forEach var="arow" items="${productPics}">
-							<label class="label label-info"><c:out
-									value="${arow.name}" /></label>
+							<img src="product_pic/${arow.picPath }" width="80" height="80"
+								class="img-thumbnail">
 						</c:forEach>
 					</div>
 					<div id="uploadPic">
@@ -73,6 +73,11 @@
 	</table>
 </div>
 <script type="text/javascript">
+function uploadPic() {
+	$("#uploadPic")
+			.html(
+					"<input id='newInputTag' autofocus/><button onclick='saveProductTag()'>保存</button>");
+}
 	function addTag() {
 		$("#addTag")
 				.html(
@@ -83,7 +88,7 @@
 				.html(
 						'<textarea id="newInputDescription" class="form-control" rows="3"></textarea><button onclick="saveProductDescription()">保存</button>');
 	}
-	
+
 	function saveProductTag() {
 		$.post("saveProductTag", {
 			productId : '${product.id}',
@@ -95,16 +100,21 @@
 		});
 	}
 	function saveProductDescription() {
-		$.post("saveProductInfo", {
-			productId : '${product.id}',
-			field : 'description',
-			value : $("#newInputDescription").val()
-		}, function(data, status) {
-			$("#modifyDescription").html(
-					data + ' | <a href="javascript:modifyDescription()">编辑</a>');
-		});
+		$
+				.post(
+						"saveProductInfo",
+						{
+							productId : '${product.id}',
+							field : 'description',
+							value : $("#newInputDescription").val()
+						},
+						function(data, status) {
+							$("#modifyDescription")
+									.html(
+											data
+													+ ' | <a href="javascript:modifyDescription()">编辑</a>');
+						});
 	}
-	
 </script>
 <jsp:include page="./fragments/footer.jsp" />
 

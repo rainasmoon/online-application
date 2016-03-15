@@ -24,4 +24,6 @@ public interface ProductService {
 	BidProductVo findBidProductVo(Long productId);
 
 	Product findProduct(Long productId);
+
+	List<Picture> findProductPics(Long productId);
 }

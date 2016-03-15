@@ -170,6 +170,7 @@ public class ProductController extends BaseController {
 	public String viewProduct(Long productId, Map<String, Object> model) {
 		model.put("product", productService.findProduct(productId));
 		model.put("productTags", tagService.findProductTags(productId));
+		model.put("productPics", productService.findProductPics(productId));
 		return "view_product";
 	}
 
