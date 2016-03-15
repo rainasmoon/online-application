@@ -7,7 +7,7 @@ public class BidProductVo {
 
 	private Long productId;
 	private String productTitle;
-	private String biders;
+	private Integer bidersCount;
 	private String currentOwer;
 	private List<String> tags;
 	private String description;
@@ -23,14 +23,6 @@ public class BidProductVo {
 
 	public void setProductTitle(String productTitle) {
 		this.productTitle = productTitle;
-	}
-
-	public String getBiders() {
-		return biders;
-	}
-
-	public void setBiders(String biders) {
-		this.biders = biders;
 	}
 
 	public String getCurrentOwer() {
@@ -103,6 +95,14 @@ public class BidProductVo {
 
 	public void setProductId(Long productId) {
 		this.productId = productId;
+	}
+
+	public Integer getBidersCount() {
+		return bidersCount;
+	}
+
+	public void setBidersCount(Integer bidersCount) {
+		this.bidersCount = bidersCount;
 	}
 
 }

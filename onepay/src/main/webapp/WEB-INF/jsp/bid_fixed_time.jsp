@@ -12,7 +12,7 @@
 	<h1>
 		<c:out value="${productVo.productTitle}" />
 	</h1>
-	<p>竞拍人数：5。。。当前属于：acrazyguy...结束时间：2016-3-13 12：00：00</p>
+	<p>竞拍人数：<c:out value="${productVo.bidersCount}" />。。。当前属于：<c:out value="${productVo.currentOwer}" />...结束时间：<c:out value="${productVo.endTime}" /></p>
 	<div class="thumbnail">
 		<img alt="" src="product_pic/${productVo.picPath }" width="300"
 			height="300">
