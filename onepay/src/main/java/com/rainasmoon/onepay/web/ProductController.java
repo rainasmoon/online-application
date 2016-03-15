@@ -123,7 +123,9 @@ public class ProductController extends BaseController {
 			LOGGER.debug("www:" + productVo);
 			Product product = new Product();
 			product.setName(productVo.getProductName());
-			product.setSaleModel(SaleModels.valueOfStr(productVo.getSaleModel()).getCode());
+			if (productVo.getSaleModel() != null) {
+				product.setSaleModel(SaleModels.valueOfStr(productVo.getSaleModel()).getCode());
+			}
 			product.setAging(productVo.getAging());
 			product.setDescription(productVo.getDescription());
 			if (SaleModels.GUESSPRICE == SaleModels.valueOfStr(productVo.getSaleModel())) {
@@ -135,7 +137,7 @@ public class ProductController extends BaseController {
 			product = productService.addProduct(product);
 
 			for (String tag : productVo.getTags()) {
-				tagService.addUserTag(product.getId(), tag);
+				tagService.addProductTag(product.getId(), tag);
 			}
 
 			SYS_PIC_PATH = env.getProperty(CommonConstants.PRODUCT_PIC_PATH_ID);
@@ -164,6 +166,7 @@ public class ProductController extends BaseController {
 	@RequestMapping(value = { "/bid.html" }, method = RequestMethod.GET)
 	public String bid(Long productId, Map<String, Object> model) {
 		BidProductVo productVo = productService.findProduct(productId);
+		model.put("productTags", tagService.findProductTags(productId));
 		model.put("productVo", productVo);
 		return "bid_fixed_time";
 	}

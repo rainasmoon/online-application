@@ -121,7 +121,8 @@
 	}
 	
 	function addNewTag() {
-		$('#tags_session').append('<label class=""> <input type="checkbox" name="tags" value="' + $('#inputNewTag').val() + '" checked>' + $('#inputNewTag').val() + '</label>');
+		$('#tags_session').append('<label><input type="checkbox" name="tags" value="' + $('#inputNewTag').val() + '" checked/><label class="label label-info"> ' + $('#inputNewTag').val() + '</label></label>');
+		$('#inputNewTag').val('');
 	}
 </script>
 <jsp:include page="./fragments/footer.jsp" />
