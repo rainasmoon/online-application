@@ -7,6 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import com.rainasmoon.onepay.util.CommonConstants;
+
 public class BaseController {
 
 	public static Logger LOGGER = LoggerFactory.getLogger(BaseController.class);
@@ -16,14 +18,14 @@ public class BaseController {
 	public Long getLoginUserId() {
 
 		HttpSession session = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getSession();
-		return (Long) session.getAttribute("userId");
+		return (Long) session.getAttribute(CommonConstants.LOGIN_USER_ID);
 
 	}
 
 	public void setSessionLoginUser(Long userId) {
 
 		HttpSession session = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getSession();
-		session.setAttribute("userId", userId);
+		session.setAttribute(CommonConstants.LOGIN_USER_ID, userId);
 
 	}
 
@@ -31,7 +33,7 @@ public class BaseController {
 		LOGGER.debug("Logout running...");
 		HttpSession session = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getSession();
 		LOGGER.debug("Session ID:" + session.getId());
-		session.removeAttribute("userId");
+		session.removeAttribute(CommonConstants.LOGIN_USER_ID);
 		session.invalidate();
 	}
 

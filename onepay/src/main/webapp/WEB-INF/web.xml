@@ -10,7 +10,7 @@
 		<param-name>spring.profiles.default</param-name>
 		<param-value>dev</param-value>
 	</context-param>
-	
+
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
@@ -20,7 +20,7 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:spring/business-config.xml</param-value>
 	</context-param>
-	
+
 	<!-- - Servlet that dispatches request to registered handlers (Controller 
 		implementations). -->
 	<servlet>
@@ -37,7 +37,7 @@
 		<servlet-name>onepayapp</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>jcaptcha</servlet-name>
 		<servlet-class>com.octo.captcha.module.servlet.image.SimpleImageCaptchaServlet</servlet-class>
@@ -75,6 +75,14 @@
 	<filter-mapping>
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter>
+		<filter-name>AccessLogFilter</filter-name>
+		<filter-class>com.rainasmoon.onepay.util.AccessLogFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>AccessLogFilter</filter-name>
+		<url-pattern>*.html</url-pattern>
 	</filter-mapping>
 	<session-config>
 		<session-timeout>30</session-timeout>
