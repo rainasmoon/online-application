@@ -1,6 +1,5 @@
 package com.rainasmoon.onepay.web;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,13 +17,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.google.common.io.Files;
 import com.rainasmoon.onepay.enums.SaleModels;
 import com.rainasmoon.onepay.model.Product;
 import com.rainasmoon.onepay.service.ProductService;
 import com.rainasmoon.onepay.service.TagService;
 import com.rainasmoon.onepay.service.UserService;
 import com.rainasmoon.onepay.util.CommonConstants;
+import com.rainasmoon.onepay.util.CommonUtils;
 import com.rainasmoon.onepay.vo.AdVo;
 import com.rainasmoon.onepay.vo.BidProductVo;
 import com.rainasmoon.onepay.vo.ProductListPageVo;
@@ -150,9 +149,7 @@ public class ProductController extends BaseController {
 				if (inputPicFile.getSize() > 500000) {
 					result.rejectValue("error", "error.file.too.large");
 				} else {
-					String picPath = "p" + product.getId() + "_disc_1";
-					Files.write(inputPicFile.getBytes(), new File(SYS_PIC_PATH + File.separator + picPath));
-					LOGGER.debug("POST request for file upload {}", inputPicFile.getOriginalFilename());
+					String picPath = CommonUtils.saveFile(product.getId(), inputPicFile, SYS_PIC_PATH);
 
 					productService.addPicture(product.getId(), picPath);
 				}
@@ -192,9 +189,7 @@ public class ProductController extends BaseController {
 			if (inputPicFile.getSize() > 500000) {
 				return "error.file.too.large";
 			} else {
-				String picPath = "p" + productId + "_disc_1";
-				Files.write(inputPicFile.getBytes(), new File(SYS_PIC_PATH + File.separator + picPath));
-				LOGGER.debug("POST request for file upload {}", inputPicFile.getOriginalFilename());
+				String picPath = CommonUtils.saveFile(productId, inputPicFile, SYS_PIC_PATH);
 
 				productService.addPicture(productId, picPath);
 			}
