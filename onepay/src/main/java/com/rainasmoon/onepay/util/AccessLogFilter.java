@@ -35,12 +35,13 @@ public class AccessLogFilter implements Filter {
 		HttpSession session=((HttpServletRequest) request).getSession();
 		Long loginUserId = (Long) session.getAttribute(CommonConstants.LOGIN_USER_ID);
 		
-		
+		LOGGER.debug("-----------------------------------------------------------------------------");
 		LOGGER.debug("ACCESS:" + getIpAddr((HttpServletRequest) request));
 		LOGGER.debug("ACCESS:" + sessionId);
 		LOGGER.debug("ACCESS:" + loginUserId);
 		LOGGER.debug("ACCESS:" + url);
 		LOGGER.debug("ACCESS:" + userAgent);
+		LOGGER.debug("-----------------------------------------------------------------------------");
 		
 		chain.doFilter(request, response);
 		return;
