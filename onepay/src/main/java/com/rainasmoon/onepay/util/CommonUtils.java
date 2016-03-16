@@ -22,7 +22,7 @@ public class CommonUtils {
 	public static String saveFile(Long id, MultipartFile inputPicFile, String systemPath) throws IOException {
 		long seq = new Date().getTime();
 		int random = (int) (Math.random() * 9000 + 1000);
-		String picPath = "p" + id + seq + random;
+		String picPath = "p_" + id + "_" + seq + "_" + random;
 		Files.write(inputPicFile.getBytes(), new File(systemPath + File.separator + picPath));
 		LOGGER.debug("POST request for file upload {}", inputPicFile.getOriginalFilename());
 		return picPath;
