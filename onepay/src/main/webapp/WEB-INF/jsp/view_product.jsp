@@ -13,7 +13,7 @@
 
 <jsp:include page="./fragments/bodyHeader.jsp" />
 
-<h2 class="sub-header">英雄详情</h2>
+<h2 class="sub-header">商品详情</h2>
 <div class="table-responsive">
 	<table class="table table-striped">
 		<tbody>
@@ -30,7 +30,7 @@
 						</c:forEach>
 					</div>
 					<div id="uploadPic">
-						| <a href="javascript:uploadPic()">upload </a>
+						| <a href="add_product_pic.html?productId=${product.id }">upload </a>
 					</div></td>
 			</tr>
 			<tr>
@@ -72,12 +72,9 @@
 		</tbody>
 	</table>
 </div>
+
 <script type="text/javascript">
-function uploadPic() {
-	$("#uploadPic")
-			.html(
-					"<input id='newInputTag' autofocus/><button onclick='saveProductTag()'>保存</button>");
-}
+
 	function addTag() {
 		$("#addTag")
 				.html(
@@ -99,6 +96,7 @@ function uploadPic() {
 					'<label class="label label-info">' + data + '</label>');
 		});
 	}
+	
 	function saveProductDescription() {
 		$
 				.post(
@@ -116,6 +114,8 @@ function uploadPic() {
 						});
 	}
 </script>
+
+
 <jsp:include page="./fragments/footer.jsp" />
 
 

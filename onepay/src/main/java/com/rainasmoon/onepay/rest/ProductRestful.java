@@ -25,4 +25,5 @@ public class ProductRestful extends BaseController {
 		productService.updateProduct(product);
 		return value;
 	}
+
 }

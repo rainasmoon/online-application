@@ -35,11 +35,11 @@
 		</div>
 		<hr />
 		<label class="radio-inline"> <input type="radio"
-			name="saleModel" id="saleModel1" value="fix_time"> 定時秒杀拍
+			name="saleModel" id="saleModel1" value="fix_time" /> 定時秒杀拍
 		</label> <label class="radio-inline"> <input type="radio"
-			name="saleModel" id="saleModel2" value="three_days"> 3天内拍
+			name="saleModel" id="saleModel2" value="three_days" /> 3天内拍
 		</label> <label class="radio-inline"> <input type="radio"
-			name="saleModel" id="saleModel3" value="guess_price"> 猜假拍
+			name="saleModel" id="saleModel3" value="guess_price" /> 猜假拍
 		</label>
 		<div>
 			从
@@ -63,37 +63,48 @@
 			</select>
 		</div>
 		<div>
-			<onlineapplication:inputField label="底价" name="price" type="number"/>
+			<onlineapplication:inputField label="底价" name="price" type="number" />
 		</div>
 		<hr />
 		<div class="form-group">
-			<label for=inputAging>新旧程度</label>
-			<input id="aging" name="aging" type="hidden" value="10"/>
-			<div aria-label="Toolbar with button groups" role="toolbar"
-				class="btn-toolbar">
-				<div aria-label="First group" role="group" class="btn-group">
-					<button class="btn btn-default" type="button" onclick="setAging(1)">1</button>
-					<button class="btn btn-default" type="button" onclick="setAging(2)">2</button>
-					<button class="btn btn-default" type="button" onclick="setAging(3)">3</button>
-					<button class="btn btn-default" type="button" onclick="setAging(4)">4</button>
-					<button class="btn btn-default" type="button" onclick="setAging(5)">5</button>
-					<button class="btn btn-default" type="button" onclick="setAging(6)">6</button>
-					<button class="btn btn-default" type="button" onclick="setAging(7)">7</button>
-					<button class="btn btn-default" type="button" onclick="setAging(8)">8</button>
-					<button class="btn btn-default" type="button" onclick="setAging(9)">9</button>
-					<button class="btn btn-default" type="button" onclick="setAging(10)">10</button>
-				</div>
-			</div>
+			<label for=inputAging>新旧程度</label> <label class="radio-inline">
+				<input type="radio" name="aging" value="1" />1
+			</label>
+			<label class="radio-inline">
+				<input type="radio" name="aging" value="2" />2
+			</label>
+			<label class="radio-inline">
+				<input type="radio" name="aging" value="3" />3
+			</label>
+			<label class="radio-inline">
+				<input type="radio" name="aging" value="4" />4
+			</label>
+			<label class="radio-inline">
+				<input type="radio" name="aging" value="5" />5
+			</label>
+			<label class="radio-inline">
+				<input type="radio" name="aging" value="6" />6
+			</label>
+			<label class="radio-inline">
+				<input type="radio" name="aging" value="7" />7
+			</label>
+			<label class="radio-inline">
+				<input type="radio" name="aging" value="8" />8
+			</label>
+			<label class="radio-inline">
+				<input type="radio" name="aging" value="9" />9
+			</label><label class="radio-inline">
+				<input type="radio" name="aging" value="10" />10
+			</label>
 		</div>
 		<div class="form-group">
 			<label for="inputDescription">描述</label>
-			<textarea id="description" name="description" class="form-control" rows="3"></textarea>
+			<textarea id="description" name="description" class="form-control"
+				rows="3"></textarea>
 		</div>
 		<div class="form-group">
 			<label for="inputTags">标签</label>
-			<div id="tags_session" class="checkbox">
-
-			</div>
+			<div id="tags_session" class="checkbox"></div>
 			<input type="text" class="form-control" id="inputNewTag"
 				placeholder="新标签">
 			<button type="button" class="btn btn-default" onclick="addNewTag()">添加</button>
@@ -115,18 +126,22 @@
 	$('#dateTo').datepicker({
 		dateFormat : 'yy-mm-dd'
 	});
-	
+
 	function setAging(age) {
 		$('#aging').val(age);
 	}
-	
+
 	function addNewTag() {
-		
+
 		if ($('#inputNewTag').val() == '') {
 			return;
 		}
-		
-		$('#tags_session').append('<label><input type="checkbox" name="tags" value="' + $('#inputNewTag').val() + '" checked/><label class="label label-info"> ' + $('#inputNewTag').val() + '</label></label>');
+
+		$('#tags_session').append(
+				'<label><input type="checkbox" name="tags" value="'
+						+ $('#inputNewTag').val()
+						+ '" checked/><label class="label label-info"> '
+						+ $('#inputNewTag').val() + '</label></label>');
 		$('#inputNewTag').val('');
 	}
 </script>

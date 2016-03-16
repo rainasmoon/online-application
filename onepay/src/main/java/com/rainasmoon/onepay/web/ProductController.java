@@ -166,12 +166,44 @@ public class ProductController extends BaseController {
 		}
 	}
 
-	@RequestMapping(value = { "/view_product.html" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/view_product.html" })
 	public String viewProduct(Long productId, Map<String, Object> model) {
 		model.put("product", productService.findProduct(productId));
 		model.put("productTags", tagService.findProductTags(productId));
 		model.put("productPics", productService.findProductPics(productId));
 		return "view_product";
+	}
+
+	@RequestMapping(value = "/add_product_pic.html", method = RequestMethod.GET)
+	public String addProductPic(Long productId, Map<String, Object> model) {
+		model.put("productId", productId);
+		return "add_product_pic";
+	}
+
+	@RequestMapping(value = "/saveProductPic.html", method = RequestMethod.POST)
+	public String saveProductPic(Long productId, @RequestParam(required = false) MultipartFile inputPicFile) throws IOException {
+
+		LOGGER.debug("WWW:pic:" + productId + inputPicFile);
+
+		SYS_PIC_PATH = env.getProperty(CommonConstants.PRODUCT_PIC_PATH_ID);
+
+		LOGGER.debug("the SYS_PIC_PATH is :" + SYS_PIC_PATH);
+		if (inputPicFile != null && !inputPicFile.isEmpty()) {
+			if (inputPicFile.getSize() > 500000) {
+				return "error.file.too.large";
+			} else {
+				String picPath = "p" + productId + "_disc_1";
+				Files.write(inputPicFile.getBytes(), new File(SYS_PIC_PATH + File.separator + picPath));
+				LOGGER.debug("POST request for file upload {}", inputPicFile.getOriginalFilename());
+
+				productService.addPicture(productId, picPath);
+			}
+		} else {
+			LOGGER.debug("Upload File is empty...");
+		}
+
+		return "redirect:view_product.html?productId=" + productId;
+
 	}
 
 	@RequestMapping(value = { "/bid.html" }, method = RequestMethod.GET)
