@@ -53,6 +53,10 @@ public class ImageController {
 			LOGGER.debug("!!!!!the SYS_PIC_PATH is " + SYS_PIC_PATH);
 			File file = new File(SYS_PIC_PATH + File.separator + picPath);
 			LOGGER.debug("the file name is:" + SYS_PIC_PATH + File.separator + picPath);
+
+			if (!file.exists()) {
+				file = new File(ImageController.class.getResource("nopic").getFile());
+			}
 			fileInputStream = new FileInputStream(file);
 
 			response.setHeader("Content-Disposition", "attachment; filename=" + file.getName());
