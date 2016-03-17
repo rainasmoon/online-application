@@ -19,11 +19,16 @@ public class CommonUtils {
 		return loginName.contains("@");
 	}
 
-	public static String saveFile(Long id, MultipartFile inputPicFile, String systemPath) throws IOException {
+	public static String saveFile(Long id, MultipartFile inputPicFile, String systemPath) {
 		long seq = new Date().getTime();
 		int random = (int) (Math.random() * 9000 + 1000);
 		String picPath = "p_" + id + "_" + seq + "_" + random;
-		Files.write(inputPicFile.getBytes(), new File(systemPath + File.separator + picPath));
+		try {
+			Files.write(inputPicFile.getBytes(), new File(systemPath + File.separator + picPath));
+		} catch (IOException e) {
+			LOGGER.error("save file exception:", e);
+			throw new ApplicationException("save file exception:", e);
+		}
 		LOGGER.debug("POST request for file upload {}", inputPicFile.getOriginalFilename());
 		return picPath;
 	}

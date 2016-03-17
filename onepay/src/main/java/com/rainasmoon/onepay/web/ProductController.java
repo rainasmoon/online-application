@@ -1,6 +1,5 @@
 package com.rainasmoon.onepay.web;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -105,7 +104,7 @@ public class ProductController extends BaseController {
 	}
 
 	@RequestMapping(value = "/addproduct.html", method = RequestMethod.POST)
-	public String saveProduct(@Valid ProductVo productVo, @RequestParam(required = false) MultipartFile inputPicFile, BindingResult result, Map<String, Object> model) throws IOException {
+	public String saveProduct(@Valid ProductVo productVo, @RequestParam(required = false) MultipartFile inputPicFile, BindingResult result, Map<String, Object> model) {
 
 		if (!isLogin()) {
 			return "redirect:login.html";
@@ -178,7 +177,7 @@ public class ProductController extends BaseController {
 	}
 
 	@RequestMapping(value = "/saveProductPic.html", method = RequestMethod.POST)
-	public String saveProductPic(Long productId, @RequestParam(required = false) MultipartFile inputPicFile) throws IOException {
+	public String saveProductPic(Long productId, @RequestParam(required = false) MultipartFile inputPicFile, Map<String, Object> model) {
 
 		LOGGER.debug("WWW:pic:" + productId + inputPicFile);
 
@@ -186,8 +185,10 @@ public class ProductController extends BaseController {
 
 		LOGGER.debug("the SYS_PIC_PATH is :" + SYS_PIC_PATH);
 		if (inputPicFile != null && !inputPicFile.isEmpty()) {
-			if (inputPicFile.getSize() > 500000) {
-				return "error.file.too.large";
+			if (inputPicFile.getSize() > CommonConstants.PIC_MAX_ALLOW_SIZE) {
+				model.put("productId", productId);
+				model.put("message", "pic is too large...");
+				return "add_product_pic";
 			} else {
 				String picPath = CommonUtils.saveFile(productId, inputPicFile, SYS_PIC_PATH);
 
