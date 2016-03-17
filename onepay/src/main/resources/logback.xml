@@ -24,7 +24,7 @@
 			</pattern>
 		</encoder>
 	</appender>
-	
+
 	<appender name="accessLoggingFile"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>./logs/onepayaccess.log</file>
@@ -56,24 +56,47 @@
 		</encoder>
 	</appender>
 
+	<appender name="exceptionLogFile"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>./logs/onepayexception.log</file>
+		<!-- 按每小时滚动文件，如果一个小时内达到10M也会滚动文件, 滚动文件将会压缩成zip格式 -->
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>./onepayexception-%d{yyyy-MM-dd_HH}.%i.zip
+			</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>10MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<!-- 独立的pattern -->
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS},%msg%n</pattern>
+		</encoder>
+	</appender>
+
 	<logger name="com.rainasmoon" level="debug" />
 	<logger name="org.springframework.beans.TypeConverterDelegate">
-		<level value="debug" />
+		<level value="warn" />
 	</logger>
-	<logger name="com.rainasmoon.onepay.util.AccessLogFilter" level="DEBUG" additivity="false">
+	<logger name="com.rainasmoon.onepay.util.AccessLogFilter" level="DEBUG"
+		additivity="false">
 		<appender-ref ref="accessLoggingFile" />
 		<appender-ref ref="console"></appender-ref>
 	</logger>
-    <!-- business log 使用独立的appender，不继承Root的appender -->
+	<!-- business log 使用独立的appender，不继承Root的appender -->
 	<logger name="business" level="INFO" additivity="false">
 		<appender-ref ref="businessLogFile" />
+	</logger>
+
+	<logger name="*" level="WARN" additivity="false">
+		<appender-ref ref="exceptionLogFile" />
 	</logger>
 
 	<logger name="org.hibernate" level="info" />
 	<logger name="org.hibernate.type.descriptor.sql.BasicBinder"
 		level="TRACE" />
 
-	<root level="debug">
+	<root level="info">
 		<appender-ref ref="console" />
 		<appender-ref ref="rollingFile" />
 	</root>

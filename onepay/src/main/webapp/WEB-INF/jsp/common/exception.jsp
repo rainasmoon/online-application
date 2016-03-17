@@ -19,7 +19,7 @@
 
 		<h2>Something happened...</h2>
 
-		<p>${exception.message}</p>
+		<p><a href="mailto:rainasmoon@126.com?subject=[OneYuanError]请检查程序&body=程序出错了。。。">给我写邮件通知我</a></p>
 
 		<!-- Exception: ${exception.message}.
 		  	<c:forEach items="${exception.stackTrace}" var="stackTrace"> 

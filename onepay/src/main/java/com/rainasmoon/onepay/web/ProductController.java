@@ -145,8 +145,10 @@ public class ProductController extends BaseController {
 
 			LOGGER.debug("the SYS_PIC_PATH is :" + SYS_PIC_PATH);
 			if (inputPicFile != null && !inputPicFile.isEmpty()) {
-				if (inputPicFile.getSize() > 500000) {
-					result.rejectValue("error", "error.file.too.large");
+				if (inputPicFile.getSize() > CommonConstants.PIC_MAX_ALLOW_SIZE) {
+					model.put("product", productVo);
+					model.put("message", "pic is too large...");
+					return "addproduct";
 				} else {
 					String picPath = CommonUtils.saveFile(product.getId(), inputPicFile, SYS_PIC_PATH);
 
