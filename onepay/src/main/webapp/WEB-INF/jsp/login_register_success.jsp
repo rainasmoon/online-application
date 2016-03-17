@@ -6,7 +6,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="onlineapplication" tagdir="/WEB-INF/tags"%>
+<%@ taglib prefix="onepayapp" tagdir="/WEB-INF/tags"%>
 
 <jsp:include page="./fragments/headTag.jsp" />
 <title>Signin</title>
@@ -25,8 +25,8 @@
 			</c:if>
 		</spring:bind>
 	</span>
-	<onlineapplication:hiddenField name="account" />
-	<onlineapplication:hiddenField name="password" />
+	<onepayapp:hiddenField name="account" />
+	<onepayapp:hiddenField name="password" />
 	<button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
 </form:form>
 

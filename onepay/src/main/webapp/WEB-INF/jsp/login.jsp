@@ -6,7 +6,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="onlineapplication" tagdir="/WEB-INF/tags"%>
+<%@ taglib prefix="onepayapp" tagdir="/WEB-INF/tags"%>
 
 <jsp:include page="./fragments/headTag.jsp" />
 <title>Signin</title>
@@ -27,9 +27,9 @@
 	</span>
 
 	<fieldset>
-		<onlineapplication:inputField label="手机号|邮箱" name="account"
+		<onepayapp:inputField label="手机号|邮箱" name="account"
 			required="true" autofocus="true"/>
-		<onlineapplication:passwordField label="密码" name="password"
+		<onepayapp:passwordField label="密码" name="password"
 			required="true" />
 	</fieldset>
 

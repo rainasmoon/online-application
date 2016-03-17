@@ -6,7 +6,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="onlineapplication" tagdir="/WEB-INF/tags"%>
+<%@ taglib prefix="onepayapp" tagdir="/WEB-INF/tags"%>
 
 <jsp:include page="./fragments/headTag.jsp" />
 <title>添加个东西</title>
@@ -25,7 +25,7 @@
 		</spring:bind>
 	</span>
 	<fieldset>
-		<onlineapplication:inputField label="商品名称" name="ProductName"
+		<onepayapp:inputField label="商品名称" name="ProductName"
 			autofocus="true" required="true" />
 
 		<div class="form-group">
@@ -63,7 +63,7 @@
 			</select>
 		</div>
 		<div>
-			<onlineapplication:inputField label="底价" name="price" type="number" />
+			<onepayapp:inputField label="底价" name="price" type="number" />
 		</div>
 		<hr />
 		<div class="form-group">
