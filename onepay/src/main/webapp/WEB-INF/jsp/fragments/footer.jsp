@@ -7,7 +7,7 @@
 				<a href="#">Back to top</a>
 			</p>
 			<p>
-				<img src="pic/wechat_qr_code.jpg" width="100" height="100" >&copy; <a href="mailto:rainasmoon@126.com">给我写邮件</a> 
+				<img src="pic/wechat_qr_code.jpg" width="100" height="100" >&copy; <a href="mailto:rainasmoon@126.com?subject=[OneYuanHelp]&body=欢迎给我发消息">给我写邮件</a> 
 			</p>
 		</footer>
 		
