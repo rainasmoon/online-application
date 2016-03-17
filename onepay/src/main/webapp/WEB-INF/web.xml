@@ -84,6 +84,10 @@
 		<filter-name>AccessLogFilter</filter-name>
 		<url-pattern>*.html</url-pattern>
 	</filter-mapping>
+	<filter-mapping>
+		<filter-name>AccessLogFilter</filter-name>
+		<url-pattern>/restful/*</url-pattern>
+	</filter-mapping>
 	<session-config>
 		<session-timeout>30</session-timeout>
 	</session-config>

@@ -16,14 +16,15 @@ public class TagRestful extends BaseController {
 	@Autowired
 	private TagService tagService;
 
-	@RequestMapping("/saveUserTag")
+	@RequestMapping("/restful/saveUserTag")
 	public String saveUserTag(@RequestParam(value = "value") String value) {
 		Tag tag = tagService.addUserTag(getLoginUserId(), value);
 		return value;
 	}
 
-	@RequestMapping("/saveProductTag")
-	public String saveProductTag(Long productId, @RequestParam(value = "value") String value) {
+	@RequestMapping("/restful/saveProductTag")
+	public String saveProductTag(Long productId,
+			@RequestParam(value = "value") String value) {
 		Tag tag = tagService.addProductTag(productId, value);
 		return value;
 	}

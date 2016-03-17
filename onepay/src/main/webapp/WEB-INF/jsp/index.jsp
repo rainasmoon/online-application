@@ -23,28 +23,27 @@ body {
 	<!-- Indicators -->
 	<ol class="carousel-indicators">
 		<c:forEach var="arow" items="${vo.ads}" varStatus="status">
-			<li data-target="#myCarousel"
-				data-slide-to="${status.index}"
+			<li data-target="#myCarousel" data-slide-to="${status.index}"
 				<c:if test="${status.first}"> class="active"</c:if>></li>
-	</c:forEach>
+		</c:forEach>
 
 	</ol>
 	<div class="carousel-inner" role="listbox">
-	<c:forEach var="arow" items="${vo.ads}"  varStatus="status">
-		<div class="item <c:if test="${status.first}">active</c:if>">
-			<img class="first-slide" src="${arow.picPath }" alt="First slide">
-			<div class="container">
-				<div class="carousel-caption">
-					<h1>注册就送100猿.</h1>
-					<p>没啥特别的，新人要有礼</p>
-					<p>
-						<a class="btn btn-lg btn-primary" href="login.jsp" role="button">Sign
-							up today</a>
-					</p>
+		<c:forEach var="arow" items="${vo.ads}" varStatus="status">
+			<div class="item <c:if test="${status.first}">active</c:if>">
+				<img class="first-slide" src="${arow.picPath }" alt="First slide">
+				<div class="container">
+					<div class="carousel-caption">
+						<h1>注册就送100猿.</h1>
+						<p>没啥特别的，新人要有礼</p>
+						<p>
+							<a class="btn btn-lg btn-primary" href="login.jsp" role="button">Sign
+								up today</a>
+						</p>
+					</div>
 				</div>
 			</div>
-		</div>
-	</c:forEach>			
+		</c:forEach>
 	</div>
 	<a class="left carousel-control" href="#myCarousel" role="button"
 		data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"
@@ -107,7 +106,7 @@ body {
 						src="${arow.picPath }" alt="Generic placeholder image">
 				</div>
 			</c:if>
-				<c:if test="${status.count%2 != '0'}">
+			<c:if test="${status.count%2 != '0'}">
 				<div class="col-md-7 col-md-push-5">
 					<h2 class="featurette-heading">
 						First featurette heading. <span class="text-muted">It'll
@@ -123,13 +122,12 @@ body {
 						src="${arow.picPath }" alt="Generic placeholder image">
 				</div>
 			</c:if>
+		</div>
+
+		<hr class="featurette-divider">
+	</c:forEach>
+
+	<!-- /END THE FEATURETTES -->
 </div>
 
-<hr class="featurette-divider">
-</c:forEach>
-
-
-
-<!-- /END THE FEATURETTES -->
-</div>
 <jsp:include page="./fragments/footer.jsp" />

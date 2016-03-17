@@ -16,8 +16,10 @@ public class ProductRestful extends BaseController {
 	@Autowired
 	private ProductService productService;
 
-	@RequestMapping("/saveProductInfo")
-	public String saveProductInfo(Long productId, @RequestParam(value = "field") String field, @RequestParam(value = "value") String value) {
+	@RequestMapping("/restful/saveProductInfo")
+	public String saveProductInfo(Long productId,
+			@RequestParam(value = "field") String field,
+			@RequestParam(value = "value") String value) {
 		Product product = productService.findProduct(productId);
 		if (field.equalsIgnoreCase("description")) {
 			product.setDescription(value);

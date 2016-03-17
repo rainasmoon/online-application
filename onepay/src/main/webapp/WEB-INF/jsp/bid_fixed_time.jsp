@@ -46,16 +46,8 @@
 			class="btn btn-primary btn-lg btn-block" role="button">+100猿</a>
 	</div>
 </div>
-<script type="text/javascript">
-	function addMoney(amount) {
-		$.post("bid", {
-			productId : '${productVo.productId}',
-			money : amount
-		}, function(data, status) {
-			$("#productPrice").text(data);
-		});
-	}
-</script>
+<script src="js/bid_fixed_time.js" type="text/javascript"></script>
+
 <jsp:include page="./fragments/footer.jsp" />
 
 

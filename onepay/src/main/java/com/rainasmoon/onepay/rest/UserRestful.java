@@ -16,13 +16,15 @@ public class UserRestful extends BaseController {
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping("/greeting")
-	public String greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
+	@RequestMapping("/restful/greeting")
+	public String greeting(
+			@RequestParam(value = "name", defaultValue = "World") String name) {
 		return "hello, my pc world...";
 	}
 
-	@RequestMapping("/saveUserInfo")
-	public String saveUserInfo(@RequestParam(value = "field") String field, @RequestParam(value = "value") String value) {
+	@RequestMapping("/restful/saveUserInfo")
+	public String saveUserInfo(@RequestParam(value = "field") String field,
+			@RequestParam(value = "value") String value) {
 		User loginUser = userService.findUser(getLoginUserId());
 		if (field.equalsIgnoreCase("email")) {
 			loginUser.setEmail(value);

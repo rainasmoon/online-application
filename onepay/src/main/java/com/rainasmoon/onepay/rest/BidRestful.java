@@ -16,9 +16,11 @@ public class BidRestful extends BaseController {
 	@Autowired
 	private BidService bidService;
 
-	@RequestMapping("/bid")
-	public String bid(@RequestParam(value = "productId") Long productId, @RequestParam(value = "money", defaultValue = "1") Integer money) {
-		Product product = bidService.bidAddMoney(getLoginUserId(), productId, money);
+	@RequestMapping("/restful/bid")
+	public String bid(@RequestParam(value = "productId") Long productId,
+			@RequestParam(value = "money", defaultValue = "1") Integer money) {
+		Product product = bidService.bidAddMoney(getLoginUserId(), productId,
+				money);
 		return product.getPrice().toString();
 	}
 }

@@ -119,32 +119,8 @@
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<script type="text/javascript">
-	$('#dateFrom').datepicker({
-		dateFormat : 'yy-mm-dd'
-	});
-	$('#dateTo').datepicker({
-		dateFormat : 'yy-mm-dd'
-	});
+<script src="js/listproduct.js" type="text/javascript"></script>
 
-	function setAging(age) {
-		$('#aging').val(age);
-	}
-
-	function addNewTag() {
-
-		if ($('#inputNewTag').val() == '') {
-			return;
-		}
-
-		$('#tags_session').append(
-				'<label><input type="checkbox" name="tags" value="'
-						+ $('#inputNewTag').val()
-						+ '" checked/><label class="label label-info"> '
-						+ $('#inputNewTag').val() + '</label></label>');
-		$('#inputNewTag').val('');
-	}
-</script>
 <jsp:include page="./fragments/footer.jsp" />
 
 
