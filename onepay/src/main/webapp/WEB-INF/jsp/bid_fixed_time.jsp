@@ -25,25 +25,25 @@
 	</p>
 	<p>
 	<div id="productPrice" class="alert alert-info" role="alert">
-		<c:out value="${productVo.price}" />
+		现价：<c:out value="${productVo.price}" />猿
 	</div>
 	</p>
 
 </div>
-
+<div><p>我要举牌：</p></div>
 <div class="row marketing">
 	<div class="col-lg-4">
 		<a href="javascript:addMoney(1);"
-			class="btn btn-primary btn-lg btn-block" role="button">+1</a>
+			class="btn btn-primary btn-lg btn-block" role="button">+1猿</a>
 	</div>
 
 	<div class="col-lg-4">
 		<a href="javascript:addMoney(10);"
-			class="btn btn-primary btn-lg btn-block" role="button">+10</a>
+			class="btn btn-primary btn-lg btn-block" role="button">+10猿</a>
 	</div>
 	<div class="col-lg-4">
 		<a href="javascript:addMoney(100);"
-			class="btn btn-primary btn-lg btn-block" role="button">+100</a>
+			class="btn btn-primary btn-lg btn-block" role="button">+100猿</a>
 	</div>
 </div>
 <script type="text/javascript">

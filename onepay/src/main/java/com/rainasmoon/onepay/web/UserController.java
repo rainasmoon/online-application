@@ -20,7 +20,7 @@ public class UserController extends BaseController {
 
 	@Autowired
 	private UserService userService;
-	
+
 	@Autowired
 	private TagService tagService;
 
@@ -63,6 +63,11 @@ public class UserController extends BaseController {
 
 	@RequestMapping(value = { "/viewme.html" }, method = RequestMethod.GET)
 	public String viewMe(Map<String, Object> model) {
+
+		if (!isLogin()) {
+			return "redirect:login.html";
+		}
+
 		User loginUser = userService.findUser(getLoginUserId());
 		List<Tag> tags = tagService.findUserTags(getLoginUserId());
 		model.put("user", loginUser);

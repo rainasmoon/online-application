@@ -12,7 +12,7 @@
        ">
 
 	<import resource="mvc-view-config.xml" />
-
+	
 	<!-- - POJOs labeled with the @Controller and @Service annotations are auto-detected. -->
 	<context:component-scan
 		base-package="com.rainasmoon.onepay.web,com.rainasmoon.onepay.rest" />
@@ -25,7 +25,7 @@
 		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
 		<property name="location" value="classpath:spring/data-access.properties" />
 	</bean>
-		
+
 	<mvc:view-controller path="/" view-name="redirect:welcome" />
 
 	<!-- serve static resources (*.html, ...) from src/main/webapp/ -->

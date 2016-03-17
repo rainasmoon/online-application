@@ -16,10 +16,7 @@
 <div class="row row-offcanvas row-offcanvas-right">
 
 	<div class="col-xs-12 col-sm-9">
-		<p class="pull-right visible-xs">
-			<button type="button" class="btn btn-primary btn-xs"
-				data-toggle="offcanvas">Toggle nav</button>
-		</p>
+
 		<div class="jumbotron">
 			<h1>我的出售</h1>
 			<p>今天也努力卖东西</p>

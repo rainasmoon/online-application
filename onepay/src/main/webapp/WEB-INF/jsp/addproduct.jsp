@@ -28,8 +28,8 @@
 		<onepayapp:inputField label="商品名称" name="ProductName"
 			autofocus="true" required="true" />
 
-		<div class="form-group">
-			<label for="inputPicFile">图片</label> <input type="file"
+		<div class="control-group">
+			<label for="inputPicFile"  class="control-label">图片</label> <input type="file"
 				id="inputPicFile" name="inputPicFile" accept="image/*" />
 			<p class="help-block">上传图片有助于客户更好的了解产品.</p>
 		</div>
@@ -66,7 +66,7 @@
 			<onepayapp:inputField label="底价" name="price" type="number" />
 		</div>
 		<hr />
-		<div class="form-group">
+		<div >
 			<label for=inputAging>新旧程度</label> <label class="radio-inline">
 				<input type="radio" name="aging" value="1" />1
 			</label>
@@ -97,12 +97,12 @@
 				<input type="radio" name="aging" value="10" />10
 			</label>
 		</div>
-		<div class="form-group">
+		<div>
 			<label for="inputDescription">描述</label>
 			<textarea id="description" name="description" class="form-control"
 				rows="3"></textarea>
 		</div>
-		<div class="form-group">
+		<div>
 			<label for="inputTags">标签</label>
 			<div id="tags_session" class="checkbox"></div>
 			<input type="text" class="form-control" id="inputNewTag"

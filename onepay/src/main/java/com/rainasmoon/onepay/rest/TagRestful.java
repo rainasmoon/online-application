@@ -10,6 +10,7 @@ import com.rainasmoon.onepay.service.TagService;
 import com.rainasmoon.onepay.web.BaseController;
 
 @RestController
+@RequestMapping(produces = "text/plain;charset=UTF-8")
 public class TagRestful extends BaseController {
 
 	@Autowired
