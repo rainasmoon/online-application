@@ -7,16 +7,17 @@ import org.springframework.stereotype.Service;
 
 import com.rainasmoon.onepay.enums.TagTypes;
 import com.rainasmoon.onepay.model.Tag;
-import com.rainasmoon.onepay.repository.springdatajpa.ProductRepository;
 import com.rainasmoon.onepay.repository.springdatajpa.TagRepository;
 import com.rainasmoon.onepay.service.TagService;
+
 @Service
 public class TagServiceImpl implements TagService {
 	@Autowired
 	private TagRepository repository;
+
 	@Override
 	public Tag addUserTag(Long userId, String tag) {
-		Tag atag= new Tag();
+		Tag atag = new Tag();
 		atag.setObjId(userId);
 		atag.setName(tag);
 		atag.setType(TagTypes.USER.getCode());
@@ -26,7 +27,7 @@ public class TagServiceImpl implements TagService {
 
 	@Override
 	public Tag addProductTag(Long productId, String tag) {
-		Tag atag= new Tag();
+		Tag atag = new Tag();
 		atag.setObjId(productId);
 		atag.setName(tag);
 		atag.setType(TagTypes.PRODUCT.getCode());
