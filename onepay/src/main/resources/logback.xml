@@ -88,7 +88,10 @@
 		<appender-ref ref="businessLogFile" />
 	</logger>
 
-	<logger name="*" level="WARN" additivity="false">
+	<logger name="com.rainasmoon" level="WARN" additivity="true">
+		<appender-ref ref="exceptionLogFile" />
+	</logger>
+	<logger name="warn" level="WARN" additivity="true">
 		<appender-ref ref="exceptionLogFile" />
 	</logger>
 
