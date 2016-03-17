@@ -30,6 +30,8 @@ public class ProductVo {
 
 	private String[] tags;
 
+	private String error;
+
 	@Override
 	public String toString() {
 		return ReflectionToStringBuilder.toString(this, ToStringStyle.SHORT_PREFIX_STYLE);
@@ -114,6 +116,14 @@ public class ProductVo {
 
 	public void setTags(String[] tags) {
 		this.tags = tags;
+	}
+
+	public String getError() {
+		return error;
+	}
+
+	public void setError(String error) {
+		this.error = error;
 	}
 
 }
