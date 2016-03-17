@@ -20,7 +20,6 @@ function modifyNickName() {
 }
 function saveUserTag() {
 	$.post("restful/saveUserTag", {
-		userId : '${user.id}',
 		value : $("#newInputTag").val()
 	}, function(data, status) {
 		$("#addTag").html(' | <a href="javascript:addTag()">add</a>');
@@ -30,7 +29,6 @@ function saveUserTag() {
 }
 function saveUserInfoEmail() {
 	$.post("restful/saveUserInfo", {
-		userId : '${user.id}',
 		field : 'email',
 		value : $("#newInputEmail").val()
 	}, function(data, status) {
@@ -40,7 +38,6 @@ function saveUserInfoEmail() {
 }
 function saveUserInfoPhone() {
 	$.post("restful/saveUserInfo", {
-		userId : '${user.id}',
 		field : 'phone',
 		value : $("#newInputPhone").val()
 	}, function(data, status) {
@@ -50,7 +47,6 @@ function saveUserInfoPhone() {
 }
 function saveUserInfoNickName() {
 	$.post("restful/saveUserInfo", {
-		userId : '${user.id}',
 		field : 'nickName',
 		value : $("#newInputNickName").val()
 	}, function(data, status) {

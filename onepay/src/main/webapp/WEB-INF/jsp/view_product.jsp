@@ -45,7 +45,7 @@
 				<td>描述</td>
 				<td><div id="modifyDescription">
 						<c:out value="${product.description}" />
-						| <a href="javascript:modifyDescription()">编辑</a>
+						| <a href="javascript:modifyDescription('${product.id}')">编辑</a>
 					</div></td>
 			</tr>
 			<tr>
@@ -65,7 +65,7 @@
 						</c:forEach>
 					</div>
 					<div id="addTag">
-						| <a href="javascript:addTag()">add </a>
+						| <a href="javascript:addTag('${product.id}')">add </a>
 					</div></td>
 			</tr>
 

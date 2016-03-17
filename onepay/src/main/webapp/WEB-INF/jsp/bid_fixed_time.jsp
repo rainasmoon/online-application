@@ -33,16 +33,16 @@
 <div><p>我要举牌：</p></div>
 <div class="row marketing">
 	<div class="col-lg-4">
-		<a href="javascript:addMoney(1);"
+		<a href="javascript:addMoney('${productVo.productId}', 1);"
 			class="btn btn-primary btn-lg btn-block" role="button">+1猿</a>
 	</div>
 
 	<div class="col-lg-4">
-		<a href="javascript:addMoney(10);"
+		<a href="javascript:addMoney('${productVo.productId}', 10);"
 			class="btn btn-primary btn-lg btn-block" role="button">+10猿</a>
 	</div>
 	<div class="col-lg-4">
-		<a href="javascript:addMoney(100);"
+		<a href="javascript:addMoney('${productVo.productId}', 100);"
 			class="btn btn-primary btn-lg btn-block" role="button">+100猿</a>
 	</div>
 </div>

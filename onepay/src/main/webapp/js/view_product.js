@@ -1,17 +1,18 @@
-function addTag() {
-	$("#addTag")
-			.html(
-					"<input id='newInputTag' autofocus/><button onclick='saveProductTag()'>保存</button>");
+function addTag(productId) {
+	$("#addTag").html(
+			"<input id='newInputTag' autofocus/><button onclick='saveProductTag("
+					+ productId + ")'>保存</button>");
 }
-function modifyDescription() {
+function modifyDescription(productId) {
 	$("#modifyDescription")
 			.html(
-					'<textarea id="newInputDescription" class="form-control" rows="3"></textarea><button onclick="saveProductDescription()">保存</button>');
+					'<textarea id="newInputDescription" class="form-control" rows="3"></textarea><button onclick="saveProductDescription('
+							+ productId + ')">保存</button>');
 }
 
-function saveProductTag() {
+function saveProductTag(productId) {
 	$.post("restful/saveProductTag", {
-		productId : '${product.id}',
+		productId : productId,
 		value : $("#newInputTag").val()
 	}, function(data, status) {
 		$("#addTag").html(' | <a href="javascript:addTag()">add</a>');
@@ -20,9 +21,9 @@ function saveProductTag() {
 	});
 }
 
-function saveProductDescription() {
+function saveProductDescription(productId) {
 	$.post("restful/saveProductInfo", {
-		productId : '${product.id}',
+		productId : productId,
 		field : 'description',
 		value : $("#newInputDescription").val()
 	}, function(data, status) {
