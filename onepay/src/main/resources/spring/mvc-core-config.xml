@@ -88,5 +88,13 @@
 		<property name="warnLogCategory" value="warn" />
 		<!-- needed otherwise exceptions won't be logged anywhere -->
 	</bean>
+	
+	<bean id="dozerBeanMapper" class="org.dozer.spring.DozerBeanMapperFactoryBean">
+		<property name="mappingFiles">
+			<list>
+				<value>classpath:/spring/dozer-global-configuration.xml</value>
+			</list>
+		</property>
+	</bean>
 
 </beans>

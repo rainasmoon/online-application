@@ -37,6 +37,7 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public List<Order> findMyOrders(Long userId) {
+
 		return repository.findBySalerIdOrBuyerId(userId);
 	}
 
