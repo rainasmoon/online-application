@@ -23,6 +23,10 @@ public class ProductVo {
 
 	private String error;
 
+	public ProductVo() {
+		price = 1;
+	}
+
 	@Override
 	public String toString() {
 		return ReflectionToStringBuilder.toString(this, ToStringStyle.SHORT_PREFIX_STYLE);

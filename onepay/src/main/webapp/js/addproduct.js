@@ -15,3 +15,17 @@ function addNewTag() {
 					+ $('#inputNewTag').val() + '</label></label>');
 	$('#inputNewTag').val('');
 }
+
+function showPriceSession() {
+
+	if ($('[name="saleModel"]:checked').val() == 'guess_price') {
+		$('#showBasePrice').slideDown();
+	} else {
+		$('#showBasePrice').slideUp();
+	}
+}
+
+$(document).ready(function() {
+
+	showPriceSession();
+});
