@@ -50,7 +50,6 @@
 
 <hr>
 
-<script src="js/listproduct.js"></script>
 <jsp:include page="./fragments/footer.jsp" />
 
 

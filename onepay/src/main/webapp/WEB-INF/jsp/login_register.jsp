@@ -35,11 +35,7 @@
 	<button class="btn btn-lg btn-primary btn-block" type="button" onclick="goBack()">返回</button>
 	<button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
 </form:form>
-<script type="text/javascript">
-<!--
-function goBack() {
-	 window.location.href = "login.html";
-}
-//-->
-</script>
+
+<script src="js/login_register.js" type="text/javascript"></script>
+
 <jsp:include page="./fragments/footer.jsp" />
