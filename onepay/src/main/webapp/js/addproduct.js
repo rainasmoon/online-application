@@ -5,6 +5,7 @@ function setAging(age) {
 function addNewTag() {
 
 	if ($('#inputNewTag').val() == '') {
+		alert("tag 不能为空");
 		return;
 	}
 
