@@ -13,6 +13,7 @@
 
 <jsp:include page="./fragments/bodyHeader.jsp" />
 
+<h1>添加一个商品</h1>
 <form:form modelAttribute="product" method="post"
 	class="form-horizontal" id="add-product-form"
 	enctype="multipart/form-data">
