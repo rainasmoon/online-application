@@ -18,4 +18,18 @@ public enum ProductStatus {
 	public String getName() {
 		return name;
 	}
+
+	public static ProductStatus valueOf(Integer code) {
+		switch (code) {
+		case 1:
+			return ONSALE;
+		case 2:
+			return DEAL;
+		case 3:
+			return FAIL;
+		case 4:
+			return DONE;
+		}
+		return null;
+	}
 }

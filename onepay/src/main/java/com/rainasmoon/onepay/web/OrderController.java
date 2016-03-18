@@ -37,7 +37,7 @@ public class OrderController extends BaseController {
 	public String myOrders(Map<String, Object> model) {
 
 		List<Order> myOrders = orderService.findMyOrders(getLoginUserId());
-		List<OrderVo> orderVos = new ArrayList<OrderVo>();
+		List<OrderVo> result = new ArrayList<OrderVo>();
 		for (Order order : myOrders) {
 			OrderVo orderVo = dozerBeanMapper.map(order, OrderVo.class);
 			orderVo.setBuyerName(userService.findUser(orderVo.getBuyerId())
@@ -46,14 +46,11 @@ public class OrderController extends BaseController {
 					.getShowName());
 			orderVo.setProductName(productService.findProduct(
 					orderVo.getProductId()).getName());
-			orderVo.setStatusName(OrderStatus.valueOf(orderVo.getStatus())
-					.getName());
-			orderVo.setOperationName(transferToOperation(getLoginUserId(),
-					orderVo).getOperationName());
-			orderVos.add(orderVo);
+			orderVo.setOperation(transferToOperation(getLoginUserId(), orderVo));
+			result.add(orderVo);
 		}
 
-		model.put("orders", orderVos);
+		model.put("orders", result);
 
 		return "myorders";
 	}

@@ -42,7 +42,7 @@
 			</label> <label class="radio-inline"> <input type="radio"
 				name="saleModel" id="saleModel2" value="three_days" onclick="showPriceSession()"/> 3天拍
 			</label> <label class="radio-inline"> <input type="radio"
-				name="saleModel" id="saleModel3" value="guess_price" onclick="showPriceSession()" /> 猜假拍
+				name="saleModel" id="saleModel3" value="guess_price" onclick="showPriceSession()" /> 猜价拍
 			</label>
 			<div>
 				<div id="showBasePrice" style="display: none;">

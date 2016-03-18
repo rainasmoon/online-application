@@ -1,16 +1,23 @@
 package com.rainasmoon.onepay.enums;
 
 public enum SaleModels {
-	NORMALAUCTION(1), THREEDAYSALE(2), GUESSPRICE(3);
+	NORMALAUCTION(1, "一元拍"), THREEDAYSALE(2, "3天拍"), GUESSPRICE(3, "猜价拍");
 
 	private int code;
+	private String name;
 
-	private SaleModels(int code) {
+	private SaleModels(int code, String name) {
 		this.code = code;
+		this.name = name;
 	}
 
 	public Integer getCode() {
 		return code;
+	}
+
+	public String getName() {
+
+		return name;
 	}
 
 	public static SaleModels valueOfStr(String model) {

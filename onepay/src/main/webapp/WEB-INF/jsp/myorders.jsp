@@ -43,8 +43,8 @@
 							<td><c:out value="${arow.buyerName}" /></td>
 							<td><c:out value="${arow.productName}" /></td>
 							<td><c:out value="${arow.price}" /></td>
-							<td><c:out value="${arow.statusName}" /></td>
-							<td><c:out value="${arow.operationName}" /></td>
+							<td><c:out value="${arow.enumStatus.name}" /></td>
+							<td><c:out value="${arow.operation.operationName}" /></td>
 						</tr>
 					</c:forEach>
 				</tbody>

@@ -41,10 +41,10 @@
 						<tr>
 							<td><c:out value="${status.count}"/></td>
 							<td><a href="view_product.html?productId=${arow.id }"><c:out value="${arow.name}"/></a></td>
-							<td><c:out value="${arow.currentBiderId}" /></td>
-							<td><c:out value="${arow.saleModel}" /></td>
+							<td><c:out value="${arow.currentBiderName}" /></td>
+							<td><c:out value="${arow.enumSaleModel.name}" /></td>
 							<td><c:out value="${arow.price}" /></td>
-							<td><c:out value="${arow.status}" /></td>
+							<td><c:out value="${arow.enumStatus.name}" /></td>
 							<td><c:out value="${arow.id}" /></td>
 						</tr>
 					</c:forEach>

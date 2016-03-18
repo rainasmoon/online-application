@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.validation.Valid;
 
+import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
@@ -26,9 +27,10 @@ import com.rainasmoon.onepay.service.UserService;
 import com.rainasmoon.onepay.util.CommonConstants;
 import com.rainasmoon.onepay.util.CommonUtils;
 import com.rainasmoon.onepay.vo.AdVo;
+import com.rainasmoon.onepay.vo.AddProductVo;
 import com.rainasmoon.onepay.vo.BidProductVo;
 import com.rainasmoon.onepay.vo.ProductListPageVo;
-import com.rainasmoon.onepay.vo.AddProductVo;
+import com.rainasmoon.onepay.vo.ProductVo;
 
 @Controller
 @PropertySource("classpath:/spring/data-access.properties")
@@ -42,6 +44,9 @@ public class ProductController extends BaseController {
 
 	@Autowired
 	private TagService tagService;
+
+	@Autowired
+	private Mapper dozerBeanMapper;
 
 	@Autowired
 	private Environment env;
@@ -86,8 +91,17 @@ public class ProductController extends BaseController {
 		if (!isLogin()) {
 			return "redirect:login.html";
 		}
+		List<Product> mysales = productService
+				.listMySalesProductsPage(getLoginUserId());
+		List<ProductVo> result = new ArrayList<ProductVo>();
+		for (Product product : mysales) {
+			ProductVo productVo = dozerBeanMapper.map(product, ProductVo.class);
+			productVo.setCurrentBiderName(userService.findUser(
+					productVo.getCurrentBiderId()).getShowName());
 
-		model.put("products", productService.listMySalesProductsPage(getLoginUserId()));
+			result.add(productVo);
+		}
+		model.put("products", result);
 
 		return "mysales";
 	}
@@ -106,7 +120,9 @@ public class ProductController extends BaseController {
 	}
 
 	@RequestMapping(value = "/addproduct.html", method = RequestMethod.POST)
-	public String saveProduct(@Valid AddProductVo productVo, @RequestParam(required = false) MultipartFile inputPicFile, BindingResult result, Map<String, Object> model) {
+	public String saveProduct(@Valid AddProductVo productVo,
+			@RequestParam(required = false) MultipartFile inputPicFile,
+			BindingResult result, Map<String, Object> model) {
 
 		if (!isLogin()) {
 			return "redirect:login.html";
@@ -123,11 +139,13 @@ public class ProductController extends BaseController {
 			product.setOwnerId(getLoginUserId());
 			product.setCurrentBiderId(getLoginUserId());
 			if (productVo.getSaleModel() != null) {
-				product.setSaleModel(SaleModels.valueOfStr(productVo.getSaleModel()).getCode());
+				product.setSaleModel(SaleModels.valueOfStr(
+						productVo.getSaleModel()).getCode());
 			}
 			product.setAging(productVo.getAging());
 			product.setDescription(productVo.getDescription());
-			if (SaleModels.GUESSPRICE == SaleModels.valueOfStr(productVo.getSaleModel())) {
+			if (SaleModels.GUESSPRICE == SaleModels.valueOfStr(productVo
+					.getSaleModel())) {
 				product.setOriginalPrice(productVo.getPrice());
 				product.setPrice(productVo.getPrice());
 			} else {
@@ -135,8 +153,10 @@ public class ProductController extends BaseController {
 				product.setPrice(1);
 			}
 
-			if (SaleModels.THREEDAYSALE == SaleModels.valueOfStr(productVo.getSaleModel())) {
-				product.setEndDate(new Date(new Date().getTime() + CommonConstants.THREE_DAYS));
+			if (SaleModels.THREEDAYSALE == SaleModels.valueOfStr(productVo
+					.getSaleModel())) {
+				product.setEndDate(new Date(new Date().getTime()
+						+ CommonConstants.THREE_DAYS));
 			}
 
 			product.setStatus(ProductStatus.ONSALE.getCode());
@@ -157,7 +177,8 @@ public class ProductController extends BaseController {
 					model.put("message", "pic is too large...");
 					return "addproduct";
 				} else {
-					String picPath = CommonUtils.saveFile(product.getId(), inputPicFile, SYS_PIC_PATH);
+					String picPath = CommonUtils.saveFile(product.getId(),
+							inputPicFile, SYS_PIC_PATH);
 
 					productService.addPicture(product.getId(), picPath);
 				}
@@ -186,7 +207,9 @@ public class ProductController extends BaseController {
 	}
 
 	@RequestMapping(value = "/saveProductPic.html", method = RequestMethod.POST)
-	public String saveProductPic(Long productId, @RequestParam(required = false) MultipartFile inputPicFile, Map<String, Object> model) {
+	public String saveProductPic(Long productId,
+			@RequestParam(required = false) MultipartFile inputPicFile,
+			Map<String, Object> model) {
 
 		LOGGER.debug("WWW:pic:" + productId + inputPicFile);
 
@@ -199,7 +222,8 @@ public class ProductController extends BaseController {
 				model.put("message", "pic is too large...");
 				return "add_product_pic";
 			} else {
-				String picPath = CommonUtils.saveFile(productId, inputPicFile, SYS_PIC_PATH);
+				String picPath = CommonUtils.saveFile(productId, inputPicFile,
+						SYS_PIC_PATH);
 
 				productService.addPicture(productId, picPath);
 			}
