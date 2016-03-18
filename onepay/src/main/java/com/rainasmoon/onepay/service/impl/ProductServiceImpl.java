@@ -78,7 +78,9 @@ public class ProductServiceImpl implements ProductService {
 		productVo.setPicPath(getCoverPicture(productId).getPicPath());
 		productVo.setProductTitle(product.getName());
 		productVo.setPrice(product.getPrice());
-		productVo.setCurrentOwer(userRepository.findOne(product.getCurrentBiderId()).getShowName());
+		if (product.getCurrentBiderId() != null) {
+			productVo.setCurrentOwer(userRepository.findOne(product.getCurrentBiderId()).getShowName());
+		}
 		productVo.setSaleModel(SaleModels.valueOf(product.getSaleModel()));
 		productVo.setEndDate(product.getEndDate());
 		return productVo;
