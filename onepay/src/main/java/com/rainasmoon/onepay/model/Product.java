@@ -23,16 +23,18 @@ public class Product extends BaseEntity {
 	@Column(name = "sale_model")
 	private Integer saleModel;
 
-	@Column(name = "date_from")
-	private Date dateFrom;
-	@Column(name = "date_to")
-	private Date dateTo;
-
 	// 几成新？10：全新；1：1成新。
 	@Column(name = "aging")
 	private Integer aging;
 	@Column(name = "description")
 	private String description;
+
+	// 状态： 在售，成交，流拍，结束
+	@Column(name = "status")
+	private Integer status;
+
+	@Column(name = "end_date")
+	private Date endDate;
 
 	public void addPrice(Integer addMoney) {
 		price = price + addMoney;
@@ -87,28 +89,28 @@ public class Product extends BaseEntity {
 		this.description = description;
 	}
 
-	public Date getDateFrom() {
-		return dateFrom;
-	}
-
-	public void setDateFrom(Date dateFrom) {
-		this.dateFrom = dateFrom;
-	}
-
-	public Date getDateTo() {
-		return dateTo;
-	}
-
-	public void setDateTo(Date dateTo) {
-		this.dateTo = dateTo;
-	}
-
 	public Long getOwnerId() {
 		return ownerId;
 	}
 
 	public void setOwnerId(Long ownerId) {
 		this.ownerId = ownerId;
+	}
+
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
 	}
 
 }

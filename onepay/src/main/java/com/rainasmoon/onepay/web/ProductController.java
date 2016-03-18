@@ -130,9 +130,6 @@ public class ProductController extends BaseController {
 				product.setPrice(1);
 			}
 
-			product.setDateFrom(productVo.getDateFrom());
-			product.setDateTo(productVo.getDateTo());
-
 			product = productService.addProduct(product);
 
 			if (productVo.getTags() != null) {

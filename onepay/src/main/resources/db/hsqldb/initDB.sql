@@ -25,8 +25,8 @@ CREATE TABLE products (
   owner_id INTEGER,
   current_bider_id INTEGER,
   sale_model INTEGER,
-  date_from TIMESTAMP,
-  date_to TIMESTAMP,
+  status INTEGER,
+  end_date TIMESTAMP,
   aging INTEGER,
   description VARCHAR(100)
 );

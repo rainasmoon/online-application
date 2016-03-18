@@ -35,35 +35,14 @@
 		</div>
 		<hr />
 		<label class="radio-inline"> <input type="radio"
-			name="saleModel" id="saleModel1" value="fix_time" /> 定時秒杀拍
+			name="saleModel" id="saleModel1" value="three_times" checked/> 一元拍
 		</label> <label class="radio-inline"> <input type="radio"
-			name="saleModel" id="saleModel2" value="three_days" /> 3天内拍
+			name="saleModel" id="saleModel2" value="three_days" /> 3天拍
 		</label> <label class="radio-inline"> <input type="radio"
 			name="saleModel" id="saleModel3" value="guess_price" /> 猜假拍
-		</label>
+		</label>		
 		<div>
-			从
-			<form:input path="dateFrom" class="form-control" size="10"
-				placeholder="yyyy-mm-dd" maxLength="10" minLength="10" />
-			<select id="timeFrom" name="timeFrom" class="form-control">
-				<option value="10:00">10:00</option>
-				<option>12:00</option>
-				<option>17:00</option>
-				<option>20:00</option>
-				<option>22:00</option>
-			</select> 到
-			<form:input path="dateTo" class="form-control" size="10"
-				placeholder="yyyy-mm-dd" maxLength="10" minLength="10" />
-			<select id="timeTo" name="timeTo" class="form-control">
-				<option value="10:00">10:00</option>
-				<option>12:00</option>
-				<option>17:00</option>
-				<option>20:00</option>
-				<option>22:00</option>
-			</select>
-		</div>
-		<div>
-			<onepayapp:inputField label="底价" name="price" type="number" />
+			<onepayapp:inputField label="底价" name="price" type="number" value="1"/>
 		</div>
 		<hr />
 		<div >
@@ -116,10 +95,11 @@
 		<button type="submit" class="btn btn-primary">Submit</button>
 	</fieldset>
 </form:form>
+
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<script src="js/listproduct.js" type="text/javascript"></script>
+<script src="js/addproduct.js" type="text/javascript"></script>
 
 <jsp:include page="./fragments/footer.jsp" />
 

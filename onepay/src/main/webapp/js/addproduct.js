@@ -1,10 +1,3 @@
-$('#dateFrom').datepicker({
-	dateFormat : 'yy-mm-dd'
-});
-$('#dateTo').datepicker({
-	dateFormat : 'yy-mm-dd'
-});
-
 function setAging(age) {
 	$('#aging').val(age);
 }
