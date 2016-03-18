@@ -41,5 +41,4 @@ public class Tag extends BaseEntity {
 		this.type = type;
 	}
 
-	
 }

@@ -16,7 +16,8 @@ CREATE TABLE users (
   total_amount INTEGER,
   account INTEGER,
   level INTEGER,
-  credit INTEGER
+  credit INTEGER,
+  create_date TIMESTAMP
 );
 
 CREATE TABLE products (
@@ -30,7 +31,8 @@ CREATE TABLE products (
   status INTEGER,
   end_date TIMESTAMP,
   aging INTEGER,
-  description VARCHAR(100)
+  description VARCHAR(100),
+  create_date TIMESTAMP
 );
 
 CREATE TABLE pictures (
@@ -45,7 +47,8 @@ CREATE TABLE tags (
   id INTEGER IDENTITY PRIMARY KEY,
   obj_id INTEGER,
   name VARCHAR(100),
-  tag_type INTEGER
+  tag_type INTEGER,
+  create_date TIMESTAMP
   
 );
 

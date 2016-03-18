@@ -1,5 +1,8 @@
 package com.rainasmoon.onepay.model;
 
+import java.util.Date;
+
+import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,6 +16,13 @@ public class BaseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Long id;
+
+	@Column(name = "create_date")
+	private Date createDate;
+
+	public BaseEntity() {
+		createDate = new Date();
+	}
 
 	@Override
 	public String toString() {
@@ -58,6 +68,14 @@ public class BaseEntity {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Date getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
 	}
 
 }

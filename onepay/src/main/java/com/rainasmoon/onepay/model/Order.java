@@ -1,7 +1,5 @@
 package com.rainasmoon.onepay.model;
 
-import java.util.Date;
-
 public class Order extends BaseEntity {
 
 	private Long salerId;
@@ -20,7 +18,6 @@ public class Order extends BaseEntity {
 
 	// 待支付，待发货，完成，失败
 	private Integer status;
-	private Date createTime;
 
 	public Long getSalerId() {
 		return salerId;
@@ -60,14 +57,6 @@ public class Order extends BaseEntity {
 
 	public void setStatus(Integer status) {
 		this.status = status;
-	}
-
-	public Date getCreateTime() {
-		return createTime;
-	}
-
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
 	}
 
 	public String getSenderName() {

@@ -1,7 +1,5 @@
 package com.rainasmoon.onepay.service.impl;
 
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,7 +29,6 @@ public class BidServiceImpl implements BidService {
 		bidLog.setUserId(userId);
 		bidLog.setProductId(productId);
 		bidLog.setPrice(product.getPrice());
-		bidLog.setCreateDate(new Date());
 		repository.save(bidLog);
 
 		return product;
@@ -52,7 +49,6 @@ public class BidServiceImpl implements BidService {
 		bidLog.setUserId(userId);
 		bidLog.setProductId(productId);
 		bidLog.setPrice(product.getPrice());
-		bidLog.setCreateDate(new Date());
 		repository.save(bidLog);
 
 		return result;

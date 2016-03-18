@@ -1,7 +1,5 @@
 package com.rainasmoon.onepay.model;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -14,8 +12,6 @@ public class Picture extends BaseEntity {
 	private Long productId;
 	@Column(name = "pic_path")
 	private String picPath;
-	@Column(name = "create_date")
-	private Date createDate;
 
 	public static Picture noPicture() {
 		Picture picture = new Picture();
@@ -37,14 +33,6 @@ public class Picture extends BaseEntity {
 
 	public void setPicPath(String picPath) {
 		this.picPath = picPath;
-	}
-
-	public Date getCreateDate() {
-		return createDate;
-	}
-
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
 	}
 
 }

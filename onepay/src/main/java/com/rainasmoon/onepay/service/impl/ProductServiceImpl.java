@@ -1,7 +1,6 @@
 package com.rainasmoon.onepay.service.impl;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,7 +54,6 @@ public class ProductServiceImpl implements ProductService {
 		Picture picture = new Picture();
 		picture.setProductId(productId);
 		picture.setPicPath(picPath);
-		picture.setCreateDate(new Date());
 
 		return pictureRepository.save(picture);
 	}

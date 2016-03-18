@@ -1,7 +1,5 @@
 package com.rainasmoon.onepay.model;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -16,8 +14,6 @@ public class BidLog extends BaseEntity {
 	private Long productId;
 	@Column(name = "price")
 	private Integer price;
-	@Column(name = "create_date")
-	private Date createDate;
 
 	public Long getUserId() {
 		return userId;
@@ -41,14 +37,6 @@ public class BidLog extends BaseEntity {
 
 	public void setPrice(Integer price) {
 		this.price = price;
-	}
-
-	public Date getCreateDate() {
-		return createDate;
-	}
-
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
 	}
 
 }
