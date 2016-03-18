@@ -26,9 +26,9 @@
 				<thead>
 					<tr>
 						<th>#</th>
-						<th>Name</th>
-						<th>current bider</th>
-						<th>sale model</th>
+						<th>卖家</th>
+						<th>买家</th>
+						<th>产品</th>
 						<th>price</th>
 						<th>status</th>
 						<th>操作</th>
