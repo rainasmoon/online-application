@@ -7,4 +7,6 @@ public class CommonConstants {
 	public static final String PRODUCT_PIC_PATH_ID = "product.pic.location";
 
 	public static final int PIC_MAX_ALLOW_SIZE = 5000000;
+
+	public static final long THREE_DAYS = 60 * 60 * 24 * 3 * 1000;
 }

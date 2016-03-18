@@ -135,7 +135,7 @@ public class ProductController extends BaseController {
 			}
 
 			if (SaleModels.THREEDAYSALE == SaleModels.valueOfStr(productVo.getSaleModel())) {
-				product.setEndDate(new Date(new Date().getTime() + 60 * 60 * 24 * 3));
+				product.setEndDate(new Date(new Date().getTime() + CommonConstants.THREE_DAYS));
 			}
 
 			product.setStatus(ProductStatus.ONSALE.getCode());
