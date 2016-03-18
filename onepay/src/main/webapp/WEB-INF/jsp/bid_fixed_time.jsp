@@ -25,7 +25,7 @@
 	</p>
 	<p>
 	<div id="productPrice" class="alert alert-info" role="alert">
-		现价：<c:out value="${productVo.price}" />猿
+		<c:out value="${productVo.price}" />
 	</div>
 	</p>
 
