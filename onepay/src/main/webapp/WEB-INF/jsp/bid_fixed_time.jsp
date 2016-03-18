@@ -12,7 +12,12 @@
 	<h1>
 		<c:out value="${productVo.productTitle}" />
 	</h1>
-	<p>竞拍人数：<c:out value="${productVo.bidersCount}" />。。。当前属于：<c:out value="${productVo.currentOwer}" />...结束时间：<c:out value="${productVo.endTime}" /></p>
+	<p>
+
+		当前属于：
+		<c:out value="${productVo.currentOwer}" />
+		...
+	</p>
 	<div class="thumbnail">
 		<img alt="" src="product_pic/${productVo.picPath }" width="300"
 			height="300">
@@ -30,7 +35,9 @@
 	</p>
 
 </div>
-<div><p>我要举牌：</p></div>
+<div>
+	<p>我要举牌：</p>
+</div>
 <div class="row marketing">
 	<div class="col-lg-4">
 		<a href="javascript:addMoney('${productVo.productId}', 1);"
@@ -47,7 +54,7 @@
 	</div>
 </div>
 
-<script src="js/bid_fixed_time.js" type="text/javascript"></script>
+<script src="js/bid.js" type="text/javascript"></script>
 
 <jsp:include page="./fragments/footer.jsp" />
 

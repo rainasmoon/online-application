@@ -3,6 +3,8 @@ package com.rainasmoon.onepay.vo;
 import java.util.Date;
 import java.util.List;
 
+import com.rainasmoon.onepay.enums.SaleModels;
+
 public class BidProductVo {
 
 	private Long productId;
@@ -14,8 +16,9 @@ public class BidProductVo {
 	private Integer originalPrice;
 	private Integer price;
 	private String picPath;
-	private Date startTime;
 	private Date endTime;
+
+	private SaleModels saleModel;
 
 	public String getProductTitle() {
 		return productTitle;
@@ -65,14 +68,6 @@ public class BidProductVo {
 		this.picPath = picPath;
 	}
 
-	public Date getStartTime() {
-		return startTime;
-	}
-
-	public void setStartTime(Date startTime) {
-		this.startTime = startTime;
-	}
-
 	public Date getEndTime() {
 		return endTime;
 	}
@@ -103,6 +98,14 @@ public class BidProductVo {
 
 	public void setBidersCount(Integer bidersCount) {
 		this.bidersCount = bidersCount;
+	}
+
+	public SaleModels getSaleModel() {
+		return saleModel;
+	}
+
+	public void setSaleModel(SaleModels saleModel) {
+		this.saleModel = saleModel;
 	}
 
 }

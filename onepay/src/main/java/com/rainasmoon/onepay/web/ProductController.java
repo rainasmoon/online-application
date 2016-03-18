@@ -215,6 +215,13 @@ public class ProductController extends BaseController {
 		BidProductVo productVo = productService.findBidProductVo(productId);
 		model.put("productTags", tagService.findProductTags(productId));
 		model.put("productVo", productVo);
+
+		if (productVo.getSaleModel() == SaleModels.GUESSPRICE) {
+			return "guessprice";
+		} else if (productVo.getSaleModel() == SaleModels.THREEDAYSALE) {
+			return "bid_3_days";
+		}
+
 		return "bid_fixed_time";
 	}
 

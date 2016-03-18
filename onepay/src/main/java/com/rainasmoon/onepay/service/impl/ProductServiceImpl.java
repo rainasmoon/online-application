@@ -7,10 +7,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.rainasmoon.onepay.enums.SaleModels;
 import com.rainasmoon.onepay.model.Picture;
 import com.rainasmoon.onepay.model.Product;
 import com.rainasmoon.onepay.repository.springdatajpa.PictureRepository;
 import com.rainasmoon.onepay.repository.springdatajpa.ProductRepository;
+import com.rainasmoon.onepay.repository.springdatajpa.UserRepository;
 import com.rainasmoon.onepay.service.ProductService;
 import com.rainasmoon.onepay.vo.AdVo;
 import com.rainasmoon.onepay.vo.BidProductVo;
@@ -23,6 +25,9 @@ public class ProductServiceImpl implements ProductService {
 
 	@Autowired
 	private PictureRepository pictureRepository;
+
+	@Autowired
+	private UserRepository userRepository;
 
 	@Override
 	public Product addProduct(Product product) {
@@ -72,6 +77,8 @@ public class ProductServiceImpl implements ProductService {
 		productVo.setPicPath(getCoverPicture(productId).getPicPath());
 		productVo.setProductTitle(product.getName());
 		productVo.setPrice(product.getPrice());
+		productVo.setCurrentOwer(userRepository.findOne(product.getCurrentBiderId()).getShowName());
+		productVo.setSaleModel(SaleModels.valueOf("" + product.getSaleModel()));
 		return productVo;
 	}
 

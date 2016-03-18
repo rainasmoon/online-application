@@ -15,6 +15,7 @@ public interface UserService {
 	List<User> listActiveTop5Users();
 
 	User findUser(Long userId);
-	
+
 	User updateUser(User user);
+
 }

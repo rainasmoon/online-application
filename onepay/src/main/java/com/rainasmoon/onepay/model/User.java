@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import org.apache.commons.lang3.StringUtils;
+
 @Entity
 @Table(name = "users")
 public class User extends BaseEntity {
@@ -26,6 +28,19 @@ public class User extends BaseEntity {
 	private Integer level;
 	@Column(name = "credit")
 	private Integer credit;
+
+	public String getShowName() {
+		if (StringUtils.isNotBlank(nickName)) {
+			return nickName;
+		}
+		if (StringUtils.isNotBlank(phone)) {
+			return phone;
+		}
+		if (StringUtils.isNotBlank(email)) {
+			return email;
+		}
+		return id.toString();
+	}
 
 	public String getEmail() {
 		return email;
