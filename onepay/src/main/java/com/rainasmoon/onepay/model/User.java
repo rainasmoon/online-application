@@ -24,6 +24,8 @@ public class User extends BaseEntity {
 	private Integer buyAmount;
 	@Column(name = "total_amount")
 	private Integer totalAmount;
+	@Column(name = "account")
+	private Integer account;
 	@Column(name = "level")
 	private Integer level;
 	@Column(name = "credit")
@@ -112,6 +114,14 @@ public class User extends BaseEntity {
 
 	public void setCredit(Integer credit) {
 		this.credit = credit;
+	}
+
+	public Integer getAccount() {
+		return account;
+	}
+
+	public void setAccount(Integer account) {
+		this.account = account;
 	}
 
 }

@@ -14,6 +14,7 @@ CREATE TABLE users (
   sell_amount INTEGER,
   buy_amount INTEGER,
   total_amount INTEGER,
+  account INTEGER,
   level INTEGER,
   credit INTEGER
 );
