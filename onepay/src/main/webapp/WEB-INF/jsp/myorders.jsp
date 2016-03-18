@@ -39,11 +39,11 @@
 					<c:forEach var="arow" items="${orders}" varStatus="status">
 						<tr>
 							<td><c:out value="${status.count}"/></td>
-							<td><c:out value="${arow.salerId}"/></td>
-							<td><c:out value="${arow.buyerId}" /></td>
-							<td><c:out value="${arow.productId}" /></td>
+							<td><c:out value="${arow.salerName}"/></td>
+							<td><c:out value="${arow.buyerName}" /></td>
+							<td><c:out value="${arow.productName}" /></td>
 							<td><c:out value="${arow.price}" /></td>
-							<td><c:out value="${arow.status}" /></td>
+							<td><c:out value="${arow.statusName}" /></td>
 							<td><c:out value="${arow.id}" /></td>
 						</tr>
 					</c:forEach>

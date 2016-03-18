@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.rainasmoon.onepay.model.Order;
 import com.rainasmoon.onepay.service.OrderService;
+import com.rainasmoon.onepay.service.ProductService;
+import com.rainasmoon.onepay.service.UserService;
 import com.rainasmoon.onepay.vo.OrderVo;
 
 @Controller
@@ -19,6 +21,12 @@ public class OrderController extends BaseController {
 
 	@Autowired
 	private OrderService orderService;
+
+	@Autowired
+	private UserService userService;
+
+	@Autowired
+	private ProductService productService;
 
 	@Autowired
 	private Mapper dozerBeanMapper;
@@ -29,7 +37,14 @@ public class OrderController extends BaseController {
 		List<Order> myOrders = orderService.findMyOrders(getLoginUserId());
 		List<OrderVo> orderVos = new ArrayList<OrderVo>();
 		for (Order order : myOrders) {
-			orderVos.add(dozerBeanMapper.map(order, OrderVo.class));
+			OrderVo orderVo = dozerBeanMapper.map(order, OrderVo.class);
+			orderVo.setBuyerName(userService.findUser(orderVo.getBuyerId()).getShowName());
+			orderVo.setSalerName(userService.findUser(orderVo.getSalerId()).getShowName());
+			orderVo.setProductName(productService.findProduct(orderVo.getProductId()).getName());
+			// TODO glen
+			orderVo.setStatusName("");
+			orderVo.setOperateName("do...");
+			orderVos.add(orderVo);
 		}
 
 		model.put("orders", orderVos);
