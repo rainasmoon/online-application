@@ -15,7 +15,7 @@ public interface ProductService {
 
 	Product updateProduct(Product product);
 
-	List<AdVo> listAllProductsPage();
+	List<AdVo> listAllOnSaleProductsPage();
 
 	List<Product> listMySalesProductsPage(Long loginUserId);
 

@@ -55,7 +55,7 @@ public class ProductController extends BaseController {
 
 		vo.setActiveTop5Users(userService.listActiveTop5Users());
 
-		vo.setProducts(productService.listAllProductsPage());
+		vo.setProducts(productService.listAllOnSaleProductsPage());
 
 		model.put("vo", vo);
 

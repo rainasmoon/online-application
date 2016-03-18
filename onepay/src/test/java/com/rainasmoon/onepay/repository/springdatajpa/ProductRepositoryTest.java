@@ -24,8 +24,7 @@ import com.rainasmoon.onepay.model.Product;
 @ActiveProfiles("dev")
 @Rollback(true)
 @Transactional
-@Sql(value = { "classpath:insert-test-data.sql" }, config = @SqlConfig(encoding = "utf-8", separator = ";", commentPrefix = "--", dataSource = "dataSource", transactionManager = "transactionManager") )
-
+@Sql(value = { "classpath:insert-test-data.sql" }, config = @SqlConfig(encoding = "utf-8", separator = ";", commentPrefix = "--", dataSource = "dataSource", transactionManager = "transactionManager"))
 public class ProductRepositoryTest {
 
 	Logger LOGGER = LoggerFactory.getLogger(ProductRepositoryTest.class);
@@ -52,6 +51,13 @@ public class ProductRepositoryTest {
 	@Test
 	public void shouldFindMySales() {
 		List<Product> r = repository.findByOwnerId(1L);
+
+		assertNotNull(r);
+	}
+
+	@Test
+	public void shouldFindByStatus() {
+		List<Product> r = repository.findByStatus(1);
 
 		assertNotNull(r);
 	}
