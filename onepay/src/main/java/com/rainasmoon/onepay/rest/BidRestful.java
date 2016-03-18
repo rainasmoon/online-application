@@ -27,7 +27,7 @@ public class BidRestful extends BaseController {
 	}
 
 	@RequestMapping("/restful/guess")
-	public String guess(@RequestParam(value = "productId") Long productId, @RequestParam(value = "money", defaultValue = "1") Integer money) {
+	public String guess(@RequestParam(value = "productId") Long productId, @RequestParam(value = "money") Integer money) {
 		if (getLoginUserId() == null) {
 			return CommonConstants.NO_LOGIN_MSG;
 		}
