@@ -28,7 +28,7 @@ import com.rainasmoon.onepay.util.CommonUtils;
 import com.rainasmoon.onepay.vo.AdVo;
 import com.rainasmoon.onepay.vo.BidProductVo;
 import com.rainasmoon.onepay.vo.ProductListPageVo;
-import com.rainasmoon.onepay.vo.ProductVo;
+import com.rainasmoon.onepay.vo.AddProductVo;
 
 @Controller
 @PropertySource("classpath:/spring/data-access.properties")
@@ -99,14 +99,14 @@ public class ProductController extends BaseController {
 			return "redirect:login.html";
 		}
 
-		ProductVo product = new ProductVo();
+		AddProductVo product = new AddProductVo();
 
 		model.put("product", product);
 		return "addproduct";
 	}
 
 	@RequestMapping(value = "/addproduct.html", method = RequestMethod.POST)
-	public String saveProduct(@Valid ProductVo productVo, @RequestParam(required = false) MultipartFile inputPicFile, BindingResult result, Map<String, Object> model) {
+	public String saveProduct(@Valid AddProductVo productVo, @RequestParam(required = false) MultipartFile inputPicFile, BindingResult result, Map<String, Object> model) {
 
 		if (!isLogin()) {
 			return "redirect:login.html";
@@ -166,7 +166,7 @@ public class ProductController extends BaseController {
 			}
 
 			model.put("message", "add product success.");
-			model.put("product", new ProductVo());
+			model.put("product", new AddProductVo());
 			return "addproduct";
 		}
 	}
