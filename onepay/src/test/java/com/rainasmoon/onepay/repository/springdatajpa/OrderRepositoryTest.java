@@ -2,6 +2,8 @@ package com.rainasmoon.onepay.repository.springdatajpa;
 
 import static org.junit.Assert.assertNotNull;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -26,6 +28,14 @@ public class OrderRepositoryTest {
 	@Test
 	public void shouldFindAll() {
 		Iterable<Order> r = repository.findAll();
+		assertNotNull(r);
+
+		LOGGER.info(":WWW:" + r.toString());
+	}
+
+	@Test
+	public void shouldFindBuyerIdOrSalerId() {
+		List<Order> r = repository.findBySalerIdOrBuyerId(1L);
 		assertNotNull(r);
 
 		LOGGER.info(":WWW:" + r.toString());

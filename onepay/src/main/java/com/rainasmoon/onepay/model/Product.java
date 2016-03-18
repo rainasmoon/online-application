@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import com.rainasmoon.onepay.enums.ProductStatus;
+
 @Entity
 @Table(name = "products")
 public class Product extends BaseEntity {
@@ -41,6 +43,11 @@ public class Product extends BaseEntity {
 	public void addPrice(Integer addMoney) {
 		price = price + addMoney;
 
+	}
+
+	public boolean isOnSale() {
+
+		return ProductStatus.ONSALE.getCode().equals(status);
 	}
 
 	public String getName() {

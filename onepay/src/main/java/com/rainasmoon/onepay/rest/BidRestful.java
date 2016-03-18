@@ -24,7 +24,7 @@ public class BidRestful extends BaseController {
 
 	@RequestMapping("/restful/guess")
 	public String guess(@RequestParam(value = "productId") Long productId, @RequestParam(value = "money", defaultValue = "1") Integer money) {
-		boolean result = bidService.guessMoney(getLoginUserId(), productId, money);
-		return result ? "成交了" : "太低了，不卖";
+		String result = bidService.guessMoney(getLoginUserId(), productId, money);
+		return result;
 	}
 }
