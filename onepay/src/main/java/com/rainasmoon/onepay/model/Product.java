@@ -12,6 +12,8 @@ public class Product extends BaseEntity {
 
 	@Column(name = "name")
 	private String name;
+	@Column(name = "original_price")
+	private Integer originalPrice;
 	@Column(name = "price")
 	private Integer price;
 	@Column(name = "owner_id")
@@ -111,6 +113,14 @@ public class Product extends BaseEntity {
 
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
+	}
+
+	public Integer getOriginalPrice() {
+		return originalPrice;
+	}
+
+	public void setOriginalPrice(Integer originalPrice) {
+		this.originalPrice = originalPrice;
 	}
 
 }

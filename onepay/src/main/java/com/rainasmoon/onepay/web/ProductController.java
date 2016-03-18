@@ -1,6 +1,7 @@
 package com.rainasmoon.onepay.web;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -126,9 +127,15 @@ public class ProductController extends BaseController {
 			product.setAging(productVo.getAging());
 			product.setDescription(productVo.getDescription());
 			if (SaleModels.GUESSPRICE == SaleModels.valueOfStr(productVo.getSaleModel())) {
+				product.setOriginalPrice(productVo.getPrice());
 				product.setPrice(productVo.getPrice());
 			} else {
+				product.setOriginalPrice(1);
 				product.setPrice(1);
+			}
+
+			if (SaleModels.THREEDAYSALE == SaleModels.valueOfStr(productVo.getSaleModel())) {
+				product.setEndDate(new Date(new Date().getTime() + 60 * 60 * 24 * 3));
 			}
 
 			product.setStatus(ProductStatus.ONSALE.getCode());

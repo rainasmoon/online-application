@@ -38,6 +38,14 @@
 				<td><c:out value="${product.saleModel}" /></td>
 			</tr>
 			<tr>
+				<td>结束时间</td>
+				<td><c:out value="${product.endDate}" /></td>
+			</tr>
+			<tr>
+				<td>起始价格</td>
+				<td><c:out value="${product.originalPrice}" /></td>
+			</tr>
+			<tr>
 				<td>新旧程度</td>
 				<td><c:out value="${product.aging}" /></td>
 			</tr>

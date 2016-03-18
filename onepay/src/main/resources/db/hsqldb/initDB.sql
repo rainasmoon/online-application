@@ -21,6 +21,7 @@ CREATE TABLE users (
 CREATE TABLE products (
   id INTEGER IDENTITY PRIMARY KEY,
   name VARCHAR(100),
+  original_price INTEGER,
   price INTEGER,
   owner_id INTEGER,
   current_bider_id INTEGER,
