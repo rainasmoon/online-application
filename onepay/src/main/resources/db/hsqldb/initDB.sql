@@ -5,6 +5,8 @@ DROP TABLE tags IF EXISTS;
 
 DROP TABLE bidlogs IF EXISTS;
 
+DROP TABLE orders IF EXISTS;
+
 CREATE TABLE users (
   id INTEGER IDENTITY PRIMARY KEY,
   email VARCHAR(100),
@@ -60,3 +62,21 @@ CREATE TABLE bidlogs (
   create_date TIMESTAMP
   
 );
+
+CREATE TABLE orders (
+  id INTEGER IDENTITY PRIMARY KEY,
+  saler_id INTEGER,
+  buyer_id INTEGER,
+  product_id INTEGER,
+  price INTEGER,
+  sender_name VARCHAR(100),
+  sender_phone VARCHAR(100),
+  sender_address VARCHAR(100),
+  sender_postcode VARCHAR(100),
+  receiver_name VARCHAR(100),
+  receiver_phone VARCHAR(100),
+  receiver_address VARCHAR(100),
+  receiver_postcode VARCHAR(100),
+  status INTEGER,
+  create_date TIMESTAMP
+  );

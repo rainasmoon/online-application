@@ -1,22 +1,40 @@
 package com.rainasmoon.onepay.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "orders")
 public class Order extends BaseEntity {
 
+	@Column(name = "saler_id")
 	private Long salerId;
+	@Column(name = "buyer_id")
 	private Long buyerId;
+	@Column(name = "product_id")
 	private Long productId;
+	@Column(name = "price")
 	private Integer price;
-
+	@Column(name = "sender_name")
 	private String senderName;
+	@Column(name = "sender_phone")
 	private String senderPhone;
+	@Column(name = "sender_address")
 	private String senderAddress;
+	@Column(name = "sender_postcode")
 	private String senderPostcode;
+	@Column(name = "receiver_name")
 	private String receiverName;
+	@Column(name = "receiver_phone")
 	private String receiverPhone;
+	@Column(name = "receiver_address")
 	private String receiverAddress;
+	@Column(name = "receiver_postcode")
 	private String receiverPostcode;
 
 	// 待支付，待发货，完成，失败
+	@Column(name = "status")
 	private Integer status;
 
 	public Long getSalerId() {
