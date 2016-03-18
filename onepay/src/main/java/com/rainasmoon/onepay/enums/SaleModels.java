@@ -24,4 +24,16 @@ public enum SaleModels {
 
 		return null;
 	}
+
+	public static SaleModels valueOf(Integer model) {
+		if (model == 1) {
+			return NORMALAUCTION;
+		} else if (model == 2) {
+			return THREEDAYSALE;
+		} else if (model == 3) {
+			return GUESSPRICE;
+		}
+
+		return null;
+	}
 }

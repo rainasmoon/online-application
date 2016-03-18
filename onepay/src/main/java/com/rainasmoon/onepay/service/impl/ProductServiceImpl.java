@@ -63,7 +63,7 @@ public class ProductServiceImpl implements ProductService {
 	private Picture getCoverPicture(Long productId) {
 		List<Picture> pics = pictureRepository.findPictures(productId);
 
-		if (pics.size() <= 0) {
+		if (pics == null || pics.size() <= 0) {
 			return Picture.noPicture();
 		}
 		return pics.get(0);
@@ -73,12 +73,16 @@ public class ProductServiceImpl implements ProductService {
 	public BidProductVo findBidProductVo(Long productId) {
 		BidProductVo productVo = new BidProductVo();
 		Product product = repository.findOne(productId);
+		if (product == null) {
+			return new BidProductVo();
+		}
 		productVo.setProductId(productId);
 		productVo.setPicPath(getCoverPicture(productId).getPicPath());
 		productVo.setProductTitle(product.getName());
 		productVo.setPrice(product.getPrice());
 		productVo.setCurrentOwer(userRepository.findOne(product.getCurrentBiderId()).getShowName());
-		productVo.setSaleModel(SaleModels.valueOf("" + product.getSaleModel()));
+		productVo.setSaleModel(SaleModels.valueOf(product.getSaleModel()));
+		productVo.setEndDate(product.getEndDate());
 		return productVo;
 	}
 

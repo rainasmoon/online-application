@@ -99,7 +99,7 @@
 	<logger name="org.hibernate.type.descriptor.sql.BasicBinder"
 		level="TRACE" />
 
-	<root level="info">
+	<root level="debug">
 		<appender-ref ref="console" />
 		<appender-ref ref="rollingFile" />
 	</root>

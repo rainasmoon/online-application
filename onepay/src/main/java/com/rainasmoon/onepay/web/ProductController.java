@@ -121,6 +121,7 @@ public class ProductController extends BaseController {
 			Product product = new Product();
 			product.setName(productVo.getProductName());
 			product.setOwnerId(getLoginUserId());
+			product.setCurrentBiderId(getLoginUserId());
 			if (productVo.getSaleModel() != null) {
 				product.setSaleModel(SaleModels.valueOfStr(productVo.getSaleModel()).getCode());
 			}
@@ -217,9 +218,11 @@ public class ProductController extends BaseController {
 		model.put("productVo", productVo);
 
 		if (productVo.getSaleModel() == SaleModels.GUESSPRICE) {
-			return "guessprice";
+			model.put("saleModel", "guess_price");
+			return "bid_fixed_time";
 		} else if (productVo.getSaleModel() == SaleModels.THREEDAYSALE) {
-			return "bid_3_days";
+			model.put("endDate", productVo.getEndDate());
+			return "bid_fixed_time";
 		}
 
 		return "bid_fixed_time";

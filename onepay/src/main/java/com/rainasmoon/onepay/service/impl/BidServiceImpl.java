@@ -24,6 +24,7 @@ public class BidServiceImpl implements BidService {
 	public Product bidAddMoney(Long userId, Long productId, Integer addMoney) {
 		Product product = productRepository.findOne(productId);
 		product.addPrice(addMoney);
+		product.setCurrentBiderId(userId);
 		productRepository.save(product);
 
 		BidLog bidLog = new BidLog();
@@ -34,6 +35,27 @@ public class BidServiceImpl implements BidService {
 		repository.save(bidLog);
 
 		return product;
+	}
+
+	@Override
+	public boolean guessMoney(Long userId, Long productId, Integer money) {
+		Product product = productRepository.findOne(productId);
+
+		boolean result = false;
+		if (money >= product.getOriginalPrice()) {
+			product.setPrice(money);
+			product.setCurrentBiderId(userId);
+			result = true;
+		}
+
+		BidLog bidLog = new BidLog();
+		bidLog.setUserId(userId);
+		bidLog.setProductId(productId);
+		bidLog.setPrice(product.getPrice());
+		bidLog.setCreateDate(new Date());
+		repository.save(bidLog);
+
+		return result;
 	}
 
 }

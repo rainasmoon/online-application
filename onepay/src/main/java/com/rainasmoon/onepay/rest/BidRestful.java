@@ -17,10 +17,14 @@ public class BidRestful extends BaseController {
 	private BidService bidService;
 
 	@RequestMapping("/restful/bid")
-	public String bid(@RequestParam(value = "productId") Long productId,
-			@RequestParam(value = "money", defaultValue = "1") Integer money) {
-		Product product = bidService.bidAddMoney(getLoginUserId(), productId,
-				money);
+	public String bid(@RequestParam(value = "productId") Long productId, @RequestParam(value = "money", defaultValue = "1") Integer money) {
+		Product product = bidService.bidAddMoney(getLoginUserId(), productId, money);
 		return product.getPrice().toString();
+	}
+
+	@RequestMapping("/restful/guess")
+	public String guess(@RequestParam(value = "productId") Long productId, @RequestParam(value = "money", defaultValue = "1") Integer money) {
+		boolean result = bidService.guessMoney(getLoginUserId(), productId, money);
+		return result ? "成交了" : "太低了，不卖";
 	}
 }

@@ -16,7 +16,7 @@ public class BidProductVo {
 	private Integer originalPrice;
 	private Integer price;
 	private String picPath;
-	private Date endTime;
+	private Date endDate;
 
 	private SaleModels saleModel;
 
@@ -68,14 +68,6 @@ public class BidProductVo {
 		this.picPath = picPath;
 	}
 
-	public Date getEndTime() {
-		return endTime;
-	}
-
-	public void setEndTime(Date endTime) {
-		this.endTime = endTime;
-	}
-
 	public Integer getOriginalPrice() {
 		return originalPrice;
 	}
@@ -106,6 +98,14 @@ public class BidProductVo {
 
 	public void setSaleModel(SaleModels saleModel) {
 		this.saleModel = saleModel;
+	}
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
 	}
 
 }

@@ -6,3 +6,12 @@ function addMoney(productId, amount) {
 		$("#productPrice").text(data);
 	});
 }
+
+function guessMoney(productId) {
+	$.post("restful/guess", {
+		productId : productId,
+		money : $("#guessPrice").val()
+	}, function(data, status) {
+		$("#productPrice").text(data);
+	});
+}

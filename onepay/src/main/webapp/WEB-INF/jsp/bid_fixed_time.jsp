@@ -17,6 +17,9 @@
 		当前属于：
 		<c:out value="${productVo.currentOwer}" />
 		...
+		<c:if test="${not empty endDate }">结束时间为： <c:out
+				value="${endDate }" />
+		</c:if>
 	</p>
 	<div class="thumbnail">
 		<img alt="" src="product_pic/${productVo.picPath }" width="300"
@@ -30,7 +33,10 @@
 	</p>
 	<p>
 	<div id="productPrice" class="alert alert-info" role="alert">
-		<c:out value="${productVo.price}" />
+		<c:if test="${saleModel != 'guess_price' }">
+			<c:out value="${productVo.price}" />
+		</c:if>
+		<c:if test="${saleModel == 'guess_price' }">???</c:if>
 	</div>
 	</p>
 
@@ -38,21 +44,40 @@
 <div>
 	<p>我要举牌：</p>
 </div>
-<div class="row marketing">
-	<div class="col-lg-4">
-		<a href="javascript:addMoney('${productVo.productId}', 1);"
-			class="btn btn-primary btn-lg btn-block" role="button">+1猿</a>
-	</div>
+<c:if test="${saleModel != 'guess_price' }">
+	<div class="row marketing">
+		<div class="col-lg-4">
+			<a href="javascript:addMoney('${productVo.productId}', 1);"
+				class="btn btn-primary btn-lg btn-block" role="button">+1猿</a>
+		</div>
 
-	<div class="col-lg-4">
-		<a href="javascript:addMoney('${productVo.productId}', 10);"
-			class="btn btn-primary btn-lg btn-block" role="button">+10猿</a>
+		<div class="col-lg-4">
+			<a href="javascript:addMoney('${productVo.productId}', 10);"
+				class="btn btn-primary btn-lg btn-block" role="button">+10猿</a>
+		</div>
+		<div class="col-lg-4">
+			<a href="javascript:addMoney('${productVo.productId}', 100);"
+				class="btn btn-primary btn-lg btn-block" role="button">+100猿</a>
+		</div>
 	</div>
-	<div class="col-lg-4">
-		<a href="javascript:addMoney('${productVo.productId}', 100);"
-			class="btn btn-primary btn-lg btn-block" role="button">+100猿</a>
+</c:if>
+
+<c:if test="${saleModel == 'guess_price' }">
+	<div class="row marketing">
+
+		<div class="form-group">
+			<label class="sr-only" for="guessPrice">猜个价钱</label>
+			<div class="input-group">
+				<div class="input-group-addon">$</div>
+				<input type="number" class="form-control" id="guessPrice"
+					placeholder="给个价">
+				<div class="input-group-addon">.00</div>
+			</div>
+		</div>
+		<button type="button" class="btn btn-primary" onclick="guessMoney('${productVo.productId}')">拍</button>
+
 	</div>
-</div>
+</c:if>
 
 <script src="js/bid.js" type="text/javascript"></script>
 
