@@ -53,6 +53,7 @@ public class BidServiceImpl implements BidService {
 			product.setCurrentBiderId(userId);
 			product.setStatus(ProductStatus.DEAL.getCode());
 
+			productRepository.save(product);
 			orderService.createOrder(userId, productId, money);
 
 			result = true;
