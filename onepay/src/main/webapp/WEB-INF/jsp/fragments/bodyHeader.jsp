@@ -26,7 +26,7 @@
 						<li><a href="login.html">login/register</a></li>
 					</c:if>
 					<c:if test="${not empty userId}">
-						<li><a href="viewme.html"><c:out value="${userId}" /></a></li>
+						<li><a href="viewme.html"><c:out value="${userShowName}" /></a></li>
 						<li><a href="myorders.html">我的定单</a></li>
 						<li><a href="logout.html">logout</a></li>
 					</c:if>

@@ -17,23 +17,28 @@ public class BaseController {
 
 	public Long getLoginUserId() {
 
-		HttpSession session = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getSession();
+		HttpSession session = ((ServletRequestAttributes) RequestContextHolder
+				.getRequestAttributes()).getRequest().getSession();
 		return (Long) session.getAttribute(CommonConstants.LOGIN_USER_ID);
 
 	}
 
-	public void setSessionLoginUser(Long userId) {
+	public void setSessionLoginUser(Long userId, String userShowName) {
 
-		HttpSession session = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getSession();
+		HttpSession session = ((ServletRequestAttributes) RequestContextHolder
+				.getRequestAttributes()).getRequest().getSession();
 		session.setAttribute(CommonConstants.LOGIN_USER_ID, userId);
+		session.setAttribute(CommonConstants.LOGIN_USER_SHOW_NAME, userShowName);
 
 	}
 
 	public void setSessionOut() {
 		LOGGER.debug("Logout running...");
-		HttpSession session = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getSession();
+		HttpSession session = ((ServletRequestAttributes) RequestContextHolder
+				.getRequestAttributes()).getRequest().getSession();
 		LOGGER.debug("Session ID:" + session.getId());
 		session.removeAttribute(CommonConstants.LOGIN_USER_ID);
+		session.removeAttribute(CommonConstants.LOGIN_USER_SHOW_NAME);
 		session.invalidate();
 	}
 
