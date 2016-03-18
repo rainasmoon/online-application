@@ -1,7 +1,7 @@
 package com.rainasmoon.onepay.enums;
 
 public enum OrderStatus {
-	WAITPAY(1), WAITSEND(2), DONE(3), FAIL(4);
+	WAITINFO(1), DOWN(2), WAITPAY(3), PAYED(4), WAITSEND(5), SENDED(6), ONTHEWAY(7), RECEIVED(8), WAITSTARS(9), DONE(10), FAIL(11);
 
 	private int code;
 
