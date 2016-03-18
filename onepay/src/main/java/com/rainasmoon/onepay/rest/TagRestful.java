@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.rainasmoon.onepay.model.Tag;
 import com.rainasmoon.onepay.service.TagService;
+import com.rainasmoon.onepay.util.CommonConstants;
 import com.rainasmoon.onepay.web.BaseController;
 
 @RestController
@@ -18,13 +19,15 @@ public class TagRestful extends BaseController {
 
 	@RequestMapping("/restful/saveUserTag")
 	public String saveUserTag(@RequestParam(value = "value") String value) {
+		if (getLoginUserId() == null) {
+			return CommonConstants.NO_LOGIN_MSG;
+		}
 		Tag tag = tagService.addUserTag(getLoginUserId(), value);
 		return value;
 	}
 
 	@RequestMapping("/restful/saveProductTag")
-	public String saveProductTag(Long productId,
-			@RequestParam(value = "value") String value) {
+	public String saveProductTag(Long productId, @RequestParam(value = "value") String value) {
 		Tag tag = tagService.addProductTag(productId, value);
 		return value;
 	}

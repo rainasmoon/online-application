@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.rainasmoon.onepay.model.Product;
 import com.rainasmoon.onepay.service.BidService;
+import com.rainasmoon.onepay.util.CommonConstants;
 import com.rainasmoon.onepay.web.BaseController;
 
 @RestController
@@ -18,12 +19,18 @@ public class BidRestful extends BaseController {
 
 	@RequestMapping("/restful/bid")
 	public String bid(@RequestParam(value = "productId") Long productId, @RequestParam(value = "money", defaultValue = "1") Integer money) {
+		if (getLoginUserId() == null) {
+			return CommonConstants.NO_LOGIN_MSG;
+		}
 		Product product = bidService.bidAddMoney(getLoginUserId(), productId, money);
 		return product.getPrice().toString();
 	}
 
 	@RequestMapping("/restful/guess")
 	public String guess(@RequestParam(value = "productId") Long productId, @RequestParam(value = "money", defaultValue = "1") Integer money) {
+		if (getLoginUserId() == null) {
+			return CommonConstants.NO_LOGIN_MSG;
+		}
 		String result = bidService.guessMoney(getLoginUserId(), productId, money);
 		return result;
 	}
