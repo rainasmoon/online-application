@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.rainasmoon.onepay.enums.OperationEnum;
+import com.rainasmoon.onepay.enums.OrderStatus;
 import com.rainasmoon.onepay.model.Order;
 import com.rainasmoon.onepay.service.OrderService;
 import com.rainasmoon.onepay.service.ProductService;
@@ -38,17 +40,31 @@ public class OrderController extends BaseController {
 		List<OrderVo> orderVos = new ArrayList<OrderVo>();
 		for (Order order : myOrders) {
 			OrderVo orderVo = dozerBeanMapper.map(order, OrderVo.class);
-			orderVo.setBuyerName(userService.findUser(orderVo.getBuyerId()).getShowName());
-			orderVo.setSalerName(userService.findUser(orderVo.getSalerId()).getShowName());
-			orderVo.setProductName(productService.findProduct(orderVo.getProductId()).getName());
-			// TODO glen
-			orderVo.setStatusName("");
-			orderVo.setOperateName("do...");
+			orderVo.setBuyerName(userService.findUser(orderVo.getBuyerId())
+					.getShowName());
+			orderVo.setSalerName(userService.findUser(orderVo.getSalerId())
+					.getShowName());
+			orderVo.setProductName(productService.findProduct(
+					orderVo.getProductId()).getName());
+			orderVo.setStatusName(OrderStatus.valueOf(orderVo.getStatus())
+					.getName());
+			orderVo.setOperationName(transferToOperation(getLoginUserId(),
+					orderVo).getOperationName());
 			orderVos.add(orderVo);
 		}
 
 		model.put("orders", orderVos);
 
 		return "myorders";
+	}
+
+	private OperationEnum transferToOperation(Long loginUserId, OrderVo orderVo) {
+		if (loginUserId == orderVo.getBuyerId()) {
+			return OrderStatus.getBuyerOperation(orderVo.getEnumStatus());
+		}
+		if (loginUserId == orderVo.getSalerId()) {
+			return OrderStatus.getSalerOperation(orderVo.getEnumStatus());
+		}
+		return OperationEnum.NOTHING;
 	}
 }

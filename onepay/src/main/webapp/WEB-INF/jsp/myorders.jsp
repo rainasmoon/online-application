@@ -44,7 +44,7 @@
 							<td><c:out value="${arow.productName}" /></td>
 							<td><c:out value="${arow.price}" /></td>
 							<td><c:out value="${arow.statusName}" /></td>
-							<td><c:out value="${arow.id}" /></td>
+							<td><c:out value="${arow.operationName}" /></td>
 						</tr>
 					</c:forEach>
 				</tbody>

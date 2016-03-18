@@ -16,7 +16,7 @@
 
 <form:form modelAttribute="loginVo" method="post" class="form-signin"
 	id="login-form" role="form">
-	<h2 class="form-signin-heading">用户不存在，注册新用户么？</h2>
+	<h2 class="form-signin-heading">注册新用户</h2>
 	<span class="help-inline"> <c:if test="${not empty message}">
 			<div id="message" class="alert alert-success" role="alert">${message}</div>
 		</c:if> <spring:bind path="error">

@@ -1,5 +1,6 @@
 package com.rainasmoon.onepay.vo;
 
+import com.rainasmoon.onepay.enums.OrderStatus;
 import com.rainasmoon.onepay.model.Order;
 
 public class OrderVo extends Order {
@@ -8,7 +9,11 @@ public class OrderVo extends Order {
 	private String buyerName;
 	private String productName;
 	private String statusName;
-	private String operateName;
+	private String operationName;
+
+	public OrderStatus getEnumStatus() {
+		return OrderStatus.valueOf(getStatus());
+	}
 
 	public String getSalerName() {
 		return salerName;
@@ -42,11 +47,12 @@ public class OrderVo extends Order {
 		this.statusName = statusName;
 	}
 
-	public String getOperateName() {
-		return operateName;
+	public String getOperationName() {
+		return operationName;
 	}
 
-	public void setOperateName(String operateName) {
-		this.operateName = operateName;
+	public void setOperationName(String operationName) {
+		this.operationName = operationName;
 	}
+
 }
