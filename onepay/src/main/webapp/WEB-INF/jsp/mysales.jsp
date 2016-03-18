@@ -31,6 +31,7 @@
 						<th>current bider</th>
 						<th>sale model</th>
 						<th>price</th>
+						<th>status</th>
 						<th>操作</th>
 					</tr>
 				</thead>
@@ -43,7 +44,8 @@
 							<td><c:out value="${arow.currentBiderId}" /></td>
 							<td><c:out value="${arow.saleModel}" /></td>
 							<td><c:out value="${arow.price}" /></td>
-							<td><c:out value="${arow.price}" /></td>
+							<td><c:out value="${arow.status}" /></td>
+							<td><c:out value="${arow.id}" /></td>
 						</tr>
 					</c:forEach>
 				</tbody>

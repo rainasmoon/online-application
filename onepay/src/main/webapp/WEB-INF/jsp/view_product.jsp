@@ -48,14 +48,7 @@
 						| <a href="javascript:modifyDescription('${product.id}')">编辑</a>
 					</div></td>
 			</tr>
-			<tr>
-				<td>开卖时间</td>
-				<td><c:out value="${product.dateFrom}" /></td>
-			</tr>
-			<tr>
-				<td>结束时间</td>
-				<td><c:out value="${product.dateTo}" /></td>
-			</tr>
+			
 			<tr>
 				<td>标签</td>
 				<td><div id="listTags">

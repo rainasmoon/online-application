@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.rainasmoon.onepay.enums.ProductStatus;
 import com.rainasmoon.onepay.enums.SaleModels;
 import com.rainasmoon.onepay.model.Product;
 import com.rainasmoon.onepay.service.ProductService;
@@ -130,6 +131,7 @@ public class ProductController extends BaseController {
 				product.setPrice(1);
 			}
 
+			product.setStatus(ProductStatus.ONSALE.getCode());
 			product = productService.addProduct(product);
 
 			if (productVo.getTags() != null) {

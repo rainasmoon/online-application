@@ -22,7 +22,7 @@
 	<fieldset>
 		<input type="hidden" name="productId" value="${productId }" />
 
-		<div class="form-group">
+		<div >
 			<label for="inputPicFile">图片</label> <input type="file"
 				id="inputPicFile" name="inputPicFile" accept="image/*" />
 			<p class="help-block">上传图片有助于客户更好的了解产品.</p>
