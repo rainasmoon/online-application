@@ -17,10 +17,7 @@
 <div class="table-responsive">
 	<table class="table table-striped">
 		<tbody>
-			<tr>
-				<td>用户名</td>
-				<td><c:out value="${user.id}" /></td>
-			</tr>
+			
 			<tr>
 				<td>邮箱</td>
 				<td><div id="modifyEmail">
