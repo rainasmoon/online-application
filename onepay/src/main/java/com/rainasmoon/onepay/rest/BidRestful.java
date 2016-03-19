@@ -49,4 +49,13 @@ public class BidRestful extends BaseController {
 	public String generateBidThreeTimes() {
 		return bidService.generateBidThreeTimes();
 	}
+
+	@RequestMapping("/restful/generatebid/all")
+	public String generateAll() {
+		bidService.generateBidThreeDays();
+
+		bidService.generateBidThreeTimes();
+
+		return "done";
+	}
 }

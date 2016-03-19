@@ -1,3 +1,6 @@
 pls read evernote...
 
 guess price need validation on number.
+
+http://localhost:9968/onepay/restful/generatebid/threedays
+http://localhost:9968/onepay/restful/generatebid/all
