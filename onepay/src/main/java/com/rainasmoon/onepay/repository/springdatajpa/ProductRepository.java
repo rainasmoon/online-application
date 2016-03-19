@@ -14,8 +14,9 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
 
 	List<Product> findByStatus(Integer status);
 
-	@Query("select d from Product d where d.status = ?1 or d.endDate < ?2")
-	List<Product> findEndDateAndStatusProduct(Integer status, Date date);
+	@Query("select d from Product d where d.saleModel = ?1 and d.status = ?2 and d.endDate < ?3")
+	List<Product> findEndDateAndStatusProduct(Integer saleModel,
+			Integer status, Date date);
 
 	List<Product> findBySaleModelAndStatus(Integer saleModel, Integer status);
 }

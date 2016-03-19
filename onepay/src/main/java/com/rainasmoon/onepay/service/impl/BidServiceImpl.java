@@ -102,6 +102,7 @@ public class BidServiceImpl implements BidService {
 	public String generateBidThreeDays() {
 		// 查询onsale商品, 如果当前时间大于 enddate. then
 		List<Product> products = productRepository.findEndDateAndStatusProduct(
+				SaleModels.THREEDAYSALE.getCode(),
 				ProductStatus.ONSALE.getCode(), new Date());
 
 		// if exist bidlog then set product status to deal and create a order.
