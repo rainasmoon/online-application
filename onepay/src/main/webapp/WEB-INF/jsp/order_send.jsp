@@ -28,7 +28,7 @@
 			<p>账户余额：<c:out value="${account }"></c:out></p>
 		</div>
 
-		<button type="submit" class="btn btn-primary">支付</button>
+		<button type="submit" class="btn btn-primary">发货</button>
 	</fieldset>
 </form>
 
