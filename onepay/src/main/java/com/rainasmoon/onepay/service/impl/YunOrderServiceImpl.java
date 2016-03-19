@@ -17,7 +17,7 @@ public class YunOrderServiceImpl implements YunOrderService {
 	private YunOrderRepository repository;
 
 	@Override
-	public YunOrder save(YunOrder yunOrder) {
+	public YunOrder addYunOrder(YunOrder yunOrder) {
 		return repository.save(yunOrder);
 	}
 

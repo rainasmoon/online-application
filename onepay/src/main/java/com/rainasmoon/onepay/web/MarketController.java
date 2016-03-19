@@ -4,9 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -25,7 +28,7 @@ public class MarketController extends BaseController {
 	private Mapper dozerBeanMapper;
 
 	@RequestMapping(value = { "/market.html" }, method = RequestMethod.GET)
-	public String login(Map<String, Object> model) {
+	public String market(Map<String, Object> model) {
 		List<YunOrder> yunOrders = yunOrderService.findAll();
 		List<YunOrderVo> yunOrderVos = new ArrayList<YunOrderVo>();
 		for (YunOrder yunOrder : yunOrders) {
@@ -45,14 +48,14 @@ public class MarketController extends BaseController {
 	}
 
 	@RequestMapping(value = { "/market_add_info.html" }, method = RequestMethod.POST)
-	public String addMarketInfo(AddYunOrderVo addYunOrderVo,
-			Map<String, Object> model) {
+	public String addMarketInfo(@Valid AddYunOrderVo addYunOrderVo,
+			BindingResult result, Map<String, Object> model) {
 		YunOrder yunOrder = new YunOrder();
-		// yunOrder.setUserId(getLoginUserId());
-		// yunOrder.setAmount(addYunOrderVo.getAmount());
-		// yunOrder.setPrice(addYunOrderVo.getPrice());
-		// yunOrder.setDescription(addYunOrderVo.getDescription());
-		yunOrderService.save(yunOrder);
+		yunOrder.setUserId(getLoginUserId());
+		yunOrder.setAmount(addYunOrderVo.getAmount());
+		yunOrder.setPrice(addYunOrderVo.getPrice());
+		yunOrder.setDescription(addYunOrderVo.getDescription());
+		yunOrderService.addYunOrder(yunOrder);
 		model.put("message", "");
 		return "market_add_info_success";
 	}

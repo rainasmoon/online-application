@@ -5,7 +5,7 @@ import java.util.List;
 import com.rainasmoon.onepay.model.YunOrder;
 
 public interface YunOrderService {
-	YunOrder save(YunOrder yunOrder);
+	YunOrder addYunOrder(YunOrder yunOrder);
 
 	List<YunOrder> findAll();
 }

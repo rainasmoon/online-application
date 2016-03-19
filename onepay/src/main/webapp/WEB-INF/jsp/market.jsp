@@ -32,6 +32,7 @@
 						<th>交易人</th>
 						<th>交易人级别</th>
 						<th>交易人信用</th>
+						<th>状态</th>
 						<th>操作</th>
 					</tr>
 				</thead>
@@ -40,11 +41,12 @@
 					<c:forEach var="arow" items="${yunOrders}" varStatus="status">
 						<tr>
 							<td><c:out value="${status.count}" /></td>
-							<td><c:out value="${arow.salerName}" /></td>
-							<td><c:out value="${arow.buyerName}" /></td>
-							<td><c:out value="${arow.productName}" /></td>
+							<td><c:out value="${arow.enumModel.name}" /></td>
+							<td><c:out value="${arow.amount}" /></td>
 							<td><c:out value="${arow.price}" /></td>
-							<td><c:out value="${arow.price}" /></td>
+							<td><c:out value="${arow.userName}" /></td>
+							<td><c:out value="${arow.userLevelName}" /></td>
+							<td><c:out value="${arow.userCredit}" /></td>
 							<td><c:out value="${arow.enumStatus.name}" /></td>
 							<td><c:if test="${not empty arow.operation.operationUrl }">
 									<a href="${arow.operation.operationUrl }?orderId=${arow.id}"><c:out

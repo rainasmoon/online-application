@@ -1,50 +1,44 @@
 package com.rainasmoon.onepay.vo;
 
-import com.rainasmoon.onepay.enums.OperationEnum;
-import com.rainasmoon.onepay.enums.OrderStatus;
-import com.rainasmoon.onepay.model.Order;
+import com.rainasmoon.onepay.enums.YunModels;
+import com.rainasmoon.onepay.enums.YunStatus;
+import com.rainasmoon.onepay.model.YunOrder;
 
-public class YunOrderVo extends Order {
+public class YunOrderVo extends YunOrder {
 
-	private String salerName;
-	private String buyerName;
-	private String productName;
-	private OperationEnum operation;
+	private String userName;
+	private String userLevelName;
+	private Integer userCredit;
 
-	public OrderStatus getEnumStatus() {
-		return OrderStatus.valueOf(getStatus());
+	public YunModels getEnumModel() {
+		return YunModels.valueOf(getModel());
 	}
 
-	public String getSalerName() {
-		return salerName;
+	public YunStatus getEnumStatus() {
+		return null;
 	}
 
-	public void setSalerName(String salerName) {
-		this.salerName = salerName;
+	public String getUserName() {
+		return userName;
 	}
 
-	public String getBuyerName() {
-		return buyerName;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
-	public void setBuyerName(String buyerName) {
-		this.buyerName = buyerName;
+	public String getUserLevelName() {
+		return userLevelName;
 	}
 
-	public String getProductName() {
-		return productName;
+	public void setUserLevelName(String userLevelName) {
+		this.userLevelName = userLevelName;
 	}
 
-	public void setProductName(String productName) {
-		this.productName = productName;
+	public Integer getUserCredit() {
+		return userCredit;
 	}
 
-	public OperationEnum getOperation() {
-		return operation;
+	public void setUserCredit(Integer userCredit) {
+		this.userCredit = userCredit;
 	}
-
-	public void setOperation(OperationEnum operation) {
-		this.operation = operation;
-	}
-
 }
