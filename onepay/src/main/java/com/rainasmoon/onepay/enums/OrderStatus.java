@@ -2,8 +2,8 @@ package com.rainasmoon.onepay.enums;
 
 public enum OrderStatus {
 	WAITINFO(1, "待确认"), DOWN(2, "下单成功"), WAITPAY(3, "待支付"), PAYED(4, "支付完成"), WAITSEND(
-			5, "待发货"), SENDED(6, "已发货"), ONTHEWAY(7, "运输中"), RECEIVED(8, "已收货"), WAITSTARS(
-			9, "待评价"), DONE(10, "完成"), FAIL(11, "失败");
+			5, "待发货"), SENDED(6, "已发货"), ONTHEWAY(7, "运输中"), RECEIVED(8, "已收货"), WAITBUYERSTARS(
+			9, "待评价"), WAITSALERSTARS(10, "待评价"), DONE(11, "完成"), FAIL(12, "失败");
 
 	private int code;
 	private String name;
@@ -32,10 +32,12 @@ public enum OrderStatus {
 		case 8:
 			return RECEIVED;
 		case 9:
-			return WAITSTARS;
+			return WAITBUYERSTARS;
 		case 10:
-			return DONE;
+			return WAITSALERSTARS;
 		case 11:
+			return DONE;
+		case 12:
 			return FAIL;
 
 		}
@@ -56,8 +58,9 @@ public enum OrderStatus {
 		case ONTHEWAY:
 			return OperationEnum.BUYER_RECEIVE;
 		case RECEIVED:
-		case WAITSTARS:
+		case WAITBUYERSTARS:
 			return OperationEnum.BUYER_STAR;
+		case WAITSALERSTARS:
 		case DONE:
 		case FAIL:
 
@@ -76,9 +79,10 @@ public enum OrderStatus {
 			return OperationEnum.SALER_SEND;
 		case SENDED:
 		case ONTHEWAY:
-			return OperationEnum.WAITING;
 		case RECEIVED:
-		case WAITSTARS:
+		case WAITBUYERSTARS:
+			return OperationEnum.WAITING;
+		case WAITSALERSTARS:
 			return OperationEnum.SALER_STAR;
 		case DONE:
 		case FAIL:

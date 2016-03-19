@@ -56,4 +56,49 @@ public class OrderServiceImpl implements OrderService {
 		return repository.findOne(orderId);
 	}
 
+	@Override
+	public String orderFill(Long orderId) {
+		// TODO Auto-generated method stub
+		Order order = repository.findOne(orderId);
+		order.setStatus(OrderStatus.DOWN.getCode());
+		repository.save(order);
+		return null;
+	}
+
+	@Override
+	public String orderReceiveStar(Long orderId) {
+		// TODO Auto-generated method stub
+		Order order = repository.findOne(orderId);
+		order.setStatus(OrderStatus.WAITSALERSTARS.getCode());
+		repository.save(order);
+		return null;
+	}
+
+	@Override
+	public String orderSaleStar(Long orderId) {
+		// TODO Auto-generated method stub
+		Order order = repository.findOne(orderId);
+		order.setStatus(OrderStatus.DONE.getCode());
+		repository.save(order);
+		return null;
+	}
+
+	@Override
+	public String orderReceive(Long orderId) {
+		// TODO Auto-generated method stub
+		Order order = repository.findOne(orderId);
+		order.setStatus(OrderStatus.RECEIVED.getCode());
+		repository.save(order);
+		return null;
+	}
+
+	@Override
+	public String orderSend(Long orderId) {
+		// TODO Auto-generated method stub
+		Order order = repository.findOne(orderId);
+		order.setStatus(OrderStatus.SENDED.getCode());
+		repository.save(order);
+		return null;
+	}
+
 }

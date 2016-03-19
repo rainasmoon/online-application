@@ -85,7 +85,7 @@ public class OrderController extends BaseController {
 
 	@RequestMapping(value = { "/order_fill.html" }, method = RequestMethod.POST)
 	public String orderFill(Long orderId, Map<String, Object> model) {
-		String message = orderService.orderPay(orderId);
+		String message = orderService.orderFill(orderId);
 		model.put("message", message);
 		return "order_fill_success";
 	}
@@ -100,7 +100,7 @@ public class OrderController extends BaseController {
 
 	@RequestMapping(value = { "/order_receive_star.html" }, method = RequestMethod.POST)
 	public String orderReceiveStar(Long orderId, Map<String, Object> model) {
-		String message = orderService.orderPay(orderId);
+		String message = orderService.orderReceiveStar(orderId);
 		model.put("message", message);
 		return "order_receive_star_success";
 	}
@@ -114,7 +114,7 @@ public class OrderController extends BaseController {
 
 	@RequestMapping(value = { "/order_sale_star.html" }, method = RequestMethod.POST)
 	public String orderSaleStar(Long orderId, Map<String, Object> model) {
-		String message = orderService.orderPay(orderId);
+		String message = orderService.orderSaleStar(orderId);
 		model.put("message", message);
 		return "order_sale_star_success";
 	}
@@ -128,7 +128,7 @@ public class OrderController extends BaseController {
 
 	@RequestMapping(value = { "order_receive.html" }, method = RequestMethod.POST)
 	public String orderReceive(Long orderId, Map<String, Object> model) {
-		String message = orderService.orderPay(orderId);
+		String message = orderService.orderReceive(orderId);
 		model.put("message", message);
 		return "order_receive_success";
 	}
@@ -142,7 +142,7 @@ public class OrderController extends BaseController {
 
 	@RequestMapping(value = { "order_send.html" }, method = RequestMethod.POST)
 	public String orderSend(Long orderId, Map<String, Object> model) {
-		String message = orderService.orderPay(orderId);
+		String message = orderService.orderSend(orderId);
 		model.put("message", message);
 		return "order_send_success";
 	}
