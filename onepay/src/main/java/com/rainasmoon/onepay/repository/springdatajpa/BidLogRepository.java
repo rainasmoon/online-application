@@ -14,4 +14,6 @@ public interface BidLogRepository extends CrudRepository<BidLog, Long> {
 	List<BidLog> findBidLogOnDate(Long userId, Long productId, Date beginDate,
 			Date endDate);
 
+	List<BidLog> findByProductIdOrderByCreateDateDesc(Long productId);
+
 }

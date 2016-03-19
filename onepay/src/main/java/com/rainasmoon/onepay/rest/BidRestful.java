@@ -18,20 +18,37 @@ public class BidRestful extends BaseController {
 	private BidService bidService;
 
 	@RequestMapping("/restful/bid")
-	public String bid(@RequestParam(value = "productId") Long productId, @RequestParam(value = "money", defaultValue = "1") Integer money) {
+	public String bid(@RequestParam(value = "productId") Long productId,
+			@RequestParam(value = "money", defaultValue = "1") Integer money) {
 		if (getLoginUserId() == null) {
 			return CommonConstants.NO_LOGIN_MSG;
 		}
-		Product product = bidService.bidAddMoney(getLoginUserId(), productId, money);
+		Product product = bidService.bidAddMoney(getLoginUserId(), productId,
+				money);
 		return product.getPrice().toString();
 	}
 
 	@RequestMapping("/restful/guess")
-	public String guess(@RequestParam(value = "productId") Long productId, @RequestParam(value = "money") Integer money) {
+	public String guess(@RequestParam(value = "productId") Long productId,
+			@RequestParam(value = "money") Integer money) {
 		if (getLoginUserId() == null) {
 			return CommonConstants.NO_LOGIN_MSG;
 		}
-		String result = bidService.guessMoney(getLoginUserId(), productId, money);
+		String result = bidService.guessMoney(getLoginUserId(), productId,
+				money);
 		return result;
+	}
+
+	@RequestMapping("/restful/generatebid/threedays")
+	public String generateBidThreedays() {
+		// TODO glen need permition in Day2
+
+		return "";
+	}
+
+	@RequestMapping("/restful/generatebid/threetimes")
+	public String generateBidThreeTimes() {
+		// TODO glen need permition in Day2
+		return "";
 	}
 }

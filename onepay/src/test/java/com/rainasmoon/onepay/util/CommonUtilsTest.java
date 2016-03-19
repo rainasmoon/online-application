@@ -33,4 +33,15 @@ public class CommonUtilsTest {
 		LOGGER.info(sfFull.parse(sf.format(new Date()) + "000000").toString());
 		LOGGER.info(sfFull.parse(sf.format(new Date()) + "235959").toString());
 	}
+
+	@Test
+	public void shouldTestDataBefor() {
+		Date now = new Date();
+		Date theDayBefore = new Date(now.getTime() - CommonConstants.THREE_DAYS);
+		LOGGER.info(now.toString());
+		LOGGER.info(theDayBefore.toString());
+		assertFalse(now.before(theDayBefore));
+		assertTrue(now.after(theDayBefore));
+
+	}
 }

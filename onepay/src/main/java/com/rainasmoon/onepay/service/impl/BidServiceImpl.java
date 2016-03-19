@@ -12,12 +12,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.rainasmoon.onepay.enums.ProductStatus;
+import com.rainasmoon.onepay.enums.SaleModels;
 import com.rainasmoon.onepay.model.BidLog;
 import com.rainasmoon.onepay.model.Product;
 import com.rainasmoon.onepay.repository.springdatajpa.BidLogRepository;
 import com.rainasmoon.onepay.repository.springdatajpa.ProductRepository;
 import com.rainasmoon.onepay.service.BidService;
 import com.rainasmoon.onepay.service.OrderService;
+import com.rainasmoon.onepay.util.CommonConstants;
 
 @Service
 public class BidServiceImpl implements BidService {
@@ -94,6 +96,56 @@ public class BidServiceImpl implements BidService {
 			LOGGER.info("parase date exception. wired.", e);
 		}
 		return result == null ? false : (result.size() > 0 ? true : false);
+	}
+
+	@Override
+	public String generateBidThreeDays() {
+		// 查询onsale商品, 如果当前时间大于 enddate. then
+		List<Product> products = productRepository.findEndDateAndStatusProduct(
+				ProductStatus.ONSALE.getCode(), new Date());
+
+		// if exist bidlog then set product status to deal and create a order.
+		for (Product product : products) {
+			List<BidLog> bidLogs = repository
+					.findByProductIdOrderByCreateDateDesc(product.getId());
+			if (bidLogs != null && bidLogs.size() > 0) {
+				makeDeal(product, bidLogs.get(0));
+			} else {
+				product.setStatus(ProductStatus.FAIL.getCode());
+				productRepository.save(product);
+			}
+		}
+		// if not exist bidlog then set product status to fail
+		return null;
+	}
+
+	@Override
+	public String generateBidThreeTimes() {
+		// select onsale product & salemodel is normal;
+		List<Product> products = productRepository.findBySaleModelAndStatus(
+				SaleModels.NORMALAUCTION.getCode(),
+				ProductStatus.ONSALE.getCode());
+		Date now = new Date();
+		Date theDayBefore = new Date(now.getTime() - CommonConstants.THREE_DAYS);
+
+		// 查询最近一条bidlog.如果在三天前，则成交，
+		for (Product product : products) {
+			List<BidLog> bidLogs = repository
+					.findByProductIdOrderByCreateDateDesc(product.getId());
+			if (bidLogs.size() > 0
+					&& bidLogs.get(0).getCreateDate().before(theDayBefore)) {
+				makeDeal(product, bidLogs.get(0));
+			}
+		}
+		return null;
+	}
+
+	private void makeDeal(Product product, BidLog bidLog) {
+		product.setStatus(ProductStatus.DEAL.getCode());
+
+		productRepository.save(product);
+		orderService.createOrder(bidLog.getUserId(), product.getId(),
+				bidLog.getPrice());
 	}
 
 }
