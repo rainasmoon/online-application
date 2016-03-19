@@ -17,6 +17,7 @@ CREATE TABLE users (
   buy_amount INTEGER,
   total_amount INTEGER,
   account INTEGER,
+  freeze_account INTEGER,
   level INTEGER,
   credit INTEGER,
   create_date TIMESTAMP

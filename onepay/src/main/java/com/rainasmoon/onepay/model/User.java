@@ -26,6 +26,8 @@ public class User extends BaseEntity {
 	private Integer totalAmount;
 	@Column(name = "account")
 	private Integer account;
+	@Column(name = "freeze_account")
+	private Integer freezeAccount;
 	@Column(name = "level")
 	private Integer level;
 	@Column(name = "credit")
@@ -122,6 +124,14 @@ public class User extends BaseEntity {
 
 	public void setAccount(Integer account) {
 		this.account = account;
+	}
+
+	public Integer getFreezeAccount() {
+		return freezeAccount;
+	}
+
+	public void setFreezeAccount(Integer freezeAccount) {
+		this.freezeAccount = freezeAccount;
 	}
 
 }
