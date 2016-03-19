@@ -1,6 +1,7 @@
 package com.rainasmoon.onepay.vo;
 
 import com.rainasmoon.onepay.enums.YunModels;
+import com.rainasmoon.onepay.enums.YunOperationEnum;
 import com.rainasmoon.onepay.enums.YunStatus;
 import com.rainasmoon.onepay.model.YunOrder;
 
@@ -9,6 +10,7 @@ public class YunOrderVo extends YunOrder {
 	private String userName;
 	private String userLevelName;
 	private Integer userCredit;
+	private YunOperationEnum operation;
 
 	public YunModels getEnumModel() {
 		return YunModels.valueOf(getModel());
