@@ -1,10 +1,22 @@
 package com.rainasmoon.onepay.vo;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 public class AddYunOrderVo {
 
 	private Integer amount;
 	private Integer price;
 	private String description;
+
+	@Override
+	public String toString() {
+		return ReflectionToStringBuilder.toString(this,
+				ToStringStyle.SHORT_PREFIX_STYLE);
+
+	}
+
+	private String error;
 
 	public Integer getAmount() {
 		return amount;
@@ -28,5 +40,13 @@ public class AddYunOrderVo {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getError() {
+		return error;
+	}
+
+	public void setError(String error) {
+		this.error = error;
 	}
 }

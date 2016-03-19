@@ -1,4 +1,4 @@
-package com.rainasmoon.onepay.service.impl;
+package com.rainasmoon.onepay.service;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;

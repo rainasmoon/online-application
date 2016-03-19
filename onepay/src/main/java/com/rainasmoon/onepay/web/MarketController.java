@@ -48,10 +48,10 @@ public class MarketController extends BaseController {
 	public String addMarketInfo(AddYunOrderVo addYunOrderVo,
 			Map<String, Object> model) {
 		YunOrder yunOrder = new YunOrder();
-		yunOrder.setUserId(getLoginUserId());
-		yunOrder.setAmount(addYunOrderVo.getAmount());
-		yunOrder.setPrice(addYunOrderVo.getPrice());
-		yunOrder.setDescription(addYunOrderVo.getDescription());
+		// yunOrder.setUserId(getLoginUserId());
+		// yunOrder.setAmount(addYunOrderVo.getAmount());
+		// yunOrder.setPrice(addYunOrderVo.getPrice());
+		// yunOrder.setDescription(addYunOrderVo.getDescription());
 		yunOrderService.save(yunOrder);
 		model.put("message", "");
 		return "market_add_info_success";

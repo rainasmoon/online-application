@@ -29,7 +29,7 @@
 		<onepayapp:inputField label="底价" name="price" type="number" />
 		<hr />
 		<div>
-			<label for="inputDescription">描述</label>
+			<label for="description">描述</label>
 			<textarea id="description" name="description" class="form-control"
 				rows="3"></textarea>
 		</div>
