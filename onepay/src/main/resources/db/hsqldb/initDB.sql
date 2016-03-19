@@ -6,6 +6,7 @@ DROP TABLE tags IF EXISTS;
 DROP TABLE bidlogs IF EXISTS;
 
 DROP TABLE orders IF EXISTS;
+DROP TABLE yunorders IF EXISTS;
 
 CREATE TABLE users (
   id INTEGER IDENTITY PRIMARY KEY,
@@ -80,4 +81,17 @@ CREATE TABLE orders (
   receiver_postcode VARCHAR(100),
   status INTEGER,
   create_date TIMESTAMP
-  );
+ );
+ CREATE TABLE yunorders (
+  id INTEGER IDENTITY PRIMARY KEY,
+  user_id INTEGER,
+  dealer_id INTEGER,
+  model INTEGER,
+  trade_way INTEGER,
+  amount INTEGER,
+  price INTEGER,
+  status INTEGER,
+  verify_code VARCHAR(100),
+  description VARCHAR(100),
+  create_date TIMESTAMP
+ );
