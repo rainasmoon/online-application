@@ -1,5 +1,6 @@
 package com.rainasmoon.onepay.service.impl;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
@@ -23,7 +24,7 @@ import com.rainasmoon.onepay.service.BidService;
 @ActiveProfiles("dev")
 @Rollback(true)
 @Transactional
-@Sql(value = { "classpath:insert-test-data.sql" }, config = @SqlConfig(encoding = "utf-8", separator = ";", commentPrefix = "--", dataSource = "dataSource", transactionManager = "transactionManager") )
+@Sql(value = { "classpath:insert-test-data.sql" }, config = @SqlConfig(encoding = "utf-8", separator = ";", commentPrefix = "--", dataSource = "dataSource", transactionManager = "transactionManager"))
 public class BidServiceImplTest {
 
 	Logger LOGGER = LoggerFactory.getLogger(BidServiceImplTest.class);
@@ -41,5 +42,35 @@ public class BidServiceImplTest {
 		Product p = service.bidAddMoney(1L, 1L, 10);
 		assertNotNull(p);
 
+	}
+
+	@Test
+	public void shouldGuessPrice() {
+		String r = service.guessMoney(1L, 1L, 0);
+		LOGGER.info("R:" + r);
+		assertEquals("太低了，不卖", r);
+
+		r = service.guessMoney(1L, 1L, 10);
+		LOGGER.info("R:" + r);
+		assertEquals("猜过了，明天再来试试？", r);
+
+		r = service.guessMoney(1L, 1L, 0);
+		LOGGER.info("R:" + r);
+		assertEquals("猜过了，明天再来试试？", r);
+	}
+
+	@Test
+	public void shouldGuessPriceWithDeal() {
+		String r = service.guessMoney(1L, 1L, 100);
+		LOGGER.info("R:" + r);
+		assertEquals("成交了", r);
+
+		r = service.guessMoney(1L, 1L, 10);
+		LOGGER.info("R:" + r);
+		assertEquals("下架了", r);
+
+		r = service.guessMoney(1L, 1L, 0);
+		LOGGER.info("R:" + r);
+		assertEquals("下架了", r);
 	}
 }
