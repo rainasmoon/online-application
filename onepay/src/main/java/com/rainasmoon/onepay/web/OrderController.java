@@ -77,33 +77,74 @@ public class OrderController extends BaseController {
 	}
 
 	@RequestMapping(value = { "/order_fill.html" }, method = RequestMethod.GET)
-	public String showOrderFillForm() {
+	public String showOrderFillForm(Long orderId, Map<String, Object> model) {
+
+		model.put("orderId", orderId);
 		return "order_fill";
 	}
 
 	@RequestMapping(value = { "/order_fill.html" }, method = RequestMethod.POST)
-	public String orderFill() {
-		return "order_fill";
+	public String orderFill(Long orderId, Map<String, Object> model) {
+		String message = orderService.orderPay(orderId);
+		model.put("message", message);
+		return "order_fill_success";
 	}
 
 	@RequestMapping(value = { "/order_receive_star.html" }, method = RequestMethod.GET)
-	public String showOrderReceiveStarForm() {
+	public String showOrderReceiveStarForm(Long orderId,
+			Map<String, Object> model) {
+
+		model.put("orderId", orderId);
 		return "order_receive_star";
 	}
 
 	@RequestMapping(value = { "/order_receive_star.html" }, method = RequestMethod.POST)
-	public String orderReceiveStar() {
-		return "order_receive_star";
+	public String orderReceiveStar(Long orderId, Map<String, Object> model) {
+		String message = orderService.orderPay(orderId);
+		model.put("message", message);
+		return "order_receive_star_success";
 	}
 
 	@RequestMapping(value = { "/order_sale_star.html" }, method = RequestMethod.GET)
-	public String showOrderSaleStarForm() {
+	public String showOrderSaleStarForm(Long orderId, Map<String, Object> model) {
+
+		model.put("orderId", orderId);
 		return "order_sale_star";
 	}
 
 	@RequestMapping(value = { "/order_sale_star.html" }, method = RequestMethod.POST)
-	public String orderSaleStar() {
-		return "order_sale_star";
+	public String orderSaleStar(Long orderId, Map<String, Object> model) {
+		String message = orderService.orderPay(orderId);
+		model.put("message", message);
+		return "order_sale_star_success";
+	}
+
+	@RequestMapping(value = { "order_receive.html" }, method = RequestMethod.GET)
+	public String showOrderReceiveForm(Long orderId, Map<String, Object> model) {
+
+		model.put("orderId", orderId);
+		return "order_receive";
+	}
+
+	@RequestMapping(value = { "order_receive.html" }, method = RequestMethod.POST)
+	public String orderReceive(Long orderId, Map<String, Object> model) {
+		String message = orderService.orderPay(orderId);
+		model.put("message", message);
+		return "order_receive_success";
+	}
+
+	@RequestMapping(value = { "order_send.html" }, method = RequestMethod.GET)
+	public String showOrderSendForm(Long orderId, Map<String, Object> model) {
+
+		model.put("orderId", orderId);
+		return "order_send";
+	}
+
+	@RequestMapping(value = { "order_send.html" }, method = RequestMethod.POST)
+	public String orderSend(Long orderId, Map<String, Object> model) {
+		String message = orderService.orderPay(orderId);
+		model.put("message", message);
+		return "order_send_success";
 	}
 
 	private OperationEnum transferToOperation(Long loginUserId, OrderVo orderVo) {

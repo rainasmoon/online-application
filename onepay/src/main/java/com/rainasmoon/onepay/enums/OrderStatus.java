@@ -76,6 +76,7 @@ public enum OrderStatus {
 			return OperationEnum.SALER_SEND;
 		case SENDED:
 		case ONTHEWAY:
+			return OperationEnum.WAITING;
 		case RECEIVED:
 		case WAITSTARS:
 			return OperationEnum.SALER_STAR;
