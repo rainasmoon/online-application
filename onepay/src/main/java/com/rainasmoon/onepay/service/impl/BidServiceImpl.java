@@ -116,7 +116,7 @@ public class BidServiceImpl implements BidService {
 			}
 		}
 		// if not exist bidlog then set product status to fail
-		return null;
+		return "done";
 	}
 
 	@Override
@@ -137,7 +137,7 @@ public class BidServiceImpl implements BidService {
 				makeDeal(product, bidLogs.get(0));
 			}
 		}
-		return null;
+		return "done";
 	}
 
 	private void makeDeal(Product product, BidLog bidLog) {

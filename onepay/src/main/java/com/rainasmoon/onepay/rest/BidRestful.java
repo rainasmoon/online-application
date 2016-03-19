@@ -41,14 +41,12 @@ public class BidRestful extends BaseController {
 
 	@RequestMapping("/restful/generatebid/threedays")
 	public String generateBidThreedays() {
-		// TODO glen need permition in Day2
 
-		return "";
+		return bidService.generateBidThreeDays();
 	}
 
 	@RequestMapping("/restful/generatebid/threetimes")
 	public String generateBidThreeTimes() {
-		// TODO glen need permition in Day2
-		return "";
+		return bidService.generateBidThreeTimes();
 	}
 }
