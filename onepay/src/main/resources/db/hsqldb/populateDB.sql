@@ -17,3 +17,5 @@ insert into orders values(9, 1, 2, 1, 100, 'test', '10086', 'earth', '100010', '
 insert into orders values(10, 1, 2, 2, 100, 'test', '10086', 'earth', '100010', 'test', '10086', 'earth', '100010', 10, null);
 insert into orders values(11, 1, 2, 1, 100, 'test', '10086', 'earth', '100010', 'test', '10086', 'earth', '100010', 11, null);
 insert into orders values(12, 1, 2, 1, 100, 'test', '10086', 'earth', '100010', 'test', '10086', 'earth', '100010', 12, null);
+
+insert into yunorders values(1, 1, 1, 1, 1, 100, 100, 1, 'verifysamplecode', 'this is a test yun order', null);
