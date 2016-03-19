@@ -9,7 +9,7 @@
 
 
 <jsp:include page="./fragments/headTag.jsp" />
-<title>收货</title>
+<title>支付</title>
 
 <jsp:include page="./fragments/bodyHeader.jsp" />
 
