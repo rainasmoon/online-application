@@ -32,6 +32,7 @@
 					</c:if>
 <!-- 					<li><a href="myfavorites.html">我的收藏</a></li> -->
 					<li><a href="mysales.html">我的出售</a></li>
+					<li><a href="market.html">猿币兑换市场</a></li>
 					<li><a href="addproduct.html">上传货品</a></li>
 				</ul>
 			</div>
