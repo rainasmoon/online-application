@@ -22,7 +22,7 @@
 		<input type="hidden" name="orderId" value="${orderId }" />
 
 		<div>
-			<h1>Pay</h1>
+			<h1>收货</h1>
 			<p>定单号：<c:out value="${orderId }"></c:out></p>
 			<p>定单金额：<c:out value="${amount }"></c:out></p>
 			<p>账户余额：<c:out value="${account }"></c:out></p>
