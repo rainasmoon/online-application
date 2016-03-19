@@ -41,4 +41,19 @@ public class OrderServiceImpl implements OrderService {
 		return repository.findBySalerIdOrBuyerId(userId);
 	}
 
+	@Override
+	public String orderPay(Long orderId) {
+		Order order = repository.findOne(orderId);
+		order.setStatus(OrderStatus.PAYED.getCode());
+		repository.save(order);
+		// TODO glen transfer the account.
+
+		return "支付成功";
+	}
+
+	@Override
+	public Order findOrder(Long orderId) {
+		return repository.findOne(orderId);
+	}
+
 }

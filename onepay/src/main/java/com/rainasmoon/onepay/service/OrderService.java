@@ -9,4 +9,8 @@ public interface OrderService {
 	public Order createOrder(Long userId, Long productId, Integer money);
 
 	public List<Order> findMyOrders(Long userId);
+
+	public String orderPay(Long orderId);
+
+	public Order findOrder(Long orderId);
 }

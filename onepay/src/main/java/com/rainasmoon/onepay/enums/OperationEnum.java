@@ -1,9 +1,11 @@
 package com.rainasmoon.onepay.enums;
 
 public enum OperationEnum {
-	BUYER_FILL_INFO(1, "完善信息", ""), BUYER_PAY(2, "付款", ""), BUYER_RECEIVE(3,
-			"收货", ""), BUYER_STAR(4, "评价", ""), SALER_SEND(5, "发货", ""), SALER_STAR(
-			6, "评价", ""), WAITING(7, "等待对方操作", ""), NOTHING(8, "无法操作", "");
+	BUYER_FILL_INFO(1, "完善信息", "order_fill.html"), BUYER_PAY(2, "付款",
+			"order_pay.html"), BUYER_RECEIVE(3, "收货", "restful/order_receive"), BUYER_STAR(
+			4, "评价", "order_receive_star.html"), SALER_SEND(5, "发货",
+			"restful/order_send"), SALER_STAR(6, "评价", "order_sale_star.html"), WAITING(
+			7, "等待对方操作", ""), NOTHING(8, "无法操作", "");
 	private int id;
 	private String operationName;
 	private String operationUrl;

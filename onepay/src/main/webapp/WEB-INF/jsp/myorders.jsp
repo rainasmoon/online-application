@@ -19,8 +19,8 @@
 
 		<div class="jumbotron">
 			<h1>我的定单</h1>
-					</div>
-		
+		</div>
+
 		<div class="table-responsive">
 			<table class="table table-striped">
 				<thead>
@@ -38,13 +38,18 @@
 
 					<c:forEach var="arow" items="${orders}" varStatus="status">
 						<tr>
-							<td><c:out value="${status.count}"/></td>
-							<td><c:out value="${arow.salerName}"/></td>
+							<td><c:out value="${status.count}" /></td>
+							<td><c:out value="${arow.salerName}" /></td>
 							<td><c:out value="${arow.buyerName}" /></td>
 							<td><c:out value="${arow.productName}" /></td>
 							<td><c:out value="${arow.price}" /></td>
 							<td><c:out value="${arow.enumStatus.name}" /></td>
-							<td><c:out value="${arow.operation.operationName}" /></td>
+							<td><c:if test="${not empty arow.operation.operationUrl }">
+									<a href="${arow.operation.operationUrl }?orderId=${arow.id}"><c:out
+											value="${arow.operation.operationName}" /></a>
+								</c:if> <c:if test="${empty arow.operation.operationUrl }">
+									<c:out value="${arow.operation.operationName}" />
+								</c:if></td>
 						</tr>
 					</c:forEach>
 				</tbody>
