@@ -18,11 +18,11 @@ insert into orders values(10, 1, 2, 2, 100, 'test', '10086', 'earth', '100010', 
 insert into orders values(11, 1, 2, 1, 100, 'test', '10086', 'earth', '100010', 'test', '10086', 'earth', '100010', 11, null);
 insert into orders values(12, 1, 2, 1, 100, 'test', '10086', 'earth', '100010', 'test', '10086', 'earth', '100010', 12, null);
 
-insert into yunorders values(1, 1, 1, 1, 1, 100, 100, 1, 'verifysamplecode', 'this is a test yun order', null);
-insert into yunorders values(2, 1, 1, 2, 1, 100, 100, 2, 'verifysamplecode', 'this is a test yun order', null);
-insert into yunorders values(3, 1, 1, 1, 1, 100, 100, 3, 'verifysamplecode', 'this is a test yun order', null);
-insert into yunorders values(4, 1, 1, 2, 1, 100, 100, 4, 'verifysamplecode', 'this is a test yun order', null);
-insert into yunorders values(5, 1, 1, 1, 1, 100, 100, 5, 'verifysamplecode', 'this is a test yun order', null);
-insert into yunorders values(6, 1, 1, 2, 1, 100, 100, 6, 'verifysamplecode', 'this is a test yun order', null);
-insert into yunorders values(7, 1, 1, 1, 1, 100, 100, 7, 'verifysamplecode', 'this is a test yun order', null);
-insert into yunorders values(8, 1, 1, 2, 1, 100, 100, 8, 'verifysamplecode', 'this is a test yun order', null);
+insert into yunorders values(1, 1, 2, 1, 1, 100, 100, 1, 'verifysamplecode', 'this is a test yun order', null);
+insert into yunorders values(2, 1, 2, 2, 1, 100, 100, 2, 'verifysamplecode', 'this is a test yun order', null);
+insert into yunorders values(3, 1, 2, 1, 1, 100, 100, 3, 'verifysamplecode', 'this is a test yun order', null);
+insert into yunorders values(4, 1, 2, 2, 1, 100, 100, 4, 'verifysamplecode', 'this is a test yun order', null);
+insert into yunorders values(5, 1, 2, 1, 1, 100, 100, 5, 'verifysamplecode', 'this is a test yun order', null);
+insert into yunorders values(6, 1, 2, 2, 1, 100, 100, 6, 'verifysamplecode', 'this is a test yun order', null);
+insert into yunorders values(7, 1, 2, 1, 1, 100, 100, 7, 'verifysamplecode', 'this is a test yun order', null);
+insert into yunorders values(8, 1, 2, 2, 1, 100, 100, 8, 'verifysamplecode', 'this is a test yun order', null);
