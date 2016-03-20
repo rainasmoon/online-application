@@ -100,7 +100,10 @@ public class MarketController extends BaseController {
 	@RequestMapping(value = { "/market_buy.html" }, method = RequestMethod.GET)
 	public String showBuyForm(Long yunOrderId, Map<String, Object> model) {
 
+		YunOrder yunOrder = yunOrderService.findYunOrder(yunOrderId);
 		model.put("yunOrderId", yunOrderId);
+		model.put("amount", yunOrder.getAmount());
+		model.put("price", yunOrder.getPrice());
 		return "market_buy";
 	}
 
@@ -113,8 +116,12 @@ public class MarketController extends BaseController {
 
 	@RequestMapping(value = { "/market_sell.html" }, method = RequestMethod.GET)
 	public String showSellForm(Long yunOrderId, Map<String, Object> model) {
-
+		User loginUser = userService.findUser(getLoginUserId());
+		YunOrder yunOrder = yunOrderService.findYunOrder(yunOrderId);
 		model.put("yunOrderId", yunOrderId);
+		model.put("amount", yunOrder.getAmount());
+		model.put("account", loginUser.getAccount());
+		model.put("price", yunOrder.getPrice());
 		return "market_sell";
 	}
 
@@ -133,7 +140,8 @@ public class MarketController extends BaseController {
 	}
 
 	@RequestMapping(value = { "/market_unfreeze.html" }, method = RequestMethod.POST)
-	public String unfreezeYunOrder(Long yunOrderId, Map<String, Object> model) {
+	public String unfreezeYunOrder(Long yunOrderId, String unfreezeCode,
+			Map<String, Object> model) {
 		String message = yunOrderService.freezeYunOrder(yunOrderId);
 		model.put("message", message);
 		return "market_unfreeze_success";

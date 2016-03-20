@@ -14,4 +14,6 @@ public interface YunOrderService {
 	String freezeYunOrder(Long yunOrderId);
 
 	String sellYunOrder(Long yunOrderId);
+
+	YunOrder findYunOrder(Long yunOrderId);
 }

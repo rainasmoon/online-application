@@ -16,7 +16,8 @@
 <h1>解冻</h1>
 <form:form method="post"
 	class="form-horizontal">
-		
+		<label>解冻码</label>
+		<input id="unfreezeCode" name="unfreezeCode" type="text"/>
 		<button type="submit" class="btn btn-primary">Submit</button>
 </form:form>
 

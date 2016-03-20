@@ -57,4 +57,9 @@ public class YunOrderServiceImpl implements YunOrderService {
 		return null;
 	}
 
+	@Override
+	public YunOrder findYunOrder(Long yunOrderId) {
+		return repository.findOne(yunOrderId);
+	}
+
 }

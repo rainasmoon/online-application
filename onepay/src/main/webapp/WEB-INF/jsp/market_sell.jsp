@@ -16,7 +16,15 @@
 <h1>卖</h1>
 <form:form method="post"
 	class="form-horizontal">
-		
+		<input type="hidden" name="yunOrderId" value="${yunOrderId }" />
+
+		<div>
+			<h1>卖猿币</h1>
+			<p>交易号：<c:out value="${yunOrderId }"></c:out></p>
+			<p>交易猿币数：<c:out value="${amount }"></c:out></p>
+			<p>账户余额：<c:out value="${account }"></c:out></p>
+			<p>交易价格（人民币）：<c:out value="${price }"></c:out><strong>赚了:)</strong></p>
+		</div>
 		<button type="submit" class="btn btn-primary">Submit</button>
 </form:form>
 
