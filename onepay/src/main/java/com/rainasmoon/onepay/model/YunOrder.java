@@ -31,6 +31,14 @@ public class YunOrder extends BaseEntity {
 	@Column(name = "description")
 	private String description;
 
+	public boolean isSell() {
+		return model != null ? model.equals(2) : false;
+	}
+
+	public boolean isBuy() {
+		return model != null ? model.equals(1) : false;
+	}
+
 	public Long getUserId() {
 		return userId;
 	}

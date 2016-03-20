@@ -13,6 +13,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.rainasmoon.onepay.enums.YunOperationEnum;
+import com.rainasmoon.onepay.enums.YunStatus;
 import com.rainasmoon.onepay.model.User;
 import com.rainasmoon.onepay.model.YunOrder;
 import com.rainasmoon.onepay.service.UserService;
@@ -45,14 +47,30 @@ public class MarketController extends BaseController {
 			yunOrderVo.setUserLevelName(CommonUtils.getUserLevel(user
 					.getLevel()));
 			yunOrderVo.setUserCredit(user.getCredit());
+			yunOrderVo.setStatus(yunOrder.getStatus());
+			yunOrderVo.setOperation(transferToOperation(yunOrder));
 			yunOrderVos.add(yunOrderVo);
 		}
 		model.put("yunOrders", yunOrderVos);
 		return "market";
 	}
 
+	private YunOperationEnum transferToOperation(YunOrder yunOrder) {
+		if (yunOrder.isBuy()) {
+			return YunStatus.getCallOperation(YunStatus.valueOf(yunOrder
+					.getStatus()));
+		} else {
+			return YunStatus.getPutOperation(YunStatus.valueOf(yunOrder
+					.getStatus()));
+		}
+	}
+
 	@RequestMapping(value = { "/market_add_info.html" }, method = RequestMethod.GET)
 	public String showAddMarketInfo(Long orderId, Map<String, Object> model) {
+
+		if (!isLogin()) {
+			return "redirect:login.html";
+		}
 
 		model.put("yunOrder", new AddYunOrderVo());
 		return "market_add_info";
