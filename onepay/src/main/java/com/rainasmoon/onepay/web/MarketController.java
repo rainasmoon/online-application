@@ -56,13 +56,30 @@ public class MarketController extends BaseController {
 	}
 
 	private YunOperationEnum transferToOperation(YunOrder yunOrder) {
-		if (yunOrder.isBuy()) {
-			return YunStatus.getCallOperation(YunStatus.valueOf(yunOrder
-					.getStatus()));
-		} else {
-			return YunStatus.getPutOperation(YunStatus.valueOf(yunOrder
+		if (getLoginUserId().equals(yunOrder.getUserId()) && yunOrder.isBuy()) {
+			return YunStatus.getUserCallOperation(YunStatus.valueOf(yunOrder
 					.getStatus()));
 		}
+		if (getLoginUserId().equals(yunOrder.getDealerId()) && yunOrder.isBuy()) {
+			return YunStatus.getDealerCallOperation(YunStatus.valueOf(yunOrder
+					.getStatus()));
+		}
+		if (getLoginUserId().equals(yunOrder.getUserId()) && yunOrder.isSell()) {
+			return YunStatus.getUserPutOperation(YunStatus.valueOf(yunOrder
+					.getStatus()));
+		}
+		if (getLoginUserId().equals(yunOrder.getDealerId())
+				&& yunOrder.isSell()) {
+			return YunStatus.getDealerPutOperation(YunStatus.valueOf(yunOrder
+					.getStatus()));
+		}
+		if (yunOrder.isBuy()) {
+			return YunStatus.getOtherCallOperation(YunStatus.valueOf(yunOrder
+					.getStatus()));
+		}
+		return YunStatus.getOtherPutOperation(YunStatus.valueOf(yunOrder
+				.getStatus()));
+
 	}
 
 	@RequestMapping(value = { "/market_add_info.html" }, method = RequestMethod.GET)

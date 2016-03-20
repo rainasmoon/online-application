@@ -35,7 +35,42 @@ public enum YunStatus {
 		return null;
 	}
 
-	public static YunOperationEnum getPutOperation(YunStatus status) {
+	public static YunOperationEnum getUserPutOperation(YunStatus status) {
+		switch (status) {
+		case WAITINFO:
+			return YunOperationEnum.WAITINGTRADE;
+		case DOWN:
+		case WAIT:
+		case TRADED:
+			return YunOperationEnum.VIEW_VERIFY_CODE;
+		case WAITVERIFY:
+		case VERIFYED:
+		case DONE:
+		case FAIL:
+
+		}
+		return YunOperationEnum.NOTHING;
+	}
+
+	public static YunOperationEnum getDealerPutOperation(YunStatus status) {
+		switch (status) {
+		case WAITINFO:
+			return YunOperationEnum.WAITINGTRADE;
+		case DOWN:
+		case WAIT:
+			return YunOperationEnum.BUY;
+		case TRADED:
+		case WAITVERIFY:
+			return YunOperationEnum.INPUT_VERIFY_CODE;
+		case VERIFYED:
+		case DONE:
+		case FAIL:
+
+		}
+		return YunOperationEnum.NOTHING;
+	}
+
+	public static YunOperationEnum getOtherPutOperation(YunStatus status) {
 		switch (status) {
 		case WAITINFO:
 			return YunOperationEnum.WAITINGTRADE;
@@ -52,7 +87,42 @@ public enum YunStatus {
 		return YunOperationEnum.NOTHING;
 	}
 
-	public static YunOperationEnum getCallOperation(YunStatus status) {
+	public static YunOperationEnum getUserCallOperation(YunStatus status) {
+		switch (status) {
+		case WAITINFO:
+			return YunOperationEnum.WAITINGTRADE;
+		case DOWN:
+		case WAIT:
+		case TRADED:
+		case WAITVERIFY:
+			return YunOperationEnum.INPUT_VERIFY_CODE;
+		case VERIFYED:
+		case DONE:
+		case FAIL:
+
+		}
+		return YunOperationEnum.NOTHING;
+	}
+
+	public static YunOperationEnum getDealerCallOperation(YunStatus status) {
+		switch (status) {
+		case WAITINFO:
+			return YunOperationEnum.WAITINGTRADE;
+		case DOWN:
+		case WAIT:
+			return YunOperationEnum.SALE;
+		case TRADED:
+			return YunOperationEnum.VIEW_VERIFY_CODE;
+		case WAITVERIFY:
+		case VERIFYED:
+		case DONE:
+		case FAIL:
+
+		}
+		return YunOperationEnum.NOTHING;
+	}
+
+	public static YunOperationEnum getOtherCallOperation(YunStatus status) {
 		switch (status) {
 		case WAITINFO:
 			return YunOperationEnum.WAITINGTRADE;
