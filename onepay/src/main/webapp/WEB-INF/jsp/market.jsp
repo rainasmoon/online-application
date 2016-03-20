@@ -67,7 +67,7 @@
 </div>
 <!--/row-->
 
-<hr>
+<hr/>
 
 <jsp:include page="./fragments/footer.jsp" />
 

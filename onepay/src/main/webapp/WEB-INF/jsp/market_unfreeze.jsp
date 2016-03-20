@@ -13,7 +13,7 @@
 
 <jsp:include page="./fragments/bodyHeader.jsp" />
 
-<h1>添加一条交易</h1>
+<h1>解冻</h1>
 <form:form modelAttribute="yunOrder" method="post"
 	class="form-horizontal" >
 	<span class="help-inline"> <c:if test="${not empty message}">

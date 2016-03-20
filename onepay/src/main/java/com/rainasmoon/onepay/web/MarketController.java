@@ -95,4 +95,51 @@ public class MarketController extends BaseController {
 		model.put("message", "");
 		return "market_add_info_success";
 	}
+
+	@RequestMapping(value = { "/market_buy.html" }, method = RequestMethod.GET)
+	public String showBuyForm(Long yunOrderId, Map<String, Object> model) {
+
+		model.put("yunOrderId", yunOrderId);
+		return "market_buy";
+	}
+
+	@RequestMapping(value = { "/market_buy.html" }, method = RequestMethod.POST)
+	public String buyYunOrder(Long orderId, Map<String, Object> model) {
+		model.put("message", "");
+		return "market_buy_success";
+	}
+
+	@RequestMapping(value = { "/market_sell.html" }, method = RequestMethod.GET)
+	public String showSellForm(Long yunOrderId, Map<String, Object> model) {
+
+		model.put("yunOrderId", yunOrderId);
+		return "market_sell";
+	}
+
+	@RequestMapping(value = { "/market_sell.html" }, method = RequestMethod.POST)
+	public String sellYunOrder(Long orderId, Map<String, Object> model) {
+		model.put("message", "");
+		return "market_sell_success";
+	}
+
+	@RequestMapping(value = { "/market_unfreeze.html" }, method = RequestMethod.GET)
+	public String showUnfreezeForm(Long yunOrderId, Map<String, Object> model) {
+
+		model.put("yunOrderId", yunOrderId);
+		return "market_unfreeze";
+	}
+
+	@RequestMapping(value = { "/market_unfreeze.html" }, method = RequestMethod.POST)
+	public String unfreezeYunOrder(Long orderId, Map<String, Object> model) {
+		model.put("message", "");
+		return "market_unfreeze_success";
+	}
+
+	@RequestMapping(value = { "/market_view_trade.html" }, method = RequestMethod.GET)
+	public String viewTrade(Long yunOrderId, Map<String, Object> model) {
+
+		model.put("yunOrderId", yunOrderId);
+		return "market_view_trade";
+	}
+
 }

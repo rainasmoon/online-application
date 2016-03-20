@@ -68,7 +68,7 @@
 </div>
 <!--/row-->
 
-<hr>
+<hr/>
 
 <script src="js/listproduct.js"></script>
 
