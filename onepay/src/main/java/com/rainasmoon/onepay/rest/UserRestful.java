@@ -43,9 +43,4 @@ public class UserRestful extends BaseController {
 		return value;
 	}
 
-	@RequestMapping("restful/verifyFreezeCode")
-	public String verifyFreezeCode(
-			@RequestParam(value = "freezeCode") String freezeCode) {
-		return "developing. pls send email to admin";
-	}
 }

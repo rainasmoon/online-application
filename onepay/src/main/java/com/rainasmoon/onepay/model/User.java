@@ -46,6 +46,12 @@ public class User extends BaseEntity {
 		return id.toString();
 	}
 
+	public User unfreeze(Integer i) {
+		account = account + i;
+		freezeAccount = freezeAccount - i;
+		return this;
+	}
+
 	public String getEmail() {
 		return email;
 	}
