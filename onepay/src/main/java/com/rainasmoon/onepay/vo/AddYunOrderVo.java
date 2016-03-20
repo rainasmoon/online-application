@@ -7,6 +7,7 @@ public class AddYunOrderVo {
 
 	private Integer amount;
 	private Integer price;
+	private String tradeModel;
 	private String description;
 
 	@Override
@@ -48,5 +49,13 @@ public class AddYunOrderVo {
 
 	public void setError(String error) {
 		this.error = error;
+	}
+
+	public String getTradeModel() {
+		return tradeModel;
+	}
+
+	public void setTradeModel(String tradeModel) {
+		this.tradeModel = tradeModel;
 	}
 }

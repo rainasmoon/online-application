@@ -55,6 +55,8 @@ public class MarketController extends BaseController {
 		yunOrder.setAmount(addYunOrderVo.getAmount());
 		yunOrder.setPrice(addYunOrderVo.getPrice());
 		yunOrder.setDescription(addYunOrderVo.getDescription());
+		yunOrder.setModel("buy".equalsIgnoreCase(addYunOrderVo.getTradeModel()) ? 1
+				: 2);
 		yunOrderService.addYunOrder(yunOrder);
 		model.put("message", "");
 		return "market_add_info_success";

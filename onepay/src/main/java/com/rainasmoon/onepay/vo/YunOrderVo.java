@@ -16,6 +16,10 @@ public class YunOrderVo extends YunOrder {
 		return YunModels.valueOf(getModel());
 	}
 
+	public void setEnumModel(String str) {
+		setModel("buy".equalsIgnoreCase(str) ? 1 : 2);
+	}
+
 	public YunStatus getEnumStatus() {
 		return null;
 	}
@@ -51,4 +55,5 @@ public class YunOrderVo extends YunOrder {
 	public void setOperation(YunOperationEnum operation) {
 		this.operation = operation;
 	}
+
 }

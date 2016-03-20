@@ -25,6 +25,14 @@
 		</spring:bind>
 	</span>
 	<fieldset>
+	<div class="control-group">
+			<label for="inputPicFile" class="control-label">交易类型</label> <label
+				class="radio-inline"> <input type="radio" name="tradeModel"
+				id="tradeModel1" value="buy" checked /> 买
+			</label> <label class="radio-inline"> <input type="radio"
+				name="tradeModel" id="tradeModel2" value="sell" /> 卖
+			</label> 
+		</div>
 		<onepayapp:inputField label="猿币" name="amount" type="number" />
 		<onepayapp:inputField label="底价" name="price" type="number" />
 		<hr />

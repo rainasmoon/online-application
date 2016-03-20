@@ -20,6 +20,9 @@ public enum YunModels {
 	}
 
 	public static YunModels valueOf(Integer code) {
+		if (code == null) {
+			return null;
+		}
 		switch (code) {
 		case 1:
 			return BUY;
