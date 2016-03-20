@@ -14,36 +14,10 @@
 <jsp:include page="./fragments/bodyHeader.jsp" />
 
 <h1>解冻</h1>
-<form:form modelAttribute="yunOrder" method="post"
-	class="form-horizontal" >
-	<span class="help-inline"> <c:if test="${not empty message}">
-			<div id="message" class="alert alert-success" role="alert">${message}</div>
-		</c:if> <spring:bind path="*">
-			<c:if test="${status.error}">
-				<div id="error" class="alert alert-danger" role="alert">${status.errorMessage}</div>
-			</c:if>
-		</spring:bind>
-	</span>
-	<fieldset>
-	<div class="control-group">
-			<label for="inputPicFile" class="control-label">交易类型</label> <label
-				class="radio-inline"> <input type="radio" name="tradeModel"
-				id="tradeModel1" value="buy" checked /> 买
-			</label> <label class="radio-inline"> <input type="radio"
-				name="tradeModel" id="tradeModel2" value="sell" /> 卖
-			</label> 
-		</div>
-		<onepayapp:inputField label="猿币" name="amount" type="number" />
-		<onepayapp:inputField label="底价" name="price" type="number" />
-		<hr />
-		<div>
-			<label for="description">描述</label>
-			<textarea id="description" name="description" class="form-control"
-				rows="3"></textarea>
-		</div>
+<form:form method="post"
+	class="form-horizontal">
 		
 		<button type="submit" class="btn btn-primary">Submit</button>
-	</fieldset>
 </form:form>
 
 <link rel="stylesheet"

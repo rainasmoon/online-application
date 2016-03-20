@@ -90,6 +90,7 @@ public class MarketController extends BaseController {
 		yunOrder.setDescription(addYunOrderVo.getDescription());
 		yunOrder.setModel("buy".equalsIgnoreCase(addYunOrderVo.getTradeModel()) ? 1
 				: 2);
+		yunOrder.setStatus(YunStatus.DOWN.getCode());
 
 		yunOrderService.addYunOrder(yunOrder);
 		model.put("message", "");
