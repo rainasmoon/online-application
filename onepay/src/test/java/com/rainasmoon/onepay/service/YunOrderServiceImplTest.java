@@ -38,7 +38,7 @@ public class YunOrderServiceImplTest {
 	@Test
 	public void shouldBid() {
 		YunOrder yunOrder = new YunOrder();
-		YunOrder p = service.save(yunOrder);
+		YunOrder p = service.addYunOrder(yunOrder);
 		assertNotNull(p);
 
 	}

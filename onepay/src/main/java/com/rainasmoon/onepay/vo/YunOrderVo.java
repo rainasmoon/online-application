@@ -43,4 +43,12 @@ public class YunOrderVo extends YunOrder {
 	public void setUserCredit(Integer userCredit) {
 		this.userCredit = userCredit;
 	}
+
+	public YunOperationEnum getOperation() {
+		return operation;
+	}
+
+	public void setOperation(YunOperationEnum operation) {
+		this.operation = operation;
+	}
 }
