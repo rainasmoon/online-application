@@ -56,22 +56,27 @@ public class MarketController extends BaseController {
 	}
 
 	private YunOperationEnum transferToOperation(YunOrder yunOrder) {
-		if (getLoginUserId().equals(yunOrder.getUserId()) && yunOrder.isBuy()) {
-			return YunStatus.getUserCallOperation(YunStatus.valueOf(yunOrder
-					.getStatus()));
-		}
-		if (getLoginUserId().equals(yunOrder.getDealerId()) && yunOrder.isBuy()) {
-			return YunStatus.getDealerCallOperation(YunStatus.valueOf(yunOrder
-					.getStatus()));
-		}
-		if (getLoginUserId().equals(yunOrder.getUserId()) && yunOrder.isSell()) {
-			return YunStatus.getUserPutOperation(YunStatus.valueOf(yunOrder
-					.getStatus()));
-		}
-		if (getLoginUserId().equals(yunOrder.getDealerId())
-				&& yunOrder.isSell()) {
-			return YunStatus.getDealerPutOperation(YunStatus.valueOf(yunOrder
-					.getStatus()));
+		if (getLoginUserId() != null) {
+			if (getLoginUserId().equals(yunOrder.getUserId())
+					&& yunOrder.isBuy()) {
+				return YunStatus.getUserCallOperation(YunStatus
+						.valueOf(yunOrder.getStatus()));
+			}
+			if (getLoginUserId().equals(yunOrder.getDealerId())
+					&& yunOrder.isBuy()) {
+				return YunStatus.getDealerCallOperation(YunStatus
+						.valueOf(yunOrder.getStatus()));
+			}
+			if (getLoginUserId().equals(yunOrder.getUserId())
+					&& yunOrder.isSell()) {
+				return YunStatus.getUserPutOperation(YunStatus.valueOf(yunOrder
+						.getStatus()));
+			}
+			if (getLoginUserId().equals(yunOrder.getDealerId())
+					&& yunOrder.isSell()) {
+				return YunStatus.getDealerPutOperation(YunStatus
+						.valueOf(yunOrder.getStatus()));
+			}
 		}
 		if (yunOrder.isBuy()) {
 			return YunStatus.getOtherCallOperation(YunStatus.valueOf(yunOrder
@@ -116,7 +121,9 @@ public class MarketController extends BaseController {
 
 	@RequestMapping(value = { "/market_buy.html" }, method = RequestMethod.GET)
 	public String showBuyForm(Long yunOrderId, Map<String, Object> model) {
-
+		if (!isLogin()) {
+			return "redirect:login.html";
+		}
 		YunOrder yunOrder = yunOrderService.findYunOrder(yunOrderId);
 		model.put("yunOrderId", yunOrderId);
 		model.put("amount", yunOrder.getAmount());
@@ -126,13 +133,17 @@ public class MarketController extends BaseController {
 
 	@RequestMapping(value = { "/market_buy.html" }, method = RequestMethod.POST)
 	public String buyYunOrder(Long yunOrderId, Map<String, Object> model) {
-		String message = yunOrderService.buyYunOrder(yunOrderId);
+		String message = yunOrderService.buyYunOrder(getLoginUserId(),
+				yunOrderId);
 		model.put("message", message);
 		return "market_buy_success";
 	}
 
 	@RequestMapping(value = { "/market_sell.html" }, method = RequestMethod.GET)
 	public String showSellForm(Long yunOrderId, Map<String, Object> model) {
+		if (!isLogin()) {
+			return "redirect:login.html";
+		}
 		User loginUser = userService.findUser(getLoginUserId());
 		YunOrder yunOrder = yunOrderService.findYunOrder(yunOrderId);
 		model.put("yunOrderId", yunOrderId);
@@ -144,7 +155,8 @@ public class MarketController extends BaseController {
 
 	@RequestMapping(value = { "/market_sell.html" }, method = RequestMethod.POST)
 	public String sellYunOrder(Long yunOrderId, Map<String, Object> model) {
-		String message = yunOrderService.sellYunOrder(yunOrderId);
+		String message = yunOrderService.sellYunOrder(getLoginUserId(),
+				yunOrderId);
 		model.put("message", message);
 		return "market_sell_success";
 	}
@@ -159,7 +171,8 @@ public class MarketController extends BaseController {
 	@RequestMapping(value = { "/market_unfreeze.html" }, method = RequestMethod.POST)
 	public String unfreezeYunOrder(Long yunOrderId, String unfreezeCode,
 			Map<String, Object> model) {
-		String message = yunOrderService.freezeYunOrder(yunOrderId);
+		String message = yunOrderService.freezeYunOrder(getLoginUserId(),
+				yunOrderId, unfreezeCode);
 		model.put("message", message);
 		return "market_unfreeze_success";
 	}

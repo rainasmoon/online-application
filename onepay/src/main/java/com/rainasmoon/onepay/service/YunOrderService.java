@@ -9,11 +9,11 @@ public interface YunOrderService {
 
 	List<YunOrder> findAll();
 
-	String buyYunOrder(Long yunOrderId);
+	String buyYunOrder(Long userId, Long yunOrderId);
 
-	String freezeYunOrder(Long yunOrderId);
+	String freezeYunOrder(Long userId, Long yunOrderId, String freezeCode);
 
-	String sellYunOrder(Long yunOrderId);
+	String sellYunOrder(Long userId, Long yunOrderId);
 
 	YunOrder findYunOrder(Long yunOrderId);
 }

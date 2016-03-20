@@ -14,7 +14,8 @@
 <jsp:include page="./fragments/bodyHeader.jsp" />
 
 <h1>查看</h1>
-
+请收到对方款项后，再给对方解冻码。
+解冻码为：
 <jsp:include page="./fragments/footer.jsp" />
 
 

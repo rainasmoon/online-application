@@ -33,15 +33,16 @@ public class YunOrderServiceImpl implements YunOrderService {
 	}
 
 	@Override
-	public String buyYunOrder(Long yunOrderId) {
+	public String buyYunOrder(Long userId, Long yunOrderId) {
 		YunOrder yunOrder = repository.findOne(yunOrderId);
+		yunOrder.setDealerId(userId);
 		yunOrder.setStatus(YunStatus.TRADED.getCode());
 		repository.save(yunOrder);
 		return null;
 	}
 
 	@Override
-	public String freezeYunOrder(Long yunOrderId) {
+	public String freezeYunOrder(Long userId, Long yunOrderId, String freezeCode) {
 		// TODO Auto-generated method stub
 		YunOrder yunOrder = repository.findOne(yunOrderId);
 		yunOrder.setStatus(YunStatus.VERIFYED.getCode());
@@ -50,8 +51,10 @@ public class YunOrderServiceImpl implements YunOrderService {
 	}
 
 	@Override
-	public String sellYunOrder(Long yunOrderId) {
+	public String sellYunOrder(Long userId, Long yunOrderId) {
 		YunOrder yunOrder = repository.findOne(yunOrderId);
+
+		yunOrder.setDealerId(userId);
 		yunOrder.setStatus(YunStatus.TRADED.getCode());
 		repository.save(yunOrder);
 		return null;
