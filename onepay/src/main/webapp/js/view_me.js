@@ -18,6 +18,20 @@ function modifyNickName() {
 			.html(
 					"<input id='newInputNickName'/><button onclick='saveUserInfoNickName()'>保存</button>");
 }
+function verifyFreezeCode() {
+	$("#freezeCode")
+			.html(
+					"<input id='newInputFreezeCode'/><button onclick='sendVerifyCode()'>验证</button>");
+}
+function sendVerifyCode() {
+	$.post("restful/verifyFreezeCode", {
+		freezeCode : $("#newInputFreezeCode").val()
+	}, function(data, status) {
+		$("#freezeCode").html(
+				data + ' | <a href="javascript:verifyFreezeCode()">输入解冻码</a>');
+	});
+}
+
 function saveUserTag() {
 	$.post("restful/saveUserTag", {
 		value : $("#newInputTag").val()

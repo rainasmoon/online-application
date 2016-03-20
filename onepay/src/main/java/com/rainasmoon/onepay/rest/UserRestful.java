@@ -18,12 +18,14 @@ public class UserRestful extends BaseController {
 	private UserService userService;
 
 	@RequestMapping("/restful/greeting")
-	public String greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
+	public String greeting(
+			@RequestParam(value = "name", defaultValue = "World") String name) {
 		return "hello, my pc world...";
 	}
 
 	@RequestMapping("/restful/saveUserInfo")
-	public String saveUserInfo(@RequestParam(value = "field") String field, @RequestParam(value = "value") String value) {
+	public String saveUserInfo(@RequestParam(value = "field") String field,
+			@RequestParam(value = "value") String value) {
 		if (getLoginUserId() == null) {
 			return CommonConstants.NO_LOGIN_MSG;
 		}
@@ -39,5 +41,11 @@ public class UserRestful extends BaseController {
 		}
 		userService.updateUser(loginUser);
 		return value;
+	}
+
+	@RequestMapping("restful/verifyFreezeCode")
+	public String verifyFreezeCode(
+			@RequestParam(value = "freezeCode") String freezeCode) {
+		return "developing. pls send email to admin";
 	}
 }

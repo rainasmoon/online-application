@@ -66,7 +66,7 @@
 			</tr>
 			<tr>
 				<td>冻结（猿币）</td>
-				<td><c:out value="${user.freezeAccount}" /><a>输入解冻码</a></td>
+				<td><div id="freezeCode"><c:out value="${user.freezeAccount}" /> | <a href="javascript:verifyFreezeCode()">输入解冻码</a></div></td>
 			</tr>
 			<tr>
 				<td>级别</td>
