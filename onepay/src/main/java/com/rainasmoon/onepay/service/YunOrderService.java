@@ -8,4 +8,10 @@ public interface YunOrderService {
 	YunOrder addYunOrder(YunOrder yunOrder);
 
 	List<YunOrder> findAll();
+
+	String buyYunOrder(Long yunOrderId);
+
+	String freezeYunOrder(Long yunOrderId);
+
+	String sellYunOrder(Long yunOrderId);
 }

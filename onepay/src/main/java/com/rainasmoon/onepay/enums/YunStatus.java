@@ -1,7 +1,7 @@
 package com.rainasmoon.onepay.enums;
 
 public enum YunStatus {
-	WAITINFO(1, "待确认"), DOWN(2, "在交易"), WAITPAY(3, "待支付"), PAYED(4, "支付完成"), WAITVERIFY(
+	WAITINFO(1, "待确认"), DOWN(2, "交易中"), WAIT(3, "待交易"), TRADED(4, "交易完成"), WAITVERIFY(
 			5, "待解冻"), VERIFYED(6, "已解冻"), DONE(7, "完成"), FAIL(8, "失败");
 
 	private int code;
@@ -19,9 +19,9 @@ public enum YunStatus {
 		case 2:
 			return DOWN;
 		case 3:
-			return WAITPAY;
+			return WAIT;
 		case 4:
-			return PAYED;
+			return TRADED;
 		case 5:
 			return WAITVERIFY;
 		case 6:
@@ -40,9 +40,9 @@ public enum YunStatus {
 		case WAITINFO:
 			return YunOperationEnum.WAITINGTRADE;
 		case DOWN:
-		case WAITPAY:
+		case WAIT:
 			return YunOperationEnum.BUY;
-		case PAYED:
+		case TRADED:
 		case WAITVERIFY:
 		case VERIFYED:
 		case DONE:
@@ -57,9 +57,9 @@ public enum YunStatus {
 		case WAITINFO:
 			return YunOperationEnum.WAITINGTRADE;
 		case DOWN:
-		case WAITPAY:
+		case WAIT:
 			return YunOperationEnum.SALE;
-		case PAYED:
+		case TRADED:
 		case WAITVERIFY:
 		case VERIFYED:
 		case DONE:

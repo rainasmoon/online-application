@@ -21,7 +21,7 @@ public class YunOrderVo extends YunOrder {
 	}
 
 	public YunStatus getEnumStatus() {
-		return null;
+		return YunStatus.valueOf(getStatus());
 	}
 
 	public String getUserName() {
