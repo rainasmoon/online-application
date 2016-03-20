@@ -3,11 +3,13 @@ package com.rainasmoon.onepay.rest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rainasmoon.onepay.model.Product;
 import com.rainasmoon.onepay.service.BidService;
 import com.rainasmoon.onepay.util.CommonConstants;
+import com.rainasmoon.onepay.vo.BidRefreshVo;
 import com.rainasmoon.onepay.web.BaseController;
 
 @RestController
@@ -57,5 +59,12 @@ public class BidRestful extends BaseController {
 		bidService.generateBidThreeTimes();
 
 		return "done";
+	}
+
+	@RequestMapping(value = "/restful/bid/refresh", produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public BidRefreshVo refreshBid(
+			@RequestParam(value = "productId") Long productId) {
+		return new BidRefreshVo();
 	}
 }

@@ -15,7 +15,7 @@
 	<p>
 
 		当前属于：
-		<c:out value="${productVo.currentOwer}" />
+		<div id="currentOwner"><c:out value="${productVo.currentOwer}" /></div>
 	
 		<c:if test="${not empty endDate }"> | 结束时间为： <c:out
 				value="${endDate }" />
@@ -34,6 +34,7 @@
 	<h4>
 		<div id="productPrice" class="alert alert-info text-center"
 			role="alert">
+			
 			<c:if test="${saleModel != 'guess_price' }">
 				<c:out value="${productVo.price}" />
 			</c:if>
@@ -82,7 +83,8 @@
 
 	</div>
 </c:if>
-
+<input type="hidden" id="saleModel" value="${saleModel }"/>
+<input type="hidden" id="productId" value="${productVo.productId }"/>
 <script src="js/bid.js" type="text/javascript"></script>
 
 <jsp:include page="./fragments/footer.jsp" />
