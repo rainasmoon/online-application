@@ -18,6 +18,9 @@
 		<div id="message" class="alert alert-success" role="alert">${message}</div>
 	</c:if>
 </span>
+<div class="well">
+	<p>请按照约定的价格给对方付款</p>
+</div>
 <a href="market.html" class="btn btn-primary btn-lg " role="button">返回市场</a>
 
 <jsp:include page="./fragments/footer.jsp" />

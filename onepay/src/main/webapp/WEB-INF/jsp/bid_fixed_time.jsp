@@ -16,14 +16,14 @@
 
 		当前属于：
 		<c:out value="${productVo.currentOwer}" />
-		...
-		<c:if test="${not empty endDate }">结束时间为： <c:out
+	
+		<c:if test="${not empty endDate }"> | 结束时间为： <c:out
 				value="${endDate }" />
 		</c:if>
 	</p>
 	<div class="thumbnail">
 		<img alt="" src="product_pic/${productVo.picPath }" width="300"
-			height="300"/>
+			height="300" />
 
 	</div>
 	<p class="lead">
@@ -31,18 +31,21 @@
 			<label class="label label-info"><c:out value="${arow.name}" /></label>
 		</c:forEach>
 	</p>
-	<p>
-	<div id="productPrice" class="alert alert-info" role="alert">
-		<c:if test="${saleModel != 'guess_price' }">
-			<c:out value="${productVo.price}" />
-		</c:if>
-		<c:if test="${saleModel == 'guess_price' }">???</c:if>
-	</div>
-	</p>
+	<h4>
+		<div id="productPrice" class="alert alert-info text-center"
+			role="alert">
+			<c:if test="${saleModel != 'guess_price' }">
+				<c:out value="${productVo.price}" />
+			</c:if>
+			<c:if test="${saleModel == 'guess_price' }">???</c:if>
+		</div>
+	</h4>
 
 </div>
 <div>
-	<p>我要举牌：</p>
+	<h3 class="bg-info text-center">
+		<strong>我要举牌：</strong>
+	</h3>
 </div>
 <c:if test="${saleModel != 'guess_price' }">
 	<div class="row marketing">
@@ -74,7 +77,8 @@
 				<div class="input-group-addon">.00</div>
 			</div>
 		</div>
-		<button type="button" class="btn btn-primary" onclick="guessMoney('${productVo.productId}')">拍</button>
+		<button type="button" class="btn btn-primary"
+			onclick="guessMoney('${productVo.productId}')">拍</button>
 
 	</div>
 </c:if>

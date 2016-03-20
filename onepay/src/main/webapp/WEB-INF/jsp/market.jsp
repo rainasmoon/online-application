@@ -18,11 +18,11 @@
 	<div class="col-xs-12 col-sm-9">
 
 		<div class="jumbotron">
-			<h1>猿币市场<small><a href="market_add_info.html">发布</a></small></h1>
+			<h1>猿币市场<small><a href="market_add_info.html">发布信息</a></small></h1>
 		</div>
 
 		<div class="table-responsive">
-			<table class="table table-striped">
+			<table class="table table-striped ">
 				<thead>
 					<tr>
 						<th>#</th>
