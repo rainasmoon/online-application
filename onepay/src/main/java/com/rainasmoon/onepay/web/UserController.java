@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,7 @@ import com.rainasmoon.onepay.model.User;
 import com.rainasmoon.onepay.service.TagService;
 import com.rainasmoon.onepay.service.UserService;
 import com.rainasmoon.onepay.vo.AdVo;
+import com.rainasmoon.onepay.vo.UserVo;
 
 @Controller
 public class UserController extends BaseController {
@@ -23,6 +25,9 @@ public class UserController extends BaseController {
 
 	@Autowired
 	private TagService tagService;
+
+	@Autowired
+	private Mapper dozerBeanMapper;
 
 	@RequestMapping(value = { "/top10users.html" }, method = RequestMethod.GET)
 	public String listTop10Users(Map<String, Object> model) {
@@ -69,8 +74,10 @@ public class UserController extends BaseController {
 		}
 
 		User loginUser = userService.findUser(getLoginUserId());
+		UserVo userVo = dozerBeanMapper.map(loginUser, UserVo.class);
+
 		List<Tag> tags = tagService.findUserTags(getLoginUserId());
-		model.put("user", loginUser);
+		model.put("user", userVo);
 		model.put("userTags", tags);
 		return "view_me";
 	}

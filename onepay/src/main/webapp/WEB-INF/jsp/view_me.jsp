@@ -49,20 +49,28 @@
 					</div></td>
 			</tr>
 			<tr>
-				<td>卖出总额</td>
+				<td>卖出总额（猿币）</td>
 				<td><c:out value="${user.sellAmount}" /></td>
 			</tr>
 			<tr>
-				<td>买入总额</td>
+				<td>买入总额（猿币）</td>
 				<td><c:out value="${user.buyAmount}" /></td>
 			</tr>
 			<tr>
-				<td>合计</td>
+				<td>合计（猿币）</td>
 				<td><c:out value="${user.totalAmount}" /></td>
 			</tr>
 			<tr>
+				<td>账户（猿币）</td>
+				<td><c:out value="${user.account}" /></td>
+			</tr>
+			<tr>
+				<td>冻结（猿币）</td>
+				<td><c:out value="${user.freezeAccount}" /><a>输入解冻码</a></td>
+			</tr>
+			<tr>
 				<td>级别</td>
-				<td><c:out value="${user.level}" /></td>
+				<td><c:out value="${user.levelName}" /></td>
 			</tr>
 			<tr>
 				<td>信用</td>
