@@ -28,7 +28,7 @@
 			p:logAbandoned="true" p:testOnBorrow="true" p:testOnReturn="false"
 			p:testWhileIdle="false" p:useEquals="false" p:fairQueue="false"
 			p:timeBetweenEvictionRunsMillis="30000" p:minEvictableIdleTimeMillis="30000"
-			p:validationInterval="1800000" p:validationQuery="/* ping */ SELECT 1" />
+			p:validationInterval="1800000" p:validationQuery="/* ping */ SELECT 1 FROM users" />
 
 		<!-- Database initializer. If any of the script fails, the initialization 
 			stops. -->
