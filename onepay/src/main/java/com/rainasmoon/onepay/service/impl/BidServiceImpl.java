@@ -15,11 +15,14 @@ import com.rainasmoon.onepay.enums.ProductStatus;
 import com.rainasmoon.onepay.enums.SaleModels;
 import com.rainasmoon.onepay.model.BidLog;
 import com.rainasmoon.onepay.model.Product;
+import com.rainasmoon.onepay.model.User;
 import com.rainasmoon.onepay.repository.springdatajpa.BidLogRepository;
 import com.rainasmoon.onepay.repository.springdatajpa.ProductRepository;
 import com.rainasmoon.onepay.service.BidService;
 import com.rainasmoon.onepay.service.OrderService;
+import com.rainasmoon.onepay.service.UserService;
 import com.rainasmoon.onepay.util.CommonConstants;
+import com.rainasmoon.onepay.vo.BidRefreshVo;
 
 @Service
 public class BidServiceImpl implements BidService {
@@ -35,9 +38,17 @@ public class BidServiceImpl implements BidService {
 	@Autowired
 	private OrderService orderService;
 
+	@Autowired
+	private UserService userService;
+
 	@Override
-	public Product bidAddMoney(Long userId, Long productId, Integer addMoney) {
+	public String bidAddMoney(Long userId, Long productId, Integer addMoney) {
 		Product product = productRepository.findOne(productId);
+
+		if (!product.isOnSale()) {
+			return "下架了";
+		}
+
 		product.addPrice(addMoney);
 		product.setCurrentBiderId(userId);
 		productRepository.save(product);
@@ -48,7 +59,7 @@ public class BidServiceImpl implements BidService {
 		bidLog.setPrice(product.getPrice());
 		repository.save(bidLog);
 
-		return product;
+		return product.getPrice().toString();
 	}
 
 	@Override
@@ -89,9 +100,7 @@ public class BidServiceImpl implements BidService {
 
 		List<BidLog> result = null;
 		try {
-			result = repository.findBidLogOnDate(userId, productId,
-					sfFull.parse(sf.format(new Date()) + "000000"),
-					sfFull.parse(sf.format(new Date()) + "235959"));
+			result = repository.findBidLogOnDate(userId, productId, sfFull.parse(sf.format(new Date()) + "000000"), sfFull.parse(sf.format(new Date()) + "235959"));
 		} catch (ParseException e) {
 			LOGGER.info("parase date exception. wired.", e);
 		}
@@ -101,14 +110,11 @@ public class BidServiceImpl implements BidService {
 	@Override
 	public String generateBidThreeDays() {
 		// 查询onsale商品, 如果当前时间大于 enddate. then
-		List<Product> products = productRepository.findEndDateAndStatusProduct(
-				SaleModels.THREEDAYSALE.getCode(),
-				ProductStatus.ONSALE.getCode(), new Date());
+		List<Product> products = productRepository.findEndDateAndStatusProduct(SaleModels.THREEDAYSALE.getCode(), ProductStatus.ONSALE.getCode(), new Date());
 
 		// if exist bidlog then set product status to deal and create a order.
 		for (Product product : products) {
-			List<BidLog> bidLogs = repository
-					.findByProductIdOrderByCreateDateDesc(product.getId());
+			List<BidLog> bidLogs = repository.findByProductIdOrderByCreateDateDesc(product.getId());
 			if (bidLogs != null && bidLogs.size() > 0) {
 				makeDeal(product, bidLogs.get(0));
 			} else {
@@ -123,18 +129,14 @@ public class BidServiceImpl implements BidService {
 	@Override
 	public String generateBidThreeTimes() {
 		// select onsale product & salemodel is normal;
-		List<Product> products = productRepository.findBySaleModelAndStatus(
-				SaleModels.NORMALAUCTION.getCode(),
-				ProductStatus.ONSALE.getCode());
+		List<Product> products = productRepository.findBySaleModelAndStatus(SaleModels.NORMALAUCTION.getCode(), ProductStatus.ONSALE.getCode());
 		Date now = new Date();
 		Date theDayBefore = new Date(now.getTime() - CommonConstants.THREE_DAYS);
 
 		// 查询最近一条bidlog.如果在三天前，则成交，
 		for (Product product : products) {
-			List<BidLog> bidLogs = repository
-					.findByProductIdOrderByCreateDateDesc(product.getId());
-			if (bidLogs.size() > 0
-					&& bidLogs.get(0).getCreateDate().before(theDayBefore)) {
+			List<BidLog> bidLogs = repository.findByProductIdOrderByCreateDateDesc(product.getId());
+			if (bidLogs.size() > 0 && bidLogs.get(0).getCreateDate().before(theDayBefore)) {
 				makeDeal(product, bidLogs.get(0));
 			}
 		}
@@ -145,8 +147,19 @@ public class BidServiceImpl implements BidService {
 		product.setStatus(ProductStatus.DEAL.getCode());
 
 		productRepository.save(product);
-		orderService.createOrder(bidLog.getUserId(), product.getId(),
-				bidLog.getPrice());
+		orderService.createOrder(bidLog.getUserId(), product.getId(), bidLog.getPrice());
+	}
+
+	@Override
+	public BidRefreshVo getBidRefreshVo(Long productId) {
+		Product product = productRepository.findOne(productId);
+		BidRefreshVo result = new BidRefreshVo();
+		result.setBidersCount(0);
+		User currentOwner = userService.findUser(product.getCurrentBiderId());
+		result.setCurrentOwerName(currentOwner.getShowName());
+		result.setPrice(product.getPrice());
+		result.setStatusName(product.getStatusName());
+		return result;
 	}
 
 }

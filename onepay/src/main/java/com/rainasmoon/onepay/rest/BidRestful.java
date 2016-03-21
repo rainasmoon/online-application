@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.rainasmoon.onepay.model.Product;
 import com.rainasmoon.onepay.service.BidService;
 import com.rainasmoon.onepay.util.CommonConstants;
 import com.rainasmoon.onepay.web.BaseController;
@@ -22,8 +21,8 @@ public class BidRestful extends BaseController {
 		if (getLoginUserId() == null) {
 			return CommonConstants.NO_LOGIN_MSG;
 		}
-		Product product = bidService.bidAddMoney(getLoginUserId(), productId, money);
-		return product.getPrice().toString();
+		String result = bidService.bidAddMoney(getLoginUserId(), productId, money);
+		return result;
 	}
 
 	@RequestMapping("/restful/guess")

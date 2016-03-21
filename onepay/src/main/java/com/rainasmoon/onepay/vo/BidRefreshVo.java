@@ -1,12 +1,11 @@
 package com.rainasmoon.onepay.vo;
 
-
 public class BidRefreshVo {
 
 	private Integer bidersCount;
-	private String currentOwer;
+	private String currentOwerName;
 	private Integer price;
-	private String status;
+	private String statusName;
 
 	public Integer getBidersCount() {
 		return bidersCount;
@@ -14,14 +13,6 @@ public class BidRefreshVo {
 
 	public void setBidersCount(Integer bidersCount) {
 		this.bidersCount = bidersCount;
-	}
-
-	public String getCurrentOwer() {
-		return currentOwer;
-	}
-
-	public void setCurrentOwer(String currentOwer) {
-		this.currentOwer = currentOwer;
 	}
 
 	public Integer getPrice() {
@@ -32,11 +23,20 @@ public class BidRefreshVo {
 		this.price = price;
 	}
 
-	public String getStatus() {
-		return status;
+	public String getCurrentOwerName() {
+		return currentOwerName;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setCurrentOwerName(String currentOwerName) {
+		this.currentOwerName = currentOwerName;
 	}
+
+	public String getStatusName() {
+		return statusName;
+	}
+
+	public void setStatusName(String statusName) {
+		this.statusName = statusName;
+	}
+
 }

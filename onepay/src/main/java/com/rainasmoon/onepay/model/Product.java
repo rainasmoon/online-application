@@ -50,6 +50,10 @@ public class Product extends BaseEntity {
 		return ProductStatus.ONSALE.getCode().equals(status);
 	}
 
+	public String getStatusName() {
+		return ProductStatus.valueOf(getStatus()).getName();
+	}
+
 	public String getName() {
 		return name;
 	}

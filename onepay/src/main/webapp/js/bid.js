@@ -1,12 +1,11 @@
-
 if ($('#saleModel').val() != 'guess_price') {
 	setInterval(function() {
 		$.post("restful/bid/refresh", {
 			productId : $('#productId').val(),
 		}, function(data, status) {
-			$("#currentOwner").text("cc");
-			$("#productPrice").text("dd");
-		},'json');
+			$("#currentOwner").text(data.currentOwnerName);
+			$("#productPrice").text(data.price);
+		}, 'json');
 	}, 5000);
 }
 
