@@ -12,13 +12,17 @@
        ">
 
 	<import resource="mvc-view-config.xml" />
-	
+
 	<!-- - POJOs labeled with the @Controller and @Service annotations are auto-detected. -->
 	<context:component-scan
 		base-package="com.rainasmoon.onepay.web,com.rainasmoon.onepay.rest" />
 
-	<mvc:annotation-driven validator="validator"
-		conversion-service="conversionService">
+	<mvc:annotation-driven>
+		<mvc:message-converters>
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter" />
+			<bean
+				class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
+		</mvc:message-converters>
 	</mvc:annotation-driven>
 
 	<bean id="applicationProps"
@@ -31,27 +35,6 @@
 	<!-- serve static resources (*.html, ...) from src/main/webapp/ -->
 	<mvc:default-servlet-handler />
 
-	<bean id="conversionService"
-		class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
-		<property name="registerDefaultFormatters" value="false" />
-		<property name="formatters">
-			<list>
-				<bean
-					class="org.springframework.format.number.NumberFormatAnnotationFormatterFactory" />
-			</list>
-		</property>
-		<property name="formatterRegistrars">
-			<list>
-				<bean class="org.springframework.format.datetime.DateFormatterRegistrar">
-					<property name="formatter">
-						<bean class="org.springframework.format.datetime.DateFormatter">
-							<property name="pattern" value="yyyy-MM-dd" />
-						</bean>
-					</property>
-				</bean>
-			</list>
-		</property>
-	</bean>
 
 	<!-- - Message source for this context, loaded from localized "messages_xx" 
 		files. - Files are stored inside src/main/resources -->
@@ -88,7 +71,7 @@
 		<property name="warnLogCategory" value="warn" />
 		<!-- needed otherwise exceptions won't be logged anywhere -->
 	</bean>
-	
+
 	<bean id="dozerBeanMapper" class="org.dozer.spring.DozerBeanMapperFactoryBean">
 		<property name="mappingFiles">
 			<list>

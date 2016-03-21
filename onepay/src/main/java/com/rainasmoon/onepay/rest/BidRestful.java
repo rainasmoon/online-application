@@ -3,13 +3,11 @@ package com.rainasmoon.onepay.rest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rainasmoon.onepay.model.Product;
 import com.rainasmoon.onepay.service.BidService;
 import com.rainasmoon.onepay.util.CommonConstants;
-import com.rainasmoon.onepay.vo.BidRefreshVo;
 import com.rainasmoon.onepay.web.BaseController;
 
 @RestController
@@ -20,24 +18,20 @@ public class BidRestful extends BaseController {
 	private BidService bidService;
 
 	@RequestMapping("/restful/bid")
-	public String bid(@RequestParam(value = "productId") Long productId,
-			@RequestParam(value = "money", defaultValue = "1") Integer money) {
+	public String bid(@RequestParam(value = "productId") Long productId, @RequestParam(value = "money", defaultValue = "1") Integer money) {
 		if (getLoginUserId() == null) {
 			return CommonConstants.NO_LOGIN_MSG;
 		}
-		Product product = bidService.bidAddMoney(getLoginUserId(), productId,
-				money);
+		Product product = bidService.bidAddMoney(getLoginUserId(), productId, money);
 		return product.getPrice().toString();
 	}
 
 	@RequestMapping("/restful/guess")
-	public String guess(@RequestParam(value = "productId") Long productId,
-			@RequestParam(value = "money") Integer money) {
+	public String guess(@RequestParam(value = "productId") Long productId, @RequestParam(value = "money") Integer money) {
 		if (getLoginUserId() == null) {
 			return CommonConstants.NO_LOGIN_MSG;
 		}
-		String result = bidService.guessMoney(getLoginUserId(), productId,
-				money);
+		String result = bidService.guessMoney(getLoginUserId(), productId, money);
 		return result;
 	}
 
@@ -61,10 +55,4 @@ public class BidRestful extends BaseController {
 		return "done";
 	}
 
-	@RequestMapping(value = "/restful/bid/refresh", produces = "application/json;charset=UTF-8")
-	@ResponseBody
-	public BidRefreshVo refreshBid(
-			@RequestParam(value = "productId") Long productId) {
-		return new BidRefreshVo();
-	}
 }
