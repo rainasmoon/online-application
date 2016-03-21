@@ -26,7 +26,7 @@
 		</spring:bind>
 	</span>
 	<fieldset>
-		<onepayapp:inputField label="商品名称" name="ProductName" autofocus="true"
+		<onepayapp:inputField label="商品名称" name="productName" autofocus="true"
 			required="true" />
 
 		<div class="control-group">
@@ -53,7 +53,7 @@
 
 		<hr />
 		<div>
-			<label for=inputAging>新旧程度</label> <label class="radio-inline">
+			<label for="inputAging">新旧程度</label> <label class="radio-inline">
 				<input type="radio" name="aging" value="1" />1
 			</label> <label class="radio-inline"> <input type="radio"
 				name="aging" value="2" />2

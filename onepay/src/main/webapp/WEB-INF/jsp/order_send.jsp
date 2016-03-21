@@ -27,14 +27,7 @@
 				定单号：
 				<c:out value="${orderId }"></c:out>
 			</p>
-			<p>
-				定单金额：
-				<c:out value="${amount }"></c:out>
-			</p>
-			<p>
-				账户余额：
-				<c:out value="${account }"></c:out>
-			</p>
+			
 		</div>
 		<button class="btn btn-primary" type="button" onclick="goBack()">返回</button>
 		<button type="submit" class="btn btn-primary">发货</button>

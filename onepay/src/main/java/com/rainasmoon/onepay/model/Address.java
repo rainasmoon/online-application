@@ -13,6 +13,8 @@ public class Address extends BaseEntity {
 	// sender; receiver
 	private Integer type;
 
+	private Integer isDefault;
+
 	public Long getUserId() {
 		return userId;
 	}
@@ -59,5 +61,13 @@ public class Address extends BaseEntity {
 
 	public void setType(Integer type) {
 		this.type = type;
+	}
+
+	public Integer getIsDefault() {
+		return isDefault;
+	}
+
+	public void setIsDefault(Integer isDefault) {
+		this.isDefault = isDefault;
 	}
 }

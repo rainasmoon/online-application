@@ -28,14 +28,20 @@
 				定单号：
 				<c:out value="${orderId }"></c:out>
 			</p>
-			<p>
-				定单金额：
-				<c:out value="${amount }"></c:out>
-			</p>
-			<p>
-				账户余额：
-				<c:out value="${account }"></c:out>
-			</p>
+			
+		</div>
+		<div>
+			<label for="stars">满意度</label> <label class="radio-inline"> <input
+				type="radio" name="stars" value="1" />1
+			</label> <label class="radio-inline"> <input type="radio"
+				name="stars" value="2" />2
+			</label> <label class="radio-inline"> <input type="radio"
+				name="stars" value="3" />3
+			</label> <label class="radio-inline"> <input type="radio"
+				name="stars" value="4" />4
+			</label> <label class="radio-inline"> <input type="radio"
+				name="stars" value="5" />5
+			</label>
 		</div>
 		<button class="btn btn-primary" type="button" onclick="goBack()">返回</button>
 		<button type="submit" class="btn btn-primary">评价</button>

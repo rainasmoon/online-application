@@ -17,6 +17,7 @@ import com.rainasmoon.onepay.model.User;
 import com.rainasmoon.onepay.service.OrderService;
 import com.rainasmoon.onepay.service.ProductService;
 import com.rainasmoon.onepay.service.UserService;
+import com.rainasmoon.onepay.vo.FillOrderVo;
 import com.rainasmoon.onepay.vo.OrderVo;
 
 @Controller
@@ -41,12 +42,9 @@ public class OrderController extends BaseController {
 		List<OrderVo> result = new ArrayList<OrderVo>();
 		for (Order order : myOrders) {
 			OrderVo orderVo = dozerBeanMapper.map(order, OrderVo.class);
-			orderVo.setBuyerName(userService.findUser(orderVo.getBuyerId())
-					.getShowName());
-			orderVo.setSalerName(userService.findUser(orderVo.getSalerId())
-					.getShowName());
-			orderVo.setProductName(productService.findProduct(
-					orderVo.getProductId()).getName());
+			orderVo.setBuyerName(userService.findUser(orderVo.getBuyerId()).getShowName());
+			orderVo.setSalerName(userService.findUser(orderVo.getSalerId()).getShowName());
+			orderVo.setProductName(productService.findProduct(orderVo.getProductId()).getName());
 			orderVo.setOperation(transferToOperation(getLoginUserId(), orderVo));
 			result.add(orderVo);
 		}
@@ -78,28 +76,27 @@ public class OrderController extends BaseController {
 
 	@RequestMapping(value = { "/order_fill.html" }, method = RequestMethod.GET)
 	public String showOrderFillForm(Long orderId, Map<String, Object> model) {
-
+		model.put("fillOrderVo", new FillOrderVo());
 		model.put("orderId", orderId);
 		return "order_fill";
 	}
 
 	@RequestMapping(value = { "/order_fill.html" }, method = RequestMethod.POST)
-	public String orderFill(Long orderId, Map<String, Object> model) {
+	public String orderFill(Long orderId, FillOrderVo fillOrderVo, Map<String, Object> model) {
 		String message = orderService.orderFill(orderId);
 		model.put("message", message);
 		return "order_fill_success";
 	}
 
 	@RequestMapping(value = { "/order_receive_star.html" }, method = RequestMethod.GET)
-	public String showOrderReceiveStarForm(Long orderId,
-			Map<String, Object> model) {
+	public String showOrderReceiveStarForm(Long orderId, Map<String, Object> model) {
 
 		model.put("orderId", orderId);
 		return "order_receive_star";
 	}
 
 	@RequestMapping(value = { "/order_receive_star.html" }, method = RequestMethod.POST)
-	public String orderReceiveStar(Long orderId, Map<String, Object> model) {
+	public String orderReceiveStar(Long orderId, Integer stars, Map<String, Object> model) {
 		String message = orderService.orderReceiveStar(orderId);
 		model.put("message", message);
 		return "order_receive_star_success";
@@ -113,7 +110,7 @@ public class OrderController extends BaseController {
 	}
 
 	@RequestMapping(value = { "/order_sale_star.html" }, method = RequestMethod.POST)
-	public String orderSaleStar(Long orderId, Map<String, Object> model) {
+	public String orderSaleStar(Long orderId, Integer stars, Map<String, Object> model) {
 		String message = orderService.orderSaleStar(orderId);
 		model.put("message", message);
 		return "order_sale_star_success";
