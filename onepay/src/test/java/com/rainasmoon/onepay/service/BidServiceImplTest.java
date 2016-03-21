@@ -16,15 +16,12 @@ import org.springframework.test.context.jdbc.SqlConfig;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.rainasmoon.onepay.model.Product;
-import com.rainasmoon.onepay.service.BidService;
-
 @ContextConfiguration(locations = { "classpath:spring/business-config.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)
 @ActiveProfiles("dev")
 @Rollback(true)
 @Transactional
-@Sql(value = { "classpath:insert-test-data.sql" }, config = @SqlConfig(encoding = "utf-8", separator = ";", commentPrefix = "--", dataSource = "dataSource", transactionManager = "transactionManager"))
+@Sql(value = { "classpath:insert-test-data.sql" }, config = @SqlConfig(encoding = "utf-8", separator = ";", commentPrefix = "--", dataSource = "dataSource", transactionManager = "transactionManager") )
 public class BidServiceImplTest {
 
 	Logger LOGGER = LoggerFactory.getLogger(BidServiceImplTest.class);
@@ -39,7 +36,7 @@ public class BidServiceImplTest {
 
 	@Test
 	public void shouldBid() {
-		Product p = service.bidAddMoney(1L, 1L, 10);
+		String p = service.bidAddMoney(1L, 1L, 10);
 		assertNotNull(p);
 
 	}
