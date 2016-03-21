@@ -1,3 +1,3 @@
 function goBack() {
-	window.location.href = "market.html";
+	window.location.href = "myorders.html";
 }
