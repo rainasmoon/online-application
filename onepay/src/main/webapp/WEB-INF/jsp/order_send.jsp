@@ -27,7 +27,31 @@
 				定单号：
 				<c:out value="${orderId }"></c:out>
 			</p>
-			
+			<p>
+				买家：
+				<c:out value="${orderVo.buyerName }"></c:out>
+			</p>
+			<p>
+				商品名：
+				<c:out value="${orderVo.productName }"></c:out>
+			</p>
+			<p>
+				收件人：
+				<c:out value="${orderVo.receiverName }"></c:out>
+			</p>
+			<p>
+				收件人电话：
+				<c:out value="${orderVo.receiverPhone }"></c:out>
+			</p>
+			<p>
+				收件人地址：
+				<c:out value="${orderVo.receiverAddress }"></c:out>
+			</p>
+			<p>
+				收件人邮编：
+				<c:out value="${orderVo.receiverPostcode }"></c:out>
+			</p>
+
 		</div>
 		<button class="btn btn-primary" type="button" onclick="goBack()">返回</button>
 		<button type="submit" class="btn btn-primary">发货</button>

@@ -13,6 +13,7 @@ import com.rainasmoon.onepay.repository.springdatajpa.ProductRepository;
 import com.rainasmoon.onepay.service.AccountService;
 import com.rainasmoon.onepay.service.OrderService;
 import com.rainasmoon.onepay.service.dto.TransferResult;
+import com.rainasmoon.onepay.vo.FillOrderVo;
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -65,35 +66,43 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public String orderFill(Long orderId) {
-		// TODO Auto-generated method stub
+	public String orderFill(Long orderId, FillOrderVo fillOrderVo) {
 		Order order = repository.findOne(orderId);
+		order.setReceiverName(fillOrderVo.getReceiverName());
+		order.setReceiverPhone(fillOrderVo.getReceiverPhone());
+		order.setReceiverAddress(fillOrderVo.getReceiverAddress());
+		order.setReceiverPostcode(fillOrderVo.getReceiverPostcode());
+
+		order.setSenderName(fillOrderVo.getSenderName());
+		order.setSenderPhone(fillOrderVo.getSenderPhone());
+		order.setSenderAddress(fillOrderVo.getSenderAddress());
+		order.setSenderPostcode(fillOrderVo.getSenderPostcode());
+
 		order.setStatus(OrderStatus.DOWN.getCode());
 		repository.save(order);
 		return null;
 	}
 
 	@Override
-	public String orderReceiveStar(Long orderId) {
-		// TODO Auto-generated method stub
+	public String orderReceiveStar(Long orderId, Integer stars) {
 		Order order = repository.findOne(orderId);
+		order.setReceiverStars(stars);
 		order.setStatus(OrderStatus.WAITSALERSTARS.getCode());
 		repository.save(order);
-		return null;
+		return "评价成功";
 	}
 
 	@Override
-	public String orderSaleStar(Long orderId) {
-		// TODO Auto-generated method stub
+	public String orderSaleStar(Long orderId, Integer stars) {
 		Order order = repository.findOne(orderId);
+		order.setSenderStars(stars);
 		order.setStatus(OrderStatus.DONE.getCode());
 		repository.save(order);
-		return null;
+		return "评价成功";
 	}
 
 	@Override
 	public String orderReceive(Long orderId) {
-		// TODO Auto-generated method stub
 		Order order = repository.findOne(orderId);
 		order.setStatus(OrderStatus.RECEIVED.getCode());
 		repository.save(order);
@@ -102,7 +111,6 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public String orderSend(Long orderId) {
-		// TODO Auto-generated method stub
 		Order order = repository.findOne(orderId);
 		order.setStatus(OrderStatus.SENDED.getCode());
 		repository.save(order);

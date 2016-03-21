@@ -83,7 +83,9 @@ public class OrderController extends BaseController {
 
 	@RequestMapping(value = { "/order_fill.html" }, method = RequestMethod.POST)
 	public String orderFill(Long orderId, FillOrderVo fillOrderVo, Map<String, Object> model) {
-		String message = orderService.orderFill(orderId);
+
+		String message = orderService.orderFill(orderId, fillOrderVo);
+
 		model.put("message", message);
 		return "order_fill_success";
 	}
@@ -97,7 +99,7 @@ public class OrderController extends BaseController {
 
 	@RequestMapping(value = { "/order_receive_star.html" }, method = RequestMethod.POST)
 	public String orderReceiveStar(Long orderId, Integer stars, Map<String, Object> model) {
-		String message = orderService.orderReceiveStar(orderId);
+		String message = orderService.orderReceiveStar(orderId, stars);
 		model.put("message", message);
 		return "order_receive_star_success";
 	}
@@ -111,7 +113,7 @@ public class OrderController extends BaseController {
 
 	@RequestMapping(value = { "/order_sale_star.html" }, method = RequestMethod.POST)
 	public String orderSaleStar(Long orderId, Integer stars, Map<String, Object> model) {
-		String message = orderService.orderSaleStar(orderId);
+		String message = orderService.orderSaleStar(orderId, stars);
 		model.put("message", message);
 		return "order_sale_star_success";
 	}
@@ -132,8 +134,13 @@ public class OrderController extends BaseController {
 
 	@RequestMapping(value = { "order_send.html" }, method = RequestMethod.GET)
 	public String showOrderSendForm(Long orderId, Map<String, Object> model) {
+		Order order = orderService.findOrder(orderId);
+		OrderVo orderVo = dozerBeanMapper.map(order, OrderVo.class);
+		orderVo.setBuyerName(userService.findUser(orderVo.getBuyerId()).getShowName());
+		orderVo.setProductName(productService.findProduct(orderVo.getProductId()).getName());
 
 		model.put("orderId", orderId);
+		model.put("orderVo", orderVo);
 		return "order_send";
 	}
 

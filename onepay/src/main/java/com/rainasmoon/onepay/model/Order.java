@@ -33,6 +33,12 @@ public class Order extends BaseEntity {
 	@Column(name = "receiver_postcode")
 	private String receiverPostcode;
 
+	// 保存用户对定单的评价，如果要取sender获得的评价，则是receiverStars.
+	@Column(name = "sender_stars")
+	private Integer senderStars;
+	@Column(name = "receiver_stars")
+	private Integer receiverStars;
+
 	// 待支付，待发货，完成，失败
 	@Column(name = "status")
 	private Integer status;
@@ -139,5 +145,21 @@ public class Order extends BaseEntity {
 
 	public void setReceiverPostcode(String receiverPostcode) {
 		this.receiverPostcode = receiverPostcode;
+	}
+
+	public Integer getSenderStars() {
+		return senderStars;
+	}
+
+	public void setSenderStars(Integer senderStars) {
+		this.senderStars = senderStars;
+	}
+
+	public Integer getReceiverStars() {
+		return receiverStars;
+	}
+
+	public void setReceiverStars(Integer receiverStars) {
+		this.receiverStars = receiverStars;
 	}
 }

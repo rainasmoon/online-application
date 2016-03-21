@@ -79,6 +79,8 @@ CREATE TABLE orders (
   receiver_phone VARCHAR(100),
   receiver_address VARCHAR(100),
   receiver_postcode VARCHAR(100),
+  sender_stars INTEGER,
+  receiver_stars INTEGER,
   status INTEGER,
   create_date TIMESTAMP
  );

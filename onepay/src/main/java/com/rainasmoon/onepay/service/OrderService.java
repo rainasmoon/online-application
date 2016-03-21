@@ -3,6 +3,7 @@ package com.rainasmoon.onepay.service;
 import java.util.List;
 
 import com.rainasmoon.onepay.model.Order;
+import com.rainasmoon.onepay.vo.FillOrderVo;
 
 /**
  * 添写定单地址，定单支付，发收货，评价定单
@@ -23,11 +24,11 @@ public interface OrderService {
 
 	public Order findOrder(Long orderId);
 
-	public String orderFill(Long orderId);
+	public String orderFill(Long orderId, FillOrderVo fillOrderVo);
 
-	public String orderReceiveStar(Long orderId);
+	public String orderReceiveStar(Long orderId, Integer stars);
 
-	public String orderSaleStar(Long orderId);
+	public String orderSaleStar(Long orderId, Integer stars);
 
 	public String orderReceive(Long orderId);
 
