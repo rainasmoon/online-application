@@ -52,6 +52,15 @@ public class User extends BaseEntity {
 		return this;
 	}
 
+	public void addAccount(Integer amount) {
+		account = account + amount;
+
+	}
+
+	public void minusAccount(Integer amount) {
+		account = account - amount;
+	}
+
 	public String getEmail() {
 		return email;
 	}

@@ -10,7 +10,9 @@ import com.rainasmoon.onepay.model.Order;
 import com.rainasmoon.onepay.model.Product;
 import com.rainasmoon.onepay.repository.springdatajpa.OrderRepository;
 import com.rainasmoon.onepay.repository.springdatajpa.ProductRepository;
+import com.rainasmoon.onepay.service.AccountService;
 import com.rainasmoon.onepay.service.OrderService;
+import com.rainasmoon.onepay.service.dto.TransferResult;
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -20,6 +22,9 @@ public class OrderServiceImpl implements OrderService {
 
 	@Autowired
 	private ProductRepository producRepository;
+
+	@Autowired
+	private AccountService accountService;
 
 	@Override
 	public Order createOrder(Long userId, Long productId, Integer money) {
@@ -43,12 +48,15 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public String orderPay(Long orderId) {
-		Order order = repository.findOne(orderId);
-		order.setStatus(OrderStatus.PAYED.getCode());
-		repository.save(order);
-		// TODO glen transfer the account.
 
-		return "支付成功";
+		Order order = repository.findOne(orderId);
+		TransferResult result = accountService.transferAccount(order.getBuyerId(), order.getSalerId(), order.getPrice());
+		if (result.isSuccess()) {
+			order.setStatus(OrderStatus.PAYED.getCode());
+			repository.save(order);
+		}
+
+		return result.getMessage();
 	}
 
 	@Override
