@@ -15,7 +15,9 @@
 
 <h1>查看</h1>
 请收到对方款项后，再给对方解冻码。
-解冻码为：
+解冻码为：<c:out value="${freezeCode }"></c:out>
+<button class="btn btn-primary" type="button" onclick="goBack()">返回</button>
+<script src="js/market.js" type="text/javascript"></script>
 <jsp:include page="./fragments/footer.jsp" />
 
 

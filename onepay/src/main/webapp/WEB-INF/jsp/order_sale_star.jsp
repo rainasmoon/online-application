@@ -13,7 +13,8 @@
 
 <jsp:include page="./fragments/bodyHeader.jsp" />
 
-<form action="order_sale_star.html" method="post" class="form-horizontal">
+<form action="order_sale_star.html" method="post"
+	class="form-horizontal">
 	<span class="help-inline"> <c:if test="${not empty message}">
 			<div id="message" class="alert alert-success" role="alert">${message}</div>
 		</c:if>
@@ -23,15 +24,24 @@
 
 		<div>
 			<h1>评价买家</h1>
-			<p>定单号：<c:out value="${orderId }"></c:out></p>
-			<p>定单金额：<c:out value="${amount }"></c:out></p>
-			<p>账户余额：<c:out value="${account }"></c:out></p>
+			<p>
+				定单号：
+				<c:out value="${orderId }"></c:out>
+			</p>
+			<p>
+				定单金额：
+				<c:out value="${amount }"></c:out>
+			</p>
+			<p>
+				账户余额：
+				<c:out value="${account }"></c:out>
+			</p>
 		</div>
-
+		<button class="btn btn-primary" type="button" onclick="goBack()">返回</button>
 		<button type="submit" class="btn btn-primary">评价</button>
 	</fieldset>
 </form>
-
+<script src="js/order.js" type="text/javascript"></script>
 <jsp:include page="./fragments/footer.jsp" />
 
 
