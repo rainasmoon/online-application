@@ -22,9 +22,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Rollback(true)
 @Transactional
 @Sql(value = { "classpath:insert-test-data.sql" }, config = @SqlConfig(encoding = "utf-8", separator = ";", commentPrefix = "--", dataSource = "dataSource", transactionManager = "transactionManager") )
-public class BidServiceImplTest {
+public class BidServiceTest {
 
-	Logger LOGGER = LoggerFactory.getLogger(BidServiceImplTest.class);
+	Logger LOGGER = LoggerFactory.getLogger(BidServiceTest.class);
 
 	@Autowired
 	protected BidService service;

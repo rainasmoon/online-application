@@ -23,9 +23,9 @@ import com.rainasmoon.onepay.model.YunOrder;
 @Rollback(true)
 @Transactional
 @Sql(value = { "classpath:insert-test-data.sql" }, config = @SqlConfig(encoding = "utf-8", separator = ";", commentPrefix = "--", dataSource = "dataSource", transactionManager = "transactionManager"))
-public class YunOrderServiceImplTest {
+public class YunOrderServiceTest {
 
-	Logger LOGGER = LoggerFactory.getLogger(YunOrderServiceImplTest.class);
+	Logger LOGGER = LoggerFactory.getLogger(YunOrderServiceTest.class);
 
 	@Autowired
 	protected YunOrderService service;
