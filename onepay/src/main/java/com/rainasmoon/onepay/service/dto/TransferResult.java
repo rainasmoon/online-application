@@ -11,6 +11,10 @@ public class TransferResult {
 		this.message = message;
 	}
 
+	public boolean isFail() {
+		return !success;
+	}
+
 	public String getMessage() {
 		return message;
 	}
@@ -34,4 +38,5 @@ public class TransferResult {
 	public static TransferResult success(String message) {
 		return new TransferResult(true, message);
 	}
+
 }

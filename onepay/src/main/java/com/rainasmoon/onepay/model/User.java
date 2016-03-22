@@ -57,6 +57,11 @@ public class User extends BaseEntity {
 
 	}
 
+	public void addFreezeAccount(Integer amount) {
+		freezeAccount = freezeAccount + amount;
+
+	}
+
 	public void minusAccount(Integer amount) {
 		account = account - amount;
 	}

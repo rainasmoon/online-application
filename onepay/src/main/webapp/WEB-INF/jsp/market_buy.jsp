@@ -22,7 +22,7 @@
 			<h1>买猿币</h1>
 			<p>交易号：<c:out value="${yunOrderId }"></c:out></p>
 			<p>交易猿币数：<c:out value="${amount }"></c:out></p>
-			<p>交易价格（人民币）：<c:out value="${price }"></c:out><strong><p  class="bg-warn">这可是真金发银啊，想好了？:)</p></strong></p>
+			<p>交易价格（人民币）：<c:out value="${price }"></c:out><strong><p  class="bg-warn">这可是真金白银啊，想好了？:)</p></strong></p>
 		</div>
 		<button class="btn btn-primary" type="button" onclick="goBack()">返回</button>
 		<button type="submit" class="btn btn-primary">Submit</button>

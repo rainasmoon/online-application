@@ -14,15 +14,13 @@ import com.rainasmoon.onepay.model.YunOrder;
  * @see
  */
 public interface YunOrderService {
-	YunOrder addYunOrder(YunOrder yunOrder);
+	String addYunOrder(YunOrder yunOrder);
 
 	List<YunOrder> findAll();
 
-	String buyYunOrder(Long userId, Long yunOrderId);
+	String unfreezeYunOrder(Long userId, Long yunOrderId, String freezeCode);
 
-	String freezeYunOrder(Long userId, Long yunOrderId, String freezeCode);
-
-	String sellYunOrder(Long userId, Long yunOrderId);
+	String executeYunOrder(Long userId, Long yunOrderId);
 
 	YunOrder findYunOrder(Long yunOrderId);
 }

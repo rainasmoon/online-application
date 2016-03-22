@@ -31,26 +31,26 @@
 			<onepayapp:inputField label="发件人姓名" name="senderName"
 				autofocus="true" required="true" />
 			<onepayapp:inputField label="发件人电话" name="senderPhone"
-				 required="true" />
+				required="true" />
 			<onepayapp:inputField label="发件人地址" name="senderAddress"
-				 required="true" />
+				required="true" />
 			<onepayapp:inputField label="发件人邮编" name="senderPostcode"
-				 required="true" />
+				required="true" />
 
 			<onepayapp:inputField label="收件人姓名" name="receiverName"
-				 required="true" />
+				required="true" />
 			<onepayapp:inputField label="收件人电话" name="receiverPhone"
-				 required="true" />
+				required="true" />
 			<onepayapp:inputField label="收件人地址" name="receiverAddress"
-				 required="true" />
+				required="true" />
 			<onepayapp:inputField label="收件人邮编" name="receiverPostcode"
-				 required="true" />
+				required="true" />
 		</div>
 		<button class="btn btn-primary" type="button" onclick="goBack()">返回</button>
 		<button type="submit" class="btn btn-primary">完成</button>
 	</fieldset>
-	</form>
+</form:form>
 
-	<script src="js/order.js" type="text/javascript"></script>
+<script src="js/order.js" type="text/javascript"></script>
 
-	<jsp:include page="./fragments/footer.jsp" />
+<jsp:include page="./fragments/footer.jsp" />

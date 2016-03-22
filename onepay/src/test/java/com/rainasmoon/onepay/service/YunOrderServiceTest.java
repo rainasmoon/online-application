@@ -22,7 +22,7 @@ import com.rainasmoon.onepay.model.YunOrder;
 @ActiveProfiles("dev")
 @Rollback(true)
 @Transactional
-@Sql(value = { "classpath:insert-test-data.sql" }, config = @SqlConfig(encoding = "utf-8", separator = ";", commentPrefix = "--", dataSource = "dataSource", transactionManager = "transactionManager"))
+@Sql(value = { "classpath:insert-test-data.sql" }, config = @SqlConfig(encoding = "utf-8", separator = ";", commentPrefix = "--", dataSource = "dataSource", transactionManager = "transactionManager") )
 public class YunOrderServiceTest {
 
 	Logger LOGGER = LoggerFactory.getLogger(YunOrderServiceTest.class);
@@ -38,7 +38,7 @@ public class YunOrderServiceTest {
 	@Test
 	public void shouldBid() {
 		YunOrder yunOrder = new YunOrder();
-		YunOrder p = service.addYunOrder(yunOrder);
+		String p = service.addYunOrder(yunOrder);
 		assertNotNull(p);
 
 	}
