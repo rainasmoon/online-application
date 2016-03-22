@@ -29,7 +29,7 @@ public class EmailTest {
 	public void shouldSendEmailWithAttachment() throws EmailException {
 		// Create the attachment
 		EmailAttachment attachment = new EmailAttachment();
-		attachment.setPath(EmailTest.class.getResource("samplepic.jpg").getFile());
+		attachment.setPath(EmailTest.class.getResource("sample.log").getFile());
 		attachment.setDisposition(EmailAttachment.ATTACHMENT);
 		attachment.setDescription("Picture of John");
 		attachment.setName("John");
