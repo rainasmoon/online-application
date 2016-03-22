@@ -50,13 +50,13 @@ public class YunOrderServiceImpl implements YunOrderService {
 		YunOrder yunOrder = repository.findOne(yunOrderId);
 		if (yunOrder.isBuy()) {
 			// 对方要买猿币
-			TransferResult result = accountService.transferAccount(yunOrder.getDealerId(), yunOrder.getUserId(), yunOrder.getAmount());
+			TransferResult result = accountService.transferToFreezeAccount(yunOrder.getDealerId(), yunOrder.getUserId(), yunOrder.getAmount());
 			if (result.isFail()) {
 				return result.getMessage();
 			}
 		} else {
-			// 对方要卖猿币: 因为在下单时，猿币已经减，所以这里只有增回操作。
-			TransferResult result = accountService.addAccount(yunOrder.getDealerId(), yunOrder.getAmount());
+			// 对方要卖猿币: 因为在下单时，猿币已经减，所以这里只有增加操作。
+			TransferResult result = accountService.addFreezeAccount(yunOrder.getDealerId(), yunOrder.getAmount());
 			if (result.isFail()) {
 				return result.getMessage();
 			}

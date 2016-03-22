@@ -3,7 +3,10 @@ package com.rainasmoon.onepay.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.rainasmoon.onepay.enums.AccountLogTypes;
+import com.rainasmoon.onepay.model.AccountLog;
 import com.rainasmoon.onepay.model.User;
+import com.rainasmoon.onepay.repository.springdatajpa.AccountLogRepository;
 import com.rainasmoon.onepay.repository.springdatajpa.UserRepository;
 import com.rainasmoon.onepay.service.AccountService;
 import com.rainasmoon.onepay.service.dto.TransferResult;
@@ -13,6 +16,9 @@ public class AccountServiceImpl implements AccountService {
 
 	@Autowired
 	private UserRepository userRepository;
+
+	@Autowired
+	private AccountLogRepository accountLogRepository;
 
 	@Override
 	public TransferResult transferAccount(Long fromUserId, Long toUserId, Integer amount) {
@@ -27,6 +33,11 @@ public class AccountServiceImpl implements AccountService {
 
 		userRepository.save(fromUser);
 		userRepository.save(toUser);
+
+		String description = String.format("transfer from [%s] to [%s] amount is [%s]", fromUser.getShowName(), toUser.getShowName(), amount);
+
+		recordAccountLog(fromUser, -amount, AccountLogTypes.TRANSFER_TO_USER, description);
+		recordAccountLog(toUser, amount, AccountLogTypes.TRANSFER_TO_USER, description);
 
 		return TransferResult.success("支付成功");
 	}
@@ -44,6 +55,9 @@ public class AccountServiceImpl implements AccountService {
 
 		userRepository.save(fromUser);
 		userRepository.save(toUser);
+		String description = String.format("market transfer from [%s] to [%s] amount is [%s]", fromUser.getShowName(), toUser.getShowName(), amount);
+
+		recordAccountLog(fromUser, -amount, AccountLogTypes.TRASNSFER_TO_MARKET, description);
 
 		return TransferResult.success("支付成功");
 	}
@@ -56,6 +70,12 @@ public class AccountServiceImpl implements AccountService {
 		}
 
 		user.unfreeze(amount);
+
+		userRepository.save(user);
+
+		String description = String.format(" unfreeze for [%s] amount is [%s]", user.getShowName(), amount);
+
+		recordAccountLog(user, amount, AccountLogTypes.RECEIVE_FROM_MARKET, description);
 
 		return TransferResult.success("解冻成功");
 	}
@@ -71,18 +91,32 @@ public class AccountServiceImpl implements AccountService {
 
 		userRepository.save(user);
 
+		String description = String.format(" minus for [%s] amount is [%s]", user.getShowName(), amount);
+
+		recordAccountLog(user, amount, AccountLogTypes.TRASNSFER_TO_MARKET, description);
+
 		return TransferResult.success("支付成功");
 	}
 
 	@Override
-	public TransferResult addAccount(Long dealerId, Integer amount) {
+	public TransferResult addFreezeAccount(Long dealerId, Integer amount) {
 		User user = userRepository.findOne(dealerId);
 
-		user.addAccount(amount);
+		user.addFreezeAccount(amount);
 
 		userRepository.save(user);
 
 		return TransferResult.success("支付成功");
+	}
+
+	private void recordAccountLog(User user, Integer amount, AccountLogTypes type, String description) {
+		AccountLog accountLog = new AccountLog();
+		accountLog.setUserId(user.getId());
+		accountLog.setChangeAmount(amount);
+		accountLog.setBalance(user.getAccount());
+		accountLog.setType(type.getCode());
+		accountLog.setDescription(description);
+		accountLogRepository.save(accountLog);
 	}
 
 }

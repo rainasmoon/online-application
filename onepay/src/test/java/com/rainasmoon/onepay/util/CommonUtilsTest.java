@@ -44,4 +44,10 @@ public class CommonUtilsTest {
 		assertTrue(now.after(theDayBefore));
 
 	}
+
+	@Test
+	public void shouldTestStringFormat() {
+		LOGGER.info(String.format("I am a formart : %s,", "you"));
+		LOGGER.info(String.format("I am a formart : tranfer from %s, to %s, amount: %s.", "you", 1L, new Integer(100)));
+	}
 }
