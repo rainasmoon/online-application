@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration scan="true" scanPeriod="30 seconds">
+<configuration scan="true" scanPeriod="300 seconds">
+
+<property file="logPath.properties"/>
 
 	<contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
 		<resetJUL>true</resetJUL>
@@ -23,11 +25,12 @@
 			<pattern>%date{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
 			</pattern>
 		</encoder>
+		<maxHistory>7</maxHistory> 
 	</appender>
 
 	<appender name="accessLoggingFile"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>./logs/onepayaccess.log</file>
+		<file>D:/logs/onepayaccess.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<fileNamePattern>./logs/onepayaccess.%d{yyyy-MM-dd}.log
 			</fileNamePattern>
@@ -36,24 +39,7 @@
 			<pattern>%date{HH:mm:ss.SSS} - %msg%n
 			</pattern>
 		</encoder>
-	</appender>
-
-	<appender name="businessLogFile"
-		class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>./logs/onepaybusiness.log</file>
-		<!-- 按每小时滚动文件，如果一个小时内达到10M也会滚动文件, 滚动文件将会压缩成zip格式 -->
-		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>./logs/onepaybusiness-%d{yyyy-MM-dd_HH}.%i.zip
-			</fileNamePattern>
-			<timeBasedFileNamingAndTriggeringPolicy
-				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-				<maxFileSize>10MB</maxFileSize>
-			</timeBasedFileNamingAndTriggeringPolicy>
-		</rollingPolicy>
-		<!-- 独立的pattern -->
-		<encoder>
-			<pattern>%d{HH:mm:ss.SSS},%msg%n</pattern>
-		</encoder>
+		 <maxHistory>7</maxHistory> 
 	</appender>
 
 	<appender name="exceptionLogFile"
@@ -61,7 +47,7 @@
 		<file>./logs/onepayexception.log</file>
 		<!-- 按每小时滚动文件，如果一个小时内达到10M也会滚动文件, 滚动文件将会压缩成zip格式 -->
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>./logs/onepayexception-%d{yyyy-MM-dd_HH}.%i.zip
+			<fileNamePattern>./logs/onepayexception-%d{yyyy-MM-dd}.%i.zip
 			</fileNamePattern>
 			<timeBasedFileNamingAndTriggeringPolicy
 				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
@@ -72,6 +58,7 @@
 		<encoder>
 			<pattern>%d{HH:mm:ss.SSS},%msg%n</pattern>
 		</encoder>
+		 <maxHistory>30</maxHistory> 
 	</appender>
 
 	<logger name="com.rainasmoon" level="debug" />
@@ -83,11 +70,7 @@
 		<appender-ref ref="accessLoggingFile" />
 		<appender-ref ref="console"></appender-ref>
 	</logger>
-	<!-- business log 使用独立的appender，不继承Root的appender -->
-	<logger name="business" level="INFO" additivity="false">
-		<appender-ref ref="businessLogFile" />
-	</logger>
-
+	
 	<logger name="com.rainasmoon" level="WARN" additivity="true">
 		<appender-ref ref="exceptionLogFile" />
 	</logger>
