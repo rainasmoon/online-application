@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="true" scanPeriod="300 seconds">
 
-<property file="logPath.properties"/>
-
 	<contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
 		<resetJUL>true</resetJUL>
 	</contextListener>
@@ -25,7 +23,7 @@
 			<pattern>%date{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
 			</pattern>
 		</encoder>
-		<maxHistory>7</maxHistory> 
+		
 	</appender>
 
 	<appender name="accessLoggingFile"
@@ -39,7 +37,7 @@
 			<pattern>%date{HH:mm:ss.SSS} - %msg%n
 			</pattern>
 		</encoder>
-		 <maxHistory>7</maxHistory> 
+		
 	</appender>
 
 	<appender name="exceptionLogFile"
@@ -58,7 +56,7 @@
 		<encoder>
 			<pattern>%d{HH:mm:ss.SSS},%msg%n</pattern>
 		</encoder>
-		 <maxHistory>30</maxHistory> 
+		
 	</appender>
 
 	<logger name="com.rainasmoon" level="debug" />
