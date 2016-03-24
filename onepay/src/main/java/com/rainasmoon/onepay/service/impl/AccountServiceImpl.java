@@ -21,7 +21,8 @@ public class AccountServiceImpl implements AccountService {
 	private AccountLogRepository accountLogRepository;
 
 	@Override
-	public TransferResult transferAccount(Long fromUserId, Long toUserId, Integer amount) {
+	public TransferResult transferAccount(Long fromUserId, Long toUserId,
+			Integer amount) {
 		User fromUser = userRepository.findOne(fromUserId);
 		User toUser = userRepository.findOne(toUserId);
 		if (fromUser.getAccount() < amount) {
@@ -34,16 +35,21 @@ public class AccountServiceImpl implements AccountService {
 		userRepository.save(fromUser);
 		userRepository.save(toUser);
 
-		String description = String.format("transfer from [%s] to [%s] amount is [%s]", fromUser.getShowName(), toUser.getShowName(), amount);
+		String description = String.format(
+				"transfer from [%s] to [%s] amount is [%s]",
+				fromUser.getShowName(), toUser.getShowName(), amount);
 
-		recordAccountLog(fromUser, -amount, AccountLogTypes.TRANSFER_TO_USER, description);
-		recordAccountLog(toUser, amount, AccountLogTypes.TRANSFER_TO_USER, description);
+		recordAccountLog(fromUser, -amount, AccountLogTypes.TRANSFER_TO_USER,
+				description);
+		recordAccountLog(toUser, amount, AccountLogTypes.TRANSFER_TO_USER,
+				description);
 
 		return TransferResult.success("支付成功");
 	}
 
 	@Override
-	public TransferResult transferToFreezeAccount(Long fromUserId, Long toUserId, Integer amount) {
+	public TransferResult transferToFreezeAccount(Long fromUserId,
+			Long toUserId, Integer amount) {
 		User fromUser = userRepository.findOne(fromUserId);
 		User toUser = userRepository.findOne(toUserId);
 		if (fromUser.getAccount() < amount) {
@@ -55,9 +61,12 @@ public class AccountServiceImpl implements AccountService {
 
 		userRepository.save(fromUser);
 		userRepository.save(toUser);
-		String description = String.format("market transfer from [%s] to [%s] amount is [%s]", fromUser.getShowName(), toUser.getShowName(), amount);
+		String description = String.format(
+				"market transfer from [%s] to [%s] amount is [%s]",
+				fromUser.getShowName(), toUser.getShowName(), amount);
 
-		recordAccountLog(fromUser, -amount, AccountLogTypes.TRASNSFER_TO_MARKET, description);
+		recordAccountLog(fromUser, -amount,
+				AccountLogTypes.TRASNSFER_TO_MARKET, description);
 
 		return TransferResult.success("支付成功");
 	}
@@ -73,9 +82,11 @@ public class AccountServiceImpl implements AccountService {
 
 		userRepository.save(user);
 
-		String description = String.format(" unfreeze for [%s] amount is [%s]", user.getShowName(), amount);
+		String description = String.format(" unfreeze for [%s] amount is [%s]",
+				user.getShowName(), amount);
 
-		recordAccountLog(user, amount, AccountLogTypes.RECEIVE_FROM_MARKET, description);
+		recordAccountLog(user, amount, AccountLogTypes.RECEIVE_FROM_MARKET,
+				description);
 
 		return TransferResult.success("解冻成功");
 	}
@@ -91,9 +102,11 @@ public class AccountServiceImpl implements AccountService {
 
 		userRepository.save(user);
 
-		String description = String.format(" minus for [%s] amount is [%s]", user.getShowName(), amount);
+		String description = String.format(" minus for [%s] amount is [%s]",
+				user.getShowName(), amount);
 
-		recordAccountLog(user, amount, AccountLogTypes.TRASNSFER_TO_MARKET, description);
+		recordAccountLog(user, amount, AccountLogTypes.TRASNSFER_TO_MARKET,
+				description);
 
 		return TransferResult.success("支付成功");
 	}
@@ -109,7 +122,19 @@ public class AccountServiceImpl implements AccountService {
 		return TransferResult.success("支付成功");
 	}
 
-	private void recordAccountLog(User user, Integer amount, AccountLogTypes type, String description) {
+	@Override
+	public TransferResult addAccount(Long userId, Integer amount) {
+		User user = userRepository.findOne(userId);
+
+		user.addAccount(amount);
+
+		userRepository.save(user);
+
+		return TransferResult.success("支付成功");
+	}
+
+	private void recordAccountLog(User user, Integer amount,
+			AccountLogTypes type, String description) {
 		AccountLog accountLog = new AccountLog();
 		accountLog.setUserId(user.getId());
 		accountLog.setChangeAmount(amount);

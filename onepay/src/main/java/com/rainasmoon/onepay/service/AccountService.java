@@ -11,13 +11,13 @@ public interface AccountService {
 	 * @param toUserId
 	 * @param amount
 	 * @return
-	 * @exception @Author
-	 *                wlcic-glen
+	 * @exception @Author wlcic-glen
 	 * @Date 2016年3月22日 上午11:25:13
 	 * @since 1.0.0
 	 * @see
 	 */
-	TransferResult transferAccount(Long fromUserId, Long toUserId, Integer amount);
+	TransferResult transferAccount(Long fromUserId, Long toUserId,
+			Integer amount);
 
 	/**
 	 * 买市场上的猿币时用到。
@@ -26,13 +26,13 @@ public interface AccountService {
 	 * @param toUserId
 	 * @param amount
 	 * @return
-	 * @exception @Author
-	 *                wlcic-glen
+	 * @exception @Author wlcic-glen
 	 * @Date 2016年3月22日 上午11:29:46
 	 * @since 1.0.0
 	 * @see
 	 */
-	TransferResult transferToFreezeAccount(Long fromUserId, Long toUserId, Integer amount);
+	TransferResult transferToFreezeAccount(Long fromUserId, Long toUserId,
+			Integer amount);
 
 	/**
 	 * 解冻
@@ -40,8 +40,7 @@ public interface AccountService {
 	 * @param userId
 	 * @param amount
 	 * @return
-	 * @exception @Author
-	 *                wlcic-glen
+	 * @exception @Author wlcic-glen
 	 * @Date 2016年3月22日 上午11:26:05
 	 * @since 1.0.0
 	 * @see
@@ -54,8 +53,7 @@ public interface AccountService {
 	 * @param userId
 	 * @param amount
 	 * @return
-	 * @exception @Author
-	 *                wlcic-glen
+	 * @exception @Author wlcic-glen
 	 * @Date 2016年3月22日 上午11:26:25
 	 * @since 1.0.0
 	 * @see
@@ -68,11 +66,19 @@ public interface AccountService {
 	 * @param dealerId
 	 * @param amount
 	 * @return
-	 * @exception @Author
-	 *                wlcic-glen
+	 * @exception @Author wlcic-glen
 	 * @Date 2016年3月22日 上午11:28:45
 	 * @since 1.0.0
 	 * @see
 	 */
 	TransferResult addFreezeAccount(Long dealerId, Integer amount);
+
+	/**
+	 * 直接充值时使用
+	 * 
+	 * @param userId
+	 * @param amount
+	 * @return
+	 */
+	TransferResult addAccount(Long userId, Integer amount);
 }
