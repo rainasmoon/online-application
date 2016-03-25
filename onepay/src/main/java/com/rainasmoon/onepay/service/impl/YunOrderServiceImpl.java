@@ -12,7 +12,6 @@ import com.rainasmoon.onepay.repository.springdatajpa.YunOrderRepository;
 import com.rainasmoon.onepay.service.AccountService;
 import com.rainasmoon.onepay.service.YunOrderService;
 import com.rainasmoon.onepay.service.dto.TransferResult;
-import com.rainasmoon.onepay.util.CommonUtils;
 
 @Service
 public class YunOrderServiceImpl implements YunOrderService {
@@ -26,7 +25,8 @@ public class YunOrderServiceImpl implements YunOrderService {
 	@Override
 	public String addYunOrder(YunOrder yunOrder) {
 		if (yunOrder.isSell()) {
-			TransferResult result = accountService.minusAccount(yunOrder.getUserId(), yunOrder.getAmount());
+			TransferResult result = accountService.minusAccount(
+					yunOrder.getUserId(), yunOrder.getAmount());
 			if (result.isFail()) {
 				return result.getMessage();
 			}
@@ -50,13 +50,16 @@ public class YunOrderServiceImpl implements YunOrderService {
 		YunOrder yunOrder = repository.findOne(yunOrderId);
 		if (yunOrder.isBuy()) {
 			// 对方要买猿币
-			TransferResult result = accountService.transferToFreezeAccount(yunOrder.getDealerId(), yunOrder.getUserId(), yunOrder.getAmount());
+			TransferResult result = accountService.transferToFreezeAccount(
+					yunOrder.getDealerId(), yunOrder.getUserId(),
+					yunOrder.getAmount());
 			if (result.isFail()) {
 				return result.getMessage();
 			}
 		} else {
 			// 对方要卖猿币: 因为在下单时，猿币已经减，所以这里只有增加操作。
-			TransferResult result = accountService.addFreezeAccount(yunOrder.getDealerId(), yunOrder.getAmount());
+			TransferResult result = accountService.addFreezeAccount(
+					yunOrder.getDealerId(), yunOrder.getAmount());
 			if (result.isFail()) {
 				return result.getMessage();
 			}
@@ -68,12 +71,17 @@ public class YunOrderServiceImpl implements YunOrderService {
 	}
 
 	@Override
-	public String unfreezeYunOrder(Long userId, Long yunOrderId, String freezeCode) {
-		TransferResult result = accountService.unfreeze(userId, CommonUtils.parseFreezeCoe(freezeCode));
+	public String unfreezeYunOrder(Long userId, Long yunOrderId) {
+		YunOrder yunOrder = repository.findOne(yunOrderId);
+		if (!yunOrder.canUnfreeze()) {
+			return "解冻失败";
+		}
+		TransferResult result = accountService.unfreeze(userId,
+				yunOrder.getAmount());
 		if (result.isFail()) {
 			return result.getMessage();
 		}
-		YunOrder yunOrder = repository.findOne(yunOrderId);
+
 		yunOrder.setStatus(YunStatus.VERIFYED.getCode());
 		repository.save(yunOrder);
 		return "解冻成功";

@@ -39,6 +39,10 @@ public class YunOrder extends BaseEntity {
 		return model != null ? model.equals(1) : false;
 	}
 
+	public boolean canUnfreeze() {
+		return status == 4 || status == 5;
+	}
+
 	public Long getUserId() {
 		return userId;
 	}

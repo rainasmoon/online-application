@@ -18,7 +18,7 @@ public interface YunOrderService {
 
 	List<YunOrder> findAll();
 
-	String unfreezeYunOrder(Long userId, Long yunOrderId, String freezeCode);
+	String unfreezeYunOrder(Long userId, Long yunOrderId);
 
 	String executeYunOrder(Long userId, Long yunOrderId);
 
