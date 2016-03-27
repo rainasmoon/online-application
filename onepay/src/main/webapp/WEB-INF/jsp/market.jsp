@@ -18,7 +18,9 @@
 	<div class="col-xs-12 col-sm-9">
 
 		<div class="jumbotron">
-			<h1>猿币市场<small><a href="market_add_info.html">发布信息</a></small></h1>
+			<h1>
+				猿币市场<small><a href="market_add_info.html">发布信息</a></small>
+			</h1>
 		</div>
 
 		<div class="table-responsive">
@@ -41,7 +43,13 @@
 					<c:forEach var="arow" items="${yunOrders}" varStatus="status">
 						<tr>
 							<td><c:out value="${status.count}" /></td>
-							<td><c:out value="${arow.enumModel.name}" /></td>
+							<td><c:if test="${arow.model ==1 }">
+									<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+								</c:if>
+								<c:if test="${arow.model ==2 }">
+									<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+								</c:if>
+								<c:out value="${arow.enumModel.name}" /></td>
 							<td><c:out value="${arow.amount}" /></td>
 							<td><c:out value="${arow.price}" /></td>
 							<td><c:out value="${arow.userName}" /></td>
@@ -67,7 +75,7 @@
 </div>
 <!--/row-->
 
-<hr/>
+<hr />
 
 <jsp:include page="./fragments/footer.jsp" />
 
