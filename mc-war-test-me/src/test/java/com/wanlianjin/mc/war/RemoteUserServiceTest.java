@@ -75,10 +75,10 @@ public class RemoteUserServiceTest {
 			for (int j = 0; j < 1000; j++) {
 				System.out.println("T:" + iid + " for: " + j);
 				UserDto userDto = new UserDto();
-				userDto.setUserId("12113" + iid + j);
-				userDto.setUserAccount("Auto3test" + iid + j);
+				userDto.setUserId("12117" + iid + j);
+				userDto.setUserAccount("Auto7test" + iid + j);
 				userDto.setPassword("111");
-				userDto.setMobilePhone("1390030" + iid + j);
+				userDto.setMobilePhone("1390070" + iid + j);
 				userDto.setStatus(1);
 				userDto.setEnChannel(ChannelEnum.WANLIAN);
 				userDto.setChannelUserId("testChannelUserId");

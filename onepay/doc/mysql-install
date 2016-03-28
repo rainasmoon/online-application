@@ -1,0 +1,6 @@
+add path;
+change my-default.ini
+cd to ./bin
+mysqld -install as administrator | mysqld -remove
+net start mysql
+mysql -u root -p

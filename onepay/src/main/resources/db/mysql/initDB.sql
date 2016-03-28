@@ -1,12 +1,12 @@
-drop database if exists onlineapp;
+drop database if exists onepayapp;
 
-CREATE DATABASE IF NOT EXISTS onlineapp;
-GRANT ALL PRIVILEGES ON onlineapp.* TO pc@localhost IDENTIFIED BY 'pc';
+CREATE DATABASE IF NOT EXISTS onepayapp;
+GRANT ALL PRIVILEGES ON onepayapp.* TO pc@localhost IDENTIFIED BY 'pc';
 
-USE onlineapp;
+USE onepayapp;
 
 CREATE TABLE IF NOT EXISTS users (
-  id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id INT(8) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   email VARCHAR(100),  
   password  VARCHAR(100),
   qq  VARCHAR(20),
@@ -15,98 +15,112 @@ CREATE TABLE IF NOT EXISTS users (
   contact_name VARCHAR(100),
   contact_id_number VARCHAR(20),
   bank_name VARCHAR(100),
-  province_id INT(4) UNSIGNED,
-  city_id INT(4) UNSIGNED,
+  province_id INT(8) UNSIGNED,
+  city_id INT(8) UNSIGNED,
   branch_name VARCHAR(200),
   account_number VARCHAR(50),
   id_card_front_path VARCHAR(100),
   id_card_back_path VARCHAR(100),
   created_date  TIMESTAMP,
   updated_date  TIMESTAMP,
-  created_by INT(4) UNSIGNED,
-  updated_by INT(4) UNSIGNED,  
+  created_by INT(8) UNSIGNED,
+  updated_by INT(8) UNSIGNED,  
   UNIQUE (email),
   INDEX(email)
 ) engine=InnoDB CHARSET=utf8;
 
-
-CREATE TABLE IF NOT EXISTS applications (
-  id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  dianjoy_app_id VARCHAR(40),
-  application_name  VARCHAR(100),
-  application_platform  VARCHAR(10),
-  application_package_name  VARCHAR(500),
-  status  VARCHAR(50),
-  created_date  TIMESTAMP,
-  updated_date  TIMESTAMP,
-  created_by INT(4) UNSIGNED,
-  updated_by INT(4) UNSIGNED,
-  INDEX(created_by),
-  FOREIGN KEY (created_by) REFERENCES users(id),
-  FOREIGN KEY (updated_by) REFERENCES users(id)
+CREATE TABLE IF NOT EXISTS users (
+  id INT(8) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  email VARCHAR(100),
+  phone VARCHAR(100),
+  password VARCHAR(100),
+  nick_name VARCHAR(100),
+  sell_amount INT(8) UNSIGNED,
+  buy_amount INT(8) UNSIGNED,
+  total_amount INT(8) UNSIGNED,
+  account INT(8) UNSIGNED,
+  freeze_account INT(8) UNSIGNED,
+  level INT(8) UNSIGNED,
+  credit INT(8) UNSIGNED,
+  create_date TIMESTAMP,
+  UNIQUE (email),
+  UNIQUE (phone),
+  INDEX(email),
+  INDEX(phone),
+  INDEX(total_amount)
 ) engine=InnoDB CHARSET=utf8;
 
-CREATE TABLE IF NOT EXISTS app_parameters (
-  id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  application_id INT(4) UNSIGNED ,
-  param_name  VARCHAR(100),
-  param_value  VARCHAR(100),
-  created_date  TIMESTAMP,
-  updated_date  TIMESTAMP,
-  created_by INT(4) UNSIGNED,
-  updated_by INT(4) UNSIGNED,
-  INDEX(created_by),
-  FOREIGN KEY (created_by) REFERENCES users(id),
-  FOREIGN KEY (updated_by) REFERENCES users(id)
+CREATE TABLE IF NOT EXISTS products (
+  id INT(8) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100),
+  original_price INT(8) UNSIGNED,
+  price INT(8) UNSIGNED,
+  owner_id INT(8) UNSIGNED,
+  current_bider_id INT(8) UNSIGNED,
+  sale_model INT(8) UNSIGNED,
+  status INT(8) UNSIGNED,
+  end_date TIMESTAMP,
+  aging INT(8) UNSIGNED,
+  description VARCHAR(100),
+  create_date TIMESTAMP  
 ) engine=InnoDB CHARSET=utf8;
 
-CREATE TABLE IF NOT EXISTS checks (
-  id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  contact_name VARCHAR(100),
-  contact_id_number VARCHAR(20),
-  bank_name VARCHAR(100),
-  bank_address VARCHAR(200),
-  account_number VARCHAR(50),  
-  apply_amount DOUBLE,
-  status VARCHAR(50),
-  created_date  TIMESTAMP,
-  updated_date  TIMESTAMP,
-  created_by INT(4) UNSIGNED,
-  updated_by INT(4) UNSIGNED,
-  INDEX(created_by),
-  FOREIGN KEY (created_by) REFERENCES users(id),
-  FOREIGN KEY (updated_by) REFERENCES users(id)
+CREATE TABLE IF NOT EXISTS pictures (
+  id INT(8) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  product_id INT(8) UNSIGNED,
+  pic_path VARCHAR(100),
+  create_date TIMESTAMP
+  
 ) engine=InnoDB CHARSET=utf8;
 
-CREATE TABLE IF NOT EXISTS bonus (
-  id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  amount DOUBLE,
-  reason VARCHAR(200),
-  created_date  TIMESTAMP,
-  updated_date  TIMESTAMP,
-  created_by INT(4) UNSIGNED,
-  updated_by INT(4) UNSIGNED,
-  INDEX(created_by),
-  FOREIGN KEY (created_by) REFERENCES users(id),
-  FOREIGN KEY (updated_by) REFERENCES users(id)
-  ) engine=InnoDB CHARSET=utf8;
-
-
-CREATE TABLE IF NOT EXISTS sdks (
-  id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  platform VARCHAR(10),
-  sdk_type VARCHAR(50),
-  version VARCHAR(20),
-  download_path VARCHAR(100),
-  download_name VARCHAR(500)
+CREATE TABLE IF NOT EXISTS tags (
+  id INT(8) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  obj_id INT(8) UNSIGNED,
+  name VARCHAR(100),
+  tag_type INT(8) UNSIGNED,
+  create_date TIMESTAMP,
+  index(name)
+  
 ) engine=InnoDB CHARSET=utf8;
 
-CREATE TABLE IF NOT EXISTS dictionary (
-  id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  data_type VARCHAR(20),
-  dictionary_key INT(4) UNSIGNED,
-  dictionary_value VARCHAR(200),
-  INDEX(dictionary_key),
-  FOREIGN KEY (dictionary_key) REFERENCES dictionary(id)
+CREATE TABLE IF NOT EXISTS bidlogs (
+  id INT(8) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  user_id INT(8) UNSIGNED,
+  product_id INT(8) UNSIGNED,
+  price INT(8) UNSIGNED,
+  create_date TIMESTAMP
+  
 ) engine=InnoDB CHARSET=utf8;
 
+CREATE TABLE IF NOT EXISTS orders (
+  id INT(8) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  saler_id INT(8) UNSIGNED,
+  buyer_id INT(8) UNSIGNED,
+  product_id INT(8) UNSIGNED,
+  price INT(8) UNSIGNED,
+  sender_name VARCHAR(100),
+  sender_phone VARCHAR(100),
+  sender_address VARCHAR(100),
+  sender_postcode VARCHAR(100),
+  receiver_name VARCHAR(100),
+  receiver_phone VARCHAR(100),
+  receiver_address VARCHAR(100),
+  receiver_postcode VARCHAR(100),
+  sender_stars INT(8) UNSIGNED,
+  receiver_stars INT(8) UNSIGNED,
+  status INT(8) UNSIGNED,
+  create_date TIMESTAMP
+ ) engine=InnoDB CHARSET=utf8;
+ CREATE TABLE IF NOT EXISTS yunorders (
+  id INT(8) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  user_id INT(8) UNSIGNED,
+  dealer_id INT(8) UNSIGNED,
+  model INT(8) UNSIGNED,
+  trade_way INT(8) UNSIGNED,
+  amount INT(8) UNSIGNED,
+  price INT(8) UNSIGNED,
+  status INT(8) UNSIGNED,
+  verify_code VARCHAR(100),
+  description VARCHAR(100),
+  create_date TIMESTAMP
+ ) engine=InnoDB CHARSET=utf8;
