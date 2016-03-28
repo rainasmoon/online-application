@@ -1,0 +1,8 @@
+sudo yum update 
+
+sudo yum install mysql
+sudo yum install mysql-server
+sudo yum install tomcat8
+
+usermod -a -G tomcat ec2-user
+id

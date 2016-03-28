@@ -6,3 +6,5 @@ http://localhost:9968/onepay/restful/generatebid/threedays
 http://localhost:9968/onepay/restful/generatebid/all
 
 name save in Controller may cause problem... WTF...
+
+ssh -i "/cygdrive/c/redhat.pem" ec2-user@aws.rainasmoon.com
