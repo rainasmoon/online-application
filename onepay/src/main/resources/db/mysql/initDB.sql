@@ -7,30 +7,6 @@ USE onepayapp;
 
 CREATE TABLE IF NOT EXISTS users (
   id INT(8) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  email VARCHAR(100),  
-  password  VARCHAR(100),
-  qq  VARCHAR(20),
-  mobile  VARCHAR(20),
-  contact_type VARCHAR(20),
-  contact_name VARCHAR(100),
-  contact_id_number VARCHAR(20),
-  bank_name VARCHAR(100),
-  province_id INT(8) UNSIGNED,
-  city_id INT(8) UNSIGNED,
-  branch_name VARCHAR(200),
-  account_number VARCHAR(50),
-  id_card_front_path VARCHAR(100),
-  id_card_back_path VARCHAR(100),
-  created_date  TIMESTAMP,
-  updated_date  TIMESTAMP,
-  created_by INT(8) UNSIGNED,
-  updated_by INT(8) UNSIGNED,  
-  UNIQUE (email),
-  INDEX(email)
-) engine=InnoDB CHARSET=utf8;
-
-CREATE TABLE IF NOT EXISTS users (
-  id INT(8) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   email VARCHAR(100),
   phone VARCHAR(100),
   password VARCHAR(100),

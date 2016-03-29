@@ -504,7 +504,7 @@
 					<path>/onepay</path>
 					<protocol>org.apache.coyote.http11.Http11NioProtocol</protocol>
 					<systemProperties>
-						<spring.profiles.active>dev</spring.profiles.active>
+						<spring.profiles.active>mysql</spring.profiles.active>
 					</systemProperties>
 				</configuration>
 			</plugin>
