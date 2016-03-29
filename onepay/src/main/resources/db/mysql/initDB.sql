@@ -1,7 +1,7 @@
 drop database if exists onepayapp;
 
 CREATE DATABASE IF NOT EXISTS onepayapp;
-GRANT ALL PRIVILEGES ON onepayapp.* TO pc@localhost IDENTIFIED BY 'pc';
+GRANT ALL PRIVILEGES ON onepayapp.* TO pc@localhost IDENTIFIED BY 'bsnpb6p';
 
 USE onepayapp;
 

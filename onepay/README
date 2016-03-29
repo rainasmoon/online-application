@@ -8,3 +8,18 @@ http://localhost:9968/onepay/restful/generatebid/all
 name save in Controller may cause problem... WTF...
 
 ssh -i "/cygdrive/c/redhat.pem" ec2-user@aws.rainasmoon.com
+
+scp -i "/cygdrive/c/redhat.pem" /cygdrive/c/Users/wlcic-glen/git/online-application/onepay/target/onepay.war ec2-user@aws.rainasmoon.com:/usr/share/tomcat8/webapps
+
+scp -i "/cygdrive/c/redhat.pem"  ec2-user@aws.rainasmoon.com:/usr/share/tomcat8/logs/*.* /cygdrive/c/Users/wlcic-glen/git/online-application/onepay/logs_remote/
+scp -i "/cygdrive/c/redhat.pem"  ec2-user@aws.rainasmoon.com:/usr/share/tomcat8/D:/logs/onepayaccess.log /cygdrive/c/Users/wlcic-glen/git/online-application/onepay/logs_remote/
+
+
+-Dspring.profiles.active=dev
+
+sudo service mysqld start
+sudo service tomcat8 start
+
+tail -f onlineapp.log
+
+permition denied: change owner to tomcat.
