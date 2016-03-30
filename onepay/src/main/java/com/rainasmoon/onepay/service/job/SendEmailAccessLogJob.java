@@ -1,6 +1,8 @@
 package com.rainasmoon.onepay.service.job;
 
 import org.apache.commons.mail.EmailException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -10,6 +12,8 @@ import com.rainasmoon.onepay.service.job.impl.EmailSendLog;
 
 @Component
 public class SendEmailAccessLogJob {
+
+	public static Logger LOGGER = LoggerFactory.getLogger(SendEmailAccessLogJob.class);
 
 	@Autowired
 	private BidService bidService;
@@ -35,6 +39,7 @@ public class SendEmailAccessLogJob {
 	}
 
 	private void printLog(String message) {
+		LOGGER.info(message);
 		System.out.println(message);
 	}
 }

@@ -12,7 +12,7 @@ public class EmailSendLog {
 	public void sendAccessLog() throws EmailException {
 		// Create the attachment
 		EmailAttachment attachment = new EmailAttachment();
-		attachment.setPath("D://logs//onepayaccess.log");
+		attachment.setPath("/var/logs/onepayaccess.log");
 		attachment.setDisposition(EmailAttachment.ATTACHMENT);
 		attachment.setDescription("the access log");
 		attachment.setName("onepaylog");

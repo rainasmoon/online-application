@@ -6,6 +6,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 
 	<name>one pay</name>
+	<description>1 yun bid 2nd hand goods</description>
 	<packaging>war</packaging>
 	<url>demoonepay</url>
 
@@ -544,5 +545,5 @@
 		</plugins>
 	</build>
 
-	<description>1 yun bid 2nd hand goods</description>
+	
 </project>

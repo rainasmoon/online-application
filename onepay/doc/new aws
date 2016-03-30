@@ -6,3 +6,13 @@ sudo yum install tomcat8
 
 usermod -a -G tomcat ec2-user
 id
+
+ sudo fdisk -l 
+ df -h
+ mkfs -t ext4 /dev/xvdb
+ 
+ mount /dev/xvdb /mnt/b
+ 
+ /etc/fstab
+ /dev/xvdb /mnt/b ext4 defaults 0 0
+ 
