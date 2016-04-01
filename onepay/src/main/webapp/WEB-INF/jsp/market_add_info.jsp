@@ -33,8 +33,8 @@
 				name="tradeModel" id="tradeModel2" value="sell" /> 卖
 			</label> 
 		</div>
-		<onepayapp:inputField label="猿币" name="amount" type="number" />
-		<onepayapp:inputField label="价格" name="price" type="number" />
+		<onepayapp:inputField label="猿币" name="amount" type="number" required="true"/>
+		<onepayapp:inputField label="价格" name="price" type="number" required="true"/>
 		<hr />
 		<div>
 			<label for="description">描述</label>

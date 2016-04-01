@@ -60,7 +60,7 @@
 			<a href="top10users.html" class="list-group-item active">用户排行榜</a>
 			<c:forEach var="arow" items="${vo.activeTop5Users}">
 				<li class="list-group-item"><c:out
-						value="${arow.nickName}" /> <c:out value="${arow.totalAmount}" /></li>
+						value="${arow.showName}" /> <c:out value="${arow.totalAmount}" /></li>
 			</c:forEach>
 		</ul>
 	</div>

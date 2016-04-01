@@ -33,6 +33,16 @@ public class User extends BaseEntity {
 	@Column(name = "credit")
 	private Integer credit;
 
+	public User() {
+		sellAmount = 0;
+		buyAmount = 0;
+		totalAmount = 0;
+		account = 0;
+		freezeAccount = 0;
+		level = 0;
+		credit = 0;
+	}
+
 	public String getShowName() {
 		if (StringUtils.isNotBlank(nickName)) {
 			return nickName;
