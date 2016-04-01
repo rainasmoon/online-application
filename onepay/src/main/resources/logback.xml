@@ -61,7 +61,7 @@
 
 	<logger name="com.rainasmoon" level="debug" />
 	<logger name="org.springframework.beans.TypeConverterDelegate">
-		<level value="warn" />
+		<level value="debug" />
 	</logger>
 	<logger name="com.rainasmoon.onepay.util.AccessLogFilter" level="DEBUG"
 		additivity="false">
@@ -76,7 +76,7 @@
 		<appender-ref ref="exceptionLogFile" />
 	</logger>
 
-	<logger name="org.hibernate" level="info" />
+	<logger name="org.hibernate" level="debug" />
 	<logger name="org.hibernate.type.descriptor.sql.BasicBinder"
 		level="TRACE" />
 

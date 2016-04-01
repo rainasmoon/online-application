@@ -100,3 +100,13 @@ CREATE TABLE IF NOT EXISTS orders (
   description VARCHAR(100),
   create_date TIMESTAMP
  ) engine=InnoDB CHARSET=utf8;
+ 
+  CREATE TABLE  IF NOT EXISTS accountlogs (
+  id INT(8) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  user_id INT(8) UNSIGNED,
+  change_amount INT(8) UNSIGNED,
+  balance INT(8) UNSIGNED,
+  account_log_type INT(8) UNSIGNED,
+  description VARCHAR(100),
+  create_date TIMESTAMP
+);

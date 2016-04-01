@@ -8,6 +8,8 @@ DROP TABLE bidlogs IF EXISTS;
 DROP TABLE orders IF EXISTS;
 DROP TABLE yunorders IF EXISTS;
 
+DROP TABLE accountlogs IF EXISTS;
+
 CREATE TABLE users (
   id INTEGER IDENTITY PRIMARY KEY,
   email VARCHAR(100),
@@ -97,3 +99,13 @@ CREATE TABLE orders (
   description VARCHAR(100),
   create_date TIMESTAMP
  );
+ 
+ CREATE TABLE accountlogs (
+  id INTEGER IDENTITY PRIMARY KEY,
+  user_id INTEGER,
+  change_amount INTEGER,
+  balance INTEGER,
+  account_log_type INTEGER,
+  description VARCHAR(100),
+  create_date TIMESTAMP
+);

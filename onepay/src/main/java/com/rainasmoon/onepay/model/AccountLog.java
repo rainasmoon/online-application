@@ -10,11 +10,11 @@ public class AccountLog extends BaseEntity {
 
 	@Column(name = "user_id")
 	private Long userId;
-	@Column(name = "changeAmount")
+	@Column(name = "change_amount")
 	private Integer changeAmount;
 	@Column(name = "balance")
 	private Integer balance;
-	@Column(name = "type")
+	@Column(name = "account_log_type")
 	private Integer type;
 	@Column(name = "description")
 	private String description;
