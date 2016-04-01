@@ -9,7 +9,7 @@
 	<p>
 		<img src="pic/wechat_qr_code.jpg" width="100" height="100">&copy;
 		<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;<a
-			href="mailto:rainasmoon@126.com?subject=[OneYuanHelp]&body=欢迎给我发消息">给我写邮件</a>
+			href="mailto:rainasmoon@126.com?subject=[OneYuanHelp]&body=\u6B22\u8FCE\u7ED9\u6211\u53D1\u6D88\u606F">给我写邮件</a>
 	</p>
 </footer>
 

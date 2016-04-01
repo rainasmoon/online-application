@@ -45,7 +45,7 @@
 		<bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource"
 			p:driverClassName="${mysql.jdbc.driverClassName}" p:url="${mysql.jdbc.url}"
 			p:username="${mysql.jdbc.username}" p:password="${mysql.jdbc.password}"
-			p:initialSize="10" p:minIdle="10" p:maxIdle="100" p:maxActive="100"
+			p:initialSize="10" p:minIdle="10" p:maxIdle="50" p:maxActive="100"
 			p:maxWait="6000" p:removeAbandoned="true" p:removeAbandonedTimeout="60"
 			p:logAbandoned="true" p:testOnBorrow="true" p:testOnReturn="false"
 			p:testWhileIdle="false" p:useEquals="false" p:fairQueue="false"
