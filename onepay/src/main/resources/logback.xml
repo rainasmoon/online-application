@@ -14,9 +14,9 @@
 
 	<appender name="rollingFile"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>/var/logs/onepayrolling.log</file>
+		<file>./logs/onepayrolling.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>/var/logs/onepayrolling.%d{yyyy-MM-dd}.log
+			<fileNamePattern>./logs/onepayrolling.%d{yyyy-MM-dd}.log
 			</fileNamePattern>
 		</rollingPolicy>
 		<encoder>
@@ -28,9 +28,9 @@
 
 	<appender name="accessLoggingFile"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>/var/logs/onepayaccess.log</file>
+		<file>./logs/onepayaccess.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>/var/logs/onepayaccess.%d{yyyy-MM-dd}.log
+			<fileNamePattern>./logs/onepayaccess.%d{yyyy-MM-dd}.log
 			</fileNamePattern>
 		</rollingPolicy>
 		<encoder>
@@ -42,10 +42,10 @@
 
 	<appender name="exceptionLogFile"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>/var/logs/onepayexception.log</file>
+		<file>./logs/onepayexception.log</file>
 		<!-- 按每小时滚动文件，如果一个小时内达到10M也会滚动文件, 滚动文件将会压缩成zip格式 -->
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>/var/logs/onepayexception-%d{yyyy-MM-dd}.%i.zip
+			<fileNamePattern>./logs/onepayexception-%d{yyyy-MM-dd}.%i.zip
 			</fileNamePattern>
 			<timeBasedFileNamingAndTriggeringPolicy
 				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
@@ -80,7 +80,7 @@
 	<logger name="org.hibernate.type.descriptor.sql.BasicBinder"
 		level="TRACE" />
 
-	<root level="info">
+	<root level="debug">
 		<appender-ref ref="console" />
 		<appender-ref ref="rollingFile" />
 	</root>
