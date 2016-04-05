@@ -35,12 +35,15 @@ public class LoginController extends BaseController {
 	public String processLoginForm(@Valid LoginVo loginVo, BindingResult result, HttpServletRequest request, Map<String, Object> model) {
 
 		LOGGER.debug("Session:www:" + loginVo);
+		LOGGER.debug("Session:www:" + result);
 
 		// if exist -> login. else create
 		// 1 check if userAccount exist. yes -> check password. no -> ask user
 		// what to do... create or relogin.
 		if (userService.checkUserIfExists(loginVo.getAccount())) {
 			User loginUser = userService.login(loginVo.getAccount(), loginVo.getPassword());
+			LOGGER.debug("www:loginUser:" + loginUser);
+
 			if (loginUser != null) {
 				// login success
 				setSessionLoginUser(loginUser.getId(), loginUser.getShowName());
@@ -54,7 +57,9 @@ public class LoginController extends BaseController {
 			}
 		} else {
 			// ask if create a new user or relogin.
+
 			if (StringUtils.isBlank(loginVo.getConfirmPassword())) {
+				LOGGER.debug(":www: create a new user");
 				model.put("message", "账号不存在，是否创建？");
 				model.put("loginVo", loginVo);
 				return "login_register";
@@ -64,6 +69,7 @@ public class LoginController extends BaseController {
 					model.put("loginVo", loginVo);
 					return "login_register";
 				} else {
+					LOGGER.debug(":www: save a new user");
 					userService.addUser(loginVo.getAccount(), loginVo.getPassword());
 					model.put("message", "创建账号成功");
 					model.put("loginVo", loginVo);
