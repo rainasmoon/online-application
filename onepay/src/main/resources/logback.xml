@@ -76,7 +76,7 @@
 		<appender-ref ref="exceptionLogFile" />
 	</logger>
 
-	<logger name="org.hibernate" level="debug" />
+	<logger name="org.hibernate" level="info" />
 	<logger name="org.hibernate.type.descriptor.sql.BasicBinder"
 		level="info" />
 
