@@ -27,7 +27,6 @@ public class AllServiceTest extends BaseTest {
 		String toUserEmail = "toUser@Test.com";
 		String password = "123456";
 
-		User fromUser = userService.addUser(fromUserEmail, password);
 		User toUser = userService.addUser(toUserEmail, password);
 
 		userService.login(fromUserEmail, password);

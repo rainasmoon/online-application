@@ -37,8 +37,7 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public List<AdVo> listAllOnSaleProductsPage() {
-		Iterable<Product> allProducts = repository
-				.findByStatus(ProductStatus.ONSALE.getCode());
+		Iterable<Product> allProducts = repository.findByStatus(ProductStatus.ONSALE.getCode());
 		List<AdVo> result = new ArrayList<AdVo>();
 		for (Product p : allProducts) {
 			AdVo adVo = new AdVo();
@@ -81,8 +80,7 @@ public class ProductServiceImpl implements ProductService {
 		productVo.setProductTitle(product.getName());
 		productVo.setPrice(product.getPrice());
 		if (product.getCurrentBiderId() != null) {
-			productVo.setCurrentOwer(userRepository.findOne(
-					product.getCurrentBiderId()).getShowName());
+			productVo.setCurrentOwer(userRepository.findOne(product.getCurrentBiderId()).getShowName());
 		}
 		productVo.setSaleModel(SaleModels.valueOf(product.getSaleModel()));
 		productVo.setEndDate(product.getEndDate());
@@ -103,7 +101,7 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public List<AdVo> listMyFavoritesProductsPage(Long loginUserId) {
-		// TODO Auto-generated method stub
+		// TODO glen my favorites product
 		return null;
 	}
 

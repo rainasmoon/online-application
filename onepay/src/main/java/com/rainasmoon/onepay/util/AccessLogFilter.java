@@ -9,7 +9,6 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -17,24 +16,23 @@ import org.slf4j.LoggerFactory;
 
 public class AccessLogFilter implements Filter {
 
-	public static Logger LOGGER = LoggerFactory
-			.getLogger(AccessLogFilter.class);
+	public static Logger LOGGER = LoggerFactory.getLogger(AccessLogFilter.class);
 
+	@Override
 	public void destroy() {
 	}
 
-	public void doFilter(ServletRequest request, ServletResponse response,
-			FilterChain chain) throws IOException, ServletException {
+	@Override
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest httprequest = (HttpServletRequest) request;
-		HttpServletResponse httpresponse = (HttpServletResponse) response;
-		
+
 		String sessionId = httprequest.getRequestedSessionId();
 		String url = httprequest.getRequestURL().toString();
 		String userAgent = ((HttpServletRequest) request).getHeader("User-Agent");
-		
-		HttpSession session=((HttpServletRequest) request).getSession();
+
+		HttpSession session = ((HttpServletRequest) request).getSession();
 		Long loginUserId = (Long) session.getAttribute(CommonConstants.LOGIN_USER_ID);
-		
+
 		LOGGER.debug("-----------------------------------------------------------------------------");
 		LOGGER.debug("ACCESS:" + getIpAddr((HttpServletRequest) request));
 		LOGGER.debug("ACCESS:" + sessionId);
@@ -42,15 +40,14 @@ public class AccessLogFilter implements Filter {
 		LOGGER.debug("ACCESS:" + url);
 		LOGGER.debug("ACCESS:" + userAgent);
 		LOGGER.debug("-----------------------------------------------------------------------------");
-		
+
 		chain.doFilter(request, response);
 		return;
 	}
 
 	@Override
 	public void init(FilterConfig arg0) throws ServletException {
-		// TODO Auto-generated method stub
-
+		// nothing
 	}
 
 	public String getIpAddr(HttpServletRequest request) {

@@ -31,10 +31,8 @@ public class LoginController extends BaseController {
 		return "login";
 	}
 
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String processLoginForm(@Valid LoginVo loginVo,
-			BindingResult result, HttpServletRequest request,
-			Map<String, Object> model) {
+	@RequestMapping(value = "/login.html", method = RequestMethod.POST)
+	public String processLoginForm(@Valid LoginVo loginVo, BindingResult result, HttpServletRequest request, Map<String, Object> model) {
 
 		LOGGER.debug("Session:www:" + loginVo);
 
@@ -42,8 +40,7 @@ public class LoginController extends BaseController {
 		// 1 check if userAccount exist. yes -> check password. no -> ask user
 		// what to do... create or relogin.
 		if (userService.checkUserIfExists(loginVo.getAccount())) {
-			User loginUser = userService.login(loginVo.getAccount(),
-					loginVo.getPassword());
+			User loginUser = userService.login(loginVo.getAccount(), loginVo.getPassword());
 			if (loginUser != null) {
 				// login success
 				setSessionLoginUser(loginUser.getId(), loginUser.getShowName());
@@ -67,8 +64,7 @@ public class LoginController extends BaseController {
 					model.put("loginVo", loginVo);
 					return "login_register";
 				} else {
-					userService.addUser(loginVo.getAccount(),
-							loginVo.getPassword());
+					userService.addUser(loginVo.getAccount(), loginVo.getPassword());
 					model.put("message", "创建账号成功");
 					model.put("loginVo", loginVo);
 					return "login_register_success";
@@ -78,7 +74,7 @@ public class LoginController extends BaseController {
 
 	}
 
-	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	@RequestMapping(value = "/logout.html", method = RequestMethod.GET)
 	public String logout() {
 		setSessionOut();
 		return "redirect:/";
