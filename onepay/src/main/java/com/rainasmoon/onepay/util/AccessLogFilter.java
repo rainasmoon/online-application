@@ -52,6 +52,8 @@ public class AccessLogFilter implements Filter {
 		ServletServerHttpRequest serverRequest = new ServletServerHttpRequest((HttpServletRequest) request);
 		String originRequestStr = serverRequest.getHeaders().getOrigin();
 
+		LOGGER.debug("headers:" + serverRequest.getHeaders());
+
 		UriComponents actualUrl = UriComponentsBuilder.fromHttpRequest(serverRequest).build();
 		UriComponents originUrl = null;
 		if (originRequestStr != null) {
