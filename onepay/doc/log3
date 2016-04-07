@@ -1,0 +1,18 @@
+2016-04-07 10:42:08 [qtp0-1] DEBUG c.r.onepay.util.AccessLogFilter - -----------------------------------------------------------------------------
+2016-04-07 10:42:08 [qtp0-1] DEBUG c.r.onepay.util.AccessLogFilter - ACCESS:100.35.151.211
+2016-04-07 10:42:08 [qtp0-1] DEBUG c.r.onepay.util.AccessLogFilter - ACCESS:1x59gdz89s8fz
+2016-04-07 10:42:08 [qtp0-1] DEBUG c.r.onepay.util.AccessLogFilter - ACCESS:1
+2016-04-07 10:42:08 [qtp0-1] DEBUG c.r.onepay.util.AccessLogFilter - ACCESS:http://100.35.151.131:8080/onepay/listproducts.html
+2016-04-07 10:42:08 [qtp0-1] DEBUG c.r.onepay.util.AccessLogFilter - ACCESS:HUAWEI_GRA-TL00_TD/5.0 Android/5.0.1 (Linux; U; Android 5.0.1; zh-cn) Release/01.18.2014 Browser/WAP2.0 (AppleWebKit/537.36) Mobile Safari/537.36
+2016-04-07 10:42:08 [qtp0-1] DEBUG c.r.onepay.util.AccessLogFilter - ACCESS:null
+2016-04-07 10:42:08 [qtp0-1] DEBUG c.r.onepay.util.AccessLogFilter - -----------------------------------------------------------------------------
+2016-04-07 10:42:08 [qtp0-1] DEBUG c.r.onepay.util.AccessLogFilter - headers:{Host=[100.35.151.131:8080], Connection=[keep-alive], Accept=[text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8], x-wap-profile=[http://wap1.huawei.com/uaprof/HUAWEI_GRA-TL00_UAProfile.xml], User-Agent=[HUAWEI_GRA-TL00_TD/5.0 Android/5.0.1 (Linux; U; Android 5.0.1; zh-cn) Release/01.18.2014 Browser/WAP2.0 (AppleWebKit/537.36) Mobile Safari/537.36], Referer=[http://100.35.151.131:8080/onepay/login.html], Accept-Encoding=[gzip,deflate], Accept-Language=[en-US], Cookie=[JSESSIONID=43A7A291A6E40C87773C50FCC717BCB5; JSESSIONID=1x59gdz89s8fz], X-Requested-With=[com.android.browser], Cache-Control=[max-age=0]}
+2016-04-07 10:42:08 [qtp0-1] DEBUG c.r.onepay.util.AccessLogFilter - DEBUG:100.35.151.131
+2016-04-07 10:42:08 [qtp0-1] DEBUG c.r.onepay.util.AccessLogFilter - DEBUG:http://100.35.151.131:8080/onepay/listproducts.html
+2016-04-07 10:42:08 [qtp0-1] DEBUG c.r.onepay.util.AccessLogFilter - DEBUG:null
+2016-04-07 10:42:08 [qtp0-1] DEBUG c.r.onepay.util.AccessLogFilter - DEBUG:100.35.151.131
+2016-04-07 10:42:08 [qtp0-1] DEBUG c.r.onepay.util.AccessLogFilter - DEBUG:null
+2016-04-07 10:42:08 [qtp0-1] DEBUG c.r.onepay.util.AccessLogFilter - DEBUG:8080
+2016-04-07 10:42:08 [qtp0-1] DEBUG c.r.onepay.util.AccessLogFilter - DEBUG:null
+2016-04-07 10:42:08 [qtp0-1] DEBUG c.r.onepay.util.AccessLogFilter - DEBUG:8080
+2016-04-07 10:42:08 [qtp0-1] DEBUG c.r.onepay.util.AccessLogFilter - DEBUG:null

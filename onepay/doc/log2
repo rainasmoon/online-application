@@ -1,0 +1,117 @@
+2016-04-07 10:12:50 [qtp0-3] DEBUG c.r.onepay.util.AccessLogFilter - -----------------------------------------------------------------------------
+2016-04-07 10:12:50 [qtp0-3] DEBUG c.r.onepay.util.AccessLogFilter - ACCESS:127.0.0.1
+2016-04-07 10:12:50 [qtp0-3] DEBUG c.r.onepay.util.AccessLogFilter - ACCESS:vqn08kxe4cz5
+2016-04-07 10:12:50 [qtp0-3] DEBUG c.r.onepay.util.AccessLogFilter - ACCESS:null
+2016-04-07 10:12:50 [qtp0-3] DEBUG c.r.onepay.util.AccessLogFilter - ACCESS:http://tomcat_web/onepay/login.html
+2016-04-07 10:12:50 [qtp0-3] DEBUG c.r.onepay.util.AccessLogFilter - ACCESS:Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101 Firefox/45.0
+2016-04-07 10:12:50 [qtp0-3] DEBUG c.r.onepay.util.AccessLogFilter - ACCESS:null
+2016-04-07 10:12:50 [qtp0-3] DEBUG c.r.onepay.util.AccessLogFilter - -----------------------------------------------------------------------------
+2016-04-07 10:12:50 [qtp0-3] DEBUG c.r.onepay.util.AccessLogFilter - headers:{Host=[tomcat_web], Connection=[close], Content-Length=[20], User-Agent=[Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101 Firefox/45.0], Accept=[text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8], Accept-Language=[en-US,en;q=0.5], Accept-Encoding=[gzip, deflate], Referer=[http://localhost:8888/onepay/login.html], Cookie=[JSESSIONID=vqn08kxe4cz5; OFBiz.Visitor=10000], Content-Type=[application/x-www-form-urlencoded;charset=UTF-8]}
+2016-04-07 10:12:50 [qtp0-3] DEBUG c.r.onepay.util.AccessLogFilter - DEBUG:null
+2016-04-07 10:12:50 [qtp0-3] DEBUG c.r.onepay.util.AccessLogFilter - DEBUG:http:/onepay/login.html
+2016-04-07 10:12:50 [qtp0-3] DEBUG c.r.onepay.util.AccessLogFilter - DEBUG:null
+2016-04-07 10:12:50 [qtp0-3] DEBUG c.r.onepay.util.AccessLogFilter - DEBUG:null
+2016-04-07 10:12:50 [qtp0-3] DEBUG c.r.onepay.util.AccessLogFilter - DEBUG:null
+2016-04-07 10:12:50 [qtp0-3] DEBUG c.r.onepay.util.AccessLogFilter - DEBUG:-1
+2016-04-07 10:12:50 [qtp0-3] DEBUG c.r.onepay.util.AccessLogFilter - DEBUG:null
+2016-04-07 10:12:50 [qtp0-3] DEBUG c.r.onepay.util.AccessLogFilter - DEBUG:80
+2016-04-07 10:12:50 [qtp0-3] DEBUG c.r.onepay.util.AccessLogFilter - DEBUG:null
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.web.servlet.DispatcherServlet - DispatcherServlet with name 'onepayapp' processing POST request for [/onepay/login.html]
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Looking up handler method for path /login.html
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Returning handler method [public java.lang.String com.rainasmoon.onepay.web.LoginController.processLoginForm(com.rainasmoon.onepay.vo.LoginVo,org.springframework.validation.BindingResult,javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.Object>)]
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'loginController'
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.o.j.SharedEntityManagerCreator$SharedEntityManagerInvocationHandler - Creating new EntityManager for shared EntityManager invocation
+Hibernate: select user0_.id as id1_6_, user0_.create_date as create_d2_6_, user0_.account as account3_6_, user0_.buy_amount as buy_amou4_6_, user0_.credit as credit5_6_, user0_.email as email6_6_, user0_.freeze_account as freeze_a7_6_, user0_.level as level8_6_, user0_.nick_name as nick_nam9_6_, user0_.password as passwor10_6_, user0_.phone as phone11_6_, user0_.sell_amount as sell_am12_6_, user0_.total_amount as total_a13_6_ from users user0_ where user0_.email=? or user0_.phone=?
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.o.jpa.EntityManagerFactoryUtils - Closing JPA EntityManager
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.o.j.SharedEntityManagerCreator$SharedEntityManagerInvocationHandler - Creating new EntityManager for shared EntityManager invocation
+Hibernate: select user0_.id as id1_6_, user0_.create_date as create_d2_6_, user0_.account as account3_6_, user0_.buy_amount as buy_amou4_6_, user0_.credit as credit5_6_, user0_.email as email6_6_, user0_.freeze_account as freeze_a7_6_, user0_.level as level8_6_, user0_.nick_name as nick_nam9_6_, user0_.password as passwor10_6_, user0_.phone as phone11_6_, user0_.sell_amount as sell_am12_6_, user0_.total_amount as total_a13_6_ from users user0_ where user0_.email=? or user0_.phone=?
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.o.jpa.EntityManagerFactoryUtils - Closing JPA EntityManager
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Requested media types are [text/html] based on Accept header types and producible media types [*/*])
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.w.s.view.BeanNameViewResolver - No matching bean found for view name 'redirect:/'
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.w.s.view.BeanNameViewResolver - No matching bean found for view name 'redirect:/.html'
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Returning redirect view [org.springframework.web.servlet.view.RedirectView: name 'redirect:/'; URL [/]]
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.web.servlet.DispatcherServlet - Rendering view [org.springframework.web.servlet.view.RedirectView: name 'redirect:/'; URL [/]] in DispatcherServlet with name 'onepayapp'
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.web.servlet.DispatcherServlet - Successfully completed request
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.web.servlet.DispatcherServlet - DispatcherServlet with name 'onepayapp' processing GET request for [/onepay/]
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Looking up handler method for path /
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Returning handler method [public java.lang.String com.rainasmoon.onepay.web.WelcomController.initCreationForm(java.util.Map<java.lang.String, java.lang.Object>)]
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'welcomController'
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.web.servlet.DispatcherServlet - Last-Modified value for [/onepay/] is: -1
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Requested media types are [text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8] based on Accept header types and producible media types [*/*])
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.w.s.view.BeanNameViewResolver - No matching bean found for view name 'redirect:listproducts.html'
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.w.s.view.BeanNameViewResolver - No matching bean found for view name 'redirect:listproducts.html.html'
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Returning redirect view [org.springframework.web.servlet.view.RedirectView: name 'redirect:listproducts.html'; URL [listproducts.html]]
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.web.servlet.DispatcherServlet - Rendering view [org.springframework.web.servlet.view.RedirectView: name 'redirect:listproducts.html'; URL [listproducts.html]] in DispatcherServlet with name 'onepayapp'
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.web.servlet.DispatcherServlet - Successfully completed request
+2016-04-07 10:12:50 [qtp0-3] DEBUG c.r.onepay.util.AccessLogFilter - -----------------------------------------------------------------------------
+2016-04-07 10:12:50 [qtp0-3] DEBUG c.r.onepay.util.AccessLogFilter - ACCESS:127.0.0.1
+2016-04-07 10:12:50 [qtp0-3] DEBUG c.r.onepay.util.AccessLogFilter - ACCESS:vqn08kxe4cz5
+2016-04-07 10:12:50 [qtp0-3] DEBUG c.r.onepay.util.AccessLogFilter - ACCESS:1
+2016-04-07 10:12:50 [qtp0-3] DEBUG c.r.onepay.util.AccessLogFilter - ACCESS:http://tomcat_web/onepay/listproducts.html
+2016-04-07 10:12:50 [qtp0-3] DEBUG c.r.onepay.util.AccessLogFilter - ACCESS:Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101 Firefox/45.0
+2016-04-07 10:12:50 [qtp0-3] DEBUG c.r.onepay.util.AccessLogFilter - ACCESS:null
+2016-04-07 10:12:50 [qtp0-3] DEBUG c.r.onepay.util.AccessLogFilter - -----------------------------------------------------------------------------
+2016-04-07 10:12:50 [qtp0-3] DEBUG c.r.onepay.util.AccessLogFilter - headers:{Host=[tomcat_web], Connection=[close], User-Agent=[Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101 Firefox/45.0], Accept=[text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8], Accept-Language=[en-US,en;q=0.5], Accept-Encoding=[gzip, deflate], Referer=[http://localhost:8888/onepay/login.html], Cookie=[JSESSIONID=vqn08kxe4cz5; OFBiz.Visitor=10000]}
+2016-04-07 10:12:50 [qtp0-3] DEBUG c.r.onepay.util.AccessLogFilter - DEBUG:null
+2016-04-07 10:12:50 [qtp0-3] DEBUG c.r.onepay.util.AccessLogFilter - DEBUG:http:/onepay/listproducts.html
+2016-04-07 10:12:50 [qtp0-3] DEBUG c.r.onepay.util.AccessLogFilter - DEBUG:null
+2016-04-07 10:12:50 [qtp0-3] DEBUG c.r.onepay.util.AccessLogFilter - DEBUG:null
+2016-04-07 10:12:50 [qtp0-3] DEBUG c.r.onepay.util.AccessLogFilter - DEBUG:null
+2016-04-07 10:12:50 [qtp0-3] DEBUG c.r.onepay.util.AccessLogFilter - DEBUG:-1
+2016-04-07 10:12:50 [qtp0-3] DEBUG c.r.onepay.util.AccessLogFilter - DEBUG:null
+2016-04-07 10:12:50 [qtp0-3] DEBUG c.r.onepay.util.AccessLogFilter - DEBUG:80
+2016-04-07 10:12:50 [qtp0-3] DEBUG c.r.onepay.util.AccessLogFilter - DEBUG:null
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.web.servlet.DispatcherServlet - DispatcherServlet with name 'onepayapp' processing GET request for [/onepay/listproducts.html]
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Looking up handler method for path /listproducts.html
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Returning handler method [public java.lang.String com.rainasmoon.onepay.web.ProductController.listProducts(java.util.Map<java.lang.String, java.lang.Object>)]
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'productController'
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.web.servlet.DispatcherServlet - Last-Modified value for [/onepay/listproducts.html] is: -1
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findAll]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly; ''
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Opened new EntityManager [org.hibernate.jpa.internal.EntityManagerImpl@70dfe5f5] for JPA transaction
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.jdbc.datasource.DataSourceUtils - Setting JDBC Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@4805455]]] read-only
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC transaction [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@4e9c8c6c]
+Hibernate: select user0_.id as id1_6_, user0_.create_date as create_d2_6_, user0_.account as account3_6_, user0_.buy_amount as buy_amou4_6_, user0_.credit as credit5_6_, user0_.email as email6_6_, user0_.freeze_account as freeze_a7_6_, user0_.level as level8_6_, user0_.nick_name as nick_nam9_6_, user0_.password as passwor10_6_, user0_.phone as phone11_6_, user0_.sell_amount as sell_am12_6_, user0_.total_amount as total_a13_6_ from users user0_
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [org.hibernate.jpa.internal.EntityManagerImpl@70dfe5f5]
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.jdbc.datasource.DataSourceUtils - Resetting read-only flag of JDBC Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@4805455]]]
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Closing JPA EntityManager [org.hibernate.jpa.internal.EntityManagerImpl@70dfe5f5] after transaction
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.o.jpa.EntityManagerFactoryUtils - Closing JPA EntityManager
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.o.j.SharedEntityManagerCreator$SharedEntityManagerInvocationHandler - Creating new EntityManager for shared EntityManager invocation
+Hibernate: select product0_.id as id1_4_, product0_.create_date as create_d2_4_, product0_.aging as aging3_4_, product0_.current_bider_id as current_4_4_, product0_.description as descript5_4_, product0_.end_date as end_date6_4_, product0_.name as name7_4_, product0_.original_price as original8_4_, product0_.owner_id as owner_id9_4_, product0_.price as price10_4_, product0_.sale_model as sale_mo11_4_, product0_.status as status12_4_ from products product0_ where product0_.status=?
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.o.jpa.EntityManagerFactoryUtils - Closing JPA EntityManager
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.o.j.SharedEntityManagerCreator$SharedEntityManagerInvocationHandler - Creating new EntityManager for shared EntityManager invocation
+Hibernate: select picture0_.id as id1_3_, picture0_.create_date as create_d2_3_, picture0_.pic_path as pic_path3_3_, picture0_.product_id as product_4_3_ from pictures picture0_ where picture0_.product_id=?
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.o.jpa.EntityManagerFactoryUtils - Closing JPA EntityManager
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.o.j.SharedEntityManagerCreator$SharedEntityManagerInvocationHandler - Creating new EntityManager for shared EntityManager invocation
+Hibernate: select picture0_.id as id1_3_, picture0_.create_date as create_d2_3_, picture0_.pic_path as pic_path3_3_, picture0_.product_id as product_4_3_ from pictures picture0_ where picture0_.product_id=?
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.o.jpa.EntityManagerFactoryUtils - Closing JPA EntityManager
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.o.j.SharedEntityManagerCreator$SharedEntityManagerInvocationHandler - Creating new EntityManager for shared EntityManager invocation
+Hibernate: select picture0_.id as id1_3_, picture0_.create_date as create_d2_3_, picture0_.pic_path as pic_path3_3_, picture0_.product_id as product_4_3_ from pictures picture0_ where picture0_.product_id=?
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.o.jpa.EntityManagerFactoryUtils - Closing JPA EntityManager
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Requested media types are [text/html] based on Accept header types and producible media types [*/*])
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.w.s.view.BeanNameViewResolver - No matching bean found for view name 'listproducts'
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.w.s.view.BeanNameViewResolver - No matching bean found for view name 'listproducts.html'
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Returning [org.springframework.web.servlet.view.JstlView: name 'listproducts'; URL [/WEB-INF/jsp/listproducts.jsp]] based on requested media type 'text/html'
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.web.servlet.DispatcherServlet - Rendering view [org.springframework.web.servlet.view.JstlView: name 'listproducts'; URL [/WEB-INF/jsp/listproducts.jsp]] in DispatcherServlet with name 'onepayapp'
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.web.servlet.view.JstlView - Added model object 'vo' of type [com.rainasmoon.onepay.vo.ProductListPageVo] to request in view with name 'listproducts'
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.web.servlet.view.JstlView - Added model object 'org.springframework.validation.BindingResult.vo' of type [org.springframework.validation.BeanPropertyBindingResult] to request in view with name 'listproducts'
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.web.servlet.view.JstlView - Forwarding to resource [/WEB-INF/jsp/listproducts.jsp] in InternalResourceView 'listproducts'
+2016-04-07 10:12:50 [qtp0-3] DEBUG o.s.web.servlet.DispatcherServlet - Successfully completed request
+2016-04-07 10:12:51 [qtp0-3] DEBUG o.s.web.servlet.DispatcherServlet - DispatcherServlet with name 'onepayapp' processing GET request for [/onepay/product_pic/nopic]
+2016-04-07 10:12:51 [qtp0-3] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Looking up handler method for path /product_pic/nopic
+2016-04-07 10:12:51 [qtp0-3] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Returning handler method [public void com.rainasmoon.onepay.web.ImageController.getFile(java.lang.String,javax.servlet.http.HttpServletResponse) throws org.springframework.dao.DataAccessException,com.rainasmoon.onepay.web.ImageNotFoundException]
+2016-04-07 10:12:51 [qtp0-3] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'imageController'
+2016-04-07 10:12:51 [qtp0-3] DEBUG o.s.web.servlet.DispatcherServlet - Last-Modified value for [/onepay/product_pic/nopic] is: -1
+2016-04-07 10:12:51 [qtp0-3] DEBUG o.s.c.e.PropertySourcesPropertyResolver - Searching for key 'product.pic.location' in [servletConfigInitParams]
+2016-04-07 10:12:51 [qtp0-3] DEBUG o.s.c.e.PropertySourcesPropertyResolver - Searching for key 'product.pic.location' in [servletContextInitParams]
+2016-04-07 10:12:51 [qtp0-3] DEBUG o.s.c.e.PropertySourcesPropertyResolver - Searching for key 'product.pic.location' in [jndiProperties]
+2016-04-07 10:12:51 [qtp0-3] DEBUG o.springframework.jndi.JndiTemplate - Looking up JNDI object with name [java:comp/env/product.pic.location]
+2016-04-07 10:12:51 [qtp0-3] DEBUG o.s.jndi.JndiLocatorDelegate - Converted JNDI name [java:comp/env/product.pic.location] not found - trying original name [product.pic.location]. javax.naming.NameNotFoundException; remaining name 'product.pic.location'
+2016-04-07 10:12:51 [qtp0-3] DEBUG o.springframework.jndi.JndiTemplate - Looking up JNDI object with name [product.pic.location]
+2016-04-07 10:12:51 [qtp0-3] DEBUG o.s.jndi.JndiPropertySource - JNDI lookup for name [product.pic.location] threw NamingException with message: null. Returning null.
+2016-04-07 10:12:51 [qtp0-3] DEBUG o.s.c.e.PropertySourcesPropertyResolver - Searching for key 'product.pic.location' in [systemProperties]
+2016-04-07 10:12:51 [qtp0-3] DEBUG o.s.c.e.PropertySourcesPropertyResolver - Searching for key 'product.pic.location' in [systemEnvironment]
+2016-04-07 10:12:51 [qtp0-3] DEBUG o.s.c.e.PropertySourcesPropertyResolver - Searching for key 'product.pic.location' in [class path resource [spring/data-access.properties]]
+2016-04-07 10:12:51 [qtp0-3] DEBUG o.s.c.e.PropertySourcesPropertyResolver - Found key 'product.pic.location' in [class path resource [spring/data-access.properties]] with type [String] and value '/mnt/b/files'
+2016-04-07 10:12:51 [qtp0-3] DEBUG o.s.web.servlet.DispatcherServlet - Null ModelAndView returned to DispatcherServlet with name 'onepayapp': assuming HandlerAdapter completed request handling
+2016-04-07 10:12:51 [qtp0-3] DEBUG o.s.web.servlet.DispatcherServlet - Successfully completed request
