@@ -4,7 +4,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.jdbc.Sql;
@@ -15,7 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 @ContextConfiguration(locations = { "classpath:spring/business-config.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)
 @ActiveProfiles("dev")
-@Rollback(true)
 @Transactional
 @Sql(value = { "classpath:insert-test-data.sql" }, config = @SqlConfig(encoding = "utf-8", separator = ";", commentPrefix = "--", dataSource = "dataSource", transactionManager = "transactionManager") )
 

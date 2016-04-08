@@ -14,10 +14,8 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpRequest;
 import org.springframework.http.server.ServletServerHttpRequest;
 import org.springframework.web.util.UriComponents;
-import org.springframework.web.util.UriComponentsBuilder;
 
 public class AccessLogFilter implements Filter {
 
@@ -52,41 +50,11 @@ public class AccessLogFilter implements Filter {
 
 		// LOGGER
 		ServletServerHttpRequest serverRequest = new ServletServerHttpRequest((HttpServletRequest) request);
-		String originRequestStr = serverRequest.getHeaders().getOrigin();
 
 		LOGGER.debug("headers:" + serverRequest.getHeaders());
 
-		UriComponents actualUrl = UriComponentsBuilder.fromHttpRequest(serverRequest).build();
-		UriComponents originUrl = null;
-		if (originRequestStr != null) {
-			originUrl = UriComponentsBuilder.fromOriginHeader(originRequestStr).build();
-		}
-
-		LOGGER.debug("DEBUG:" + actualUrl);
-		LOGGER.debug("DEBUG:" + originUrl);
-		LOGGER.debug("DEBUG:" + actualUrl.getHost());
-		LOGGER.debug("DEBUG:" + (originUrl == null ? "null" : originUrl.getHost()));
-		LOGGER.debug("DEBUG:" + actualUrl.getPort());
-		LOGGER.debug("DEBUG:" + (originUrl == null ? "null" : originUrl.getPort()));
-		LOGGER.debug("DEBUG:" + getPort(actualUrl));
-		LOGGER.debug("DEBUG:" + (originUrl == null ? "null" : getPort(originUrl)));
-		isSameOrigin(serverRequest);
-
 		chain.doFilter(request, response);
 		return;
-	}
-
-	public static boolean isSameOrigin(HttpRequest request) {
-		String origin = request.getHeaders().getOrigin();
-		if (origin == null) {
-			return true;
-		}
-		UriComponents actualUrl = UriComponentsBuilder.fromHttpRequest(request).build();
-		UriComponents originUrl = UriComponentsBuilder.fromOriginHeader(origin).build();
-		if (actualUrl.getHost() == null) {
-			return true;
-		}
-		return (actualUrl.getHost().equals(originUrl.getHost()) && getPort(actualUrl) == getPort(originUrl));
 	}
 
 	private static int getPort(UriComponents component) {

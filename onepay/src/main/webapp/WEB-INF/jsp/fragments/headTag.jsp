@@ -27,8 +27,3 @@
 	
 <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 
-<!-- 引入 jQuery Mobile 样式 -->
-<link rel="stylesheet" href="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
-
-<!-- 引入 jQuery Mobile 库 -->
-<script src="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
