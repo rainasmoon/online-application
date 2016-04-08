@@ -20,7 +20,8 @@ import org.slf4j.LoggerFactory;
  */
 class BufferedImageThumbnailer {
 
-	private static final ImageObserver DUMMY_OBSERVER = (img, infoflags, x, y, width, height) -> true;
+	private static final ImageObserver DUMMY_OBSERVER = (img, infoflags, x, y,
+			width, height) -> true;
 
 	private final Logger log = LoggerFactory.getLogger(getClass());
 
@@ -33,22 +34,28 @@ class BufferedImageThumbnailer {
 	public Path createThumbnail(String path) {
 		try {
 			File file = new File(path);
-			Path thumbnailPath = Files.createTempFile("thumbnail", ".jpg").toAbsolutePath();
+			Path thumbnailPath = Files.createTempFile("thumbnail", ".jpg")
+					.toAbsolutePath();
 			BufferedImage imgIn = ImageIO.read(file);
 
 			double scale;
 			if (imgIn.getWidth() >= imgIn.getHeight()) {
 				// horizontal or square image
-				scale = Math.min(maxLongSide, imgIn.getWidth()) / (double) imgIn.getWidth();
+				scale = Math.min(maxLongSide, imgIn.getWidth())
+						/ (double) imgIn.getWidth();
 			} else {
 				// vertical image
-				scale = Math.min(maxLongSide, imgIn.getHeight()) / (double) imgIn.getHeight();
+				scale = Math.min(maxLongSide, imgIn.getHeight())
+						/ (double) imgIn.getHeight();
 			}
 
-			BufferedImage thumbnailOut = new BufferedImage((int) (scale * imgIn.getWidth()), (int) (scale * imgIn.getHeight()), imgIn.getType());
+			BufferedImage thumbnailOut = new BufferedImage(
+					(int) (scale * imgIn.getWidth()),
+					(int) (scale * imgIn.getHeight()), imgIn.getType());
 			Graphics2D g = thumbnailOut.createGraphics();
 
-			AffineTransform transform = AffineTransform.getScaleInstance(scale, scale);
+			AffineTransform transform = AffineTransform.getScaleInstance(scale,
+					scale);
 			g.drawImage(imgIn, transform, DUMMY_OBSERVER);
 			ImageIO.write(thumbnailOut, "jpeg", thumbnailPath.toFile());
 

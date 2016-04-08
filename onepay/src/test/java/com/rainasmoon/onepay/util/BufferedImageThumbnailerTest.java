@@ -18,7 +18,8 @@ public class BufferedImageThumbnailerTest {
 	@Test
 	public void shouldThumbnailPic() {
 		BufferedImageThumbnailer bit = new BufferedImageThumbnailer(200);
-		Path result = bit.createThumbnail("");
+		Path result = bit.createThumbnail(BufferedImageThumbnailerTest.class
+				.getResource("testpic").getFile());
 		LOGGER.info("path: {}", result);
 	}
 }
