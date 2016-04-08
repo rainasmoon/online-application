@@ -5,6 +5,7 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.io.File;
+import java.io.FileInputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
@@ -34,9 +35,10 @@ class BufferedImageThumbnailer {
 	public Path createThumbnail(String path) {
 		try {
 			File file = new File(path);
+			FileInputStream fis = new FileInputStream(file);
 			Path thumbnailPath = Files.createTempFile("thumbnail", ".jpg")
 					.toAbsolutePath();
-			BufferedImage imgIn = ImageIO.read(file);
+			BufferedImage imgIn = ImageIO.read(fis);
 
 			double scale;
 			if (imgIn.getWidth() >= imgIn.getHeight()) {
