@@ -13,6 +13,8 @@ scp -i "/cygdrive/c/redhat.pem" /cygdrive/c/Users/wlcic-glen/git/online-applicat
 scp -i "/cygdrive/c/redhat.pem" /cygdrive/c/Users/glen/git/online-application/onepay/target/onepay.war ec2-user@aws.rainasmoon.com:/usr/share/tomcat8/webapps
 
 scp -i "/cygdrive/c/redhat.pem"  ec2-user@aws.rainasmoon.com:/usr/share/tomcat8/logs/*.* /cygdrive/c/Users/wlcic-glen/git/online-application/onepay/logs_remote/
+scp -i "/cygdrive/c/redhat.pem"  ec2-user@aws.rainasmoon.com:/usr/share/tomcat8/logs/*.* /cygdrive/c/Users/glen/git/online-application/onepay/log_remote/
+
 scp -i "/cygdrive/c/redhat.pem"  ec2-user@aws.rainasmoon.com:/var/logs/onepayaccess.log /cygdrive/c/Users/wlcic-glen/git/online-application/onepay/logs_remote/
 
 
