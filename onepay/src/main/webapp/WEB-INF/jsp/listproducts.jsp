@@ -37,7 +37,7 @@
 		<div class="row">
 			<c:forEach var="arow" items="${vo.products}">
 				<div class="col-xs-6 col-lg-4">
-				<img class="img-circle" src="product_pic/${arow.picPath }"
+				<img class="img-circle" src="product_pic/thumbnail/${arow.picPath }"
 					alt="Generic placeholder image" width="140" height="140">
 					<h2>
 						<c:out value="${arow.adTitle}" />

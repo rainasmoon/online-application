@@ -1,6 +1,6 @@
 package com.rainasmoon.onepay.util;
 
-import java.nio.file.Path;
+import java.io.File;
 
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -17,9 +17,8 @@ public class BufferedImageThumbnailerTest {
 
 	@Test
 	public void shouldThumbnailPic() {
-		BufferedImageThumbnailer bit = new BufferedImageThumbnailer(200);
-		Path result = bit.createThumbnail(BufferedImageThumbnailerTest.class
-				.getResource("testimage.jpg").getFile());
+		ImgThumbnailUtils bit = new ImgThumbnailUtils(200);
+		File result = bit.createThumbnail("testimage.jpg", BufferedImageThumbnailerTest.class.getResource("").getFile());
 		LOGGER.info("path: {}", result);
 	}
 }

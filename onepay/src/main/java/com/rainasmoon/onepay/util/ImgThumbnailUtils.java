@@ -6,8 +6,6 @@ import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.io.File;
 import java.io.FileInputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
 
 import javax.imageio.ImageIO;
 
@@ -19,51 +17,45 @@ import org.slf4j.LoggerFactory;
  *
  * 
  */
-class BufferedImageThumbnailer {
+public class ImgThumbnailUtils {
 
-	private static final ImageObserver DUMMY_OBSERVER = (img, infoflags, x, y,
-			width, height) -> true;
+	private static final ImageObserver DUMMY_OBSERVER = (img, infoflags, x, y, width, height) -> true;
 
 	private final Logger log = LoggerFactory.getLogger(getClass());
 
 	private final int maxLongSide;
 
-	public BufferedImageThumbnailer(int maxLongSide) {
+	public ImgThumbnailUtils(int maxLongSide) {
 		this.maxLongSide = maxLongSide;
 	}
 
-	public Path createThumbnail(String path) {
+	public File createThumbnail(String picFileName, String picPath) {
 		try {
-			File file = new File(path);
+			File file = new File(picPath + File.separator + picFileName);
 			FileInputStream fis = new FileInputStream(file);
-			Path thumbnailPath = Files.createTempFile("thumbnail", ".jpg")
-					.toAbsolutePath();
+			File thumbnailFile = new File(picPath + File.separator + "thumbnail" + File.separator + picFileName);
+
 			BufferedImage imgIn = ImageIO.read(fis);
 
 			double scale;
 			if (imgIn.getWidth() >= imgIn.getHeight()) {
 				// horizontal or square image
-				scale = Math.min(maxLongSide, imgIn.getWidth())
-						/ (double) imgIn.getWidth();
+				scale = Math.min(maxLongSide, imgIn.getWidth()) / (double) imgIn.getWidth();
 			} else {
 				// vertical image
-				scale = Math.min(maxLongSide, imgIn.getHeight())
-						/ (double) imgIn.getHeight();
+				scale = Math.min(maxLongSide, imgIn.getHeight()) / (double) imgIn.getHeight();
 			}
 
-			BufferedImage thumbnailOut = new BufferedImage(
-					(int) (scale * imgIn.getWidth()),
-					(int) (scale * imgIn.getHeight()), imgIn.getType());
+			BufferedImage thumbnailOut = new BufferedImage((int) (scale * imgIn.getWidth()), (int) (scale * imgIn.getHeight()), imgIn.getType());
 			Graphics2D g = thumbnailOut.createGraphics();
 
-			AffineTransform transform = AffineTransform.getScaleInstance(scale,
-					scale);
+			AffineTransform transform = AffineTransform.getScaleInstance(scale, scale);
 			g.drawImage(imgIn, transform, DUMMY_OBSERVER);
-			ImageIO.write(thumbnailOut, "jpeg", thumbnailPath.toFile());
+			ImageIO.write(thumbnailOut, "jpeg", thumbnailFile);
 
-			log.info("Image thumbnail now at: {}", thumbnailPath);
+			log.info("Image thumbnail now at: {}", thumbnailFile.getAbsolutePath());
 
-			return thumbnailPath;
+			return thumbnailFile;
 		} catch (Exception e) {
 			throw new IllegalStateException(e.getMessage(), e);
 		}

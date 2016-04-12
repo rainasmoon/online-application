@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.rainasmoon.onepay.util.CommonConstants;
+import com.rainasmoon.onepay.util.ImgThumbnailUtils;
 
 @Controller
 @PropertySource("classpath:/spring/data-access.properties")
@@ -64,8 +65,39 @@ public class ImageController {
 			IOUtils.copy(fileInputStream, response.getOutputStream());
 			response.flushBuffer();
 
-		} catch (IOException ex) {
-			LOGGER.error("Error writing file content to output stream");
+		} catch (IOException e) {
+			LOGGER.error("Error writing file content to output stream", e);
+			throw new ImageNotFoundException("IOError writing file to output stream");
+		} finally {
+			IOUtils.closeQuietly(fileInputStream);
+		}
+
+	}
+
+	@RequestMapping(value = "/product_pic/thumbnail/{pic_path}", method = RequestMethod.GET)
+	public void getThumbnailFile(@PathVariable("pic_path") String picPath, HttpServletResponse response) throws DataAccessException, ImageNotFoundException {
+		FileInputStream fileInputStream = null;
+		try {
+
+			SYS_PIC_PATH = env.getProperty(CommonConstants.PRODUCT_PIC_PATH_ID);
+
+			LOGGER.debug("!!!!!the SYS_PIC_PATH is " + SYS_PIC_PATH);
+			File file = new File(SYS_PIC_PATH + File.separator + "thumbnail" + File.separator + picPath);
+			LOGGER.debug("the file name is:" + SYS_PIC_PATH + File.separator + picPath);
+
+			if (!file.exists()) {
+				ImgThumbnailUtils imgThumbnailUtils = new ImgThumbnailUtils(250);
+				file = imgThumbnailUtils.createThumbnail(picPath, SYS_PIC_PATH);
+			}
+			fileInputStream = new FileInputStream(file);
+
+			response.setHeader("Content-Disposition", "attachment; filename=" + file.getName());
+			response.setContentType("image");
+			IOUtils.copy(fileInputStream, response.getOutputStream());
+			response.flushBuffer();
+
+		} catch (IOException e) {
+			LOGGER.error("Error writing file content to output stream", e);
 			throw new ImageNotFoundException("IOError writing file to output stream");
 		} finally {
 			IOUtils.closeQuietly(fileInputStream);
