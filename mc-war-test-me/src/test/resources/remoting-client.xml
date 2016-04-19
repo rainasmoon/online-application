@@ -2,10 +2,17 @@
 <beans>
 	<bean id="userService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
 		<property name="serviceUrl"
-			value="http://100.35.151.131:8080/mc-war/remoting/userService" />
+			value="http://127.0.0.1:8080/mc-war/remoting/userService" />
 		<property name="serviceInterface" value="com.wanlianjin.mc.user.service.UserService" />
 		<property name="overloadEnabled" value="true"></property>
 	</bean>
+	
+	<bean id="wjbService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+		<property name="serviceUrl"
+			value="http://127.0.0.1:8080/mc-war/remoting/accountWLGoldService" />
+		<property name="serviceInterface" value="com.wanlianjin.mc.account.service.proxy.AccountWLGoldService"/>
+		<property name="overloadEnabled" value="true"></property>
+	</bean>		
 	
 	<bean id="configBean" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
            <property name="locations">

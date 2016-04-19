@@ -11,6 +11,7 @@ import java.util.Date;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -25,9 +26,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.kahadb.utility.exception.ApplicationException;
 import com.kahadb.utility.exception.ParameterException;
+import com.wanlianjin.mc.channel.enums.ChannelEnum;
 import com.wanlianjin.mc.user.domian.UserLogin;
 import com.wanlianjin.mc.user.dto.UserDto;
-import com.wanlianjin.mc.user.enums.ChannelEnum;
 import com.wanlianjin.mc.user.service.UserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -67,6 +68,7 @@ public class RemoteUserServiceTest {
 	}
 
 	@Test
+	@Ignore
 	public void testAdd100Times() {
 		for (int i = 0; i < 1000; i++) {
 			final int iid = i;
@@ -91,6 +93,7 @@ public class RemoteUserServiceTest {
 	}
 
 	@Test
+	@Ignore
 	public void testAdd100time100Times() {
 		for (int i = 0; i < 100; i++) {
 			final int iid = i;

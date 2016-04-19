@@ -12,6 +12,17 @@ values ('11112', '10', 'testChannelUserId', null);
 insert into t_Mc_User_Login (USER_ID, LAST_LOGIN_DATE, LAST_LOGIN_IP, LAST_LOGIN_APPNUM)
 values ('11112', to_date('08-01-2016 13:00:48', 'dd-mm-yyyy hh24:mi:ss'), '1.2.3.4', 'testData');
 
+delete from T_MC_WJB;
+delete from T_MC_WJB_DETAIL;
+
+--111111
+insert into T_MC_WJB (USER_ID, STATUS, AMOUNT, AVAILABLE_AMOUNT, FREEZE_AMOUNT, CREATE_DATE, UPDATE_DATE, VERSION)
+values ('testUserId', 1, 1000, 500, 500, null, null, 1);
+
+insert into T_MC_WJB_DETAIL(id, user_id, TYPE, AMOUNT, AMOUNT_BALANCE, STATUS, CREATE_DATE, CHANNEL_ID, ACTIVITY_ID, EXPIRED_DATE, DESCRIPTION)
+values(1, 'testUserId', 1, 100, 100, 1, to_date('2016-4-1 18:59:59','yyyy-mm-dd hh24:mi:ss'), null, null, null, null);
+
+
 commit;
 
 select * from T_MC_USER T where USER_ACCOUNT = 'testGlen' OR MOBILE_PHONE= 'testGlen';
