@@ -12,12 +12,13 @@ import com.rainasmoon.onepay.service.job.impl.EmailSendLog;
 @Component
 public class SendEmailAccessLogJob {
 
-	public static Logger LOGGER = LoggerFactory.getLogger(SendEmailAccessLogJob.class);
+	public static Logger LOGGER = LoggerFactory
+			.getLogger(SendEmailAccessLogJob.class);
 
 	@Autowired
 	private BidService bidService;
 
-	@Scheduled(cron = "0 * * * * ?")
+	@Scheduled(cron = "0 0 23 * * ?")
 	public void run() {
 		printLog("发送邮件开始——");
 		try {
