@@ -1,6 +1,5 @@
 package com.rainasmoon.onepay.service.job;
 
-import org.apache.commons.mail.EmailException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +17,13 @@ public class SendEmailAccessLogJob {
 	@Autowired
 	private BidService bidService;
 
-	@Scheduled(cron = "0 0 23 * * ?")
+	@Scheduled(cron = "0 * * * * ?")
 	public void run() {
 		printLog("发送邮件开始——");
 		try {
 			new EmailSendLog().sendAccessLog();
-		} catch (EmailException e) {
+		} catch (Exception e) {
+			e.printStackTrace();
 			printLog("Error:" + e);
 		}
 		printLog("发送邮件结束】】】");
