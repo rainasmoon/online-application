@@ -15,27 +15,31 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.server.ServletServerHttpRequest;
-import org.springframework.web.util.UriComponents;
 
 public class AccessLogFilter implements Filter {
 
-	public static Logger LOGGER = LoggerFactory.getLogger(AccessLogFilter.class);
+	public static Logger LOGGER = LoggerFactory
+			.getLogger(AccessLogFilter.class);
 
 	@Override
 	public void destroy() {
 	}
 
 	@Override
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+	public void doFilter(ServletRequest request, ServletResponse response,
+			FilterChain chain) throws IOException, ServletException {
 
 		HttpServletRequest httprequest = (HttpServletRequest) request;
 		String sessionId = httprequest.getRequestedSessionId();
 		String url = httprequest.getRequestURL().toString();
-		String userAgent = ((HttpServletRequest) request).getHeader("User-Agent");
-		String origin = ((HttpServletRequest) request).getHeader(HttpHeaders.ORIGIN);
+		String userAgent = ((HttpServletRequest) request)
+				.getHeader("User-Agent");
+		String origin = ((HttpServletRequest) request)
+				.getHeader(HttpHeaders.ORIGIN);
 
 		HttpSession session = ((HttpServletRequest) request).getSession();
-		Long loginUserId = (Long) session.getAttribute(CommonConstants.LOGIN_USER_ID);
+		Long loginUserId = (Long) session
+				.getAttribute(CommonConstants.LOGIN_USER_ID);
 
 		LOGGER.debug("-----------------------------------------------------------------------------");
 		LOGGER.debug("ACCESS:" + getIpAddr((HttpServletRequest) request));
@@ -49,24 +53,13 @@ public class AccessLogFilter implements Filter {
 		// check uri.getHost()
 
 		// LOGGER
-		ServletServerHttpRequest serverRequest = new ServletServerHttpRequest((HttpServletRequest) request);
+		ServletServerHttpRequest serverRequest = new ServletServerHttpRequest(
+				(HttpServletRequest) request);
 
 		LOGGER.debug("headers:" + serverRequest.getHeaders());
 
 		chain.doFilter(request, response);
 		return;
-	}
-
-	private static int getPort(UriComponents component) {
-		int port = component.getPort();
-		if (port == -1) {
-			if ("http".equals(component.getScheme()) || "ws".equals(component.getScheme())) {
-				port = 80;
-			} else if ("https".equals(component.getScheme()) || "wss".equals(component.getScheme())) {
-				port = 443;
-			}
-		}
-		return port;
 	}
 
 	@Override
