@@ -311,14 +311,14 @@ public class RemoteUserServiceTest {
 
 	@Test
 	public void testGetByChannelUserId() {
-		UserDto userDto = userService.getByChannelUserId(ChannelEnum.WEIXIN, "testChannelUserId");
+		UserDto userDto = userService.getUserByBandingId(ChannelEnum.WEIXIN, "testChannelUserId");
 		assertNotNull(userDto);
 		assertEquals("testChannelUserId", userDto.getChannelUserId());
 	}
 
 	@Test
 	public void testGetByChannelUserIdIsNull() {
-		UserDto userDto = userService.getByChannelUserId(ChannelEnum.WEIXIN, "testNotExistUserId");
+		UserDto userDto = userService.getUserByBandingId(ChannelEnum.WEIXIN, "testNotExistUserId");
 		assertNull(userDto);
 
 	}
@@ -327,7 +327,7 @@ public class RemoteUserServiceTest {
 	public void testBindChannelUser() {
 		userService.bindChannelUser(ChannelEnum.WEIXIN, "11112", "testWexinGlen");
 
-		UserDto userDto = userService.getByChannelUserId(ChannelEnum.WEIXIN, "testWexinGlen");
+		UserDto userDto = userService.getUserByBandingId(ChannelEnum.WEIXIN, "testWexinGlen");
 		assertNotNull(userDto);
 		assertEquals("testChannelUserId", userDto.getChannelUserId());
 	}

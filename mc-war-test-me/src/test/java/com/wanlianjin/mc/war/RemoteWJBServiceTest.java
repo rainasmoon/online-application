@@ -19,7 +19,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.wanlianjin.mc.account.domain.WLGold;
 import com.wanlianjin.mc.account.domain.WLGoldDetail;
-import com.wanlianjin.mc.account.enums.WLGoldTypeEnum;
 import com.wanlianjin.mc.account.service.proxy.AccountWLGoldService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -61,7 +60,7 @@ public class RemoteWJBServiceTest {
 		assertNotNull(r);
 		assertEquals(0, r.getAmount().intValue());
 
-		accountWLGoldService.updateGold(WLGoldTypeEnum.REGISTER_GOLD, "testUserId2", "testChannelId", "this is a test description");
+		accountWLGoldService.updateGold("200", "testUserId2", "testChannelId", "this is a test description");
 
 		r = accountWLGoldService.getGoldByUserId("testUserId2");
 		assertNotNull(r);
@@ -72,7 +71,7 @@ public class RemoteWJBServiceTest {
 
 	@Test
 	public void shoudUpdateWJB() {
-		accountWLGoldService.updateGold(WLGoldTypeEnum.REGISTER_GOLD, "testUserId", 100, "testChannelId", "this is a test");
+		accountWLGoldService.updateGold("200", "testUserId", 100, "testChannelId", "this is a test");
 
 		WLGold r = accountWLGoldService.getGoldByUserId("testUserId");
 		assertNotNull(r);
@@ -86,7 +85,7 @@ public class RemoteWJBServiceTest {
 		Integer year = 2016;
 		Integer month = 4;
 		Integer day = 1;
-		List<WLGoldDetail> r = accountWLGoldService.getWLGoldDetails(userId, year, month, day);
+		List<WLGoldDetail> r = accountWLGoldService.getWLGoldDetails(userId, year, month, day, 1, 10);
 
 		assertNotNull(r);
 		assertEquals(1, r.size());
@@ -98,7 +97,7 @@ public class RemoteWJBServiceTest {
 		Integer year = 2016;
 		Integer month = 4;
 		Integer day = null;
-		List<WLGoldDetail> r = accountWLGoldService.getWLGoldDetails(userId, year, month, day);
+		List<WLGoldDetail> r = accountWLGoldService.getWLGoldDetails(userId, year, month, day, 1, 10);
 
 		assertNotNull(r);
 		assertEquals(1, r.size());
@@ -110,7 +109,7 @@ public class RemoteWJBServiceTest {
 		Integer year = 2016;
 		Integer month = 4;
 		Integer day = 2;
-		List<WLGoldDetail> r = accountWLGoldService.getWLGoldDetails(userId, year, month, day);
+		List<WLGoldDetail> r = accountWLGoldService.getWLGoldDetails(userId, year, month, day, 1, 10);
 
 		assertNotNull(r);
 		assertEquals(0, r.size());
