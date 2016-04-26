@@ -19,10 +19,10 @@ public class EmailSendLog {
 
 		// Create the email message
 		MultiPartEmail email = new MultiPartEmail();
-		email.setHostName("smtp.126.com");
-		email.setAuthenticator(new DefaultAuthenticator("rainasmoon@126.com", "bsnpb6p*P"));
+		email.setHostName("smtp.rainasmoon.com");
+		email.setAuthenticator(new DefaultAuthenticator("help@rainasmoon.com", "Fhwl7758"));
 		email.addTo("rainasmoon@126.com", "glen");
-		email.setFrom("rainasmoon@126.com", "Me");
+		email.setFrom("help@rainasmoon.com", "Me");
 		email.setSubject("[onepay] access log");
 		email.setMsg("the access log from one pay on " + new Date());
 

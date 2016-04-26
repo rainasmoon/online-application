@@ -37,7 +37,7 @@ public class User extends BaseEntity {
 		sellAmount = 0;
 		buyAmount = 0;
 		totalAmount = 0;
-		account = 0;
+		account = 100;
 		freezeAccount = 0;
 		level = 0;
 		credit = 0;

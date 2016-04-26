@@ -1,0 +1,24 @@
+0, 安装cygwin. jdk1.6. maven3.0.3;
+
+1， 运行自动角本：autoupload.bat
+
+2, 输入密码：mAH^$51R
+
+3，打开cygwin.
+
+4， ssh weblogic@10.196.112.26
+
+5, 输入密码：mAH^$51R
+
+6, cd 
+
+7, rm -rf
+
+8, jar xvf web.war
+
+9, http://10.196.112.26:7001/console
+管理控制台用户：weblogic/}JK#-6kj
+
+10, 发布新版本。
+
+11，测试新版本。

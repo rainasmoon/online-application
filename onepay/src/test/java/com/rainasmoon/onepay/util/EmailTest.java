@@ -13,12 +13,11 @@ public class EmailTest {
 	@Test
 	public void shouldSendEmail() throws EmailException {
 		Email email = new SimpleEmail();
-		email.setHostName("smtp.126.com");
+		email.setHostName("smtp.rainasmoon.com");
 		email.setSmtpPort(25);
-		email.setAuthenticator(new DefaultAuthenticator("rainasmoon@126.com",
-				"bsnpb6p*P"));
+		email.setAuthenticator(new DefaultAuthenticator("help@rainasmoon.com", "Fhwl7758"));
 		email.setSSLOnConnect(false);
-		email.setFrom("rainasmoon@126.com");
+		email.setFrom("help@rainasmoon.com");
 		email.setSubject("TestMail");
 		email.setMsg("This is a test mail ... :-)");
 		email.addTo("rainasmoon@126.com");
@@ -37,11 +36,10 @@ public class EmailTest {
 
 		// Create the email message
 		MultiPartEmail email = new MultiPartEmail();
-		email.setHostName("smtp.126.com");
-		email.setAuthenticator(new DefaultAuthenticator("rainasmoon@126.com",
-				"bsnpb6p*P"));
+		email.setHostName("smtp.rainasmoon.com");
+		email.setAuthenticator(new DefaultAuthenticator("help@rainasmoon.com", "Fhwl7758"));
 		email.addTo("rainasmoon@126.com", "John Doe");
-		email.setFrom("rainasmoon@126.com", "Me");
+		email.setFrom("help@rainasmoon.com", "Me");
 		email.setSubject("The picture");
 		email.setMsg("Here is the picture you wanted");
 
