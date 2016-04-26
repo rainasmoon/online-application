@@ -10,12 +10,15 @@ import org.apache.commons.mail.MultiPartEmail;
 
 public class EmailSendLog {
 
+	private static final String LOG_FILE = "/usr/share/tomcat8/logs/onepayaccess.log";
+
 	public void sendAccessLog() throws EmailException {
 
 		// Create the email message
 		MultiPartEmail email = new MultiPartEmail();
 		email.setHostName("smtp.rainasmoon.com");
-		email.setAuthenticator(new DefaultAuthenticator("help@rainasmoon.com", "Fhwl7758"));
+		email.setAuthenticator(new DefaultAuthenticator("help@rainasmoon.com",
+				"Fhwl7758"));
 		email.addTo("rainasmoon@126.com", "glen");
 		email.setFrom("help@rainasmoon.com", "Me");
 		email.setSubject("[onepay] access log");
@@ -24,11 +27,11 @@ public class EmailSendLog {
 		// add the attachment
 		// Create the attachment
 		EmailAttachment attachment = new EmailAttachment();
-		attachment.setPath("/var/logs/onepayaccess.log");
+		attachment.setPath(LOG_FILE);
 		attachment.setDisposition(EmailAttachment.ATTACHMENT);
 		attachment.setDescription("the access log");
 		attachment.setName("onepaylog");
-		File f = new File("/var/logs/onepayaccess.log");
+		File f = new File(LOG_FILE);
 		if (f.exists()) {
 			email.attach(attachment);
 		} else {
