@@ -1,0 +1,29 @@
+proxy_set_header  X-Real-IP  $remote_addr;
+
+ server {
+        listen       80;
+        server_name  price.kuche.com;
+        location / {
+            root   html;
+          proxy_redirect   off;
+		
+			proxy_set_header Host $host;
+			proxy_set_header X-Real-IP $remote_addr;
+			proxy_set_header x-forwarded-for $proxy_add_x_forwarded_for;
+            proxy_pass http:backServers;
+         }
+   }
+   
+   
+    public static String getRemoteAddrIp(HttpServletRequest request) {
+        String ipFromNginx = getHeader(request, "X-Real-IP");
+        System.out.println("ipFromNginx:" + ipFromNginx);
+        System.out.println("getRemoteAddr:" + request.getRemoteAddr());
+        return StringUtil.isEmpty(ipFromNginx) ? request.getRemoteAddr() : ipFromNginx;
+    }
+
+
+    private static String getHeader(HttpServletRequest request, String headName) {
+        String value = request.getHeader(headName);
+        return !StringUtils.isBlank(value) && !"unknown".equalsIgnoreCase(value) ? value : "";
+    }
