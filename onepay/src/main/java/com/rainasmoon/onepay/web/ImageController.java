@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.IOUtils;
@@ -76,6 +77,13 @@ public class ImageController {
 
 	@RequestMapping(value = "/product_pic/thumbnail/{pic_path}", method = RequestMethod.GET)
 	public void getThumbnailFile(@PathVariable("pic_path") String picPath, HttpServletResponse response) throws DataAccessException, ImageNotFoundException {
+
+		String[] rf = ImageIO.getReaderFormatNames();
+		String[] wf = ImageIO.getWriterFormatNames();
+
+		LOGGER.debug(":www:ImageIO.getReaderFormatNames():" + rf);
+		LOGGER.debug("ImageIO.getWriterFormatNames():" + wf);
+
 		FileInputStream fileInputStream = null;
 		try {
 
@@ -98,7 +106,7 @@ public class ImageController {
 
 		} catch (IOException e) {
 			LOGGER.error("Error writing file content to output stream", e);
-			throw new ImageNotFoundException("IOError writing file to output stream");
+			throw new ImageNotFoundException("IOError writing file to output stream", e);
 		} finally {
 			IOUtils.closeQuietly(fileInputStream);
 		}

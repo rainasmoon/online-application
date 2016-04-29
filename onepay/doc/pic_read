@@ -1,0 +1,14 @@
+原来图片虽然扩展名是JPG，但是实际格式是TIF，ImageIO不支持TIF。
+这里顺便贴出来ImageIO可以读写的图片格式。
+用：
+Java code
+?
+1
+2
+	
+String[] rf = ImageIO.getReaderFormatNames();
+String[] wf = ImageIO.getWriterFormatNames();
+
+rf:jpg,rf:BMP,rf:bmp,rf:JPG,rf:jpeg,rf:wbmp,rf:png,rf:JPEG,rf:PNG,rf:WBMP,rf:GIF,rf:gif
+wf:BMP,wf:bmp,wf:jpg,wf:JPG,wf:wbmp,wf:jpeg,wf:png,wf:PNG,wf:JPEG,wf:WBMP,wf:GIF,wf:gif
+

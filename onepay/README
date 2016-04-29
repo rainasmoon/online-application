@@ -12,6 +12,9 @@ ssh -i "/cygdrive/c/redhat.pem" ec2-user@aws.rainasmoon.com
 scp -i "/cygdrive/c/redhat.pem" /cygdrive/c/Users/wlcic-glen/git/online-application/onepay/target/onepay.war ec2-user@aws.rainasmoon.com:/usr/share/tomcat8/webapps
 scp -i "/cygdrive/c/redhat.pem" /cygdrive/c/Users/glen/git/online-application/onepay/target/onepay.war ec2-user@aws.rainasmoon.com:/usr/share/tomcat8/webapps
 
+scp -i "/cygdrive/c/redhat.pem" /cygdrive/c/Users/wlcic-glen/git/online-application/onepay/target/test-classes/TestPicFormat.class ec2-user@aws.rainasmoon.com:/home/ec2-user/tmp
+
+
 scp -i "/cygdrive/c/redhat.pem"  ec2-user@aws.rainasmoon.com:/usr/share/tomcat8/logs/*.* /cygdrive/c/Users/wlcic-glen/git/online-application/onepay/logs_remote/
 scp -i "/cygdrive/c/redhat.pem"  ec2-user@aws.rainasmoon.com:/usr/share/tomcat8/logs/*.* /cygdrive/c/Users/glen/git/online-application/onepay/log_remote/
 
@@ -31,4 +34,8 @@ permition denied: change owner to tomcat.
 <!-- <meta http-equiv="Pragma" content="no-cache"> -->
 <!-- <meta http-equiv="Cache-control" content="no-cache"> -->
 <!-- <meta http-equiv="Cache" content="no-cache"> -->
+
+wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u92-b14/jdk-8u92-linux-x64.rpm"
+
+http://download.oracle.com/otn-pub/java/jdk/8u92-b14/jdk-8u92-linux-x64.rpm
 
