@@ -174,7 +174,8 @@ public class MarketController extends BaseController {
 			Map<String, Object> model) {
 		Map<String, String> result = FreezeCodeUtils.decryptToMap(unfreezeCode);
 		if (result == null) {
-			return "请核实验证码";
+			model.put("message", "请核实验证码");
+			return "market_unfreeze_success";
 		}
 		if (result.get("function").equalsIgnoreCase("O")
 				&& Long.parseLong(result.get("value")) == yunOrderId) {
