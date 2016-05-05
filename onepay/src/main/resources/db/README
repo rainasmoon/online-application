@@ -1,0 +1,10 @@
+ID: Long, INT UNSIGNED, 
+Price: INT UNSIGNED, 
+账户类： INT，
+状态类：TINYINT UNSIGNED。
+
+可输入框的长度
+描述信息：300个字，600字符
+名字：50个字，100个字符
+地址：100个字，200个字符
+
