@@ -40,7 +40,7 @@ public class AccountLogRepositoryTest {
 		accountLog.setChangeAmount(-new Integer(3));
 		accountLog.setBalance(new Integer(86));
 		accountLog.setType(3);
-		accountLog.setDescription("transfer from [2] to [测试账户] amount is [3]");
+		accountLog.setDescription(new String("[测]"));
 		accountLog.setCreateDate(new Date());
 		repository.save(accountLog);
 	}

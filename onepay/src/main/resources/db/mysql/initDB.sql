@@ -109,4 +109,4 @@ CREATE TABLE IF NOT EXISTS orders (
   account_log_type TINYINT UNSIGNED,
   description VARCHAR(600),
   create_date TIMESTAMP
-);
+) engine=InnoDB CHARSET=utf8;
