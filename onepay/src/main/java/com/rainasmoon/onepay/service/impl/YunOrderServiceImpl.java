@@ -25,8 +25,7 @@ public class YunOrderServiceImpl implements YunOrderService {
 	@Override
 	public String addYunOrder(YunOrder yunOrder) {
 		if (yunOrder.isSell()) {
-			TransferResult result = accountService.minusAccount(
-					yunOrder.getUserId(), yunOrder.getAmount());
+			TransferResult result = accountService.minusAccount(yunOrder.getUserId(), yunOrder.getAmount());
 			if (result.isFail()) {
 				return result.getMessage();
 			}
@@ -48,26 +47,38 @@ public class YunOrderServiceImpl implements YunOrderService {
 	@Override
 	public String executeYunOrder(Long userId, Long yunOrderId) {
 		YunOrder yunOrder = repository.findOne(yunOrderId);
+
+		TransferResult result = transferYunOrder(yunOrder, userId);
+
+		if (result.isSuccess()) {
+			updateYunOrderToDone(yunOrder, userId);
+		}
+
+		return result.getMessage();
+	}
+
+	private TransferResult transferYunOrder(YunOrder yunOrder, Long userId) {
 		if (yunOrder.isBuy()) {
 			// 对方要买猿币
-			TransferResult result = accountService.transferToFreezeAccount(
-					yunOrder.getDealerId(), yunOrder.getUserId(),
-					yunOrder.getAmount());
+			TransferResult result = accountService.transferToFreezeAccount(userId, yunOrder.getUserId(), yunOrder.getAmount());
 			if (result.isFail()) {
-				return result.getMessage();
+				return result;
 			}
 		} else {
 			// 对方要卖猿币: 因为在下单时，猿币已经减，所以这里只有增加操作。
-			TransferResult result = accountService.addFreezeAccount(
-					yunOrder.getDealerId(), yunOrder.getAmount());
+			TransferResult result = accountService.addFreezeAccount(userId, yunOrder.getAmount());
 			if (result.isFail()) {
-				return result.getMessage();
+				return result;
 			}
 		}
+		return TransferResult.success("交易成功");
+	}
+
+	private void updateYunOrderToDone(YunOrder yunOrder, Long userId) {
 		yunOrder.setDealerId(userId);
 		yunOrder.setStatus(YunStatus.TRADED.getCode());
 		repository.save(yunOrder);
-		return "交易成功";
+
 	}
 
 	@Override
@@ -76,8 +87,7 @@ public class YunOrderServiceImpl implements YunOrderService {
 		if (!yunOrder.canUnfreeze()) {
 			return "解冻失败";
 		}
-		TransferResult result = accountService.unfreeze(userId,
-				yunOrder.getAmount());
+		TransferResult result = accountService.unfreeze(userId, yunOrder.getAmount());
 		if (result.isFail()) {
 			return result.getMessage();
 		}
