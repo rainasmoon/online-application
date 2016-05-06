@@ -34,6 +34,7 @@
 					<li><a href="mysales.html">我的出售</a></li>
 					<li><a href="market.html">猿币兑换市场</a></li>
 					<li><a href="addproduct.html">上传货品</a></li>
+					<li><a href="help.html">帮助</a></li>
 				</ul>
 			</div>
 			<!-- /.nav-collapse -->

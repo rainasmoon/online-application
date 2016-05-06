@@ -10,6 +10,7 @@ import com.rainasmoon.onepay.enums.ProductStatus;
 import com.rainasmoon.onepay.enums.SaleModels;
 import com.rainasmoon.onepay.model.Picture;
 import com.rainasmoon.onepay.model.Product;
+import com.rainasmoon.onepay.model.User;
 import com.rainasmoon.onepay.repository.springdatajpa.PictureRepository;
 import com.rainasmoon.onepay.repository.springdatajpa.ProductRepository;
 import com.rainasmoon.onepay.repository.springdatajpa.UserRepository;
@@ -31,6 +32,12 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public Product addProduct(Product product) {
+
+		User user = userRepository.findOne(product.getOwnerId());
+
+		user.addAccount(1);
+
+		userRepository.save(user);
 
 		return repository.save(product);
 	}
