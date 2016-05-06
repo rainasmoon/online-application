@@ -32,7 +32,9 @@ public class LoginController extends BaseController {
 	}
 
 	@RequestMapping(value = "/login.html", method = RequestMethod.POST)
-	public String processLoginForm(@Valid LoginVo loginVo, BindingResult result, HttpServletRequest request, Map<String, Object> model) {
+	public String processLoginForm(@Valid LoginVo loginVo,
+			BindingResult result, HttpServletRequest request,
+			Map<String, Object> model) {
 
 		LOGGER.debug("Session:www:" + loginVo);
 		LOGGER.debug("Session:www:" + result);
@@ -41,7 +43,8 @@ public class LoginController extends BaseController {
 		// 1 check if userAccount exist. yes -> check password. no -> ask user
 		// what to do... create or relogin.
 		if (userService.checkUserIfExists(loginVo.getAccount())) {
-			User loginUser = userService.login(loginVo.getAccount(), loginVo.getPassword());
+			User loginUser = userService.login(loginVo.getAccount(),
+					loginVo.getPassword());
 			LOGGER.debug("www:loginUser:" + loginUser);
 
 			if (loginUser != null) {
@@ -60,7 +63,7 @@ public class LoginController extends BaseController {
 
 			if (StringUtils.isBlank(loginVo.getConfirmPassword())) {
 				LOGGER.debug(":www: create a new user");
-				model.put("message", "账号不存在，是否创建？");
+				model.put("message", "注册新用户？请再次输入密码");
 				model.put("loginVo", loginVo);
 				return "login_register";
 			} else {
@@ -70,8 +73,9 @@ public class LoginController extends BaseController {
 					return "login_register";
 				} else {
 					LOGGER.debug(":www: save a new user");
-					userService.addUser(loginVo.getAccount(), loginVo.getPassword());
-					model.put("message", "创建账号成功");
+					userService.addUser(loginVo.getAccount(),
+							loginVo.getPassword());
+					model.put("message", "注册账号成功");
 					model.put("loginVo", loginVo);
 					return "login_register_success";
 				}
