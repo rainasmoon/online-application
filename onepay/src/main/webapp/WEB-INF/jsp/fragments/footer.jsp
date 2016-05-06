@@ -11,7 +11,7 @@
 		<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;<a
 			href="mailto:rainasmoon@126.com?subject=[OneYuanHelp]&body=Welcome">给我写邮件</a>
 	</p>
-	<p>version:1.0.2</p>
+	<p>version:1.0.3</p>
 </footer>
 
 </div>
