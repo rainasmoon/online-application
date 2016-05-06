@@ -90,7 +90,7 @@ public enum YunStatus {
 	public static YunOperationEnum getUserCallOperation(YunStatus status) {
 		switch (status) {
 		case WAITINFO:
-
+			
 		case DOWN:
 		case WAIT:
 			return YunOperationEnum.WAITINGTRADE;
