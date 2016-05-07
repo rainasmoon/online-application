@@ -196,7 +196,7 @@ public class ProductController extends BaseController {
 				LOGGER.debug("Upload File is empty...");
 			}
 
-			model.put("message", "add product success.");
+			model.put("message", "添加商品成功。已经自动给账户增加1猿币");
 			model.put("product", new AddProductVo());
 			return "addproduct";
 		}

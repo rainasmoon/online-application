@@ -75,7 +75,7 @@ public class LoginController extends BaseController {
 					LOGGER.debug(":www: save a new user");
 					userService.addUser(loginVo.getAccount(),
 							loginVo.getPassword());
-					model.put("message", "注册账号成功");
+					model.put("message", "注册账号成功，已经赠送100猿币，请到个人账户中查看");
 					model.put("loginVo", loginVo);
 					return "login_register_success";
 				}

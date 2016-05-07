@@ -14,6 +14,7 @@
 					<span class="sr-only">Toggle navigation</span> <span
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
+						
 				</button>
 				<a class="navbar-brand" href="welcome.html">一元网</a>
 			</div>
@@ -42,5 +43,8 @@
 		<!-- /.container -->
 	</nav>
 	<!-- /.navbar -->
+	<p class="pull-right visible-xs">
+        <a href="addproduct.html" class="btn btn-primary btn-lg btn-block" role="button">上传货品</a>
+    </p>
 
 	<div class="container">
