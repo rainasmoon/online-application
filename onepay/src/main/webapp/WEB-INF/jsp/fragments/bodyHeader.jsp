@@ -39,12 +39,15 @@
 				</ul>
 			</div>
 			<!-- /.nav-collapse -->
+			
 		</div>
 		<!-- /.container -->
+		
 	</nav>
 	<!-- /.navbar -->
-	<p class="pull-right visible-xs">
-        <a href="addproduct.html" class="btn btn-primary btn-lg btn-block" role="button">上传货品</a>
-    </p>
+	
 
 	<div class="container">
+		<div class="pull-right visible-xs">
+        	<a href="addproduct.html" class="btn btn-primary btn-lg btn-block" >上传货品</a>
+   		</div>
