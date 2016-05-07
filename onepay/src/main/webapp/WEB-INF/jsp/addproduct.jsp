@@ -46,7 +46,7 @@
 			</label>
 			<div>
 				<div id="showBasePrice" style="display: none;">
-					<div class="alert alert-info" style="margin-bottom: 0px; margin-top: 10px;">请输入底价：</div>
+					<div class="alert alert-warning" style="margin-bottom: 0px; margin-top: 10px;">请输入底价：</div>
 					<onepayapp:inputField label="底价" name="price" type="number" />
 				</div>
 			</div>
