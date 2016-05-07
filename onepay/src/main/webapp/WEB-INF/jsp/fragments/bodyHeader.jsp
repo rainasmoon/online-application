@@ -45,9 +45,12 @@
 		
 	</nav>
 	<!-- /.navbar -->
-	
-
-	<div class="container">
-		<div class="pull-right visible-xs">
+	<nav class="navbar navbar-fixed-top" style="top: 50px;">
+		<div class="visible-xs">
         	<a href="addproduct.html" class="btn btn-primary btn-lg btn-block" >上传货品</a>
    		</div>
+   	</nav>
+
+	<div class="container">
+	
+		
