@@ -14,6 +14,8 @@ scp -i "/cygdrive/c/redhat.pem" /cygdrive/c/Users/glen/git/online-application/on
 
 scp -i "/cygdrive/c/redhat.pem" /cygdrive/c/Users/wlcic-glen/git/online-application/onepay/target/test-classes/TestPicFormat.class ec2-user@aws.rainasmoon.com:/home/ec2-user/tmp
 
+scp -i "/cygdrive/c/redhat.pem" /cygdrive/c/Users/wlcic-glen/git/online-application/onepay/onepay.zip ec2-user@aws.rainasmoon.com:/home/ec2-user/
+
 
 scp -i "/cygdrive/c/redhat.pem"  ec2-user@aws.rainasmoon.com:/usr/share/tomcat8/logs/*.* /cygdrive/c/Users/wlcic-glen/git/online-application/onepay/logs_remote/
 scp -i "/cygdrive/c/redhat.pem"  ec2-user@aws.rainasmoon.com:/usr/share/tomcat8/logs/*.* /cygdrive/c/Users/glen/git/online-application/onepay/log_remote/
