@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <jsp:include page="./fragments/headTag.jsp" />
-<title>竞价</title>
+<title>竞价  - <c:out value="${productVo.productTitle}" /></title>
 
 <jsp:include page="./fragments/bodyHeader.jsp" />
 
