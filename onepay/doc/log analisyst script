@@ -1,0 +1,129 @@
+1,查看apache进程:
+
+ps aux | grep httpd | grep -v grep | wc -l
+
+2,查看80端口的tcp连接:
+
+netstat -tan | grep "ESTABLISHED" | grep ":80" | wc -l
+
+3,通过日志查看当天ip连接数，过滤重复:
+
+cat access_log | grep "20/Oct/2008" | awk '{print $2}' | sort | uniq -c | sort -nr
+
+4,当天ip连接数最高的ip都在干些什么(原来是蜘蛛):
+
+cat access_log | grep "20/Oct/2008:00" | grep "122.102.7.212" | awk '{print $8}' | sort | uniq -c | sort -nr | head -n 10
+
+5,当天访问页面排前10的url:
+
+cat access_log | grep "20/Oct/2008:00" | awk '{print $8}' | sort | uniq -c | sort -nr | head -n 10
+
+6,用tcpdump嗅探80端口的访问看看谁最高
+
+tcpdump -i eth0 -tnn dst port 80 -c 1000 | awk -F"." '{print $1"."$2"."$3"."$4}' | sort | uniq -c | sort -nr
+<pre>
+接着从日志里查看该ip在干嘛:
+<pre lang="php">
+cat access_log | grep 122.102.7.212| awk '{print $1"\t"$8}' | sort | uniq -c | sort -nr | less
+
+7,查看某一时间段的ip连接数:
+
+grep "2006:0[7-8]" www20060723.log | awk '{print $2}' | sort | uniq -c| sort -nr | wc -l
+
+ 
+
+ 
+
+ 
+
+ 
+
+==============================nginx
+
+log_format main '[$time_local] $remote_addr $status $request_time $body_bytes_sent "$request" "$http_referer"';
+access_log      /data0/logs/access.log  main;
+
+ 
+
+ 
+
+格式如下：
+[21/Mar/2011:11:52:15 +0800] 58.60.188.61 200 0.265 28 "POST /event/time HTTP/1.1" "http://host/loupan/207846/feature"
+
+
+通过日志查看当天ip连接数，过滤重复
+cat access.log | grep "20/Mar/2011" | awk '{print $3}' | sort | uniq -c | sort -nr
+38 112.97.192.16
+     20 117.136.31.145
+     19 112.97.192.31
+      3 61.156.31.20
+      2 209.213.40.6
+      1 222.76.85.28
+
+ 
+
+当天访问页面排前10的url:
+cat access.log | grep "20/Mar/2011" | awk '{print $8}' | sort | uniq -c | sort -nr | head -n 10
+
+ 
+
+找出访问次数最多的10个IP
+awk '{print $3}' access.log |sort |uniq -c|sort -nr|head
+  10680 10.0.21.17
+   1702 10.0.20.167
+    823 10.0.20.51
+    504 10.0.20.255
+    215 58.60.188.61
+    192 183.17.161.216
+     38 112.97.192.16
+     20 117.136.31.145
+     19 112.97.192.31
+      6 113.106.88.10
+
+ 
+
+ 
+
+找出某天访问次数最多的10个IP
+
+cat /tmp/access.log | grep "20/Mar/2011" |awk '{print $3}'|sort |uniq -c|sort -nr|head
+     38 112.97.192.16
+     20 117.136.31.145
+     19 112.97.192.31
+      3 61.156.31.20
+      2 209.213.40.6
+      1 222.76.85.28
+
+ 
+
+ 
+
+
+当天ip连接数最高的ip都在干些什么:
+cat access.log | grep "10.0.21.17" | awk '{print $8}' | sort | uniq -c | sort -nr | head -n 10
+224 /test/themes/default/img/logo_index.gif
+    224 /test/themes/default/img/bg_index_head.jpg
+    224 /test/themes/default/img/bg_index.gif
+    219 /test/vc.php
+    219 /
+    213 /misc/js/global.js
+    211 /misc/jsext/popup.ext.js
+    211 /misc/js/common.js
+    210 /sladmin/home
+    197 /misc/js/flib.js
+
+ 
+
+
+找出访问次数最多的几个分钟
+ awk '{print $1}' access.log | grep "20/Mar/2011" |cut -c 14-18|sort|uniq -c|sort -nr|head
+     24 16:49
+     19 16:17
+     16 16:51
+     11 16:48
+      4 16:50
+      3 16:52
+      1 20:09
+      1 20:05
+      1 20:03
+      1 19:55
