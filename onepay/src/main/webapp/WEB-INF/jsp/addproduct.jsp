@@ -31,22 +31,32 @@
 
 		<div class="control-group">
 			<label for="inputPicFile" class="control-label">图片</label> <input
-				type="file" id="inputPicFile" name="inputPicFile" accept="image/*" />
+				type="file" id="inputPicFile" name="inputPicFile" accept="image/*"
+				 />
 			<p class="help-block">上传图片有助于客户更好的了解产品.</p>
+			<canvas id="myCanvas" width="200" height="100"
+				style="border: 1px solid #c3c3c3;">
+			Your browser does not support the canvas element.
+			</canvas>
+			<div id="preview" style="width: 300px;height:300px;border:1px solid gray;"></div>
 		</div>
 		<hr />
 		<div class="control-group">
 			<label for="inputPicFile" class="control-label">拍卖类型</label> <label
 				class="radio-inline"> <input type="radio" name="saleModel"
-				id="saleModel1" value="three_times" onclick="showPriceSession()" checked /> 一元拍
+				id="saleModel1" value="three_times" onclick="showPriceSession()"
+				checked /> 一元拍
 			</label> <label class="radio-inline"> <input type="radio"
-				name="saleModel" id="saleModel2" value="three_days" onclick="showPriceSession()"/> 3天拍
+				name="saleModel" id="saleModel2" value="three_days"
+				onclick="showPriceSession()" /> 3天拍
 			</label> <label class="radio-inline"> <input type="radio"
-				name="saleModel" id="saleModel3" value="guess_price" onclick="showPriceSession()" /> 猜价拍
+				name="saleModel" id="saleModel3" value="guess_price"
+				onclick="showPriceSession()" /> 猜价拍
 			</label>
 			<div>
 				<div id="showBasePrice" style="display: none;">
-					<div class="alert alert-warning" style="margin-bottom: 0px; margin-top: 10px;">请输入底价：</div>
+					<div class="alert alert-warning"
+						style="margin-bottom: 0px; margin-top: 10px;">请输入底价：</div>
 					<onepayapp:inputField label="底价" name="price" type="number" />
 				</div>
 			</div>
@@ -103,6 +113,74 @@
 	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script src="js/addproduct.js" type="text/javascript"></script>
+<script type="text/javascript">
+function preview1(file) {
+    var img = new Image(), url = img.src = URL.createObjectURL(file);
+    var $img = $(img);
+    img.onload = function() {
+        URL.revokeObjectURL(url);
+        $('#preview').empty().append($img);
+    }
+}
+function preview2(file) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+        var $img = $('<img>').attr("src", e.target.result);
+        $('#preview').empty().append($img);
+    }
+    reader.readAsDataURL(file);
+}
+ 
+$(function() {
+    $('[type=file]').change(function(e) {
+        var file = e.target.files[0];
+        preview1(file);
+    })
+})
+
+function showPreview() {
+	 if (!window.FileReader) {
+		 console.log("FileReader not support.");
+		 return; 
+	 }
+	 
+	 var files = evt.target.files;  
+	 var picURL;
+	  
+	    for (var i = 0, f; f = files[i]; i++) {  
+	  
+	        if (!f.type.match('image.*')) {  
+	  
+	            continue;  
+	  
+	        }  
+	  
+	  
+	        var reader = new FileReader();  
+	  
+	        reader.onload = (function(theFile) {  
+	  
+	            return function(e) {  
+	  
+	                // img 元素  
+	  
+	                picURL = e.target.result;  
+	  
+	            };  
+	  
+	        })(f);  
+	  
+	  
+	        reader.readAsDataURL(f);  
+	    }
+	var c=document.getElementById("myCanvas");
+	var cxt=c.getContext("2d");
+	var img=new Image();
+	img.src=picURL;
+	cxt.drawImage(img,0,0);
+}
+
+</script>
 
 <jsp:include page="./fragments/footer.jsp" />
 
