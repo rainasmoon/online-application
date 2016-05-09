@@ -30,7 +30,7 @@ public class BufferedImageThumbnailerTest {
 	@Test
 	public void shouldThumbnailPic() {
 		ImgThumbnailUtils bit = new ImgThumbnailUtils(200);
-		File result = bit.createThumbnail("testimage.jpg", BufferedImageThumbnailerTest.class.getResource("").getFile());
+		File result = bit.createThumbnail("testimage.jpg", "thumbnail", BufferedImageThumbnailerTest.class.getResource("").getFile());
 		LOGGER.info("path: {}", result);
 	}
 }

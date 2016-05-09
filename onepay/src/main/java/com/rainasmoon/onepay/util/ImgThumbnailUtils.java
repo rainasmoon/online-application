@@ -29,11 +29,11 @@ public class ImgThumbnailUtils {
 		this.maxLongSide = maxLongSide;
 	}
 
-	public File createThumbnail(String picFileName, String picPath) {
+	public File createThumbnail(String picFileName, String type, String picPath) {
 		try {
 			File file = new File(picPath + File.separator + picFileName);
 			FileInputStream fis = new FileInputStream(file);
-			File thumbnailFile = new File(picPath + File.separator + "thumbnail" + File.separator + picFileName);
+			File thumbnailFile = new File(picPath + File.separator + type + File.separator + picFileName);
 
 			BufferedImage imgIn = ImageIO.read(fis);
 

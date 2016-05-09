@@ -53,11 +53,12 @@ public class ImageController {
 			SYS_PIC_PATH = env.getProperty(CommonConstants.PRODUCT_PIC_PATH_ID);
 
 			LOGGER.debug("!!!!!the SYS_PIC_PATH is " + SYS_PIC_PATH);
-			File file = new File(SYS_PIC_PATH + File.separator + picPath);
+			File file = new File(SYS_PIC_PATH + File.separator + "normal" + File.separator + picPath);
 			LOGGER.debug("the file name is:" + SYS_PIC_PATH + File.separator + picPath);
 
 			if (!file.exists()) {
-				file = new File(ImageController.class.getResource("nopic").getFile());
+				ImgThumbnailUtils imgThumbnailUtils = new ImgThumbnailUtils(800);
+				file = imgThumbnailUtils.createThumbnail(picPath, "normal", SYS_PIC_PATH);
 			}
 			fileInputStream = new FileInputStream(file);
 
@@ -68,7 +69,7 @@ public class ImageController {
 
 		} catch (IOException e) {
 			LOGGER.error("Error writing file content to output stream", e);
-			throw new ImageNotFoundException("IOError writing file to output stream");
+			throw new ImageNotFoundException("IOError writing file to output stream", e);
 		} finally {
 			IOUtils.closeQuietly(fileInputStream);
 		}
@@ -95,7 +96,7 @@ public class ImageController {
 
 			if (!file.exists()) {
 				ImgThumbnailUtils imgThumbnailUtils = new ImgThumbnailUtils(250);
-				file = imgThumbnailUtils.createThumbnail(picPath, SYS_PIC_PATH);
+				file = imgThumbnailUtils.createThumbnail(picPath, "thumbnail", SYS_PIC_PATH);
 			}
 			fileInputStream = new FileInputStream(file);
 
