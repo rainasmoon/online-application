@@ -14,4 +14,6 @@ public class CommonConstants {
 
 	public static final String NO_LOGIN_MSG = "未登录";
 
+	public static final String UTF_8 = "utf-8";
+
 }

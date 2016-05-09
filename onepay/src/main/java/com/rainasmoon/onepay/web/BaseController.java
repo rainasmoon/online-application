@@ -51,7 +51,7 @@ public class BaseController {
 				userId = Long.parseLong(cookie.getValue());
 
 			} else if (cookie.getName().equals(CommonConstants.LOGIN_USER_SHOW_NAME)) {
-				userShowName = URLDecoder.decode(cookie.getValue(), "utf-8");
+				userShowName = URLDecoder.decode(cookie.getValue(), CommonConstants.UTF_8);
 			}
 
 			if (userId != null && userShowName != null) {
@@ -78,7 +78,7 @@ public class BaseController {
 
 		Cookie cid = new Cookie(CommonConstants.LOGIN_USER_ID, userId.toString());
 
-		Cookie cshowname = new Cookie(CommonConstants.LOGIN_USER_SHOW_NAME, URLEncoder.encode(userShowName, "utf-8"));
+		Cookie cshowname = new Cookie(CommonConstants.LOGIN_USER_SHOW_NAME, URLEncoder.encode(userShowName, CommonConstants.UTF_8));
 		cid.setMaxAge(365 * 24 * 3600);
 		cshowname.setMaxAge(365 * 24 * 3600);
 
