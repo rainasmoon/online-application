@@ -92,7 +92,7 @@
 		</div>
 		<hr />
 		<div class="checkbox">
-			<label> <input type="checkbox"> 同意一元网的条款
+			<label> <input type="checkbox" checked> 同意一元网的条款
 			</label>
 		</div>
 		<button type="submit" class="btn btn-primary">Submit</button>

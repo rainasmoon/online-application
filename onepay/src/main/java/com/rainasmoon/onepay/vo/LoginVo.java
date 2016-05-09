@@ -14,9 +14,6 @@ public class LoginVo {
 
 	private String confirmPassword;
 
-	@NotEmpty(message = "{not.null}")
-	protected String checkCode;
-
 	protected String error;
 
 	@Override
@@ -31,14 +28,6 @@ public class LoginVo {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public String getCheckCode() {
-		return checkCode;
-	}
-
-	public void setCheckCode(String checkCode) {
-		this.checkCode = checkCode;
 	}
 
 	public String getError() {

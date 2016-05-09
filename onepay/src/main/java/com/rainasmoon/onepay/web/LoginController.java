@@ -3,9 +3,12 @@ package com.rainasmoon.onepay.web;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -18,6 +21,8 @@ import com.rainasmoon.onepay.vo.LoginVo;
 
 @Controller
 public class LoginController extends BaseController {
+
+	public static Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
 
 	@Autowired
 	private UserService userService;
@@ -32,24 +37,24 @@ public class LoginController extends BaseController {
 	}
 
 	@RequestMapping(value = "/login.html", method = RequestMethod.POST)
-	public String processLoginForm(@Valid LoginVo loginVo,
-			BindingResult result, HttpServletRequest request,
-			Map<String, Object> model) {
+	public String processLoginForm(@Valid LoginVo loginVo, String rememberMe, BindingResult result, HttpServletRequest request, HttpServletResponse response, Map<String, Object> model) {
 
 		LOGGER.debug("Session:www:" + loginVo);
-		LOGGER.debug("Session:www:" + result);
+		LOGGER.warn("Session:www:" + rememberMe);
 
 		// if exist -> login. else create
 		// 1 check if userAccount exist. yes -> check password. no -> ask user
 		// what to do... create or relogin.
 		if (userService.checkUserIfExists(loginVo.getAccount())) {
-			User loginUser = userService.login(loginVo.getAccount(),
-					loginVo.getPassword());
+			User loginUser = userService.login(loginVo.getAccount(), loginVo.getPassword());
 			LOGGER.debug("www:loginUser:" + loginUser);
 
 			if (loginUser != null) {
 				// login success
 				setSessionLoginUser(loginUser.getId(), loginUser.getShowName());
+				if (StringUtils.isNotBlank(rememberMe) && rememberMe.equals("remember-me")) {
+					setCookieLogin(loginUser.getId(), loginUser.getShowName());
+				}
 				return "redirect:/";
 			} else {
 				// account or password wrong...
@@ -73,8 +78,7 @@ public class LoginController extends BaseController {
 					return "login_register";
 				} else {
 					LOGGER.debug(":www: save a new user");
-					userService.addUser(loginVo.getAccount(),
-							loginVo.getPassword());
+					userService.addUser(loginVo.getAccount(), loginVo.getPassword());
 					model.put("message", "注册账号成功，已经赠送100猿币，请到个人账户中查看");
 					model.put("loginVo", loginVo);
 					return "login_register_success";
