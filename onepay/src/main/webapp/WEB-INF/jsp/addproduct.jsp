@@ -126,7 +126,13 @@ function preview2(file) {
     var reader = new FileReader();
     reader.onload = function(e) {
         var $img = $('<img>').attr("src", e.target.result);
-        $('#preview').empty().append($img);
+        //$('#preview').empty().append($img);
+        var c=document.getElementById("myCanvas");
+    	var cxt=c.getContext("2d");
+    	//var img=new Image();
+    	//console.log(URL.createObjectURL(file));
+    	//img.src=URL.createObjectURL(file);
+    	cxt.drawImage(img,0,0);
     }
     reader.readAsDataURL(file);
 }
@@ -134,49 +140,17 @@ function preview2(file) {
 $(function() {
     $('[type=file]').change(function(e) {
         var file = e.target.files[0];
-        preview1(file);
+        preview2(file);
     })
 })
 
-function showPreview() {
-	 if (!window.FileReader) {
-		 console.log("FileReader not support.");
-		 return; 
-	 }
-	 
-	 var files = evt.target.files;  
-	 var picURL;
-	  
-	    for (var i = 0, f; f = files[i]; i++) {  
-	  
-	        if (!f.type.match('image.*')) {  
-	  
-	            continue;  
-	  
-	        }  
-	  
-	  
-	        var reader = new FileReader();  
-	  
-	        reader.onload = (function(theFile) {  
-	  
-	            return function(e) {  
-	  
-	                // img 元素  
-	  
-	                picURL = e.target.result;  
-	  
-	            };  
-	  
-	        })(f);  
-	  
-	  
-	        reader.readAsDataURL(f);  
-	    }
+function preview3(file) {
+	
 	var c=document.getElementById("myCanvas");
 	var cxt=c.getContext("2d");
 	var img=new Image();
-	img.src=picURL;
+	console.log(URL.createObjectURL(file));
+	img.src=URL.createObjectURL(file);
 	cxt.drawImage(img,0,0);
 }
 
