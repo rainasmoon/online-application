@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.rainasmoon.onepay.enums.ProductStatus;
 import com.rainasmoon.onepay.enums.SaleModels;
@@ -42,6 +43,7 @@ public class BidServiceImpl implements BidService {
 	private UserService userService;
 
 	@Override
+	@Transactional
 	public String bidAddMoney(Long userId, Long productId, Integer addMoney) {
 		Product product = productRepository.findOne(productId);
 
@@ -63,6 +65,7 @@ public class BidServiceImpl implements BidService {
 	}
 
 	@Override
+	@Transactional
 	public String guessMoney(Long userId, Long productId, Integer money) {
 		Product product = productRepository.findOne(productId);
 
@@ -100,7 +103,9 @@ public class BidServiceImpl implements BidService {
 
 		List<BidLog> result = null;
 		try {
-			result = repository.findBidLogOnDate(userId, productId, sfFull.parse(sf.format(new Date()) + "000000"), sfFull.parse(sf.format(new Date()) + "235959"));
+			result = repository.findBidLogOnDate(userId, productId,
+					sfFull.parse(sf.format(new Date()) + "000000"),
+					sfFull.parse(sf.format(new Date()) + "235959"));
 		} catch (ParseException e) {
 			LOGGER.info("parase date exception. wired.", e);
 		}
@@ -108,13 +113,17 @@ public class BidServiceImpl implements BidService {
 	}
 
 	@Override
+	@Transactional
 	public String generateBidThreeDays() {
 		// 查询onsale商品, 如果当前时间大于 enddate. then
-		List<Product> products = productRepository.findEndDateAndStatusProduct(SaleModels.THREEDAYSALE.getCode(), ProductStatus.ONSALE.getCode(), new Date());
+		List<Product> products = productRepository.findEndDateAndStatusProduct(
+				SaleModels.THREEDAYSALE.getCode(),
+				ProductStatus.ONSALE.getCode(), new Date());
 
 		// if exist bidlog then set product status to deal and create a order.
 		for (Product product : products) {
-			List<BidLog> bidLogs = repository.findByProductIdOrderByCreateDateDesc(product.getId());
+			List<BidLog> bidLogs = repository
+					.findByProductIdOrderByCreateDateDesc(product.getId());
 			if (bidLogs != null && bidLogs.size() > 0) {
 				makeDeal(product, bidLogs.get(0));
 			} else {
@@ -127,16 +136,21 @@ public class BidServiceImpl implements BidService {
 	}
 
 	@Override
+	@Transactional
 	public String generateBidThreeTimes() {
 		// select onsale product & salemodel is normal;
-		List<Product> products = productRepository.findBySaleModelAndStatus(SaleModels.NORMALAUCTION.getCode(), ProductStatus.ONSALE.getCode());
+		List<Product> products = productRepository.findBySaleModelAndStatus(
+				SaleModels.NORMALAUCTION.getCode(),
+				ProductStatus.ONSALE.getCode());
 		Date now = new Date();
 		Date theDayBefore = new Date(now.getTime() - CommonConstants.THREE_DAYS);
 
 		// 查询最近一条bidlog.如果在三天前，则成交，
 		for (Product product : products) {
-			List<BidLog> bidLogs = repository.findByProductIdOrderByCreateDateDesc(product.getId());
-			if (bidLogs.size() > 0 && bidLogs.get(0).getCreateDate().before(theDayBefore)) {
+			List<BidLog> bidLogs = repository
+					.findByProductIdOrderByCreateDateDesc(product.getId());
+			if (bidLogs.size() > 0
+					&& bidLogs.get(0).getCreateDate().before(theDayBefore)) {
 				makeDeal(product, bidLogs.get(0));
 			}
 		}
@@ -147,10 +161,12 @@ public class BidServiceImpl implements BidService {
 		product.setStatus(ProductStatus.DEAL.getCode());
 
 		productRepository.save(product);
-		orderService.createOrder(bidLog.getUserId(), product.getId(), bidLog.getPrice());
+		orderService.createOrder(bidLog.getUserId(), product.getId(),
+				bidLog.getPrice());
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public BidRefreshVo getBidRefreshVo(Long productId) {
 		Product product = productRepository.findOne(productId);
 		BidRefreshVo result = new BidRefreshVo();

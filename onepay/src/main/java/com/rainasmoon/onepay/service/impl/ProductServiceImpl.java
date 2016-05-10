@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.rainasmoon.onepay.enums.ProductStatus;
 import com.rainasmoon.onepay.enums.SaleModels;
@@ -31,6 +32,7 @@ public class ProductServiceImpl implements ProductService {
 	private UserRepository userRepository;
 
 	@Override
+	@Transactional
 	public Product addProduct(Product product) {
 
 		User user = userRepository.findOne(product.getOwnerId());
@@ -43,6 +45,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public List<AdVo> listAllOnSaleProductsPage() {
 		Iterable<Product> allProducts = repository
 				.findByStatusOrderByIdDesc(ProductStatus.ONSALE.getCode());
@@ -59,6 +62,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
+	@Transactional
 	public Picture addPicture(Long productId, String picPath) {
 		Picture picture = new Picture();
 		picture.setProductId(productId);
@@ -77,6 +81,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public BidProductVo findBidProductVo(Long productId) {
 		BidProductVo productVo = new BidProductVo();
 		Product product = repository.findOne(productId);
@@ -97,30 +102,35 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public Product findProduct(Long productId) {
 
 		return repository.findOne(productId);
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public List<Product> listMySalesProductsPage(Long loginUserId) {
 
 		return repository.findByOwnerId(loginUserId);
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public List<AdVo> listMyFavoritesProductsPage(Long loginUserId) {
 		// TODO glen my favorites product
 		return null;
 	}
 
 	@Override
+	@Transactional
 	public Product updateProduct(Product product) {
 
 		return repository.save(product);
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public List<Picture> findProductPics(Long productId) {
 
 		return pictureRepository.findPictures(productId);

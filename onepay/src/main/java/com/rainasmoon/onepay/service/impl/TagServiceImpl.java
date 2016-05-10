@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.rainasmoon.onepay.enums.TagTypes;
 import com.rainasmoon.onepay.model.Tag;
@@ -16,6 +17,7 @@ public class TagServiceImpl implements TagService {
 	private TagRepository repository;
 
 	@Override
+	@Transactional
 	public Tag addUserTag(Long userId, String tag) {
 		Tag atag = new Tag();
 		atag.setObjId(userId);
@@ -26,6 +28,7 @@ public class TagServiceImpl implements TagService {
 	}
 
 	@Override
+	@Transactional
 	public Tag addProductTag(Long productId, String tag) {
 		Tag atag = new Tag();
 		atag.setObjId(productId);
@@ -36,11 +39,13 @@ public class TagServiceImpl implements TagService {
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public List<Tag> findUserTags(Long userId) {
 		return repository.findTags(userId, TagTypes.USER.getCode());
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public List<Tag> findProductTags(Long productId) {
 		return repository.findTags(productId, TagTypes.PRODUCT.getCode());
 	}

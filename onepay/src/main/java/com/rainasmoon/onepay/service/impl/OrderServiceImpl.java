@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.rainasmoon.onepay.enums.OrderStatus;
 import com.rainasmoon.onepay.model.Order;
@@ -28,6 +29,7 @@ public class OrderServiceImpl implements OrderService {
 	private AccountService accountService;
 
 	@Override
+	@Transactional
 	public Order createOrder(Long userId, Long productId, Integer money) {
 		Order order = new Order();
 		Product product = producRepository.findOne(productId);
@@ -42,16 +44,19 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public List<Order> findMyOrders(Long userId) {
 
 		return repository.findBySalerIdOrBuyerId(userId);
 	}
 
 	@Override
+	@Transactional
 	public String orderPay(Long orderId) {
 
 		Order order = repository.findOne(orderId);
-		TransferResult result = accountService.transferAccount(order.getBuyerId(), order.getSalerId(), order.getPrice());
+		TransferResult result = accountService.transferAccount(
+				order.getBuyerId(), order.getSalerId(), order.getPrice());
 		if (result.isSuccess()) {
 			order.setStatus(OrderStatus.PAYED.getCode());
 			repository.save(order);
@@ -61,11 +66,13 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public Order findOrder(Long orderId) {
 		return repository.findOne(orderId);
 	}
 
 	@Override
+	@Transactional
 	public String orderFill(Long orderId, FillOrderVo fillOrderVo) {
 		Order order = repository.findOne(orderId);
 		order.setReceiverName(fillOrderVo.getReceiverName());
@@ -84,6 +91,7 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
+	@Transactional
 	public String orderReceiveStar(Long orderId, Integer stars) {
 		Order order = repository.findOne(orderId);
 		order.setReceiverStars(stars);
@@ -93,6 +101,7 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
+	@Transactional
 	public String orderSaleStar(Long orderId, Integer stars) {
 		Order order = repository.findOne(orderId);
 		order.setSenderStars(stars);
@@ -102,6 +111,7 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
+	@Transactional
 	public String orderReceive(Long orderId) {
 		Order order = repository.findOne(orderId);
 		order.setStatus(OrderStatus.RECEIVED.getCode());
@@ -110,6 +120,7 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
+	@Transactional
 	public String orderSend(Long orderId) {
 		Order order = repository.findOne(orderId);
 		order.setStatus(OrderStatus.SENDED.getCode());

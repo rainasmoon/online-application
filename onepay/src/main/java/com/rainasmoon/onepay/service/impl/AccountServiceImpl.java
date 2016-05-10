@@ -2,6 +2,7 @@ package com.rainasmoon.onepay.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.rainasmoon.onepay.enums.AccountLogTypes;
 import com.rainasmoon.onepay.model.AccountLog;
@@ -21,6 +22,7 @@ public class AccountServiceImpl implements AccountService {
 	private AccountLogRepository accountLogRepository;
 
 	@Override
+	@Transactional
 	public TransferResult transferAccount(Long fromUserId, Long toUserId,
 			Integer amount) {
 		User fromUser = userRepository.findOne(fromUserId);
@@ -48,6 +50,7 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
+	@Transactional
 	public TransferResult transferToFreezeAccount(Long fromUserId,
 			Long toUserId, Integer amount) {
 		User fromUser = userRepository.findOne(fromUserId);
@@ -72,6 +75,7 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
+	@Transactional
 	public TransferResult unfreeze(Long userId, Integer amount) {
 		User user = userRepository.findOne(userId);
 		if (user.getFreezeAccount() < amount) {
@@ -92,6 +96,7 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
+	@Transactional
 	public TransferResult minusAccount(Long userId, Integer amount) {
 		User user = userRepository.findOne(userId);
 		if (user.getAccount() < amount) {
@@ -112,6 +117,7 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
+	@Transactional
 	public TransferResult addFreezeAccount(Long dealerId, Integer amount) {
 		User user = userRepository.findOne(dealerId);
 
@@ -123,6 +129,7 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
+	@Transactional
 	public TransferResult addAccount(Long userId, Integer amount) {
 		User user = userRepository.findOne(userId);
 
