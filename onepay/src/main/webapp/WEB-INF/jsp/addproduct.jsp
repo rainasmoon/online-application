@@ -34,10 +34,9 @@
 				type="file" name='inputPicFile' id='inputPicFile' accept="image/*"
 				 />
 			<p class="help-block">上传图片有助于客户更好的了解产品.</p>
-			<input type="hidden" name='inputPicFile' id='inputPicFile' />
-			<canvas id="myCanvas" width="200" height="100" style="border:1px solid #c3c3c3;">
-			Your browser does not support the canvas element.
-			</canvas>
+<%-- 			<canvas id="myCanvas" width="200" height="100" style="border:1px solid #c3c3c3;"> --%>
+<!-- 			Your browser does not support the canvas element. -->
+<%-- 			</canvas> --%>
 
 		</div>
 		<hr />
