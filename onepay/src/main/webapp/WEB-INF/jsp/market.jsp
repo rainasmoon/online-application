@@ -34,6 +34,7 @@
 						<th>交易人</th>
 						<th>交易人级别</th>
 						<th>交易人信用</th>
+						<th>成交人</th>
 						<th>状态</th>
 						<th>操作</th>
 					</tr>
@@ -55,6 +56,7 @@
 							<td><c:out value="${arow.userName}" /></td>
 							<td><c:out value="${arow.userLevelName}" /></td>
 							<td><c:out value="${arow.userCredit}" /></td>
+							<td><c:out value="${arow.dealerName}" /></td>
 							<td><c:out value="${arow.enumStatus.name}" /></td>
 							<td><c:if test="${not empty arow.operation.operationUrl }">
 									<a href="${arow.operation.operationUrl }?yunOrderId=${arow.id}"><c:out

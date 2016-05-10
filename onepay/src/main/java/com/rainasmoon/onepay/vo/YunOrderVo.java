@@ -10,6 +10,7 @@ public class YunOrderVo extends YunOrder {
 	private String userName;
 	private String userLevelName;
 	private Integer userCredit;
+	private String dealerName;
 	private YunOperationEnum operation;
 
 	public YunModels getEnumModel() {
@@ -54,6 +55,14 @@ public class YunOrderVo extends YunOrder {
 
 	public void setOperation(YunOperationEnum operation) {
 		this.operation = operation;
+	}
+
+	public String getDealerName() {
+		return dealerName;
+	}
+
+	public void setDealerName(String dealerName) {
+		this.dealerName = dealerName;
 	}
 
 }

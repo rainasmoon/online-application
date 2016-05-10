@@ -41,15 +41,19 @@ public class MarketController extends BaseController {
 		List<YunOrder> yunOrders = yunOrderService.findAll();
 		List<YunOrderVo> yunOrderVos = new ArrayList<YunOrderVo>();
 		for (YunOrder yunOrder : yunOrders) {
-			YunOrderVo yunOrderVo = dozerBeanMapper.map(yunOrder,
-					YunOrderVo.class);
+			YunOrderVo yunOrderVo = dozerBeanMapper.map(yunOrder, YunOrderVo.class);
 			User user = userService.findUser(yunOrderVo.getUserId());
 			yunOrderVo.setUserName(user.getShowName());
-			yunOrderVo.setUserLevelName(CommonUtils.getUserLevel(user
-					.getLevel()));
+			yunOrderVo.setUserLevelName(CommonUtils.getUserLevel(user.getLevel()));
 			yunOrderVo.setUserCredit(user.getCredit());
 			yunOrderVo.setStatus(yunOrder.getStatus());
 			yunOrderVo.setOperation(transferToOperation(yunOrder));
+
+			if (yunOrderVo.getDealerId() != null) {
+				User dealer = userService.findUser(yunOrderVo.getDealerId());
+				yunOrderVo.setDealerName(dealer.getShowName());
+			}
+
 			yunOrderVos.add(yunOrderVo);
 		}
 		model.put("yunOrders", yunOrderVos);
@@ -58,33 +62,23 @@ public class MarketController extends BaseController {
 
 	private YunOperationEnum transferToOperation(YunOrder yunOrder) {
 		if (getLoginUserId() != null) {
-			if (getLoginUserId().equals(yunOrder.getUserId())
-					&& yunOrder.isBuy()) {
-				return YunStatus.getUserCallOperation(YunStatus
-						.valueOf(yunOrder.getStatus()));
+			if (getLoginUserId().equals(yunOrder.getUserId()) && yunOrder.isBuy()) {
+				return YunStatus.getUserCallOperation(YunStatus.valueOf(yunOrder.getStatus()));
 			}
-			if (getLoginUserId().equals(yunOrder.getDealerId())
-					&& yunOrder.isBuy()) {
-				return YunStatus.getDealerCallOperation(YunStatus
-						.valueOf(yunOrder.getStatus()));
+			if (getLoginUserId().equals(yunOrder.getDealerId()) && yunOrder.isBuy()) {
+				return YunStatus.getDealerCallOperation(YunStatus.valueOf(yunOrder.getStatus()));
 			}
-			if (getLoginUserId().equals(yunOrder.getUserId())
-					&& yunOrder.isSell()) {
-				return YunStatus.getUserPutOperation(YunStatus.valueOf(yunOrder
-						.getStatus()));
+			if (getLoginUserId().equals(yunOrder.getUserId()) && yunOrder.isSell()) {
+				return YunStatus.getUserPutOperation(YunStatus.valueOf(yunOrder.getStatus()));
 			}
-			if (getLoginUserId().equals(yunOrder.getDealerId())
-					&& yunOrder.isSell()) {
-				return YunStatus.getDealerPutOperation(YunStatus
-						.valueOf(yunOrder.getStatus()));
+			if (getLoginUserId().equals(yunOrder.getDealerId()) && yunOrder.isSell()) {
+				return YunStatus.getDealerPutOperation(YunStatus.valueOf(yunOrder.getStatus()));
 			}
 		}
 		if (yunOrder.isBuy()) {
-			return YunStatus.getOtherCallOperation(YunStatus.valueOf(yunOrder
-					.getStatus()));
+			return YunStatus.getOtherCallOperation(YunStatus.valueOf(yunOrder.getStatus()));
 		}
-		return YunStatus.getOtherPutOperation(YunStatus.valueOf(yunOrder
-				.getStatus()));
+		return YunStatus.getOtherPutOperation(YunStatus.valueOf(yunOrder.getStatus()));
 
 	}
 
@@ -100,8 +94,7 @@ public class MarketController extends BaseController {
 	}
 
 	@RequestMapping(value = { "/market_add_info.html" }, method = RequestMethod.POST)
-	public String addMarketInfo(@Valid AddYunOrderVo addYunOrderVo,
-			BindingResult result, Map<String, Object> model) {
+	public String addMarketInfo(@Valid AddYunOrderVo addYunOrderVo, BindingResult result, Map<String, Object> model) {
 		if (!isLogin()) {
 			return "redirect:login.html";
 		}
@@ -111,8 +104,7 @@ public class MarketController extends BaseController {
 		yunOrder.setAmount(addYunOrderVo.getAmount());
 		yunOrder.setPrice(addYunOrderVo.getPrice());
 		yunOrder.setDescription(addYunOrderVo.getDescription());
-		yunOrder.setModel("buy".equalsIgnoreCase(addYunOrderVo.getTradeModel()) ? 1
-				: 2);
+		yunOrder.setModel("buy".equalsIgnoreCase(addYunOrderVo.getTradeModel()) ? 1 : 2);
 		yunOrder.setStatus(YunStatus.DOWN.getCode());
 
 		String message = yunOrderService.addYunOrder(yunOrder);
@@ -134,8 +126,7 @@ public class MarketController extends BaseController {
 
 	@RequestMapping(value = { "/market_buy.html" }, method = RequestMethod.POST)
 	public String buyYunOrder(Long yunOrderId, Map<String, Object> model) {
-		String message = yunOrderService.executeYunOrder(getLoginUserId(),
-				yunOrderId);
+		String message = yunOrderService.executeYunOrder(getLoginUserId(), yunOrderId);
 		model.put("message", message);
 		return "market_buy_success";
 	}
@@ -156,8 +147,7 @@ public class MarketController extends BaseController {
 
 	@RequestMapping(value = { "/market_sell.html" }, method = RequestMethod.POST)
 	public String sellYunOrder(Long yunOrderId, Map<String, Object> model) {
-		String message = yunOrderService.executeYunOrder(getLoginUserId(),
-				yunOrderId);
+		String message = yunOrderService.executeYunOrder(getLoginUserId(), yunOrderId);
 		model.put("message", message);
 		return "market_sell_success";
 	}
@@ -170,17 +160,14 @@ public class MarketController extends BaseController {
 	}
 
 	@RequestMapping(value = { "/market_unfreeze.html" }, method = RequestMethod.POST)
-	public String unfreezeYunOrder(Long yunOrderId, String unfreezeCode,
-			Map<String, Object> model) {
+	public String unfreezeYunOrder(Long yunOrderId, String unfreezeCode, Map<String, Object> model) {
 		Map<String, String> result = FreezeCodeUtils.decryptToMap(unfreezeCode);
 		if (result == null) {
 			model.put("message", "请核实验证码");
 			return "market_unfreeze_success";
 		}
-		if (result.get("function").equalsIgnoreCase("O")
-				&& Long.parseLong(result.get("value")) == yunOrderId) {
-			String message = yunOrderService.unfreezeYunOrder(getLoginUserId(),
-					yunOrderId);
+		if (result.get("function").equalsIgnoreCase("O") && Long.parseLong(result.get("value")) == yunOrderId) {
+			String message = yunOrderService.unfreezeYunOrder(getLoginUserId(), yunOrderId);
 			model.put("message", message);
 		} else {
 			model.put("message", "验证失败");
