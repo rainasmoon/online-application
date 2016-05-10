@@ -10,11 +10,11 @@
 
 5, 输入密码：mAH^$51R
 
-6, cd 
+6, cd webapp/mc-war
 
-7, rm -rf
+7, rm -rf ./META-INF/ ./WEB-INF/
 
-8, jar xvf web.war
+8, jar xvf mc-war-1.0.0.war
 
 9, http://10.196.112.26:7001/console
 管理控制台用户：weblogic/}JK#-6kj

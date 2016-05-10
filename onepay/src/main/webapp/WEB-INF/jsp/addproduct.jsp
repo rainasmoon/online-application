@@ -31,14 +31,14 @@
 
 		<div class="control-group">
 			<label for="inputPicFile" class="control-label">图片</label> <input
-				type="file" id="inputPicFile" name="inputPicFile" accept="image/*"
+				type="file" name='inputPicFile' id='inputPicFile' accept="image/*"
 				 />
 			<p class="help-block">上传图片有助于客户更好的了解产品.</p>
-			<canvas id="myCanvas" width="200" height="100"
-				style="border: 1px solid #c3c3c3;">
+			<input type="hidden" name='inputPicFile' id='inputPicFile' />
+			<canvas id="myCanvas" width="200" height="100" style="border:1px solid #c3c3c3;">
 			Your browser does not support the canvas element.
 			</canvas>
-			<div id="preview" style="width: 300px;height:300px;border:1px solid gray;"></div>
+
 		</div>
 		<hr />
 		<div class="control-group">
@@ -102,10 +102,10 @@
 		</div>
 		<hr />
 		<div class="checkbox">
-			<label> <input type="checkbox" checked> 同意一元网的条款
+			<label> <input id="checkbox_agreement" type="checkbox" checked onchange="checkboxChanged()"> <a href="agreement.html">同意一元网的条款</a>
 			</label>
 		</div>
-		<button type="submit" class="btn btn-primary">Submit</button>
+		<button id="submit" type="submit" class="btn btn-primary">Submit</button>
 	</fieldset>
 </form:form>
 
@@ -113,48 +113,6 @@
 	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script src="js/addproduct.js" type="text/javascript"></script>
-<script type="text/javascript">
-function preview1(file) {
-    var img = new Image(), url = img.src = URL.createObjectURL(file);
-    var $img = $(img);
-    img.onload = function() {
-        URL.revokeObjectURL(url);
-        $('#preview').empty().append($img);
-    }
-}
-function preview2(file) {
-    var reader = new FileReader();
-    reader.onload = function(e) {
-        var $img = $('<img>').attr("src", e.target.result);
-        //$('#preview').empty().append($img);
-        var c=document.getElementById("myCanvas");
-    	var cxt=c.getContext("2d");
-    	//var img=new Image();
-    	//console.log(URL.createObjectURL(file));
-    	//img.src=URL.createObjectURL(file);
-    	cxt.drawImage(img,0,0);
-    }
-    reader.readAsDataURL(file);
-}
- 
-$(function() {
-    $('[type=file]').change(function(e) {
-        var file = e.target.files[0];
-        preview2(file);
-    })
-})
-
-function preview3(file) {
-	
-	var c=document.getElementById("myCanvas");
-	var cxt=c.getContext("2d");
-	var img=new Image();
-	console.log(URL.createObjectURL(file));
-	img.src=URL.createObjectURL(file);
-	cxt.drawImage(img,0,0);
-}
-
-</script>
 
 <jsp:include page="./fragments/footer.jsp" />
 

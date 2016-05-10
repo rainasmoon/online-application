@@ -1,7 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 
 <jsp:include page="./fragments/headTag.jsp" />
-<title>帮助</title>
+<title>一元网 - 帮助</title>
 
 <jsp:include page="./fragments/bodyHeader.jsp" />
 <h2>一元网</h2>
