@@ -10,7 +10,7 @@ if ($('#saleModel').val() != 'guess_price') {
 }
 
 function addMoney(productId, amount) {
-	$("#bid-price-button-" + amount).effect( "shake",{ distance: 3 } );
+	shakeThis("bid-price-button-" + amount);
 	$.post("restful/bid", {
 		productId : productId,
 		money : amount
@@ -30,7 +30,7 @@ function guessMoney(productId) {
 		alert("请输入数字");
 		return;
 	}
-	$("#guess-price-button").effect( "shake",{ distance: 3 } );
+	shakeThis("guess-price-button");
 	$.post("restful/guess", {
 		productId : productId,
 		money : $("#guessPrice").val()
@@ -39,5 +39,8 @@ function guessMoney(productId) {
 		
 	});
 	
-	
+}
+
+function shakeThis(objId) {
+	$("#" + objId).effect( "shake",{ distance: 1 } );
 }
