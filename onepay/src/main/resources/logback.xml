@@ -106,11 +106,7 @@
 		<appender-ref ref="console"></appender-ref>		   
         <appender-ref ref="EMAIL"/> 
     </logger>
-	
-	<logger name="com.rainasmoon" level="WARN" additivity="true">
-		<appender-ref ref="exceptionLogFile" />
-		<appender-ref ref="EMAIL"/>  
-	</logger>
+		
 	<logger name="warn" level="WARN" additivity="true">
 		<appender-ref ref="exceptionLogFile" />
 		<appender-ref ref="EMAIL"/>  
@@ -120,7 +116,7 @@
 	<logger name="org.hibernate.type.descriptor.sql.BasicBinder"
 		level="info" />
 
-	<root level="debug">
+	<root level="info">
 		<appender-ref ref="console" />
 		<appender-ref ref="rollingFile" />
 	</root>
