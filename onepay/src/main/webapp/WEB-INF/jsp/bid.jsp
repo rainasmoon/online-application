@@ -78,7 +78,7 @@
 				<div class="input-group-addon">.00</div>
 			</div>
 		</div>
-		<button id="guess-price-button" type="button" class="btn btn-primary"
+		<button id="guess-price-button" type="button" class="btn btn-primary btn-lg btn-block"
 			onclick="guessMoney('${productVo.productId}')">拍</button>
 
 	</div>
