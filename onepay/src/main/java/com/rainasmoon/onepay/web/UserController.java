@@ -32,17 +32,7 @@ public class UserController extends BaseController {
 	@RequestMapping(value = { "/top10users.html" }, method = RequestMethod.GET)
 	public String listTop10Users(Map<String, Object> model) {
 
-		List<User> results = new ArrayList<User>();
-
-		for (int i = 0; i < 10; i++) {
-			User t = new User();
-			t.setNickName("Glen" + i);
-			t.setBuyAmount(100);
-			t.setSellAmount(1000);
-			t.setTotalAmount(10000);
-
-			results.add(t);
-		}
+		List<User> results = userService.listActiveTop5Users();
 
 		List<AdVo> vip4users = new ArrayList<AdVo>();
 

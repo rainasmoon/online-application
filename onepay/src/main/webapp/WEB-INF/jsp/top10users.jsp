@@ -37,7 +37,9 @@
 				<thead>
 					<tr>
 						<th>#</th>
-						<th>User Name</th>
+						<th>Email</th>
+						<th>Phone</th>
+						<th>Nick Name</th>
 						<th>buy</th>
 						<th>sale</th>
 						<th>total</th>
@@ -48,6 +50,8 @@
 					<c:forEach var="arow" items="${top10users}" varStatus="status">
 						<tr>
 							<td><c:out value="${status.count}"/></td>
+							<td><c:out value="${arow.email}"/></td>
+							<td><c:out value="${arow.phone}"/></td>
 							<td><c:out value="${arow.nickName}"/></td>
 							<td><c:out value="${arow.buyAmount}" /></td>
 							<td><c:out value="${arow.sellAmount}" /></td>
