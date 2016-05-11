@@ -51,16 +51,16 @@
 <c:if test="${saleModel != 'guess_price' }">
 	<div class="row marketing">
 		<div class="col-lg-4">
-			<a href="javascript:addMoney('${productVo.productId}', 1);"
+			<a id="bid-price-button-1" href="javascript:addMoney('${productVo.productId}', 1);"
 				class="btn btn-primary btn-lg btn-block" role="button">+1猿</a>
 		</div>
 
 		<div class="col-lg-4">
-			<a href="javascript:addMoney('${productVo.productId}', 10);"
+			<a id="bid-price-button-10" href="javascript:addMoney('${productVo.productId}', 10);"
 				class="btn btn-primary btn-lg btn-block" role="button">+10猿</a>
 		</div>
 		<div class="col-lg-4">
-			<a href="javascript:addMoney('${productVo.productId}', 100);"
+			<a id="bid-price-button-100" href="javascript:addMoney('${productVo.productId}', 100);"
 				class="btn btn-primary btn-lg btn-block" role="button">+100猿</a>
 		</div>
 	</div>
@@ -78,7 +78,7 @@
 				<div class="input-group-addon">.00</div>
 			</div>
 		</div>
-		<button type="button" class="btn btn-primary"
+		<button id="guess-price-button" type="button" class="btn btn-primary"
 			onclick="guessMoney('${productVo.productId}')">拍</button>
 
 	</div>

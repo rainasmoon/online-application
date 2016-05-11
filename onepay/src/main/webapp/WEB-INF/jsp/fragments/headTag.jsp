@@ -26,4 +26,5 @@
     <![endif]-->
 	
 <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 
