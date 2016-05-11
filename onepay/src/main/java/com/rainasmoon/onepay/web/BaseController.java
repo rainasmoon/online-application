@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -38,30 +39,6 @@ public class BaseController {
 
 	}
 
-	private void checkCookieUser() throws UnsupportedEncodingException {
-		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-
-		Long userId = null;
-		String userShowName = null;
-
-		// deal with cookie
-		Cookie[] cookies = request.getCookies();
-		for (Cookie cookie : cookies) {
-			if (cookie.getName().equals(CommonConstants.LOGIN_USER_ID)) {
-				userId = Long.parseLong(cookie.getValue());
-
-			} else if (cookie.getName().equals(CommonConstants.LOGIN_USER_SHOW_NAME)) {
-				userShowName = URLDecoder.decode(cookie.getValue(), CommonConstants.UTF_8);
-			}
-
-			if (userId != null && userShowName != null) {
-				setSessionLoginUser(userId, userShowName);
-				break;
-			}
-		}
-
-	}
-
 	public void setCookieLogin(Long userId, String userShowName) {
 
 		try {
@@ -73,17 +50,14 @@ public class BaseController {
 
 	}
 
-	private void addLoginToCookie(Long userId, String userShowName) throws UnsupportedEncodingException {
-		HttpServletResponse response = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getResponse();
+	public void clearCookieLogin() {
 
-		Cookie cid = new Cookie(CommonConstants.LOGIN_USER_ID, userId.toString());
-
-		Cookie cshowname = new Cookie(CommonConstants.LOGIN_USER_SHOW_NAME, URLEncoder.encode(userShowName, CommonConstants.UTF_8));
-		cid.setMaxAge(365 * 24 * 3600);
-		cshowname.setMaxAge(365 * 24 * 3600);
-
-		response.addCookie(cid);
-		response.addCookie(cshowname);
+		try {
+			clearLoginToCookie();
+		} catch (UnsupportedEncodingException e) {
+			LOGGER.error("UnsupportedEncodingException", e);
+			e.printStackTrace();
+		}
 
 	}
 
@@ -107,5 +81,57 @@ public class BaseController {
 	public boolean isLogin() {
 
 		return getLoginUserId() != null;
+	}
+
+	private void checkCookieUser() throws UnsupportedEncodingException {
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+
+		Long userId = null;
+		String userShowName = null;
+
+		// deal with cookie
+		Cookie[] cookies = request.getCookies();
+		for (Cookie cookie : cookies) {
+			if (cookie.getName().equals(CommonConstants.LOGIN_USER_ID)) {
+				userId = Long.parseLong(cookie.getValue());
+
+			} else if (cookie.getName().equals(CommonConstants.LOGIN_USER_SHOW_NAME)) {
+				userShowName = URLDecoder.decode(cookie.getValue(), CommonConstants.UTF_8);
+			}
+
+			if (userId != null && StringUtils.isNotBlank(userShowName)) {
+				setSessionLoginUser(userId, userShowName);
+				break;
+			}
+		}
+
+	}
+
+	private void addLoginToCookie(Long userId, String userShowName) throws UnsupportedEncodingException {
+		HttpServletResponse response = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getResponse();
+
+		Cookie cid = new Cookie(CommonConstants.LOGIN_USER_ID, userId.toString());
+
+		Cookie cshowname = new Cookie(CommonConstants.LOGIN_USER_SHOW_NAME, URLEncoder.encode(userShowName, CommonConstants.UTF_8));
+		cid.setMaxAge(CommonConstants.COOKIE_MAX_AGE);
+		cshowname.setMaxAge(CommonConstants.COOKIE_MAX_AGE);
+
+		response.addCookie(cid);
+		response.addCookie(cshowname);
+
+	}
+
+	private void clearLoginToCookie() throws UnsupportedEncodingException {
+		HttpServletResponse response = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getResponse();
+
+		Cookie cid = new Cookie(CommonConstants.LOGIN_USER_ID, null);
+
+		Cookie cshowname = new Cookie(CommonConstants.LOGIN_USER_SHOW_NAME, null);
+		cid.setMaxAge(0);
+		cshowname.setMaxAge(0);
+
+		response.addCookie(cid);
+		response.addCookie(cshowname);
+
 	}
 }

@@ -90,7 +90,9 @@ public class LoginController extends BaseController {
 
 	@RequestMapping(value = "/logout.html", method = RequestMethod.GET)
 	public String logout() {
+
 		setSessionOut();
+		clearCookieLogin();
 		return "redirect:/";
 	}
 }

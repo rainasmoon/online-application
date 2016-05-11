@@ -1,0 +1,70 @@
+这篇文章主要介绍了java操作cookie示例，包括设置Cookie、读取Cookie、删除Cookie,需要的朋友可以参考下
+
+1.设置Cookie　　
+
+复制代码 代码如下:
+
+Cookie cookie = new Cookie("key", "value");
+cookie.setMaxAge(60);
+
+ 设置60秒生存期，如果设置为负值的话，则为浏览器进程Cookie(内存中保存)，关闭浏览器就失效。
+复制代码 代码如下:
+
+cookie.setPath("/test/test2");
+
+ 设置Cookie路径，不设置的话为当前路径(对于Servlet来说为request.getContextPath() + web.xml里配置的该Servlet的url-pattern路径部分)
+
+复制代码 代码如下:
+
+response.addCookie(cookie);
+
+2.读取Cookie
+
+ 该方法可以读取当前路径以及“直接父路径”的所有Cookie对象，如果没有任何Cookie的话，则返回null
+
+复制代码 代码如下:
+
+Cookie[] cookies = request.getCookies();
+
+3.删除Cookie
+
+复制代码 代码如下:
+
+Cookie cookie = new Cookie("key", null);
+cookie.setMaxAge(0);
+
+设置为0为立即删除该Cookie
+
+复制代码 代码如下:
+
+cookie.setPath("/test/test2");
+
+删除指定路径上的Cookie，不设置该路径，默认为删除当前路径Cookie
+
+复制代码 代码如下:
+
+response.addCookie(cookie);
+
+4.注意：假设路径结构如下
+
+复制代码 代码如下:
+
+test/test2/test345/test555/test666
+
+a.相同键名的Cookie(值可以相同或不同)可以存在于不同的路径下。
+
+b.删除时，如果当前路径下没有键为"key"的Cookie，则查询全部父路径，检索到就执行删除操作(每次只能删除一个与自己最近的父路径Cookie)
+
+FF.必须指定与设定cookie时使用的相同路径来删除改cookie，而且cookie的键名不论大写、小写或大小混合都要指定路径。
+
+IE.键名小写时，如果当前路径为/test/test2，如果找不到再向上查询/test、/test555、/test345，如果还找不到就查询/。(/test555/test666不查询)
+
+键名大小写混合或大写时，不指定路径则默认删除当前路径，并且不向上查询。
+
+c.读取Cookie时只能读取直接父路径的Cookie。
+
+如果当前路径为/test/test2，要读取的键为"key"。当前路径读取后，还要读取/test，/test读取后，还要读取/
+
+d.在做Java的web项目时，由于一般的Web服务器(如Tomcat或Jetty)都用Context来管理不同的WebApplication，这样对于每个Context有不同的Path，
+
+在一个Server中有多个WebApplication时要特别小心，不要设置Path为/的Cookie，容易误操作。(当然前提是域名相同)

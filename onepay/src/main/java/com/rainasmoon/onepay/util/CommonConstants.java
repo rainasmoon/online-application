@@ -6,6 +6,8 @@ public class CommonConstants {
 
 	public static final String LOGIN_USER_SHOW_NAME = "userShowName";
 
+	public static final int COOKIE_MAX_AGE = 365 * 24 * 3600;
+
 	public static final String PRODUCT_PIC_PATH_ID = "product.pic.location";
 
 	public static final int PIC_MAX_ALLOW_SIZE = 5000000;
