@@ -86,6 +86,10 @@ public class UserController extends BaseController {
 
 	@RequestMapping(value = { "/reset_password_reset.html" }, method = RequestMethod.POST)
 	public String resetPasswordReset(ResetPasswordVo resetPasswordVo, Map<String, Object> model) {
+		// check the code if it's legal.
+		// reset password.
+		String message = userService.resetPassword(resetPasswordVo.getAccount(), resetPasswordVo.getPassword());
+		model.put("message", message);
 		return "reset_password_success";
 	}
 }

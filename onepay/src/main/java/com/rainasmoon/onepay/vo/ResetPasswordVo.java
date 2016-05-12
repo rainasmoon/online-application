@@ -14,6 +14,8 @@ public class ResetPasswordVo {
 
 	private String confirmPassword;
 
+	private String code;
+
 	protected String error;
 
 	@Override
@@ -52,6 +54,14 @@ public class ResetPasswordVo {
 
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
 	}
 
 }

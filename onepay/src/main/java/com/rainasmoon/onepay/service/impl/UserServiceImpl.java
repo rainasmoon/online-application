@@ -22,8 +22,7 @@ public class UserServiceImpl implements UserService {
 	@Transactional(readOnly = true)
 	public boolean checkUserIfExists(String loginName) {
 
-		return userRepository.findByEmailOrPhone(loginName) != null ? true
-				: false;
+		return userRepository.findByEmailOrPhone(loginName) != null ? true : false;
 	}
 
 	@Override
@@ -73,4 +72,15 @@ public class UserServiceImpl implements UserService {
 		return userRepository.save(user);
 	}
 
+	@Override
+	@Transactional
+	public String resetPassword(String account, String newPassword) {
+		User user = userRepository.findByEmailOrPhone(account);
+		if (user == null) {
+			return "user not exist";
+		}
+		user.setPassword(newPassword);
+		userRepository.save(user);
+		return "update password success";
+	}
 }

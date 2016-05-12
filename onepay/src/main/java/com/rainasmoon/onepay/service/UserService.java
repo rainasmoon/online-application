@@ -18,4 +18,6 @@ public interface UserService {
 
 	User updateUser(User user);
 
+	String resetPassword(String account, String newPassword);
+
 }
