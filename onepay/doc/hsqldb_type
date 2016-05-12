@@ -1,0 +1,85 @@
+ 
+HSQLDB JDBC对照
+1 	BIGINT 	java.lang.Long 	-5 	 
+2 	DECIMAL 	java.math.BigDecimal 	3 	 
+3 	INTEGER 	java.lang.Integer 	4 	 
+4 	INTEGER 	java.lang.Integer 	4 	 
+5 	DOUBLE 	java.lang.Double 	8 	 
+6 	FLOAT 	java.lang.Double 	6 	 
+7 	TINYINT 	java.lang.Integer 	-6 	 
+8 	SMALLINT 	java.lang.Integer 	5 	 
+9 	CHAR 	java.lang.String 	1 	 
+10 	VARCHAR_IGNORECASE 	java.lang.String 	12 	 
+11 	VARCHAR 	java.lang.String 	12 	 
+12 	BOOLEAN 	java.lang.Boolean 	16 	 
+13 	BINARY 	[B 	-2 	 
+14 	LONGVARBINARY 	[B 	-4 	 
+15 	LONGVARCHAR 	java.lang.String 	-1 	 
+16 	NUMERIC 	java.math.BigDecimal 	2 	 
+17 	REAL 	java.lang.Double 	7 	 
+18 	VARBINARY 	[B 	-3 	 
+19 	DATE 	java.sql.Date 	91 	 
+20 	TIME 	java.sql.Time 	92 	 
+21 	TIMESTAMP 	java.sql.Timestamp 	93 	 
+22 	BLOB 	  	  	 
+23 	CLOB 	  	  	 
+24 	ARRAY 	  	  	 
+25 	DATALINK 	  	  	 
+26 	DISTINCT 	  	  	 
+27 	JAVA_OBJECT 	  	  	 
+28 	REF 	  	  	 
+29 	XML 	  	 
+数字类型
+
+tinyint,smallint,integer,bigint,numeric,decimal它们对应到java中的类型为byte,short,int,long,bigdecimal,bigdecimal。
+
+decimal和numeric类型对应于java.math.BigDecimal，可以有很多的小数位数。在hsql中，这两种类型是等同的。
+
+在hsql中,real,float,double 类型是相同的，对应于java中的double类型。这些类型被定义为约束类型。精度为64位。
+
+numeric和decimal类型不指定精度的话，默认为100
+boolean类型
+
+boolean它的值有true,false,unknown三种。可以用java的boolean类型来初始化，unknown可以用null值来初始化。
+在2.0标准中，bit类型是boolean类型的一个别名。
+SQL标准并不支持除了字符串以外的其他类型转化为boolean类型。因为boolean类型对SQL标准来说是一个性的类型，许多数据库产品都用其他类型来表示布尔值。为了保持兼容性，hsql允许以下几种类型转化为boolean类型
+
+bit和长度为1的bit varing类型能够转化为boolean类型。
+tinyint,smallint,integer以及bigint类型能够被转化为boolean类型。如果只为0，那么返回假，如果值不为0，则返回真。
+字符类型
+
+character,character varing 以及clob类型。char,varchar,character large object 是这些类型的同义词。hsql同样也支持longvarchar作为varchar的同义词。如果longvarchar没有指定长度，那么默认的长度为IM.
+
+hsql默认的字符集是unicode.因此所有字符都能用这些类型来表示。
+
+如果character在使用的时候没有指明长度，默认为1.对于clob类型来说，长度限制可以设置为某个单位下的值k,M,g,例如
+clob(100M)
+clob(1000)
+如果clob没有指定长度，那么长度默认为1M
+二进制类型数据
+
+binary,binaryvaring 以及blob类型是sql标准中的二进制类型。varbinary和binary large object是binary varing 和 blob的同义词。hsql支持longvarbinary是 varbinary的同义词。
+
+binary不指定长度默认为1.blob类型的长度和clob类型一样，可以设置带单位的长度。默认为1M
+bit类型
+
+bit可以设置长度，每一位为0或1。如果没有指定长度，那么默认为1。
+
+在介绍boolean类型至SQL标准之前，普遍都用单位的bit类型来表示。为了兼容其他产品中不符合或扩展SQL标准的类型，hsql允许长度为1的bit以及bit varing类型与boolean类型相互转化。boolean类型的true对应于1,false对应于0.
+
+同样的，数值型值也可以转化为bit(1)类型，非零的值对应于1，零值对应于0.
+
+other类型
+任何java类型都可以插入other类型字段中，但是不能对其进行操作，但是可以判断是否为null。但是不能指定普通类型的值插入到other类型中
+日期类型
+date,只有年月日
+time，只有时分秒+秒精度
+timestamp，年月日时分秒
+
+time类型和timestamp类型可以设置为包含时区和不包含时区。并且可以指定精度：time(6).
+
+time类型如果不指定精度，那么默认为0
+
+timestamp类型如果不指定精度，默认为6
+
+注：hsql的字段类型与java.sql.Types里面的字段类型是相同的

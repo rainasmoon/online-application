@@ -96,7 +96,7 @@
 		
 	</appender>
 
-	<logger name="com.rainasmoon" level="debug" />
+	<logger name="com.rainasmoon" level="info" />
 	<logger name="org.springframework.beans.TypeConverterDelegate">
 		<level value="info" />
 	</logger>

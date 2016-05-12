@@ -10,6 +10,11 @@ DROP TABLE yunorders IF EXISTS;
 
 DROP TABLE accountlogs IF EXISTS;
 
+DROP TABLE accountlogs IF EXISTS;
+
+DROP TABLE reset_password_applications IF EXISTS;
+
+
 CREATE TABLE users (
   id INTEGER IDENTITY PRIMARY KEY,
   email VARCHAR(100),
@@ -23,6 +28,8 @@ CREATE TABLE users (
   freeze_account INTEGER,
   level INTEGER,
   credit INTEGER,
+  is_email_confirmed BOOLEAN,
+  is_phone_confirmed BOOLEAN,
   create_date TIMESTAMP
 );
 
@@ -37,7 +44,7 @@ CREATE TABLE products (
   status INTEGER,
   end_date TIMESTAMP,
   aging INTEGER,
-  description VARCHAR(100),
+  description VARCHAR(600),
   create_date TIMESTAMP
 );
 
@@ -96,7 +103,7 @@ CREATE TABLE orders (
   price INTEGER,
   status INTEGER,
   verify_code VARCHAR(100),
-  description VARCHAR(100),
+  description VARCHAR(600),
   create_date TIMESTAMP
  );
  
@@ -106,6 +113,17 @@ CREATE TABLE orders (
   change_amount INTEGER,
   balance INTEGER,
   account_log_type INTEGER,
-  description VARCHAR(100),
+  description VARCHAR(600),
+  create_date TIMESTAMP
+);
+
+CREATE TABLE reset_password_applications (
+  id INTEGER IDENTITY PRIMARY KEY,
+  login_account VARCHAR(100),
+  description VARCHAR(600),
+  password1 VARCHAR(100),
+  password2 VARCHAR(100),
+  password3 VARCHAR(100),
+  receive_reset_email VARCHAR(100), 
   create_date TIMESTAMP
 );

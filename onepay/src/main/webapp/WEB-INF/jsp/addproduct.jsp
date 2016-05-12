@@ -108,9 +108,7 @@
 	</fieldset>
 </form:form>
 
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
 <script src="js/addproduct.js" type="text/javascript"></script>
 
 <jsp:include page="./fragments/footer.jsp" />

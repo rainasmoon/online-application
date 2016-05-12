@@ -15,6 +15,7 @@ import com.rainasmoon.onepay.model.User;
 import com.rainasmoon.onepay.service.TagService;
 import com.rainasmoon.onepay.service.UserService;
 import com.rainasmoon.onepay.vo.AdVo;
+import com.rainasmoon.onepay.vo.ResetPasswordVo;
 import com.rainasmoon.onepay.vo.UserVo;
 
 @Controller
@@ -70,5 +71,21 @@ public class UserController extends BaseController {
 		model.put("user", userVo);
 		model.put("userTags", tags);
 		return "view_me";
+	}
+
+	@RequestMapping(value = { "/reset_password.html" }, method = RequestMethod.GET)
+	public String resetPasswordPage() {
+		return "reset_password";
+	}
+
+	@RequestMapping(value = { "/reset_password_reset.html" }, method = RequestMethod.GET)
+	public String showResetPasswordResetPage(Map<String, Object> model) {
+		model.put("resetPasswordVo", new ResetPasswordVo());
+		return "reset_password_reset";
+	}
+
+	@RequestMapping(value = { "/reset_password_reset.html" }, method = RequestMethod.POST)
+	public String resetPasswordReset(ResetPasswordVo resetPasswordVo, Map<String, Object> model) {
+		return "reset_password_success";
 	}
 }

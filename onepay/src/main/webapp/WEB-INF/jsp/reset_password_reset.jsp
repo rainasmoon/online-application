@@ -14,34 +14,28 @@
 
 <jsp:include page="./fragments/bodyHeader.jsp" />
 
-<form:form modelAttribute="loginVo" method="post" action="login.html" class="form-signin"
-	id="login-form" role="form">
-	<h2 class="form-signin-heading">Please sign in</h2>
+<h1>添加一个商品</h1>
+<form:form modelAttribute="resetPasswordVo" method="post"
+	class="form-horizontal" id="add-resetpassword-application-form">
 	<span class="help-inline"> <c:if test="${not empty message}">
 			<div id="message" class="alert alert-success" role="alert">${message}</div>
-		</c:if> <spring:bind path="error">
+		</c:if> <spring:bind path="*">
 			<c:if test="${status.error}">
 				<div id="error" class="alert alert-danger" role="alert">${status.errorMessage}</div>
 			</c:if>
 		</spring:bind>
 	</span>
-
 	<fieldset>
-		<onepayapp:inputField label="手机号|邮箱" name="account"
-			required="true" autofocus="true"/>
-		<onepayapp:passwordField label="密码" name="password"
-			required="true" />
+		<onepayapp:hiddenField name="account" />
+		<onepayapp:passwordField label="新密码" name="password"
+			required="true" autofocus="true" />	
+		<onepayapp:passwordField label="确认密码" name="confirmPassword"
+			required="true"  />
+		
+		<button id="submit" type="submit" class="btn btn-primary">Submit</button>
 	</fieldset>
-
-	<div class="checkbox">
-		<label> <input type="checkbox" name="rememberMe" value="remember-me" checked/>
-			记住我
-		</label>
-	</div>
-	<div class="pull-right">
-		<a href="reset_password.html">找回密码</a>
-	</div>
-	<button class="btn btn-lg btn-primary btn-block" type="submit">登录|注册</button>
 </form:form>
+
+
 
 <jsp:include page="./fragments/footer.jsp" />

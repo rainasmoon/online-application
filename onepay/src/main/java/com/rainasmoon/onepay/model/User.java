@@ -32,6 +32,10 @@ public class User extends BaseEntity {
 	private Integer level;
 	@Column(name = "credit")
 	private Integer credit;
+	@Column(name = "is_email_confirmed")
+	private Boolean isEmailConfirmed;
+	@Column(name = "is_phone_confirmed")
+	private Boolean isPhoneConfirmed;
 
 	public User() {
 		sellAmount = 0;
@@ -162,6 +166,22 @@ public class User extends BaseEntity {
 
 	public void setFreezeAccount(Integer freezeAccount) {
 		this.freezeAccount = freezeAccount;
+	}
+
+	public Boolean getIsEmailConfirmed() {
+		return isEmailConfirmed;
+	}
+
+	public void setIsEmailConfirmed(Boolean isEmailConfirmed) {
+		this.isEmailConfirmed = isEmailConfirmed;
+	}
+
+	public Boolean getIsPhoneConfirmed() {
+		return isPhoneConfirmed;
+	}
+
+	public void setIsPhoneConfirmed(Boolean isPhoneConfirmed) {
+		this.isPhoneConfirmed = isPhoneConfirmed;
 	}
 
 }

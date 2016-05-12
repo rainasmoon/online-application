@@ -18,6 +18,8 @@ CREATE TABLE IF NOT EXISTS users (
   freeze_account INT(8),
   level TINYINT UNSIGNED,
   credit INT(8),
+  is_email_confirmed BOOLEAN,
+  is_phone_confirmed BOOLEAN,
   create_date TIMESTAMP,
   UNIQUE (email),
   UNIQUE (phone),
@@ -110,3 +112,14 @@ CREATE TABLE IF NOT EXISTS orders (
   description VARCHAR(600),
   create_date TIMESTAMP
 ) engine=InnoDB CHARSET=utf8;
+
+CREATE TABLE reset_password_applications (
+  id INT(8) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  login_account VARCHAR(100),
+  description VARCHAR(600),
+  password1 VARCHAR(100),
+  password2 VARCHAR(100),
+  password3 VARCHAR(100),
+  receive_reset_email VARCHAR(100), 
+  create_date TIMESTAMP
+)engine=InnoDB CHARSET=utf8;
