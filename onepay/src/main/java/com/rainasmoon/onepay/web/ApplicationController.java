@@ -21,7 +21,7 @@ public class ApplicationController {
 	@RequestMapping(value = { "/reset_password_application.html" }, method = RequestMethod.GET)
 	public String showApplicationForm(Map<String, Object> model) {
 
-		model.put("account", new ResetPasswordApplication());
+		model.put("resetPasswordApplication", new ResetPasswordApplication());
 		return "reset_password_application";
 	}
 
