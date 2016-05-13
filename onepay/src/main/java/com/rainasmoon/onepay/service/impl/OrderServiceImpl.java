@@ -55,8 +55,7 @@ public class OrderServiceImpl implements OrderService {
 	public String orderPay(Long orderId) {
 
 		Order order = repository.findOne(orderId);
-		TransferResult result = accountService.transferAccount(
-				order.getBuyerId(), order.getSalerId(), order.getPrice());
+		TransferResult result = accountService.transferAccount(order.getBuyerId(), order.getSalerId(), order.getPrice());
 		if (result.isSuccess()) {
 			order.setStatus(OrderStatus.PAYED.getCode());
 			repository.save(order);
@@ -126,6 +125,11 @@ public class OrderServiceImpl implements OrderService {
 		order.setStatus(OrderStatus.SENDED.getCode());
 		repository.save(order);
 		return null;
+	}
+
+	@Override
+	public List<Order> findAllOrders() {
+		return (List<Order>) repository.findAll();
 	}
 
 }
