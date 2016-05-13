@@ -6,7 +6,7 @@
 		<a href="#">返回顶部</a>
 	</p>
 	<p>
-		<img src="pic/wechat_qr_code.jpg" width="100" height="100">&copy; <span><strong>冀ICP备15002959号-1</strong></span>&nbsp;<span>所有版权归一元网</span>
+		<img src="pic/wechat_qr_code.jpg" width="100" height="100">&copy; <span><strong>冀ICP备15002959号-1 &nbsp;</strong></span>&nbsp;<span>&nbsp; 所有版权归一元网 </span>
 		
 	</p>
 	<p>
