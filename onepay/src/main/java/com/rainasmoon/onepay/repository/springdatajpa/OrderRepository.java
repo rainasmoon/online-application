@@ -12,4 +12,7 @@ import com.rainasmoon.onepay.model.Order;
 public interface OrderRepository extends CrudRepository<Order, Long> {
 	@Query("select d from Order d where d.salerId = :userId or d.buyerId = :userId")
 	List<Order> findBySalerIdOrBuyerId(@Param("userId") Long userId);
+
+	@Override
+	List<Order> findAll();
 }

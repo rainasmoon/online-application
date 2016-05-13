@@ -130,7 +130,7 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	@Transactional(readOnly = true)
 	public List<Order> listAllOrders() {
-		return (List<Order>) repository.findAll();
+		return repository.findAll();
 	}
 
 }

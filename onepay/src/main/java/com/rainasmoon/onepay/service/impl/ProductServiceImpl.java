@@ -138,7 +138,7 @@ public class ProductServiceImpl implements ProductService {
 	@Transactional(readOnly = true)
 	public List<Product> listAllProducts() {
 
-		return (List<Product>) repository.findAll();
+		return repository.findAll();
 	}
 
 }

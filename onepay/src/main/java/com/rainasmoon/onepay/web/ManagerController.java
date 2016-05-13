@@ -62,7 +62,7 @@ public class ManagerController extends BaseController {
 		return "top10users";
 	}
 
-	@RequestMapping(value = { "/manage_all_products.html" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/manage_all_sales.html" }, method = RequestMethod.GET)
 	public String manageAllProducts(Map<String, Object> model) {
 		if (!isLogin()) {
 			return "redirect:login.html";
