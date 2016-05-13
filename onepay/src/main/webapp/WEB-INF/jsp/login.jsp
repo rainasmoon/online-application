@@ -16,7 +16,7 @@
 
 <form:form modelAttribute="loginVo" method="post" action="login.html" class="form-signin"
 	id="login-form" role="form">
-	<h2 class="form-signin-heading">Please sign in</h2>
+	<h2 class="form-signin-heading">请登录</h2>
 	<span class="help-inline"> <c:if test="${not empty message}">
 			<div id="message" class="alert alert-success" role="alert">${message}</div>
 		</c:if> <spring:bind path="error">
@@ -27,7 +27,7 @@
 	</span>
 
 	<fieldset>
-		<onepayapp:inputField label="手机号|邮箱" name="account"
+		<onepayapp:inputField label="手机号 | 邮箱" name="account"
 			required="true" autofocus="true"/>
 		<onepayapp:passwordField label="密码" name="password"
 			required="true" />
@@ -41,7 +41,7 @@
 	<div class="pull-right">
 		<a href="reset_password.html">找回密码</a>
 	</div>
-	<button class="btn btn-lg btn-primary btn-block" type="submit">登录|注册</button>
+	<button class="btn btn-lg btn-primary btn-block" type="submit">登录 | 注册</button>
 </form:form>
 
 <jsp:include page="./fragments/footer.jsp" />
