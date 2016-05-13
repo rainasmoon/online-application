@@ -74,10 +74,6 @@
 
 <hr />
 
-<div id="wx_pic" style="margin:0 auto; display:none;">
-	<img alt="" src="pic/pic300.jpg"/>
-</div>
-
 <script src="js/listproduct.js"></script>
 
 <jsp:include page="./fragments/footer.jsp" />

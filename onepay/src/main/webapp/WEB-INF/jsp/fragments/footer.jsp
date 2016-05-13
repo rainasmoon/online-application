@@ -13,7 +13,7 @@
 		<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;<span>如有疑问，建议，或投诉，请 </span><a
 			href="mailto:rainasmoon@126.com?subject=[OneYuanHelp]&body=Welcome">给我写邮件</a>
 	</p>
-	<p class="pull-right">版本:1.0.5</p>
+	<p class="pull-right">版本:1.0.6</p>
 </footer>
 
 </div>
@@ -26,6 +26,8 @@
 
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
-
+<div id="wx_pic" style="margin:0 auto; display:none;">
+	<img alt="" src="pic/pic300.jpg"/>
+</div>
 </body>
 </html>
