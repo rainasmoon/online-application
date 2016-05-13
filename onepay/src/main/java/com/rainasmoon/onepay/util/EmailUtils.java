@@ -9,34 +9,30 @@ import org.slf4j.LoggerFactory;
 
 public class EmailUtils {
 
-	public static Logger LOGGER = LoggerFactory.getLogger(EmailUtils.class);
+    public static Logger LOGGER = LoggerFactory.getLogger(EmailUtils.class);
 
-	private static Email email = new SimpleEmail();
+    public static void sendEmail(String title, String content, String to) {
+        try {
+            privateSendEmail(title, content, to);
+        } catch (EmailException e) {
+            LOGGER.error("sendEmail Exception.", e);
+            e.printStackTrace();
+        }
+    }
 
-	static {
-		email.setHostName("smtp.rainasmoon.com");
-		email.setSmtpPort(25);
-		email.setAuthenticator(new DefaultAuthenticator("help@rainasmoon.com", "Fhwl7758"));
-		email.setSSLOnConnect(false);
+    private static void privateSendEmail(String title, String content, String to) throws EmailException {
+        Email email = new SimpleEmail();
 
-	}
+        email.setHostName("smtp.rainasmoon.com");
+        email.setSmtpPort(25);
+        email.setAuthenticator(new DefaultAuthenticator("help@rainasmoon.com", "Fhwl7758"));
+        email.setSSLOnConnect(false);
 
-	public static void sendEmail(String title, String content, String to) {
-		try {
-			privateSendEmail(title, content, to);
-		} catch (EmailException e) {
-			LOGGER.error("sendEmail Exception.", e);
-			e.printStackTrace();
-		}
-	}
+        email.setFrom("help@rainasmoon.com");
 
-	private static void privateSendEmail(String title, String content, String to) throws EmailException {
-
-		email.setFrom("help@rainasmoon.com");
-
-		email.setSubject(title);
-		email.setMsg(content);
-		email.addTo(to);
-		email.send();
-	}
+        email.setSubject(title);
+        email.setMsg(content);
+        email.addTo(to);
+        email.send();
+    }
 }

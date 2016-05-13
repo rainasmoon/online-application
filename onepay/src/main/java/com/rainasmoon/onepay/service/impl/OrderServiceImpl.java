@@ -12,6 +12,7 @@ import com.rainasmoon.onepay.model.Product;
 import com.rainasmoon.onepay.repository.springdatajpa.OrderRepository;
 import com.rainasmoon.onepay.repository.springdatajpa.ProductRepository;
 import com.rainasmoon.onepay.service.AccountService;
+import com.rainasmoon.onepay.service.NoticeService;
 import com.rainasmoon.onepay.service.OrderService;
 import com.rainasmoon.onepay.service.dto.TransferResult;
 import com.rainasmoon.onepay.vo.FillOrderVo;
@@ -28,6 +29,9 @@ public class OrderServiceImpl implements OrderService {
 	@Autowired
 	private AccountService accountService;
 
+	@Autowired
+	private NoticeService noticeService;
+
 	@Override
 	@Transactional
 	public Order createOrder(Long userId, Long productId, Integer money) {
@@ -40,6 +44,7 @@ public class OrderServiceImpl implements OrderService {
 		order.setStatus(OrderStatus.WAITPAY.getCode());
 
 		repository.save(order);
+		noticeService.makeOrderNotice(order);
 		return order;
 	}
 
@@ -55,10 +60,12 @@ public class OrderServiceImpl implements OrderService {
 	public String orderPay(Long orderId) {
 
 		Order order = repository.findOne(orderId);
-		TransferResult result = accountService.transferAccount(order.getBuyerId(), order.getSalerId(), order.getPrice());
+		TransferResult result = accountService.transferAccount(
+				order.getBuyerId(), order.getSalerId(), order.getPrice());
 		if (result.isSuccess()) {
 			order.setStatus(OrderStatus.PAYED.getCode());
 			repository.save(order);
+			noticeService.makeOrderNotice(order);
 		}
 
 		return result.getMessage();
@@ -124,6 +131,7 @@ public class OrderServiceImpl implements OrderService {
 		Order order = repository.findOne(orderId);
 		order.setStatus(OrderStatus.SENDED.getCode());
 		repository.save(order);
+		noticeService.makeOrderNotice(order);
 		return null;
 	}
 
