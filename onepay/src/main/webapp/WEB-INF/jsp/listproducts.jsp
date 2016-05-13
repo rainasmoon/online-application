@@ -38,7 +38,7 @@
 			<c:forEach var="arow" items="${vo.products}">
 				<div class="col-xs-6 col-lg-4">
 					<a href="bid.html?productId=${arow.objId }"> <img
-						class="img-circle" src="product_pic/thumbnail/${arow.picPath }"
+						class="img-rounded" src="product_pic/thumbnail/${arow.picPath }"
 						alt="Generic placeholder image" width="140" height="140" />
 					</a>
 					<h2>
