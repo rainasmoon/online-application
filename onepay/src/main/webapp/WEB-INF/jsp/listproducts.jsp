@@ -49,8 +49,7 @@
 					</p>
 					<p>
 						<a class="btn btn-default"
-							href="bid.html?productId=${arow.objId }" role="button">View
-							details &raquo;</a>
+							href="bid.html?productId=${arow.objId }" role="button">查看 &raquo;</a>
 					</p>
 				</div>
 				<!--/.col-xs-6.col-lg-4-->

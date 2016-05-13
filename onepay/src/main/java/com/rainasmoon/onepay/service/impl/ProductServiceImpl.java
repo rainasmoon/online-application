@@ -47,8 +47,7 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	@Transactional(readOnly = true)
 	public List<AdVo> listAllOnSaleProductsPage() {
-		Iterable<Product> allProducts = repository
-				.findByStatusOrderByIdDesc(ProductStatus.ONSALE.getCode());
+		Iterable<Product> allProducts = repository.findByStatusOrderByIdDesc(ProductStatus.ONSALE.getCode());
 		List<AdVo> result = new ArrayList<AdVo>();
 		for (Product p : allProducts) {
 			AdVo adVo = new AdVo();
@@ -93,8 +92,7 @@ public class ProductServiceImpl implements ProductService {
 		productVo.setProductTitle(product.getName());
 		productVo.setPrice(product.getPrice());
 		if (product.getCurrentBiderId() != null) {
-			productVo.setCurrentOwer(userRepository.findOne(
-					product.getCurrentBiderId()).getShowName());
+			productVo.setCurrentOwer(userRepository.findOne(product.getCurrentBiderId()).getShowName());
 		}
 		productVo.setSaleModel(SaleModels.valueOf(product.getSaleModel()));
 		productVo.setEndDate(product.getEndDate());
@@ -134,6 +132,13 @@ public class ProductServiceImpl implements ProductService {
 	public List<Picture> findProductPics(Long productId) {
 
 		return pictureRepository.findPictures(productId);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<Product> listAllProducts() {
+
+		return (List<Product>) repository.findAll();
 	}
 
 }
