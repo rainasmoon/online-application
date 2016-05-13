@@ -20,4 +20,6 @@ public interface UserService {
 
 	String resetPassword(String account, String newPassword);
 
+	List<User> listAllUsers();
+
 }

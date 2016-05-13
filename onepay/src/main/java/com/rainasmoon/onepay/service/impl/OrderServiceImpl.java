@@ -128,7 +128,8 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public List<Order> findAllOrders() {
+	@Transactional(readOnly = true)
+	public List<Order> listAllOrders() {
 		return (List<Order>) repository.findAll();
 	}
 

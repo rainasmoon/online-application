@@ -34,5 +34,5 @@ public interface OrderService {
 
 	public String orderSend(Long orderId);
 
-	public List<Order> findAllOrders();
+	public List<Order> listAllOrders();
 }

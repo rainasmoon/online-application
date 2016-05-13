@@ -38,7 +38,7 @@ public class ManagerController extends BaseController {
 	@RequestMapping(value = { "/manage_all_users.html" }, method = RequestMethod.GET)
 	public String manageAllUsers(Map<String, Object> model) {
 
-		List<User> results = userService.listActiveTop5Users();
+		List<User> results = userService.listAllUsers();
 
 		List<AdVo> vip4users = new ArrayList<AdVo>();
 
@@ -67,7 +67,7 @@ public class ManagerController extends BaseController {
 		if (!isLogin()) {
 			return "redirect:login.html";
 		}
-		List<Product> mysales = productService.listMySalesProductsPage(getLoginUserId());
+		List<Product> mysales = productService.listAllProducts();
 		List<ProductVo> result = new ArrayList<ProductVo>();
 		for (Product product : mysales) {
 			ProductVo productVo = dozerBeanMapper.map(product, ProductVo.class);
@@ -85,7 +85,7 @@ public class ManagerController extends BaseController {
 		if (!isLogin()) {
 			return "redirect:login.html";
 		}
-		List<Order> myOrders = orderService.findMyOrders(getLoginUserId());
+		List<Order> myOrders = orderService.listAllOrders();
 		List<OrderVo> result = new ArrayList<OrderVo>();
 		for (Order order : myOrders) {
 			OrderVo orderVo = dozerBeanMapper.map(order, OrderVo.class);

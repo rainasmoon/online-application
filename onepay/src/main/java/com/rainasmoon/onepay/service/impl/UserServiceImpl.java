@@ -83,4 +83,15 @@ public class UserServiceImpl implements UserService {
 		userRepository.save(user);
 		return "update password success";
 	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<User> listAllUsers() {
+		Iterable<User> users = userRepository.findAll();
+		List<User> result = new ArrayList<User>();
+		for (User u : users) {
+			result.add(u);
+		}
+		return result;
+	}
 }
