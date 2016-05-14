@@ -8,39 +8,42 @@ import org.springframework.stereotype.Component;
 
 import com.rainasmoon.onepay.service.BidService;
 import com.rainasmoon.onepay.service.job.impl.EmailSendLog;
+import com.rainasmoon.onepay.util.EmailUtils;
 
 @Component
 public class SendEmailAccessLogJob {
 
-	public static Logger LOGGER = LoggerFactory
-			.getLogger(SendEmailAccessLogJob.class);
+    public static Logger LOGGER = LoggerFactory.getLogger(SendEmailAccessLogJob.class);
 
-	@Autowired
-	private BidService bidService;
+    @Autowired
+    private BidService bidService;
 
-	@Scheduled(cron = "0 0 23 * * ?")
-	public void run() {
-		printLog("发送邮件开始——");
-		try {
-			new EmailSendLog().sendAccessLog();
-		} catch (Exception e) {
-			e.printStackTrace();
-			printLog("Error:" + e);
-		}
-		printLog("发送邮件结束】】】");
-	}
+    @Scheduled(cron = "0 0 23 * * ?")
+    public void run() {
+        printLog("发送邮件开始——");
+        try {
+            new EmailSendLog().sendAccessLog();
+        } catch (Exception e) {
+            e.printStackTrace();
+            printLog("Error:" + e);
+        }
+        printLog("发送邮件结束】】】");
+    }
 
-	@Scheduled(cron = "0 0 0 * * ?")
-	public void runScheduledGenerateOrders() {
-		printLog("自动生成Order开始——");
-		bidService.generateBidThreeDays();
+    @Scheduled(cron = "0 0 0 * * ?")
+    public void runScheduledGenerateOrders() {
+        printLog("自动生成Order开始——");
+        String result = bidService.generateBidThreeDays();
 
-		bidService.generateBidThreeTimes();
-		printLog("自动生成Order结束】】】");
-	}
+        result += bidService.generateBidThreeTimes();
 
-	private void printLog(String message) {
-		LOGGER.info(message);
-		System.out.println(message);
-	}
+        EmailUtils.sendEmail("自动生成Order", result, "rainasmoon@126.com");
+
+        printLog("自动生成Order结束】】】");
+    }
+
+    private void printLog(String message) {
+        LOGGER.info(message);
+        System.out.println(message);
+    }
 }
