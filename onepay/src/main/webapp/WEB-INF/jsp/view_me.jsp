@@ -22,7 +22,7 @@
 				<td>邮箱</td>
 				<td><div id="modifyEmail">
 						<c:out value="${user.email}" />
-						| <a href="javascript:modifyEmail()">编辑</a>
+						<c:if test="${not user.isEmailConfirmed}">| <a href="javascript:modifyEmail()">编辑</a> | <a href="send_verify_email.html">验证邮箱</a></c:if>
 					</div></td>
 			</tr>
 			<tr>

@@ -10,7 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.rainasmoon.onepay.model.User;
 import com.rainasmoon.onepay.repository.springdatajpa.UserRepository;
 import com.rainasmoon.onepay.service.UserService;
+import com.rainasmoon.onepay.util.CommonConstants;
 import com.rainasmoon.onepay.util.CommonUtils;
+import com.rainasmoon.onepay.util.EmailUtils;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -74,8 +76,8 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	@Transactional
-	public String resetPassword(String account, String newPassword) {
-		User user = userRepository.findByEmailOrPhone(account);
+	public String resetPassword(Long userId, String newPassword) {
+		User user = userRepository.findOne(userId);
 		if (user == null) {
 			return "user not exist";
 		}
@@ -93,5 +95,23 @@ public class UserServiceImpl implements UserService {
 			result.add(u);
 		}
 		return result;
+	}
+
+	@Override
+	@Transactional
+	public String verifyEmail(Long userId) {
+		User user = userRepository.findOne(userId);
+		user.setIsEmailConfirmed(true);
+		userRepository.save(user);
+		return null;
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public String sendVerifyEmail(Long userId) {
+		User user = userRepository.findOne(userId);
+		String code = userId.toString();
+		EmailUtils.sendEmail("验证邮箱", "请点击如下地扯：" + CommonConstants.BASE_URL + "/verify_email.html?code=" + code, user.getEmail());
+		return null;
 	}
 }

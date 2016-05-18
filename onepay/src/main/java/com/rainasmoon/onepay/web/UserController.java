@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.rainasmoon.onepay.model.Tag;
 import com.rainasmoon.onepay.model.User;
@@ -79,8 +80,12 @@ public class UserController extends BaseController {
 	}
 
 	@RequestMapping(value = { "/reset_password_reset.html" }, method = RequestMethod.GET)
-	public String showResetPasswordResetPage(Map<String, Object> model) {
-		model.put("resetPasswordVo", new ResetPasswordVo());
+	public String showResetPasswordResetPage(@RequestParam(value = "code") String code, Map<String, Object> model) {
+
+		// TODO decrypted code.
+		ResetPasswordVo vo = new ResetPasswordVo();
+		vo.setAccount(code);
+		model.put("resetPasswordVo", vo);
 		return "reset_password_reset";
 	}
 
@@ -88,8 +93,31 @@ public class UserController extends BaseController {
 	public String resetPasswordReset(ResetPasswordVo resetPasswordVo, Map<String, Object> model) {
 		// check the code if it's legal.
 		// reset password.
-		String message = userService.resetPassword(resetPasswordVo.getAccount(), resetPasswordVo.getPassword());
+		Long userId = Long.parseLong(resetPasswordVo.getAccount());
+		String message = userService.resetPassword(userId, resetPasswordVo.getPassword());
 		model.put("message", message);
 		return "reset_password_success";
+	}
+
+	@RequestMapping(value = { "/send_verify_email.html" }, method = RequestMethod.GET)
+	public String sendVerifyEmail(Map<String, Object> model) {
+
+		String message = userService.sendVerifyEmail(getLoginUserId());
+
+		model.put("message", message);
+		return "verify_email_success";
+	}
+
+	@RequestMapping(value = { "/verify_email.html" }, method = RequestMethod.GET)
+	public String verifyEmail(@RequestParam(value = "code") String code, Map<String, Object> model) {
+
+		// TODO decrypted code.
+
+		Long userId = Long.parseLong(code);
+
+		String message = userService.verifyEmail(userId);
+
+		model.put("message", message);
+		return "verify_email_success";
 	}
 }

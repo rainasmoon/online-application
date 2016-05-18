@@ -18,8 +18,12 @@ public interface UserService {
 
 	User updateUser(User user);
 
-	String resetPassword(String account, String newPassword);
+	String resetPassword(Long userId, String newPassword);
 
 	List<User> listAllUsers();
+
+	String verifyEmail(Long userId);
+
+	String sendVerifyEmail(Long userId);
 
 }

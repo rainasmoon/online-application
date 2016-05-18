@@ -68,6 +68,14 @@
 
 	<dependencies>
 
+	    <dependency>  
+                <groupId>com.taobao</groupId>  
+                <artifactId>taobaosdk</artifactId>  
+                <version>1.0</version> 
+                <scope>system</scope>                   
+                <systemPath>${project.basedir}/ext_lib/taobao-sdk-java-auto_1455552377940-20160505.jar</systemPath>  
+            </dependency>  
+
 		<dependency>
 			<groupId>org.apache.tomcat</groupId>
 			<artifactId>tomcat-servlet-api</artifactId>
