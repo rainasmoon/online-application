@@ -9,7 +9,7 @@
 
 
 <jsp:include page="./fragments/headTag.jsp" />
-<title>货币市场</title>
+<title>重置密码</title>
 
 <jsp:include page="./fragments/bodyHeader.jsp" />
 
@@ -18,9 +18,7 @@
 		<div id="message" class="alert alert-success" role="alert">${message}</div>
 	</c:if>
 </span>
-<div class="well">
-	<p>找回成功，请重新登录</p>
-</div>
+
 <a href="login.html" class="btn btn-primary btn-lg " role="button">返回</a>
 
 <jsp:include page="./fragments/footer.jsp" />

@@ -9,7 +9,7 @@
 
 
 <jsp:include page="./fragments/headTag.jsp" />
-<title>货币市场</title>
+<title>验证邮箱</title>
 
 <jsp:include page="./fragments/bodyHeader.jsp" />
 
@@ -19,7 +19,7 @@
 	</c:if>
 </span>
 <div class="well">
-	<p>验证邮箱成功</p>
+	<p>验证邮箱</p>
 </div>
 <a href="viewme.html" class="btn btn-primary btn-lg " role="button">返回</a>
 

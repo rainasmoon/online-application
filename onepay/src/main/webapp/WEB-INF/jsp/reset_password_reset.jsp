@@ -9,12 +9,12 @@
 <%@ taglib prefix="onepayapp" tagdir="/WEB-INF/tags"%>
 
 <jsp:include page="./fragments/headTag.jsp" />
-<title>Signin</title>
+<title>重置密码</title>
 <link href="css/signin.css" rel="stylesheet" />
 
 <jsp:include page="./fragments/bodyHeader.jsp" />
 
-<h1>添加一个商品</h1>
+<h1>重置密码</h1>
 <form:form modelAttribute="resetPasswordVo" method="post"
 	class="form-horizontal" id="add-resetpassword-application-form">
 	<span class="help-inline"> <c:if test="${not empty message}">

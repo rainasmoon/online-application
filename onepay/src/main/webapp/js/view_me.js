@@ -47,7 +47,7 @@ function saveUserInfoEmail() {
 		value : $("#newInputEmail").val()
 	}, function(data, status) {
 		$("#modifyEmail").html(
-				data + ' | <a href="javascript:modifyEmail()">编辑</a>');
+				data + ' | <a href="javascript:modifyEmail()">编辑</a> | <a href="send_verify_email.html">验证邮箱</a>');
 	});
 }
 function saveUserInfoPhone() {
