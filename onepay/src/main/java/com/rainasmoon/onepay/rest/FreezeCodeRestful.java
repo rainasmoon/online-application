@@ -12,7 +12,7 @@ import com.rainasmoon.onepay.service.AccountService;
 import com.rainasmoon.onepay.service.YunOrderService;
 import com.rainasmoon.onepay.service.dto.TransferResult;
 import com.rainasmoon.onepay.util.CommonConstants;
-import com.rainasmoon.onepay.util.FreezeCodeUtils;
+import com.rainasmoon.onepay.util.EncodeUtils;
 import com.rainasmoon.onepay.web.BaseController;
 
 @RestController
@@ -31,7 +31,7 @@ public class FreezeCodeRestful extends BaseController {
 			return CommonConstants.NO_LOGIN_MSG;
 		}
 
-		Map<String, String> result = FreezeCodeUtils.decryptToMap(freezeCode);
+		Map<String, String> result = EncodeUtils.decryptToMap(freezeCode);
 		if (result == null) {
 			return "请核实验证码";
 		}

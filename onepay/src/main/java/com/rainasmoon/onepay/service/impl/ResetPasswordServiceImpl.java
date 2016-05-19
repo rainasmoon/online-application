@@ -11,6 +11,7 @@ import com.rainasmoon.onepay.repository.springdatajpa.UserRepository;
 import com.rainasmoon.onepay.service.ResetPasswordService;
 import com.rainasmoon.onepay.util.CommonConstants;
 import com.rainasmoon.onepay.util.EmailUtils;
+import com.rainasmoon.onepay.util.EncodeUtils;
 
 @Service
 public class ResetPasswordServiceImpl implements ResetPasswordService {
@@ -30,14 +31,13 @@ public class ResetPasswordServiceImpl implements ResetPasswordService {
 
 		if (user != null) {
 
-			// TODO glen
 			String code = user.getId().toString();
-
-			EmailUtils.sendEmail("重置密码", "重置密码，请点击：" + CommonConstants.BASE_URL + "/reset_password_reset.html?code=" + code, application.getReceiveResetEmail());
+			String result = EncodeUtils.encrypt("V", code);
+			EmailUtils.sendEmail("重置密码", "重置密码，请点击：" + CommonConstants.BASE_URL + "/reset_password_reset.html?code=" + result, application.getReceiveResetEmail());
 
 		}
 
-		return "存储成功";
+		return "申请成功，请等待";
 	}
 
 }

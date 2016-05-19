@@ -15,6 +15,7 @@ import com.rainasmoon.onepay.model.Tag;
 import com.rainasmoon.onepay.model.User;
 import com.rainasmoon.onepay.service.TagService;
 import com.rainasmoon.onepay.service.UserService;
+import com.rainasmoon.onepay.util.EncodeUtils;
 import com.rainasmoon.onepay.vo.AdVo;
 import com.rainasmoon.onepay.vo.ResetPasswordVo;
 import com.rainasmoon.onepay.vo.UserVo;
@@ -82,7 +83,6 @@ public class UserController extends BaseController {
 	@RequestMapping(value = { "/reset_password_reset.html" }, method = RequestMethod.GET)
 	public String showResetPasswordResetPage(@RequestParam(value = "code") String code, Map<String, Object> model) {
 
-		// TODO decrypted code.
 		ResetPasswordVo vo = new ResetPasswordVo();
 		vo.setAccount(code);
 		model.put("resetPasswordVo", vo);
@@ -93,7 +93,10 @@ public class UserController extends BaseController {
 	public String resetPasswordReset(ResetPasswordVo resetPasswordVo, Map<String, Object> model) {
 		// check the code if it's legal.
 		// reset password.
-		Long userId = Long.parseLong(resetPasswordVo.getAccount());
+
+		Map<String, String> result = EncodeUtils.decryptToMap(resetPasswordVo.getAccount());
+
+		Long userId = Long.parseLong(result.get("value"));
 		String message = userService.resetPassword(userId, resetPasswordVo.getPassword());
 		model.put("message", message);
 		return "reset_password_success";
@@ -111,9 +114,9 @@ public class UserController extends BaseController {
 	@RequestMapping(value = { "/verify_email.html" }, method = RequestMethod.GET)
 	public String verifyEmail(@RequestParam(value = "code") String code, Map<String, Object> model) {
 
-		// TODO decrypted code.
+		Map<String, String> result = EncodeUtils.decryptToMap(code);
 
-		Long userId = Long.parseLong(code);
+		Long userId = Long.parseLong(result.get("value"));
 
 		String message = userService.verifyEmail(userId);
 

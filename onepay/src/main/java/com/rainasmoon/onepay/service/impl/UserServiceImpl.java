@@ -13,6 +13,7 @@ import com.rainasmoon.onepay.service.UserService;
 import com.rainasmoon.onepay.util.CommonConstants;
 import com.rainasmoon.onepay.util.CommonUtils;
 import com.rainasmoon.onepay.util.EmailUtils;
+import com.rainasmoon.onepay.util.EncodeUtils;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -111,7 +112,8 @@ public class UserServiceImpl implements UserService {
 	public String sendVerifyEmail(Long userId) {
 		User user = userRepository.findOne(userId);
 		String code = userId.toString();
-		EmailUtils.sendEmail("验证邮箱", "请点击如下地扯：" + CommonConstants.BASE_URL + "/verify_email.html?code=" + code, user.getEmail());
+		String result = EncodeUtils.encrypt("V", code);
+		EmailUtils.sendEmail("验证邮箱", "请点击如下地扯：" + CommonConstants.BASE_URL + "/verify_email.html?code=" + result, user.getEmail());
 		return null;
 	}
 }

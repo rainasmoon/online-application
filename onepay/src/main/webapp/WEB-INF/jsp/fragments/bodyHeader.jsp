@@ -18,12 +18,11 @@
 				</button>
 				<a class="navbar-brand" href="welcome.html">一元网</a>
 				<div class="visible-xs" style="align:middle;">
-        	<a class="navbar-brand"  href="addproduct.html">上传货品</a>
+        	<a class="navbar-brand active" href="addproduct.html">上传货品</a>
    		</div>
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-<!-- 					<li class="active"><a href="welcome.html">Home</a></li> -->
 					<li class="active"><a href="listproducts.html">“东西”汇</a></li>
 <!-- 					<li><a href="top10users.html">Top 10 users</a></li> -->
 					<c:if test="${empty userId}">

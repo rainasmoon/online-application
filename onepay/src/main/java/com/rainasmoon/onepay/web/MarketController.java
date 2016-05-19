@@ -20,7 +20,7 @@ import com.rainasmoon.onepay.model.YunOrder;
 import com.rainasmoon.onepay.service.UserService;
 import com.rainasmoon.onepay.service.YunOrderService;
 import com.rainasmoon.onepay.util.CommonUtils;
-import com.rainasmoon.onepay.util.FreezeCodeUtils;
+import com.rainasmoon.onepay.util.EncodeUtils;
 import com.rainasmoon.onepay.vo.AddYunOrderVo;
 import com.rainasmoon.onepay.vo.YunOrderVo;
 
@@ -161,7 +161,7 @@ public class MarketController extends BaseController {
 
 	@RequestMapping(value = { "/market_unfreeze.html" }, method = RequestMethod.POST)
 	public String unfreezeYunOrder(Long yunOrderId, String unfreezeCode, Map<String, Object> model) {
-		Map<String, String> result = FreezeCodeUtils.decryptToMap(unfreezeCode);
+		Map<String, String> result = EncodeUtils.decryptToMap(unfreezeCode);
 		if (result == null) {
 			model.put("message", "请核实验证码");
 			return "market_unfreeze_success";
@@ -178,7 +178,7 @@ public class MarketController extends BaseController {
 
 	@RequestMapping(value = { "/market_view_trade.html" }, method = RequestMethod.GET)
 	public String viewTrade(Long yunOrderId, Map<String, Object> model) {
-		String freezeCode = FreezeCodeUtils.encrypt("O", yunOrderId.toString());
+		String freezeCode = EncodeUtils.encrypt("O", yunOrderId.toString());
 		model.put("yunOrderId", yunOrderId);
 		model.put("freezeCode", freezeCode);
 		return "market_view_trade";

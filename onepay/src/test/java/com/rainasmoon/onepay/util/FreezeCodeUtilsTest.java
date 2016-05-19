@@ -15,15 +15,14 @@ public class FreezeCodeUtilsTest {
 
 	@Test
 	public void shouldTest() {
-		String freezeCode = FreezeCodeUtils.encrypt("O", "1");
+		String freezeCode = EncodeUtils.encrypt("O", "1");
 		LOGGER.info(freezeCode);
 
-		String content = FreezeCodeUtils.decrypt("05WJrbfsa0A=");
+		String content = EncodeUtils.decrypt("05WJrbfsa0A%3D");
 		assertEquals("O_1", content);
 		LOGGER.info(content);
 
-		Map<String, String> result = FreezeCodeUtils
-				.decryptToMap("05WJrbfsa0A=");
+		Map<String, String> result = EncodeUtils.decryptToMap("05WJrbfsa0A=");
 		assertEquals("O", result.get("function"));
 		assertEquals("1", result.get("value"));
 
@@ -31,11 +30,11 @@ public class FreezeCodeUtilsTest {
 
 	@Test
 	public void shouldFail() {
-		assertEquals("O_1", FreezeCodeUtils.decrypt("05WJrbfsa0A="));
-		assertEquals("O_1", FreezeCodeUtils.decrypt("05WJrbfsa0A=23we"));
-		assertEquals("O_1", FreezeCodeUtils.decrypt("05WJrbfsa0A=12345678"));
-		assertNotNull(FreezeCodeUtils.decrypt("05WJrbfsa0A="));
-		assertNull(FreezeCodeUtils.decrypt("05WJrbsfsa0A="));
-		assertNull(FreezeCodeUtils.decrypt("we05WJrbfsa0A=1qw"));
+		assertEquals("O_1", EncodeUtils.decrypt("05WJrbfsa0A="));
+		assertEquals("O_1", EncodeUtils.decrypt("05WJrbfsa0A=23we"));
+		assertEquals("O_1", EncodeUtils.decrypt("05WJrbfsa0A=12345678"));
+		assertNotNull(EncodeUtils.decrypt("05WJrbfsa0A="));
+		assertNull(EncodeUtils.decrypt("05WJrbsfsa0A="));
+		assertNull(EncodeUtils.decrypt("we05WJrbfsa0A=1qw"));
 	}
 }
