@@ -21,9 +21,9 @@ public class MessageTest {
 		req.setExtend("123456");
 		req.setSmsType("normal");
 		req.setSmsFreeSignName("阿里大鱼");
-		req.setSmsParamString("{\"code\":\"1234\",\"product\":\"alidayu\"}");
-		req.setRecNum("13000000000");
-		req.setSmsTemplateCode("SMS_585014");
+		req.setSmsParamString("{\"code\":\"1234\",\"name\":\"alidayu\"}");
+		req.setRecNum("15811015803");
+		req.setSmsTemplateCode("SMS_9595785");
 		AlibabaAliqinFcSmsNumSendResponse rsp = client.execute(req);
 		System.out.println(rsp.getBody());
 	}
