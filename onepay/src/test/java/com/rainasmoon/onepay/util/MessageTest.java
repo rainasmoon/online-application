@@ -10,21 +10,21 @@ import com.taobao.api.response.AlibabaAliqinFcSmsNumSendResponse;
 
 public class MessageTest {
 
-	private String url = "http://gw.api.taobao.com/router/rest";
-	private String appkey = "23368055";
-	private String secret = "2e6150177b3c7894bce257b630b82561";
+    private String url = "http://gw.api.taobao.com/router/rest";
+    private String appkey = "23368055";
+    private String secret = "2e6150177b3c7894bce257b630b82561";
 
-	@Test
-	public void test() throws ApiException {
-		TaobaoClient client = new DefaultTaobaoClient(url, appkey, secret);
-		AlibabaAliqinFcSmsNumSendRequest req = new AlibabaAliqinFcSmsNumSendRequest();
-		req.setExtend("123456");
-		req.setSmsType("normal");
-		req.setSmsFreeSignName("阿里大鱼");
-		req.setSmsParamString("{\"code\":\"1234\",\"name\":\"alidayu\"}");
-		req.setRecNum("15811015803");
-		req.setSmsTemplateCode("SMS_9595785");
-		AlibabaAliqinFcSmsNumSendResponse rsp = client.execute(req);
-		System.out.println(rsp.getBody());
-	}
+    @Test
+    public void test() throws ApiException {
+        TaobaoClient client = new DefaultTaobaoClient(url, appkey, secret);
+        AlibabaAliqinFcSmsNumSendRequest req = new AlibabaAliqinFcSmsNumSendRequest();
+        req.setExtend("12345");
+        req.setSmsType("normal");
+        req.setSmsFreeSignName("一元网");
+        req.setSmsParamString("{name:'me',code:'123'}");
+        req.setRecNum("15811015803");
+        req.setSmsTemplateCode("SMS_9595785");
+        AlibabaAliqinFcSmsNumSendResponse rsp = client.execute(req);
+        System.out.println(rsp.getBody());
+    }
 }
