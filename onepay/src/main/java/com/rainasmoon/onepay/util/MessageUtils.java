@@ -26,6 +26,12 @@ public class MessageUtils {
 	}
 
 	private void sendPhoneMessage(String phone, String name, String code) throws ApiException {
+
+		if (CommonValidators.isMobile(phone)) {
+			LOGGER.warn("send phone num is illegal:" + phone);
+			return;
+		}
+
 		TaobaoClient client = new DefaultTaobaoClient(url, appkey, secret);
 		AlibabaAliqinFcSmsNumSendRequest req = new AlibabaAliqinFcSmsNumSendRequest();
 		req.setExtend("12345");
