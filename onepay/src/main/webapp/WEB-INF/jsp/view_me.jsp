@@ -29,7 +29,7 @@
 				<td>手机</td>
 				<td><div id="modifyPhone">
 						<c:out value="${user.phone}" />
-						| <a href="javascript:modifyPhone()">编辑</a>
+						<c:if test="${not user.isPhoneConfirmed}">| <a href="javascript:modifyPhone()">编辑</a> | <a href="javascript:verifyPhone()">验证手机</a></c:if>
 					</div></td>
 			</tr>
 			<tr>

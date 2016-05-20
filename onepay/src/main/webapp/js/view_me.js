@@ -18,17 +18,36 @@ function modifyNickName() {
 			.html(
 					"<input id='newInputNickName'/><button onclick='saveUserInfoNickName()'>保存</button>");
 }
+function verifyPhone() {
+	sendVerifyPhone();
+	$("#modifyPhone")
+			.html(
+					"<input id='newInputVerifyPhone'/><button onclick='verifyPhoneCode()'>验证</button>");
+}
 function verifyFreezeCode() {
 	$("#freezeCode")
 			.html(
 					"<input id='newInputFreezeCode'/><button onclick='sendVerifyCode()'>验证</button>");
 }
+
+function sendVerifyPhone() {
+	$.get("restful/sendVerifyPhone");
+}
+
+function verifyPhoneCode() {
+	$.post("restful/verifyPhoneCode", {
+		phoneCode : $("#newInputVerifyPhone").val()
+	}, function(data, status) {
+		$("#modifyPhone").html(
+				data + ' | <a href="javascript:verifyFreezeCode()">输入解冻码</a>');
+	});
+}
+
 function sendVerifyCode() {
 	$.post("restful/verifyFreezeCode", {
-		freezeCode : $("#newInputFreezeCode").val()
+		verifyCode : $("#newInputFreezeCode").val()
 	}, function(data, status) {
-		$("#freezeCode").html(
-				data + ' | <a href="javascript:verifyFreezeCode()">输入解冻码</a>');
+		$("#freezeCode").html(data + '');
 	});
 }
 
@@ -42,13 +61,19 @@ function saveUserTag() {
 	});
 }
 function saveUserInfoEmail() {
-	$.post("restful/saveUserInfo", {
-		field : 'email',
-		value : $("#newInputEmail").val()
-	}, function(data, status) {
-		$("#modifyEmail").html(
-				data + ' | <a href="javascript:modifyEmail()">编辑</a> | <a href="send_verify_email.html">验证邮箱</a>');
-	});
+	$
+			.post(
+					"restful/saveUserInfo",
+					{
+						field : 'email',
+						value : $("#newInputEmail").val()
+					},
+					function(data, status) {
+						$("#modifyEmail")
+								.html(
+										data
+												+ ' | <a href="javascript:modifyEmail()">编辑</a> | <a href="send_verify_email.html">验证邮箱</a>');
+					});
 }
 function saveUserInfoPhone() {
 	$.post("restful/saveUserInfo", {

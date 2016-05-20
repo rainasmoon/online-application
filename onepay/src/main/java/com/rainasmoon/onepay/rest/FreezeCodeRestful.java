@@ -2,17 +2,22 @@ package com.rainasmoon.onepay.rest;
 
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.rainasmoon.onepay.model.User;
 import com.rainasmoon.onepay.model.YunOrder;
 import com.rainasmoon.onepay.service.AccountService;
+import com.rainasmoon.onepay.service.UserService;
 import com.rainasmoon.onepay.service.YunOrderService;
 import com.rainasmoon.onepay.service.dto.TransferResult;
 import com.rainasmoon.onepay.util.CommonConstants;
 import com.rainasmoon.onepay.util.EncodeUtils;
+import com.rainasmoon.onepay.util.MessageUtils;
+import com.rainasmoon.onepay.util.VerifyCodeUtils;
 import com.rainasmoon.onepay.web.BaseController;
 
 @RestController
@@ -24,6 +29,9 @@ public class FreezeCodeRestful extends BaseController {
 
 	@Autowired
 	private AccountService accountService;
+
+	@Autowired
+	private UserService userService;
 
 	@RequestMapping("restful/verifyFreezeCode")
 	public String verifyFreezeCode(@RequestParam(value = "freezeCode") String freezeCode) {
@@ -53,5 +61,26 @@ public class FreezeCodeRestful extends BaseController {
 		} else {
 			return "此验证码无法使用";
 		}
+	}
+
+	@RequestMapping("restful/sendVerifyPhone")
+	public String sendVerifyPhone() {
+		User user = userService.findUser(getLoginUserId());
+		if (user != null && StringUtils.isNotBlank(user.getPhone())) {
+			String code = VerifyCodeUtils.generateVerifyCode(user.getPhone());
+			new MessageUtils().send(user.getPhone(), user.getShowName(), code);
+		}
+		return "发送成功";
+	}
+
+	@RequestMapping("restful/verifyPhoneCode")
+	public String verifyPhoneCode(@RequestParam(value = "phoneCode") String phoneCode) {
+		User user = userService.findUser(getLoginUserId());
+		if (VerifyCodeUtils.verify(user.getPhone(), phoneCode)) {
+			String message = userService.verifyPhone(getLoginUserId());
+			return message;
+		}
+
+		return "验证";
 	}
 }

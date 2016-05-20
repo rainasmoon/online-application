@@ -26,4 +26,6 @@ public interface UserService {
 
 	String sendVerifyEmail(Long userId);
 
+	String verifyPhone(Long userId);
+
 }
