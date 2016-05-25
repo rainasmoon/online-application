@@ -19,13 +19,22 @@ public class MessageUtils {
 
 	public void send(String phone, String name, String code) {
 		try {
-			sendPhoneMessage(phone, name, code);
+			sendPhoneMessage(phone, "{name:'" + name + "',code:'" + code + "'}", "SMS_9595785");
 		} catch (ApiException e) {
 			LOGGER.error("send phone msg error:", e);
 		}
 	}
 
-	private void sendPhoneMessage(String phone, String name, String code) throws ApiException {
+	public void sendNotice(String phone, String productName, String status) {
+		try {
+			sendPhoneMessage(phone, "{product:'" + productName + "',status:'" + status + "'}", "SMS_9595785");
+		} catch (ApiException e) {
+			LOGGER.error("send phone msg error:", e);
+		}
+
+	}
+
+	private void sendPhoneMessage(String phone, String param, String template) throws ApiException {
 
 		if (CommonValidators.isMobile(phone)) {
 			LOGGER.warn("send phone num is illegal:" + phone);
@@ -37,10 +46,11 @@ public class MessageUtils {
 		req.setExtend("12345");
 		req.setSmsType("normal");
 		req.setSmsFreeSignName("一元网");
-		req.setSmsParamString("{name:'" + name + "',code:'" + code + "'}");
+		req.setSmsParamString(param);
 		req.setRecNum(phone);
-		req.setSmsTemplateCode("SMS_9595785");
+		req.setSmsTemplateCode(template);
 		AlibabaAliqinFcSmsNumSendResponse rsp = client.execute(req);
 		LOGGER.info(rsp.getBody());
 	}
+
 }

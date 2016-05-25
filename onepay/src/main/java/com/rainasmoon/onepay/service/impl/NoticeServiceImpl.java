@@ -14,41 +14,50 @@ import com.rainasmoon.onepay.repository.springdatajpa.ProductRepository;
 import com.rainasmoon.onepay.repository.springdatajpa.UserRepository;
 import com.rainasmoon.onepay.service.NoticeService;
 import com.rainasmoon.onepay.util.EmailUtils;
+import com.rainasmoon.onepay.util.MessageUtils;
 
 @Service
 public class NoticeServiceImpl implements NoticeService {
 
-    Logger LOGGER = LoggerFactory.getLogger(NoticeServiceImpl.class);
+	Logger LOGGER = LoggerFactory.getLogger(NoticeServiceImpl.class);
 
-    @Autowired
-    private ProductRepository productRepository;
+	@Autowired
+	private ProductRepository productRepository;
 
-    @Autowired
-    private UserRepository userRepository;
+	@Autowired
+	private UserRepository userRepository;
 
-    @Override
-    public void makeOrderNotice(Order order) {
-        Long buyerId = order.getBuyerId();
-        Long salerId = order.getSalerId();
-        Product product = productRepository.findOne(order.getProductId());
-        OrderStatus enumStatus = OrderStatus.valueOf(order.getStatus());
+	@Override
+	public void makeOrderNotice(Order order) {
+		Long buyerId = order.getBuyerId();
+		Long salerId = order.getSalerId();
+		Product product = productRepository.findOne(order.getProductId());
+		OrderStatus enumStatus = OrderStatus.valueOf(order.getStatus());
 
-        User buyer = userRepository.findOne(buyerId);
-        if (StringUtils.isNotBlank(buyer.getEmail())) {
-            String title = "【一元网】-【" + product.getName() + "】-【" + enumStatus.getName() + "】";
-            String content = "【" + product.getName() + "】现状态为【" + enumStatus.getName() + "】，请访问：http://www.rainasmoon.com/";
-            String to = buyer.getEmail();
-            EmailUtils.sendEmail(title, content, to);
-        }
+		User buyer = userRepository.findOne(buyerId);
+		if (StringUtils.isNotBlank(buyer.getEmail())) {
+			String title = "【一元网】-【" + product.getName() + "】-【" + enumStatus.getName() + "】";
+			String content = "【" + product.getName() + "】现状态为【" + enumStatus.getName() + "】，请访问：http://www.rainasmoon.com/";
+			String to = buyer.getEmail();
+			EmailUtils.sendEmail(title, content, to);
+		}
 
-        User saler = userRepository.findOne(salerId);
-        if (StringUtils.isNotBlank(saler.getEmail())) {
-            String title = "【一元网】-【" + product.getName() + "】-【" + enumStatus.getName() + "】";
-            String content = "【" + product.getName() + "】现状态为【" + enumStatus.getName() + "】，请访问：http://www.rainasmoon.com/";
-            String to = saler.getEmail();
-            EmailUtils.sendEmail(title, content, to);
-        }
+		if (StringUtils.isNotBlank(buyer.getPhone())) {
+			new MessageUtils().sendNotice(buyer.getPhone(), product.getName(), enumStatus.getName());
+		}
 
-    }
+		User saler = userRepository.findOne(salerId);
+		if (StringUtils.isNotBlank(saler.getEmail())) {
+			String title = "【一元网】-【" + product.getName() + "】-【" + enumStatus.getName() + "】";
+			String content = "【" + product.getName() + "】现状态为【" + enumStatus.getName() + "】，请访问：http://www.rainasmoon.com/";
+			String to = saler.getEmail();
+			EmailUtils.sendEmail(title, content, to);
+		}
+
+		if (StringUtils.isNotBlank(saler.getPhone())) {
+			new MessageUtils().sendNotice(saler.getPhone(), product.getName(), enumStatus.getName());
+		}
+
+	}
 
 }
