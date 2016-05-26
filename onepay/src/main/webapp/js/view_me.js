@@ -60,6 +60,12 @@ function saveUserTag() {
 				'<label class="label label-info">' + data + '</label>');
 	});
 }
+
+function isEmailLegal(str) {
+	var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
+	return reg.test(str);
+}
+
 function saveUserInfoEmail() {
 	$
 			.post(
@@ -75,6 +81,12 @@ function saveUserInfoEmail() {
 												+ ' | <a href="javascript:modifyEmail()">编辑</a> | <a href="send_verify_email.html">验证邮箱</a>');
 					});
 }
+
+function isPhoneLegal(str) {
+	var reg = /^[1][3,4,5,8][0-9]{9}$/;
+	return reg.test(str);
+}
+
 function saveUserInfoPhone() {
 	$.post("restful/saveUserInfo", {
 		field : 'phone',
