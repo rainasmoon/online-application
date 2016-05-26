@@ -68,13 +68,13 @@
 
 	<dependencies>
 
-	    <dependency>  
-                <groupId>com.taobao</groupId>  
-                <artifactId>taobaosdk</artifactId>  
-                <version>1.0</version> 
-                <scope>system</scope>                   
-                <systemPath>${project.basedir}/ext_lib/taobao-sdk-java-auto_1455552377940-20160505.jar</systemPath>  
-            </dependency>  
+		<dependency>
+			<groupId>com.taobao</groupId>
+			<artifactId>taobaosdk</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/ext_lib/taobao-sdk-java-auto_1455552377940-20160505.jar</systemPath>
+		</dependency>
 
 		<dependency>
 			<groupId>org.apache.tomcat</groupId>
@@ -383,7 +383,7 @@
 			<artifactId>commons-codec</artifactId>
 			<version>1.10</version>
 		</dependency>
-		
+
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
@@ -430,6 +430,7 @@
 	</dependencyManagement>
 	<build>
 		<defaultGoal>install</defaultGoal>
+		
 		<testResources>
 			<testResource>
 				<!-- declared explicitly so Spring config files can be placed next to 
@@ -441,6 +442,30 @@
 			</testResource>
 		</testResources>
 		<plugins>
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.5</version>
+				<executions>
+					<execution>
+						<id>copy-jars</id>
+						<phase>process-sources</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/target/onepay-${version}/WEB-INF/lib</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${basedir}/ext_lib</directory>
+									<includes>
+										<include>**/taobao-sdk-java-auto_1455552377940-20160505.jar</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -559,5 +584,5 @@
 		</plugins>
 	</build>
 
-	
+
 </project>
