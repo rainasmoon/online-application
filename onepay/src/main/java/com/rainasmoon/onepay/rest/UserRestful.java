@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.rainasmoon.onepay.model.User;
 import com.rainasmoon.onepay.service.UserService;
 import com.rainasmoon.onepay.util.CommonConstants;
+import com.rainasmoon.onepay.util.CommonValidators;
 import com.rainasmoon.onepay.web.BaseController;
 
 @RestController
@@ -29,13 +30,19 @@ public class UserRestful extends BaseController {
 		}
 		User loginUser = userService.findUser(getLoginUserId());
 		if (field.equalsIgnoreCase("email")) {
+			if (!CommonValidators.isEmail(value)) {
+				return "邮箱格式不正确:)";
+			}
 			if (userService.checkUserIfExists(value)) {
-				return "邮箱已经存在";
+				return "邮箱已经存在:)";
 			}
 			loginUser.setEmail(value);
 		} else if (field.equalsIgnoreCase("phone")) {
+			if (!CommonValidators.isMobile(value)) {
+				return "手机格式不正确:)";
+			}
 			if (userService.checkUserIfExists(value)) {
-				return "手机号已经存在";
+				return "手机号已经存在:)";
 			}
 			loginUser.setPhone(value);
 		} else if (field.equalsIgnoreCase("nickName")) {

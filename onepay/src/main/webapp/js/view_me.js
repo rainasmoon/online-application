@@ -67,6 +67,12 @@ function isEmailLegal(str) {
 }
 
 function saveUserInfoEmail() {
+	if (!isEmailLegal($("#newInputEmail").val())) {
+		$("#modifyEmail")
+				.html(
+						'邮箱格式不正确  | <a href="javascript:modifyEmail()">编辑</a> | <a href="send_verify_email.html">验证邮箱</a>');
+		return;
+	}
 	$
 			.post(
 					"restful/saveUserInfo",
@@ -88,13 +94,25 @@ function isPhoneLegal(str) {
 }
 
 function saveUserInfoPhone() {
-	$.post("restful/saveUserInfo", {
-		field : 'phone',
-		value : $("#newInputPhone").val()
-	}, function(data, status) {
-		$("#modifyPhone").html(
-				data + ' | <a href="javascript:modifyPhone()">编辑</a>');
-	});
+	if (!isPhoneLegal($("#newInputPhone").val())) {
+		$("#modifyPhone")
+				.html(
+						'手机格式不正确  | <a href="javascript:modifyPhone()">编辑</a> | <a href="javascript:verifyPhone()">验证手机</a>');
+		return;
+	}
+	$
+			.post(
+					"restful/saveUserInfo",
+					{
+						field : 'phone',
+						value : $("#newInputPhone").val()
+					},
+					function(data, status) {
+						$("#modifyPhone")
+								.html(
+										data
+												+ ' | <a href="javascript:modifyPhone()">编辑</a> | <a href="javascript:verifyPhone()">验证手机</a>');
+					});
 }
 function saveUserInfoNickName() {
 	$.post("restful/saveUserInfo", {

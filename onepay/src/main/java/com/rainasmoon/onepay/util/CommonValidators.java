@@ -3,6 +3,8 @@ package com.rainasmoon.onepay.util;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class CommonValidators {
 
 	/**
@@ -41,5 +43,17 @@ public class CommonValidators {
 			b = m.matches();
 		}
 		return b;
+	}
+
+	public static boolean isEmail(String value) {
+		if (StringUtils.isBlank(value)) {
+			return false;
+		}
+
+		if (value.indexOf('@') > 0) {
+			return true;
+		}
+
+		return false;
 	}
 }
