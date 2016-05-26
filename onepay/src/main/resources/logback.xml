@@ -82,7 +82,7 @@
 		<file>./logs/onepayexception.log</file>
 		<!-- 按每小时滚动文件，如果一个小时内达到10M也会滚动文件, 滚动文件将会压缩成zip格式 -->
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>./logs/onepayexception-%d{yyyy-MM-dd}.%i.zip
+			<fileNamePattern>./logs/onepayexception-%d{yyyy-MM}.%i.zip
 			</fileNamePattern>
 			<timeBasedFileNamingAndTriggeringPolicy
 				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
@@ -100,7 +100,7 @@
 	<logger name="org.springframework.beans.TypeConverterDelegate">
 		<level value="info" />
 	</logger>
-	<logger name="com.rainasmoon.onepay.util.AccessLogFilter" level="DEBUG"
+	<logger name="com.rainasmoon.onepay.util.AccessLogFilter" level="info"
 		additivity="false">
 		<appender-ref ref="accessLoggingFile" />
 		<appender-ref ref="console"></appender-ref>		   

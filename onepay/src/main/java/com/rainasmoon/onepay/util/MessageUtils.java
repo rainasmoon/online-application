@@ -36,7 +36,9 @@ public class MessageUtils {
 
 	private void sendPhoneMessage(String phone, String param, String template) throws ApiException {
 
-		if (CommonValidators.isMobile(phone)) {
+		LOGGER.info("send phone msg to :" + phone + ". param:" + param + ". template:" + template);
+
+		if (!CommonValidators.isMobile(phone)) {
 			LOGGER.warn("send phone num is illegal:" + phone);
 			return;
 		}
