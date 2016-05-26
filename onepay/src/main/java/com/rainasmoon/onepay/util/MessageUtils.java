@@ -19,7 +19,7 @@ public class MessageUtils {
 
 	public void send(String phone, String name, String code) {
 		try {
-			sendPhoneMessage(phone, "{name:'" + name + "',code:'" + code + "'}", "SMS_9595785");
+			sendPhoneMessage(phone, "{name:'" + name + "',code:'" + code + "'}", "SMS_9980047");
 		} catch (ApiException e) {
 			LOGGER.error("send phone msg error:", e);
 		}
@@ -27,7 +27,7 @@ public class MessageUtils {
 
 	public void sendNotice(String phone, String productName, String status) {
 		try {
-			sendPhoneMessage(phone, "{product:'" + productName + "',status:'" + status + "'}", "SMS_9595785");
+			sendPhoneMessage(phone, "{product:'" + productName + "',status:'" + status + "'}", "SMS_9970017");
 		} catch (ApiException e) {
 			LOGGER.error("send phone msg error:", e);
 		}
