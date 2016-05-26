@@ -1,5 +1,6 @@
 package com.rainasmoon.onepay.util;
 
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,7 +14,7 @@ public class EncodeUtils {
 
 	public static String encrypt(String function, String content) {
 		try {
-			return java.net.URLEncoder.encode(DESUtils.encrypt(function + "_" + content, KEY), CommonConstants.UTF_8);
+			return Base64.getEncoder().encodeToString(DESUtils.encrypt(function + "_" + content, KEY).getBytes(CommonConstants.UTF_8));
 		} catch (Exception e) {
 			LOGGER.warn("ERROR:", e);
 		}
@@ -23,7 +24,7 @@ public class EncodeUtils {
 	public static String decrypt(String content) {
 		try {
 
-			return DESUtils.decrypt(java.net.URLDecoder.decode(content, CommonConstants.UTF_8), KEY);
+			return DESUtils.decrypt(new String(Base64.getDecoder().decode(content), CommonConstants.UTF_8), KEY);
 		} catch (Exception e) {
 			LOGGER.warn("ERROR:", e);
 		}

@@ -104,6 +104,9 @@ public class UserController extends BaseController {
 
 	@RequestMapping(value = { "/send_verify_email.html" }, method = RequestMethod.GET)
 	public String sendVerifyEmail(Map<String, Object> model) {
+		if (!isLogin()) {
+			return "redirect:login.html";
+		}
 
 		String message = userService.sendVerifyEmail(getLoginUserId());
 
@@ -113,6 +116,8 @@ public class UserController extends BaseController {
 
 	@RequestMapping(value = { "/verify_email.html" }, method = RequestMethod.GET)
 	public String verifyEmail(@RequestParam(value = "code") String code, Map<String, Object> model) {
+
+		LOGGER.debug("the code is :" + code);
 
 		Map<String, String> result = EncodeUtils.decryptToMap(code);
 

@@ -9,30 +9,38 @@ import org.slf4j.LoggerFactory;
 
 public class EmailUtils {
 
-    public static Logger LOGGER = LoggerFactory.getLogger(EmailUtils.class);
+	public static Logger LOGGER = LoggerFactory.getLogger(EmailUtils.class);
 
-    public static void sendEmail(String title, String content, String to) {
-        try {
-            privateSendEmail(title, content, to);
-        } catch (EmailException e) {
-            LOGGER.error("sendEmail Exception.", e);
-            e.printStackTrace();
-        }
-    }
+	public static void sendEmail(String title, String content, String to) {
+		try {
+			privateSendEmail(title, content, to);
+		} catch (EmailException e) {
+			LOGGER.error("sendEmail Exception.", e);
+			e.printStackTrace();
+		}
+	}
 
-    private static void privateSendEmail(String title, String content, String to) throws EmailException {
-        Email email = new SimpleEmail();
+	private static void privateSendEmail(String title, String content, String to) throws EmailException {
 
-        email.setHostName("smtp.rainasmoon.com");
-        email.setSmtpPort(25);
-        email.setAuthenticator(new DefaultAuthenticator("help@rainasmoon.com", "Fhwl7758"));
-        email.setSSLOnConnect(false);
+		LOGGER.info("send email to :" + to + ". title:" + title + ". content:" + content);
 
-        email.setFrom("help@rainasmoon.com");
+		if (!CommonValidators.isEmail(to)) {
+			LOGGER.warn("send email is illegal:" + to);
+			return;
+		}
 
-        email.setSubject(title);
-        email.setMsg(content);
-        email.addTo(to);
-        email.send();
-    }
+		Email email = new SimpleEmail();
+
+		email.setHostName("smtp.rainasmoon.com");
+		email.setSmtpPort(25);
+		email.setAuthenticator(new DefaultAuthenticator("help@rainasmoon.com", "Fhwl7758"));
+		email.setSSLOnConnect(false);
+
+		email.setFrom("help@rainasmoon.com");
+
+		email.setSubject(title);
+		email.setMsg(content);
+		email.addTo(to);
+		email.send();
+	}
 }

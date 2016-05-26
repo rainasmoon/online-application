@@ -38,8 +38,7 @@ function verifyPhoneCode() {
 	$.post("restful/verifyPhoneCode", {
 		phoneCode : $("#newInputVerifyPhone").val()
 	}, function(data, status) {
-		$("#modifyPhone").html(
-				data + ' | <a href="javascript:verifyFreezeCode()">输入解冻码</a>');
+		$("#modifyPhone").html(data + '');
 	});
 }
 
