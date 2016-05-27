@@ -104,7 +104,7 @@
 			<label> <input id="checkbox_agreement" type="checkbox" checked onchange="checkboxChanged()"> <a href="agreement.html">同意一元网的条款</a>
 			</label>
 		</div>
-		<button id="submit" type="submit" class="btn btn-primary">Submit</button>
+		<button id="submit" type="submit" class="btn btn-primary">添加</button>
 	</fieldset>
 </form:form>
 

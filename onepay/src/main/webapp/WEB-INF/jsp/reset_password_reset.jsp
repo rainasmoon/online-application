@@ -32,7 +32,7 @@
 		<onepayapp:passwordField label="确认密码" name="confirmPassword"
 			required="true"  />
 		
-		<button id="submit" type="submit" class="btn btn-primary">Submit</button>
+		<button id="submit" type="submit" class="btn btn-primary">提交</button>
 	</fieldset>
 </form:form>
 

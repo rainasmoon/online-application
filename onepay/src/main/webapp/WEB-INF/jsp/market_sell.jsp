@@ -26,7 +26,7 @@
 			<p>交易价格（人民币）：<c:out value="${price }"></c:out><strong>赚了:)</strong></p>
 		</div>
 		<button class="btn btn-primary" type="button" onclick="goBack()">返回</button>
-		<button type="submit" class="btn btn-primary">Submit</button>
+		<button type="submit" class="btn btn-primary">提交</button>
 </form:form>
 
 <link rel="stylesheet"

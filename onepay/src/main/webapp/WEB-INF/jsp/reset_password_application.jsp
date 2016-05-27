@@ -40,7 +40,7 @@
 		<onepayapp:inputField label="曾用密码3" name="password3" />
 		<hr />
 		<onepayapp:inputField label="接收新密码邮箱" name="receiveResetEmail" required="true" />
-		<button id="submit" type="submit" class="btn btn-primary">Submit</button>
+		<button id="submit" type="submit" class="btn btn-primary">提交</button>
 	</fieldset>
 </form:form>
 

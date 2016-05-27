@@ -19,7 +19,7 @@
 		<label>解冻码</label>
 		<input id="unfreezeCode" name="unfreezeCode" type="text" placeholder="解冻码" required autofocus/>
 		<button class="btn btn-primary" type="button" onclick="goBack()">返回</button>
-		<button type="submit" class="btn btn-primary">Submit</button>
+		<button type="submit" class="btn btn-primary">提交</button>
 </form:form>
 
 <link rel="stylesheet"

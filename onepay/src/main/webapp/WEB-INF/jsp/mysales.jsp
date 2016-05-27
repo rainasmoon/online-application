@@ -27,11 +27,11 @@
 				<thead>
 					<tr>
 						<th>#</th>
-						<th>Name</th>
-						<th>current bider</th>
-						<th>sale model</th>
-						<th>price</th>
-						<th>status</th>
+						<th>名称</th>
+						<th>当前竞拍者</th>
+						<th>拍卖形式</th>
+						<th>价钱</th>
+						<th>状态</th>
 						<th>操作</th>
 					</tr>
 				</thead>

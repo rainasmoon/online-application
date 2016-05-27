@@ -28,7 +28,7 @@
 			<p class="help-block">上传图片有助于客户更好的了解产品.</p>
 		</div>
 
-		<button type="submit" class="btn btn-primary">Submit</button>
+		<button type="submit" class="btn btn-primary">提交</button>
 	</fieldset>
 </form>
 

@@ -29,8 +29,8 @@
 						<th>卖家</th>
 						<th>买家</th>
 						<th>产品</th>
-						<th>price(猿币)</th>
-						<th>status</th>
+						<th>价钱(猿币)</th>
+						<th>状态</th>
 						<th>操作</th>
 					</tr>
 				</thead>

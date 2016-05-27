@@ -43,7 +43,7 @@
 		</div>
 		
 		<button class="btn btn-primary" type="button" onclick="goBack()">返回</button>
-		<button type="submit" class="btn btn-primary">Submit</button>
+		<button type="submit" class="btn btn-primary">添加</button>
 	</fieldset>
 </form:form>
 
