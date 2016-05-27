@@ -81,6 +81,11 @@ public class FreezeCodeRestful extends BaseController {
 
 	@RequestMapping("restful/verifyPhoneCode")
 	public String verifyPhoneCode(@RequestParam(value = "phoneCode") String phoneCode) {
+
+		if (StringUtils.isBlank(phoneCode)) {
+			return "验证码不能为空";
+		}
+
 		User user = userService.findUser(getLoginUserId());
 		if (VerifyCodeUtils.verify(user.getPhone(), phoneCode)) {
 			String message = userService.verifyPhone(getLoginUserId());

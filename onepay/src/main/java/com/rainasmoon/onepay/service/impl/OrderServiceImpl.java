@@ -41,7 +41,7 @@ public class OrderServiceImpl implements OrderService {
 		order.setSalerId(product.getOwnerId());
 		order.setProductId(productId);
 		order.setPrice(money);
-		order.setStatus(OrderStatus.WAITPAY.getCode());
+		order.setStatus(OrderStatus.WAITINFO.getCode());
 
 		repository.save(order);
 		noticeService.makeOrderNotice(order);
@@ -60,8 +60,7 @@ public class OrderServiceImpl implements OrderService {
 	public String orderPay(Long orderId) {
 
 		Order order = repository.findOne(orderId);
-		TransferResult result = accountService.transferAccount(
-				order.getBuyerId(), order.getSalerId(), order.getPrice());
+		TransferResult result = accountService.transferAccount(order.getBuyerId(), order.getSalerId(), order.getPrice());
 		if (result.isSuccess()) {
 			order.setStatus(OrderStatus.PAYED.getCode());
 			repository.save(order);

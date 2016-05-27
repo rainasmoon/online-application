@@ -22,7 +22,7 @@
 		<input type="hidden" name="orderId" value="${orderId }" />
 
 		<div>
-			<h1>Pay</h1>
+			<h1>支付</h1>
 			<p>
 				定单号：
 				<c:out value="${orderId }"></c:out>
