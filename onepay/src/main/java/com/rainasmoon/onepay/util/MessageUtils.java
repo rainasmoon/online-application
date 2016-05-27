@@ -57,7 +57,7 @@ public class MessageUtils {
 		AlibabaAliqinFcSmsNumSendResponse rsp = client.execute(req);
 		LOGGER.info(rsp.getBody());
 
-		return rsp.getResult().getSuccess();
+		return rsp.getResult() == null ? false : rsp.getResult().getSuccess();
 	}
 
 }
