@@ -97,6 +97,7 @@
 	</appender>
 
 	<logger name="com.rainasmoon" level="debug" />
+	<logger name="Hibernate" level="warn"></logger>
 	<logger name="org.springframework.beans.TypeConverterDelegate">
 		<level value="warn" />
 	</logger>
