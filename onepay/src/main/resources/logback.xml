@@ -96,9 +96,9 @@
 		
 	</appender>
 
-	<logger name="com.rainasmoon" level="info" />
+	<logger name="com.rainasmoon" level="debug" />
 	<logger name="org.springframework.beans.TypeConverterDelegate">
-		<level value="info" />
+		<level value="warn" />
 	</logger>
 	<logger name="com.rainasmoon.onepay.util.AccessLogFilter" level="info"
 		additivity="false">
@@ -112,9 +112,9 @@
 		<appender-ref ref="EMAIL"/>  
 	</logger>
 
-	<logger name="org.hibernate" level="info" />
+	<logger name="org.hibernate" level="warn" />
 	<logger name="org.hibernate.type.descriptor.sql.BasicBinder"
-		level="info" />
+		level="warn" />
 
 	<root level="info">
 		<appender-ref ref="console" />
