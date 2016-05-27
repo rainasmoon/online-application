@@ -10,15 +10,14 @@ import org.apache.commons.mail.MultiPartEmail;
 
 public class EmailSendLog {
 
-	private static final String LOG_FILE = "/usr/share/tomcat8/logs/onepayaccess.log";
+	private static final String LOG_FILE = "/usr/share/tomcat8/logs/onepayexception.log";
 
 	public void sendAccessLog() throws EmailException {
 
 		// Create the email message
 		MultiPartEmail email = new MultiPartEmail();
 		email.setHostName("smtp.rainasmoon.com");
-		email.setAuthenticator(new DefaultAuthenticator("help@rainasmoon.com",
-				"Fhwl7758"));
+		email.setAuthenticator(new DefaultAuthenticator("help@rainasmoon.com", "Fhwl7758"));
 		email.addTo("rainasmoon@126.com", "glen");
 		email.setFrom("help@rainasmoon.com", "Me");
 		email.setSubject("[onepay] access log");
