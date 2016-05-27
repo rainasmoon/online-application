@@ -35,7 +35,8 @@ public class CommonUtils {
 
 	public static String getUserLevel(Integer level) {
 		// TODO glen the real level
-		return "normal";
+		// 强盗；英雄；盟主；宗师；杨过，令狐冲，风清扬，
+		return "英雄";
 	}
 
 }

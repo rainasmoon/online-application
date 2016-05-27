@@ -44,7 +44,7 @@ function verifyPhoneCode() {
 
 function sendVerifyCode() {
 	$.post("restful/verifyFreezeCode", {
-		verifyCode : $("#newInputFreezeCode").val()
+		freezeCode : $("#newInputFreezeCode").val()
 	}, function(data, status) {
 		$("#freezeCode").html(data + '');
 	});
@@ -54,7 +54,7 @@ function saveUserTag() {
 	$.post("restful/saveUserTag", {
 		value : $("#newInputTag").val()
 	}, function(data, status) {
-		$("#addTag").html(' | <a href="javascript:addTag()">add</a>');
+		$("#addTag").html(' | <a href="javascript:addTag()">添加</a>');
 		$("#listTags").append(
 				'<label class="label label-info">' + data + '</label>');
 	});

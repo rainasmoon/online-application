@@ -45,7 +45,7 @@
 						<label class="label label-info"><c:out value="${arow.name}" /></label>
 					</c:forEach></div>
 					<div id="addTag">
-						| <a href="javascript:addTag()">add </a>
+						| <a href="javascript:addTag()">添加 </a>
 					</div></td>
 			</tr>
 			<tr>
