@@ -29,7 +29,7 @@ public class MessageUtils {
 
 	public boolean sendNotice(String phone, String productName, String status) {
 		try {
-			return sendPhoneMessage(phone, "{product:'" + productName + "',status:'" + status + "'}", "SMS_9970017");
+			return sendPhoneMessage(phone, "{product:'" + productName + "',status:'" + status + "'}", "SMS_10155152");
 		} catch (ApiException e) {
 			LOGGER.error("send phone msg error:", e);
 		}
