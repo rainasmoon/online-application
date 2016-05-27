@@ -11,8 +11,12 @@ public class VerifyCodeUtils {
 
 	public static String generateVerifyCode(String phone) {
 		String code = rand();
-		container.put(phone, code);
+
 		return code;
+	}
+
+	public static void put(String phone, String code) {
+		container.put(phone, code);
 	}
 
 	public static boolean verify(String phone, String code) {
@@ -32,4 +36,5 @@ public class VerifyCodeUtils {
 		}
 		return randomstring.toString();
 	}
+
 }

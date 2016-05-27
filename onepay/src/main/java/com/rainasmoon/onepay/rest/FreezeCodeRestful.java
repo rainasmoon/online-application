@@ -67,8 +67,14 @@ public class FreezeCodeRestful extends BaseController {
 	public String sendVerifyPhone() {
 		User user = userService.findUser(getLoginUserId());
 		if (user != null && StringUtils.isNotBlank(user.getPhone())) {
+
 			String code = VerifyCodeUtils.generateVerifyCode(user.getPhone());
-			new MessageUtils().send(user.getPhone(), user.getShowName(), code);
+			boolean result = new MessageUtils().sendVerifyCode(user.getPhone(), user.getShowName(), code);
+			if (result) {
+				VerifyCodeUtils.put(user.getPhone(), code);
+			} else {
+				return "发送失败";
+			}
 		}
 		return "发送成功";
 	}

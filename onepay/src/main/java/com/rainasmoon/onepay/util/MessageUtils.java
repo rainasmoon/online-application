@@ -17,30 +17,33 @@ public class MessageUtils {
 	private String appkey = "23368055";
 	private String secret = "2e6150177b3c7894bce257b630b82561";
 
-	public void send(String phone, String name, String code) {
+	public boolean sendVerifyCode(String phone, String name, String code) {
 		try {
-			sendPhoneMessage(phone, "{name:'" + name + "',code:'" + code + "'}", "SMS_9980047");
-		} catch (ApiException e) {
-			LOGGER.error("send phone msg error:", e);
-		}
-	}
-
-	public void sendNotice(String phone, String productName, String status) {
-		try {
-			sendPhoneMessage(phone, "{product:'" + productName + "',status:'" + status + "'}", "SMS_9970017");
+			return sendPhoneMessage(phone, "{name:'" + name + "',code:'" + code + "'}", "SMS_9980047");
 		} catch (ApiException e) {
 			LOGGER.error("send phone msg error:", e);
 		}
 
+		return false;
 	}
 
-	private void sendPhoneMessage(String phone, String param, String template) throws ApiException {
+	public boolean sendNotice(String phone, String productName, String status) {
+		try {
+			return sendPhoneMessage(phone, "{product:'" + productName + "',status:'" + status + "'}", "SMS_9970017");
+		} catch (ApiException e) {
+			LOGGER.error("send phone msg error:", e);
+		}
+
+		return false;
+	}
+
+	private boolean sendPhoneMessage(String phone, String param, String template) throws ApiException {
 
 		LOGGER.info("send phone msg to :" + phone + ". param:" + param + ". template:" + template);
 
 		if (!CommonValidators.isMobile(phone)) {
 			LOGGER.warn("send phone num is illegal:" + phone);
-			return;
+			return false;
 		}
 
 		TaobaoClient client = new DefaultTaobaoClient(url, appkey, secret);
@@ -53,6 +56,8 @@ public class MessageUtils {
 		req.setSmsTemplateCode(template);
 		AlibabaAliqinFcSmsNumSendResponse rsp = client.execute(req);
 		LOGGER.info(rsp.getBody());
+
+		return rsp.getResult().getSuccess();
 	}
 
 }
