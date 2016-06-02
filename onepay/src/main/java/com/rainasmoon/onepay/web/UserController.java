@@ -44,7 +44,7 @@ public class UserController extends BaseController {
 		AdVo ad3 = new AdVo();
 		AdVo ad4 = new AdVo();
 
-		ad1.setPicPath("pic/7.jpg");
+		ad1.setPicPath("pic/nopic");
 
 		vip4users.add(ad1);
 		vip4users.add(ad2);
