@@ -16,7 +16,6 @@ import com.rainasmoon.onepay.model.User;
 import com.rainasmoon.onepay.service.OrderService;
 import com.rainasmoon.onepay.service.ProductService;
 import com.rainasmoon.onepay.service.UserService;
-import com.rainasmoon.onepay.vo.AdVo;
 import com.rainasmoon.onepay.vo.OrderVo;
 import com.rainasmoon.onepay.vo.ProductVo;
 
@@ -40,26 +39,10 @@ public class ManagerController extends BaseController {
 
 		List<User> results = userService.listAllUsers();
 
-		List<AdVo> vip4users = new ArrayList<AdVo>();
-
-		AdVo ad1 = new AdVo();
-		AdVo ad2 = new AdVo();
-		AdVo ad3 = new AdVo();
-		AdVo ad4 = new AdVo();
-
-		ad1.setPicPath("pic/7.jpg");
-
-		vip4users.add(ad1);
-		vip4users.add(ad2);
-		vip4users.add(ad3);
-		vip4users.add(ad4);
-
-		// 按活越度的会员，或4名新会员
-		model.put("vip4users", vip4users);
 		// 完全按成交额排名的会员。
-		model.put("top10users", results);
+		model.put("results", results);
 
-		return "top10users";
+		return "manage_all_users";
 	}
 
 	@RequestMapping(value = { "/manage_all_sales.html" }, method = RequestMethod.GET)
@@ -67,9 +50,9 @@ public class ManagerController extends BaseController {
 		if (!isLogin()) {
 			return "redirect:login.html";
 		}
-		List<Product> mysales = productService.listAllProducts();
+		List<Product> allsales = productService.listAllProducts();
 		List<ProductVo> result = new ArrayList<ProductVo>();
-		for (Product product : mysales) {
+		for (Product product : allsales) {
 			ProductVo productVo = dozerBeanMapper.map(product, ProductVo.class);
 			productVo.setCurrentBiderName(userService.findUser(productVo.getCurrentBiderId()).getShowName());
 
@@ -77,7 +60,7 @@ public class ManagerController extends BaseController {
 		}
 		model.put("products", result);
 
-		return "mysales";
+		return "manage_all_sales";
 	}
 
 	@RequestMapping(value = { "/manage_all_orders.html" }, method = RequestMethod.GET)
@@ -97,6 +80,6 @@ public class ManagerController extends BaseController {
 
 		model.put("orders", result);
 
-		return "myorders";
+		return "manage_all_orders";
 	}
 }
