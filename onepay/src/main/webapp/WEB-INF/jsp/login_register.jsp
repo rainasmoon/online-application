@@ -32,6 +32,7 @@
 		<onepayapp:passwordField label="确认密码" name="confirmPassword"
 			required="true" autofocus="true" />
 	</fieldset>
+	<onepayapp:hiddenField name="toUrl" />
 	<button class="btn btn-lg btn-primary btn-block" type="button" onclick="goBack()">返回</button>
 	<button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
 </form:form>

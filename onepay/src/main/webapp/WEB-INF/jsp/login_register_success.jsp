@@ -27,6 +27,7 @@
 	</span>
 	<onepayapp:hiddenField name="account" />
 	<onepayapp:hiddenField name="password" />
+	<onepayapp:hiddenField name="toUrl" />
 	<button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
 </form:form>
 

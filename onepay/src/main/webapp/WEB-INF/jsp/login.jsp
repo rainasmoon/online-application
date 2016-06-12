@@ -41,6 +41,7 @@
 	<div class="pull-right">
 		<a href="reset_password.html">找回密码</a>
 	</div>
+	<onepayapp:hiddenField name="toUrl" />
 	<button class="btn btn-lg btn-primary btn-block" type="submit">登录 | 注册</button>
 </form:form>
 

@@ -28,9 +28,10 @@ public class LoginController extends BaseController {
 	private UserService userService;
 
 	@RequestMapping(value = { "/login.html" }, method = RequestMethod.GET)
-	public String login(Map<String, Object> model) {
+	public String login(String url, Map<String, Object> model) {
 
 		LoginVo loginVo = new LoginVo();
+		loginVo.setToUrl(url);
 		model.put("loginVo", loginVo);
 
 		return "login";
@@ -55,7 +56,7 @@ public class LoginController extends BaseController {
 				if (StringUtils.isNotBlank(rememberMe) && rememberMe.equals("remember-me")) {
 					setCookieLogin(loginUser.getId(), loginUser.getShowName());
 				}
-				return "redirect:/";
+				return "redirect:" + (StringUtils.isNotBlank(loginVo.getToUrl()) ? loginVo.getToUrl() : "/");
 			} else {
 				// account or password wrong...
 				result.rejectValue("error", "error.userNameOrPassword.invalid");

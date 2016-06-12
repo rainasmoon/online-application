@@ -48,7 +48,7 @@ public class ManagerController extends BaseController {
 	@RequestMapping(value = { "/manage_all_sales.html" }, method = RequestMethod.GET)
 	public String manageAllProducts(Map<String, Object> model) {
 		if (!isLogin()) {
-			return "redirect:login.html";
+			return relogin();
 		}
 		List<Product> allsales = productService.listAllProducts();
 		List<ProductVo> result = new ArrayList<ProductVo>();

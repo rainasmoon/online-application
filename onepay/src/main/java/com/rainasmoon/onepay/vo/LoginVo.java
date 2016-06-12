@@ -16,6 +16,8 @@ public class LoginVo {
 
 	protected String error;
 
+	private String toUrl;
+
 	@Override
 	public String toString() {
 		return ReflectionToStringBuilder.toString(this, ToStringStyle.SHORT_PREFIX_STYLE);
@@ -52,6 +54,14 @@ public class LoginVo {
 
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
+	}
+
+	public String getToUrl() {
+		return toUrl;
+	}
+
+	public void setToUrl(String toUrl) {
+		this.toUrl = toUrl;
 	}
 
 }
