@@ -16,8 +16,11 @@ function addMoney(productId, amount) {
 		money : amount
 	}, function(data, status) {
 		$("#productPrice").text(data);
+		if (data == "未登录") {
+			redirectToLoginPage();
+		}
 	});
-	
+
 }
 
 function guessMoney(productId) {
@@ -36,11 +39,20 @@ function guessMoney(productId) {
 		money : $("#guessPrice").val()
 	}, function(data, status) {
 		$("#productPrice").text(data);
-		
+		if (data == "未登录") {
+			redirectToLoginPage();
+		}
+
 	});
-	
+
+}
+
+function redirectToLoginPage() {
+	window.location.href = "login.html";
 }
 
 function shakeThis(objId) {
-	$("#" + objId).effect( "shake",{ distance: 1 } );
+	$("#" + objId).effect("shake", {
+		distance : 1
+	});
 }

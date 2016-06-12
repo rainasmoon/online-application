@@ -3,6 +3,8 @@ package com.rainasmoon.onepay.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +23,8 @@ import com.rainasmoon.onepay.vo.BidProductVo;
 
 @Service
 public class ProductServiceImpl implements ProductService {
+
+	Logger LOGGER = LoggerFactory.getLogger(ProductServiceImpl.class);
 
 	@Autowired
 	private ProductRepository repository;
@@ -92,7 +96,13 @@ public class ProductServiceImpl implements ProductService {
 		productVo.setProductTitle(product.getName());
 		productVo.setPrice(product.getPrice());
 		if (product.getCurrentBiderId() != null) {
-			productVo.setCurrentOwer(userRepository.findOne(product.getCurrentBiderId()).getShowName());
+			User u = userRepository.findOne(product.getCurrentBiderId());
+
+			if (u != null) {
+				productVo.setCurrentOwer(u.getShowName());
+			} else {
+				LOGGER.warn("user is null for id:" + product.getCurrentBiderId());
+			}
 		}
 		productVo.setSaleModel(SaleModels.valueOf(product.getSaleModel()));
 		productVo.setEndDate(product.getEndDate());
