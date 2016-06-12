@@ -28,10 +28,10 @@ public class LoginController extends BaseController {
 	private UserService userService;
 
 	@RequestMapping(value = { "/login.html" }, method = RequestMethod.GET)
-	public String login(String url, Map<String, Object> model) {
+	public String login(String toUrl, Map<String, Object> model) {
 
 		LoginVo loginVo = new LoginVo();
-		loginVo.setToUrl(url);
+		loginVo.setToUrl(toUrl);
 		model.put("loginVo", loginVo);
 
 		return "login";

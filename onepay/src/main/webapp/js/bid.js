@@ -48,7 +48,7 @@ function guessMoney(productId) {
 }
 
 function redirectToLoginPage() {
-	window.location.href = "login.html";
+	window.location.href = "login.html?toUrl=" + window.location.href;
 }
 
 function shakeThis(objId) {
