@@ -48,6 +48,7 @@ function guessMoney(productId) {
 }
 
 function redirectToLoginPage() {
+	alert("请登录");
 	window.location.href = "login.html?toUrl=" + window.location.href;
 }
 
