@@ -45,4 +45,21 @@ http://download.oracle.com/otn-pub/java/jdk/8u92-b14/jdk-8u92-linux-x64.rpm
 goaccess -f a.log -d -p ~/.goaccessrc -a > test.html
 
 
+ /usr/sbin/sendmail -t << EOF
+From: Mail test
+Sender: jkjl
+To: test@qq.com
+Cc: test@g.cn
+Subject: mail testing
+----------------------------------
+This is the mail content ...
+muhaha
+---------------------------------
+EOF
+
+echo "hahaha.my"|sendmail -oi rainasmoon@126.com
+
+mutt -s "Test mail" test@163.com -a test.jpg < hello.txt
+
+echo "hi. glen. this is a mutt" | mutt -s "Test mutt mail" rainasmoon@126.com -a test.html
 
