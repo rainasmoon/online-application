@@ -42,7 +42,7 @@ wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2F
 http://download.oracle.com/otn-pub/java/jdk/8u92-b14/jdk-8u92-linux-x64.rpm
 
 
-goaccess -f a.log -d -p ~/.goaccessrc -a > test.html
+goaccess -f access.log-`date -d"1 day ago" +"%Y%m%d"` -d -p ~/.goaccessrc -a > report-`date -d"1 day ago" +"%Y%m%d"`.html
 
 
  /usr/sbin/sendmail -t << EOF
@@ -61,5 +61,5 @@ echo "hahaha.my"|sendmail -oi rainasmoon@126.com
 
 mutt -s "Test mail" test@163.com -a test.jpg < hello.txt
 
-echo "hi. glen. this is a mutt" | mutt -s "Test mutt mail" rainasmoon@126.com -a test.html
+echo "pay1all daily access log report: `date -d"1 day ago" +"%Y%m%d"` " | mutt -s "[pay1all daily report]:`date -d"1 day ago" +"%Y%m%d"`" rainasmoon@126.com -a report-`date -d"1 day ago" +"%Y%m%d"`.html
 
