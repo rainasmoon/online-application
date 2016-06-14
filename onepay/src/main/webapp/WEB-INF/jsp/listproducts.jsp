@@ -37,7 +37,7 @@
 		<div class="row">
 			<c:forEach var="arow" items="${vo.products}">
 				<div class="col-xs-6 col-lg-4">
-					<a href="bid.html?productId=${arow.objId }"> <img
+					<a href="bid-${arow.objId }.html"> <img
 						class="img-rounded" src="product_pic/thumbnail/${arow.picPath }"
 						alt="Generic placeholder image" width="140" height="140" />
 					</a>
@@ -49,7 +49,7 @@
 					</p>
 					<p>
 						<a class="btn btn-default"
-							href="bid.html?productId=${arow.objId }" role="button">查看 &raquo;</a>
+							href="bid-${arow.objId }.html" role="button">查看 &raquo;</a>
 					</p>
 				</div>
 				<!--/.col-xs-6.col-lg-4-->

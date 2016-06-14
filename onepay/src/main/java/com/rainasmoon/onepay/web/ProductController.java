@@ -13,6 +13,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -235,8 +236,8 @@ public class ProductController extends BaseController {
 
 	}
 
-	@RequestMapping(value = { "/bid.html" }, method = RequestMethod.GET)
-	public String bid(Long productId, Map<String, Object> model) {
+	@RequestMapping(value = { "/bid-{productId}.html" }, method = RequestMethod.GET)
+	public String bid(@PathVariable("productId") Long productId, Map<String, Object> model) {
 		BidProductVo productVo = productService.findBidProductVo(productId);
 		model.put("productTags", tagService.findProductTags(productId));
 		model.put("productVo", productVo);
@@ -252,9 +253,4 @@ public class ProductController extends BaseController {
 		return "bid";
 	}
 
-	@RequestMapping(value = { "/guessprice.html" }, method = RequestMethod.GET)
-	public String guessPrice(Map<String, Object> model) {
-
-		return "guessprice";
-	}
 }
