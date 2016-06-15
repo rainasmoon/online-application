@@ -16,12 +16,6 @@
 <div class="row row-offcanvas row-offcanvas-right">
 
 	<div class="col-xs-12 col-sm-9">
-
-		<div class="jumbotron">
-			<h1>我的出售</h1>
-			<p>今天也努力卖东西</p>
-		</div>
-		<h2 class="sub-header">我的出售货品</h2>
 		<div class="table-responsive">
 			<table class="table table-striped">
 				<thead>

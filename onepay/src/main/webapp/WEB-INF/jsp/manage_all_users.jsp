@@ -16,9 +16,7 @@
 
 <div class="row">
 	
-	<div class="col-sm-9  col-md-10  main">
-
-		<h2 class="sub-header">英雄榜</h2>
+	<div class="col-xs-12 col-sm-9">
 		<div class="table-responsive">
 			<table class="table table-striped">
 				<thead>

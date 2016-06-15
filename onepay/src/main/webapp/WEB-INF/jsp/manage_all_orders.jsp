@@ -17,10 +17,6 @@
 
 	<div class="col-xs-12 col-sm-9">
 
-		<div class="jumbotron">
-			<h1>我的定单</h1>
-		</div>
-
 		<div class="table-responsive">
 			<table class="table table-striped">
 				<thead>
