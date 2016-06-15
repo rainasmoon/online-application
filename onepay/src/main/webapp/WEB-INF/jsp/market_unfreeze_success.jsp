@@ -9,7 +9,7 @@
 
 
 <jsp:include page="./fragments/headTag.jsp" />
-<title>货币市场</title>
+<title>解冻 - 成功</title>
 
 <jsp:include page="./fragments/bodyHeader.jsp" />
 

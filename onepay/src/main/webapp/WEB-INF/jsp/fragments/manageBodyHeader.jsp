@@ -25,15 +25,9 @@
 					<li><a href="manage_all_sales.html">产品</a></li>
 					<li><a href="manage_all_orders.html">定单</a></li>
 				</ul>
-			</div>
-			<!-- /.nav-collapse -->
-			
-		</div>
-		<!-- /.container -->
-		
+			</div>			
+		</div>		
 	</nav>
-	<!-- /.navbar -->
 	
 	<div class="container">
 	
-		

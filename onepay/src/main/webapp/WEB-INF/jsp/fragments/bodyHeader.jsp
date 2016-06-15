@@ -39,14 +39,9 @@
 					<li><a href="addproduct.html">上传货品</a></li>
 					<li><a href="help.html">帮助</a></li>
 				</ul>
-			</div>
-			<!-- /.nav-collapse -->
-			
-		</div>
-		<!-- /.container -->
-		
+			</div>			
+		</div>	
 	</nav>
-	<!-- /.navbar -->
 	
 	<div class="container">
 	

@@ -8,7 +8,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <jsp:include page="./fragments/headTag.jsp" />
-<title>我的定单</title>
+<title>猿币市场</title>
 <link href="css/listproduct.css" rel="stylesheet">
 
 <jsp:include page="./fragments/bodyHeader.jsp" />

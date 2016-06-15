@@ -9,7 +9,7 @@
 <%@ taglib prefix="onepayapp" tagdir="/WEB-INF/tags"%>
 
 <jsp:include page="./fragments/headTag.jsp" />
-<title>市场</title>
+<title>市场 - 买</title>
 
 <jsp:include page="./fragments/bodyHeader.jsp" />
 

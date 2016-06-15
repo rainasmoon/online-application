@@ -9,7 +9,7 @@
 <%@ taglib prefix="onepayapp" tagdir="/WEB-INF/tags"%>
 
 <jsp:include page="./fragments/headTag.jsp" />
-<title>Signin</title>
+<title>登录 - 注册</title>
 <link href="css/signin.css" rel="stylesheet" />
 
 <jsp:include page="./fragments/bodyHeader.jsp" />

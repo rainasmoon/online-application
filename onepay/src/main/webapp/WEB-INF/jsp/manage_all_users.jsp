@@ -9,7 +9,7 @@
 
 <jsp:include page="./fragments/headTag.jsp" />
 
-<title>英雄榜</title>
+<title>所有用户</title>
 <link href="css/top10users.css" rel="stylesheet">
 
 <jsp:include page="./fragments/manageBodyHeader.jsp" />

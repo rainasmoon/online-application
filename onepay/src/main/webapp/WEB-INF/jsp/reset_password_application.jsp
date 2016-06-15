@@ -9,7 +9,7 @@
 <%@ taglib prefix="onepayapp" tagdir="/WEB-INF/tags"%>
 
 <jsp:include page="./fragments/headTag.jsp" />
-<title>重置密码</title>
+<title>重置密码 - 申请</title>
 <link href="css/signin.css" rel="stylesheet" />
 
 <jsp:include page="./fragments/bodyHeader.jsp" />
