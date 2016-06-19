@@ -8,6 +8,7 @@ http://localhost:9968/onepay/restful/generatebid/all
 name save in Controller may cause problem... WTF...
 
 ssh -i "/cygdrive/c/redhat.pem" ec2-user@aws.rainasmoon.com
+ssh -i "~/aws/redhat.pem" ec2-user@aws.rainasmoon.com
 
 scp -i "/cygdrive/c/redhat.pem" /cygdrive/c/Users/wlcic-glen/git/online-application/onepay/target/onepay.war ec2-user@aws.rainasmoon.com:/usr/share/tomcat8/webapps
 scp -i "/cygdrive/c/redhat.pem" /cygdrive/c/Users/glen/git/online-application/onepay/target/onepay.war ec2-user@aws.rainasmoon.com:/usr/share/tomcat8/webapps
