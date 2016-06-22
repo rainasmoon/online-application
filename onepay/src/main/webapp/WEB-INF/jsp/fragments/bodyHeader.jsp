@@ -25,19 +25,21 @@
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="listproducts.html">“东西”汇</a></li>
 <!-- 					<li><a href="top10users.html">Top 10 users</a></li> -->
+					<c:if test="${not empty userId}">
+<!-- 					<li><a href="myfavorites.html">我的收藏</a></li> -->
+					<li><a href="mysales.html">我的出售</a></li>
+					<li><a href="myorders.html">我的定单</a></li>
+					</c:if>
+					<li><a href="market.html">猿币兑换市场</a></li>
+					<li><a href="addproduct.html">上传货品</a></li>
+					<li><a href="help.html">帮助</a></li>
 					<c:if test="${empty userId}">
 						<li><a href="login.html">登录/注册</a></li>
 					</c:if>
 					<c:if test="${not empty userId}">
 						<li><a href="viewme.html"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><c:out value="${userShowName}" /></a></li>
-						<li><a href="myorders.html">我的定单</a></li>
 						<li><a href="logout.html">退出</a></li>
 					</c:if>
-<!-- 					<li><a href="myfavorites.html">我的收藏</a></li> -->
-					<li><a href="mysales.html">我的出售</a></li>
-					<li><a href="market.html">猿币兑换市场</a></li>
-					<li><a href="addproduct.html">上传货品</a></li>
-					<li><a href="help.html">帮助</a></li>
 				</ul>
 			</div>			
 		</div>	
