@@ -88,7 +88,7 @@ public class MarketController extends BaseController {
 			return "redirect:login.html";
 		}
 
-		model.put("yunOrder", new AddYunOrderVo());
+		model.put("addYunOrderVo", new AddYunOrderVo());
 		return "market_add_info";
 	}
 
