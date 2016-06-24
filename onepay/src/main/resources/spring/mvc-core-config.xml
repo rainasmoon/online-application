@@ -35,17 +35,34 @@
 
 	<mvc:view-controller path="/" view-name="redirect:welcome" />
 
+	<!-- serve static resources (*.html, ...) from src/main/webapp/ -->
+	<mvc:default-servlet-handler />
+
+
 	<!-- - Message source for this context, loaded from localized "messages_xx" 
 		files. - Files are stored inside src/main/resources -->
 	<bean id="messageSource"
 		class="org.springframework.context.support.ResourceBundleMessageSource"
 		p:basename="messages/messages" p:defaultEncoding="UTF-8" />
 
+	<bean id="validator"
+		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+		<property name="providerClass" value="org.hibernate.validator.HibernateValidator" />
+		<!-- 如果不加默认到 使用classpath下的 ValidationMessages.properties -->
+		<property name="validationMessageSource" ref="messageSource" />
+	</bean>
 
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
 		p:maxUploadSize="10000000" />
-	
+
+	<mvc:interceptors>
+		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
+	</mvc:interceptors>
+
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.CookieLocaleResolver" />
+
 	<!-- - This bean resolves specific types of exceptions to corresponding 
 		logical - view names for error views. -->
 	<bean
