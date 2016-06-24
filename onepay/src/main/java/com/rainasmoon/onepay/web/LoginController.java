@@ -38,11 +38,16 @@ public class LoginController extends BaseController {
 	}
 
 	@RequestMapping(value = "/login.html", method = RequestMethod.POST)
-	public String processLoginForm(@Valid LoginVo loginVo, String rememberMe, BindingResult result, HttpServletRequest request, HttpServletResponse response, Map<String, Object> model) {
+	public String processLoginForm(LoginVo loginVo, String rememberMe, BindingResult result, HttpServletRequest request, HttpServletResponse response, Map<String, Object> model) {
 
 		LOGGER.debug("Session:www:" + loginVo);
 		LOGGER.warn("Session:www:" + rememberMe);
 
+		if (result.hasErrors()) {
+			LOGGER.warn("Login has error.");
+			return "login";
+		}
+		
 		// if exist -> login. else create
 		// 1 check if userAccount exist. yes -> check password. no -> ask user
 		// what to do... create or relogin.

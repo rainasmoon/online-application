@@ -62,3 +62,12 @@ java.lang.NullPointerException: null
 2016-04-01 06:21:26 [http-nio-8080-exec-16] DEBUG o.s.web.servlet.DispatcherServlet - Successfully completed request
 
 
+Field error in object 'loginVo' on field 'password': rejected value []; codes [NotEmpty.loginVo.password,NotEmpty.password,NotEmpty.java.lang.String,NotEmpty]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [loginVo.password,password]; arguments []; default message [password]]; default message [{not.null}]
+Field error in object 'loginVo' on field 'account': rejected value []; codes [NotEmpty.loginVo.account,NotEmpty.account,NotEmpty.java.lang.String,NotEmpty]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [loginVo.account,account]; arguments []; default message [account]]; default message [{not.null}]
+2016-06-24 15:19:38 [qtp0-2] DEBUG o.s.w.s.m.a.ResponseStatusExceptionResolver -
+				Resolving exception from handler [public java.lang.String com.rainasmoon.onepay.web.LoginController.processLoginForm(com.rainasmoon.onepay.vo.LoginVo,java.lang.String,org.springframework.validation.BindingResult,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,java.util.Map<java.lang.String, java.lang.Object>)]: org.springframework.validation.BindException: org.springframework.validation.BeanPropertyBindingResult: 2 errors
+
+
+
+
+
