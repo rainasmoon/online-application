@@ -38,11 +38,7 @@ public class ImgThumbnailUtils {
 			}
 			FileInputStream fis = new FileInputStream(file);
 			File thumbnailFile = new File(picPath + File.separator + type + File.separator + picFileName);
-			
-			if (!thumbnailFile.exists()) {
-				log.info("thumbnailFile :%s, not exist.", picFileName);
-				return null;
-			}
+
 
 			BufferedImage imgIn = ImageIO.read(fis);
 

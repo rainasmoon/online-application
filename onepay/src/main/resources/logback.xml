@@ -98,31 +98,31 @@
 
 	</appender>
 	<logger name="org.springframework.web">
-		<level value="DEBUG" />
+		<level value="warn" />
 		<appender-ref ref="rollingFile" />
 	</logger>
 	<logger name="com.rainasmoon" level="debug" />
-	<logger name="Hibernate" level="debug"></logger>
+	<logger name="Hibernate" level="warn"></logger>
 	<logger name="org.springframework.beans.TypeConverterDelegate">
-		<level value="debug" />
+		<level value="warn" />
 	</logger>
-	<logger name="com.rainasmoon.onepay.util.AccessLogFilter" level="debug"
+	<logger name="com.rainasmoon.onepay.util.AccessLogFilter" level="info"
 		additivity="false">
 		<appender-ref ref="accessLoggingFile" />
 		<appender-ref ref="console"></appender-ref>
 		<appender-ref ref="EMAIL" />
 	</logger>
 
-	<logger name="warn" level="debug" additivity="true">
+	<logger name="warn" level="WARN" additivity="true">
 		<appender-ref ref="exceptionLogFile" />
 		<appender-ref ref="EMAIL" />
 	</logger>
 
-	<logger name="org.hibernate" level="debug" />
+	<logger name="org.hibernate" level="warn" />
 	<logger name="org.hibernate.type.descriptor.sql.BasicBinder"
-		level="debug" />
+		level="warn" />
 
-	<root level="debug">
+	<root level="info">
 		<appender-ref ref="console" />
 		<appender-ref ref="rollingFile" />
 	</root>
