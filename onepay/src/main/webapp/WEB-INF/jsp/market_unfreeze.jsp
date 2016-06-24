@@ -14,7 +14,7 @@
 <jsp:include page="./fragments/bodyHeader.jsp" />
 
 <h1>解冻</h1>
-<form:form method="post"
+<form:form method="post" action="market_unfreeze.html"
 	class="form-horizontal">
 		<label>解冻码</label>
 		<input id="unfreezeCode" name="unfreezeCode" type="text" placeholder="解冻码" required autofocus/>

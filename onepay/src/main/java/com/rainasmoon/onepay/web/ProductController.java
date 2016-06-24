@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import javax.validation.Valid;
 
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -129,7 +128,7 @@ public class ProductController extends BaseController {
     }
 
     @RequestMapping(value = "/addproduct.html", method = RequestMethod.POST)
-    public String saveProduct(@Valid AddProductVo productVo, @RequestParam(required = false) MultipartFile inputPicFile, BindingResult result, Map<String, Object> model) {
+    public String saveProduct(AddProductVo productVo, @RequestParam(required = false) MultipartFile inputPicFile, BindingResult result, Map<String, Object> model) {
 
         if (!isLogin()) {
             return "redirect:login.html";

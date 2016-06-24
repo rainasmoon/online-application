@@ -14,7 +14,7 @@
 <jsp:include page="./fragments/bodyHeader.jsp" />
 
 <h1>卖</h1>
-<form:form method="post"
+<form:form method="post" action="market_sell.html"
 	class="form-horizontal">
 		<input type="hidden" name="yunOrderId" value="${yunOrderId }" />
 

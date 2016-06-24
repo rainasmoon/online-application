@@ -13,7 +13,7 @@
 
 <jsp:include page="./fragments/bodyHeader.jsp" />
 
-<form action="order_sale_star.html" method="post"
+<form action="/order_sale_star.html" method="post"
 	class="form-horizontal">
 	<span class="help-inline"> <c:if test="${not empty message}">
 			<div id="message" class="alert alert-success" role="alert">${message}</div>

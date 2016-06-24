@@ -14,7 +14,7 @@
 <jsp:include page="./fragments/bodyHeader.jsp" />
 
 <h1>添加一个商品</h1>
-<form:form modelAttribute="product" method="post"
+<form:form modelAttribute="product" method="post" action="/addproduct.html"
 	class="form-horizontal" id="add-product-form"
 	enctype="multipart/form-data">
 	<span class="help-inline"> <c:if test="${not empty message}">

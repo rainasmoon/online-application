@@ -13,7 +13,7 @@
 
 <jsp:include page="./fragments/bodyHeader.jsp" />
 
-<form action="saveProductPic.html" method="post" class="form-horizontal" id="add-product-pic-form"
+<form action="/saveProductPic.html" method="post" class="form-horizontal" id="add-product-pic-form"
 	enctype="multipart/form-data">
 	<span class="help-inline"> <c:if test="${not empty message}">
 			<div id="message" class="alert alert-success" role="alert">${message}</div>

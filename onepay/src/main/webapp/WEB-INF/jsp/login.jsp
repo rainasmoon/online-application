@@ -14,7 +14,7 @@
 
 <jsp:include page="./fragments/bodyHeader.jsp" />
 
-<form:form modelAttribute="loginVo" method="post" action="login.html" class="form-signin"
+<form:form modelAttribute="loginVo" method="post" action="/login.html" class="form-signin"
 	id="login-form" role="form">
 	<h2 class="form-signin-heading">请登录</h2>
 	<span class="help-inline"> <c:if test="${not empty message}">

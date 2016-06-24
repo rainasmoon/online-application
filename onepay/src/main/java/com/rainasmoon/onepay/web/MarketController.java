@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import javax.validation.Valid;
-
+import org.apache.commons.lang3.StringUtils;
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -94,11 +93,24 @@ public class MarketController extends BaseController {
 	}
 
 	@RequestMapping(value = { "/market_add_info.html" }, method = RequestMethod.POST)
-	public String addMarketInfo(@Valid AddYunOrderVo addYunOrderVo, BindingResult result, Map<String, Object> model) {
+	public String addMarketInfo(AddYunOrderVo addYunOrderVo, BindingResult result, Map<String, Object> model) {
 		if (!isLogin()) {
 			return "redirect:login.html";
 		}
 
+		if (addYunOrderVo.getAmount() == null || addYunOrderVo.getAmount() <= 0) {
+			result.rejectValue("amount", "NotEmpty.loginVo.account");
+		}
+		
+		if (addYunOrderVo.getPrice() == null || addYunOrderVo.getPrice() <= 0) {
+			result.rejectValue("price", "NotEmpty.loginVo.account");
+		}
+		
+		if (result.hasErrors()) {
+			LOGGER.warn("Login has error.");
+			return "market_add_info";
+		}
+		
 		YunOrder yunOrder = new YunOrder();
 		yunOrder.setUserId(getLoginUserId());
 		yunOrder.setAmount(addYunOrderVo.getAmount());

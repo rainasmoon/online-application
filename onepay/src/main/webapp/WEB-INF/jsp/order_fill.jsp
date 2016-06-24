@@ -13,7 +13,7 @@
 
 <jsp:include page="./fragments/bodyHeader.jsp" />
 
-<form:form modelAttribute="fillOrderVo" method="post"
+<form:form modelAttribute="fillOrderVo" method="post" action="/order_fill.html"
 	class="form-horizontal">
 	<span class="help-inline"> <c:if test="${not empty message}">
 			<div id="message" class="alert alert-success" role="alert">${message}</div>

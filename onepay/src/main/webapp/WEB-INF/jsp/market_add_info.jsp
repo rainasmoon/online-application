@@ -14,8 +14,8 @@
 <jsp:include page="./fragments/bodyHeader.jsp" />
 
 <h1>添加一条交易</h1>
-<form:form modelAttribute="yunOrder" method="post"
-	class="form-horizontal" >
+<form:form modelAttribute="yunOrder" method="post" action="/market_add_info.html"
+	class="form-horizontal" role="form"  >
 	<span class="help-inline"> <c:if test="${not empty message}">
 			<div id="message" class="alert alert-success" role="alert">${message}</div>
 		</c:if> <spring:bind path="*">

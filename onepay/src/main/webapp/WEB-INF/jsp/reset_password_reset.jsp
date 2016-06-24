@@ -15,7 +15,7 @@
 <jsp:include page="./fragments/bodyHeader.jsp" />
 
 <h1>重置密码</h1>
-<form:form modelAttribute="resetPasswordVo" method="post"
+<form:form action="reset_password_reset.html" modelAttribute="resetPasswordVo" method="post"
 	class="form-horizontal" id="add-resetpassword-application-form">
 	<span class="help-inline"> <c:if test="${not empty message}">
 			<div id="message" class="alert alert-success" role="alert">${message}</div>
