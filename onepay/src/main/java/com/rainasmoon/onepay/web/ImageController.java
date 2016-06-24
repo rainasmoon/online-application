@@ -91,6 +91,12 @@ public class ImageController {
 				ImgThumbnailUtils imgThumbnailUtils = new ImgThumbnailUtils(250);
 				file = imgThumbnailUtils.createThumbnail(picPath, "thumbnail", SYS_PIC_PATH);
 			}
+			
+			if (file == null) {
+				response.setStatus(response.SC_NO_CONTENT);
+				return;
+			}
+			
 			fileInputStream = new FileInputStream(file);
 
 			response.setHeader("Content-Disposition", "attachment; filename=" + file.getName());
