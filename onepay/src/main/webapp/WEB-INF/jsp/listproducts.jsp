@@ -15,7 +15,8 @@
 <jsp:include page="./fragments/bodyHeader.jsp" />
 
 <div class="row row-offcanvas row-offcanvas-right">
-
+<h1>一元网 - 换 换 换 - 今天你想买/卖点什么？</h1>
+<br/>
 	<div class="col-xs-12 col-sm-9">
 
 		<!-- 		<div class="jumbotron"> -->
@@ -39,7 +40,7 @@
 				<div class="col-xs-6 col-lg-4">
 					<a href="bid-${arow.objId }.html"> <img
 						class="img-rounded" src="product_pic/thumbnail/${arow.picPath }"
-						alt="Generic placeholder image" width="140" height="140" />
+						alt="${arow.adDescription }" width="140" height="140" />
 					</a>
 					<h2>
 						<c:out value="${arow.adTitle}" />

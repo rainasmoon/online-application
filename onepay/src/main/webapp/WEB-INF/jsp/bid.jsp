@@ -23,7 +23,7 @@
 	</p>
 	<div class="thumbnail">
 		<img alt="" src="product_pic/${productVo.picPath }" width="300"
-			height="300" />
+			height="300" alt="${productVo.productTitle }; ${productVo.description}"/>
 
 	</div>
 	<p class="lead">

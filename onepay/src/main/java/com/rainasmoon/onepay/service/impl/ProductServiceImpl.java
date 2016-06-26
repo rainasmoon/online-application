@@ -94,6 +94,7 @@ public class ProductServiceImpl implements ProductService {
 		productVo.setProductId(productId);
 		productVo.setPicPath(getCoverPicture(productId).getPicPath());
 		productVo.setProductTitle(product.getName());
+		productVo.setDescription(product.getDescription());
 		productVo.setPrice(product.getPrice());
 		if (product.getCurrentBiderId() != null) {
 			User u = userRepository.findOne(product.getCurrentBiderId());

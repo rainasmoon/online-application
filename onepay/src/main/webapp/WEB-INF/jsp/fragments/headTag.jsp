@@ -7,7 +7,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="renderer" content="webkit">
-<meta name="description" content="pay1all">
+<meta name="keywords" content="一元网，闲置，旧物交换，拍卖">
+<meta name="description" content="一元网，旧物交换的平台，你的闲置也许会成为别人的宝贝，让我们像拍卖一样去出售闲置和竞拍喜欢的东西吧。">
 <meta name="author" content="rainasmoon">
 <link rel="icon" href="favicon.ico">
 
