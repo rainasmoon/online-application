@@ -5,7 +5,7 @@
 <title>一元网 - 霸王条款</title>
 
 <jsp:include page="./fragments/bodyHeader.jsp" />
-<h2>一元网 - 霸王条款</h2>
+<h1>一元网 - 霸王条款</h1>
 <br/>
 <img alt="" src="pic/agreement.jpg"  />
 <br/>

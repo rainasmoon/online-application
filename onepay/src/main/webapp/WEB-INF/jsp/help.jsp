@@ -5,7 +5,7 @@
 <title>一元网 - 帮助</title>
 
 <jsp:include page="./fragments/bodyHeader.jsp" />
-<h2>一元网</h2>
+<h1>一元网</h1>
 <p>在这里让我们交换一此用不到的东西吧，你看不上的，也许会成为别人想要的:)</p>
 <h2>拍卖方式</h2>
 <ul>
