@@ -8,5 +8,6 @@ Disallow: /*manage*
 Disallow: /*password*
 Disallow: /*login*
 Disallow: /*order*
+Disallow: /*restful*
 
 
