@@ -40,7 +40,7 @@
 				<div class="col-xs-6 col-lg-4">
 					<a href="bid-${arow.objId }.html"> <img
 						class="img-rounded" src="product_pic/thumbnail/${arow.picPath }"
-						alt="${arow.adDescription }" width="140" height="140" />
+						alt="${arow.adTitle};${arow.adDescription }" width="140" height="140" />
 					</a>
 					<h2>
 						<c:out value="${arow.adTitle}" />
