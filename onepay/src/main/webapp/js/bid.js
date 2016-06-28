@@ -52,8 +52,13 @@ function redirectToLoginPage() {
 	window.location.href = "login.html?toUrl=" + window.location.href;
 }
 
-function shakeThis(objId) {
+function shakeThis_old(objId) {
 	$("#" + objId).effect("shake", {
 		distance : 1
 	});
+}
+
+function shakeThis(objId) {
+	$("#" + objId).effect("highlight", {color : "#000000"});
+	$("#productPrice").effect("highlight", {color : "#ffff99"});
 }
