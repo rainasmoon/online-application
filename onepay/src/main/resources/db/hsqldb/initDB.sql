@@ -10,7 +10,7 @@ DROP TABLE yunorders IF EXISTS;
 
 DROP TABLE accountlogs IF EXISTS;
 
-DROP TABLE accountlogs IF EXISTS;
+DROP TABLE accesslogs IF EXISTS;
 
 DROP TABLE reset_password_applications IF EXISTS;
 
@@ -125,5 +125,16 @@ CREATE TABLE reset_password_applications (
   password2 VARCHAR(100),
   password3 VARCHAR(100),
   receive_reset_email VARCHAR(100), 
+  create_date TIMESTAMP
+);
+
+CREATE TABLE accesslogs (
+  id INTEGER IDENTITY PRIMARY KEY,
+  user_id INTEGER,
+  ip VARCHAR(60),
+  client VARCHAR(600),
+  url VARCHAR(600),
+  cookie_id VARCHAR(60),
+  session_id VARCHAR(60),
   create_date TIMESTAMP
 );

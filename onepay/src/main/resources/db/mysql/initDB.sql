@@ -123,3 +123,14 @@ CREATE TABLE reset_password_applications (
   receive_reset_email VARCHAR(100), 
   create_date TIMESTAMP
 )engine=InnoDB CHARSET=utf8;
+
+  CREATE TABLE  IF NOT EXISTS accesslogs (
+  id INT(8) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  user_id INT(8) UNSIGNED,
+  ip VARCHAR(60),
+  client VARCHAR(600),
+  url VARCHAR(600),
+  cookie_id VARCHAR(60),
+  session_id VARCHAR(60),
+  create_date TIMESTAMP
+) engine=InnoDB CHARSET=utf8;
