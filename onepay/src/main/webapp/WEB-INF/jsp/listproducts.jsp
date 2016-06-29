@@ -15,7 +15,7 @@
 <jsp:include page="./fragments/bodyHeader.jsp" />
 
 <div class="row row-offcanvas row-offcanvas-right">
-<h1>一元网 - 换 换 换 - 今天你想买/卖点什么？</h1>
+<h1>今天你想买/卖点什么？</h1>
 <br/>
 	<div class="col-xs-12 col-sm-9">
 
