@@ -1,5 +1,8 @@
 package com.rainasmoon.onepay.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -38,6 +41,16 @@ public class ResetPasswordServiceImpl implements ResetPasswordService {
 		}
 
 		return "申请成功，请等待";
+	}
+
+	@Override
+	public List<ResetPasswordApplication> listAllApplications() {
+		Iterable<ResetPasswordApplication> applications = resetPasswordApplicationRepository.findAll();
+		List<ResetPasswordApplication> result = new ArrayList<>();
+		for (ResetPasswordApplication a : applications) {
+			result.add(a);
+		}
+		return result;
 	}
 
 }

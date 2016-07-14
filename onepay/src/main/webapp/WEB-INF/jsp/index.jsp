@@ -8,7 +8,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <jsp:include page="./fragments/headTag.jsp" />
-<title>1元启拍旧货网</title>
+<title>1元起拍闲置网</title>
 
 <style type="text/css">
 body {
@@ -33,11 +33,10 @@ body {
 				<img class="first-slide" src="${arow.picPath }" alt="First slide">
 				<div class="container">
 					<div class="carousel-caption">
-						<h1>注册就送100猿.</h1>
+						<h2>注册就送100猿.</h2>
 						<p>没啥特别的，新人要有礼</p>
 						<p>
-							<a class="btn btn-lg btn-primary" href="login.jsp" role="button">Sign
-								up today</a>
+							<a class="btn btn-lg btn-primary" href="login.html" role="button">马上注册</a>
 						</p>
 					</div>
 				</div>

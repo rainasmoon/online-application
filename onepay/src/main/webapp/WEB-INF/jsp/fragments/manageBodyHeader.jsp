@@ -24,6 +24,7 @@
 					<li><a href="manage_all_users.html">用户</a></li>
 					<li><a href="manage_all_sales.html">产品</a></li>
 					<li><a href="manage_all_orders.html">定单</a></li>
+					<li><a href="manage_all_applications.html">重置密码申请</a></li>
 				</ul>
 			</div>			
 		</div>		

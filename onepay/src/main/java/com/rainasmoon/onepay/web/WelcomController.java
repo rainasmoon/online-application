@@ -18,7 +18,7 @@ public class WelcomController extends BaseController {
 	public String initCreationForm(Map<String, Object> model) {
 		WelcomeVo vo = new WelcomeVo();
 
-		List<AdVo> ads = new ArrayList<AdVo>();
+		List<AdVo> ads = new ArrayList<>();
 		for (int i = 0; i < 3; i++) {
 			AdVo ad = new AdVo();
 			ad.setPicPath("pic/1.jpg");
@@ -26,7 +26,7 @@ public class WelcomController extends BaseController {
 		}
 		vo.setAds(ads);
 
-		List<AdVo> top3 = new ArrayList<AdVo>();
+		List<AdVo> top3 = new ArrayList<>();
 		for (int i = 0; i < 3; i++) {
 			AdVo ad = new AdVo();
 			ad.setPicPath("pic/1.jpg");
@@ -34,7 +34,7 @@ public class WelcomController extends BaseController {
 		}
 		vo.setTop3(top3);
 
-		List<AdVo> imp3 = new ArrayList<AdVo>();
+		List<AdVo> imp3 = new ArrayList<>();
 		for (int i = 0; i < 3; i++) {
 			AdVo ad = new AdVo();
 			ad.setPicPath("pic/1.jpg");
@@ -44,6 +44,6 @@ public class WelcomController extends BaseController {
 
 		model.put("vo", vo);
 		// TODO glen the real is "index"
-		return "redirect:listproducts.html";
+		return "index";
 	}
 }
