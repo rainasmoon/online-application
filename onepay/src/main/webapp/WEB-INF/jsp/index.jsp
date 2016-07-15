@@ -33,10 +33,10 @@ body {
 				<img class="first-slide" src="${arow.picPath }" alt="First slide">
 				<div class="container">
 					<div class="carousel-caption">
-						<h2>注册就送100猿.</h2>
-						<p>没啥特别的，新人要有礼</p>
+						<h2>${arow.adTitle }</h2>
+						<p>${arow.adDescription }</p>
 						<p>
-							<a class="btn btn-lg btn-primary" href="login.html" role="button">马上注册</a>
+							<a class="btn btn-lg btn-primary" href="${arow.urlLink }" role="button">${arow.urlName }</a>
 						</p>
 					</div>
 				</div>
@@ -66,15 +66,9 @@ body {
 			<div class="col-lg-4">
 				<img class="img-circle" src="${arow.picPath }"
 					alt="Generic placeholder image" width="140" height="140">
-				<h2>Heading</h2>
-				<p>Donec sed odio dui. Etiam porta sem malesuada magna mollis
-					euismod. Nullam id dolor id nibh ultricies vehicula ut id elit.
-					Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-					Praesent commodo cursus magna.</p>
-				<p>
-					<a class="btn btn-default" href="bid.html" role="button">View
-						details &raquo;</a>
-				</p>
+				<h2>${arow.adTitle }</h2>
+				<p>${arow.adDescription }</p>
+				
 			</div>
 			<!-- /.col-lg-4 -->
 		</c:forEach>
@@ -91,13 +85,9 @@ body {
 			<c:if test="${status.count%2 == '0'}">
 				<div class="col-md-7">
 					<h2 class="featurette-heading">
-						First featurette heading. <span class="text-muted">It'll
-							blow your mind.</span>
+						${arow.adTitle } <span class="text-muted"><a href="bid-${arow.objId }.html" role="button">查看 &raquo;</a></span>
 					</h2>
-					<p class="lead">Donec ullamcorper nulla non metus auctor
-						fringilla. Vestibulum id ligula porta felis euismod semper.
-						Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-						Fusce dapibus, tellus ac cursus commodo.</p>
+					<p class="lead">${arow.adDescription }</p>
 				</div>
 				<div class="col-md-5">
 					<img class="featurette-image img-responsive center-block"
@@ -107,13 +97,9 @@ body {
 			<c:if test="${status.count%2 != '0'}">
 				<div class="col-md-7 col-md-push-5">
 					<h2 class="featurette-heading">
-						First featurette heading. <span class="text-muted">It'll
-							blow your mind.</span>
+						${arow.adTitle } <span class="text-muted"><a href="bid-${arow.objId }.html" role="button">查看 &raquo;</a></span>
 					</h2>
-					<p class="lead">Donec ullamcorper nulla non metus auctor
-						fringilla. Vestibulum id ligula porta felis euismod semper.
-						Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-						Fusce dapibus, tellus ac cursus commodo.</p>
+					<p class="lead">${arow.adDescription }</p>
 				</div>
 				<div class="col-md-5 col-md-pull-7">
 					<img class="featurette-image img-responsive center-block"

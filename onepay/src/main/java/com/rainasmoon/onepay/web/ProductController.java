@@ -61,7 +61,7 @@ public class ProductController extends BaseController {
         vo.setTodayAmount(1000000);
         List<UserVo> result = new ArrayList<UserVo>();
 
-        List<User> users = userService.listActiveTop5Users();
+        List<User> users = userService.listActiveTopUsers();
 
         for (User user : users) {
             UserVo userVo = dozerBeanMapper.map(user, UserVo.class);

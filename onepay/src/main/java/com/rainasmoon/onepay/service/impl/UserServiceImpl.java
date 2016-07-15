@@ -52,11 +52,25 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<User> listActiveTop5Users() {
+	public List<User> listActiveTopUsers() {
 		Iterable<User> users = userRepository.findAll();
-		List<User> result = new ArrayList<User>();
+		List<User> result = new ArrayList<>();
 		for (User u : users) {
 			result.add(u);
+		}
+		return result;
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<User> listVipUsers() {
+		Iterable<User> users = userRepository.findAll();
+		List<User> result = new ArrayList<>();
+		for (User u : users) {
+			result.add(u);
+			if (result.size() >= 3) {
+				break;
+			}
 		}
 		return result;
 	}
@@ -91,7 +105,7 @@ public class UserServiceImpl implements UserService {
 	@Transactional(readOnly = true)
 	public List<User> listAllUsers() {
 		Iterable<User> users = userRepository.findAll();
-		List<User> result = new ArrayList<User>();
+		List<User> result = new ArrayList<>();
 		for (User u : users) {
 			result.add(u);
 		}

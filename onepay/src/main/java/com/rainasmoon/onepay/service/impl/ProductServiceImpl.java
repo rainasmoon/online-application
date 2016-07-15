@@ -52,7 +52,7 @@ public class ProductServiceImpl implements ProductService {
 	@Transactional(readOnly = true)
 	public List<AdVo> listAllOnSaleProductsPage() {
 		Iterable<Product> allProducts = repository.findByStatusOrderByIdDesc(ProductStatus.ONSALE.getCode());
-		List<AdVo> result = new ArrayList<AdVo>();
+		List<AdVo> result = new ArrayList<>();
 		for (Product p : allProducts) {
 			AdVo adVo = new AdVo();
 			adVo.setObjId(p.getId());
@@ -60,6 +60,26 @@ public class ProductServiceImpl implements ProductService {
 			adVo.setAdDescription(p.getDescription());
 			adVo.setPicPath(getCoverPicture(p.getId()).getPicPath());
 			result.add(adVo);
+		}
+		return result;
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<AdVo> listVipProducts() {
+		Iterable<Product> allProducts = repository.findByStatusOrderByIdDesc(ProductStatus.ONSALE.getCode());
+		List<AdVo> result = new ArrayList<>();
+		for (Product p : allProducts) {
+			AdVo adVo = new AdVo();
+			adVo.setObjId(p.getId());
+			adVo.setAdTitle(p.getName());
+			adVo.setAdDescription(p.getDescription());
+			adVo.setPicPath(getCoverPicture(p.getId()).getPicPath());
+			result.add(adVo);
+
+			if (result.size() >= 3) {
+				break;
+			}
 		}
 		return result;
 	}

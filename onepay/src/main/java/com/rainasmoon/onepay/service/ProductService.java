@@ -17,6 +17,8 @@ public interface ProductService {
 
 	List<AdVo> listAllOnSaleProductsPage();
 
+	List<AdVo> listVipProducts();
+
 	List<Product> listMySalesProductsPage(Long loginUserId);
 
 	List<AdVo> listMyFavoritesProductsPage(Long loginUserId);

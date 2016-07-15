@@ -35,7 +35,7 @@ public class UserController extends BaseController {
 	@RequestMapping(value = { "/top10users.html" }, method = RequestMethod.GET)
 	public String listTop10Users(Map<String, Object> model) {
 
-		List<User> results = userService.listActiveTop5Users();
+		List<User> results = userService.listActiveTopUsers();
 
 		List<AdVo> vip4users = new ArrayList<AdVo>();
 

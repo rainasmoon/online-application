@@ -12,7 +12,9 @@ public interface UserService {
 
 	User addUser(String loginName, String password);
 
-	List<User> listActiveTop5Users();
+	List<User> listActiveTopUsers();
+
+	List<User> listVipUsers();
 
 	User findUser(Long userId);
 
