@@ -11,3 +11,6 @@ CREATE TABLE reset_password_applications (
   receive_reset_email VARCHAR(100), 
   create_date TIMESTAMP
 )engine=InnoDB CHARSET=utf8;
+
+alter table reset_password_applications add ip_address VARCHAR(100);
+alter table reset_password_applications add user_agent VARCHAR(100);

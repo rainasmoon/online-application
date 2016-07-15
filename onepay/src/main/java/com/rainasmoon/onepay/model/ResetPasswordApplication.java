@@ -21,6 +21,12 @@ public class ResetPasswordApplication extends BaseEntity {
 	@Column(name = "receive_reset_email")
 	private String receiveResetEmail;
 
+	@Column(name = "ip_address")
+	private String ip;
+
+	@Column(name = "user_agent")
+	private String agent;
+
 	public String getLoginAccount() {
 		return loginAccount;
 	}
@@ -67,5 +73,21 @@ public class ResetPasswordApplication extends BaseEntity {
 
 	public void setReceiveResetEmail(String receiveResetEmail) {
 		this.receiveResetEmail = receiveResetEmail;
+	}
+
+	public String getIp() {
+		return ip;
+	}
+
+	public void setIp(String ip) {
+		this.ip = ip;
+	}
+
+	public String getAgent() {
+		return agent;
+	}
+
+	public void setAgent(String agent) {
+		this.agent = agent;
 	}
 }

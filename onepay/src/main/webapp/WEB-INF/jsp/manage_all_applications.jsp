@@ -9,14 +9,14 @@
 
 <jsp:include page="./fragments/headTag.jsp" />
 
-<title>所有用户</title>
+<title>所有申请</title>
 <link href="css/top10users.css" rel="stylesheet">
 
 <jsp:include page="./fragments/manageBodyHeader.jsp" />
 
 <div class="row">
 	
-	<div class="col-xs-12 col-sm-9">
+	<div >
 		<div class="table-responsive">
 			<table class="table table-striped">
 				<thead>
@@ -28,6 +28,8 @@
 						<th>password3</th>
 						<th>receiveResetEmail</th>
 						<th>description</th>
+						<th>ip_address</th>
+						<th>user_agent</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -41,6 +43,8 @@
 							<td><c:out value="${arow.password3}" /></td>
 							<td><c:out value="${arow.receiveResetEmail}" /></td>
 							<td><c:out value="${arow.description}" /></td>
+							<td><c:out value="${arow.ip}" /></td>
+							<td><c:out value="${arow.agent}" /></td>
 						</tr>
 					</c:forEach>
 				</tbody>
