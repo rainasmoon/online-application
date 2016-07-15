@@ -91,7 +91,7 @@ body {
 				</div>
 				<div class="col-md-5">
 					<img class="featurette-image img-responsive center-block"
-						src="${arow.picPath }" alt="Generic placeholder image">
+						src="product_pic/${arow.picPath }" alt="Generic placeholder image">
 				</div>
 			</c:if>
 			<c:if test="${status.count%2 != '0'}">
@@ -103,7 +103,7 @@ body {
 				</div>
 				<div class="col-md-5 col-md-pull-7">
 					<img class="featurette-image img-responsive center-block"
-						src="${arow.picPath }" alt="Generic placeholder image">
+						src="product_pic/${arow.picPath }" alt="Generic placeholder image">
 				</div>
 			</c:if>
 		</div>
