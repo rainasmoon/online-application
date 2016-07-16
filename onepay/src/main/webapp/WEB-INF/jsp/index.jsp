@@ -114,4 +114,6 @@ body {
 	<!-- /END THE FEATURETTES -->
 </div>
 
+<jsp:include page="./fragments/outlink.jsp" />
+
 <jsp:include page="./fragments/footer.jsp" />
