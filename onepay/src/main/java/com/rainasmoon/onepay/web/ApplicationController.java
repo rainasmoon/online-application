@@ -5,6 +5,8 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -22,6 +24,8 @@ public class ApplicationController {
 
 	@Autowired
 	private ResetPasswordService resetPasswordService;
+
+	public static Logger LOGGER = LoggerFactory.getLogger(ApplicationController.class);
 
 	@RequestMapping(value = { "/reset_password_application.html" }, method = RequestMethod.GET)
 	public String showApplicationForm(Map<String, Object> model) {
@@ -47,6 +51,12 @@ public class ApplicationController {
 
 		if (StringUtils.isBlank(application.getReceiveResetEmail())) {
 			result.rejectValue("receiveResetEmail", "NotEmpty.loginVo.account");
+		}
+
+		if (result.hasErrors()) {
+			LOGGER.warn("field error. when submiting reset password application.");
+			LOGGER.debug(result.toString());
+			return "reset_password_application";
 		}
 
 		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
