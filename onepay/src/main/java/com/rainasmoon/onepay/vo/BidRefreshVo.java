@@ -2,41 +2,45 @@ package com.rainasmoon.onepay.vo;
 
 public class BidRefreshVo {
 
-	private Integer bidersCount;
-	private String currentOwerName;
-	private Integer price;
-	private String statusName;
+    private Integer bidersCount;
+    private String currentOwerName;
+    private Integer price;
+    private String statusName;
 
-	public Integer getBidersCount() {
-		return bidersCount;
-	}
+    public static BidRefreshVo empty() {
+        return new BidRefreshVo();
+    }
 
-	public void setBidersCount(Integer bidersCount) {
-		this.bidersCount = bidersCount;
-	}
+    public Integer getBidersCount() {
+        return bidersCount;
+    }
 
-	public Integer getPrice() {
-		return price;
-	}
+    public void setBidersCount(Integer bidersCount) {
+        this.bidersCount = bidersCount;
+    }
 
-	public void setPrice(Integer price) {
-		this.price = price;
-	}
+    public Integer getPrice() {
+        return price;
+    }
 
-	public String getCurrentOwerName() {
-		return currentOwerName;
-	}
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
 
-	public void setCurrentOwerName(String currentOwerName) {
-		this.currentOwerName = currentOwerName;
-	}
+    public String getCurrentOwerName() {
+        return currentOwerName;
+    }
 
-	public String getStatusName() {
-		return statusName;
-	}
+    public void setCurrentOwerName(String currentOwerName) {
+        this.currentOwerName = currentOwerName;
+    }
 
-	public void setStatusName(String statusName) {
-		this.statusName = statusName;
-	}
+    public String getStatusName() {
+        return statusName;
+    }
+
+    public void setStatusName(String statusName) {
+        this.statusName = statusName;
+    }
 
 }

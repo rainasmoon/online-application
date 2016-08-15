@@ -161,6 +161,7 @@ public class BidServiceImpl implements BidService {
         Product product = productRepository.findOne(productId);
         if (product == null) {
             LOGGER.error("product is null: pls check :" + productId);
+            return BidRefreshVo.empty();
         }
         BidRefreshVo result = new BidRefreshVo();
         result.setBidersCount(0);
