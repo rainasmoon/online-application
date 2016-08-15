@@ -20,8 +20,8 @@ public class EmailSendLog {
 		email.setAuthenticator(new DefaultAuthenticator("help@rainasmoon.com", "Fhwl7758"));
 		email.addTo("rainasmoon@126.com", "glen");
 		email.setFrom("help@rainasmoon.com", "Me");
-		email.setSubject("[onepay] access log");
-		email.setMsg("the access log from one pay on " + new Date());
+		email.setSubject("[onepay] exception log");
+		email.setMsg("the exception log from one pay on " + new Date());
 
 		// add the attachment
 		// Create the attachment
