@@ -30,7 +30,8 @@
 		<div>
 			<label for="inputDescription">专业吐槽</label>
 			<textarea id="content_id" name="content" class="form-control"
-				rows="3" ></textarea>
+				rows="3" autofocus="true"
+			required="true" ></textarea>
 		</div>
 		<hr />
 
