@@ -25,6 +25,7 @@
 					<li><a href="manage_all_sales.html">产品</a></li>
 					<li><a href="manage_all_orders.html">定单</a></li>
 					<li><a href="manage_all_applications.html">重置密码申请</a></li>
+					<li><a href="manage_all_feedbacks.html">用户反馈</a></li>
 				</ul>
 			</div>			
 		</div>		

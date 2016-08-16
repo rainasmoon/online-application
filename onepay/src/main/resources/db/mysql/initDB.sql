@@ -1,3 +1,4 @@
+-- 100, 200, 600, 60
 drop database if exists onepayapp;
 
 CREATE DATABASE IF NOT EXISTS onepayapp;
@@ -126,7 +127,7 @@ CREATE TABLE reset_password_applications (
   create_date TIMESTAMP
 )engine=InnoDB CHARSET=utf8;
 
-  CREATE TABLE  IF NOT EXISTS accesslogs (
+CREATE TABLE  IF NOT EXISTS accesslogs (
   id INT(8) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   user_id INT(8) UNSIGNED,
   ip VARCHAR(60),
@@ -134,5 +135,17 @@ CREATE TABLE reset_password_applications (
   url VARCHAR(600),
   cookie_id VARCHAR(60),
   session_id VARCHAR(60),
+  create_date TIMESTAMP
+) engine=InnoDB CHARSET=utf8;
+
+CREATE TABLE  IF NOT EXISTS feedbacks (
+  id INT(8) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  user_id INT(8) UNSIGNED,
+  name VARCHAR(100),
+  content VARCHAR(600),
+  email VARCHAR(100),
+  phone VARCHAR(100),
+  ip VARCHAR(60),
+  client VARCHAR(600),  
   create_date TIMESTAMP
 ) engine=InnoDB CHARSET=utf8;

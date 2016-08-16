@@ -10,10 +10,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.rainasmoon.onepay.model.Feedback;
 import com.rainasmoon.onepay.model.Order;
 import com.rainasmoon.onepay.model.Product;
 import com.rainasmoon.onepay.model.ResetPasswordApplication;
 import com.rainasmoon.onepay.model.User;
+import com.rainasmoon.onepay.service.FeedbackService;
 import com.rainasmoon.onepay.service.OrderService;
 import com.rainasmoon.onepay.service.ProductService;
 import com.rainasmoon.onepay.service.ResetPasswordService;
@@ -35,6 +37,9 @@ public class ManagerController extends BaseController {
 
 	@Autowired
 	private ResetPasswordService resetPasswordService;
+
+	@Autowired
+	private FeedbackService feedbackService;
 
 	@Autowired
 	private Mapper dozerBeanMapper;
@@ -93,9 +98,18 @@ public class ManagerController extends BaseController {
 
 		List<ResetPasswordApplication> results = resetPasswordService.listAllApplications();
 
-		// 完全按成交额排名的会员。
 		model.put("results", results);
 
 		return "manage_all_applications";
+	}
+
+	@RequestMapping(value = { "/manage_all_feedbacks.html" }, method = RequestMethod.GET)
+	public String manageAllFeedbacks(Map<String, Object> model) {
+
+		List<Feedback> results = feedbackService.listAllFeedbacks();
+
+		model.put("results", results);
+
+		return "manage_all_feedbacks";
 	}
 }

@@ -1,3 +1,5 @@
+-- 100, 600, 60
+
 DROP TABLE users IF EXISTS;
 DROP TABLE products IF EXISTS;
 DROP TABLE pictures IF EXISTS;
@@ -13,6 +15,8 @@ DROP TABLE accountlogs IF EXISTS;
 DROP TABLE accesslogs IF EXISTS;
 
 DROP TABLE reset_password_applications IF EXISTS;
+
+DROP TABLE feedbacks IF EXISTS;
 
 
 CREATE TABLE users (
@@ -138,5 +142,18 @@ CREATE TABLE accesslogs (
   url VARCHAR(600),
   cookie_id VARCHAR(60),
   session_id VARCHAR(60),
+  create_date TIMESTAMP
+);
+
+
+CREATE TABLE feedbacks (
+  id INTEGER IDENTITY PRIMARY KEY,
+  user_id INTEGER,
+  name VARCHAR(100),
+  content VARCHAR(600),
+  email VARCHAR(100),
+  phone VARCHAR(100),
+  ip VARCHAR(60),
+  client VARCHAR(600),  
   create_date TIMESTAMP
 );

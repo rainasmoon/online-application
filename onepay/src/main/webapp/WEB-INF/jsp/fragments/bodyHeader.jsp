@@ -26,10 +26,9 @@
 					<li class="active"><a href="listproducts.html">“东西”汇</a></li>
 					<li><a href="addproduct.html">上传货品</a></li>
 <!-- 					<li><a href="top10users.html">Top 10 users</a></li> -->
-
-					<li><a href="market.html">猿币兑换市场</a></li>
-					
+					<li><a href="market.html">猿币兑换市场</a></li>					
 					<li><a href="help.html">帮助</a></li>
+					<li><a href="feedback.html">反馈</a></li>
 					<c:if test="${empty userId}">
 						<li><a href="login.html">登录/注册</a></li>
 					</c:if>
