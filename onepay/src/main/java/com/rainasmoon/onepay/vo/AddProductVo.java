@@ -17,6 +17,7 @@ public class AddProductVo {
 
 	private Integer aging;
 
+	@Size(max = 600, message = "{error.too.lang}")
 	private String description;
 
 	private String[] tags;

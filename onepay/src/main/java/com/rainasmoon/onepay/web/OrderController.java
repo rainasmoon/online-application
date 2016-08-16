@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,7 +41,7 @@ public class OrderController extends BaseController {
 	public String myOrders(Map<String, Object> model) {
 
 		List<Order> myOrders = orderService.findMyOrders(getLoginUserId());
-		List<OrderVo> result = new ArrayList<OrderVo>();
+		List<OrderVo> result = new ArrayList<>();
 		for (Order order : myOrders) {
 			OrderVo orderVo = dozerBeanMapper.map(order, OrderVo.class);
 			orderVo.setBuyerName(userService.findUser(orderVo.getBuyerId()).getShowName());
@@ -82,7 +84,7 @@ public class OrderController extends BaseController {
 	}
 
 	@RequestMapping(value = { "/order_fill.html" }, method = RequestMethod.POST)
-	public String orderFill(Long orderId, FillOrderVo fillOrderVo, Map<String, Object> model) {
+	public String orderFill(Long orderId, @Valid FillOrderVo fillOrderVo, Map<String, Object> model) {
 
 		String message = orderService.orderFill(orderId, fillOrderVo);
 

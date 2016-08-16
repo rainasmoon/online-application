@@ -3,6 +3,7 @@ package com.rainasmoon.onepay.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "feedbacks")
@@ -14,6 +15,7 @@ public class Feedback extends BaseEntity {
 	@Column(name = "name")
 	private String name;
 
+	@Size(max = 300, message = "字段太长")
 	@Column(name = "content")
 	private String content;
 

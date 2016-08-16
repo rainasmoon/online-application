@@ -4,6 +4,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -36,26 +37,25 @@ public class LoginController extends BaseController {
 		return "login";
 	}
 
-	@RequestMapping(value = "/login.html", method = RequestMethod.POST)	
-	public String processLoginForm(LoginVo loginVo, String rememberMe, BindingResult result, HttpServletRequest request, HttpServletResponse response, Map<String, Object> model) {
+	@RequestMapping(value = "/login.html", method = RequestMethod.POST)
+	public String processLoginForm(@Valid LoginVo loginVo, String rememberMe, BindingResult result, HttpServletRequest request, HttpServletResponse response, Map<String, Object> model) {
 
 		LOGGER.debug("Session:www:" + loginVo);
 		LOGGER.warn("Session:www:" + rememberMe);
 
-		
 		if (StringUtils.isBlank(loginVo.getAccount())) {
 			result.rejectValue("account", "NotEmpty.loginVo.account");
 		}
-		
+
 		if (StringUtils.isBlank(loginVo.getAccount())) {
 			result.rejectValue("password", "NotEmpty.loginVo.password");
 		}
-		
+
 		if (result.hasErrors()) {
 			LOGGER.warn("Login has error.");
 			return "login";
 		}
-	
+
 		// if exist -> login. else create
 		// 1 check if userAccount exist. yes -> check password. no -> ask user
 		// what to do... create or relogin.

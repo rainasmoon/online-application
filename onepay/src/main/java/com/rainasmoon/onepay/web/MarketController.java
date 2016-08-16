@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.lang3.StringUtils;
+import javax.validation.Valid;
+
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,7 +39,7 @@ public class MarketController extends BaseController {
 	@RequestMapping(value = { "/market.html" }, method = RequestMethod.GET)
 	public String market(Map<String, Object> model) {
 		List<YunOrder> yunOrders = yunOrderService.findAll();
-		List<YunOrderVo> yunOrderVos = new ArrayList<YunOrderVo>();
+		List<YunOrderVo> yunOrderVos = new ArrayList<>();
 		for (YunOrder yunOrder : yunOrders) {
 			YunOrderVo yunOrderVo = dozerBeanMapper.map(yunOrder, YunOrderVo.class);
 			User user = userService.findUser(yunOrderVo.getUserId());
@@ -93,7 +94,7 @@ public class MarketController extends BaseController {
 	}
 
 	@RequestMapping(value = { "/market_add_info.html" }, method = RequestMethod.POST)
-	public String addMarketInfo(AddYunOrderVo addYunOrderVo, BindingResult result, Map<String, Object> model) {
+	public String addMarketInfo(@Valid AddYunOrderVo addYunOrderVo, BindingResult result, Map<String, Object> model) {
 		if (!isLogin()) {
 			return "redirect:login.html";
 		}
@@ -101,16 +102,16 @@ public class MarketController extends BaseController {
 		if (addYunOrderVo.getAmount() == null || addYunOrderVo.getAmount() <= 0) {
 			result.rejectValue("amount", "NotEmpty.loginVo.account");
 		}
-		
+
 		if (addYunOrderVo.getPrice() == null || addYunOrderVo.getPrice() <= 0) {
 			result.rejectValue("price", "NotEmpty.loginVo.account");
 		}
-		
+
 		if (result.hasErrors()) {
 			LOGGER.warn("Login has error.");
 			return "market_add_info";
 		}
-		
+
 		YunOrder yunOrder = new YunOrder();
 		yunOrder.setUserId(getLoginUserId());
 		yunOrder.setAmount(addYunOrderVo.getAmount());

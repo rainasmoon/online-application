@@ -1,14 +1,24 @@
 package com.rainasmoon.onepay.vo;
 
+import javax.validation.constraints.Size;
+
 public class FillOrderVo {
 
+	@Size(max = 100, message = "{error.too.lang}")
 	private String senderName;
+	@Size(max = 100, message = "{error.too.lang}")
 	private String senderPhone;
+	@Size(max = 100, message = "{error.too.lang}")
 	private String senderAddress;
+	@Size(max = 100, message = "{error.too.lang}")
 	private String senderPostcode;
+	@Size(max = 100, message = "{error.too.lang}")
 	private String receiverName;
+	@Size(max = 100, message = "{error.too.lang}")
 	private String receiverPhone;
+	@Size(max = 100, message = "{error.too.lang}")
 	private String receiverAddress;
+	@Size(max = 100, message = "{error.too.lang}")
 	private String receiverPostcode;
 
 	public String getSenderName() {

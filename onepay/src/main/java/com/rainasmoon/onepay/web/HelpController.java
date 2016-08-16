@@ -3,6 +3,7 @@ package com.rainasmoon.onepay.web;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -52,10 +53,11 @@ public class HelpController extends BaseController {
 	}
 
 	@RequestMapping(value = { "/feedback.html" }, method = RequestMethod.POST)
-	public String feedback(Feedback feedback, BindingResult result, Map<String, Object> model) {
+	public String feedback(@Valid Feedback feedback, BindingResult result, Map<String, Object> model) {
 
 		if (StringUtils.isBlank(feedback.getContent())) {
 			result.rejectValue("content", "NotEmpty.loginVo.account");
+			return "feedback";
 		}
 
 		if (result.hasErrors()) {

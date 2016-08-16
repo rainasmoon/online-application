@@ -1,5 +1,7 @@
 package com.rainasmoon.onepay.vo;
 
+import javax.validation.constraints.Size;
+
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
@@ -8,12 +10,13 @@ public class AddYunOrderVo {
 	private Integer amount;
 	private Integer price;
 	private String tradeModel;
+
+	@Size(max = 600, message = "{error.too.lang}")
 	private String description;
 
 	@Override
 	public String toString() {
-		return ReflectionToStringBuilder.toString(this,
-				ToStringStyle.SHORT_PREFIX_STYLE);
+		return ReflectionToStringBuilder.toString(this, ToStringStyle.SHORT_PREFIX_STYLE);
 
 	}
 

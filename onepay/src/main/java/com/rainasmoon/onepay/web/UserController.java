@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,7 +39,7 @@ public class UserController extends BaseController {
 
 		List<User> results = userService.listActiveTopUsers();
 
-		List<AdVo> vip4users = new ArrayList<AdVo>();
+		List<AdVo> vip4users = new ArrayList<>();
 
 		AdVo ad1 = new AdVo();
 		AdVo ad2 = new AdVo();
@@ -90,7 +92,7 @@ public class UserController extends BaseController {
 	}
 
 	@RequestMapping(value = { "/reset_password_reset.html" }, method = RequestMethod.POST)
-	public String resetPasswordReset(ResetPasswordVo resetPasswordVo, Map<String, Object> model) {
+	public String resetPasswordReset(@Valid ResetPasswordVo resetPasswordVo, Map<String, Object> model) {
 		// check the code if it's legal.
 		// reset password.
 

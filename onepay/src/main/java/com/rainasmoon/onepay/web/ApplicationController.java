@@ -3,6 +3,7 @@ package com.rainasmoon.onepay.web;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -35,7 +36,7 @@ public class ApplicationController {
 	}
 
 	@RequestMapping(value = { "/reset_password_application.html" }, method = RequestMethod.POST)
-	public String applyResetPassword(ResetPasswordApplication application, BindingResult result, Map<String, Object> model) {
+	public String applyResetPassword(@Valid ResetPasswordApplication application, BindingResult result, Map<String, Object> model) {
 
 		if (StringUtils.isBlank(application.getLoginAccount())) {
 			result.rejectValue("loginAccount", "NotEmpty.loginVo.account");
