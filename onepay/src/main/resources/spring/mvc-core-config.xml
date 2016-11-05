@@ -18,7 +18,7 @@
 
 	<!-- - POJOs labeled with the @Controller and @Service annotations are auto-detected. -->
 	<context:component-scan
-		base-package="com.rainasmoon.onepay.web,com.rainasmoon.onepay.rest" />
+		base-package="com.rainasmoon.onepay.web,com.rainasmoon.onepay.rest,com.rainasmoon.weixin.rest" />
 
 	<mvc:annotation-driven>
 		<mvc:message-converters>
