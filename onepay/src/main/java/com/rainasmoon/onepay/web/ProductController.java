@@ -169,7 +169,11 @@ public class ProductController extends BaseController {
 
 			if (productVo.getTags() != null) {
 				for (String tag : productVo.getTags()) {
-					tagService.addProductTag(product.getId(), tag);
+					if (tag.length() < 100) {
+						tagService.addProductTag(product.getId(), tag);
+					} else {
+						LOGGER.warn("TAG name is too long:" + tag);
+					}
 				}
 			}
 

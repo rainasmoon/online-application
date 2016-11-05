@@ -56,4 +56,9 @@ public class CommonValidators {
 
 		return false;
 	}
+
+	public static boolean isNickNameValid(String value) {
+
+		return StringUtils.isNotBlank(value) && value.length() < 100;
+	}
 }

@@ -7,7 +7,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 public class AddProductVo {
 
-	@Size(max = 100, message = "{error.too.lang}")
+	@Size(max = 100, message = "字段太长")
 	protected String productName;
 
 	@Size(max = 20, message = "{error.too.lang}")

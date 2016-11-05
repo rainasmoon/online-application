@@ -46,6 +46,9 @@ public class UserRestful extends BaseController {
 			}
 			loginUser.setPhone(value);
 		} else if (field.equalsIgnoreCase("nickName")) {
+			if (!CommonValidators.isNickNameValid(value)) {
+				return "昵称太长:)";
+			}
 			loginUser.setNickName(value);
 		} else {
 			LOGGER.warn("illegal call of restful...");

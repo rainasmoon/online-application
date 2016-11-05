@@ -39,6 +39,10 @@ public class FreezeCodeRestful extends BaseController {
 			return CommonConstants.NO_LOGIN_MSG;
 		}
 
+		if (StringUtils.isBlank(freezeCode) || freezeCode.length() > 100) {
+			return "验证码为空或太长";
+		}
+
 		Map<String, String> result = EncodeUtils.decryptToMap(freezeCode);
 		if (result == null) {
 			return "请核实验证码";
