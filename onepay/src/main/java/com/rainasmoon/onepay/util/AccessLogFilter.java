@@ -52,7 +52,13 @@ public class AccessLogFilter implements Filter {
 
 		LOGGER.debug("headers:" + serverRequest.getHeaders());
 
-		chain.doFilter(request, response);
+		if ("HEAD".equals(httprequest.getMethod())) {
+			LOGGER.warn("CONVERT the rquest HEAD to GET.");
+			LOGGER.info("the url is" + url);
+			chain.doFilter(request, response);
+		} else {
+			chain.doFilter(request, response);
+		}
 		return;
 	}
 

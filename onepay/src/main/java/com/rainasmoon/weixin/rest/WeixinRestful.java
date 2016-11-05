@@ -63,7 +63,7 @@ public class WeixinRestful {
 		Long MsgId = jsonObject.getLong("MsgId");
 
 		String Content = jsonObject.getString("Content");
-		String replayContent = "<a href=\"https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + WeixinCommonConstants.APPID + "&redirect_uri=http://www.rainasmoon.com/&response_type=code&scope=snsapi_base&state=123&connect_redirect=1#wechat_redirect\">click</a>";
+		String replayContent = "<a href=\"http://www.rainasmoon.com/\">到一元网看看吧</a>";
 
 		JSONObject jsonObject1 = new JSONObject();
 		jsonObject1.put("ToUserName", jsonObject.getString("FromUserName"));

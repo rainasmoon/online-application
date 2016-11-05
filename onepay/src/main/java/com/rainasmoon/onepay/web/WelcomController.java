@@ -24,7 +24,7 @@ public class WelcomController extends BaseController {
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping(value = { "/", "/welcome", "/welcome.html" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/", "/welcome", "/welcome.html" }, method = { RequestMethod.GET, RequestMethod.HEAD })
 	public String initCreationForm(Map<String, Object> model) {
 		WelcomeVo vo = new WelcomeVo();
 
