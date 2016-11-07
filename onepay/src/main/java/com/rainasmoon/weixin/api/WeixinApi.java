@@ -20,11 +20,13 @@ import net.sf.json.JSONObject;
 
 public class WeixinApi {
 
+	private static final String URL_WX_CREATE_MENU = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=";
+	private static final String URL_WX_GET_TOKEN = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential";
 	public static Logger LOGGER = LoggerFactory.getLogger(WeixinApi.class);
 
 	public static String getAccessToken() {
 
-		String url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=" + WeixinCommonConstants.APPID + "&secret=" + WeixinCommonConstants.APPSECRET;
+		String url = URL_WX_GET_TOKEN + "&appid=" + WeixinCommonConstants.APPID + "&secret=" + WeixinCommonConstants.APPSECRET;
 
 		JSONObject jsonObject = callWeiXinWeb(url, null, "get");
 
@@ -37,7 +39,7 @@ public class WeixinApi {
 	}
 
 	public static void createWinXinMenu() {
-		String url = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=" + WeixinCommonConstants.getAccessToken();
+		String url = URL_WX_CREATE_MENU + WeixinCommonConstants.getAccessToken();
 
 		JSONArray buttonjson = new JSONArray();
 

@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rainasmoon.weixin.WeixinCommonConstants;
-import com.rainasmoon.weixin.api.VariableStaticUtil;
 import com.rainasmoon.weixin.api.XMLUtil;
 
 import net.sf.json.JSONObject;
@@ -60,7 +59,7 @@ public class WeixinRestful {
 		// 获取accessToken
 		String accessToken = WeixinCommonConstants.getAccessToken();
 
-		Long MsgId = jsonObject.getLong("MsgId");
+		String MsgId = jsonObject.getString("MsgId");
 
 		String Content = jsonObject.getString("Content");
 		String replayContent = "<a href=\"http://www.rainasmoon.com/\">到一元网看看吧</a>";
@@ -71,7 +70,7 @@ public class WeixinRestful {
 		jsonObject1.put("CreateTime", jsonObject.getString("CreateTime"));
 		jsonObject1.put("MsgType", "text");
 		jsonObject1.put("Content", replayContent);
-		VariableStaticUtil.removeMessage(MsgId);
+
 		return XMLUtil.createXML(jsonObject1);
 
 	}
