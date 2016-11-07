@@ -1,5 +1,8 @@
 package com.rainasmoon.weixin.api;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
@@ -12,6 +15,7 @@ import org.slf4j.LoggerFactory;
 
 import com.rainasmoon.weixin.WeixinCommonConstants;
 
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 public class WeixinApi {
@@ -20,11 +24,46 @@ public class WeixinApi {
 
 	public static String getAccessToken() {
 
+		String url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=" + WeixinCommonConstants.APPID + "&secret=" + WeixinCommonConstants.APPSECRET;
+
+		JSONObject jsonObject = callWeiXinWeb(url, null, "get");
+
+		String accessToken = (String) jsonObject.get("access_token");
+
+		LOGGER.info("the access token result is " + accessToken);
+
+		return accessToken;
+
+	}
+
+	public static void createWinXinMenu() {
+		String url = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=" + WeixinCommonConstants.getAccessToken();
+
+		JSONArray buttonjson = new JSONArray();
+
+		Button button = new Button();
+		button.setName("A");
+		button.setUrl("http://www.wanlianjin.com");
+		// click,view
+		button.setType("click");
+		List<SubButton> sub_button = new ArrayList<>();
+
+		SubButton subButton = new SubButton();
+		subButton = new View("B", "http://www.rainasmoon.com");
+		sub_button.add(subButton);
+
+		button.setSub_button(sub_button);
+		buttonjson.add(button);
+
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("button", buttonjson);
+
+		callWeiXinWeb(url, jsonObject, "post");
+	}
+
+	private static JSONObject callWeiXinWeb(String url, Object data, String method) {
 		try {
-			LOGGER.info("weixin test");
-
-			String url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=" + WeixinCommonConstants.APPID + "&secret=" + WeixinCommonConstants.APPSECRET;
-
+			LOGGER.info("call weixin service web service.");
 			String responseXml = "";
 			// 创建默认的httpClient实例.
 			CloseableHttpClient httpclient = HttpClients.createDefault();
@@ -32,7 +71,6 @@ public class WeixinApi {
 			HttpPost httppost = new HttpPost(url);
 
 			JSONObject param = new JSONObject();
-			param.put("url", "");
 			param.put("data", "");
 			param.put("method", "get");
 
@@ -53,15 +91,12 @@ public class WeixinApi {
 			// 关闭连接,释放资源
 			httpclient.close();
 
-			LOGGER.info("call api to get access token is: " + responseXml);
+			LOGGER.info("call api to get weixin response is: " + responseXml);
 
 			JSONObject jsonObject = JSONObject.fromObject(responseXml);
 
-			String accessToken = (String) jsonObject.get("access_token");
+			return jsonObject;
 
-			LOGGER.info("the access token result is " + accessToken);
-
-			return accessToken;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
