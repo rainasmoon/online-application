@@ -39,7 +39,7 @@
 			<c:forEach var="arow" items="${vo.products}">
 				<div class="col-xs-6 col-lg-4">
 					<a href="bid-${arow.objId }.html"> <img
-						class="img-rounded" src="product_pic/thumbnail/${arow.picPath }"
+						class="img-rounded" src="http://static.rainasmoon.com/thumbnail/${arow.picPath }"
 						alt="${arow.adTitle};${arow.adDescription }" width="140" height="140" />
 					</a>
 					<h2>

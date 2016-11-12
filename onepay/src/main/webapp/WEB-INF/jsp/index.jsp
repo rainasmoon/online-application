@@ -91,7 +91,7 @@ body {
 				</div>
 				<div class="col-md-5">
 					<img class="featurette-image img-responsive center-block"
-						src="product_pic/${arow.picPath }" alt="${arow.adTitle };${arow.adDescription }">
+						src="http://static.rainasmoon.com/normal/${arow.picPath }" alt="${arow.adTitle };${arow.adDescription }">
 				</div>
 			</c:if>
 			<c:if test="${status.count%2 != '0'}">
@@ -103,7 +103,7 @@ body {
 				</div>
 				<div class="col-md-5 col-md-pull-7">
 					<img class="featurette-image img-responsive center-block"
-						src="product_pic/${arow.picPath }" alt="${arow.adTitle };${arow.adDescription }">
+						src="http://static.rainasmoon.com/normal/${arow.picPath }" alt="${arow.adTitle };${arow.adDescription }">
 				</div>
 			</c:if>
 		</div>
