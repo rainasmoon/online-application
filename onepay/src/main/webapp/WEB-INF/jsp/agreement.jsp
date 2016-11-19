@@ -10,7 +10,11 @@
 <img alt="" src="pic/agreement.jpg"  />
 <br/>
 <p>所有最终解释权，都归一元网所有</p>
-
+<script type="text/javascript">
+<!--
+baiduAccess();
+//-->
+</script>
 
 <jsp:include page="./fragments/footer.jsp" />
 

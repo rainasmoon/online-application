@@ -60,7 +60,11 @@
 <!--/row-->
 
 <hr/>
-
+<script type="text/javascript">
+<!--
+baiduAccess();
+//-->
+</script>
 <jsp:include page="./fragments/footer.jsp" />
 
 

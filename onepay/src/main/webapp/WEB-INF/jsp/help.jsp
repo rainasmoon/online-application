@@ -21,6 +21,11 @@
 <p>拍卖的二手东东都用猿币来交换，注册送100猿；上传一个新商品送1猿。</p>
 <h2>猿币市场</h2>
 <p>在这里可以买卖猿币，至于兑换比例？就由市场来决定吧。</p>
+<script type="text/javascript">
+<!--
+baiduAccess();
+//-->
+</script>
 <jsp:include page="./fragments/footer.jsp" />
 
 

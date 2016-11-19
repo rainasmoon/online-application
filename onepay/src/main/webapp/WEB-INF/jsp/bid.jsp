@@ -86,7 +86,11 @@
 <input type="hidden" id="saleModel" value="${saleModel }"/>
 <input type="hidden" id="productId" value="${productVo.productId }"/>
 <script src="js/bid.js" type="text/javascript"></script>
-
+<script type="text/javascript">
+<!--
+baiduAccess();
+//-->
+</script>
 <jsp:include page="./fragments/footer.jsp" />
 
 

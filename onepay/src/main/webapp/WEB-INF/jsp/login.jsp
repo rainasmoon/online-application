@@ -45,4 +45,9 @@
 	<button class="btn btn-lg btn-primary btn-block" type="submit">登录 | 注册</button>
 </form:form>
 
+<script type="text/javascript">
+<!--
+baiduAccess();
+//-->
+</script>
 <jsp:include page="./fragments/footer.jsp" />

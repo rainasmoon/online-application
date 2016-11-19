@@ -75,7 +75,11 @@
 </div>
 
 <script src="js/view_product.js" type="text/javascript"></script>
-
+<script type="text/javascript">
+<!--
+baiduAccess();
+//-->
+</script>
 <jsp:include page="./fragments/footer.jsp" />
 
 

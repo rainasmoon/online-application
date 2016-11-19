@@ -113,7 +113,11 @@ body {
 
 	<!-- /END THE FEATURETTES -->
 </div>
-
+<script type="text/javascript">
+<!--
+baiduAccess();
+//-->
+</script>
 <jsp:include page="./fragments/outlink.jsp" />
 
 <jsp:include page="./fragments/footer.jsp" />
