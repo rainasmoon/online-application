@@ -75,11 +75,12 @@ public class WeixinRestful {
 		String createTime = requestJson.getString("CreateTime");
 
 		String replayContent = "<a href=\"http://www.rainasmoon.com/\">到一元网看看吧</a>";
+		String oldMsgs = "<a href=\"http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzI4MDE3NDc3Mg==&from=1#wechat_webview_type=1&wechat_redirect\">ALL</a>";
 
 		if (content.equals("乱") || content.contains("0")) {
 			return createResponseXmlNews(fromUserName, toUserName, replayContent);
 		}
-		return XMLUtil.createXML(createResponseJsonText(fromUserName, toUserName, replayContent));
+		return XMLUtil.createXML(createResponseJsonText(fromUserName, toUserName, oldMsgs));
 
 	}
 
