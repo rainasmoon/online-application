@@ -76,7 +76,11 @@ public class WeixinRestful {
 
 		String replayContent = "<a href=\"http://www.rainasmoon.com/\">到一元网看看吧</a>";
 
-		return XMLUtil.createXML(createResponseJson(fromUserName, toUserName, replayContent));
+		if (content.equals("乱") || content.contains("0")) {
+			return createResponseXmlNews(fromUserName, toUserName, replayContent);
+		}
+		return XMLUtil.createXML(createResponseJsonText(fromUserName, toUserName, replayContent));
+
 	}
 
 	private String dealEvent(JSONObject requestJson) {
@@ -110,15 +114,19 @@ public class WeixinRestful {
 		return null;
 	}
 
-	private JSONObject createResponseJson(String fromUserName, String toUserName, String content) {
+	private JSONObject createResponseJsonText(String toUserName, String fromUserName, String content) {
 		JSONObject resultJson = new JSONObject();
-		resultJson.put("ToUserName", fromUserName);
-		resultJson.put("FromUserName", toUserName);
+		resultJson.put("ToUserName", toUserName);
+		resultJson.put("FromUserName", fromUserName);
 		resultJson.put("CreateTime", new Date().getTime());
 		resultJson.put("MsgType", "text");
 		resultJson.put("Content", content);
 
 		return resultJson;
+	}
+
+	private String createResponseXmlNews(String fromUserName, String toUserName, String content) {
+		return "<xml>" + "<ToUserName><![CDATA[" + toUserName + "]]></ToUserName>" + "<FromUserName><![CDATA[" + fromUserName + "]]></FromUserName>" + "<CreateTime>" + new Date().getTime() + "</CreateTime>" + "<MsgType><![CDATA[news]]></MsgType>" + "<ArticleCount>1</ArticleCount>" + "<Articles>" + "<item>" + "<Title><![CDATA[title1]]></Title> " + "<Description><![CDATA[description1]]></Description>" + "<PicUrl><![CDATA[picurl]]></PicUrl>" + "<Url><![CDATA[url]]></Url>" + "</item>" + "</Articles>" + "</xml>";
 	}
 
 	private JSONObject convertXmlToJson(String requestXml) {

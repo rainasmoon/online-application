@@ -27,7 +27,7 @@ public class WeixinTest {
 	private static final String APPSECRET = "82689230d1cbb40dea18e5218ed029e4";
 	private static Logger LOGGER = LoggerFactory.getLogger(WeixinTest.class);
 
-	private static String ACCESS_TOKEN = "1C30Xf48aK9fzN97M_Z4kevo8On1exyUoh_li_yjOVuGV8tNKis11cPYTiEvLPj6zxlTg5iQiElqgF457JELddaf1sdDKbwakgcJpeaBi7hFP459RN4p7q0VWmHbEiJeQXQcADAUBU";
+	private static String ACCESS_TOKEN = "1C30Xf48aK9fzN97M_Z4kTT4uDeLyBcTzxbMWAEwLBKXNIDr4qTnJis7cz6Cjuyu5-W-YdKyuRrARTkC7yuRyFYKu019l5rG91xAWuzJ_FMoUHon_xx1RoDMXIr6281-LSBgABAPWF";
 
 	@Test
 	public void testGetAccessToken() throws Exception {
