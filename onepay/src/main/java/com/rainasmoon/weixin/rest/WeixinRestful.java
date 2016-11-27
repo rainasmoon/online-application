@@ -26,6 +26,8 @@ public class WeixinRestful {
 
 	public static Logger LOGGER = LoggerFactory.getLogger(WeixinRestful.class);
 
+	public static String replayContent = "<a href=\"http://www.rainasmoon.com/\">到一元网看看吧</a>";
+
 	@RequestMapping(value = "/restful/echo", method = { RequestMethod.GET })
 	public String echo(@RequestParam(value = "echostr") String echostr) {
 		LOGGER.info("weixin check. echo: " + echostr);
@@ -74,7 +76,8 @@ public class WeixinRestful {
 		String toUserName = requestJson.getString("ToUserName");
 		String createTime = requestJson.getString("CreateTime");
 
-		String replayContent = "<a href=\"http://www.rainasmoon.com/\">到一元网看看吧</a>";
+		LOGGER.debug("the text msg is :" + content);
+		LOGGER.debug(String.format("FROM:%s, TO:%s.", fromUserName, toUserName));
 		String oldMsgs = "<a href=\"http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzI4MDE3NDc3Mg==&from=1#wechat_webview_type=1&wechat_redirect\">更乱</a>";
 		if (content.equals("乱") || content.contains("0")) {
 			String title = "你会滑冰么？";
@@ -83,13 +86,14 @@ public class WeixinRestful {
 			String url = "http://mp.weixin.qq.com/s?__biz=MzI4MDE3NDc3Mg==&mid=2650283589&idx=1&sn=06db818f3c11437ac4adba3ba67265e1&chksm=f3b0379ec4c7be88252f15de9709f8819d5ac71b170e4aca83eb66c6ea003544134abb43604f#rd";
 			return createResponseXmlNews(fromUserName, toUserName, title, desc, picUrl, url);
 		}
-		return XMLUtil.createXML(createResponseJsonText(fromUserName, toUserName, oldMsgs));
+		return XMLUtil.createXML(
+		        createResponseJsonText(fromUserName, toUserName, replayContent + "\n\n" + oldMsgs));
 
 	}
 
 	private String dealEvent(JSONObject requestJson) {
-		String FromUserName = requestJson.getString("FromUserName");
-		Long CreateTime = requestJson.getLong("CreateTime");
+		String fromUserName = requestJson.getString("FromUserName");
+		String toUserName = requestJson.getString("ToUserName");
 
 		String event = requestJson.getString("Event");
 		String eventKey = requestJson.getString("EventKey");
@@ -100,6 +104,9 @@ public class WeixinRestful {
 		if (event.equals("subscribe")) {
 			if (eventKey.startsWith("qrscene_")) {
 			}
+
+			return XMLUtil
+			        .createXML(createResponseJsonText(fromUserName, toUserName, replayContent));
 		} else if (event.equals("unsubscribe")) {
 
 		} else if (event.equals("SCAN")) {
