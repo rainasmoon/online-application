@@ -78,7 +78,11 @@ public class WeixinRestful {
 		String oldMsgs = "<a href=\"http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzI4MDE3NDc3Mg==&from=1#wechat_webview_type=1&wechat_redirect\">ALL</a>";
 		// http://mp.weixin.qq.com/s?__biz=MzI4MDE3NDc3Mg==&mid=2650283589&idx=1&sn=06db818f3c11437ac4adba3ba67265e1&chksm=f3b0379ec4c7be88252f15de9709f8819d5ac71b170e4aca83eb66c6ea003544134abb43604f#rd
 		if (content.equals("乱") || content.contains("0")) {
-			return createResponseXmlNews(fromUserName, toUserName, replayContent);
+			String title = "你会滑冰么？";
+			String desc = "滑冰也会很好玩，只要有一颗逗比的心。";
+			String picUrl = "http://mmbiz.qpic.cn/mmbiz_jpg/vHCVZxD2t2JB4p7IYibWbcMJoxN2cq0qxHtnDOn8bqO17MKaSZxD8ZXYXJsD0nAD6zYsEZz6vTEcYBjq0jXejdQ/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1";
+			String url = "http://mp.weixin.qq.com/s?__biz=MzI4MDE3NDc3Mg==&mid=2650283589&idx=1&sn=06db818f3c11437ac4adba3ba67265e1&chksm=f3b0379ec4c7be88252f15de9709f8819d5ac71b170e4aca83eb66c6ea003544134abb43604f#rd";
+			return createResponseXmlNews(fromUserName, toUserName, title, desc, picUrl, url);
 		}
 		return XMLUtil.createXML(createResponseJsonText(fromUserName, toUserName, oldMsgs));
 
@@ -115,7 +119,8 @@ public class WeixinRestful {
 		return null;
 	}
 
-	private JSONObject createResponseJsonText(String toUserName, String fromUserName, String content) {
+	private JSONObject createResponseJsonText(String toUserName, String fromUserName,
+	        String content) {
 		JSONObject resultJson = new JSONObject();
 		resultJson.put("ToUserName", toUserName);
 		resultJson.put("FromUserName", fromUserName);
@@ -126,8 +131,16 @@ public class WeixinRestful {
 		return resultJson;
 	}
 
-	private String createResponseXmlNews(String toUserName, String fromUserName, String content) {
-		return "<xml>" + "<ToUserName><![CDATA[" + toUserName + "]]></ToUserName>" + "<FromUserName><![CDATA[" + fromUserName + "]]></FromUserName>" + "<CreateTime>" + new Date().getTime() + "</CreateTime>" + "<MsgType><![CDATA[news]]></MsgType>" + "<ArticleCount>1</ArticleCount>" + "<Articles>" + "<item>" + "<Title><![CDATA[title1]]></Title> " + "<Description><![CDATA[description1]]></Description>" + "<PicUrl><![CDATA[picurl]]></PicUrl>" + "<Url><![CDATA[http://mp.weixin.qq.com/s?__biz=MzI4MDE3NDc3Mg==&mid=2650283589&idx=1&sn=06db818f3c11437ac4adba3ba67265e1&chksm=f3b0379ec4c7be88252f15de9709f8819d5ac71b170e4aca83eb66c6ea003544134abb43604f#rd]]></Url>" + "</item>" + "</Articles>" + "</xml>";
+	private String createResponseXmlNews(String toUserName, String fromUserName, String title,
+	        String desc, String picUrl, String url) {
+		return "<xml>" + "<ToUserName><![CDATA[" + toUserName + "]]></ToUserName>"
+		        + "<FromUserName><![CDATA[" + fromUserName + "]]></FromUserName>" + "<CreateTime>"
+		        + new Date().getTime() + "</CreateTime>" + "<MsgType><![CDATA[news]]></MsgType>"
+		        + "<ArticleCount>1</ArticleCount>" + "<Articles>" + "<item>"
+		        + "<Title><![CDATA[title1]]></Title> "
+		        + "<Description><![CDATA[description1]]></Description>" + "<PicUrl><![CDATA[ "
+		        + picUrl + "]]></PicUrl>" + "<Url><![CDATA[" + url + "]]></Url>" + "</item>"
+		        + "</Articles>" + "</xml>";
 	}
 
 	private JSONObject convertXmlToJson(String requestXml) {
