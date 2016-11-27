@@ -32,47 +32,64 @@ public class WeixinRestful {
 	}
 
 	@RequestMapping(value = "/restful/echo", method = { RequestMethod.POST })
-	public String receiveWeixinXml(HttpServletRequest request) throws IOException {
+	public String receiveWeixinXml(HttpServletRequest request) {
 		LOGGER.debug("request:" + request);
 
-		InputStream is;
-		String requestStr = null;
+		String requestXml = convertRequestToXml(request);
 
-		is = request.getInputStream();
-		int size = request.getContentLength();
-		byte[] buffer = new byte[size];
-		byte[] xmlDateByte = new byte[size];
-		int count = 0;
-		while (count < size) {
-			int len = is.read(buffer);
-
-			for (int i = 0; i < len; i++)
-				xmlDateByte[count + i] = buffer[i];
-			count += len;
-		}
-		is.close();
-
-		requestStr = new String(xmlDateByte, "UTF-8");
-
-		XMLSerializer xmlSerializer = new XMLSerializer();
-		JSONObject jsonObject = (JSONObject) xmlSerializer.read(requestStr);
+		JSONObject requestJson = convertXmlToJson(requestXml);
 		// 获取accessToken
 		String accessToken = WeixinCommonConstants.getAccessToken();
 
-		String MsgId = jsonObject.getString("MsgId");
+		String msgid = requestJson.getString("MsgId");
+		String content = requestJson.getString("Content");
+		String fromUserName = requestJson.getString("FromUserName");
+		String toUserName = requestJson.getString("ToUserName");
+		String createTime = requestJson.getString("CreateTime");
 
-		String Content = jsonObject.getString("Content");
 		String replayContent = "<a href=\"http://www.rainasmoon.com/\">到一元网看看吧</a>";
 
-		JSONObject jsonObject1 = new JSONObject();
-		jsonObject1.put("ToUserName", jsonObject.getString("FromUserName"));
-		jsonObject1.put("FromUserName", jsonObject.getString("ToUserName"));
-		jsonObject1.put("CreateTime", jsonObject.getString("CreateTime"));
-		jsonObject1.put("MsgType", "text");
-		jsonObject1.put("Content", replayContent);
+		JSONObject resultJson = new JSONObject();
+		resultJson.put("ToUserName", fromUserName);
+		resultJson.put("FromUserName", toUserName);
+		resultJson.put("CreateTime", createTime);
+		resultJson.put("MsgType", "text");
+		resultJson.put("Content", replayContent);
 
-		return XMLUtil.createXML(jsonObject1);
+		return XMLUtil.createXML(resultJson);
 
+	}
+
+	private JSONObject convertXmlToJson(String requestXml) {
+		XMLSerializer xmlSerializer = new XMLSerializer();
+		JSONObject jsonObject = (JSONObject) xmlSerializer.read(requestXml);
+		return jsonObject;
+	}
+
+	private String convertRequestToXml(HttpServletRequest request) {
+
+		try {
+			InputStream is = request.getInputStream();
+
+			int size = request.getContentLength();
+			byte[] buffer = new byte[size];
+			byte[] xmlDateByte = new byte[size];
+			int count = 0;
+			while (count < size) {
+				int len = is.read(buffer);
+
+				for (int i = 0; i < len; i++)
+					xmlDateByte[count + i] = buffer[i];
+				count += len;
+			}
+			is.close();
+
+			return new String(xmlDateByte, "UTF-8");
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return "";
 	}
 
 }
