@@ -10,6 +10,8 @@
 <meta name="keywords" content="一元网，闲置，旧物交换，拍卖">
 <meta name="description" content="一元网，旧物交换的平台，你的闲置也许会成为别人的宝贝，让我们像拍卖一样去出售闲置和竞拍喜欢的东西吧。">
 <meta name="author" content="rainasmoon">
+<meta name="p:domain_verify" content="f8979bad0859aa45a3c70ea504bc5186"/>
+
 <link rel="icon" href="favicon.ico">
 
 <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.css"
