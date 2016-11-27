@@ -75,8 +75,7 @@ public class WeixinRestful {
 		String createTime = requestJson.getString("CreateTime");
 
 		String replayContent = "<a href=\"http://www.rainasmoon.com/\">到一元网看看吧</a>";
-		String oldMsgs = "<a href=\"http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzI4MDE3NDc3Mg==&from=1#wechat_webview_type=1&wechat_redirect\">ALL</a>";
-		// http://mp.weixin.qq.com/s?__biz=MzI4MDE3NDc3Mg==&mid=2650283589&idx=1&sn=06db818f3c11437ac4adba3ba67265e1&chksm=f3b0379ec4c7be88252f15de9709f8819d5ac71b170e4aca83eb66c6ea003544134abb43604f#rd
+		String oldMsgs = "<a href=\"http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzI4MDE3NDc3Mg==&from=1#wechat_webview_type=1&wechat_redirect\">更乱</a>";
 		if (content.equals("乱") || content.contains("0")) {
 			String title = "你会滑冰么？";
 			String desc = "滑冰也会很好玩，只要有一颗逗比的心。";
@@ -136,11 +135,10 @@ public class WeixinRestful {
 		return "<xml>" + "<ToUserName><![CDATA[" + toUserName + "]]></ToUserName>"
 		        + "<FromUserName><![CDATA[" + fromUserName + "]]></FromUserName>" + "<CreateTime>"
 		        + new Date().getTime() + "</CreateTime>" + "<MsgType><![CDATA[news]]></MsgType>"
-		        + "<ArticleCount>1</ArticleCount>" + "<Articles>" + "<item>"
-		        + "<Title><![CDATA[title1]]></Title> "
-		        + "<Description><![CDATA[description1]]></Description>" + "<PicUrl><![CDATA[ "
-		        + picUrl + "]]></PicUrl>" + "<Url><![CDATA[" + url + "]]></Url>" + "</item>"
-		        + "</Articles>" + "</xml>";
+		        + "<ArticleCount>1</ArticleCount>" + "<Articles>" + "<item>" + "<Title><![CDATA["
+		        + title + "]]></Title> " + "<Description><![CDATA[" + desc + "]]></Description>"
+		        + "<PicUrl><![CDATA[ " + picUrl + "]]></PicUrl>" + "<Url><![CDATA[" + url
+		        + "]]></Url>" + "</item>" + "</Articles>" + "</xml>";
 	}
 
 	private JSONObject convertXmlToJson(String requestXml) {
