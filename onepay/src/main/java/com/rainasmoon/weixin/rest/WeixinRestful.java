@@ -2,6 +2,7 @@ package com.rainasmoon.weixin.rest;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -40,6 +41,8 @@ public class WeixinRestful {
 		JSONObject requestJson = convertXmlToJson(requestXml);
 		// 获取accessToken
 		String accessToken = WeixinCommonConstants.getAccessToken();
+		String msgType = requestJson.getString("MsgType");
+		LOGGER.debug("MsgType is :" + msgType);
 
 		String msgid = requestJson.getString("MsgId");
 		String content = requestJson.getString("Content");
@@ -49,15 +52,19 @@ public class WeixinRestful {
 
 		String replayContent = "<a href=\"http://www.rainasmoon.com/\">到一元网看看吧</a>";
 
+		return XMLUtil.createXML(createResponseJson(fromUserName, toUserName, replayContent));
+
+	}
+
+	private JSONObject createResponseJson(String fromUserName, String toUserName, String content) {
 		JSONObject resultJson = new JSONObject();
 		resultJson.put("ToUserName", fromUserName);
 		resultJson.put("FromUserName", toUserName);
-		resultJson.put("CreateTime", createTime);
+		resultJson.put("CreateTime", new Date().toString());
 		resultJson.put("MsgType", "text");
-		resultJson.put("Content", replayContent);
+		resultJson.put("Content", content);
 
-		return XMLUtil.createXML(resultJson);
-
+		return resultJson;
 	}
 
 	private JSONObject convertXmlToJson(String requestXml) {
