@@ -11,6 +11,7 @@
 <meta name="description" content="一元网，旧物交换的平台，你的闲置也许会成为别人的宝贝，让我们像拍卖一样去出售闲置和竞拍喜欢的东西吧。">
 <meta name="author" content="rainasmoon">
 <meta name="p:domain_verify" content="f8979bad0859aa45a3c70ea504bc5186"/>
+<meta name="google-site-verification" content="mvtLYapw6G5MG1Iu8oGPWLqbvlyR84kEYE57cv0s4TQ" />
 
 <link rel="icon" href="favicon.ico">
 
