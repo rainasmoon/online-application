@@ -7,9 +7,9 @@ import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.channel.SimpleChannelInboundHandler;
 
-public class DiscardServerHandler extends ChannelInboundHandlerAdapter { // (1)
+public class DiscardServerHandler extends SimpleChannelInboundHandler<Object> { // (1)
 
     Logger LOGGER = LoggerFactory.getLogger(DiscardServerHandler.class);
 
@@ -34,7 +34,7 @@ public class DiscardServerHandler extends ChannelInboundHandlerAdapter { // (1)
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) { // (2)
 
-
+        LOGGER.info("channel read...");
         ctx.write(msg); // (1)
         ctx.flush(); // (2)
 
@@ -46,5 +46,11 @@ public class DiscardServerHandler extends ChannelInboundHandlerAdapter { // (1)
         // Close the connection when an exception is raised.
         cause.printStackTrace();
         ctx.close();
+    }
+
+    @Override
+    protected void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
+        LOGGER.info("channel read0...");
+
     }
 }
