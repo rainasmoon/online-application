@@ -1,5 +1,8 @@
 package com.rainasmoon.netty;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;
@@ -8,8 +11,13 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
 
 public class DiscardServerHandler extends ChannelInboundHandlerAdapter { // (1)
 
+    Logger LOGGER = LoggerFactory.getLogger(DiscardServerHandler.class);
+
+
     @Override
     public void channelActive(final ChannelHandlerContext ctx) { // (1)
+        LOGGER.info("channel acvive...");
+
         final ByteBuf time = ctx.alloc().buffer(4); // (2)
         time.writeInt((int) (System.currentTimeMillis() / 1000L + 2208988800L));
 
