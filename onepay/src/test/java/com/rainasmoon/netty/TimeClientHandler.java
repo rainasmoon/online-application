@@ -1,25 +1,22 @@
 package com.rainasmoon.netty;
 
-import java.util.Date;
-
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.util.ReferenceCountUtil;
 
 public class TimeClientHandler extends ChannelInboundHandlerAdapter { // (1)
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
-        ByteBuf m = (ByteBuf) msg; // (1)
+        ByteBuf in = (ByteBuf) msg;
         try {
-            long currentTimeMillis = (m.readUnsignedInt() - 2208988800L) * 1000L;
-            System.out.println("*******************************************************");
-            System.out.println(new Date(currentTimeMillis));
-
-            System.out.println("*******************************************************");
-            ctx.close();
+            while (in.isReadable()) { // (1)
+                System.out.print((char) in.readByte());
+                System.out.flush();
+            }
         } finally {
-            m.release();
+            ReferenceCountUtil.release(msg); // (2)
         }
     }
 

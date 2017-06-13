@@ -19,23 +19,27 @@ public class DiscardServerHandler extends SimpleChannelInboundHandler<Object> { 
         LOGGER.info("channel acvive...");
 
         final ByteBuf time = ctx.alloc().buffer(4); // (2)
-        time.writeInt((int) (System.currentTimeMillis() / 1000L + 2208988800L));
+        time.writeBytes("AA".getBytes());
 
         final ChannelFuture f = ctx.writeAndFlush(time); // (3)
+
         f.addListener(new ChannelFutureListener() {
             @Override
             public void operationComplete(ChannelFuture future) {
                 assert f == future;
-                ctx.close();
+                LOGGER.info("welcome msg sent.");
             }
         }); // (4)
+
     }
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) { // (2)
 
         LOGGER.info("channel read...");
+        // write back the msg.
         ctx.write(msg); // (1)
+        // release the msg
         ctx.flush(); // (2)
 
 
@@ -43,8 +47,10 @@ public class DiscardServerHandler extends SimpleChannelInboundHandler<Object> { 
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) { // (4)
-        // Close the connection when an exception is raised.
+
         cause.printStackTrace();
+
+        // Close the connection when an exception is raised.
         ctx.close();
     }
 
