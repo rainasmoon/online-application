@@ -12,7 +12,8 @@ public class TelnetClientHandler extends SimpleChannelInboundHandler<String> {
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
-        System.err.println(msg);
+        System.out.println("we can't get things here... in client handler.");
+        System.out.println(msg);
     }
 
     @Override
