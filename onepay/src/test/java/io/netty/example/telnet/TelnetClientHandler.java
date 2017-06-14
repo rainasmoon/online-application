@@ -8,11 +8,10 @@ import io.netty.channel.SimpleChannelInboundHandler;
  * Handles a client-side channel.
  */
 @Sharable
-public class TelnetClientHandler extends SimpleChannelInboundHandler<String> {
+public class TelnetClientHandler extends SimpleChannelInboundHandler<Object> {
 
     @Override
-    protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
-        System.out.println("we can't get things here... in client handler.");
+    protected void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
         System.out.println(msg);
     }
 
