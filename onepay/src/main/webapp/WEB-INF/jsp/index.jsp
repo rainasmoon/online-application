@@ -36,14 +36,21 @@ body {
 						<h2>${arow.adTitle }</h2>
 						<p>${arow.adDescription }</p>
 						<p>
-							<a class="btn btn-lg btn-primary" href="${arow.urlLink }" role="button">${arow.urlName }</a>
+							<a class="btn btn-lg btn-primary" href="${arow.urlLink }"
+								role="button">${arow.urlName }</a>
 						</p>
 					</div>
 				</div>
 			</div>
 		</c:forEach>
 	</div>
-	<a class="left carousel-control" href="#myCarousel" role="button"
+	<a target="_blank"
+		href="https://www.amazon.com/gp/product/B071FJLXDW/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B071FJLXDW&linkCode=as2&tag=rainasmoon-20&linkId=aeb7d1d3dc8c7c9865e8b3e37702c3af">Gymboree
+		Little Girls' School Uniform Polo Dress, Red, 6</a><img
+		src="//ir-na.amazon-adsystem.com/e/ir?t=rainasmoon-20&l=am2&o=1&a=B071FJLXDW"
+		width="1" height="1" border="0" alt=""
+		style="border: none !important; margin: 0px !important;" /> <a
+		class="left carousel-control" href="#myCarousel" role="button"
 		data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"
 		aria-hidden="true"></span> <span class="sr-only">Previous</span>
 	</a> <a class="right carousel-control" href="#myCarousel" role="button"
@@ -68,7 +75,7 @@ body {
 					alt="Generic placeholder image" width="140" height="140">
 				<h2>${arow.adTitle }</h2>
 				<p>${arow.adDescription }</p>
-				
+
 			</div>
 			<!-- /.col-lg-4 -->
 		</c:forEach>
@@ -85,25 +92,29 @@ body {
 			<c:if test="${status.count%2 == '0'}">
 				<div class="col-md-7">
 					<h2 class="featurette-heading">
-						${arow.adTitle } <span class="text-muted"><a href="bid-${arow.objId }.html" role="button">查看 &raquo;</a></span>
+						${arow.adTitle } <span class="text-muted"><a
+							href="bid-${arow.objId }.html" role="button">查看 &raquo;</a></span>
 					</h2>
 					<p class="lead">${arow.adDescription }</p>
 				</div>
 				<div class="col-md-5">
 					<img class="featurette-image img-responsive center-block"
-						src="http://static.rainasmoon.com/normal/${arow.picPath }" alt="${arow.adTitle };${arow.adDescription }">
+						src="http://static.rainasmoon.com/normal/${arow.picPath }"
+						alt="${arow.adTitle };${arow.adDescription }">
 				</div>
 			</c:if>
 			<c:if test="${status.count%2 != '0'}">
 				<div class="col-md-7 col-md-push-5">
 					<h2 class="featurette-heading">
-						${arow.adTitle } <span class="text-muted"><a href="bid-${arow.objId }.html" role="button">查看 &raquo;</a></span>
+						${arow.adTitle } <span class="text-muted"><a
+							href="bid-${arow.objId }.html" role="button">查看 &raquo;</a></span>
 					</h2>
 					<p class="lead">${arow.adDescription }</p>
 				</div>
 				<div class="col-md-5 col-md-pull-7">
 					<img class="featurette-image img-responsive center-block"
-						src="http://static.rainasmoon.com/normal/${arow.picPath }" alt="${arow.adTitle };${arow.adDescription }">
+						src="http://static.rainasmoon.com/normal/${arow.picPath }"
+						alt="${arow.adTitle };${arow.adDescription }">
 				</div>
 			</c:if>
 		</div>
@@ -115,7 +126,7 @@ body {
 </div>
 <script type="text/javascript">
 <!--
-baiduAccess();
+	baiduAccess();
 //-->
 </script>
 <jsp:include page="./fragments/outlink.jsp" />
