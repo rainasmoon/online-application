@@ -81,6 +81,11 @@ public class TencentID_corServiceImpl implements TencentID_corService {
         Map<String, String> headers = new HashMap<>();
         headers.put("Content-Type", "application/x-www-form-urlencoded");
         HttpResponse responseBD = HttpsUtil4Tencent.doPostTencentAI(TencentAPI.OCR_G, headers, body);  //【接口调用配置】（记得修改API）
+        
+        if (responseBD == null) {
+            return null;
+        }
+        
         String json = EntityUtils.toString(responseBD.getEntity());
         return json;
     }
@@ -90,6 +95,10 @@ public class TencentID_corServiceImpl implements TencentID_corService {
         
         try {
             String reS = parsePic(url);
+            
+            if (reS == null) {
+                return null;
+            }
             
             Map<String, Object> resultMap = JSON.parseObject(reS, Map.class);
             log.debug("resultMap: {}", resultMap);

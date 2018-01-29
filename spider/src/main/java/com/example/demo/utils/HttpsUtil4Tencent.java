@@ -1,5 +1,16 @@
 package com.example.demo.utils;
 
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
+import java.security.cert.X509Certificate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
@@ -11,16 +22,6 @@ import org.apache.http.conn.scheme.SchemeRegistry;
 import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
-
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
-import java.security.KeyManagementException;
-import java.security.NoSuchAlgorithmException;
-import java.security.cert.X509Certificate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 public class HttpsUtil4Tencent {
 	private static HttpClient wrapClient(String host) {
@@ -34,12 +35,15 @@ public class HttpsUtil4Tencent {
         try {
             SSLContext ctx = SSLContext.getInstance("TLS");
             X509TrustManager tm = new X509TrustManager() {
+                @Override
                 public X509Certificate[] getAcceptedIssuers() {
                     return null;
                 }
+                @Override
                 public void checkClientTrusted(X509Certificate[] xcs, String str) {
                 	
                 }
+                @Override
                 public void checkServerTrusted(X509Certificate[] xcs, String str) {
                 	
                 }
@@ -72,7 +76,8 @@ public class HttpsUtil4Tencent {
 	public static HttpResponse doPostTencentAI(String url,
                                                Map<String, String> headers,
                                                Map<String, String> bodys)
-            throws Exception {    	
+              { 
+	    try{
     	HttpClient httpClient = wrapClient(url);
     	HttpPost request = new HttpPost(url);
         for (Map.Entry<String, String> e : headers.entrySet()) {
@@ -88,6 +93,11 @@ public class HttpsUtil4Tencent {
             request.setEntity(formEntity);
         }
         return httpClient.execute(request);
+	    }
+	    catch(Exception e) {
+	        e.printStackTrace();
+	    }
+	    return null;
     }
  
 }

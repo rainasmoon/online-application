@@ -158,7 +158,7 @@ public class SpiderTest {
             String picUrl = trickTkPic(productPage);
             if (StringUtils.isNotBlank(picUrl)) {
                 
-                String ss = tencentID_corService.parsePic(picUrl);
+                String ss = tencentID_corService.getOneLine(picUrl);
                 System.out.println("{********************************************************");
                 System.out.println(picUrl);
                 System.out.println(ss);
@@ -245,12 +245,13 @@ public class SpiderTest {
     private String trickTkPic(Document doc) throws IOException {
 
       
-            Elements content = doc.select("img[src*=/sales/]");
+            Elements content = doc.select("img[src*=/product_detail/]");
             
             String r = "";
             for (Element link : content) {
 
                 String url = link.attr("src");
+                
                 return maskTKUrl(url);
             }
             
