@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.commons.lang3.StringUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.helper.StringUtil;
 import org.jsoup.nodes.Document;
@@ -25,6 +26,8 @@ import org.slf4j.LoggerFactory;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+
+import ai.AiTest;
 
 public class SpiderTest {
 
@@ -52,8 +55,14 @@ public class SpiderTest {
 
         log.info("abc\r\ncbd".replaceAll("\r|\n", ""));
 
-        for (String s : "def var a = 1; function x(){}".split("var|function"))
+        for (String s : "def var a = 1; function x(){}".split("var|function")){
             log.info(s);
+        }
+        
+        log.info(maskTKUrl("/pic/123.jpg"));
+        log.info(maskTKUrl("//w.p.com/pic/123.jpg"));
+        log.info(maskTKUrl("http://www.tk.com/pic/123.jpg"));
+            
     }
 
     private List<Info> tickZA() throws IOException {
@@ -138,8 +147,13 @@ public class SpiderTest {
             Document productPage = trickDoc(linkHref);
             info.setPrice(trickTkPrice(productPage));
             info.setDescription(trickTkPackage(productPage));
-            info.setPicurl(trickTkPic(productPage));
-            info.setPicStr("");
+            String picUrl = trickTkPic(productPage);
+            if (StringUtils.isNotBlank(picUrl)) {
+                info.setPicurl(picUrl);
+                AiTest ai = new AiTest();
+                
+                info.setPicStr(ai.parasePic(picUrl));
+            }
             info.setUpdateDate(now);
             r.add(info);
             System.out.println("R:" + info);
@@ -223,7 +237,7 @@ public class SpiderTest {
             String r = "";
             for (Element link : content) {
 
-                String url = link.attr("rc");
+                String url = link.attr("src");
                 return maskTKUrl(url);
             }
             
@@ -444,8 +458,8 @@ public class SpiderTest {
     private String maskTKUrl(String href) {
         String r = mask(href.trim());
         
-        if (href.trim().startsWith("/")) {
-            return "http://www.tk.cn/" + href.trim();
+        if (r.trim().startsWith("/")) {
+            return "http://www.tk.cn" + r.trim();
         }
         
         return r;

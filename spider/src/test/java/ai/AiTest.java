@@ -79,16 +79,17 @@ public class AiTest {
         parasePic("http://ai.wanlianjin.com/img/ocr/ocr-general-01.jpg");
     }
 
-    public void parasePic(String path) {
+    public String parasePic(String path) {
         try {
-            innerParasPic(path);
+            return innerParasPic(path);
         }
         catch(Exception e) {
             log.info("error:" , e);
         }
+        return "ERROR";
     }
     
-     private void innerParasPic(String path) throws IOException {
+     private String innerParasPic(String path) throws IOException {
 
         
         Map<String, Object> param = new LinkedHashMap<String, Object>();
@@ -97,7 +98,7 @@ public class AiTest {
         param.put("nonce_str", randkey());
         param.put("time_stamp", makeTimeStamp());
 
-        log.info("before sign param　{}" , param);
+//        log.info("before sign param　{}" , param);
 
         URL postUrl = new URL("https://api.ai.qq.com/fcgi-bin/ocr/ocr_generalocr");
 
@@ -130,18 +131,22 @@ public class AiTest {
         
         Map<String, Object> resultMap = JSON.parseObject(sb.toString(), Map.class);
         log.debug("resultMap: {}", resultMap);
-        
+        String rStr = "";
         if ((Integer)resultMap.get("ret")== 0) {
             Map t1 = (Map)resultMap.get("data");
             List<Map> t2 = (List<Map>)t1.get("item_list");
             for (Map t3 : t2) {
                 String t4 = (String)t3.get("itemstring");
-                log.info("haha {}", t4);
+                rStr = rStr + " ~ " +t4;
+                
             }
         }
         else {
             log.info("error {}", resultMap);
         }
+        
+        log.info("haha {}", rStr);
+        return rStr;
 
     }
 

@@ -1,13 +1,4 @@
 User-agent: *
-Disallow: /viewme.html
-Disallow: /market_view_trade.html
-Disallow: /addproduct.html
-Disallow: /market_add_info.html
-Disallow: /mysales.html
-Disallow: /*manage*
-Disallow: /*password*
-Disallow: /*login*
-Disallow: /*order*
-Disallow: /*restful*
+Disallow: /*wp-admin*
 
 

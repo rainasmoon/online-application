@@ -1,0 +1,3 @@
+server:
+  context-path: /spider
+  port: 8888
