@@ -1,4 +1,4 @@
-package spider;
+package com.example.demo;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -21,15 +21,23 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.example.demo.service.TencentID_corService;
 
-import ai.AiTest;
-
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class SpiderTest {
+    
+    @Autowired
+    private TencentID_corService tencentID_corService;
 
     private static final int TIMEOUT = 0;
     private static Logger log = LoggerFactory.getLogger("T:");
@@ -149,10 +157,15 @@ public class SpiderTest {
             info.setDescription(trickTkPackage(productPage));
             String picUrl = trickTkPic(productPage);
             if (StringUtils.isNotBlank(picUrl)) {
-                info.setPicurl(picUrl);
-                AiTest ai = new AiTest();
                 
-                info.setPicStr(ai.parasePic(picUrl));
+                String ss = tencentID_corService.parsePic(picUrl);
+                System.out.println("{********************************************************");
+                System.out.println(picUrl);
+                System.out.println(ss);
+                System.out.println("}********************************************************");
+                info.setPicurl(picUrl);
+                               
+                info.setPicStr(ss);
             }
             info.setUpdateDate(now);
             r.add(info);

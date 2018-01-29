@@ -20,4 +20,10 @@ public class TencentID_corServiceImplTest {
 //        System.out.println(str);
         System.out.println(str2);
     }
+    
+    @Test
+    public void getOcrG() throws Exception{
+        String str2 = tencentID_corService.parsePic("http://www.tk.cn/sales/include/images/code3.gif");
+        System.out.println(str2);
+    }
 }
