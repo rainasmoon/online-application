@@ -46,8 +46,8 @@ public class SpiderTest {
     public void testAll() throws Exception {
         List<Info> r = new ArrayList<Info>();
 
-        r.addAll(tickTK());
-//        r.addAll(tickZA());
+//        r.addAll(tickTK());
+        r.addAll(tickZA());
 
         write("D:\\tmp\\me.csv", r);
 
@@ -122,6 +122,14 @@ public class SpiderTest {
                     info.setPrice(trickZaPrice(productPage, startingPrice));
                     info.setDescription(trickZaPackage(productPage));
 
+                    String picUrl = trickZaPic(productPage);
+                    if (StringUtils.isNotBlank(picUrl)) {
+                        
+                        String ss = p_pic_s(picUrl);
+                        info.setPicurl(picUrl);                               
+                        info.setPicStr(mask2oneLine(ss));
+                    }
+                    
                     info.setUpdateDate(now);
                     r.add(info);
                     System.out.println("R:" + info);
@@ -158,14 +166,9 @@ public class SpiderTest {
             String picUrl = trickTkPic(productPage);
             if (StringUtils.isNotBlank(picUrl)) {
                 
-                String ss = tencentID_corService.getOneLine(picUrl);
-                System.out.println("{********************************************************");
-                System.out.println(picUrl);
-                System.out.println(ss);
-                System.out.println("}********************************************************");
-                info.setPicurl(picUrl);
-                               
-                info.setPicStr(ss);
+                String ss = p_pic_s(picUrl);
+                info.setPicurl(picUrl);                               
+                info.setPicStr(mask2oneLine(ss));
             }
             info.setUpdateDate(now);
             r.add(info);
@@ -174,6 +177,18 @@ public class SpiderTest {
 
         return r;
 
+    }
+
+    private String p_pic_s(String picUrl) {
+        String onePicUrl = trickReg(picUrl, "//static.zhongan.com/.*?\"", true);
+        onePicUrl = "https:" + onePicUrl.replaceAll("\"", "");
+        
+        String ss = tencentID_corService.getOneLine(onePicUrl);
+        System.out.println("{********************************************************");
+        System.out.println(onePicUrl);
+        System.out.println(ss);
+        System.out.println("}********************************************************");
+        return ss;
     }
 
     public void write(String filename, List<Info> r) {
@@ -241,6 +256,32 @@ public class SpiderTest {
 
         return doc;
     }
+    
+    private String trickZaPic(Document doc) throws IOException {
+
+        String r = "";
+        
+        if (StringUtil.isBlank(r)) {
+
+            String prod_info = trickZeroConfig(doc);
+
+                if (prod_info != null) {
+
+                    // log.info(prod_info);
+                    prod_info = trickReg(prod_info, "\\[\"//static.zhongan.com/website/assembler/detail/.*\"\\]");
+
+                    System.out.println(prod_info);
+                    
+                    prod_info = mask2oneLine(prod_info);
+
+                    r = prod_info;
+                }
+           
+        }
+        
+        
+    return r;
+}
 
     private String trickTkPic(Document doc) throws IOException {
 
@@ -449,11 +490,20 @@ public class SpiderTest {
         return string.replaceAll(",", "~").replaceAll("\r|\n", "");
 
     }
-
+    
     private String trickReg(String s, String p) {
+        return trickReg(s, p, false);
+    }
+
+    private String trickReg(String s, String p, boolean lazy) {
         StringBuffer sb = new StringBuffer();
-        Matcher m = Pattern.compile(p).matcher(s);
+        Pattern pattern = Pattern.compile(p);
+        
+        Matcher m = pattern.matcher(s);
         while (m.find()) {
+            if (lazy) {
+                return m.group();
+            }
             sb.append(m.group());
         }
         return sb.toString();

@@ -37,7 +37,7 @@ public class AiTest {
     @Test
     public void testBase64() throws IOException {
 
-        String str = base64("http://ai.wanlianjin.com/img/ocr/ocr-general-01.jpg");        
+        String str = base64("http://www.tk.cn/sales/pic/product_detail/baiwanyiliao/cpts_bgi_01.jpg");        
         
         log.info("pic : {}", str);
         
