@@ -120,7 +120,7 @@ public class TencentID_corServiceImpl implements TencentID_corService {
             return rStr;
         }
         catch(Exception e) {
-            log.info("error:" , e);
+            log.info("error: when calling: " + url , e);
         }
         return "ERROR";
     }

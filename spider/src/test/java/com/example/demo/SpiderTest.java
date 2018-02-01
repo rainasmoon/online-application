@@ -6,10 +6,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -133,8 +131,7 @@ public class SpiderTest {
                     if (StringUtils.isNotBlank(picUrl)) {
                         info.setPicurl(picUrl);
                         String ss = p_pic_s_zhongan(picUrl);
-                        if (StringUtils.isNotBlank(ss)) {
-                                                           
+                        if (StringUtils.isNotBlank(ss)) {                                                           
                             info.setPicStr(mask2oneLine(ss));
                         }
                     }
@@ -193,27 +190,33 @@ public class SpiderTest {
         String ss = tencentID_corService.getOneLine(picUrl);
         System.out.println("{********************************************************");
         System.out.println(picUrl);
-        System.out.println(ss);
+        if (ss != null) {
+            System.out.println(ss);
+        }
+        else {
+            return "NO M";
+        }
         System.out.println("}********************************************************");
         return ss;
     }
     
     private String p_pic_s_zhongan(String picUrl) {
-        String en_pic = picUrl;
-        try {
-            en_pic = URLEncoder.encode(picUrl, "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            
-            e.printStackTrace();
-        }
-        String onePicUrl = trickReg(en_pic, "//static.zhongan.com/.*?\"", true);
         
-        if (StringUtils.isBlank(onePicUrl)) {
+        String en_pic = picUrl;
+//        try {
+//            en_pic = URLEncoder.encode(picUrl, "UTF-8");
+//        } catch (UnsupportedEncodingException e) {
+//            
+//            e.printStackTrace();
+//        }
+        String onePicUrl = trickReg(en_pic, "//static.zhongan.com/.*?\"", true);
+                        
+        onePicUrl = "https:" + onePicUrl.replaceAll("\"", "");
+        
+        if (StringUtils.isBlank(onePicUrl) || onePicUrl.equals("https:")) {
             log.error("PAY: {}", picUrl );
             return null;
         }
-        
-        onePicUrl = "https:" + onePicUrl.replaceAll("\"", "");
         
         String ss = tencentID_corService.getOneLine(onePicUrl);
         System.out.println("{********************************************************");
@@ -253,28 +256,34 @@ public class SpiderTest {
         return jsonObject;
     }
 
-    private String trickJsonStr(String aurl) throws IOException {
-        URL url = new URL(aurl);
-        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-        connection.setRequestMethod("GET");
-        connection.connect();
+    private String trickJsonStr(String aurl) {
+        try {
+            URL url = new URL(aurl);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.connect();
 
-        BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream(), "utf-8"));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream(), "utf-8"));
 
-        StringBuffer sb = new StringBuffer();
+            StringBuffer sb = new StringBuffer();
 
-        String line = null;
-        while ((line = reader.readLine()) != null) {
-            sb.append(line + "\n");
+            String line = null;
+            while ((line = reader.readLine()) != null) {
+                sb.append(line + "\n");
+            }
+
+            reader.close();
+            connection.disconnect();
+
+            String returnMsg = sb.toString();
+            log.info(returnMsg);
+            
+            return returnMsg;
         }
-
-        reader.close();
-        connection.disconnect();
-
-        String returnMsg = sb.toString();
-        log.info(returnMsg);
-        
-        return returnMsg;
+        catch(Exception e) {
+            log.error("ERROR when calling +" + aurl, e);
+        }
+        return "";
     }
 
     private Document trickDoc(String href)  {
@@ -525,7 +534,7 @@ public class SpiderTest {
 
     private String mask2oneLine(String string) {
         if (StringUtils.isBlank(string)) {
-            return "[EMPTY]";
+            return "";
         }
 
         return string.replaceAll(",", "~").replaceAll("\r|\n", "");
