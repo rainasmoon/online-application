@@ -6,9 +6,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -46,7 +49,7 @@ public class SpiderTest {
     public void testAll() throws Exception {
         List<Info> r = new ArrayList<Info>();
 
-//        r.addAll(tickTK());
+        r.addAll(tickTK());
         r.addAll(tickZA());
 
         write("D:\\tmp\\me.csv", r);
@@ -80,6 +83,10 @@ public class SpiderTest {
         String com = "众安";
 
         Document mainPage = trickDoc(url);
+        
+        if (mainPage == null) {
+            return Collections.EMPTY_LIST;
+        }
 
         Elements content = mainPage.select("ul.za-main-nav-list");
         // 首页有一些推荐的品种
@@ -124,10 +131,12 @@ public class SpiderTest {
 
                     String picUrl = trickZaPic(productPage);
                     if (StringUtils.isNotBlank(picUrl)) {
-                        
-                        String ss = p_pic_s(picUrl);
-                        info.setPicurl(picUrl);                               
-                        info.setPicStr(mask2oneLine(ss));
+                        info.setPicurl(picUrl);
+                        String ss = p_pic_s_zhongan(picUrl);
+                        if (StringUtils.isNotBlank(ss)) {
+                                                           
+                            info.setPicStr(mask2oneLine(ss));
+                        }
                     }
                     
                     info.setUpdateDate(now);
@@ -166,7 +175,7 @@ public class SpiderTest {
             String picUrl = trickTkPic(productPage);
             if (StringUtils.isNotBlank(picUrl)) {
                 
-                String ss = p_pic_s(picUrl);
+                String ss = p_pic_s_taikang(picUrl);
                 info.setPicurl(picUrl);                               
                 info.setPicStr(mask2oneLine(ss));
             }
@@ -179,8 +188,31 @@ public class SpiderTest {
 
     }
 
-    private String p_pic_s(String picUrl) {
-        String onePicUrl = trickReg(picUrl, "//static.zhongan.com/.*?\"", true);
+    private String p_pic_s_taikang(String picUrl) {
+               
+        String ss = tencentID_corService.getOneLine(picUrl);
+        System.out.println("{********************************************************");
+        System.out.println(picUrl);
+        System.out.println(ss);
+        System.out.println("}********************************************************");
+        return ss;
+    }
+    
+    private String p_pic_s_zhongan(String picUrl) {
+        String en_pic = picUrl;
+        try {
+            en_pic = URLEncoder.encode(picUrl, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            
+            e.printStackTrace();
+        }
+        String onePicUrl = trickReg(en_pic, "//static.zhongan.com/.*?\"", true);
+        
+        if (StringUtils.isBlank(onePicUrl)) {
+            log.error("PAY: {}", picUrl );
+            return null;
+        }
+        
         onePicUrl = "https:" + onePicUrl.replaceAll("\"", "");
         
         String ss = tencentID_corService.getOneLine(onePicUrl);
@@ -245,8 +277,14 @@ public class SpiderTest {
         return returnMsg;
     }
 
-    private Document trickDoc(String href) throws IOException {
-        Document doc = Jsoup.connect(mask(href)).timeout(TIMEOUT).get();
+    private Document trickDoc(String href)  {
+        Document doc = null ;
+        try {
+            doc = Jsoup.connect(mask(href)).timeout(TIMEOUT).get();
+        } catch (IOException e) {
+            
+            e.printStackTrace();
+        }
 
         return doc;
     }
@@ -486,6 +524,9 @@ public class SpiderTest {
     }
 
     private String mask2oneLine(String string) {
+        if (StringUtils.isBlank(string)) {
+            return "[EMPTY]";
+        }
 
         return string.replaceAll(",", "~").replaceAll("\r|\n", "");
 
