@@ -49,6 +49,7 @@ public class SpiderTest {
 
         r.addAll(tickTK());
         r.addAll(tickZA());
+        
 
         write("D:\\tmp\\me.csv", r);
 
@@ -74,6 +75,21 @@ public class SpiderTest {
             
     }
 
+    private List<Info> tickDD() {
+        Date now = new Date();
+        List<Info> r = new ArrayList<Info>();
+        String url = "http://www.95590.cn/";
+        String com = "大地";
+
+        Document mainPage = trickDoc(url);
+        
+        if (mainPage == null) {
+            return Collections.EMPTY_LIST;
+        }
+        
+        return r;
+    }
+    
     private List<Info> tickZA() throws IOException {
         Date now = new Date();
         List<Info> r = new ArrayList<Info>();
@@ -588,4 +604,28 @@ public class SpiderTest {
         return href;
     }
 
+    
+    /** *//*****************************************************
+    * 功能介绍:将unicode字符串转为汉字
+    * 输入参数:源unicode字符串
+    * 输出参数:转换后的字符串
+    *****************************************************/
+    private String decodeUnicode( final String dataStr ) {
+    int start = 0;
+    int end = 0;
+    final StringBuffer buffer = new StringBuffer();
+    while( start > -1 ) {
+    end = dataStr.indexOf( "\\\\u", start + 2 );
+    String charStr = "";
+    if( end == -1 ) {
+    charStr = dataStr.substring( start + 2, dataStr.length() );
+    } else {
+    charStr = dataStr.substring( start + 2, end);
+    }
+    char letter = (char) Integer.parseInt( charStr, 16 ); // 16进制parse整形字符串。
+    buffer.append( new Character( letter ).toString() );
+    start = end;
+    }
+    return buffer.toString();
+    }
 }
