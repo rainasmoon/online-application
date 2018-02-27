@@ -12,7 +12,6 @@
   <artifactId>spider</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   
-
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -20,37 +19,66 @@
 	</properties>
   
   <dependencies>
-  <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
-<dependency>
-    <groupId>org.jsoup</groupId>
-    <artifactId>jsoup</artifactId>
-    <version>1.11.2</version>
-</dependency>
+		<!-- https://mvnrepository.com/artifact/org.robotframework/robotframework -->
+		<dependency>
+		    <groupId>org.robotframework</groupId>
+		    <artifactId>robotframework</artifactId>
+		    <version>3.0.2</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+		<dependency>
+		    <groupId>org.seleniumhq.selenium</groupId>
+		    <artifactId>selenium-java</artifactId>
+		    <version>3.9.1</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-server-standalone -->
+		<dependency>
+		    <groupId>org.seleniumhq.selenium</groupId>
+		    <artifactId>selenium-server-standalone</artifactId>
+		    <version>2.53.0</version>
+		</dependency>
+		
+		
+		<!-- https://mvnrepository.com/artifact/io.appium/java-client -->
+		<dependency>
+		    <groupId>io.appium</groupId>
+		    <artifactId>java-client</artifactId>
+		    <version>6.0.0-BETA3</version>
+		</dependency>
 
-<!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
-<dependency>
-    <groupId>com.alibaba</groupId>
-    <artifactId>fastjson</artifactId>
-    <version>1.2.44</version>
-</dependency>
+  	
+	  	<!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
+		<dependency>
+		    <groupId>org.jsoup</groupId>
+		    <artifactId>jsoup</artifactId>
+		    <version>1.11.2</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+		<dependency>
+		    <groupId>com.alibaba</groupId>
+		    <artifactId>fastjson</artifactId>
+		    <version>1.2.44</version>
+		</dependency>
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
 		</dependency>
 
-     <dependency>
+     	<dependency>
 		  <groupId>commons-codec</groupId>
 		  <artifactId>commons-codec</artifactId>
 		  <version>1.3</version>
 		</dependency>
 	    
-	    		<dependency>
+   		<dependency>
 		    <groupId>org.apache.commons</groupId>
 		    <artifactId>commons-lang3</artifactId>
 		    <version>3.7</version>
 		</dependency>
 	    
-
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -58,45 +86,28 @@
 			<scope>test</scope>
 		</dependency>
 		
-		
 		<dependency>
-
 			<groupId>org.springframework.boot</groupId>
-
 			<artifactId>spring-boot-starter-web</artifactId>
-
 		</dependency>
 
-
-
 		<dependency>
-
 			<groupId>org.springframework.boot</groupId>
-
 			<artifactId>spring-boot-starter-test</artifactId>
-
 			<scope>test</scope>
-
 		</dependency>
 
 		<!--实现路径配置-->
 
 		<dependency>
-
 			<groupId>org.springframework.boot</groupId>
-
 			<artifactId>spring-boot-configuration-processor</artifactId>
-
 			<optional>true</optional>
-
 		</dependency>
 
 		<dependency>
-
 			<groupId>org.springframework.boot</groupId>
-
 			<artifactId>spring-boot-starter-freemarker</artifactId>
-
 		</dependency>
 
 		<dependency>
@@ -109,26 +120,17 @@
 			<version>2.8.0</version>
 		</dependency>
 		<dependency>
-
 			<groupId>net.sf.json-lib</groupId>
-
 			<artifactId>json-lib</artifactId>
-
 			<version>2.4</version>
-
 			<classifier>jdk15</classifier>
-
 		</dependency>
-
 		<dependency>
-
 			<groupId>com.baidu.aip</groupId>
-
 			<artifactId>java-sdk</artifactId>
-
 			<version>4.0.0</version>
-
 		</dependency>
+					
   </dependencies>
   <build>
 		<plugins>
@@ -145,7 +147,19 @@
 						<encoding>UTF8</encoding>
 						<target>1.7</target>
 					</configuration>
-				</plugin>
+			</plugin>
+			<plugin>
+		        <groupId>org.robotframework</groupId>
+		        <artifactId>robotframework-maven-plugin</artifactId>
+		        <version>1.4.7</version>
+		        <executions>
+		          <execution>
+		            <goals>
+		              <goal>run</goal>
+		            </goals>
+		          </execution>
+		        </executions>
+	      	</plugin>
 		</plugins>
 	</build>
 </project>
