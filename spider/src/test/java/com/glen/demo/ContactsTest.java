@@ -17,6 +17,7 @@ import io.appium.java_client.AppiumDriver;
   
  public class ContactsTest {
      private AppiumDriver driver; 
+     
      @Before
      public void setUp() throws Exception {
          //设置apk的路径
@@ -28,7 +29,7 @@ import io.appium.java_client.AppiumDriver;
          DesiredCapabilities capabilities = new DesiredCapabilities();
          capabilities.setCapability(CapabilityType.BROWSER_NAME, "");
          capabilities.setCapability("platformName", "Android");
-         capabilities.setCapability("deviceName", "Android Emulator");
+         capabilities.setCapability("deviceName", "test");
          
          //设置安卓系统版本
          capabilities.setCapability("platformVersion", "4.3");
@@ -50,7 +51,6 @@ import io.appium.java_client.AppiumDriver;
          List<WebElement> textFieldsList = driver.findElementsByClassName("android.widget.EditText");
          textFieldsList.get(0).sendKeys("Some Name");
          textFieldsList.get(2).sendKeys("Some@example.com");
-         driver.swipe(100, 500, 100, 100, 2);
          driver.findElementByName("Save").click();
      }    
      
