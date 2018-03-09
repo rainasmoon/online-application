@@ -110,11 +110,11 @@ public class WeixinTest {
         
 
         println(driver.getContextHandles());
-//        driver.context("WEBVIEW_com.tencent.mm:tools");
+        driver.context("WEBVIEW");
         Thread.sleep(5000);
         println(driver.getPageSource());
-//        driver.findElementByXPath("//*[contains(@url, '全部')]").click();
-//        driver.findElementByXPath("//*[contains(., '全部')]").click();
+        driver.findElementByXPath("//*[contains(@url, '全部')]").click();
+        
     }
 
     private void loginWeixin() {
