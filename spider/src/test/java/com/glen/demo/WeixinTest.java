@@ -60,7 +60,7 @@ public class WeixinTest {
         ChromeOptions options = new ChromeOptions();
         options.setExperimentalOption("androidProcess", "com.tencent.mm:appbrand1");
 
-        capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+//        capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 
         return capabilities;
     }
