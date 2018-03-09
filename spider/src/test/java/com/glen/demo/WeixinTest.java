@@ -3,6 +3,7 @@ package com.glen.demo;
 import java.io.File;
 import java.net.URL;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
 import org.junit.Before;
@@ -100,6 +101,7 @@ public class WeixinTest {
     @Test
     public void openWebWeixin() throws InterruptedException {
 
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 //        loginWeixin();
         
         
