@@ -47,13 +47,17 @@ public class SpiderTest {
     public void testAll() throws Exception {
         List<Info> r = new ArrayList<Info>();
 
-        r.addAll(tickTK());
-        r.addAll(tickZA());
+//        r.addAll(tickTK());
+//        r.addAll(tickZA());
+        
+
         
 
         write("D:\\tmp\\me.csv", r);
 
     }
+    
+    
 
     @Test
     public void testAnything() {
@@ -163,6 +167,8 @@ public class SpiderTest {
         return r;
     }
 
+    
+   
 
     private List<Info> tickTK() throws Exception {
 
