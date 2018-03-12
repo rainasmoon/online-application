@@ -28,7 +28,7 @@ public class WeixinTest {
     @Before
     public void setUp() throws Exception {
 
-        DesiredCapabilities capabilities = getRealPhone();
+        DesiredCapabilities capabilities = getPhoneAVD();
         // 初始化
         driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 
@@ -78,11 +78,9 @@ public class WeixinTest {
         capabilities.setCapability(CapabilityType.BROWSER_NAME, "");
         capabilities.setCapability("platformName", "Android");
         capabilities.setCapability("deviceName", "test");
-        // capabilities.setCapability("deviceName", "127.0.0.1:62001");
-        // capabilities.setCapability("udid", "127.0.0.1:62001");
 
         // 设置安卓系统版本
-        capabilities.setCapability("platformVersion", "4.3");
+        capabilities.setCapability("platformVersion", "5.1.1");
         capabilities.setCapability("fastReset", "false");
         capabilities.setCapability("fullReset", "false");
         capabilities.setCapability("noReset", "true");
@@ -90,7 +88,7 @@ public class WeixinTest {
         capabilities.setCapability("device", "appium");
 
         // 设置app的主包名和主类名
-        capabilities.setCapability("app", app.getAbsolutePath());
+//        capabilities.setCapability("app", app.getAbsolutePath());
 
         capabilities.setCapability("appPackage", "com.tencent.mm");
         capabilities.setCapability("appActivity", ".ui.LauncherUI");
