@@ -18,6 +18,7 @@ import org.slf4j.LoggerFactory;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
 
 public class WeixinTest {
 
@@ -28,7 +29,7 @@ public class WeixinTest {
     @Before
     public void setUp() throws Exception {
 
-        DesiredCapabilities capabilities = getPhoneAVD();
+        DesiredCapabilities capabilities = getRealPhone();
         // 初始化
         driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 
@@ -43,7 +44,7 @@ public class WeixinTest {
         capabilities.setCapability("deviceName", "zte_q505t-Q505T");
 
         // 设置安卓系统版本
-        capabilities.setCapability("platformVersion", "4.3");
+        capabilities.setCapability("platformVersion", "6.0");
 
         // 设置app的主包名和主类名
         capabilities.setCapability("app", "");
@@ -102,16 +103,29 @@ public class WeixinTest {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 //        loginWeixin();
         
-        
         driver.findElementByXPath("//*[@text='泰康在线保险']").click();
         driver.findElementByXPath("//*[@text='保险商城']").click();
         
-
-        println(driver.getContextHandles());
-        driver.context("WEBVIEW");
-        Thread.sleep(5000);
-        println(driver.getPageSource());
-        driver.findElementByXPath("//*[contains(@url, '全部')]").click();
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        // 需要等网页原素加载完毕.
+        Thread.sleep(15 * 1000);
+        log.info("handler:" + driver.getContextHandles());
+        log.info("source:" + driver.getPageSource());
+        List<WebElement> list = driver.findElementsByClassName("android.view.View");
+        log.info("SIZE:" + list.size());
+        for (WebElement w : list) {
+            if (w instanceof AndroidElement) {
+                log.info("YES:");
+                AndroidElement a = (AndroidElement) w;
+                
+                log.info(a.toString());
+                log.info(a.getTagName());
+            }
+            else {
+                log.info(w.getClass().getName());
+            }
+            
+        }
         
     }
 
