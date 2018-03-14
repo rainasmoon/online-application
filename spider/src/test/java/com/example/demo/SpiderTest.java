@@ -16,6 +16,16 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.hssf.util.HSSFColor;
+import org.apache.poi.ss.usermodel.BorderStyle;
+import org.apache.poi.ss.usermodel.FillPatternType;
+import org.apache.poi.ss.usermodel.HorizontalAlignment;
+import org.apache.poi.ss.usermodel.VerticalAlignment;
 import org.jsoup.Jsoup;
 import org.jsoup.helper.StringUtil;
 import org.jsoup.nodes.Document;
@@ -36,28 +46,39 @@ import com.example.demo.service.TencentID_corService;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class SpiderTest {
-    
+
     @Autowired
     private TencentID_corService tencentID_corService;
 
     private static final int TIMEOUT = 0;
-    private static Logger log = LoggerFactory.getLogger("T:");
+    private static Logger log = LoggerFactory.getLogger("TTT");
 
     @Test
     public void testAll() throws Exception {
         List<Info> r = new ArrayList<Info>();
 
-//        r.addAll(tickTK());
-//        r.addAll(tickZA());
-        
+        r.addAll(tickTK());
+        // r.addAll(tickZA());
 
-        
-
-        write("D:\\tmp\\me.csv", r);
+        writeExcel("D:\\tmp\\me.xls", r);
 
     }
     
+    @Test
+    public void testZaClauses() throws IOException {
+        String prodUrl = "http://shop.tk.cn/product/285/S20160262_p.html";
+        Document productPage = trickDoc(prodUrl);
+        String r = trickTKInsuranceCluses(productPage);
+        log.info("RRR:" + r);
+    }
     
+    @Test
+    public void testZaSales() throws IOException {
+        String prodUrl = "http://shop.tk.cn/product/285/S20160262_p.html";
+        Document productPage = trickDoc(prodUrl);
+        String r = trickTkSales(productPage);
+        log.info("RRR:" + r);
+    }
 
     @Test
     public void testAnything() {
@@ -69,14 +90,14 @@ public class SpiderTest {
 
         log.info("abc\r\ncbd".replaceAll("\r|\n", ""));
 
-        for (String s : "def var a = 1; function x(){}".split("var|function")){
+        for (String s : "def var a = 1; function x(){}".split("var|function")) {
             log.info(s);
         }
-        
+
         log.info(maskTKUrl("/pic/123.jpg"));
         log.info(maskTKUrl("//w.p.com/pic/123.jpg"));
         log.info(maskTKUrl("http://www.tk.com/pic/123.jpg"));
-            
+
     }
 
     private List<Info> tickDD() {
@@ -86,14 +107,14 @@ public class SpiderTest {
         String com = "大地";
 
         Document mainPage = trickDoc(url);
-        
+
         if (mainPage == null) {
             return Collections.EMPTY_LIST;
         }
-        
+
         return r;
     }
-    
+
     private List<Info> tickZA() throws IOException {
         Date now = new Date();
         List<Info> r = new ArrayList<Info>();
@@ -101,7 +122,7 @@ public class SpiderTest {
         String com = "众安";
 
         Document mainPage = trickDoc(url);
-        
+
         if (mainPage == null) {
             return Collections.EMPTY_LIST;
         }
@@ -151,11 +172,11 @@ public class SpiderTest {
                     if (StringUtils.isNotBlank(picUrl)) {
                         info.setPicurl(picUrl);
                         String ss = p_pic_s_zhongan(picUrl);
-                        if (StringUtils.isNotBlank(ss)) {                                                           
+                        if (StringUtils.isNotBlank(ss)) {
                             info.setPicStr(mask2oneLine(ss));
                         }
                     }
-                    
+
                     info.setUpdateDate(now);
                     r.add(info);
                     System.out.println("R:" + info);
@@ -166,9 +187,6 @@ public class SpiderTest {
 
         return r;
     }
-
-    
-   
 
     private List<Info> tickTK() throws Exception {
 
@@ -191,11 +209,14 @@ public class SpiderTest {
             Document productPage = trickDoc(linkHref);
             info.setPrice(trickTkPrice(productPage));
             info.setDescription(trickTkPackage(productPage));
-            String picUrl = trickTkPic(productPage);
+            info.setSales(trickTkSales(productPage));
+            info.setInsuranceCluses(trickTKInsuranceCluses(productPage));
+            
+            String picUrl = trickTkPic(productPage); 
             if (StringUtils.isNotBlank(picUrl)) {
-                
+
                 String ss = p_pic_s_taikang(picUrl);
-                info.setPicurl(picUrl);                               
+                info.setPicurl(picUrl);
                 info.setPicStr(mask2oneLine(ss));
             }
             info.setUpdateDate(now);
@@ -208,38 +229,37 @@ public class SpiderTest {
     }
 
     private String p_pic_s_taikang(String picUrl) {
-               
+
         String ss = tencentID_corService.getOneLine(picUrl);
         System.out.println("{********************************************************");
         System.out.println(picUrl);
         if (ss != null) {
             System.out.println(ss);
-        }
-        else {
+        } else {
             return "NO M";
         }
         System.out.println("}********************************************************");
         return ss;
     }
-    
+
     private String p_pic_s_zhongan(String picUrl) {
-        
+
         String en_pic = picUrl;
-//        try {
-//            en_pic = URLEncoder.encode(picUrl, "UTF-8");
-//        } catch (UnsupportedEncodingException e) {
-//            
-//            e.printStackTrace();
-//        }
+        // try {
+        // en_pic = URLEncoder.encode(picUrl, "UTF-8");
+        // } catch (UnsupportedEncodingException e) {
+        //
+        // e.printStackTrace();
+        // }
         String onePicUrl = trickReg(en_pic, "//static.zhongan.com/.*?\"", true);
-                        
+
         onePicUrl = "https:" + onePicUrl.replaceAll("\"", "");
-        
+
         if (StringUtils.isBlank(onePicUrl) || onePicUrl.equals("https:")) {
-            log.error("PAY: {}", picUrl );
+            log.error("PAY: {}", picUrl);
             return null;
         }
-        
+
         String ss = tencentID_corService.getOneLine(onePicUrl);
         System.out.println("{********************************************************");
         System.out.println(onePicUrl);
@@ -258,7 +278,7 @@ public class SpiderTest {
                 Info info = r.get(i);
                 if (info != null) {
 
-                    bufWrite.write(i + "," + info.getInsurenceCom() + "," + info.getName() + "," + info.getHref() + "," + info.getPrice() + "," + info.getDescription() + ","+ info.getPicurl() + ","+ info.getPicStr() + "," + info.getUpdateDate().toString() + "\r\n");
+                    bufWrite.write(i + "," + info.getInsurenceCom() + "," + info.getName() + "," + info.getHref() + "," + info.getPrice() + "," + info.getDescription() + "," + info.getPicurl() + "," + info.getPicStr() + "," + info.getUpdateDate().toString() + "\r\n");
                 }
             }
             bufWrite.close();
@@ -270,7 +290,86 @@ public class SpiderTest {
         }
     }
 
+    public void writeExcel(String filename, List<Info> r) {
+        try {
+            HSSFWorkbook wb = new HSSFWorkbook();
+            HSSFSheet sheet = wb.createSheet("PC");
+            sheet.setDefaultColumnWidth(24);
+            
+            HSSFRow row = sheet.createRow(0);
+            HSSFCellStyle style = wb.createCellStyle();
 
+            style.setAlignment(HorizontalAlignment.CENTER);
+            style.setVerticalAlignment(VerticalAlignment.CENTER);
+            style.setFillForegroundColor(HSSFColor.LIGHT_TURQUOISE.index);
+            style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+            style.setBorderTop(BorderStyle.THIN);
+            style.setTopBorderColor(HSSFColor.BLACK.index);
+
+            style.setBorderBottom(BorderStyle.THIN);
+            style.setBottomBorderColor(HSSFColor.BLACK.index);
+
+            style.setBorderLeft(BorderStyle.THIN);
+            style.setLeftBorderColor(HSSFColor.BLACK.index);
+            style.setBorderRight(BorderStyle.THIN);
+            style.setRightBorderColor(HSSFColor.BLACK.index);
+
+            HSSFCell cell = row.createCell((short) 0);
+            cell.setCellValue("序号");
+            cell.setCellStyle(style);
+            cell = row.createCell((short) 1);
+            cell.setCellValue("保险公司");
+            cell.setCellStyle(style);
+            cell = row.createCell((short) 2);
+            cell.setCellValue("保险名称");
+            cell.setCellStyle(style);
+            cell = row.createCell((short) 3);
+            cell.setCellValue("保险条款");
+            cell.setCellStyle(style);
+            cell = row.createCell((short) 4);
+            cell.setCellValue("价钱");
+            cell.setCellStyle(style);
+            cell = row.createCell((short) 5);
+            cell.setCellValue("保障范围");
+            cell.setCellStyle(style);
+            cell = row.createCell((short) 6);
+            cell.setCellValue("销量");
+            cell.setCellStyle(style);
+            cell = row.createCell((short) 7);
+            cell.setCellValue("产品概要");
+            cell.setCellStyle(style);
+            cell = row.createCell((short) 8);
+            cell.setCellValue("url");
+            cell.setCellStyle(style);
+
+            for (int i = 0; i < r.size(); i++) {
+                Info info = r.get(i);
+                if (info != null) {
+
+                    HSSFRow row1 = sheet.createRow(i+1);
+                    row1.createCell((short) 0).setCellValue(i+1);
+                    row1.createCell((short) 1).setCellValue(info.getInsurenceCom());
+                    row1.createCell((short) 2).setCellValue(info.getName());
+                    row1.createCell((short) 3).setCellValue(info.getInsuranceCluses());
+                    row1.createCell((short) 4).setCellValue(info.getPrice());
+                    row1.createCell((short) 5).setCellValue(info.getDescription());
+                    row1.createCell((short) 6).setCellValue(info.getSales());
+                    row1.createCell((short) 7).setCellValue(info.getPicStr());
+                    row1.createCell((short) 8).setCellValue(info.getHref());
+
+                }
+            }
+
+            FileOutputStream fout = new FileOutputStream(filename);
+            wb.write(fout);
+            fout.close();
+            wb.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("读取" + filename + "出错！");
+        }
+    }
 
     private JSONObject buildJsonObj(String returnMsg) {
         JSONObject jsonObject = JSONObject.parseObject(returnMsg);
@@ -299,21 +398,20 @@ public class SpiderTest {
 
             String returnMsg = sb.toString();
             log.info(returnMsg);
-            
+
             return returnMsg;
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             log.error("ERROR when calling +" + aurl, e);
         }
         return "";
     }
 
-    private Document trickDoc(String href)  {
-        Document doc = null ;
+    private Document trickDoc(String href) {
+        Document doc = null;
         try {
             doc = Jsoup.connect(mask(href)).timeout(TIMEOUT).get();
         } catch (IOException e) {
-            
+            log.error("the url error:" + href );
             e.printStackTrace();
         }
 
@@ -325,47 +423,86 @@ public class SpiderTest {
 
         return doc;
     }
-    
+
     private String trickZaPic(Document doc) throws IOException {
 
         String r = "";
-        
+
         if (StringUtil.isBlank(r)) {
 
             String prod_info = trickZeroConfig(doc);
 
-                if (prod_info != null) {
+            if (prod_info != null) {
 
-                    // log.info(prod_info);
-                    prod_info = trickReg(prod_info, "\\[\"//static.zhongan.com/website/assembler/detail/.*\"\\]");
+                // log.info(prod_info);
+                prod_info = trickReg(prod_info, "\\[\"//static.zhongan.com/website/assembler/detail/.*\"\\]");
 
-                    System.out.println(prod_info);
-                    
-                    prod_info = mask2oneLine(prod_info);
+                System.out.println(prod_info);
 
-                    r = prod_info;
-                }
-           
+                prod_info = mask2oneLine(prod_info);
+
+                r = prod_info;
+            }
+
         }
-        
-        
-    return r;
-}
+
+        return r;
+    }
 
     private String trickTkPic(Document doc) throws IOException {
 
-      
-            Elements content = doc.select("img[src*=/product_detail/]");
+        Elements content = doc.select("img[src*=/product_detail/]");
+
+        String r = "";
+        for (Element link : content) {
+
+            String url = link.attr("src");
+
+            return maskTKUrl(url);
+        }
+
+        return "";
+    }
+
+    private String trickTKInsuranceCluses(Document doc) throws IOException {
+
+        String r = "";
+
+        if (StringUtil.isBlank(r)) {
+            Elements content = doc.select("a.productClause");
             
-            String r = "";
             for (Element link : content) {
 
-                String url = link.attr("src");
+                String clauseUrl = link.attr("href").trim();
                 
-                return maskTKUrl(url);
+                if (clauseUrl.endsWith(".pdf")) {
+                    r = r + "~" + link.attr("href");
+                    break;
+                }
+                
+                Document clausePage = trickDoc(clauseUrl);
+                
+                Elements clauseItems = clausePage.select("a[href$=.pdf]");
+                for (Element clause : clauseItems) {
+                    r = r + "~" + clause.text();
+                }
             }
-            
-        return "";
+        }
+
+        return "C:" + r;
+    }
+    
+    private String trickTkSales(Document doc) throws IOException {
+
+        String r = "";
+
+        if (StringUtil.isBlank(r)) {
+            r = trickContent(doc, "div.sales-volume");
+        }
+
+        
+
+        return "S:" + r;
     }
     
     private String trickTkPackage(Document doc) throws IOException {
@@ -412,8 +549,6 @@ public class SpiderTest {
 
     private String trickZaPrice(Document doc, String startingPrice) throws IOException {
 
-        
-
         // 健康险
         String r = "";
 
@@ -429,25 +564,24 @@ public class SpiderTest {
 
             String prod_info = trickZeroConfig(doc);
 
-                if (prod_info != null) {
+            if (prod_info != null) {
 
-                    // log.info(prod_info);
-                    prod_info = trickReg(prod_info, "\\[\\{\"sumInsuredDesc\".*\"\\}\\]");
+                // log.info(prod_info);
+                prod_info = trickReg(prod_info, "\\[\\{\"sumInsuredDesc\".*\"\\}\\]");
 
-                    System.out.println(prod_info);
-                    
-                    prod_info = mask2oneLine(prod_info);
+                System.out.println(prod_info);
 
-                    r = prod_info;
-                }
-           
+                prod_info = mask2oneLine(prod_info);
+
+                r = prod_info;
+            }
+
         }
-        
+
         // default price
         if (StringUtil.isBlank(r)) {
             r = startingPrice;
         }
-
 
         return "P:" + r;
     }
@@ -460,13 +594,13 @@ public class SpiderTest {
         if (StringUtil.isBlank(r)) {
             String prod_info = trickZeroConfig(doc);
             if (prod_info != null) {
-                    prod_info = trickReg(prod_info, "\\[\\{\"liabilityDetailData\".*\"\\}\\]");
-                    System.out.println(prod_info);
+                prod_info = trickReg(prod_info, "\\[\\{\"liabilityDetailData\".*\"\\}\\]");
+                System.out.println(prod_info);
 
                 prod_info = trickPackageSign(prod_info);
-                    prod_info = mask2oneLine(prod_info);
+                prod_info = mask2oneLine(prod_info);
 
-                    r = prod_info;
+                r = prod_info;
             }
         }
 
@@ -485,7 +619,7 @@ public class SpiderTest {
     private String trickPackageSign(String prod_info) {
 
         return trickReg(prod_info, "\"amount\":\"\\d*\"");
-        
+
     }
 
     private String trickZeroConfig(Document doc) {
@@ -517,7 +651,6 @@ public class SpiderTest {
 
         return null;
     }
-
 
     private String trickTkPrice(Document doc) throws IOException {
 
@@ -562,7 +695,7 @@ public class SpiderTest {
         return string.replaceAll(",", "~").replaceAll("\r|\n", "");
 
     }
-    
+
     private String trickReg(String s, String p) {
         return trickReg(s, p, false);
     }
@@ -570,7 +703,7 @@ public class SpiderTest {
     private String trickReg(String s, String p, boolean lazy) {
         StringBuffer sb = new StringBuffer();
         Pattern pattern = Pattern.compile(p);
-        
+
         Matcher m = pattern.matcher(s);
         while (m.find()) {
             if (lazy) {
@@ -582,56 +715,54 @@ public class SpiderTest {
     }
 
     private String maskZAUrl(String href) {
-        
+
         String r = mask(href);
-        
+
         if (href.trim().startsWith("/")) {
             return "https://www.zhongan.com" + href.trim();
         }
         return r;
     }
-    
+
     private String maskTKUrl(String href) {
         String r = mask(href.trim());
-        
+
         if (r.trim().startsWith("/")) {
             return "http://www.tk.cn" + r.trim();
         }
-        
+
         return r;
-        
+
     }
 
     private String mask(String href) {
         if (href.trim().startsWith("//")) {
             return "http:" + href.trim();
         }
-               
+
         return href;
     }
 
-    
-    /** *//*****************************************************
-    * 功能介绍:将unicode字符串转为汉字
-    * 输入参数:源unicode字符串
-    * 输出参数:转换后的字符串
-    *****************************************************/
-    private String decodeUnicode( final String dataStr ) {
-    int start = 0;
-    int end = 0;
-    final StringBuffer buffer = new StringBuffer();
-    while( start > -1 ) {
-    end = dataStr.indexOf( "\\\\u", start + 2 );
-    String charStr = "";
-    if( end == -1 ) {
-    charStr = dataStr.substring( start + 2, dataStr.length() );
-    } else {
-    charStr = dataStr.substring( start + 2, end);
-    }
-    char letter = (char) Integer.parseInt( charStr, 16 ); // 16进制parse整形字符串。
-    buffer.append( new Character( letter ).toString() );
-    start = end;
-    }
-    return buffer.toString();
+    /** */
+    /*****************************************************
+     * 功能介绍:将unicode字符串转为汉字 输入参数:源unicode字符串 输出参数:转换后的字符串
+     *****************************************************/
+    private String decodeUnicode(final String dataStr) {
+        int start = 0;
+        int end = 0;
+        final StringBuffer buffer = new StringBuffer();
+        while (start > -1) {
+            end = dataStr.indexOf("\\\\u", start + 2);
+            String charStr = "";
+            if (end == -1) {
+                charStr = dataStr.substring(start + 2, dataStr.length());
+            } else {
+                charStr = dataStr.substring(start + 2, end);
+            }
+            char letter = (char) Integer.parseInt(charStr, 16); // 16进制parse整形字符串。
+            buffer.append(new Character(letter).toString());
+            start = end;
+        }
+        return buffer.toString();
     }
 }

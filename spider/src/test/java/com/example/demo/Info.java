@@ -4,12 +4,17 @@ import java.util.Date;
 
 public class Info {
 
+    // 保险公司
     private String insurenceCom;
 
+    // 产品链接
     private String href;
 
+    // 
     private String name;
 
+    private String insuranceCluses;
+    
     private String price;
 
     private String description;
@@ -17,6 +22,8 @@ public class Info {
     private String picurl;
     
     private String picStr;
+    
+    private String sales;
     
     private Date updateDate;
 
@@ -94,6 +101,22 @@ public class Info {
 
     public void setPicStr(String picStr) {
         this.picStr = picStr;
+    }
+
+    public String getInsuranceCluses() {
+        return insuranceCluses;
+    }
+
+    public void setInsuranceCluses(String insuranceCluses) {
+        this.insuranceCluses = insuranceCluses;
+    }
+
+    public String getSales() {
+        return sales;
+    }
+
+    public void setSales(String sales) {
+        this.sales = sales;
     }
 
 }
