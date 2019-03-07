@@ -13,6 +13,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.util.Base64;
+import java.util.Base64.Decoder;
+import java.util.Base64.Encoder;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,8 +27,7 @@ import org.slf4j.LoggerFactory;
 
 import com.alibaba.fastjson.JSON;
 
-import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Encoder;
+
 
 public class AiTest {
     private static Logger log = LoggerFactory.getLogger("TT:");
@@ -58,9 +60,9 @@ public class AiTest {
     
     
     private void saveStringToPic(String pic, String fileName) throws IOException {
-        BASE64Decoder decoder = new BASE64Decoder();
+        Decoder decoder = Base64.getDecoder();
 
-        byte[] b = decoder.decodeBuffer(pic);// Base64解码
+        byte[] b = decoder.decode(pic);// Base64解码
         for (int i = 0; i < b.length; ++i) {
             if (b[i] < 0) {// 调整异常数据
                 b[i] += 256;
@@ -176,8 +178,8 @@ public class AiTest {
         
         byte[] pic =  outStream.toByteArray();
 
-        BASE64Encoder encoder = new BASE64Encoder();
-        String str = encoder.encode(pic);
+        Encoder encoder = Base64.getEncoder();
+        String str = encoder.encodeToString(pic);
         
         log.info("size:" + str.length());
         

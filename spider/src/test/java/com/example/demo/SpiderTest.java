@@ -58,7 +58,7 @@ public class SpiderTest {
         List<Info> r = new ArrayList<Info>();
 
         r.addAll(tickTK());
-        // r.addAll(tickZA());
+        r.addAll(tickZA());
 
         writeExcel("D:\\tmp\\me.xls", r);
 

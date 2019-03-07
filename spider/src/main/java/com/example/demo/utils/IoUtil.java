@@ -1,12 +1,14 @@
 package com.example.demo.utils;
 
-import sun.misc.BASE64Decoder;
+
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Base64;
+import java.util.Base64.Decoder;
 
 /**
  * Created by yhn on 2017/12/6.
@@ -51,10 +53,10 @@ public class IoUtil {
     public static boolean GenerateImage(String imgStr,OutputStream out) {
         if (imgStr == null) // 图像数据为空
             return false;
-        BASE64Decoder decoder = new BASE64Decoder();
+        Decoder decoder = Base64.getDecoder();
         try {
             // Base64解码
-            byte[] b = decoder.decodeBuffer(imgStr);
+            byte[] b = decoder.decode(imgStr);
             for (int i = 0; i < b.length; ++i) {
                 if (b[i] < 0) {// 调整异常数据
                     b[i] += 256;
