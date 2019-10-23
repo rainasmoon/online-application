@@ -7,8 +7,10 @@ Created on 2019-10-23
 
 import hashlib
 import time
+import json
 from urllib import request
 from urllib import parse
+from io import StringIO
 
 app_key = 'd6b2d3ba859446c4bbf1c36c9e4f2a8f'
 appsecret = '8777e8f1207841e484be71077c9ef428'
@@ -64,12 +66,22 @@ def get_api_url(method, param_json):
 def call_jd_api(api_url):
     print(api_url)
     rresponse = request.urlopen(api_url)
-    print(rresponse.read())
+    s_result = rresponse.read()
+    print(s_result)
+    json_result = json.loads(s_result)  
+    print(json.dumps(json_result, sort_keys=True, indent=4))  
+    return json_result
     
 def call_jd_promotion_url():
     material_id = get_material_id(jd_prod_sku_1)
     param_json = get_param_json_promotion_url(material_id)
-    call_jd_api(get_api_url(method_get_promotion, param_json))
+    json_result = call_jd_api(get_api_url(method_get_promotion, param_json))
+    r_result = json_result['jd_union_open_promotion_common_get_response']['result']
+    inner_json_result = json.load(StringIO(r_result))
+    print(inner_json_result['code'])
+    
+    click_url = inner_json_result['data']['clickURL']
+    print(click_url)
     
 def call_jd_goods_detail():
     param_json = get_param_json_goods_100(jd_prod_sku_1)
@@ -77,9 +89,9 @@ def call_jd_goods_detail():
     
 def call_jd_category():
     param_json = get_param_json_category()
-    call_jd_api(get_api_url(method_get_category, param_json))
-    
+    json_result = call_jd_api(get_api_url(method_get_category, param_json))     
+        
 #call_jd_goods_detail()
-#call_jd_promotion_url()
-call_jd_category()
+call_jd_promotion_url()
+#call_jd_category()
 
