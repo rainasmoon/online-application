@@ -22,7 +22,7 @@ class Elorating:
     def __init__(self, ascores=ELO_RATING_DEFAULT, bscores=ELO_RATING_DEFAULT):
 
         def compute_win_ratio(score1, score2):
-            return 1 / (1 + pow(10, (score1 - score2) / 400))
+            return 1 / (1 + pow(10, (score2 - score1) / 400))
 
         self.ascores = ascores
         self.bscores = bscores        
@@ -81,5 +81,12 @@ print(a)
 a = Elorating(ascores=1600, bscores=1500)
 print(a)
 a.tie()
+print(a)
+
+a = Elorating(ascores=1500, bscores=1900)
+a.win()
+print(a)
+a = Elorating(ascores=1900, bscores=1500)
+a.win()
 print(a)
 
