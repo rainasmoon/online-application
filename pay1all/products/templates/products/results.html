@@ -1,0 +1,13 @@
+<h1>手机得分</h1>
+
+{% if product_list %}
+<ul>
+	{% for product in product_list %} 
+		<li> {{ product.product_name }} -- {{product.product_name}}  scores </li>
+	{% endfor %}
+</ul>
+{% else %}
+	<p> No products. </p>
+{% endif %}
+
+<a href="{% url 'products:vote' %}">vote again?</a>

@@ -1,0 +1,15 @@
+<h1>手机排行榜</h1>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'products/style.css' %}">
+
+{% if latest_product_list %}
+	<ul>
+		{% for product in latest_product_list %}
+		<li> <a href="">{{product.product_name}}</a></li>
+		{% endfor %}
+	</ul>
+{% else %}
+	<p> No products are available. </p>
+{% endif %}
+
+<a href="{% url 'products:vote' %}">vote ?</a>
