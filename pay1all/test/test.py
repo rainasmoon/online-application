@@ -13,6 +13,7 @@ def test_json():
 
 def test_str():
     print('{0}, {1}, {2}'.format(5, 10.0, 100))
+    print('{0},{1}'.format(1 / 2, 1 / 3))
 
 
 test_str()

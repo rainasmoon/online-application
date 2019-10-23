@@ -1,3 +1,8 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+
+
 <h1> 左边 还是 右边？ </h1>
 
 {% if error_message %} <p><strong>{{ error_message }}</strong></p> {% endif %}
@@ -12,3 +17,5 @@
 	<br>
 <input type="submit" value="Vote">
 </form>
+
+{% endblock %}
