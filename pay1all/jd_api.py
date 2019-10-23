@@ -27,17 +27,24 @@ def get_material_id(jd_prod_sku):
 def get_timestamp():
     return time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
 
-def get_param_json(material_id):
-        return '{"promotionCodeReq":{"siteId":"' + site_id + '","materialId":"' + material_id + '","positionId":"' + position_id + '"}}'
+def get_param_json_promotion_url(material_id):
+    return '{"promotionCodeReq":{"siteId":"' + site_id + '","materialId":"' + material_id + '","positionId":"' + position_id + '"}}'
 
-def get_sign_key(method, material_id, timestamp):
+def get_param_json_goods_100(goods_sku_array):
+    # the max is 100 i.e: 1000,1002,1113,
+    return '{"skuIds":"' +goods_sku_array + '"}'
+
+def get_param_json_category():
+    return '{"req":{"parentId":"1342","grade":"2"}}'
+
+def get_sign_key(method, timestamp, param_json):
     
     c = ''
     #c = c + 'access_token' + access_token
     c = c + 'app_key' + app_key
     c = c + 'formatjson'
     c = c + 'method' + method
-    c = c + 'param_json' + get_param_json(material_id)
+    c = c + 'param_json' + param_json
     c = c + 'sign_methodmd5'
     c = c + 'timestamp' + timestamp
     c = c + 'v1.0'
@@ -48,16 +55,31 @@ def get_sign_key(method, material_id, timestamp):
 
     
 
-def get_api_url(method, material_id):
+def get_api_url(method, param_json):
     timestamp = get_timestamp()
-    sign_key = get_sign_key(method, material_id, timestamp)
-    return 'https://router.jd.com/api?v=1.0&method=' + method + '&access_token=&app_key=' + app_key + '&sign_method=md5&format=json&timestamp=' + parse.quote(timestamp) + '&sign=' + sign_key + '&param_json=' + get_param_json(material_id)
+    
+    sign_key = get_sign_key(method, timestamp, param_json)
+    return 'https://router.jd.com/api?v=1.0&method=' + method + '&access_token=&app_key=' + app_key + '&sign_method=md5&format=json&timestamp=' + parse.quote(timestamp) + '&sign=' + sign_key + '&param_json=' + param_json
 
 def call_jd_api(api_url):
     print(api_url)
     rresponse = request.urlopen(api_url)
     print(rresponse.read())
-
-call_jd_api(get_api_url(method_get_promotion, get_material_id(jd_prod_sku_1)))
-
+    
+def call_jd_promotion_url():
+    material_id = get_material_id(jd_prod_sku_1)
+    param_json = get_param_json_promotion_url(material_id)
+    call_jd_api(get_api_url(method_get_promotion, param_json))
+    
+def call_jd_goods_detail():
+    param_json = get_param_json_goods_100(jd_prod_sku_1)
+    call_jd_api(get_api_url(method_get_goods, param_json))
+    
+def call_jd_category():
+    param_json = get_param_json_category()
+    call_jd_api(get_api_url(method_get_category, param_json))
+    
+#call_jd_goods_detail()
+#call_jd_promotion_url()
+call_jd_category()
 
