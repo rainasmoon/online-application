@@ -1,0 +1,2 @@
+print ('create fixtures data...')
+
