@@ -1,20 +1,20 @@
-{% extends "base.html" %}
-
-{% block page_content %}
+{% extends "base.html" %} {% block page_content %}
 
 
-<h1>手机得分</h1>
+<h1 class="mt-4">手机得分</h1>
+<p>
+	根据 <strong>性能，热度，大数据评算</strong>的手机得分。
+</p>
 
-{% if product_list %}
-<ul>
-	{% for product in product_list %} 
-		<li> {{ product.product_name }} -- {{product.product_name}}  scores </li>
-	{% endfor %}
-</ul>
-{% else %}
-	<p> No products. </p>
+{% if product_list %} {% for product in product_list %}
+<div class="row mb-3">
+	<div class="col-md-8 themed-grid-col">{{ product.product_name }}</div>
+	<div class="col-md-4 themed-grid-col">{{ product.p_scores }}</div>
+</div>
+{% endfor %} {% else %}
+<p>No products.</p>
 {% endif %}
 
-<a href="{% url 'products:vote' %}">vote again?</a>
+<a href="{% url 'products:vote' 0 0 %}">vote again?</a>
 
 {% endblock %}
