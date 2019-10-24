@@ -3,7 +3,6 @@ import json
 from utils import jd_api
 
 print('run...')
-print(jd_api)
 
 jd_sku_list = ['100004770257', '100008643298', '100006769698']
 
@@ -30,6 +29,14 @@ for j in range(len(jd_sku_list))[::MAX_PARAM]:
             continue
         field_json['product_promotion_url'] = url
         field_json['p_scores'] = 1500
+        
+        field_json['cid'] = agood['cid']
+        field_json['cid2'] = agood['cid2']
+        field_json['cid3'] = agood['cid3']
+        field_json['cidName'] = agood['cidName']
+        field_json['cid2Name'] = agood['cid2Name']
+        field_json['cid3Name'] = agood['cid3Name']
+        
         field_json['pub_date'] = datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]
         
         ajson['fields'] = field_json    
