@@ -1,3 +1,5 @@
+import random
+
 from django.http import Http404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
@@ -20,8 +22,17 @@ class IndexView(generic.ListView):
 
 
 def compare(request, aproduct_id, bproduct_id):
-    aproduct = Product.objects.get(pk=1)
-    bproduct = Product.objects.get(pk=2)
+    if aproduct_id == 0 or bproduct_id == 0 :
+        random_product_list = Product.objects.all()
+        size = len(random_product_list)
+        id0 = random.randint(1, size)
+        id1 = random.randint(1, size)
+        aproduct = random_product_list[id0]
+        bproduct = random_product_list[id1]
+    else:
+         aproduct = Product.objects.get(pk=aproduct_id)
+         bproduct = Product.objects.get(pk=bproduct_id)
+   
     context = {'aproduct': aproduct, 'bproduct': bproduct}
     return render(request, 'products/compare.html', context)
 
@@ -35,8 +46,8 @@ class ResultsView(generic.ListView):
 
 
 def vote(request, aproduct_id, bproduct_id):
-    aproduct = Product.objects.get(pk=1)
-    bproduct = Product.objects.get(pk=2)
+    aproduct = Product.objects.get(pk=aproduct_id)
+    bproduct = Product.objects.get(pk=bproduct_id)
     try:
         request.POST['choice']
         bproduct.p_scores += 10
