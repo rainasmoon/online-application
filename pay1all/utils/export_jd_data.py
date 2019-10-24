@@ -1,10 +1,16 @@
 from datetime import datetime
+from io import StringIO
 import json
+
 from utils import jd_api
 
 print('run...')
 
-jd_sku_list = ['100004770257', '100008643298', '100006769698']
+fi = open('crawler_jd.list', 'r')
+r_set = json.load(fi)
+fi.close()
+
+jd_sku_list = r_set
 
 rlist = []
 
@@ -41,7 +47,8 @@ for j in range(len(jd_sku_list))[::MAX_PARAM]:
         
         ajson['fields'] = field_json    
         rlist.append(ajson)
-f = open('out_data.json', 'w')
-json.dump(rlist, f, indent=4)
+fo = open('out_data.json', 'w')
+json.dump(rlist, fo, indent=4)
+fo.close()
 print(len(rlist))
 print('finished.')
