@@ -2,12 +2,6 @@
 
 <h1>左边 还是 右边？</h1>
 
-{% if error_message %}
-<p>
-	<strong>{{ error_message }}</strong>
-</p>
-{% endif %}
-
 <form action="{% url 'products:vote' aproduct.id bproduct.id %}"
 	method="post">
 	{% csrf_token %}
@@ -26,11 +20,10 @@
 				</div>
 
 				<div class="col-auto d-none d-lg-block">
-					<img class="bd-placeholder-img" width="200" 
+					<img class="bd-placeholder-img" width="200"
 						src="{{aproduct.product_big_pic}}"
 						preserveAspectRatio="xMidYMid slice" focusable="false" role="img"
-						aria-label="Placeholder: Thumbnail">
-						</img>
+						aria-label="Placeholder: Thumbnail"> </img>
 				</div>
 			</div>
 		</div>
@@ -47,22 +40,26 @@
 						reading</a>
 				</div>
 				<div class="col-auto d-none d-lg-block">
-					<img class="bd-placeholder-img" width="200" 
+					<img class="bd-placeholder-img" width="200"
 						src="{{bproduct.product_big_pic}}"
 						preserveAspectRatio="xMidYMid slice" focusable="false" role="img"
-						aria-label="Placeholder: Thumbnail">
-					</img>
+						aria-label="Placeholder: Thumbnail"> </img>
 				</div>
 			</div>
 		</div>
 	</div>
-
-	<input type="radio" name="choice" id="choice1" value="1"> <label
-		for="choice1">phone1</label> <br> <input type="radio"
-		name="choice" id="choice2" value="2"> <label for="choice2">phone2</label>
+	<h2>
+		为你喜欢的手机投上一票吧
+	</h2>
+	{% if error_message %}
+	<p>
+		<strong>{{ error_message }}</strong>
+	</p>
+	{% endif %} <input type="radio" name="choice" id="choice1"
+		value="{{aproduct.id}}"> <label for="choice1">{{aproduct.product_name}}</label>
+	<br> <input type="radio" name="choice" id="choice2"
+		value="{{bproduct.id}}"> <label for="choice2">{{bproduct.product_name}}</label>
 	<br> <input type="submit" value="Vote">
 </form>
-
-
 
 {% endblock %}
