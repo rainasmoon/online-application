@@ -1,0 +1,41 @@
+[
+    {
+        "model": "products.product",
+        "pk": 1,
+        "fields": {
+            "product_jd_skuid": 100004770257,
+            "product_name": "Apple iPhone 11 Pro (A2217) 256GB \u6697\u591c\u7eff\u8272 \u79fb\u52a8\u8054\u901a\u7535\u4fe14G\u624b\u673a \u53cc\u5361\u53cc\u5f85",
+            "product_price": 9999.0,
+            "product_big_pic": "http://img14.360buyimg.com/n1/jfs/t1/52311/32/10498/177816/5d780881Edbb95ec5/6702694da06497a8.jpg",
+            "product_promotion_url": "https://union-click.jd.com/jdc?e=&p=AyIGZRprFQMTBlQeXRMDEQNTKx9KWkxYZUIeUENQDEsFA1BWThgOTkRHXE4ZVRpaFAMXAVMaWBEEDV4QRwYleBNlCRsZTHRyBzdHWHxqbUYBHjBhch4LZRtdFgsSDlYeWBQyEgZUG14WAxsOUytrFQMiUTsbWhQDEwZUG1gTMhIPVR9dEwEQBlQrWxEEEg5dH18dAxAHXStbHQYiRAVDBEVATlkLRGslMhE3ZStbJQIiWBFGBiUAEwZXGQ%3D%3D",
+            "p_scores": 1500,
+            "pub_date": "2019-10-24 05:39:48.587"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 2,
+        "fields": {
+            "product_jd_skuid": 100006769698,
+            "product_name": "\u8363\u800020 \u674e\u73b0\u540c\u6b3e 4800\u4e07\u8d85\u5e7f\u89d2AI\u56db\u6444 3200W\u7f8e\u989c\u81ea\u62cd \u9e92\u9e9fKirin980\u5168\u7f51\u901a\u72488GB+128GB \u84dd\u6c34\u7fe1\u7fe0",
+            "product_price": 2499.0,
+            "product_big_pic": "http://img14.360buyimg.com/n1/jfs/t1/35493/30/14545/210121/5d280052E1187c175/e9ad9735fc3f0686.jpg",
+            "product_promotion_url": "https://union-click.jd.com/jdc?e=&p=AyIGZRprFQMTBlQcXRIKFQ9cKx9KWkxYZUIeUENQDEsFA1BWThgOTkRHXE4ZVRpaFAMVAVITXB0LDV4QRwYla05HVXsiEQRwWVZhWEkKaVQdaEVSYh4LZRtdFgsSDlYeWBQyEgZUG14WAxsOUytrFQMiUTsbWhQDEwZUE1oQMhIPVR9dEwEQBlQrWxEEEg5dH18dAxYFVCtbHQYiRAVDBEVATlkLRGslMhE3ZStbJQIiWBFGBiUAEwZXGQ%3D%3D",
+            "p_scores": 1500,
+            "pub_date": "2019-10-24 05:39:48.797"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 3,
+        "fields": {
+            "product_jd_skuid": 100008643298,
+            "product_name": "\u3010\u8d85\u7ea7\u7206\u54c1\u3011OPPO K5 6GB+128GB \u5947\u5e7b\u68ee\u6797 6400\u4e07\u8d85\u6e05\u56db\u6444 VOOC\u95ea\u51454.0 \u9ad8\u901a\u9a81\u9f99730G 4G\u6e38\u620f\u667a\u80fd\u624b\u673a",
+            "product_price": 1899.0,
+            "product_big_pic": "http://img14.360buyimg.com/n1/jfs/t1/81512/16/13557/124515/5daeeddaE4c00c5f1/53b6f006287f4b2d.jpg",
+            "product_promotion_url": "https://union-click.jd.com/jdc?e=&p=AyIGZRprFQMTBlQSXBAAEQ9cKx9KWkxYZUIeUENQDEsFA1BWThgOTkRHXE4ZVRpaFAMbAFAZWB0LDV4QRwYld3YEE3wMFFJyd1IaBFUHaA4ySC5mch4LZRtdFgsSDlYeWBQyEgZUG14WAxsOUytrFQMiUTsbWhQDEwZQGlwRMhIPVR9dEwEQBlQrWxEEEg5dH18dAxQCVitbHQYiRAVDBEVATlkLRGslMhE3ZStbJQIiWBFGBiUAEwZXGQ%3D%3D",
+            "p_scores": 1500,
+            "pub_date": "2019-10-24 05:39:49.012"
+        }
+    }
+]

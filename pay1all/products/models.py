@@ -6,9 +6,9 @@ from django.utils import timezone;
 
 # Create your models here.
 class Product(models.Model):
-    product_jd_skuid = models.CharField(max_length=200, default='0')
+    product_jd_skuid = models.IntegerField(default='0')
     product_name = models.CharField(max_length=200, default='0')
-    product_price = models.CharField(max_length=200, default=0)
+    product_price = models.IntegerField(default=0)
     product_big_pic = models.CharField(max_length=200 , default='0')
     product_promotion_url = models.CharField(max_length=400, default='0')
     p_scores = models.IntegerField(default=0)

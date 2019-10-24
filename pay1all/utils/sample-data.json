@@ -1,0 +1,28 @@
+[
+	{
+		"model": "products.product",
+		"pk": 1,
+		"fields": {
+			"product_jd_skuid": "0",
+			"product_name": "phone1",
+			"product_price": "0",
+			"product_big_pic": "0",
+			"product_promotion_url": "0",
+			"p_scores": 3,
+			"pub_date": "2019-10-23T01:48:22.334Z"
+		}
+	},
+	{
+		"model": "products.product",
+		"pk": 2,
+		"fields": {
+			"product_jd_skuid": "0",
+			"product_name": "phone2",
+			"product_price": "0",
+			"product_big_pic": "0",
+			"product_promotion_url": "0",
+			"p_scores": 3,
+			"pub_date": "2019-10-23T01:48:22.334Z"
+		}
+	}	
+]

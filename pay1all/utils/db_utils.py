@@ -8,5 +8,6 @@ from django.core.management.commands import loaddata
 # management.call_command('loaddata', 'test_data', verbosity=0)
 # management.call_command(loaddata.Command(), 'test_data', verbosity=0)
 
-management.call_command('dumpdata', '--natural-foreign')
+# management.call_command('dumpdata', '--natural-foreign')
+
 print('finished.')
