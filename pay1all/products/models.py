@@ -46,10 +46,3 @@ class Menu(models.Model):
     def __str__(self):
         return self.menu_name
 
-
-class Cid(models.Model):
-    cid = models.IntegerField(default=0)
-    cidName = models.CharField(max_length=200, default='no name')
-
-    def __str__(self):
-        return self.cidName
