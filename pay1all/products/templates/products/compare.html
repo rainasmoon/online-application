@@ -1,5 +1,15 @@
 {% extends "base.html" %} {% block page_content %}
 
+<div class="nav-scroller bg-white shadow-sm">
+	<nav class="nav nav-underline">
+		<a class="nav-link active" href="{% url 'products:index' %}">主页</a> <a class="nav-link"
+			href="{% url 'products:results' %}">  <span
+			class="badge badge-pill bg-light align-text-bottom">20</span>
+		</a> <a class="nav-link" href="#"></a> <a class="nav-link" href="{% url 'products:compare' 0 0 %}">投票</a>
+	</nav>
+</div>
+<main role="main" class="container">
+
 <h1>左边 还是 右边？</h1>
 
 <form action="{% url 'products:vote' aproduct.id bproduct.id %}"
@@ -61,5 +71,5 @@
 		value="{{bproduct.id}}"> <label for="choice2">{{bproduct.product_name}}</label>
 	<br> <input type="submit" value="Vote">
 </form>
-
+</main>
 {% endblock %}

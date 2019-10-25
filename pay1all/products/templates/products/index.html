@@ -1,35 +1,5 @@
 {% extends "base.html" %} {% block page_content %} {% load static %}
-<link rel="stylesheet" type="text/css"
-	href="{% static 'products/style.css' %}">
 
-<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
-	<a class="navbar-brand mr-auto mr-lg-0" href="/">手机排行榜</a>
-	<button class="navbar-toggler p-0 border-0" type="button"
-		data-toggle="offcanvas">
-		<span class="navbar-toggler-icon"></span>
-	</button>
-
-	<div class="navbar-collapse offcanvas-collapse"
-		id="navbarsExampleDefault">
-		<ul class="navbar-nav mr-auto">
-			<li class="nav-item active"><a class="nav-link" href="{% url 'products:results' %}">得分
-					<span class="sr-only">(current)</span>
-			</a></li>
-			<li class="nav-item"><a class="nav-link" href="{% url 'products:compare' 0 0 %}">投票</a>
-			</li>
-			
-			<li class="nav-item dropdown"><a
-				class="nav-link dropdown-toggle" href="#" id="dropdown01"
-				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">更多</a>
-				<div class="dropdown-menu" aria-labelledby="dropdown01">
-					<a class="dropdown-item" href="https://shop116375480.taobao.com/" >淘宝店</a>
-					<a class="dropdown-item" href="https://www.rainasmoon.com/" >个人博客</a>
-					<a class="dropdown-item" href="https://www.weibo.com/rainasmoon" >微博</a>
-				</div></li>
-		</ul>
-		
-	</div>
-</nav>
 
 <div class="nav-scroller bg-white shadow-sm">
 	<nav class="nav nav-underline">
@@ -72,8 +42,8 @@
 		{% endfor %}
 		{% else %}
 		<p>No products are available.</p>
-		{% endif %} <big class="d-block text-right mt-3"> <a
-			href="{% url 'products:compare' 0 0 %}">vote ?</a>
+		{% endif %} <big class="d-block text-right mt-3"> <a class="btn btn-lg btn-primary"
+			href="{% url 'products:compare' 0 0 %}" role="button">vote ?</a>
 		</big>
 	</div>
 </main>
