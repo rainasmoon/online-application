@@ -9,6 +9,8 @@ from django.urls import reverse
 from django.utils import timezone
 from django.views import generic
 
+from utils import elo
+
 from .models import Product
 
 
@@ -22,19 +24,30 @@ class IndexView(generic.ListView):
 
 
 def compare(request, aproduct_id, bproduct_id):
-    if aproduct_id == 0 or bproduct_id == 0 :
+    if aproduct_id == 0 :
         random_product_list = Product.objects.all()
         size = len(random_product_list)
         id0 = random.randint(1, size)
         id1 = random.randint(1, size)
         aproduct = random_product_list[id0]
         bproduct = random_product_list[id1]
+    elif aproduct_id != 0 and bproduct_id == 0:
+        random_product_list = Product.objects.all()
+        size = len(random_product_list)
+        id0 = random.randint(1, size)
+        aproduct = Product.objects.get(pk=aproduct_id)
+        bproduct = random_product_list[id0]
     else:
-         aproduct = Product.objects.get(pk=aproduct_id)
-         bproduct = Product.objects.get(pk=bproduct_id)
+        aproduct = Product.objects.get(pk=aproduct_id)
+        bproduct = Product.objects.get(pk=bproduct_id)
    
     context = {'aproduct': aproduct, 'bproduct': bproduct}
     return render(request, 'products/compare.html', context)
+
+
+class DetailsView(generic.DetailView):
+    model = Product
+    template_name = 'products/details.html'
 
 
 class ResultsView(generic.ListView):
@@ -49,16 +62,21 @@ def vote(request, aproduct_id, bproduct_id):
     aproduct = Product.objects.get(pk=aproduct_id)
     bproduct = Product.objects.get(pk=bproduct_id)
     try:
-        request.POST['choice']
-        bproduct.p_scores += 10
-        aproduct.p_scores -= 10        
+        choice_id = request.POST['choice']
+        e = elo.Elorating(ascores=aproduct.p_scores, bscores=bproduct.p_scores)
+        if (choice_id == aproduct_id):            
+            e.win()
+        else:
+            e.lose()
+        aproduct.p_scores = e.ascores
+        bproduct.p_scores = e.bscores
+        aproduct.save()
+        bproduct.save()
     except (KeyError, Product.DoesNotExist) :
         return render(request, 'products/compare.html', {
                 'aproduct': aproduct,
                 'bproduct': bproduct,
                 'error_message': "you didn't select a product.",
         })
-    else:
-        aproduct.save()
-        bproduct.save()
-        return HttpResponseRedirect(reverse('products:results'))
+    else:        
+        return HttpResponseRedirect(reverse('products:details', args=(choice_id,)))

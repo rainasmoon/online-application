@@ -1,0 +1,12 @@
+{% extends "base.html" %} {% block page_content %}
+
+
+<h1 class="mt-4">手机-最爱</h1>
+<p>
+	根据 <strong>您的选择</strong>这款手机详情。
+</p>
+{{product.product_name}}
+
+<a href="{% url 'products:compare' product.id 0 %}">vote again?</a>
+
+{% endblock %}
