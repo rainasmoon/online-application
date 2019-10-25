@@ -43,4 +43,5 @@ def make_jd_data():
         goods_list = jd_api.call_jd_goods_detail(t_sku_100_list)
         for agood in goods_list:    
             db_utils_online.insert_db(make_produst_param(agood))
-        print(len(goods_list))
+            db_utils.done(agood['skuId'])
+    print(len(jd_sku_list))

@@ -45,11 +45,12 @@ def select_sku():
 def done(sku):
     conn = sqlite3.connect(PROD_DB)
     c = conn.cursor()
-    c.execute('update stocks set as_done = 1 WHERE sku_id = ?', sku)
+    c.execute('update stocks set as_done = 1 WHERE sku_id = ?', (sku,))
     conn.commit()
     conn.close() 
 
-
 # init_db()
+
+
 print('end.')
 
