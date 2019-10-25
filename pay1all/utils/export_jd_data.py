@@ -32,6 +32,7 @@ for j in range(len(jd_sku_list))[::MAX_PARAM]:
         field_json['product_big_pic'] = agood['imgUrl']
         url = jd_api.call_jd_promotion_url(sku)
         if not url:
+            print('WARN:::NOT URL for ' + sku)
             continue
         field_json['product_promotion_url'] = url
         field_json['p_scores'] = 1500

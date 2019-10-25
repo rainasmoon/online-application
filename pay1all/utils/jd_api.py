@@ -110,10 +110,9 @@ def call_jd_category():
     param_json = get_param_json_category()
     json_result = call_jd_api(get_api_url(method_get_category, param_json))
     return json_result     
-
         
-agoodjson = call_jd_goods_detail(str(test_jd_prod_sku_1))
-print(json.dumps(agoodjson, sort_keys=False, indent=4)) 
+# agoodjson = call_jd_goods_detail(str(test_jd_prod_sku_1))
+# print(json.dumps(agoodjson, sort_keys=False, indent=4)) 
 # call_jd_promotion_url(test_jd_prod_sku_1)
 # call_jd_category()
 

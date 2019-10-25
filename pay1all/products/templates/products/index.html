@@ -3,10 +3,10 @@
 
 <div class="nav-scroller bg-white shadow-sm">
 	<nav class="nav nav-underline">
-		<a class="nav-link active" href="{% url 'products:index' %}">主页</a> <a class="nav-link"
-			href="{% url 'products:results' %}">  <span
-			class="badge badge-pill bg-light align-text-bottom">20</span>
-		</a> <a class="nav-link" href="#"></a> <a class="nav-link" href="{% url 'products:compare' 0 0 %}">投票</a>
+		<a class="nav-link active" href="{% url 'products:index'  %}">主页</a> <a class="nav-link"
+			href="{% url 'products:index' %}">  <span
+			class="badge badge-pill bg-light align-text-bottom">手机</span>
+		</a> <a class="nav-link" href="{% url 'products:index' %}">平板电视</a> <a class="nav-link" href="{% url 'products:compare' 0 0 %}">投票</a>
 	</nav>
 </div>
 <main role="main" class="container">
@@ -43,7 +43,7 @@
 		{% else %}
 		<p>No products are available.</p>
 		{% endif %} <big class="d-block text-right mt-3"> <a class="btn btn-lg btn-primary"
-			href="{% url 'products:compare' 0 0 %}" role="button">vote ?</a>
+			href="{% url 'products:compare' 0 0  %}" role="button">vote ?</a>
 		</big>
 	</div>
 </main>

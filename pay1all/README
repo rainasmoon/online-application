@@ -1,2 +1,6 @@
 python manage.py loaddata test/fixtures/init_product
 
+python manage.py createsuperuser
+
+
+

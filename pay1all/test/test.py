@@ -1,5 +1,6 @@
 from io import StringIO
 import json
+from urllib import parse
 
 
 def test_json():
@@ -51,8 +52,14 @@ def test_import_set():
     fi.close()
 
 
-test_StringIO()
-test_import_set()
+def test_parse_quote():
+    print(parse.quote('a b'))
+    print(parse.quote('a今天b'))
+
+
+test_parse_quote()
+# test_StringIO()
+# test_import_set()
 # test_set()
 # test_str()
 # test_slice_array()

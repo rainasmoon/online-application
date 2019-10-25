@@ -13,14 +13,18 @@ from utils import elo
 
 from .models import Product, Search
 
-
 # Create your views here.
-class IndexView(generic.ListView):
-    template_name = 'products/index.html'
-    context_object_name = 'latest_product_list'
 
-    def get_queryset(self):
-        return Product.objects.order_by('-p_scores')[:20]
+
+def index(request):
+    cid = 0
+    if cid == 0 :
+        latest_product_list = Product.objects.order_by('-p_scores')[:20]
+    else:
+        latest_product_list = Product.objects.filter(cid3=cid).order_by('-p_scores')[:20]
+    
+    context = {'latest_product_list': latest_product_list}
+    return render(request, 'products/index.html', context)
 
 
 def compare(request, aproduct_id, bproduct_id):
@@ -55,7 +59,7 @@ class ResultsView(generic.ListView):
     context_object_name = 'product_list'
     
     def get_queryset(self):
-        return Product.objects.order_by('-pub_date')
+        return Product.objects.order_by('-pub_date')[:1000]
 
 
 def vote(request, aproduct_id, bproduct_id):
