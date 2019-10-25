@@ -16,8 +16,7 @@ from .models import Product, Search
 # Create your views here.
 
 
-def index(request):
-    cid = 0
+def index(request, cid=0):
     if cid == 0 :
         latest_product_list = Product.objects.order_by('-p_scores')[:20]
     else:
@@ -27,7 +26,7 @@ def index(request):
     return render(request, 'products/index.html', context)
 
 
-def compare(request, aproduct_id, bproduct_id):
+def compare(request, aproduct_id, bproduct_id, cid=0):
     if aproduct_id == 0 :
         random_product_list = Product.objects.all()
         size = len(random_product_list)
