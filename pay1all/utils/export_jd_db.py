@@ -9,6 +9,14 @@ print('run...')
 MAX_PARAM = 100 
 
 
+def make_menu_param(agood):
+    field_json = {}
+    field_json['menu_name'] = agood['cid3Name']
+    field_json['cid'] = agood['cid3']
+    field_json['m_scores'] = 1500
+    return field_json
+
+
 def make_produst_param(agood):
     field_json = {}
     sku = agood['skuId']
@@ -43,5 +51,6 @@ def make_jd_data():
         goods_list = jd_api.call_jd_goods_detail(t_sku_100_list)
         for agood in goods_list:    
             db_utils_online.insert_db(make_produst_param(agood))
+            db_utils_online.insert_menu(make_menu_param(agood))
             db_utils.done(agood['skuId'])
     print(len(jd_sku_list))

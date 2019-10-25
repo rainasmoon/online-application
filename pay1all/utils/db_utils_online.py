@@ -15,6 +15,42 @@ def insert_db(param):
     conn.commit()
     conn.close()
 
+
+def insert_menu(param):
+    conn = sqlite3.connect(ONLINE_DB)
+    c = conn.cursor()
+    c.execute('''INSERT INTO products_menu(menu_name, cid, m_scores) 
+                SELECT ?, ?, ?
+                WHERE NOT EXISTS(SELECT 1 FROM products_menu WHERE cid = ?)''', (param['menu_name'], param['cid'], param['m_scores'], param['cid']))
+    conn.commit()
+    conn.close()
+
+
+def select_search():
+    conn = sqlite3.connect(ONLINE_DB)
+    c = conn.cursor()
+    c.execute('select id, search_context from products_search where as_done = 0')
+    r = c.fetchall()
+    conn.commit()
+    conn.close()
+    return r 
+
+
+def search_done(iid):
+    conn = sqlite3.connect(ONLINE_DB)
+    c = conn.cursor()
+    c.execute('update products_search set as_done = 1 WHERE id = ?', (iid,))
+    conn.commit()
+    conn.close() 
+
+
+def search_update(iid, cid):
+    conn = sqlite3.connect(ONLINE_DB)
+    c = conn.cursor()
+    c.execute('update products_search set cid = ? WHERE id = ?', (cid, iid))
+    conn.commit()
+    conn.close() 
+
     
 def select_db():
     conn = sqlite3.connect(ONLINE_DB)
@@ -24,3 +60,5 @@ def select_db():
     conn.commit()
     conn.close()
 
+
+select_search()

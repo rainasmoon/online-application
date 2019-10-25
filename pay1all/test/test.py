@@ -57,7 +57,18 @@ def test_parse_quote():
     print(parse.quote('a今天b'))
 
 
-test_parse_quote()
+def test_index():
+    seq = [i for i in range(10, 20)]
+    print(seq)
+    print(seq[3])
+    print(seq.index(seq[3]))
+    
+    for a, i in enumerate(seq):
+        print(a, i)
+
+
+test_index()
+# test_parse_quote()
 # test_StringIO()
 # test_import_set()
 # test_set()

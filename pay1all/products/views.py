@@ -11,7 +11,7 @@ from django.views import generic
 
 from utils import elo
 
-from .models import Product, Search
+from .models import Product, Search, Menu
 
 # Create your views here.
 
@@ -21,8 +21,8 @@ def index(request, cid=0):
         latest_product_list = Product.objects.order_by('-p_scores')[:20]
     else:
         latest_product_list = Product.objects.filter(cid3=cid).order_by('-p_scores')[:20]
-    
-    context = {'latest_product_list': latest_product_list}
+    menu_list = Menu.objects.order_by('-m_scores')[:5]
+    context = {'latest_product_list': latest_product_list, 'menu_list':menu_list, 'cid': cid}
     return render(request, 'products/index.html', context)
 
 
@@ -44,7 +44,7 @@ def compare(request, aproduct_id, bproduct_id, cid=0):
         aproduct = Product.objects.get(pk=aproduct_id)
         bproduct = Product.objects.get(pk=bproduct_id)
    
-    context = {'aproduct': aproduct, 'bproduct': bproduct}
+    context = {'aproduct': aproduct, 'bproduct': bproduct, 'cid': cid}
     return render(request, 'products/compare.html', context)
 
 
