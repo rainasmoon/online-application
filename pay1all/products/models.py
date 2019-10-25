@@ -25,3 +25,11 @@ class Product(models.Model):
     def __str__(self):
         return self.product_name
 
+
+class Search(models.Model):
+    search_context = models.TextField()
+    
+    pub_date = models.DateTimeField('date published')
+    
+    def __str__(self):
+        return self.search_context

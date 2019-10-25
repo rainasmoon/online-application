@@ -7,6 +7,7 @@ urlpatterns = [
         path('compare/<int:aproduct_id>/<int:bproduct_id>/', views.compare, name='compare'),
         path('vote/<int:aproduct_id>/<int:bproduct_id>/', views.vote, name='vote'),
         path('details/<int:pk>/', views.DetailsView.as_view(), name='details'),
+        path('search/', views.search, name='search'),
         path('results/', views.ResultsView.as_view(), name='results'),
         
 ]

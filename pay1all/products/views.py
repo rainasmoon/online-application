@@ -11,7 +11,7 @@ from django.views import generic
 
 from utils import elo
 
-from .models import Product
+from .models import Product, Search
 
 
 # Create your views here.
@@ -80,3 +80,14 @@ def vote(request, aproduct_id, bproduct_id):
         })
     else:        
         return HttpResponseRedirect(reverse('products:details', args=(choice_id,)))
+
+
+def search(request):
+    search_input = request.POST['search_input']
+    if search_input == '':
+        context = {'message': '输入为空。。。'}
+        return render(request, 'products/search.html', context)
+    asearch = Search.objects.create(search_context=search_input, pub_date=timezone.now())
+    asearch.save()
+    context = {'message': '查询结果生成中。。。'}
+    return render(request, 'products/search.html', context)

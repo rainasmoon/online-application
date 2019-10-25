@@ -1,0 +1,13 @@
+{% extends "base.html" %} {% block page_content %}
+
+<main role="main" class="container">
+
+{% if message %}
+	<p>
+		<strong>{{ message }}</strong>
+	</p>
+	{% endif %}
+
+</main>
+
+{% endblock %}
