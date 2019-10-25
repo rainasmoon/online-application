@@ -10,7 +10,6 @@ import json
 import re
 from urllib import request
 
-aurl = "https://www.jd.com"
 burl = 'https://search.jd.com/Search?keyword=%E6%89%8B%E6%9C%BA&enc=utf-8&wq=%E6%89%8B%E6%9C%BA&pvid=c060319d4120468ca810e38ab6b73545'
 
 aheaders = {'User-Agent':'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Mobile Safari/537.36'}

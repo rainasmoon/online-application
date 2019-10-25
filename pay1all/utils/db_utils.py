@@ -1,13 +1,15 @@
-import os
+import sqlite3
 
-from django.core import management
+conn = sqlite3.connect('prod.sqlite3')
 
-from django.core.management.commands import loaddata
+c = conn.cursor()
 
-# management.call_command('flush', verbosity=0, interactive=False)
-# management.call_command('loaddata', 'test_data', verbosity=0)
-# management.call_command(loaddata.Command(), 'test_data', verbosity=0)
+c.execute('''CREATE TABLE stocks
+             (date text, trans text, symbol text, qty real, price real)''')
 
-# management.call_command('dumpdata', '--natural-foreign')
+c.execute("INSERT INTO stocks VALUES ('2006-01-05','BUY','RHAT',100,35.14)")
 
-print('finished.')
+conn.commit()
+
+conn.close()
+
