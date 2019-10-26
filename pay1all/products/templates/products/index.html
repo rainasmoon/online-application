@@ -14,7 +14,7 @@
 	<div
 		class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded shadow-sm">
 		<img class="mr-3"
-			src="https://v4.bootcss.com/docs/4.3/assets/brand/bootstrap-outline.svg"
+			src="{% static 'image/logo.png' %}"
 			alt="" width="48" height="48">
 		<div class="lh-100">
 			<h6 class="mb-0 text-white lh-100">全了的</h6>
@@ -31,13 +31,13 @@
 				xmlns="http://www.w3.org/2000/svg"
 				preserveAspectRatio="xMidYMid slice" focusable="false" role="img"
 				aria-label="Placeholder: 32x32">
-				<title>Placeholder</title><rect width="100%" height="100%"
+				<title>{{product.product_name}}</title><rect width="100%" height="100%"
 					fill="#007bff" />
 				<text x="50%" y="50%" fill="#ffffff" dy=".3em" dx="-.3em">{{ forloop.counter }}</text></svg>
 			<p
 				class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
 				<img alt="" src="{{product.product_big_pic}}"> 
-				<strong class="d-block text-gray-dark">@手机</strong> <a href="{{product.product_promotion_url}}">{{product.product_name}}</a>
+				<strong class="d-block text-gray-dark">@{{product.cid3Name}}</strong> <a href="{{product.product_promotion_url}}">{{product.product_name}}</a>
 			</p>
 		</div>
 		{% endfor %}
