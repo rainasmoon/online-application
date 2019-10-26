@@ -1,10 +1,8 @@
 {% extends "base.html" %} {% block page_content %}
 <div class="nav-scroller bg-white shadow-sm">
 	<nav class="nav nav-underline">
-		<a class="nav-link active" href="{% url 'products:index' %}">主页</a> <a class="nav-link"
-			href="{% url 'products:results' %}">  <span
-			class="badge badge-pill bg-light align-text-bottom">20</span>
-		</a> <a class="nav-link" href="#"></a> <a class="nav-link" href="{% url 'products:compare' 0 0 %}">投票</a>
+		<a class="nav-link active" href="{% url 'products:index' %}">主页</a> 
+		<a class="nav-link" href="#"></a> <a class="nav-link" href="{% url 'products:compare' 0 0 %}">投票</a>
 	</nav>
 </div>
 <main role="main" class="container">
