@@ -4,6 +4,8 @@ response.headers
 response.status_code
 response.url
 
+DAY2: the call frequency ratio limitation
+
 '''
 
 import json
@@ -12,7 +14,7 @@ from urllib import parse
 from urllib import request
 from utils import db_utils
 
-asearch_input = '手机'
+test_asearch_input = '手机'
 
 
 def create_search_url(keyword):
@@ -31,6 +33,7 @@ def call_jd_search(keyword):
         rresponse = response.read().decode('utf-8') 
         rlist = re.findall(r'(//item.jd.com/)([0-9]*)(.html)', rresponse)
         for i in rlist:
+            # the 1 item is sku
             db_utils.insert_db(i[1])
             
         print(len(rlist))

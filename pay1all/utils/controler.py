@@ -4,6 +4,7 @@ from utils import export_jd_db
 
 search_list = db_utils_online.select_search()
 for asearch in search_list:
+    # first colmon is id , second is context
     search_id = asearch[0]
     search_context = asearch[1]
     print(search_id, search_context)        

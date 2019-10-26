@@ -10,6 +10,7 @@ urlpatterns = [
         path('vote/<int:aproduct_id>/<int:bproduct_id>/', views.vote, name='vote'),
         path('details/<int:pk>/', views.DetailsView.as_view(), name='details'),
         path('search/', views.search, name='search'),
+        path('menus/', views.menus, name='menus'),
         path('results/', views.ResultsView.as_view(), name='results'),
         
 ]

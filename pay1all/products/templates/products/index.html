@@ -7,7 +7,7 @@
 		{% for amenu in menu_list %}
 			<a class="nav-link" href="{% url 'products:index_c' amenu.cid %}">{{ amenu.menu_name }}</a> 
 		{% endfor %}
-		<a class="nav-link" href="{% url 'products:compare_c' 0 0 cid %}">投票</a>
+		<a class="nav-link" href="{% url 'products:menus'  %}">更多</a>
 	</nav>
 </div>
 <main role="main" class="container">
