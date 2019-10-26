@@ -26,7 +26,10 @@ def index(request, cid=0):
         latest_product_list = Product.objects.order_by('-p_scores')[:FIRST_PAGE_MAX]
     else:
         latest_product_list = Product.objects.filter(cid3=cid).order_by('-p_scores')[:FIRST_PAGE_MAX]
-        amenu = Menu.objects.get(cid=cid)
+        try:
+            amenu = Menu.objects.get(cid=cid)
+        except Menu.DoesNotExist:
+            raise Http404('No Menu exists.')
         amenu.m_scores += CLICK_WEIGHT
         amenu.save()
     menu_list = Menu.objects.order_by('-m_scores')[:MENU_MAX]
@@ -44,6 +47,8 @@ def compare(request, aproduct_id, bproduct_id, cid=0):
     if aproduct_id == 0 :
         random_product_list = Product.objects.all()
         size = len(random_product_list)
+        if size == 0:
+            raise Http404("NO Data exist.")
         id0 = random.randint(1, size)
         id1 = random.randint(1, size)
         aproduct = random_product_list[id0]
@@ -51,12 +56,17 @@ def compare(request, aproduct_id, bproduct_id, cid=0):
     elif aproduct_id != 0 and bproduct_id == 0:
         random_product_list = Product.objects.all()
         size = len(random_product_list)
+        if size == 0:
+            raise Http404("NO Data exists.")
         id0 = random.randint(1, size)
         aproduct = Product.objects.get(pk=aproduct_id)
         bproduct = random_product_list[id0]    
     else:
-        aproduct = Product.objects.get(pk=aproduct_id)
-        bproduct = Product.objects.get(pk=bproduct_id)
+        try:
+            aproduct = Product.objects.get(pk=aproduct_id)
+            bproduct = Product.objects.get(pk=bproduct_id)
+        except Product.DoesNotExist:
+            raise Http404("NO product exists.")
    
     context = {'aproduct': aproduct, 'bproduct': bproduct, 'cid': cid}
     return render(request, 'products/compare.html', context)

@@ -1,3 +1,7 @@
+pip install pymysql
+pip install mysqlclient
+pip install MySQL-python
+
 python manage.py loaddata test/fixtures/init_product
 
 python manage.py createsuperuser

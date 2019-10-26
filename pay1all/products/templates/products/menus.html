@@ -16,7 +16,7 @@
 	<a href="{% url 'products:index_c' amenu.cid %}">{{ amenu.menu_name }}</a>
 </div>
 {% endfor %} {% else %}
-<p>No products.</p>
+<p>No menus.</p>
 {% endif %}
 
 <a class="btn btn-lg btn-primary" href="{% url 'products:compare' 0 0 %}"  role="button">vote again?</a>
