@@ -9,6 +9,39 @@ def init_db():
     c = conn.cursor()
     c.execute('''CREATE TABLE stocks
              (sku_id integer unique, as_done integer)''')
+    c.execute('''CREATE TABLE locks
+             (locked integer unique)''')
+    conn.commit()
+    conn.close()
+
+
+def get_lock():
+    conn = sqlite3.connect(PROD_DB)
+    c = conn.cursor()
+    c.execute('select 1 from locks')
+    alock = c.fetchone()
+    
+    conn.commit()
+    conn.close()
+    
+    if alock:
+        return False
+    else:
+        return True
+
+    
+def lock():
+    conn = sqlite3.connect(PROD_DB)
+    c = conn.cursor()
+    c.execute('insert into locks(locked) values(1)')
+    conn.commit()
+    conn.close()
+
+    
+def unlock():
+    conn = sqlite3.connect(PROD_DB)
+    c = conn.cursor()
+    c.execute('delete from locks')
     conn.commit()
     conn.close()
 
@@ -50,7 +83,4 @@ def done(sku):
     conn.close() 
 
 # init_db()
-
-
-print('end.')
 

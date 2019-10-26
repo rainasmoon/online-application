@@ -58,36 +58,3 @@ class Elorating:
     def __str__(self):
         return '[{0}:{1}:{2}:{3}]'.format(self.ascores, self.bscores, self.awinratio, self.bwinratio) 
 
-
-a = Elorating(ascores=1500, bscores=1500)
-print(a)
-a.win()
-print(a)
-
-a = Elorating(ascores=1500, bscores=1500)
-print(a)
-a.lose()
-print(a)
-
-a = Elorating(ascores=1500, bscores=1500)
-print(a)
-a.tie()
-print(a)
-
-a = Elorating(ascores=1500, bscores=1600)
-print(a)
-a.tie()
-print(a)
-
-a = Elorating(ascores=1600, bscores=1500)
-print(a)
-a.tie()
-print(a)
-
-a = Elorating(ascores=1500, bscores=1900)
-a.win()
-print(a)
-a = Elorating(ascores=1900, bscores=1500)
-a.win()
-print(a)
-

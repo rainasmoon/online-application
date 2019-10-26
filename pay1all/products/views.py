@@ -19,6 +19,7 @@ CLICK_WEIGHT = 1
 MENU_MAX = 5
 FIRST_PAGE_MAX = 20
 LONG_LIST_MAX = 2000
+MAX_SEARCH_SIZE = 200
 
 
 def index(request, cid=0):
@@ -115,6 +116,9 @@ def search(request):
     search_input = request.POST['search_input']
     if search_input == '':
         context = {'message': '输入为空。。。'}
+        return render(request, 'products/search.html', context)
+    if len(search_input) >= MAX_SEARCH_SIZE:
+        context = {'message': '输入过长。。。'}
         return render(request, 'products/search.html', context)
     asearch_list = Search.objects.filter(search_context=search_input)
     if len(asearch_list) == 0:

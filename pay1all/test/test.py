@@ -2,6 +2,9 @@ from io import StringIO
 import json
 from urllib import parse
 
+from utils import db_utils
+from utils.elo import Elorating
+
 
 def test_json():
     print("json:")
@@ -67,7 +70,50 @@ def test_index():
         print(a, i)
 
 
-test_index()
+def test_elo():
+    a = Elorating(ascores=1500, bscores=1500)
+    print(a)
+    a.win()
+    print(a)
+    
+    a = Elorating(ascores=1500, bscores=1500)
+    print(a)
+    a.lose()
+    print(a)
+    
+    a = Elorating(ascores=1500, bscores=1500)
+    print(a)
+    a.tie()
+    print(a)
+    
+    a = Elorating(ascores=1500, bscores=1600)
+    print(a)
+    a.tie()
+    print(a)
+    
+    a = Elorating(ascores=1600, bscores=1500)
+    print(a)
+    a.tie()
+    print(a)
+    
+    a = Elorating(ascores=1500, bscores=1900)
+    a.win()
+    print(a)
+    a = Elorating(ascores=1900, bscores=1500)
+    a.win()
+    print(a)
+
+
+def test_lock():    
+    print(db_utils.get_lock())
+#     db_utils.lock()
+    print(db_utils.get_lock())
+    db_utils.unlock()
+    print(db_utils.get_lock())
+
+
+test_lock()    
+# test_index()
 # test_parse_quote()
 # test_StringIO()
 # test_import_set()
