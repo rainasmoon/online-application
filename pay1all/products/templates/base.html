@@ -16,7 +16,7 @@
 
 	<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
 		<a class="navbar-brand mr-auto mr-lg-0"
-			href="{% url 'products:index'  %}">手机排行榜</a>
+			href="{% url 'products:index'  %}">全了的 - 进化</a>
 		<button class="navbar-toggler p-0 border-0" type="button"
 			data-toggle="offcanvas">
 			<span class="navbar-toggler-icon"></span>
@@ -38,6 +38,7 @@
 						<a class="dropdown-item" href="https://shop116375480.taobao.com/">淘宝店</a>
 						<a class="dropdown-item" href="https://www.rainasmoon.com/">个人博客</a>
 						<a class="dropdown-item" href="https://www.weibo.com/rainasmoon">微博</a>
+						<a class="dropdown-item" href="{% url 'products:about' %}">关于</a>
 					</div></li>
 			</ul>
 			<form class="form-inline my-2 my-lg-0" action="{% url 'products:search' %}" method="post">

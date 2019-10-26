@@ -12,5 +12,5 @@ urlpatterns = [
         path('search/', views.search, name='search'),
         path('menus/', views.menus, name='menus'),
         path('results/', views.ResultsView.as_view(), name='results'),
-        
+        path('about/', views.about, name='about'),
 ]

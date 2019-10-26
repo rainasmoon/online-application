@@ -110,3 +110,7 @@ def search(request):
     asearch.save()
     context = {'message': '查询结果生成中。。。'}
     return render(request, 'products/search.html', context)
+
+
+def about(request):
+    return render(request, 'products/about.html')
