@@ -1,13 +1,19 @@
 {% extends "base.html" %} {% block page_content %}
 
 <main role="main" class="container">
-
+<div>
 {% if message %}
 	<p>
 		<strong>{{ message }}</strong>
 	</p>
 {% endif %}
-
+</div>
+<div>
+{% if asearch %}
+请返回首页菜单查看。或点击：
+<a href="{% url 'products:index_c' asearch.cid %}">查看 - {{ asearch.search_context }}</a>
+{% endif %}
+</div>
 </main>
 
 {% endblock %}

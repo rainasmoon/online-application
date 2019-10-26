@@ -106,9 +106,15 @@ def search(request):
     if search_input == '':
         context = {'message': '输入为空。。。'}
         return render(request, 'products/search.html', context)
-    asearch = Search.objects.create(search_context=search_input, pub_date=timezone.now())
-    asearch.save()
-    context = {'message': '查询结果生成中。。。'}
+    asearch_list = Search.objects.filter(search_context=search_input)
+    if len(asearch_list) == 0:
+        asearch = Search.objects.create(search_context=search_input, pub_date=timezone.now())
+        asearch.save()
+        context = {'message': '查询结果生成中。。。'}
+    elif asearch_list[0].as_done == False:
+        context = {'message': '正在计算结果。'}    
+    else:
+        context = {'message': '结果生成完毕。', 'asearch': asearch_list[0]}
     return render(request, 'products/search.html', context)
 
 
