@@ -15,7 +15,7 @@
 
 {% if menu_list %} {% for amenu in menu_list %}
 <div >
-	{{ amenu.menu_name }}
+	<a href="{% url 'products:index_c' amenu.cid %}">{{ amenu.menu_name }}</a>
 </div>
 {% endfor %} {% else %}
 <p>No products.</p>

@@ -27,7 +27,7 @@ def index(request, cid=0):
     else:
         latest_product_list = Product.objects.filter(cid3=cid).order_by('-p_scores')[:FIRST_PAGE_MAX]
         amenu = Menu.objects.get(cid=cid)
-        amenu.m_score += CLICK_WEIGHT
+        amenu.m_scores += CLICK_WEIGHT
         amenu.save()
     menu_list = Menu.objects.order_by('-m_scores')[:MENU_MAX]
     context = {'latest_product_list': latest_product_list, 'menu_list':menu_list, 'cid': cid}
