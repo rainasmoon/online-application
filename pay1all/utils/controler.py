@@ -20,7 +20,3 @@ def do_job():
         db_utils.unlock()
         print("unlocked.")
 
-        
-for i in range(10):
-    do_job()
-
