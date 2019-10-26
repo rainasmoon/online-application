@@ -6,5 +6,8 @@ python manage.py loaddata test/fixtures/init_product
 
 python manage.py createsuperuser
 
+need to MAKE SURE you use THE REAL API
+/**********************************************/
+
 
 
