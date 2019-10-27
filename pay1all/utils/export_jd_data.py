@@ -1,10 +1,12 @@
+'''
+Deprected.
+will use db instead of files
+'''
 from datetime import datetime
 from io import StringIO
 import json
 
 from utils import jd_api
-
-print('run...')
 
 fi = open('crawler_jd.list', 'r')
 r_set = json.load(fi)
@@ -51,5 +53,5 @@ for j in range(len(jd_sku_list))[::MAX_PARAM]:
 fo = open('out_data.json', 'w')
 json.dump(rlist, fo, indent=4)
 fo.close()
-print(len(rlist))
+print('result:' + len(rlist))
 print('finished.')

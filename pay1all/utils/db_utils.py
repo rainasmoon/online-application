@@ -60,7 +60,7 @@ def select_db():
     conn = sqlite3.connect(PROD_DB)
     c = conn.cursor()
     c.execute('select * from stocks')
-    print(c.fetchall())
+    print('STOCKS TABLE SKU ITEMS:' + c.fetchall())
     conn.commit()
     conn.close()
 
@@ -79,6 +79,14 @@ def done(sku):
     conn = sqlite3.connect(PROD_DB)
     c = conn.cursor()
     c.execute('update stocks set as_done = 1 WHERE sku_id = ?', (sku,))
+    conn.commit()
+    conn.close() 
+
+    
+def reset():
+    conn = sqlite3.connect(PROD_DB)
+    c = conn.cursor()
+    c.execute('update stocks set as_done = 0')
     conn.commit()
     conn.close() 
 

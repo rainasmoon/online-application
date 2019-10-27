@@ -4,8 +4,6 @@ import json
 
 from utils import jd_api, db_utils, db_utils_online
 
-print('run...')
-
 MAX_PARAM = 100 
 
 
@@ -44,13 +42,14 @@ def make_produst_param(agood):
 
 def make_jd_data():
     r_set = db_utils.select_sku()
-    print(r_set)
+    print('FIND NEW SKU NO.:' + str(len(r_set)))
     jd_sku_list = r_set
     for j in range(len(jd_sku_list))[::MAX_PARAM]:
         t_sku_100_list = (','.join(jd_sku_list[j:j + MAX_PARAM]))
+        print('PARAM SKU NO. LIST:' + t_sku_100_list)
         goods_list = jd_api.call_jd_goods_detail(t_sku_100_list)
         for agood in goods_list:    
             db_utils_online.insert_db(make_produst_param(agood))
             db_utils_online.insert_menu(make_menu_param(agood))
             db_utils.done(agood['skuId'])
-    print(len(jd_sku_list))
+    print('INSERT PRODUCT, MENU, SET STORE TO DONE.')

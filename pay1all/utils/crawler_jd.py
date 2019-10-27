@@ -27,16 +27,16 @@ aheaders = {'User-Agent':'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N)
 
 def call_jd_search(keyword):
     aurl = create_search_url(keyword)
-    print(aurl)
+    print('CRAWEL JD FOR:' + aurl)
     req = request.Request(url=aurl, headers=aheaders)
     with request.urlopen(req) as response:    
         rresponse = response.read().decode('utf-8') 
         rlist = re.findall(r'(//item.jd.com/)([0-9]*)(.html)', rresponse)
+        print("YEAH: FIND ITEMS NO.:" + str(len(rlist)))
         for i in rlist:
             # the 1 item is sku
             db_utils.insert_db(i[1])
             
-        print(len(rlist))
+    print("STORE THEM:" + str(len(rlist)))
 
 # call_jd_search(asearch_input)
-# print('end crawl.')

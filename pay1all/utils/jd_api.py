@@ -60,7 +60,6 @@ def get_sign_key(method, timestamp, param_json):
     c = c + 'timestamp' + timestamp
     c = c + 'v1.0'
     c = appsecret + c + appsecret
-    # print(c)
     sign_key = hashlib.md5(c.encode("utf-8")).hexdigest().upper()
     return sign_key
     
@@ -73,10 +72,10 @@ def get_api_url(method, param_json):
 
 
 def call_jd_api(api_url):
-    print(api_url)
+    # print('CALL JD API:' + api_url)
     rresponse = request.urlopen(api_url)
     s_result = rresponse.read()
-    print(s_result)
+    # print('JD RESPONSES:' + str(s_result))
     json_result = json.loads(s_result)  
     return json_result
 
@@ -87,10 +86,9 @@ def call_jd_promotion_url(sku):
     json_result = call_jd_api(get_api_url(method_get_promotion, param_json))
     r_result = json_result['jd_union_open_promotion_common_get_response']['result']
     inner_json_result = json.load(StringIO(r_result))
-    print(inner_json_result['code'])
+    # print('RESPONSE CODE:'+inner_json_result['code'])
     
     click_url = inner_json_result['data']['clickURL']
-    # print(click_url)
     return click_url
 
     
@@ -99,7 +97,6 @@ def call_jd_goods_detail(sku_list):
     json_result = call_jd_api(get_api_url(method_get_goods, param_json))
     r_result = json_result['jd_union_open_goods_promotiongoodsinfo_query_response']['result']
     inner_json_result = json.load(StringIO(r_result))
-    print(inner_json_result['code'])
     
     goods_json = inner_json_result['data']
 
@@ -110,9 +107,4 @@ def call_jd_category():
     param_json = get_param_json_category()
     json_result = call_jd_api(get_api_url(method_get_category, param_json))
     return json_result     
-        
-# agoodjson = call_jd_goods_detail(str(test_jd_prod_sku_1))
-# print(json.dumps(agoodjson, sort_keys=False, indent=4)) 
-# call_jd_promotion_url(test_jd_prod_sku_1)
-# call_jd_category()
 

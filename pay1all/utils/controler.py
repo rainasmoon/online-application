@@ -7,18 +7,31 @@ from utils import export_jd_db
 def do_job():
     if (db_utils.get_lock()):
         db_utils.lock()
-        print("get locked.")
+        print("GET LOCKED.")
         search_list = db_utils_online.select_search()
+        print("JOBS NO.:" + str(len(search_list)))
         for asearch in search_list:
             # first colmon is id , second is context
             search_id = asearch[0]
             search_context = asearch[1]
-            print(search_id, search_context)        
+            print('SEARCH JD FOR:' + search_context)        
             crawler_jd.call_jd_search(search_context)
             export_jd_db.make_jd_data()
             db_utils_online.search_done(search_id)
+            print("SEARCH ONE DONE.")
         db_utils.unlock()
-        print("unlocked.")
+        print("UNLOCKED. SUCCESS>>>>>>>>>>>>>>>>>>>")
+    else:
+        print('CANT LOCKED...PLS CHECK.')
 
 
+def reset():
+    db_utils.reset()
+    db_utils_online.reset()
+
+
+def unlock():
+    db_utils.unlock()
+
+    
 do_job()
