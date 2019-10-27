@@ -20,3 +20,5 @@ def do_job():
         db_utils.unlock()
         print("unlocked.")
 
+
+do_job()
