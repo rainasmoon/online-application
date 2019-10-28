@@ -9,5 +9,12 @@ python manage.py createsuperuser
 need to MAKE SURE you use THE REAL API
 /**********************************************/
 
+scp -r /cygdrive/c/Users/Administrator/git/online-application/pay1all/utils root@aws.pay1all.top:/home/hht/pay1all/
+
+scp -r /cygdrive/c/Users/Administrator/git/online-application/pay1all/prod.sqlite3 root@aws.pay1all.top:/home/hht/pay1all/
+
+curl https://search.jd.com/Search?keyword=%E6%89%8B%E6%9C%BA&enc=utf-8&wq=%E6%89%8B%E6%9C%BA&pvid=c060319d4120468ca810e38ab6b73545 -x http://39.137.69.10:80 -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:70.0) Gecko/20100101 Firefox/70.0"
 
 
+scp -r root@aws.pay1all.top:/home/hht/pay1all/db.sqlite3 /cygdrive/c/Users/Administrator/git/online-application/pay1all/
+scp -r /cygdrive/c/Users/Administrator/git/online-application/pay1all/db.sqlite3 root@aws.pay1all.top:/home/hht/pay1all/
