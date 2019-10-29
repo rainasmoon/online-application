@@ -68,5 +68,3 @@ def select_db():
     conn.commit()
     conn.close()
 
-
-select_search()

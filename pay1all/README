@@ -13,8 +13,23 @@ scp -r /cygdrive/c/Users/Administrator/git/online-application/pay1all/utils root
 
 scp -r /cygdrive/c/Users/Administrator/git/online-application/pay1all/prod.sqlite3 root@aws.pay1all.top:/home/hht/pay1all/
 
-curl https://search.jd.com/Search?keyword=%E6%89%8B%E6%9C%BA&enc=utf-8&wq=%E6%89%8B%E6%9C%BA&pvid=c060319d4120468ca810e38ab6b73545 -x http://39.137.69.10:80 -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:70.0) Gecko/20100101 Firefox/70.0"
+curl https://search.jd.com/Search?keyword=%E6%89%8B%E6%9C%BA&enc=utf-8&wq=%E6%89%8B%E6%9C%BA&pvid=c060319d4120468ca810e38ab6b73545 -x http://121.199.36.121:3128 -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:70.0) Gecko/20100101 Firefox/70.0"
+
+curl  https://so.m.jd.com/ware/search.action?keyword=%E6%89%8B%E6%9C%BA&searchFrom=home&sf=11&as=1  -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:70.0) Gecko/20100101 Firefox/70.0"
 
 
 scp -r root@aws.pay1all.top:/home/hht/pay1all/db.sqlite3 /cygdrive/c/Users/Administrator/git/online-application/pay1all/
 scp -r /cygdrive/c/Users/Administrator/git/online-application/pay1all/db.sqlite3 root@aws.pay1all.top:/home/hht/pay1all/
+
+
+uwsgi --chdir=/home/hht/pay1all \
+    --module=pay1all.wsgi:application \
+    --env DJANGO_SETTINGS_MODULE=pay1all.settings \
+    --master --pidfile=/tmp/pay1all-master.pid \
+    --socket=127.0.0.1:8000 \      # can also be a file
+    --processes=5 \                 # number of worker processes
+    --uid=1000 --gid=2000 \         # if root, uwsgi can drop privileges
+    --harakiri=20 \                 # respawn processes taking more than 20 seconds
+    --max-requests=5000 \           # respawn processes after serving 5000 requests
+    --vacuum \                      # clear environment on exit
+    --daemonize=/home/hht/pay1all.log   

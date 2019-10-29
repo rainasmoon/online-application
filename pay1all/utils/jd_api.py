@@ -26,6 +26,8 @@ method_get_goods = 'jd.union.open.goods.promotiongoodsinfo.query'
 
 test_jd_prod_sku_1 = 25643981948
 
+STATUS_OK = 200
+
 
 def get_material_id(jd_prod_sku):
     return 'https://item.jd.com/' + str(jd_prod_sku) + '.html'
@@ -86,10 +88,11 @@ def call_jd_promotion_url(sku):
     json_result = call_jd_api(get_api_url(method_get_promotion, param_json))
     r_result = json_result['jd_union_open_promotion_common_get_response']['result']
     inner_json_result = json.load(StringIO(r_result))
-    # print('RESPONSE CODE:'+inner_json_result['code'])
-    
-    click_url = inner_json_result['data']['clickURL']
-    return click_url
+    if inner_json_result['code'] == STATUS_OK:
+        click_url = inner_json_result['data']['clickURL']
+        return click_url
+    else:
+        print('JD ERROR:' + r_result)
 
     
 def call_jd_goods_detail(sku_list):
@@ -108,3 +111,7 @@ def call_jd_category():
     json_result = call_jd_api(get_api_url(method_get_category, param_json))
     return json_result     
 
+
+if __name__ == '__main__':
+    r = call_jd_promotion_url(test_jd_prod_sku_1)
+    print(r)

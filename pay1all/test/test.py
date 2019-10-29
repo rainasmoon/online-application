@@ -1,6 +1,10 @@
 from io import StringIO
 import json
 from urllib import parse
+from urllib import request
+import urllib
+from urllib.error import URLError
+from urllib.request import ProxyHandler, build_opener
 
 from utils import db_utils
 from utils.elo import Elorating
@@ -70,40 +74,6 @@ def test_index():
         print(a, i)
 
 
-def test_elo():
-    a = Elorating(ascores=1500, bscores=1500)
-    print(a)
-    a.win()
-    print(a)
-    
-    a = Elorating(ascores=1500, bscores=1500)
-    print(a)
-    a.lose()
-    print(a)
-    
-    a = Elorating(ascores=1500, bscores=1500)
-    print(a)
-    a.tie()
-    print(a)
-    
-    a = Elorating(ascores=1500, bscores=1600)
-    print(a)
-    a.tie()
-    print(a)
-    
-    a = Elorating(ascores=1600, bscores=1500)
-    print(a)
-    a.tie()
-    print(a)
-    
-    a = Elorating(ascores=1500, bscores=1900)
-    a.win()
-    print(a)
-    a = Elorating(ascores=1900, bscores=1500)
-    a.win()
-    print(a)
-
-
 def test_lock():    
     print(db_utils.get_lock())
 #     db_utils.lock()
@@ -112,7 +82,61 @@ def test_lock():
     print(db_utils.get_lock())
 
 
-test_lock()    
+def call_a_new_proxy():
+    a_proxy_url = 'http://118.24.52.95/get/'
+    with request.urlopen(a_proxy_url) as response:
+        r_json = json.load(response)
+        return r_json['proxy']
+
+
+def test_proxy():
+    proxy = call_a_new_proxy()
+    print('use proxy:' + proxy)
+    proxy_handler = ProxyHandler({
+        'http': 'http://' + proxy,
+    })
+    opener = build_opener(proxy_handler)
+    try:
+        response = opener.open('https://www.rainasmoon.com/me.html')
+        print(response.read().decode('utf-8'))
+    except URLError as e:
+        print(e.reason)
+
+
+def test_proxy_1():
+    aurl = 'http://ifconfig.co/'
+    aurl = 'https://www.rainasmoon.com/me.html'
+    proxy = call_a_new_proxy()
+    print('USE PROXY:' + proxy)
+    proxy_support = urllib.request.ProxyHandler({'http':proxy})
+    opener = urllib.request.build_opener(proxy_support)
+    urllib.request.install_opener(opener)
+    req = request.Request(url=aurl)
+    response = request.urlopen(req)   
+    rresponse = response.read().decode('utf-8', "ignore") 
+    print(rresponse)
+
+
+def test_proxy_2():
+    aurl = 'https://www.rainasmoon.com/me.html'
+    proxy = call_a_new_proxy()
+    print('use proxy:' + proxy)
+    proxy_handler = ProxyHandler({
+        'http': 'http://' + proxy,
+        'https': 'http://' + proxy,
+    })
+    
+    opener = build_opener(proxy_handler)
+    try:
+        f = opener.open(aurl)
+        r = f.read().decode('utf-8')
+        
+        print(r)
+    except URLError as err:
+        print('ERROR PROXY', err)
+
+
+test_proxy_2()    
 # test_index()
 # test_parse_quote()
 # test_StringIO()

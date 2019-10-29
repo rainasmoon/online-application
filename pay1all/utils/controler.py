@@ -15,7 +15,11 @@ def do_job():
             search_id = asearch[0]
             search_context = asearch[1]
             print('SEARCH JD FOR:' + search_context)        
-            crawler_jd.call_jd_search(search_context)
+            r_sku_list = crawler_jd.call_jd_search(search_context)
+            for i in r_sku_list:
+                # the 1 item is sku
+                db_utils.insert_db(i)
+            print("STORE THEM:" + str(len(r_sku_list)))
             export_jd_db.make_jd_data()
             db_utils_online.search_done(search_id)
             print("SEARCH ONE DONE.")
@@ -35,3 +39,4 @@ def unlock():
 
     
 do_job()
+

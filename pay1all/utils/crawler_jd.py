@@ -9,14 +9,15 @@ DAY2: the call frequency ratio limitation
 '''
 
 import json
+import random
 import re
 from urllib import parse
 from urllib import request
 import urllib
+from urllib.error import URLError
+from urllib.request import ProxyHandler, build_opener
 
-from utils import db_utils
-
-test_asearch_input = '手机'
+test_asearch_input_1 = '手机'
 
 
 def create_search_url(keyword):
@@ -24,43 +25,90 @@ def create_search_url(keyword):
     return 'https://search.jd.com/Search?keyword=' + keyword + '&enc=utf-8&wq=' + keyword + '&pvid=c060319d4120468ca810e38ab6b73545'
 
 
+def create_search_url_mobile(keyword):
+    keyword = parse.quote(keyword)
+    return 'https://so.m.jd.com/ware/search.action?keyword=' + keyword + '&searchFrom=home&sf=11&as=1'
+
+
+USER_AGENTS = [
+    "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; AcooBrowser; .NET CLR 1.1.4322; .NET CLR 2.0.50727)",
+    "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0; Acoo Browser; SLCC1; .NET CLR 2.0.50727; Media Center PC 5.0; .NET CLR 3.0.04506)",
+    "Mozilla/4.0 (compatible; MSIE 7.0; AOL 9.5; AOLBuild 4337.35; Windows NT 5.1; .NET CLR 1.1.4322; .NET CLR 2.0.50727)",
+    "Mozilla/5.0 (Windows; U; MSIE 9.0; Windows NT 9.0; en-US)",
+    "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0; .NET CLR 3.5.30729; .NET CLR 3.0.30729; .NET CLR 2.0.50727; Media Center PC 6.0)",
+    "Mozilla/5.0 (compatible; MSIE 8.0; Windows NT 6.0; Trident/4.0; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; .NET CLR 1.0.3705; .NET CLR 1.1.4322)",
+    "Mozilla/4.0 (compatible; MSIE 7.0b; Windows NT 5.2; .NET CLR 1.1.4322; .NET CLR 2.0.50727; InfoPath.2; .NET CLR 3.0.04506.30)",
+    "Mozilla/5.0 (Windows; U; Windows NT 5.1; zh-CN) AppleWebKit/523.15 (KHTML, like Gecko, Safari/419.3) Arora/0.3 (Change: 287 c9dfb30)",
+    "Mozilla/5.0 (X11; U; Linux; en-US) AppleWebKit/527+ (KHTML, like Gecko, Safari/419.3) Arora/0.6",
+    "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.2pre) Gecko/20070215 K-Ninja/2.1.1",
+    "Mozilla/5.0 (Windows; U; Windows NT 5.1; zh-CN; rv:1.9) Gecko/20080705 Firefox/3.0 Kapiko/3.0",
+    "Mozilla/5.0 (X11; Linux i686; U;) Gecko/20070322 Kazehakase/0.4.5",
+    "Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.8) Gecko Fedora/1.9.0.8-1.fc10 Kazehakase/0.5.6",
+    "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.56 Safari/535.11",
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:70.0) Gecko/20100101 Firefox/70.0',
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_3) AppleWebKit/535.20 (KHTML, like Gecko) Chrome/19.0.1036.7 Safari/535.20",
+    "Opera/9.80 (Macintosh; Intel Mac OS X 10.6.8; U; fr) Presto/2.9.168 Version/11.52",
+]
+
 aheaders = {
     'Host': 'search.jd.com',
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:70.0) Gecko/20100101 Firefox/70.0',
-    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-    'Accept-Language': 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
-    # 'Accept-Encoding': 'gzip, deflate, br', # will cause decode problem
-    'Connection': 'keep-alive',
+    'User-Agent': random.choice(USER_AGENTS),
     'Referer': 'https://www.jd.com/',
-    'Cookie': '__jda=76161171.15714963011562096123417.1571496301.1572180143.1572241782.31; __jdv=76161171|cps.youmai.com|t_1000049399_68094883|tuiguang|7d9e751e36fb4868a766b7ed1a99ebcd|1571902102040; __jdu=15714963011562096123417; TrackID=18PyAbuP5mew6nzxOIkN13NLLpDs6FKo6qnC9xvabo_VCbmZnbrzEDTMx-b-nr9zYPhuxA3xDVBGt5NDZNAfewrvWCdCbItFQnTWbTrx7JQA0pZkwMxGipS2LaP6_CBLm; pinId=RI7NyUI4ksl6j_twplCNNw; _tp=F2k%2FNk8zSmdHi15Gqe%2B%2Bzg%3D%3D; _pst=rainasmoon; unpl=V2_ZzNtbUcFRBFzDkNdcxwJBmIEGg9LX0YUJQgVBHlKWVczABJbclRCFX0URlVnGlgUZwIZWUZcQhxFCEdkexhdBWIAE1RLUXMlRQtGZHopXAFhAxdVRVVCFXUMQVd6EVsFZAEXXURncxV9DHZUehhdBGQFF1VGUkslNlgeCytbAFs5XCJdRFRKFXwLQ1d6KV01ZwsSWURRQBd0CXYCFRldBGYCE1hBU0tYdQxAVH4RWwdmAxJZRVRCHXIIRVZ%2bGVo1ZjMR; shshshfp=15aa112d62f5aaba770739f63a64f80b; shshshfpa=33e91a4c-052d-68fb-d8b0-aa585e8f7707-1571717784; shshshfpb=pBcghGXQN6yMwCJvHzrtjjA%3D%3D; areaId=5; ipLoc-djd=5-239-2767-0; xtest=6076.cf6b6759; qrsc=3; __jdc=76161171; rkv=V0800; __jdb=76161171.3.15714963011562096123417|31.1572241782; shshshsID=6ce4ba4026a7a73e7d458ff351b82756_2_1572241916687; user-key=147ecdca-be2e-43c5-9bd6-28b6f7b6e81d; cn=0',
-    'Upgrade-Insecure-Requests': 1
+    'Cookie': '',
     }
 
 
 def call_jd_search(keyword):
     aurl = create_search_url(keyword)
     print('CRAWEL JD FOR:' + aurl)
-    req = use_no_proxy(aurl)
-    with request.urlopen(req) as response:    
-        rresponse = response.read().decode('utf-8', "ignore") 
+    rresponse = use_no_proxy(aurl)
+    rlist = re.findall(r'(//item.jd.com/)([0-9]*)(.html)', rresponse)
+    print("YEAH: FIND ITEMS NO.:" + str(len(rlist)))
+    if len(rlist) == 0:
+        rresponse = use_proxy(aurl)
+        while rresponse == None:
+            print('PROXY ERROR, CALL AGAIN')
+            rresponse = use_proxy(aurl)   
         rlist = re.findall(r'(//item.jd.com/)([0-9]*)(.html)', rresponse)
-        print("YEAH: FIND ITEMS NO.:" + str(len(rlist)))
-        for i in rlist:
-            # the 1 item is sku
-            db_utils.insert_db(i[1])
-            
-    print("STORE THEM:" + str(len(rlist)))
+        print("YEAH: FIND ITEMS VIA PROXY NO.:" + str(len(rlist)))
+    
+    r_sku_list = [i[1] for i in rlist]    
+    return r_sku_list
 
 
 def use_proxy(aurl):
-    proxy = "http://112.80.248.95:80"
-    proxy_support = urllib.request.ProxyHandler({'http':proxy})
-    opener = urllib.request.build_opener(proxy_support)
-    urllib.request.install_opener(opener)
-    return request.Request(url=aurl, headers=aheaders)
+    proxy = call_a_new_proxy()
+    print('USE PROXY:' + proxy)
+    proxy_handler = ProxyHandler({
+        'http': 'http://' + proxy,
+        'https': 'http://' + proxy,
+    })
+    
+    opener = build_opener(proxy_handler)
+    try:
+        f = opener.open(aurl)
+        r = f.read().decode('utf-8')
+        return r
+    except URLError as err:
+        print('ERROR PROXY', err)
+
+
+def call_a_new_proxy():
+    a_proxy_url = 'http://118.24.52.95/get/'
+    with request.urlopen(a_proxy_url) as response:
+        r_json = json.load(response)
+        new_proxy = r_json['proxy']
+        
+    return new_proxy
 
 
 def use_no_proxy(aurl):
-    return request.Request(url=aurl, headers=aheaders)
-# htreturn tp://118.24.52.95/get/
-# call_jd_search(asearch_input)
+    req = request.Request(url=aurl, headers=aheaders)
+    response = request.urlopen(req)
+    rresponse = response.read().decode('utf-8', "ignore") 
+    return rresponse
+
+
+if __name__ == '__main__':
+    r = call_jd_search(test_asearch_input_1)
+    print(r)
