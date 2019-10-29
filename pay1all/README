@@ -22,14 +22,9 @@ scp -r root@aws.pay1all.top:/home/hht/pay1all/db.sqlite3 /cygdrive/c/Users/Admin
 scp -r /cygdrive/c/Users/Administrator/git/online-application/pay1all/db.sqlite3 root@aws.pay1all.top:/home/hht/pay1all/
 
 
-uwsgi --chdir=/home/hht/pay1all \
-    --module=pay1all.wsgi:application \
-    --env DJANGO_SETTINGS_MODULE=pay1all.settings \
-    --master --pidfile=/tmp/pay1all-master.pid \
-    --socket=127.0.0.1:8000 \      # can also be a file
-    --processes=5 \                 # number of worker processes
-    --uid=1000 --gid=2000 \         # if root, uwsgi can drop privileges
-    --harakiri=20 \                 # respawn processes taking more than 20 seconds
-    --max-requests=5000 \           # respawn processes after serving 5000 requests
-    --vacuum \                      # clear environment on exit
-    --daemonize=/home/hht/pay1all.log   
+
+uwsgi --chdir=/home/hht/pay1all --http :8000 --module pay1all.wsgi:application  --master --pidfile=/tmp/pay1all-master.pid  --processes=5 --vacuum --daemonize=/home/hht/pay1all.log 
+ 
+ 
+usermod -a -G examplegroup exampleusername
+usermod -a -G hht uwsgi
