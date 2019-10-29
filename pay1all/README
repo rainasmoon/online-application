@@ -10,6 +10,8 @@ need to MAKE SURE you use THE REAL API
 /**********************************************/
 
 scp -r /cygdrive/c/Users/Administrator/git/online-application/pay1all/utils root@aws.pay1all.top:/home/hht/pay1all/
+scp -r /cygdrive/c/Users/Administrator/git/online-application/pay1all/products root@aws.pay1all.top:/home/hht/pay1all/
+scp -r /cygdrive/c/Users/Administrator/git/online-application/pay1all/pay1all root@aws.pay1all.top:/home/hht/pay1all/
 
 scp -r /cygdrive/c/Users/Administrator/git/online-application/pay1all/prod.sqlite3 root@aws.pay1all.top:/home/hht/pay1all/
 

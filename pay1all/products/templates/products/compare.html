@@ -1,5 +1,5 @@
 {% extends "base.html" %} {% block page_content %}
-
+{% load static %}
 <div class="nav-scroller bg-white shadow-sm">
 	<nav class="nav nav-underline">
 		<a class="nav-link active" href="{% url 'products:index' %}">主页</a> <a
@@ -12,7 +12,7 @@
 	<h1>左边 还是 右边？</h1>
 
 	<form action="{% url 'products:vote' aproduct.id bproduct.id %}"
-		method="post">
+		method="post" class="needs-validation was-validated">
 		{% csrf_token %}
 
 		<div class="row mb-2">
@@ -81,4 +81,5 @@
 			value="Vote">
 	</form>
 </main>
+<script src="{% static 'products/js/form-validation.js' %}"></script>
 {% endblock %}
