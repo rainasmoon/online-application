@@ -37,6 +37,7 @@ def reset():
 def unlock():
     db_utils.unlock()
 
-    
-do_job()
+
+if __name__ == '__main__':
+    do_job()
 
