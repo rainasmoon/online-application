@@ -1,4 +1,4 @@
-import MySQLdb
+import pymysql
 
 '''
 CREATE TABLE "products_product" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "product_jd_skuid" integer NOT NULL, "product_name" varchar(200) NOT NULL, "product_price" integer NOT NULL, "product_big_pic" varchar(200) NOT NULL, "product_promotion_url" varchar(400) NOT NULL, "p_scores" integer NOT NULL, "cid" integer NOT NULL, "cid2" integer NOT NULL, "cid3" integer NOT NULL, "cidName" varchar(100) NOT NULL, "cid2Name" varchar(100) NOT NULL, "cid3Name" varchar(100) NOT NULL, "pub_date" datetime NOT NULL);
@@ -6,7 +6,7 @@ CREATE TABLE "products_product" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT
 
 
 def get_mysql_conn():
-    return  MySQLdb.connect(host='localhost', port=3306, user='pc', passwd='pc', db='online_db', charset='utf8', use_unicode=True)
+    return  pymysql.connect(host='localhost', port=3306, user='pc', passwd='pc', db='online_db', charset='utf8', use_unicode=True)
 
 
 def get_conn():
@@ -16,9 +16,13 @@ def get_conn():
 def insert_db(param):
     conn = get_conn()
     c = conn.cursor()
-    c.execute('''INSERT INTO products_product(product_jd_skuid, product_name, product_price, product_big_pic, product_promotion_url, p_scores, cid, cid2, cid3, cidName, cid2Name, cid3Name, pub_date) 
-                VALUES (%(product_jd_skuid)s, %(product_name)s, %(product_price)s, %(product_big_pic)s, %(product_promotion_url)s, %(p_scores)s, %(cid)s, %(cid2)s, %(cid3)s, %(cidName)s, %(cid2Name)s, %(cid3Name)s, %(pub_date)s FROM products_product
-                )''', param)
+    c.execute('select 1 from products_product where product_jd_skuid = %s', (param['product_jd_skuid'],))
+    if not c.fetchall():
+        c.execute('''INSERT INTO products_product(product_jd_skuid, product_name, product_price, product_big_pic, product_promotion_url, p_scores, cid, cid2, cid3, cidName, cid2Name, cid3Name, pub_date) 
+        VALUES (%(product_jd_skuid)s, %(product_name)s, %(product_price)s, %(product_big_pic)s, %(product_promotion_url)s, %(p_scores)s, %(cid)s, %(cid2)s, %(cid3)s, %(cidName)s, %(cid2Name)s, %(cid3Name)s, %(pub_date)s)''', param)
+        print('ONLINE DB, INSERT SKU:', param['product_jd_skuid'])
+    else:
+        print('ONLINE DB, SKU EXISTS:', param['product_jd_skuid'])
     conn.commit()
     conn.close()
 
@@ -26,9 +30,14 @@ def insert_db(param):
 def insert_menu(param):
     conn = get_conn()
     c = conn.cursor()
-    c.execute('''INSERT INTO products_menu(menu_name, cid, m_scores) 
-                VALUES( %(menu_name)s, %(cid)s, %(m_scores)s FROM products_menu
-                )''', param)
+    c.execute('select 1 from products_menu where menu_name = %s', (param['menu_name'],))
+    if not c.fetchall():
+        c.execute('''INSERT INTO products_menu(menu_name, cid, m_scores) 
+                VALUES( %(menu_name)s, %(cid)s, %(m_scores)s)''', param)
+        print('ONLINE DB, INSERT MENU :', param['menu_name'])
+    else:
+        pass
+        
     conn.commit()
     conn.close()
 
