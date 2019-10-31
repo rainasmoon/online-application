@@ -1,4 +1,5 @@
 import sqlite3
+import MySQLdb
 ONLINE_DB = 'db.sqlite3'
 
 '''
@@ -6,8 +7,20 @@ CREATE TABLE "products_product" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT
 '''
 
 
+def get_sqlite_conn():
+    return sqlite3.connect(ONLINE_DB)
+
+
+def get_mysql_conn():
+    return  MySQLdb.connect(host='localhost', port=3306, user='pc', passwd='pc', db='online_db')
+
+
+def get_conn():
+    return get_mysql_conn()
+
+
 def insert_db(param):
-    conn = sqlite3.connect(ONLINE_DB)
+    conn = get_conn()
     c = conn.cursor()
     c.execute('''INSERT INTO products_product(product_jd_skuid, product_name, product_price, product_big_pic, product_promotion_url, p_scores, cid, cid2, cid3, cidName, cid2Name, cid3Name, pub_date) 
                 SELECT ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? 
@@ -17,7 +30,7 @@ def insert_db(param):
 
 
 def insert_menu(param):
-    conn = sqlite3.connect(ONLINE_DB)
+    conn = get_conn()
     c = conn.cursor()
     c.execute('''INSERT INTO products_menu(menu_name, cid, m_scores) 
                 SELECT ?, ?, ?
@@ -27,7 +40,7 @@ def insert_menu(param):
 
 
 def select_search():
-    conn = sqlite3.connect(ONLINE_DB)
+    conn = get_conn()
     c = conn.cursor()
     c.execute('select id, search_context from products_search where as_done = 0')
     r = c.fetchall()
@@ -37,7 +50,7 @@ def select_search():
 
 
 def search_done(iid):
-    conn = sqlite3.connect(ONLINE_DB)
+    conn = get_conn()
     c = conn.cursor()
     c.execute('update products_search set as_done = 1 WHERE id = ?', (iid,))
     conn.commit()
@@ -45,7 +58,7 @@ def search_done(iid):
 
 
 def reset():
-    conn = sqlite3.connect(ONLINE_DB)
+    conn = get_conn()
     c = conn.cursor()
     c.execute('update products_search set as_done = 0')
     conn.commit()
@@ -53,7 +66,7 @@ def reset():
 
 
 def search_update(iid, cid):
-    conn = sqlite3.connect(ONLINE_DB)
+    conn = get_conn()
     c = conn.cursor()
     c.execute('update products_search set cid = ? WHERE id = ?', (cid, iid))
     conn.commit()
@@ -61,7 +74,7 @@ def search_update(iid, cid):
 
     
 def select_db():
-    conn = sqlite3.connect(ONLINE_DB)
+    conn = get_conn()
     c = conn.cursor()
     c.execute('select * from  "products_product" ')
     print('PRODUCTS TABLE ITEMS:' + c.fetchall())
