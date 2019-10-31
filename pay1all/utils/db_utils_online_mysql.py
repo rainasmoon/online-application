@@ -17,7 +17,7 @@ def insert_db(param):
     conn = get_conn()
     c = conn.cursor()
     c.execute('''INSERT INTO products_product(product_jd_skuid, product_name, product_price, product_big_pic, product_promotion_url, p_scores, cid, cid2, cid3, cidName, cid2Name, cid3Name, pub_date) 
-                SELECT %(product_jd_skuid)s, %(product_name)s, %(product_price)s, %(product_big_pic)s, %(product_promotion_url)s, %(p_scores)s, %(cid)s, %(cid2)s, %(cid3)s, %(cidName)s, %(cid2Name)s, %(cid3Name)s, %(pub_date)s 
+                SELECT %(product_jd_skuid)s, %(product_name)s, %(product_price)s, %(product_big_pic)s, %(product_promotion_url)s, %(p_scores)s, %(cid)s, %(cid2)s, %(cid3)s, %(cidName)s, %(cid2Name)s, %(cid3Name)s, %(pub_date)s FROM products_product
                 WHERE NOT EXISTS(SELECT 1 FROM products_product WHERE product_jd_skuid = %(product_jd_skuid)s)''', param)
     conn.commit()
     conn.close()
@@ -27,7 +27,7 @@ def insert_menu(param):
     conn = get_conn()
     c = conn.cursor()
     c.execute('''INSERT INTO products_menu(menu_name, cid, m_scores) 
-                SELECT %(menu_name)s, %(cid)s, %(m_scores)s
+                SELECT %(menu_name)s, %(cid)s, %(m_scores)s FROM products_menu
                 WHERE NOT EXISTS(SELECT 1 FROM products_menu WHERE cid = %(cid)s)''', param)
     conn.commit()
     conn.close()
