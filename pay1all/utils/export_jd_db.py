@@ -2,7 +2,7 @@ from datetime import datetime
 from io import StringIO
 import json
 
-from utils import jd_api, db_utils, db_utils_online
+from utils import jd_api, db_utils, db_utils_online_mysql as db_utils_online
 
 MAX_PARAM = 100 
 

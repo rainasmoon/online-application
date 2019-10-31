@@ -17,8 +17,8 @@ def insert_db(param):
     conn = get_conn()
     c = conn.cursor()
     c.execute('''INSERT INTO products_product(product_jd_skuid, product_name, product_price, product_big_pic, product_promotion_url, p_scores, cid, cid2, cid3, cidName, cid2Name, cid3Name, pub_date) 
-                SELECT ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? 
-                WHERE NOT EXISTS(SELECT 1 FROM products_product WHERE product_jd_skuid = ?)''', (param['product_jd_skuid'], param['product_name'], param['product_price'], param['product_big_pic'], param['product_promotion_url'], param['p_scores'], param['cid'], param['cid2'], param['cid3'], param['cidName'], param['cid2Name'], param['cid3Name'], param['pub_date'], param['product_jd_skuid']))
+                SELECT %(product_jd_skuid)s, %(product_name)s, %(product_price)s, %(product_big_pic)s, %(product_promotion_url)s, %(p_scores)s, %(cid)s, %(cid2)s, %(cid3)s, %(cidName)s, %(cid2Name)s, %(cid3Name)s, %(pub_date)s 
+                WHERE NOT EXISTS(SELECT 1 FROM products_product WHERE product_jd_skuid = %(product_jd_skuid)s)''', param)
     conn.commit()
     conn.close()
 
@@ -27,8 +27,8 @@ def insert_menu(param):
     conn = get_conn()
     c = conn.cursor()
     c.execute('''INSERT INTO products_menu(menu_name, cid, m_scores) 
-                SELECT ?, ?, ?
-                WHERE NOT EXISTS(SELECT 1 FROM products_menu WHERE cid = ?)''', (param['menu_name'], param['cid'], param['m_scores'], param['cid']))
+                SELECT %(menu_name)s, %(cid)s, %(m_scores)s
+                WHERE NOT EXISTS(SELECT 1 FROM products_menu WHERE cid = %(cid)s)''', param)
     conn.commit()
     conn.close()
 
@@ -46,7 +46,7 @@ def select_search():
 def search_done(iid):
     conn = get_conn()
     c = conn.cursor()
-    c.execute('update products_search set as_done = 1 WHERE id = ?', (iid,))
+    c.execute('update products_search set as_done = 1 WHERE id = %s', (iid,))
     conn.commit()
     conn.close() 
 
@@ -62,7 +62,7 @@ def reset():
 def search_update(iid, cid):
     conn = get_conn()
     c = conn.cursor()
-    c.execute('update products_search set cid = ? WHERE id = ?', (cid, iid))
+    c.execute('update products_search set cid = %s WHERE id = %s', (cid, iid))
     conn.commit()
     conn.close() 
 
@@ -70,7 +70,7 @@ def search_update(iid, cid):
 def select_db():
     conn = get_conn()
     c = conn.cursor()
-    c.execute('select * from  "products_product" ')
+    c.execute('select * from  products_product ')
     print('PRODUCTS TABLE ITEMS:' + c.fetchall())
     conn.commit()
     conn.close()
