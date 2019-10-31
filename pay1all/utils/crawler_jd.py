@@ -19,6 +19,8 @@ from urllib.request import ProxyHandler, build_opener
 
 test_asearch_input_1 = '手机'
 
+MAX_TRY = 5
+
 
 def create_search_url(keyword):
     keyword = parse.quote(keyword)
@@ -66,8 +68,10 @@ def call_jd_search(keyword):
     print("YEAH: FIND ITEMS NO.:" + str(len(rlist)))
     if len(rlist) == 0:
         rresponse = use_proxy(aurl)
-        while rresponse == None:
+        count = 0
+        while rresponse == None and count < MAX_TRY:
             print('PROXY ERROR, CALL AGAIN')
+            count += 1
             rresponse = use_proxy(aurl)   
         rlist = re.findall(r'(//item.jd.com/)([0-9]*)(.html)', rresponse)
         print("YEAH: FIND ITEMS VIA PROXY NO.:" + str(len(rlist)))
@@ -104,9 +108,12 @@ def call_a_new_proxy():
 
 def use_no_proxy(aurl):
     req = request.Request(url=aurl, headers=aheaders)
-    response = request.urlopen(req)
-    rresponse = response.read().decode('utf-8', "ignore") 
-    return rresponse
+    try:
+        response = request.urlopen(req)
+        rresponse = response.read().decode('utf-8', "ignore") 
+        return rresponse
+    except URLError as err:
+        print ("ERROR WHEN CONNECTING:", err)
 
 
 if __name__ == '__main__':
