@@ -2,7 +2,8 @@ from datetime import datetime
 from io import StringIO
 import json
 
-from utils import jd_api, db_utils, db_utils_online_mysql as db_utils_online
+from utils import db_utils_online_mysql as db_utils_online
+from utils import jd_api, db_utils
 
 MAX_PARAM = 100 
 
@@ -42,11 +43,10 @@ def make_produst_param(agood):
 
 def make_jd_data():
     r_set = db_utils.select_sku()
-    print('FIND NEW SKU NO.:' + str(len(r_set)))
+    print('FIND NEW SKU NO.:', len(r_set))
     jd_sku_list = r_set
     for j in range(len(jd_sku_list))[::MAX_PARAM]:
         t_sku_100_list = (','.join(jd_sku_list[j:j + MAX_PARAM]))
-        print('PARAM SKU NO. LIST:' + t_sku_100_list)
         goods_list = jd_api.call_jd_goods_detail(t_sku_100_list)
         for agood in goods_list:    
             db_utils_online.insert_db(make_produst_param(agood))
