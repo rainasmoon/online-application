@@ -71,7 +71,7 @@ def select_db():
     conn = get_conn()
     c = conn.cursor()
     c.execute('select * from  products_product ')
-    print('PRODUCTS TABLE ITEMS:' + c.fetchall())
+    print('PRODUCTS TABLE ITEMS:', c.fetchall())
     conn.commit()
     conn.close()
 
