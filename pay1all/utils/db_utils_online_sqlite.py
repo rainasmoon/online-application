@@ -1,5 +1,4 @@
 import sqlite3
-import MySQLdb
 ONLINE_DB = 'db.sqlite3'
 
 '''
@@ -11,12 +10,8 @@ def get_sqlite_conn():
     return sqlite3.connect(ONLINE_DB)
 
 
-def get_mysql_conn():
-    return  MySQLdb.connect(host='localhost', port=3306, user='pc', passwd='pc', db='online_db')
-
-
 def get_conn():
-    return get_mysql_conn()
+    return get_sqlite_conn()
 
 
 def insert_db(param):
