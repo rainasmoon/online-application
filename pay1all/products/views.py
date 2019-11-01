@@ -45,8 +45,12 @@ def menus(request):
 
 
 def compare(request, aproduct_id, bproduct_id, cid=0):
-    if aproduct_id == 0 :
+    if cid == 0:
         random_product_list = Product.objects.all()
+    else:
+        random_product_list = Product.objects.filter(cid3=cid)
+    if aproduct_id == 0 :
+        
         size = len(random_product_list)
         if size == 0:
             raise Http404("NO Data exist.")
@@ -55,7 +59,6 @@ def compare(request, aproduct_id, bproduct_id, cid=0):
         aproduct = random_product_list[id0]
         bproduct = random_product_list[id1]
     elif aproduct_id != 0 and bproduct_id == 0:
-        random_product_list = Product.objects.all()
         size = len(random_product_list)
         if size == 0:
             raise Http404("NO Data exists.")
