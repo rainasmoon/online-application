@@ -15,7 +15,7 @@ WC_MASK_IMG = 'wawa.jpg'
 # 评论数据保存文件
 COMMENT_FILE_PATH = 'jd_comment.txt'
 # 词云字体
-WC_FONT_PATH = '/Library/Fonts/Songti.ttc'
+WC_FONT_PATH = '/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc'
 
 
 def spider_comment(page=0):
@@ -91,11 +91,12 @@ def create_word_cloud():
     plt.axis("off")
     plt.figure()
     plt.show()
+    wc.to_file('result.png')
 
 
 if __name__ == '__main__':
     # 爬取数据
-    # batch_spider_comment()
+    #batch_spider_comment()
 
     # 生成词云
     create_word_cloud()
