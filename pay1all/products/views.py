@@ -49,22 +49,19 @@ def compare(request, aproduct_id, bproduct_id, cid=0):
         random_product_list = Product.objects.all()
     else:
         random_product_list = Product.objects.filter(cid3=cid)
+    size = len(random_product_list)
+    if size == 0:
+        raise Http404("NO Data exist.")
     if aproduct_id == 0 :
         
-        size = len(random_product_list)
-        if size == 0:
-            raise Http404("NO Data exist.")
-        id0 = random.randint(1, size)
-        id1 = random.randint(1, size)
-        aproduct = random_product_list[id0]
-        bproduct = random_product_list[id1]
+        aproduct = random.choice(random_product_list)
+        bproduct = random.choice(random_product_list)
     elif aproduct_id != 0 and bproduct_id == 0:
         size = len(random_product_list)
         if size == 0:
             raise Http404("NO Data exists.")
-        id0 = random.randint(1, size)
         aproduct = Product.objects.get(pk=aproduct_id)
-        bproduct = random_product_list[id0]    
+        bproduct = random.choice(random_product_list)   
     else:
         try:
             aproduct = Product.objects.get(pk=aproduct_id)
