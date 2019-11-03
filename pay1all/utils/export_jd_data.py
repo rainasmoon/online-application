@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*
 '''
 Deprected.
 will use db instead of files

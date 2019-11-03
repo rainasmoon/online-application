@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*
 import sqlite3
 
 PROD_DB = 'prod.sqlite3'

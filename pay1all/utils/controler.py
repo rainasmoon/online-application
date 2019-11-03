@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*
 from utils import crawler_jd
 from utils import db_utils
 from utils import db_utils_online_mysql as db_utils_online

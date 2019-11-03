@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*
 import sqlite3
 ONLINE_DB = 'db.sqlite3'
 
