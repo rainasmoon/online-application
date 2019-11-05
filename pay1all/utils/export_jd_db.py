@@ -62,6 +62,9 @@ def make_jd_wordcloud_comment():
     r_set = db_utils_online_mysql.select_no_wordcloud_product()
     print('FIND NO CLOUDPIC NO.:', len(r_set))
     for item in r_set:
-        jd_comment.batch_spider_comment(item.product_jd_skuid)
-        wordcloud_pic_path = jd_comment.create_word_cloud(item.product_jd_skuid)
-        db_utils_online_mysql.update_wordcloud_pic_path(item.id, wordcloud_pic_path)
+        print(item)
+        item_id = item[0]
+        sku_id = item[1]
+        jd_comment.batch_spider_comment(sku_id)
+        wordcloud_pic_path = jd_comment.create_word_cloud(sku_id)
+        db_utils_online_mysql.update_wordcloud_pic_path(item_id, wordcloud_pic_path)

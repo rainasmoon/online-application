@@ -79,7 +79,7 @@ def create_word_cloud(sku_id):
     生成词云
     :return:
     """
-    r_file_path = f'result{sku_id}.png'
+    r_file_path = STATIC_PIC_PATH + f'result{sku_id}.png'
     if not os.path.exists(r_file_path):
         print('MAKE CLOUD PIC:', r_file_path)
         # 设置词云的一些配置，如：字体，背景色，词云形状，大小
@@ -88,7 +88,7 @@ def create_word_cloud(sku_id):
         # 生成词云
         wc.generate(cut_word(sku_id))
     
-        wc.to_file(STATIC_PIC_PATH + r_file_path)
+        wc.to_file(r_file_path)
         
         return r_file_path
     else:

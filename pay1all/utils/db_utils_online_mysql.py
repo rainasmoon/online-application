@@ -90,7 +90,7 @@ def update_search_cid(iid, cid):
 def update_wordcloud_pic_path(iid, wordcloud_pic_path):
     conn = get_conn()
     c = conn.cursor()
-    c.execute('update products_search set wordcloud_pic_path = %s WHERE id = %s', (wordcloud_pic_path, iid))
+    c.execute('update products_product set wordcloud_pic_path = %s WHERE id = %s', (wordcloud_pic_path, iid))
     conn.commit()
     conn.close()
 
