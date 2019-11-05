@@ -29,8 +29,9 @@ scp -r root@aws.pay1all.top:/home/hht/pay1all/db.sqlite3 /cygdrive/c/Users/Admin
 scp -r /cygdrive/c/Users/Administrator/git/online-application/pay1all/db.sqlite3 root@aws.pay1all.top:/home/hht/pay1all/
 
 
-
 uwsgi --chdir=/home/hht/pay1all --http :8000 --module pay1all.wsgi:application  --master --pidfile=/tmp/pay1all-master.pid  --processes=5 --vacuum --daemonize=/home/hht/pay1all.log 
+uwsgi --chdir=/home/pi/git/online-application/pay1all --http :8000 --module pay1all.wsgi:application  --master --pidfile=/tmp/pay1all-master.pid  --vacuum --daemonize=/home/pi/pay1all.log 
+
  
  
 usermod -a -G examplegroup exampleusername

@@ -22,7 +22,7 @@ class Product(models.Model):
     cid2Name = models.CharField(max_length=100 , default='no name')
     cid3Name = models.CharField(max_length=100 , default='no name')
     
-    wordcloud_pic_path = models.CharField(max_length=100)
+    wordcloud_pic_path = models.CharField(max_length=100, null=True)
     
     pub_date = models.DateTimeField('date published')
     
