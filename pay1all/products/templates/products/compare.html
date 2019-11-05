@@ -58,11 +58,10 @@
 		</div>
 		<h2>为你喜欢的物品投上一票吧</h2>
 		<hr class="mb-4">
-		<div class="alert alert-warning" role="alert">{% if
-			error_message %}</div>
-		<p>
+		{% if error_message %}</div>
+		<div class="alert alert-warning" role="alert">
 			<strong>{{ error_message }}</strong>
-		</p>
+		</div>
 		{% endif %}
 		<div class="d-block my-3">
 			<div class="custom-control custom-radio">

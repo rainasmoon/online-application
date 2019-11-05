@@ -15,8 +15,7 @@
 	<div class="list-group">
 		{% for amenu in menu_list %} <a
 			href="{% url 'products:index_c' amenu.cid %}"
-			class="list-group-item list-group-item-action">{{ amenu.menu_name
-			}}</a> {% endfor %}
+			class="list-group-item list-group-item-action">{{ amenu.menu_name}}</a> {% endfor %}
 	</div>
 	{% else %}
 	<p>No menus.</p>

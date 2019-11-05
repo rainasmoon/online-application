@@ -16,8 +16,10 @@
 <p>价格 : {{product.product_price}}</p>
 <p>{{product.cidName}} - {{product.cid2Name}} - {{product.cid3Name}}</p>
 <a class="btn btn-lg btn-primary" href="{{product.product_promotion_url}}">去京东查看</a>
-<br>
+<hr class="mb-4">
+<h2>大家说：</h2>
 <img class="img-fluid" alt="Responsive image" src="{% static 'cloudpic' %}/{{product.wordcloud_pic_path}}" />
+<hr class="mb-4">
 <a class="btn btn-lg btn-primary" href="{% url 'products:compare' product.id 0 %}" role="button">vote again?</a>
 </main>
 {% endblock %}
