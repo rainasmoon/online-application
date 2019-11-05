@@ -22,7 +22,7 @@ def do_job():
                 db_utils.insert_db(i)
             print("STORE THEM:" + str(len(r_sku_list)))
             export_jd_db.make_jd_data()
-            db_utils_online.search_done(search_id)
+            db_utils_online.done_search(search_id)
             print("SEARCH ONE DONE.")
         export_jd_db.make_jd_wordcloud_comment()
         db_utils.unlock()

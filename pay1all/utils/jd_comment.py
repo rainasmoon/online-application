@@ -71,12 +71,15 @@ def cut_word(sku_id):
     对数据分词
     :return: 分词后的数据
     """
-    if os.path.exists(COMMENT_FILE_PATH + str(sku_id)):
-        with open(COMMENT_FILE_PATH + str(sku_id)) as file:
-            comment_txt = file.read()
-            wordlist = jieba.cut(comment_txt, cut_all=True)
-            wl = " ".join(wordlist)
-            return wl
+    if os.access(COMMENT_FILE_PATH + str(sku_id), os.R_OK):
+        try:
+            with open(COMMENT_FILE_PATH + str(sku_id)) as file:
+                comment_txt = file.read()
+                wordlist = jieba.cut(comment_txt, cut_all=True)
+                wl = " ".join(wordlist)
+                return wl
+        except:
+            print('ERROR COMMENT FILE:', sku_id)
 
     else:
         print('JD COMMENT FILE NOT EXIST:', sku_id)
