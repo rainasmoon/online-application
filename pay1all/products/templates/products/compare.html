@@ -24,7 +24,7 @@
 						<h3 class="mb-0">{{aproduct.cid3Name}}</h3>
 						<div class="mb-1 text-muted">{{aproduct.product_price}}</div>
 						<p class="card-text mb-auto">{{aproduct.product_name}}</p>
-						<a href="{{aproduct.product_promotion_url}}"
+						<a href="{% url 'products:details' aproduct.id  %}"
 							class="stretched-link">Continue reading</a>
 					</div>
 
@@ -45,7 +45,7 @@
 						<h3 class="mb-0">{{bproduct.cid3Name}}</h3>
 						<div class="mb-1 text-muted">{{bproduct.product_price}}</div>
 						<p class="mb-auto">{{bproduct.product_name}}</p>
-						<a href="{{bproduct.product_promotion_url}}"
+						<a href="{% url 'products:details' bproduct.id  %}"
 							class="stretched-link">Continue reading</a>
 					</div>
 					<div class="col-auto d-none d-lg-block">

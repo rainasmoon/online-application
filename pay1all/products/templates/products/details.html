@@ -16,6 +16,7 @@
 <p>{{product.cidName}} - {{product.cid2Name}} - {{product.cid3Name}}</p>
 <a href="{{product.product_promotion_url}}">去京东查看</a>
 <br>
+<img src="{% static product.wordcloud_pic_path %}" />
 <a class="btn btn-lg btn-primary" href="{% url 'products:compare' product.id 0 %}" role="button">vote again?</a>
 </main>
 {% endblock %}
