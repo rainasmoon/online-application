@@ -1,25 +1,40 @@
 {% extends "base.html" %} {% block page_content %}
 <div class="nav-scroller bg-white shadow-sm">
 	<nav class="nav nav-underline">
-		<a class="nav-link active" href="{% url 'products:index' %}">主页</a> 
-		<a class="nav-link" href="{% url 'products:compare' 0 0 %}">投票</a>
+		<a class="nav-link active" href="{% url 'products:index' %}">主页</a> <a
+			class="nav-link" href="{% url 'products:compare' 0 0 %}">投票</a>
 	</nav>
 </div>
 <main role="main" class="container">
-<h1 class="mt-4">商品得分</h1>
-<p>
-	根据 <strong>性能，热度，大数据评算</strong>的得分。
-</p>
+	<h1 class="mt-4">商品得分</h1>
+	<p>
+		根据 <strong>性能，热度，大数据评算</strong>的得分。
+	</p>
 
-{% if product_list %} {% for product in product_list %}
-<div class="row mb-3">
-	<div class="col-md-8 themed-grid-col">{{ product.product_name }}</div>
-	<div class="col-md-4 themed-grid-col">{{ product.p_scores }}</div>
-</div>
-{% endfor %} {% else %}
-<p>No products.</p>
-{% endif %}
+	{% if product_list %}
+	<table class="table">
+		<thead class="thead-dark">
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">First</th>
+				<th scope="col">Last</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for product in product_list %}
+			<tr>
+				<th scope="row">{{ forloop.counter }}</th>
+				<td>{{ product.product_name }}</td>
+				<td>{{ product.p_scores }}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	{% else %}
 
-<a class="btn btn-lg btn-primary" href="{% url 'products:compare' 0 0 %}"  role="button">vote again?</a>
+
+	<p>No products.</p>
+	{% endif %} <a class="btn btn-lg btn-primary"
+		href="{% url 'products:compare' 0 0 %}" role="button">vote again?</a>
 </main>
 {% endblock %}

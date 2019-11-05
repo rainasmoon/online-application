@@ -1,5 +1,4 @@
-{% extends "base.html" %} {% block page_content %}
-{% load static %}
+{% extends "base.html" %} {% block page_content %} {% load static %}
 <div class="nav-scroller bg-white shadow-sm">
 	<nav class="nav nav-underline">
 		<a class="nav-link active" href="{% url 'products:index' %}">主页</a> <a
@@ -59,7 +58,8 @@
 		</div>
 		<h2>为你喜欢的物品投上一票吧</h2>
 		<hr class="mb-4">
-		{% if error_message %}
+		<div class="alert alert-warning" role="alert">{% if
+			error_message %}</div>
 		<p>
 			<strong>{{ error_message }}</strong>
 		</p>
