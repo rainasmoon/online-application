@@ -42,12 +42,15 @@ def spider_comment(sku_id, page=0):
     r_json_obj = json.loads(r_json_str)
     # 获取评价列表数据
     r_json_comments = r_json_obj['comments']
-    # 遍历评论对象列表
+    if len(r_json_comments) == 0 :
+        print("NO JDCOMMENTS, PLS CHECK...")
+        return False
     for r_json_comment in r_json_comments:
         # 以追加模式换行写入每条评价
         with open(COMMENT_FILE_PATH + str(sku_id), 'a+') as file:
             file.write(r_json_comment['content'] + '\n')
-        # 打印评论对象中的评论内容
+            
+    return True
 
 
 def batch_spider_comment(sku_id):
@@ -57,8 +60,9 @@ def batch_spider_comment(sku_id):
     if not os.path.exists(COMMENT_FILE_PATH + str(sku_id)):  
         print('SPIDER JD COMMENT:', sku_id, ':', MAX_PAGE_NUM)        
         for i in range(MAX_PAGE_NUM):
-            spider_comment(sku_id, i)
-            # 模拟用户浏览，设置一个爬虫间隔，防止ip被封
+            r = spider_comment(sku_id, i)
+            if not r :
+                break
             time.sleep(random.random() * 5)
 
 
@@ -67,11 +71,15 @@ def cut_word(sku_id):
     对数据分词
     :return: 分词后的数据
     """
-    with open(COMMENT_FILE_PATH + str(sku_id)) as file:
-        comment_txt = file.read()
-        wordlist = jieba.cut(comment_txt, cut_all=True)
-        wl = " ".join(wordlist)
-        return wl
+    if os.path.exists(COMMENT_FILE_PATH + str(sku_id)):
+        with open(COMMENT_FILE_PATH + str(sku_id)) as file:
+            comment_txt = file.read()
+            wordlist = jieba.cut(comment_txt, cut_all=True)
+            wl = " ".join(wordlist)
+            return wl
+
+    else:
+        print('JD COMMENT FILE NOT EXIST:', sku_id)
 
 
 def create_word_cloud(sku_id):
@@ -86,11 +94,15 @@ def create_word_cloud(sku_id):
         wc = WordCloud(background_color="white", max_words=2000, scale=4,
                        max_font_size=50, random_state=42, font_path=WC_FONT_PATH)
         # 生成词云
-        wc.generate(cut_word(sku_id))
+        r_cutword = cut_word(sku_id)
+        if r_cutword:
+            wc.generate(r_cutword)
     
-        wc.to_file(r_file_path)
-        
-        return r_file_path
+            wc.to_file(r_file_path)
+            
+            return r_file_path
+        else:
+            print('NO CUTWORD')
     else:
         print('CLOUD PIC EXIST:', sku_id)
 
