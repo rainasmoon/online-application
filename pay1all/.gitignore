@@ -3,3 +3,4 @@ __pycache__
 /lib/
 config_jd_api.json
 .settings
+*.sqlite3
