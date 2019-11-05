@@ -67,7 +67,7 @@ def make_jd_wordcloud_comment():
         sku_id = item[1]
         jd_comment.batch_spider_comment(sku_id)
         wordcloud_pic_path = jd_comment.create_word_cloud(sku_id)
-        if not wordcloud_pic_path:
+        if wordcloud_pic_path:
             db_utils_online_mysql.update_wordcloud_pic_path(item_id, wordcloud_pic_path)
         else:
             print('SKIP. WORDCLOUD PIC PATH EMPTY,:', wordcloud_pic_path)

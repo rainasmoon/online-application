@@ -37,6 +37,7 @@ def spider_comment(sku_id, page=0):
         r.raise_for_status()
     except:
         print('ERROR: 爬取失败')
+        return False
     # 截取json数据字符串
     r_json_str = r.text[26:-2]
     r_json_obj = json.loads(r_json_str)
