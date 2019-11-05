@@ -22,6 +22,8 @@ class Product(models.Model):
     cid2Name = models.CharField(max_length=100 , default='no name')
     cid3Name = models.CharField(max_length=100 , default='no name')
     
+    wordcloud_pic_path = models.CharField(max_length=100)
+    
     pub_date = models.DateTimeField('date published')
     
     def __str__(self):

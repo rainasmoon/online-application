@@ -14,7 +14,7 @@ def get_conn():
     return get_mysql_conn()
 
 
-def insert_db(param):
+def insert_product(param):
     conn = get_conn()
     c = conn.cursor()
     c.execute('select 1 from products_product where product_jd_skuid = %s', (param['product_jd_skuid'],))
@@ -53,7 +53,17 @@ def select_search():
     return r 
 
 
-def search_done(iid):
+def select_no_wordcloud_product():
+    conn = get_conn()
+    c = conn.cursor()
+    c.execute('select id, product_jd_skuid from products_product where wordcloud_pic_path is null')
+    r = c.fetchall()
+    conn.commit()
+    conn.close()
+    return r 
+
+
+def done_search(iid):
     conn = get_conn()
     c = conn.cursor()
     c.execute('update products_search set as_done = 1 WHERE id = %s', (iid,))
@@ -69,15 +79,23 @@ def reset():
     conn.close() 
 
 
-def search_update(iid, cid):
+def update_search_cid(iid, cid):
     conn = get_conn()
     c = conn.cursor()
     c.execute('update products_search set cid = %s WHERE id = %s', (cid, iid))
     conn.commit()
     conn.close() 
 
+
+def update_wordcloud_pic_path(iid, wordcloud_pic_path):
+    conn = get_conn()
+    c = conn.cursor()
+    c.execute('update products_search set wordcloud_pic_path = %s WHERE id = %s', (wordcloud_pic_path, iid))
+    conn.commit()
+    conn.close()
+
     
-def select_db():
+def select_product():
     conn = get_conn()
     c = conn.cursor()
     c.execute('select * from  products_product ')
@@ -87,4 +105,4 @@ def select_db():
 
 
 if __name__ == '__main__':
-    select_db()
+    select_product()

@@ -1,11 +1,14 @@
+# -*- coding: utf-8 -*
+
 import json
 import os
 import random
 import time
 
 import jieba
-import numpy as np
 import requests
+
+import numpy as np
 from wordcloud import WordCloud
 
 # 词云形状图片
@@ -53,7 +56,8 @@ def batch_spider_comment(sku_id):
     批量爬取某东评价
     """
     # 写入数据前先清空之前的数据
-    if not os.path.exists(COMMENT_FILE_PATH + sku_id):        
+    if not os.path.exists(COMMENT_FILE_PATH + sku_id): 
+        print('SPIDER JD COMMENT:', sku_id, ':', MAX_PAGE_NUM)       
         for i in range(MAX_PAGE_NUM):
             spider_comment(sku_id, i)
             # 模拟用户浏览，设置一个爬虫间隔，防止ip被封
@@ -77,14 +81,20 @@ def create_word_cloud(sku_id):
     生成词云
     :return:
     """
-   
-    # 设置词云的一些配置，如：字体，背景色，词云形状，大小
-    wc = WordCloud(background_color="white", max_words=2000, scale=4,
-                   max_font_size=50, random_state=42, font_path=WC_FONT_PATH)
-    # 生成词云
-    wc.generate(cut_word(sku_id))
-
-    wc.to_file(f'result{sku_id}.png')
+    r_file_path = f'result{sku_id}.png'
+    if not os.path.exists(r_file_path):
+        print('MAKE CLOUD PIC:', r_file_path)
+        # 设置词云的一些配置，如：字体，背景色，词云形状，大小
+        wc = WordCloud(background_color="white", max_words=2000, scale=4,
+                       max_font_size=50, random_state=42, font_path=WC_FONT_PATH)
+        # 生成词云
+        wc.generate(cut_word(sku_id))
+    
+        wc.to_file(r_file_path)
+        
+        return r_file_path
+    else:
+        print('CLOUD PIC EXIST:', sku_id)
 
 
 if __name__ == '__main__':
@@ -92,4 +102,5 @@ if __name__ == '__main__':
     batch_spider_comment(test_jd_prod_sku_1)
 
     # 生成词云
-    create_word_cloud(test_jd_prod_sku_1)
+    r_file_path = create_word_cloud(test_jd_prod_sku_1)
+    print(r_file_path)

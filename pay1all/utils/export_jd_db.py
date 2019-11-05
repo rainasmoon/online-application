@@ -3,8 +3,10 @@ from datetime import datetime
 from io import StringIO
 import json
 
-from utils import db_utils_online_mysql as db_utils_online
+from utils import db_utils_online_mysql as db_utils_online, \
+    db_utils_online_mysql
 from utils import jd_api, db_utils
+from utils import jd_comment
 
 MAX_PARAM = 100 
 
@@ -50,7 +52,16 @@ def make_jd_data():
         t_sku_100_list = (','.join(jd_sku_list[j:j + MAX_PARAM]))
         goods_list = jd_api.call_jd_goods_detail(t_sku_100_list)
         for agood in goods_list:    
-            db_utils_online.insert_db(make_produst_param(agood))
+            db_utils_online.insert_product(make_produst_param(agood))
             db_utils_online.insert_menu(make_menu_param(agood))
             db_utils.done(agood['skuId'])
     print('INSERT PRODUCT, MENU, SET STORE TO DONE.')
+
+    
+def make_jd_wordcloud_comment():
+    r_set = db_utils_online_mysql.select_no_wordcloud_product()
+    print('FIND NO CLOUDPIC NO.:', len(r_set))
+    for item in r_set:
+        jd_comment.batch_spider_comment(item.product_jd_skuid)
+        wordcloud_pic_path = jd_comment.create_word_cloud(item.product_jd_skuid)
+        db_utils_online_mysql.update_wordcloud_pic_path(item.id, wordcloud_pic_path)
