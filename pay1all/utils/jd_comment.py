@@ -11,8 +11,8 @@ import requests
 import numpy as np
 from wordcloud import WordCloud
 
-# 评论数据保存文件
-COMMENT_FILE_PATH = 'jd_comment.txt'
+STATIC_PIC_PATH = '/var/www/html/static/cloudpic/'
+COMMENT_FILE_PATH = STATIC_PIC_PATH + 'jd_comment.txt'
 # 词云字体
 WC_FONT_PATH = '/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc'
 
@@ -20,6 +20,7 @@ MAX_PAGE_NUM = 10
 
 test_jd_prod_sku_1 = 25643981948
 test_jd_prod_sku_2 = 1263013576
+
 
 def spider_comment(sku_id, page=0):
     """
@@ -53,13 +54,8 @@ def batch_spider_comment(sku_id):
     """
     批量爬取某东评价
     """
-    # 写入数据前先清空之前的数据
-<<<<<<< HEAD
-    if not os.path.exists(COMMENT_FILE_PATH + sku_id): 
-        print('SPIDER JD COMMENT:', sku_id, ':', MAX_PAGE_NUM)       
-=======
-    if not os.path.exists(COMMENT_FILE_PATH + str(sku_id)):        
->>>>>>> branch 'master' of https://github.com/rainasmoon/online-application.git
+    if not os.path.exists(COMMENT_FILE_PATH + str(sku_id)):  
+        print('SPIDER JD COMMENT:', sku_id, ':', MAX_PAGE_NUM)        
         for i in range(MAX_PAGE_NUM):
             spider_comment(sku_id, i)
             # 模拟用户浏览，设置一个爬虫间隔，防止ip被封
@@ -92,7 +88,7 @@ def create_word_cloud(sku_id):
         # 生成词云
         wc.generate(cut_word(sku_id))
     
-        wc.to_file(r_file_path)
+        wc.to_file(STATIC_PIC_PATH + r_file_path)
         
         return r_file_path
     else:
