@@ -32,11 +32,10 @@ def spider_comment(sku_id, page=0):
     kv = {'user-agent': 'Mozilla/5.0', 'Referer': f'https://item.jd.com/{sku_id}.html'}
 
     try:
-        print('CALL URL: ', url)
         r = requests.get(url, headers=kv)
         r.raise_for_status()
     except:
-        print('ERROR: 爬取失败')
+        print('ERROR: 爬取失败:', url)
         return False
     # 截取json数据字符串
     r_json_str = r.text[26:-2]
@@ -109,6 +108,7 @@ def create_word_cloud(sku_id):
             print('NO CUTWORD')
     else:
         print('CLOUD PIC EXIST:', sku_id)
+        return r_file_path
 
 
 if __name__ == '__main__':
