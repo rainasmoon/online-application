@@ -55,19 +55,19 @@ def make_jd_data():
             db_utils_online.insert_product(make_produst_param(agood))
             db_utils_online.insert_menu(make_menu_param(agood))
             db_utils.done(agood['skuId'])
-    print('INSERT PRODUCT, MENU, SET STORE TO DONE.')
+    print('INSERT PRODUCT, MENU, SET STORE TO DONE SUCCESS.')
 
     
 def make_jd_wordcloud_comment():
     r_set = db_utils_online_mysql.select_no_wordcloud_product()
-    print('FIND NO CLOUDPIC NO.:', len(r_set))
+    print('FIND NO CLOUDPIC NO....:', len(r_set))
     for item in r_set:
-        print(item)
         item_id = item[0]
         sku_id = item[1]
         jd_comment.batch_spider_comment(sku_id)
         wordcloud_pic_path = jd_comment.create_word_cloud(sku_id)
         if wordcloud_pic_path:
             db_utils_online_mysql.update_wordcloud_pic_path(item_id, wordcloud_pic_path)
+            print('UPDATE PIC PATH SUCCESS:', item_id)
         else:
             print('SKIP. WORDCLOUD PIC PATH EMPTY,:', wordcloud_pic_path)

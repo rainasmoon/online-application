@@ -58,7 +58,7 @@ def batch_spider_comment(sku_id):
     批量爬取某东评价
     """
     if not os.path.exists(COMMENT_FILE_PATH + str(sku_id)):  
-        print('SPIDER JD COMMENT:', sku_id, ':', MAX_PAGE_NUM)        
+        print('SPIDER JD COMMENT...:', sku_id, ':', MAX_PAGE_NUM)        
         for i in range(MAX_PAGE_NUM):
             r = spider_comment(sku_id, i)
             if not r :
@@ -92,7 +92,7 @@ def create_word_cloud(sku_id):
     """
     r_file_path = STATIC_PIC_PATH + f'result{sku_id}.png'
     if not os.path.exists(r_file_path):
-        print('MAKE CLOUD PIC:', r_file_path)
+        print('MAKE CLOUD PIC...:', r_file_path)
         # 设置词云的一些配置，如：字体，背景色，词云形状，大小
         wc = WordCloud(background_color="white", max_words=2000, scale=4,
                        max_font_size=50, random_state=42, font_path=WC_FONT_PATH)
@@ -102,12 +102,12 @@ def create_word_cloud(sku_id):
             wc.generate(r_cutword)
     
             wc.to_file(r_file_path)
-            
+            print('MAKE SUCCESS:', r_file_path)
             return r_file_path
         else:
-            print('NO CUTWORD')
+            print('NO CUTWORD, NO PIC CREATED, NO PATH')
     else:
-        print('CLOUD PIC EXIST:', sku_id)
+        print('CLOUD PIC EXIST:', r_file_path)
         return r_file_path
 
 

@@ -24,7 +24,9 @@ def do_job():
             export_jd_db.make_jd_data()
             db_utils_online.done_search(search_id)
             print("SEARCH ONE DONE.")
+        print("START MAKE CLOUD PIC ...")
         export_jd_db.make_jd_wordcloud_comment()
+        print("END MAKE CLOUD PIC.")
         db_utils.unlock()
         print("UNLOCKED. SUCCESS>>>>>>>>>>>>>>>>>>>")
     else:
