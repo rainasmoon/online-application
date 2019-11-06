@@ -90,7 +90,8 @@ def create_word_cloud(sku_id):
     生成词云
     :return:
     """
-    r_file_path = STATIC_PIC_PATH + f'result{sku_id}.png'
+    cloud_pic_file_name = f'result{sku_id}.png'
+    r_file_path = STATIC_PIC_PATH + cloud_pic_file_name
     if not os.path.exists(r_file_path):
         print('MAKE CLOUD PIC...:', r_file_path)
         # 设置词云的一些配置，如：字体，背景色，词云形状，大小
@@ -103,12 +104,12 @@ def create_word_cloud(sku_id):
     
             wc.to_file(r_file_path)
             print('MAKE SUCCESS:', r_file_path)
-            return r_file_path
+            return cloud_pic_file_name
         else:
             print('NO CUTWORD, NO PIC CREATED, NO PATH')
     else:
         print('CLOUD PIC EXIST:', r_file_path)
-        return r_file_path
+        return cloud_pic_file_name
 
 
 if __name__ == '__main__':

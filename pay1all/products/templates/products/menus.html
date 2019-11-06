@@ -1,4 +1,8 @@
-{% extends "base.html" %} {% block page_content %}
+{% extends "base.html" %} 
+{% block title %}
+所有分类
+{% endblock %}
+{% block page_content %}
 <div class="nav-scroller bg-white shadow-sm">
 	<nav class="nav nav-underline">
 		<a class="nav-link active" href="{% url 'products:index' %}">主页</a> <a
