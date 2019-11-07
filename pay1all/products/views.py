@@ -107,6 +107,7 @@ def vote(request, aproduct_id, bproduct_id):
         return render(request, 'products/compare.html', {
                 'aproduct': aproduct,
                 'bproduct': bproduct,
+                'cid': 0,
                 'error_message': "You didn't select a product.",
         })
     else:        
