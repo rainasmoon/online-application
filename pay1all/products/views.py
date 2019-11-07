@@ -107,7 +107,7 @@ def vote(request, aproduct_id, bproduct_id):
         return render(request, 'products/compare.html', {
                 'aproduct': aproduct,
                 'bproduct': bproduct,
-                'error_message': "you didn't select a product.",
+                'error_message': "You didn't select a product.",
         })
     else:        
         return HttpResponseRedirect(reverse('products:details', args=(choice_id,)))
