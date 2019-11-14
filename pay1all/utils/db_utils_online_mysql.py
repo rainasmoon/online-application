@@ -60,7 +60,7 @@ def select_product(sku_id):
     conn = get_conn()
     c = conn.cursor()
     c.execute('select id, p_scores from products_product where product_jd_skuid = %s', (sku_id,))
-    r = c.fetchall()
+    r = c.fetchone()
     conn.commit()
     conn.close()
     return r 
@@ -123,7 +123,7 @@ def reset():
 def update_product_scores(iid):
     conn = get_conn()
     c = conn.cursor()
-    c.execute('update products_search set p_scores = p_scores+1 WHERE id = %s', (iid))
+    c.execute('update products_product set p_scores = p_scores+1 WHERE id = %s', (iid))
     conn.commit()
     conn.close() 
 
