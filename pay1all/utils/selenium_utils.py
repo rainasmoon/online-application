@@ -12,8 +12,8 @@ test_url_1 = 'https://search.jd.com/Search?keyword=%E6%89%8B%E6%9C%BA&enc=utf-8&
 def get_source(aurl):
     options = Options()
     options.add_argument('-headless')  # 无头参数
-    driver = Firefox(executable_path='geckodriver', options=options)  # 配了环境变量第一个参数就可以省了，不然传绝对路径
-#     driver = Firefox(executable_path='C:\\Users\\Administrator\\git\\online-application\\pay1all\\lib\\geckodriver.exe', options=options)  # 配了环境变量第一个参数就可以省了，不然传绝对路径
+    driver = Firefox(executable_path='../lib/geckodriver', options=options)  # 配了环境变量第一个参数就可以省了，不然传绝对路径
+#     driver = Firefox(executable_path='../lib/geckodriver.exe', options=options)  # 配了环境变量第一个参数就可以省了，不然传绝对路径
 
     wait = WebDriverWait(driver, timeout=10)
     driver.get(aurl)
