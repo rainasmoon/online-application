@@ -5,6 +5,7 @@ Created on 2019-10-23
 @author: Administrator
 '''
 
+import datetime
 import hashlib
 from io import StringIO
 import json
@@ -133,7 +134,23 @@ def call_jd_category(paraent_id, agrade):
 def call_my_orders(atime, page_no):
     param_json = get_param_json_orders(atime, page_no)
     json_result = call_jd_api(get_api_url(method_order, param_json))
-    return json_result
+    r_result = json_result['jd_union_open_order_query_response']['result']
+    inner_json_result = json.load(StringIO(r_result))
+    if inner_json_result['hasMore'] != False:
+        print("$$$$$$$$$$$$$$$$WARNING$$$$$$$$$$$$$$$$HASMORE:", inner_json_result['hasMore'])
+    
+    if 'data' in inner_json_result:
+        r_order_list = inner_json_result['data']
+        print('INFO: FIND orders : ', len(r_order_list))
+        for aorder in r_order_list:
+            print(aorder['orderId'])
+            if aorder['parentId'] != 0:
+                print('SUB ORDER:', aorder['parentId'])
+                continue
+            asku_list = aorder['skuList']
+            print('INFO: FIND:SKU', len(asku_list))
+            for asku in asku_list:
+                print(asku)
 
 
 def call_jingfen():
@@ -143,11 +160,21 @@ def call_jingfen():
 
 
 if __name__ == '__main__':
-    r = call_jd_promotion_url(test_jd_prod_sku_1)
-    print(r)
-    r = call_jd_category(0, 0)
-    print(r)
-    r = call_my_orders('2019010101', 1)
-    print(r)
-    r = call_jingfen()
-    print(r)
+#     r = call_jd_promotion_url(test_jd_prod_sku_1)
+#     print(r)
+#     r = call_jd_category(0, 0)
+#     print(r)
+    
+    begin = datetime.date(2019, 10, 1)
+    end = datetime.date(2019, 11, 13)
+    for i in range((end - begin).days + 1):
+        day = begin + datetime.timedelta(days=i)
+        aday = day.strftime("%Y%m%d")
+        for i in range(24):
+            atime = aday + str(i).zfill(2)
+            print("CALL:", atime)
+            r = call_my_orders(atime, 1)
+            print(r)
+    
+#     r = call_jingfen()
+#     print(r)

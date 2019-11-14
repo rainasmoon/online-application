@@ -1,3 +1,4 @@
+import datetime
 from io import StringIO
 import json
 from urllib import parse
@@ -136,7 +137,22 @@ def test_proxy_2():
         print('ERROR PROXY', err)
 
 
-test_proxy_2()    
+def test_date():
+    begin = datetime.date(2019, 1, 1)
+    end = datetime.date(2019, 11, 13)
+    for i in range((end - begin).days + 1):
+        day = begin + datetime.timedelta(days=i)
+        print(day.strftime("%Y%m%d"))
+
+        
+def test_str_2():
+    for i in range(24):
+        print(str(i).zfill(2))
+
+
+test_date()
+test_str_2()
+# test_proxy_2()    
 # test_index()
 # test_parse_quote()
 # test_StringIO()
