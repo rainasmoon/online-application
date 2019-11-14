@@ -2,6 +2,7 @@ import datetime
 from io import StringIO
 import json
 import re
+import time
 from urllib import parse
 from urllib import request
 import urllib
@@ -144,8 +145,12 @@ def test_date():
     for i in range((end - begin).days + 1):
         day = begin + datetime.timedelta(days=i)
         print(day.strftime("%Y%m%d"))
-        
-    print(datetime.time)
+    yesterday = (datetime.date.today() - datetime.timedelta(days=1)).strftime('%Y%m%d')
+    print(yesterday)
+    now = int(round(time.time() * 1000))
+    print(now)
+    begin2 = time.strftime('%Y%m%d', time.localtime(now / 1000))
+    print(begin2)
 
         
 def test_str_2():

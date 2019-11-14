@@ -2,6 +2,7 @@
 import datetime
 from io import StringIO
 import json
+import time
 
 from utils import db_utils_online_mysql as db_utils_online, \
     db_utils_online_mysql
@@ -88,7 +89,15 @@ def make_jd_wordcloud_comment():
 
 
 def init_jd_myorder():    
-    inner_init_jd_myorder(datetime.date(2019, 10, 1), datetime.date(2019, 11, 13))
+    # inner_init_jd_myorder(datetime.date(2019, 10, 1), datetime.date(2019, 11, 13))
+    pass
+
+
+def query_jd_myorder():
+    yesterday = datetime.date.today() - datetime.timedelta(days=1)
+    recent = db_utils_online_mysql.get_recent_order_time()
+    begin = time.strftime('%Y%m%d', time.localtime(recent / 1000))
+    inner_init_jd_myorder(begin, yesterday)
 
     
 def inner_init_jd_myorder(begin, end):

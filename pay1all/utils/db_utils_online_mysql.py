@@ -96,6 +96,16 @@ def select_order():
     return r 
 
 
+def get_recent_order_time():
+    conn = get_conn()
+    c = conn.cursor()
+    c.execute('select max(jd_order_time) from products_order')
+    r = c.fetchone()
+    conn.commit()
+    conn.close()
+    return r[0] 
+
+
 def done_search(iid):
     conn = get_conn()
     c = conn.cursor()

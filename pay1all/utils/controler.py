@@ -33,6 +33,9 @@ def do_job():
         print('START MY ORDER...')
         export_jd_db.make_jd_myorder()
         print('END MY ORDER.')
+        print('SYNC JD ORDER...')
+        export_jd_db.query_jd_myorder()
+        print('SYNC JD ORDER END.')
         db_utils.unlock()
         print("UNLOCKED. SUCCESS>>>>>>>>>>>>>>>>>>>")
     else:
