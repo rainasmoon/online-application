@@ -86,9 +86,11 @@ def make_jd_wordcloud_comment():
             print('SKIP. WORDCLOUD PIC PATH EMPTY,:', wordcloud_pic_path)
 
 
-def init_jd_myorder():
-    begin = datetime.date(2019, 10, 1)
-    end = datetime.date(2019, 11, 13)
+def init_jd_myorder():    
+    inner_init_jd_myorder(datetime.date(2019, 10, 1), datetime.date(2019, 11, 13))
+
+    
+def inner_init_jd_myorder(begin, end):
     for i in range((end - begin).days + 1):
         day = begin + datetime.timedelta(days=i)
         aday = day.strftime("%Y%m%d")
