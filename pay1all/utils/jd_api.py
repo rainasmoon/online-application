@@ -23,6 +23,8 @@ access_token = ''
 method_get_promotion = 'jd.union.open.promotion.common.get'
 method_get_category = 'jd.union.open.category.goods.get'
 method_get_goods = 'jd.union.open.goods.promotiongoodsinfo.query'
+method_order = 'jd.union.open.order.query'
+method_jingfen = 'jd.union.open.goods.jingfen.query'
 
 test_jd_prod_sku_1 = 25643981948
 
@@ -46,8 +48,20 @@ def get_param_json_goods_100(goods_sku_array):
     return '{"skuIds":"' + goods_sku_array + '"}'
 
 
-def get_param_json_category():
-    return '{"req":{"parentId":"1342","grade":"2"}}'
+def get_param_json_category(paraent_id, agrade):
+    return '{"req":{"parentId":' + str(paraent_id) + ',"grade":' + str(agrade) + '}}'
+
+
+def get_param_json_orders(atime, page_no):
+    return '{"orderReq":{"time":"' + atime + '","pageNo":' + str(page_no) + ',"pageSize":"500","type":"1"}}'
+
+
+def get_param_json_jingfen():
+    '''
+    频道id：1-好券商品,2-超级大卖场,10-9.9专区,22-热销爆品,24-数码家电,25-超市,26-母婴玩具,27-家具日用,28-美妆穿搭,29-医药保健,30-图书文具,31-今日必推,32-王牌好货
+    排序字段(price：单价, commissionShare：佣金比例, commission：佣金， inOrderCount30DaysSku：sku维度30天引单量，comments：评论数，goodComments：好评数)
+    '''
+    return '{"goodsReq":{"eliteId":1,"pageIndex":1,"pageSize":50,"sortName":"inOrderCount30DaysSku","sort":"asc"}}'
 
 
 def get_sign_key(method, timestamp, param_json):
@@ -106,12 +120,34 @@ def call_jd_goods_detail(sku_list):
     return goods_json
 
     
-def call_jd_category():
-    param_json = get_param_json_category()
+def call_jd_category(paraent_id, agrade):
+    '''
+    paraent_id : 0 will show 一级目录
+    agrade: 0, 1, 2
+    '''
+    param_json = get_param_json_category(paraent_id, agrade)
     json_result = call_jd_api(get_api_url(method_get_category, param_json))
-    return json_result     
+    return json_result
+
+
+def call_my_orders(atime, page_no):
+    param_json = get_param_json_orders(atime, page_no)
+    json_result = call_jd_api(get_api_url(method_order, param_json))
+    return json_result
+
+
+def call_jingfen():
+    param_json = get_param_json_jingfen()
+    json_result = call_jd_api(get_api_url(method_jingfen, param_json))
+    return json_result  
 
 
 if __name__ == '__main__':
     r = call_jd_promotion_url(test_jd_prod_sku_1)
+    print(r)
+    r = call_jd_category(0, 0)
+    print(r)
+    r = call_my_orders('2019010101', 1)
+    print(r)
+    r = call_jingfen()
     print(r)
