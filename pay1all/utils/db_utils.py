@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*
 import sqlite3
 
-PROD_DB = 'prod.sqlite3'
+PROD_DB = '/var/data/prod.sqlite3'
 
 
 # 0 false, 1 true
