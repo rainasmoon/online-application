@@ -28,7 +28,8 @@ def make_produst_param(agood):
     field_json['product_big_pic'] = agood['imgUrl']
     url = jd_api.call_jd_promotion_url(sku)
     if not url:
-        print('WARN:::NOT URL for ' + sku)        
+        print('WARN:::NOT URL for ', sku)
+        url = '/'        
     field_json['product_promotion_url'] = url
     field_json['p_scores'] = 1500
     

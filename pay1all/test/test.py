@@ -139,11 +139,13 @@ def test_proxy_2():
 
 
 def test_date():
-    begin = datetime.date(2019, 1, 1)
+    begin = datetime.date(2019, 11, 1)
     end = datetime.date(2019, 11, 13)
     for i in range((end - begin).days + 1):
         day = begin + datetime.timedelta(days=i)
         print(day.strftime("%Y%m%d"))
+        
+    print(datetime.time)
 
         
 def test_str_2():
@@ -156,8 +158,8 @@ def test_re():
     print('a1111'.isdigit())
 
 
-test_re()
-# test_date()
+# test_re()
+test_date()
 # test_str_2()
 # test_proxy_2()    
 # test_index()
