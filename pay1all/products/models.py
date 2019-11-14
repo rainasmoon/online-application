@@ -48,3 +48,16 @@ class Menu(models.Model):
     def __str__(self):
         return self.menu_name
 
+
+class Order(models.Model):
+    jd_order_id = models.BigIntegerField(default='0')
+    jd_skuid = models.BigIntegerField(default='0')
+    jd_sku_name = models.CharField(max_length=200, default='no name')
+    jd_sku_num = models.IntegerField(default='0')
+    jd_order_time = models.BigIntegerField(default='0')
+    
+    as_done = models.BooleanField(default=False)
+    
+    def __str__(self):
+        return self.jd_order_id
+    
