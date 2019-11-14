@@ -2,7 +2,6 @@
 import pymysql
 
 '''
-CREATE TABLE "products_product" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "product_jd_skuid" integer NOT NULL, "product_name" varchar(200) NOT NULL, "product_price" integer NOT NULL, "product_big_pic" varchar(200) NOT NULL, "product_promotion_url" varchar(400) NOT NULL, "p_scores" integer NOT NULL, "cid" integer NOT NULL, "cid2" integer NOT NULL, "cid3" integer NOT NULL, "cidName" varchar(100) NOT NULL, "cid2Name" varchar(100) NOT NULL, "cid3Name" varchar(100) NOT NULL, "pub_date" datetime NOT NULL);
 '''
 
 
@@ -43,6 +42,30 @@ def insert_menu(param):
     conn.close()
 
 
+def insert_order(param):
+    conn = get_conn()
+    c = conn.cursor()
+    c.execute('select 1 from products_order where jd_order_id = %s and jd_skuid = %s', (param['jd_order_id'], param['jd_skuid']))
+    if not c.fetchall():
+        c.execute('''INSERT INTO products_order( jd_order_id, jd_skuid, jd_sku_name, jd_sku_num, jd_order_time, as_done) 
+        VALUES (%(jd_order_id)s, %(jd_skuid)s, %(jd_sku_name)s, %(jd_sku_num)s, %(jd_order_time)s, %(as_done)s)''', param)
+        print('ONLINE DB, INSERT ORDER:', param['jd_order_id'], param['jd_skuid'])
+    else:
+        print('ONLINE DB, ORDER EXISTS:', param['jd_order_id'], param['jd_skuid'])
+    conn.commit()
+    conn.close()
+
+
+def select_product(sku_id):
+    conn = get_conn()
+    c = conn.cursor()
+    c.execute('select * from products_product where product_jd_skuid = %s', (sku_id,))
+    r = c.fetchall()
+    conn.commit()
+    conn.close()
+    return r 
+
+
 def select_search():
     conn = get_conn()
     c = conn.cursor()
@@ -63,6 +86,16 @@ def select_no_wordcloud_product():
     return r 
 
 
+def select_order():
+    conn = get_conn()
+    c = conn.cursor()
+    c.execute('select id, jd_skuid from products_order where as_done = 0')
+    r = c.fetchall()
+    conn.commit()
+    conn.close()
+    return r 
+
+
 def done_search(iid):
     conn = get_conn()
     c = conn.cursor()
@@ -71,10 +104,26 @@ def done_search(iid):
     conn.close() 
 
 
+def done_order(iid):
+    conn = get_conn()
+    c = conn.cursor()
+    c.execute('update products_order set as_done = 1 WHERE id = %s', (iid,))
+    conn.commit()
+    conn.close() 
+
+
 def reset():
     conn = get_conn()
     c = conn.cursor()
     c.execute('update products_search set as_done = 0')
+    conn.commit()
+    conn.close() 
+
+
+def update_product_scores(iid):
+    conn = get_conn()
+    c = conn.cursor()
+    c.execute('update products_search set p_scores = p_scores+1 WHERE id = %s', (iid))
     conn.commit()
     conn.close() 
 
@@ -95,14 +144,14 @@ def update_wordcloud_pic_path(iid, wordcloud_pic_path):
     conn.close()
 
     
-def select_product():
+def select_products():
     conn = get_conn()
     c = conn.cursor()
-    c.execute('select * from  products_product ')
+    c.execute('select * from  products_product')
     print('PRODUCTS TABLE ITEMS:', c.fetchall())
     conn.commit()
     conn.close()
 
 
 if __name__ == '__main__':
-    select_product()
+    select_product(0)

@@ -132,6 +132,7 @@ def call_jd_category(paraent_id, agrade):
 
 
 def call_my_orders(atime, page_no):
+    r = []
     param_json = get_param_json_orders(atime, page_no)
     json_result = call_jd_api(get_api_url(method_order, param_json))
     r_result = json_result['jd_union_open_order_query_response']['result']
@@ -143,14 +144,20 @@ def call_my_orders(atime, page_no):
         r_order_list = inner_json_result['data']
         print('INFO: FIND orders : ', len(r_order_list))
         for aorder in r_order_list:
-            print(aorder['orderId'])
+            orderId = aorder['orderId']
+            orderTime = aorder['orderTime']
             if aorder['parentId'] != 0:
                 print('SUB ORDER:', aorder['parentId'])
                 continue
             asku_list = aorder['skuList']
             print('INFO: FIND:SKU', len(asku_list))
             for asku in asku_list:
-                print(asku)
+                skuId = asku['skuId']
+                skuName = asku['skuName']
+                skuNum = asku['skuNum']
+                r.append({'orderId':orderId, 'orderTime':orderTime, 'skuId':skuId, 'skuName':skuName, 'skuNum':skuNum})
+                
+        return r
 
 
 def call_jingfen():

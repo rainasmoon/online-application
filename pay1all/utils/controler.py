@@ -27,10 +27,19 @@ def do_job():
         print("START MAKE CLOUD PIC ...")
         export_jd_db.make_jd_wordcloud_comment()
         print("END MAKE CLOUD PIC.")
+        print('START MY ORDER...')
+        export_jd_db.make_jd_myorder()
+        print('END MY ORDER.')
         db_utils.unlock()
         print("UNLOCKED. SUCCESS>>>>>>>>>>>>>>>>>>>")
     else:
         print('CANT LOCKED...PLS CHECK.')
+
+
+def init_job():
+    print('INIT...')
+    export_jd_db.init_jd_myorder()
+    print('END.')
 
 
 def reset():

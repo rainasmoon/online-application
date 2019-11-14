@@ -44,6 +44,19 @@ def make_produst_param(agood):
     return field_json
 
 
+def make_order_param(aorder, as_done=False):
+    field_json = {}
+    field_json['jd_order_id'] = aorder['orderId']
+    field_json['jd_skuid'] = aorder['skuId']
+    field_json['jd_sku_name'] = aorder['skuName']
+    field_json['jd_sku_num'] = aorder['skuNum']
+    field_json['jd_order_time'] = aorder['orderTime']
+    
+    field_json['as_done'] = as_done
+    
+    return field_json
+
+
 def make_jd_data():
     r_set = db_utils.select_sku()
     print('FIND NEW SKU NO.:', len(r_set))
@@ -71,3 +84,40 @@ def make_jd_wordcloud_comment():
             print('UPDATE PIC PATH SUCCESS:', item_id)
         else:
             print('SKIP. WORDCLOUD PIC PATH EMPTY,:', wordcloud_pic_path)
+
+
+def init_jd_myorder():
+    begin = datetime.date(2019, 10, 1)
+    end = datetime.date(2019, 11, 13)
+    for i in range((end - begin).days + 1):
+        day = begin + datetime.timedelta(days=i)
+        aday = day.strftime("%Y%m%d")
+        for i in range(24):
+            atime = aday + str(i).zfill(2)
+            print("CALL MYORDER FOR:", atime)
+            order_list = jd_api.call_my_orders(atime, 1)
+            for order in order_list:
+                askuid = order['skuId']
+                aproduct = db_utils_online_mysql.select_product(askuid)
+                if aproduct:
+                    print("ADD PRODUCT SCORE:", aproduct.p_scores)
+                    db_utils_online_mysql.update_product_scores(aproduct.id)
+                    aparam = make_order_param(order, as_done=True)
+                else:
+                    print("ADD SKUID TO STORE:", askuid)
+                    db_utils.insert_db(askuid)
+                    aparam = make_order_param(order, as_done=False)
+                db_utils_online_mysql.insert_order(aparam)
+
+
+def make_jd_myorder():
+    r_set = db_utils_online_mysql.select_order()
+    print('FIND NEW ORDERS NO.>>>:', len(r_set))
+    for aorder in r_set:
+        iid = aorder[0]
+        askuid = aorder[1]
+        aproduct = db_utils_online_mysql.select_product(askuid)
+        print('UPDATE PRODUCT SCORES, {}, {}', aproduct.id, aproduct.p_scores)
+        db_utils_online_mysql.update_product_scores(aproduct.id)
+        db_utils_online.done_order(iid)
+        
