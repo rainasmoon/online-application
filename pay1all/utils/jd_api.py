@@ -172,7 +172,7 @@ if __name__ == '__main__':
 #     r = call_jd_category(0, 0)
 #     print(r)
     
-    begin = datetime.date(2019, 10, 1)
+    begin = datetime.date(2019, 1, 1)
     end = datetime.date(2019, 11, 13)
     for i in range((end - begin).days + 1):
         day = begin + datetime.timedelta(days=i)
