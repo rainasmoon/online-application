@@ -149,8 +149,8 @@ def test_date():
     print(yesterday)
     now = int(round(time.time() * 1000))
     print(now)
-    begin2 = datetime.date.fromtimestamp(now / 1000)
-    print(begin2)
+    begin = datetime.date.fromtimestamp(now / 1000)
+    print(begin)
     for i in range((end - begin).days + 1):
         day = begin + datetime.timedelta(days=i)
         aday = day.strftime("%Y%m%d")
@@ -158,7 +158,7 @@ def test_date():
             atime = aday + str(i).zfill(2)
             print("CALL MYORDER FOR:", atime)
             
-    print('QUERY JD MYORDER', begin2, yesterday)
+    print('QUERY JD MYORDER', begin, yesterday)
 
         
 def test_str_2():
