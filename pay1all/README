@@ -13,8 +13,11 @@ need to MAKE SURE you use THE REAL API
 
 scp -r /cygdrive/c/Users/Administrator/git/online-application/pay1all root@aws.pay1all.top:/home/hht/
 scp -r  -i "~/aws/redhat.pem"  /cygdrive/c/Users/Administrator/git/online-application/pay1all ec2-user@aws.rainasmoon.com:/home/ec2-user/
+
 scp -r /cygdrive/c/Users/Administrator/git/online-application/pay1all/utils root@aws.pay1all.top:/home/hht/pay1all/
+
 scp -r  -i "~/aws/redhat.pem"  /cygdrive/c/Users/Administrator/git/online-application/pay1all/utils ec2-user@aws.rainasmoon.com:/home/ec2-user/pay1all/
+
 scp -r /cygdrive/c/Users/Administrator/git/online-application/pay1all/products root@aws.pay1all.top:/home/hht/pay1all/
 scp -r /cygdrive/c/Users/Administrator/git/online-application/pay1all/pay1all root@aws.pay1all.top:/home/hht/pay1all/
 

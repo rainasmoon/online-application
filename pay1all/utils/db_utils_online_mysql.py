@@ -59,7 +59,7 @@ def insert_order(param):
 def select_product(sku_id):
     conn = get_conn()
     c = conn.cursor()
-    c.execute('select * from products_product where product_jd_skuid = %s', (sku_id,))
+    c.execute('select id, p_scores from products_product where product_jd_skuid = %s', (sku_id,))
     r = c.fetchall()
     conn.commit()
     conn.close()

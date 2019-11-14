@@ -103,8 +103,10 @@ def init_jd_myorder():
                 askuid = order['skuId']
                 aproduct = db_utils_online_mysql.select_product(askuid)
                 if aproduct:
-                    print("ADD PRODUCT SCORE:", aproduct.p_scores)
-                    db_utils_online_mysql.update_product_scores(aproduct.id)
+                    iid = aproduct[0]
+                    p_scores = aproduct[1]
+                    print("ADD PRODUCT SCORE:", p_scores)
+                    db_utils_online_mysql.update_product_scores(iid)
                     aparam = make_order_param(order, as_done=True)
                 else:
                     print("ADD SKUID TO STORE:", askuid)
