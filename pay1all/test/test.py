@@ -1,6 +1,7 @@
 import datetime
 from io import StringIO
 import json
+import re
 from urllib import parse
 from urllib import request
 import urllib
@@ -150,8 +151,14 @@ def test_str_2():
         print(str(i).zfill(2))
 
 
-test_date()
-test_str_2()
+def test_re():
+    print('1111'.isdigit())
+    print('a1111'.isdigit())
+
+
+test_re()
+# test_date()
+# test_str_2()
 # test_proxy_2()    
 # test_index()
 # test_parse_quote()

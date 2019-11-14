@@ -39,7 +39,7 @@ def make_produst_param(agood):
     field_json['cid2Name'] = agood['cid2Name']
     field_json['cid3Name'] = agood['cid3Name']
     
-    field_json['pub_date'] = datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]
+    field_json['pub_date'] = datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]
     
     return field_json
 

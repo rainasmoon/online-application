@@ -15,8 +15,11 @@ def do_job():
             # first colmon is id , second is context
             search_id = asearch[0]
             search_context = asearch[1]
-            print('SEARCH JD FOR:' + search_context)        
-            r_sku_list = crawler_jd.call_jd_search(search_context)
+            print('SEARCH JD FOR:' + search_context)
+            if search_context.isdigit():
+                r_sku_list = [search_context]
+            else:
+                r_sku_list = crawler_jd.call_jd_search(search_context)
             for i in r_sku_list:
                 # the 1 item is sku
                 db_utils.insert_db(i)
@@ -34,6 +37,7 @@ def do_job():
         print("UNLOCKED. SUCCESS>>>>>>>>>>>>>>>>>>>")
     else:
         print('CANT LOCKED...PLS CHECK.')
+
 
 def init():
     db_utils.init_db()
