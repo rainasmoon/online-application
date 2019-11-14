@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*
-from datetime import datetime
+import datetime
 from io import StringIO
 import json
 
@@ -96,6 +96,9 @@ def init_jd_myorder():
             atime = aday + str(i).zfill(2)
             print("CALL MYORDER FOR:", atime)
             order_list = jd_api.call_my_orders(atime, 1)
+            if not order_list:
+                print('NONE.')
+                continue
             for order in order_list:
                 askuid = order['skuId']
                 aproduct = db_utils_online_mysql.select_product(askuid)
@@ -117,7 +120,11 @@ def make_jd_myorder():
         iid = aorder[0]
         askuid = aorder[1]
         aproduct = db_utils_online_mysql.select_product(askuid)
-        print('UPDATE PRODUCT SCORES, {}, {}', aproduct.id, aproduct.p_scores)
-        db_utils_online_mysql.update_product_scores(aproduct.id)
-        db_utils_online.done_order(iid)
+        if aproduct:
+            print('UPDATE PRODUCT SCORES, {}, {}', aproduct.id, aproduct.p_scores)
+            db_utils_online_mysql.update_product_scores(aproduct.id)
+            db_utils_online.done_order(iid)
+        else:
+            print('ADD SKUID TO STORE:', askuid)
+            db_utils.insert_db(askuid)
         

@@ -35,6 +35,9 @@ def do_job():
     else:
         print('CANT LOCKED...PLS CHECK.')
 
+def init():
+    db_utils.init_db()
+
 
 def init_job():
     print('INIT...')
