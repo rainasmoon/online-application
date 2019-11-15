@@ -41,6 +41,9 @@ def spider_comment(sku_id, page=0):
     r_json_str = r.text[26:-2]
     r_json_obj = json.loads(r_json_str)
     # 获取评价列表数据
+    if 'comments' not in r_json_obj:        
+        print("NO JDCOMMENTS IN HTML, PLS CHECK...")
+        return False
     r_json_comments = r_json_obj['comments']
     if len(r_json_comments) == 0 :
         print("NO JDCOMMENTS, PLS CHECK...")
