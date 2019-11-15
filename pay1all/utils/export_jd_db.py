@@ -58,6 +58,12 @@ def make_order_param(aorder, as_done=False):
     
     return field_json
 
+def not_skip_good(agood):
+    # 737 | 16962 | 16965 |
+    if agood['cid3']==16965:
+        # 家电维修 商品
+        return False
+    return True
 
 def make_jd_data():
     r_set = db_utils.select_sku()
@@ -67,8 +73,11 @@ def make_jd_data():
         t_sku_100_list = (','.join(jd_sku_list[j:j + MAX_PARAM]))
         goods_list = jd_api.call_jd_goods_detail(t_sku_100_list)
         for agood in goods_list:    
-            db_utils_online.insert_product(make_produst_param(agood))
-            db_utils_online.insert_menu(make_menu_param(agood))
+            if not_skip_good(agood):
+                db_utils_online.insert_product(make_produst_param(agood))
+                db_utils_online.insert_menu(make_menu_param(agood))
+            else:
+                print('SKIP A GOOD: ', agood)
             db_utils.done(agood['skuId'])
     print('INSERT PRODUCT, MENU, SET STORE TO DONE SUCCESS.')
 
