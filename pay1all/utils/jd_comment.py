@@ -94,12 +94,15 @@ def create_word_cloud(sku_id):
     """
     cloud_pic_file_name = f'result{sku_id}.png'
     r_file_path = STATIC_PIC_PATH + cloud_pic_file_name
+    stopwords = set()
+    f_stopword = open('stopwords.txt', 'r')
+    for line in f_stopword.readlines():
+        stopwords.add(line.strip())
+    print('STOPWORDS:', stopwords)
+ 
     if not os.path.exists(r_file_path):
         print('MAKE CLOUD PIC...:', r_file_path)
         # 设置词云的一些配置，如：字体，背景色，词云形状，大小
-        stopwords = set(STOPWORDS)
-        stopwords.add("就是")
-        stopwords.add("还有")
         wc = WordCloud(background_color="white", max_words=2000, stopwords=stopwords, scale=4,
                        max_font_size=50, random_state=42, font_path=WC_FONT_PATH)
         # 生成词云
