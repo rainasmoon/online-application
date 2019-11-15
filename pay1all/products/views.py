@@ -84,7 +84,7 @@ class ResultsView(generic.ListView):
     context_object_name = 'product_list'
     
     def get_queryset(self):
-        return Product.objects.order_by('-pub_date')[:LONG_LIST_MAX]
+        return Product.objects.order_by('pub_date')[:LONG_LIST_MAX]
 
 
 def vote(request, aproduct_id, bproduct_id):
