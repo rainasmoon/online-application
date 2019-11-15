@@ -98,7 +98,6 @@ def create_word_cloud(sku_id):
     f_stopword = open('stopwords.txt', 'r')
     for line in f_stopword.readlines():
         stopwords.add(line.strip())
-    print('STOPWORDS:', stopwords)
  
     if not os.path.exists(r_file_path):
         print('MAKE CLOUD PIC...:', r_file_path)
