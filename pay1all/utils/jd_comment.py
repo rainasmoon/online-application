@@ -18,7 +18,7 @@ WC_FONT_PATH = '/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc'
 
 MAX_PAGE_NUM = 10
 
-test_jd_prod_sku_1 = 1263013576
+test_jd_prod_sku_1 = 25643981948
 
 
 def spider_comment(sku_id, page=0):
@@ -98,8 +98,9 @@ def create_word_cloud(sku_id):
         print('MAKE CLOUD PIC...:', r_file_path)
         # 设置词云的一些配置，如：字体，背景色，词云形状，大小
         stopwords = set(STOPWORDS)
-        stopwords.add("said")
-        wc = WordCloud(background_color="white", max_words=2000, stopwords=stopwords, scale=4, width=1000, height=860, margin=2,
+        stopwords.add("就是")
+        stopwords.add("还有")
+        wc = WordCloud(background_color="white", max_words=2000, stopwords=stopwords, scale=4,
                        max_font_size=50, random_state=42, font_path=WC_FONT_PATH)
         # 生成词云
         r_cutword = cut_word(sku_id)
