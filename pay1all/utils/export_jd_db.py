@@ -139,7 +139,7 @@ def make_jd_myorder():
             product_id = aproduct[0]
             p_scores = aproduct[1]
             print('UPDATE PRODUCT SCORES, {}, {}', product_id, p_scores)
-            db_utils_online_mysql.update_product_scores(aproduct.id)
+            db_utils_online_mysql.update_product_scores(product_id)
             db_utils_online.done_order(iid)
         else:
             print('ADD SKUID TO STORE:', askuid)
