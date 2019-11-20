@@ -1,17 +1,7 @@
 # -*- coding: utf-8 -*
 
-from datetime import date
-
-from pylab import mpl
-
-import matplotlib.pyplot as plt
+from utils import plt_utils
 from utils import ts_utils
-
-# 正常显示画图时出现的中文
-# 这里使用微软雅黑字体
-mpl.rcParams['font.sans-serif'] = ['SimHei']
-# 画图时显示负号
-mpl.rcParams['axes.unicode_minus'] = False
 
 today = '20191119'
 print('TODAY:', today)
@@ -27,19 +17,26 @@ astock = ts_utils.call_stock_info(stock_code)
 print('BASIC:\n', astock)
 
 ipo_date = str(astock['list_date'].iloc[0])
-stock_info = '{0}-{1}-{2}'.format(astock['name'].iloc[0], astock['industry'].iloc[0], astock['list_date'].iloc[0])
+stock_info = '{0}-{1}-{2}'.format(astock['name'].iloc[0], astock['industry'].iloc[0], astock['symbol'].iloc[0])
 print('STOCKNAME:', stock_info)
 
 df = ts_utils.call_stock_qfq(stock_code, ipo_date, today)
+
 print('ALL TRADE:\n', df)
+print('All Columns:\n', df.dtypes)
 
 main_info = df.describe().round(2)
 print('MAIN INFO:\n', main_info)
 
-df.index = ts_utils.to_date(df.trade_date)
-stock_close = df['close']
-stock_close.plot()
-plt.title('STOCK' + stock_info)
-plt.xlabel('日期')
-plt.show()
+# plt_utils.show_k(df, stock_info)
+# plt_utils.show_vol(df, stock_info)
+# plt_utils.show_ma(df, stock_info)
 
+df = ts_utils.call_stock_v1(stock_code, ipo_date, today)
+
+print('MONTH DATA:\n', df)
+
+main_info = df.describe().round(2)
+print('MAIN INFO:\n', main_info)
+
+# plt_utils.show_mon_k_v1(df, stock_info)
