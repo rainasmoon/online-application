@@ -53,7 +53,7 @@ def call_all_stocks():
     filePath = COMMEN_FILE_PATH + 'all_stocks.csv'
     if not os.path.exists(filePath):
         data = pro.stock_basic(exchange='', list_status='L', fields='ts_code,symbol,name,area,industry,list_date')
-        if len(data) == 0:
+        if data.empty:
             return None
         data.to_csv(filePath)
         print('STORE:', filePath)
@@ -72,7 +72,7 @@ def call_daily(aday):
     if not os.path.exists(filePath):
         
         df = pro.daily(trade_date=aday)
-        if len(df) == 0:
+        if df.empty:
             return None
         df.to_csv(filePath)
         print('STORE:', filePath)
@@ -86,7 +86,7 @@ def call_stock(ts_code, start_date, end_date):
     if not os.path.exists(filePath):
         
         df = pro.daily(ts_code=ts_code, start_date=start_date, end_date=end_date)
-        if len(df) == 0:
+        if df.empty:
             return None
         df.to_csv(filePath)
         print('STORE:', filePath)
@@ -100,7 +100,7 @@ def call_stock_qfq(ts_code, start_date, end_date):
     if not os.path.exists(filePath):
         
         df = ts.pro_bar(ts_code=ts_code, adj='qfq', start_date=start_date, end_date=end_date)
-        if len(df) == 0:
+        if df.empty:
             return None
         df.to_csv(filePath)
         print('STORE:', filePath)
@@ -120,7 +120,7 @@ def call_stock_v1(ts_code, start_date, end_date):
         # start：起始时间
         # end：默认当前时间
         df = ts.get_k_data(code=ts_code, ktype='m', autype='qfq', start=start_date, end=end_date)
-        if len(df) == 0:
+        if df.empty:
             return None
         df.to_csv(filePath)
         print('STORE:', filePath)
