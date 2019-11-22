@@ -1,5 +1,4 @@
-# -*- coding: utf-8 -*
-from datetime import datetime
+# -*- coding: utf-8 -*-
 import os
 
 import pandas as pd
@@ -9,6 +8,8 @@ COMMEN_FILE_PATH = '../datas/'
 
 ts.set_token('d5dbcb604067c88ad5b03d59d78a934fbde19d1746afa502fa24e6f8')
 pro = ts.pro_api()
+
+test_ts_code_1 = '000001.SZ'
 
 
 def to_date(date):
@@ -33,6 +34,11 @@ def make_v1(df):
     return df
 
 
+def make_index(df):
+    df.set_index('ts_code', inplace=True)
+    return df
+
+
 def call_all_stocks():
     '''
     ts_code     str     TS代码
@@ -50,21 +56,22 @@ def call_all_stocks():
     delist_date     str     退市日期
     is_hs     str     是否沪深港通标的，N否 H沪股通 S深股通
     '''
+    
     filePath = COMMEN_FILE_PATH + 'all_stocks.csv'
     if not os.path.exists(filePath):
-        data = pro.stock_basic(exchange='', list_status='L', fields='ts_code,symbol,name,area,industry,list_date')
+        data = pro.stock_basic(exchange='', list_status='L', fields='ts_code,symbol,name,area,industry,list_date,fullname,enname,market,exchange,curr_type,list_status,delist_date,is_hs')
         if data.empty:
             return None
         data.to_csv(filePath)
         print('STORE:', filePath)
     else:
         data = pd.read_csv(filePath)
-    return data
+    return make_index(data)
 
 
 def call_stock_info(ts_code):
     data = call_all_stocks()
-    return data[data.ts_code == ts_code]
+    return data.loc[ts_code]
         
 
 def call_daily(aday):
@@ -78,7 +85,7 @@ def call_daily(aday):
         print('STORE:', filePath)
     else:
         df = pd.read_csv(filePath)
-    return df
+    return make_index(df)
 
 
 def call_stock(ts_code, start_date, end_date):
@@ -128,3 +135,6 @@ def call_stock_v1(ts_code, start_date, end_date):
         df = pd.read_csv(filePath)
     return make_v1(df)
 
+
+if __name__ == '__main__':
+    print(call_stock_info(test_ts_code_1))
