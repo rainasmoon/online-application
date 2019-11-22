@@ -37,7 +37,14 @@ t = today_focus
 t['P_position'] = round((t['close'] - t['price_min']) / (t['price_max'] - t['price_min']) * 100, 2)
 t['V_position'] = round((t['vol'] - t['vol_min']) / (t['vol_max'] - t['vol_min']) * 100, 2)
 
+# 去掉ST
+t = t[~(t.stock_name.str.contains(r'ST'))].copy()
+
+# 去掉P_position在30%以上的
+t = t[t.P_position < 40].copy()
+
 print(t.describe())
 
 r = t[[ 'close', 'P_position', 'V_position', 'stock_name', 'stock_industry', 'stock_hs']]
 print(r)
+

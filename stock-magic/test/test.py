@@ -35,8 +35,21 @@ def test_df_setvalues():
 
 def test_str():
     print(int('10'))
+    print('ST' in '*ST小宝')
+    print('ST' in '*SAT小宝')
+    print('ST' in '小宝')
+    print('ST' not in 'ST小宝')
 
     
-test_df_setvalues()
-test_str()
+def test_str_format():
+    
+    print('A:', '    B')
+    print('A:', '{0:10}'.format('B'), 'C')
+    print('{0:10},{1},{2}'.format('大中国', '我爱我家', '秦香莲'))
+    print('{0:10},{1},{2}'.format('大中国家', '我爱家', '秦香莲'))
+    print('{0:10},{1},{2}'.format('mad', '我爱我家', '秦香莲'))
+    print('{0:10},{1},{2}'.format('best', '我爱家', '秦香莲'))
+
+    
+test_str_format()
 

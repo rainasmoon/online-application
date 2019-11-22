@@ -46,7 +46,7 @@ def show_a_stock(stock_code, end_date):
 def a_stock(stock_code):
     astock = ts_utils.call_stock_info(stock_code)
     ipo_date = str(astock['list_date'])
-    stock_info = '{0},{1},{2}'.format(astock['name'], astock['industry'], astock['is_hs'])
+    stock_info = '{0},{1},{2}'.format(astock['name'].ljust(5, chr(12288)), astock['industry'].ljust(5, chr(12288)), astock['is_hs'])
     
     df = ts_utils.call_stock_qfq(stock_code, ipo_date, common_utils.yesterday())
     
