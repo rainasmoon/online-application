@@ -35,6 +35,7 @@ NOW:
 sharp率： （收益-无风险利率）/波动率
 胜率是指出手赚钱次数与总出手次数之比；
 赔率是指平均每次出手赚到的钱除以平均每次出手赔的钱，也叫做盈亏比。
+最大回撤
 '''
 
 aday = '20191022'
@@ -66,8 +67,6 @@ t = t[~(t.stock_name.str.contains(r'ST'))].copy()
 # 去掉P_position在30%以上的
 t = t[t.P_position < 40].copy()
 
-print(t.describe())
-
 r = t[[ 'close', 'P_position', 'V_position', 'stock_name', 'stock_industry', 'stock_hs']]
 
 yesterday = common_utils.yesterday()
@@ -80,3 +79,28 @@ r['RESULT'] = round((r['close_R'] - r['close_L']) / r['close_L'] * 100, 2)
 
 r = r[[ 'close_L', 'close_R', 'P_position', 'V_position', 'stock_name', 'stock_industry', 'RESULT']]
 print(r)
+
+r_desc = r.describe()
+v_std = r_desc.loc['std', 'RESULT']
+print(r_desc)
+
+rounds = len(r)
+win_df = r[r.RESULT > 0]
+lose_df = r[r.RESULT < 0]
+wins = len(win_df)
+# 胜率是指出手赚钱次数与总出手次数之比；
+win_ratio = round(wins / rounds * 100, 2)
+# 赔率是指平均每次出手赚到的钱除以平均每次出手赔的钱，也叫做盈亏比。
+win_lose_ratio = (win_df['RESULT'].sum() / len(win_df)) / (lose_df['RESULT'].sum() / len(lose_df)) 
+win_lose_ratio = round(abs(win_lose_ratio), 2)
+# 每日報酬(%)=(今天資產淨值-昨天資產淨值)/昨天資產淨值
+# 夏普率= [(每日報酬率平均值- 無風險利率) / (每日報酬的標準差)]x (252平方根)
+# 其中252平方根是因為一年大約有252天交易日，意思是將波動數值從每日調整成年
+# 當然如果資料上無法取得日資料，那用週資料或月資料也是可以。
+# 年化報酬率(%) = (總報酬率+1)^(1/年數) -1
+y_roi = 3
+sharpe_ratio = round((r_desc.loc['mean', 'RESULT'] - y_roi) / r_desc.loc['std', 'RESULT'], 2)
+print('胜率：', win_ratio)
+print('赔率：', win_lose_ratio)
+print('最大回撤：', r.loc[r['RESULT'].idxmin(), 'RESULT'])
+print('夏普率：', sharpe_ratio)
