@@ -43,12 +43,14 @@ def show_a_stock(stock_code, end_date):
     plt_utils.show_mon_k_v1(df, stock_info)
 
 
-def a_stock(stock_code):
+def a_stock(stock_code, aday):
     astock = ts_utils.call_stock_info(stock_code)
+    if astock.empty :
+        return 'nan, nan, nan, nan, "已退市,已退市,N"'
     ipo_date = str(astock['list_date'])
     stock_info = '{0},{1},{2}'.format(astock['name'].ljust(5, chr(12288)), astock['industry'].ljust(5, chr(12288)), astock['is_hs'])
     
-    df = ts_utils.call_stock_qfq(stock_code, ipo_date, common_utils.yesterday())
+    df = ts_utils.call_stock_qfq(stock_code, ipo_date, aday)
     
     main_info = df.describe().round(2)
     
@@ -60,6 +62,6 @@ def a_stock(stock_code):
 
 
 if __name__ == '__main__':
-    print(a_stock(test_ts_code_1))
+    print(a_stock(test_ts_code_1, common_utils.yesterday()))
     
     show_a_stock(test_ts_code_1, common_utils.yesterday())

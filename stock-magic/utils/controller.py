@@ -6,6 +6,7 @@ from utils import ts_utils
 
 '''
 600:主板
+603:
 000:深市
 002:中小板
 300:创业板
@@ -25,12 +26,21 @@ TODO:
 6 资金管理
 7 模拟复盘
 6 板块
+
+7 已经退市的股票
+
+NOW:
+一定时间之前的股票于今天的对比。
+
+sharp率： （收益-无风险利率）/波动率
+胜率是指出手赚钱次数与总出手次数之比；
+赔率是指平均每次出手赚到的钱除以平均每次出手赔的钱，也叫做盈亏比。
 '''
 
-yesterday = common_utils.yesterday()
-print('YESTERDAY:', yesterday)
+aday = '20191022'
+print('ADAY:', aday)
 
-df = ts_utils.call_daily(yesterday)
+df = ts_utils.call_daily(aday)
 # ##
 # 1 选出每日涨副在4.5 -5.5之间的
 # ##
@@ -39,7 +49,7 @@ print('MGAIC STOCKS:\n', today_focus)
 
 # 根据ts_code查询股票信息
 today_focus['ts_code_orginal'] = today_focus.index.to_numpy()
-ext_info = today_focus.loc[:, 'ts_code_orginal'].map(a_stock.a_stock)
+ext_info = today_focus.loc[:, 'ts_code_orginal'].apply(a_stock.a_stock, args=(aday,))
 # 把返回的结果扩展拆分成列
 df_ext = ext_info.str.split(',', expand=True)
 today_focus[['price_max', 'price_min', 'vol_max', 'vol_min', 'stock_name', 'stock_industry', 'stock_hs']] = df_ext
@@ -59,5 +69,14 @@ t = t[t.P_position < 40].copy()
 print(t.describe())
 
 r = t[[ 'close', 'P_position', 'V_position', 'stock_name', 'stock_industry', 'stock_hs']]
-print(r)
 
+yesterday = common_utils.yesterday()
+print('YESTERDAY:', yesterday)
+
+yesterday_df = ts_utils.call_daily(yesterday)
+
+r = r.join(yesterday_df, lsuffix="_L", rsuffix="_R")
+r['RESULT'] = round((r['close_R'] - r['close_L']) / r['close_L'] * 100, 2)
+
+r = r[[ 'close_L', 'close_R', 'P_position', 'V_position', 'stock_name', 'stock_industry', 'RESULT']]
+print(r)
