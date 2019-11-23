@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import json
 import os
 
 import pandas as pd
@@ -6,7 +7,11 @@ import tushare as ts
 
 COMMEN_FILE_PATH = '../datas/'
 
-ts.set_token('d5dbcb604067c88ad5b03d59d78a934fbde19d1746afa502fa24e6f8')
+f = open('config_api.json', 'r')
+config_jd_api = json.load(f)
+app_key = config_jd_api['app_key']
+
+ts.set_token(app_key)
 pro = ts.pro_api()
 
 test_ts_code_1 = '000001.SZ'

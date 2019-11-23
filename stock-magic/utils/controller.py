@@ -14,6 +14,19 @@ ST:
 *ST:
 '''
 
+'''
+1 选出每日涨副在4.5 -5.5之间的
+2 去除ST
+3 去除价格为30%之上的
+4 
+
+TODO:
+5 大盘
+6 资金管理
+7 模拟复盘
+6 板块
+'''
+
 yesterday = common_utils.yesterday()
 print('YESTERDAY:', yesterday)
 
