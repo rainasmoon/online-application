@@ -1,4 +1,5 @@
 import datetime 
+import random
 
 import numpy as np
 import pandas as pd
@@ -58,6 +59,30 @@ def test_str_format():
     print('{0:10},{1},{2}'.format('mad', '我爱我家', '秦香莲'))
     print('{0:10},{1},{2}'.format('best', '我爱家', '秦香莲'))
 
+
+def test_nan():
+    print(np.NaN)
+    s = 's'
+    print(s.ljust(5))
+    s = np.NaN
+    print(str(s).ljust(5))
+
+    
+def test_date():
+    
+    begin = datetime.date(2010, 1, 1)
+    end = datetime.date(2019, 11, 1)
+    days = []
+    for i in range((end - begin).days + 1):
+        day = begin + datetime.timedelta(days=i)
+        if day.weekday() in [5, 6]:
+            continue
+        days.append(day)
+        
+    print('counts:', len(days))
+    sample = random.sample(days, 100)
+    print(sample)
+
     
 # test_str_format()
-test_df_setvalues_1()
+test_date()
