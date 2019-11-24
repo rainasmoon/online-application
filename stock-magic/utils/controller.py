@@ -22,13 +22,14 @@ def backward_test_permonth():
     
     r_final_report = []
     
-    for i in range(100):
+    for i in range(120):
         day = begin + datetime.timedelta(days=i * 30)
         aday = day.strftime("%Y%m%d")
         print(aday)
         r_final_report.append(a_strategy.trick(aday))
     df = pd.DataFrame(r_final_report, columns=['aday', 'rounds', 'win_ratio', 'win_lose_ratio', 'max_lose', 'sharpe_ratio'])   
-    print('FINAL SUMMURY:\n', df)
+    print('FINAL SUMMURY:\n', df.dropna())
+    print(df.describe())
     print('END.')
 
 

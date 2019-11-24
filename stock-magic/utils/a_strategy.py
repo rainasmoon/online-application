@@ -108,8 +108,11 @@ def trick(aday):
     # 胜率是指出手赚钱次数与总出手次数之比；
     win_ratio = round(wins / rounds * 100, 2)
     # 赔率是指平均每次出手赚到的钱除以平均每次出手赔的钱，也叫做盈亏比。
-    win_lose_ratio = (win_df['RESULT'].sum() / len(win_df)) / (lose_df['RESULT'].sum() / len(lose_df)) 
-    win_lose_ratio = round(abs(win_lose_ratio), 2)
+    if wins != 0:
+        win_lose_ratio = (win_df['RESULT'].sum() / wins) / (lose_df['RESULT'].sum() / len(lose_df)) 
+        win_lose_ratio = round(abs(win_lose_ratio), 2)
+    else:
+        win_lose_ratio = 0
     # 每日報酬(%)=(今天資產淨值-昨天資產淨值)/昨天資產淨值
     # 夏普率= [(每日報酬率平均值- 無風險利率) / (每日報酬的標準差)]x (252平方根)
     # 其中252平方根是因為一年大約有252天交易日，意思是將波動數值從每日調整成年
@@ -126,4 +129,4 @@ def trick(aday):
 
     
 if __name__ == '__main__':
-    trick('20180131')
+    trick('20100401')
