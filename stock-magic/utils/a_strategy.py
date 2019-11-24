@@ -93,7 +93,6 @@ def trick(aday):
     
     r = r.join(yesterday_df, lsuffix="_L", rsuffix="_R")
     print(r)
-    print(r.dtypes)
     r['RESULT'] = round((r['close_R'] - r['close_L']) / r['close_L'] * 100, 2)
     
     r = r[[ 'close_L', 'close_R', 'P_position', 'V_position', 'stock_name', 'stock_industry', 'RESULT']]
