@@ -3,7 +3,6 @@ import json
 import os
 
 import pandas as pd
-from thirdpart.s1 import df
 import tushare as ts
 
 COMMEN_FILE_PATH = '../datas/'
@@ -157,7 +156,7 @@ def call_index_v1():
     '''
     df = ts.get_index()
     
-    return df
+    return round(df.loc[0, 'close'])
 
 
 def call_today_all_v1():
@@ -240,19 +239,41 @@ def call_deposit_rate_v1():
 
 
 def call_money_supply():
+    '''
+    返回值说明：
+
+    month :统计时间
+    m2 :货币和准货币（广义货币M2）(亿元)
+    m2_yoy:货币和准货币（广义货币M2）同比增长(%)
+    m1:货币(狭义货币M1)(亿元)
+    m1_yoy:货币(狭义货币M1)同比增长(%)
+    m0:流通中现金(M0)(亿元)
+    m0_yoy:流通中现金(M0)同比增长(%)
+    cd:活期存款(亿元)
+    cd_yoy:活期存款同比增长(%)
+    qm:准货币(亿元)
+    qm_yoy:准货币同比增长(%)
+    ftd:定期存款(亿元)
+    ftd_yoy:定期存款同比增长(%)
+    sd:储蓄存款(亿元)
+    sd_yoy:储蓄存款同比增长(%)
+    rests:其他存款(亿元)
+    rests_yoy:其他存款同比增长(%)
+
+    '''
     df = ts.get_money_supply()
      
-    return df.loc[0]
+    return [df.loc[0, 'm0'], df.loc[0, 'm1'], df.loc[0, 'm2']]
 
 
 def call_gdp():
     df = ts.get_gdp_quarter()
-    return df.loc[0]
+    return df
 
 
 def call_cpi():
     df = ts.get_cpi()
-    return df
+    return df.loc[0, 'cpi']
 
 
 def call_ppi():
@@ -260,8 +281,33 @@ def call_ppi():
     return df 
 
 
+def call_():
+    '''
+    获取银行间同业拆放利率数据，目前只提供2006年以来的数据。
+
+参数说明：
+
+    year:年份(YYYY),默认为当前年份
+
+返回值说明：
+
+    date:日期
+    ON:隔夜拆放利率
+    1W:1周拆放利率
+    2W:2周拆放利率
+    1M:1个月拆放利率
+    3M:3个月拆放利率
+    6M:6个月拆放利率
+    9M:9个月拆放利率
+    1Y:1年拆放利率
+
+    '''
+    df = ts.shibor_data() 
+    return df
+
+
 if __name__ == '__main__':
-    print(call_cpi())
+    print(call_money_supply())
 #     print(call_last_trade_day('20191124'))
 #     print(call_stock_info(test_ts_code_1))
 #     print(call_stock_info(test_ts_code_2))

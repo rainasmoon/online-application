@@ -1,14 +1,15 @@
 # -*- coding: utf-8 -*-
 
+from utils import ts_utils
+
 
 def summury_env(aday):
-    y_roi = 0
-    sh_index = 0
-    cpi = 0
-    today_up_num = 0
-    today_down_num = 0
+    y_roi = ts_utils.call_deposit_rate_v1()
+    sh_index = ts_utils.call_index_v1()
+    cpi = ts_utils.call_cpi()
+    m = ts_utils.call_money_supply()
     
-    print()
+    print(f'{y_roi}, {sh_index}, {cpi}, {m}')
     return [y_roi]
 
 
