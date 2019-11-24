@@ -42,7 +42,7 @@ DEBUG = False
 
 def trick(aday):
     
-    print('******************************************')
+    print('\n\n******************************************')
     print('A DAY:', aday)
     
     df = ts_utils.call_daily(aday)

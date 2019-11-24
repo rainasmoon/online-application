@@ -33,7 +33,7 @@ def backward_test_permonth():
     print('END.')
 
 
-def backward_test_sampledate():
+def build_sample():
     begin = datetime.date(2010, 1, 1)
     end = datetime.date(2019, 11, 1)
     days = []
@@ -42,8 +42,22 @@ def backward_test_sampledate():
         if day.weekday() in [5, 6]:
             continue
         days.append(day)
-        
-    sample = random.sample(days, 100)
+    sample = [days[i] for i in range(0, len(days), int(len(days) / 100))]    
+#     sample = random.sample(days, 100)
+    print('SAMPLE DATE:\n', len(sample))
+    print(sample)
+
+
+def backward_test_sampledate():
+    begin = datetime.date(2010, 1, 1)
+    end = datetime.date(2019, 11, 24)
+    days = []
+    for i in range((end - begin).days + 1):
+        day = begin + datetime.timedelta(days=i)
+        if day.weekday() in [5, 6]:
+            continue
+        days.append(day)
+    sample = [days[i] for i in range(0, len(days), int(len(days) / 100))]
     r_final_report = []
     for day in sample:
         aday = day.strftime("%Y%m%d")

@@ -80,8 +80,11 @@ def test_date():
         days.append(day)
         
     print('counts:', len(days))
-    sample = random.sample(days, 100)
+#     sample = random.sample(days, 100)
+    print('step:', int(len(days) / 100))
+    sample = [days[i] for i in range(0, len(days), int(len(days) / 100))] 
     print(sample)
+    print(len(sample))
 
     
 # test_str_format()
