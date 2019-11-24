@@ -8,11 +8,11 @@ def today():
     return today.strftime('%Y%m%d')
 
 
-def yesterday():
+def yesterday_v1():
     yesterday = datetime.date.today() - datetime.timedelta(days=1)
     return yesterday.strftime("%Y%m%d")
 
 
 if __name__ == '__main__':
     print(today())
-    print(yesterday())
+    print(yesterday_v1())

@@ -33,6 +33,14 @@ def test_df_setvalues():
     print(df[['D1', 'D2', 'D3', 'D4']])
 
 
+def test_df_setvalues_1():
+    x = []
+    x.append([1, 2])
+    x.append([4, 5, 6])
+    df = pd.DataFrame(x, columns=['a', 'b', 'c'])
+    print(df)
+
+
 def test_str():
     print(int('10'))
     print('ST' in '*ST小宝')
@@ -51,5 +59,5 @@ def test_str_format():
     print('{0:10},{1},{2}'.format('best', '我爱家', '秦香莲'))
 
     
-test_str_format()
-
+# test_str_format()
+test_df_setvalues_1()

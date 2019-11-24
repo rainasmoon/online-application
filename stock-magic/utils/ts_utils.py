@@ -17,6 +17,8 @@ pro = ts.pro_api()
 test_ts_code_1 = '000001.SZ'
 test_ts_code_2 = '002018.SZ'
 
+DEBUG = False
+
 
 def to_date(date):
     return pd.to_datetime(date, format='%Y%m%d')
@@ -45,6 +47,13 @@ def make_index(df):
     return df
 
 
+def call_last_trade_day(aday):
+# don't have permitions
+#     df = pro.trade_cal(exchange='', start_date=aday, end_date=aday)
+
+    return '20191122'
+
+
 def call_all_stocks():
     '''
     ts_code     str     TS代码
@@ -67,9 +76,10 @@ def call_all_stocks():
     if not os.path.exists(filePath):
         data = pro.stock_basic(exchange='', list_status='L', fields='ts_code,symbol,name,area,industry,list_date,fullname,enname,market,exchange,curr_type,list_status,delist_date,is_hs')
         if data.empty:
-            return None
+            return data
         data.to_csv(filePath)
-        print('STORE:', filePath)
+        if DEBUG: 
+            print('STORE:', filePath)
     else:
         data = pd.read_csv(filePath)
     return make_index(data)
@@ -89,9 +99,10 @@ def call_daily(aday):
         
         df = pro.daily(trade_date=aday)
         if df.empty:
-            return None
+            return df
         df.to_csv(filePath)
-        print('STORE:', filePath)
+        if DEBUG: 
+            print('STORE:', filePath)
     else:
         df = pd.read_csv(filePath)
     return make_index(df)
@@ -103,9 +114,10 @@ def call_stock(ts_code, start_date, end_date):
         
         df = pro.daily(ts_code=ts_code, start_date=start_date, end_date=end_date)
         if df.empty:
-            return None
+            return df
         df.to_csv(filePath)
-        print('STORE:', filePath)
+        if DEBUG: 
+            print('STORE:', filePath)
     else:
         df = pd.read_csv(filePath)
     return make(df)
@@ -117,9 +129,10 @@ def call_stock_qfq(ts_code, start_date, end_date):
         
         df = ts.pro_bar(ts_code=ts_code, adj='qfq', start_date=start_date, end_date=end_date)
         if df.empty:
-            return None
+            return df
         df.to_csv(filePath)
-        print('STORE:', filePath)
+        if DEBUG: 
+            print('STORE:', filePath)
     else:
         df = pd.read_csv(filePath)
     return make(df)
@@ -189,9 +202,10 @@ def call_report_v1(year, quarter):
     if not os.path.exists(filePath):
         df = ts.get_report_data(year, quarter)
         if df.empty:
-            return None
+            return df
         df.to_csv(filePath)
-        print('STORE:', filePath)
+        if DEBUG: 
+            print('STORE:', filePath)
     else:
         df = pd.read_csv(filePath)
     return df   
@@ -209,17 +223,20 @@ def call_stock_v1(ts_code, start_date, end_date):
         # end：默认当前时间
         df = ts.get_k_data(code=ts_code, ktype='m', autype='qfq', start=start_date, end=end_date)
         if df.empty:
-            return None
+            return df
         df.to_csv(filePath)
-        print('STORE:', filePath)
+        if DEBUG: 
+            print('STORE:', filePath)
     else:
         df = pd.read_csv(filePath)
     return make_v1(df)
 
 
 if __name__ == '__main__':
+    print(call_last_trade_day('20191124'))
     print(call_stock_info(test_ts_code_1))
-    print(call_stock_info(test_ts_code_2))
+#     print(call_stock_info(test_ts_code_2))
 #     print(call_index_v1())
 #     print(call_today_all_v1())
 #     print(call_report_v1(2019, 2))
+
