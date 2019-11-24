@@ -3,6 +3,7 @@ import json
 import os
 
 import pandas as pd
+from thirdpart.s1 import df
 import tushare as ts
 
 COMMEN_FILE_PATH = '../datas/'
@@ -232,9 +233,37 @@ def call_stock_v1(ts_code, start_date, end_date):
     return make_v1(df)
 
 
+def call_deposit_rate_v1():
+    df = ts.get_deposit_rate()
+    df = df [(df.date == df.date.max()) & (df.deposit_type == '定期存款整存整取(一年)')]
+    return df['rate'].max()
+
+
+def call_money_supply():
+    df = ts.get_money_supply()
+     
+    return df.loc[0]
+
+
+def call_gdp():
+    df = ts.get_gdp_quarter()
+    return df.loc[0]
+
+
+def call_cpi():
+    df = ts.get_cpi()
+    return df
+
+
+def call_ppi():
+    df = ts.get_ppi()
+    return df 
+
+
 if __name__ == '__main__':
-    print(call_last_trade_day('20191124'))
-    print(call_stock_info(test_ts_code_1))
+    print(call_cpi())
+#     print(call_last_trade_day('20191124'))
+#     print(call_stock_info(test_ts_code_1))
 #     print(call_stock_info(test_ts_code_2))
 #     print(call_index_v1())
 #     print(call_today_all_v1())
