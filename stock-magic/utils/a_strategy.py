@@ -42,6 +42,9 @@ DEBUG = False
 
 def trick(aday):
     
+    print('******************************************')
+    print('A DAY:', aday)
+    
     df = ts_utils.call_daily(aday)
     if df.empty:
         print('NO TRADE')
@@ -129,4 +132,4 @@ def trick(aday):
 
     
 if __name__ == '__main__':
-    trick('20100401')
+    trick('20190613')

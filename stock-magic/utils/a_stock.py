@@ -48,7 +48,9 @@ def a_stock(stock_code, aday):
     if astock.empty :
         return 'nan, nan, nan, nan, "已退市,已退市,N"'
     ipo_date = str(astock['list_date'])
-    stock_info = '{0},{1},{2}'.format(astock['name'].ljust(5, chr(12288)), astock['industry'].ljust(5, chr(12288)), astock['is_hs'])
+    industry = str(astock['industry'])
+    
+    stock_info = '{0},{1},{2}'.format(astock['name'].ljust(5, chr(12288)), industry.ljust(5, chr(12288)), astock['is_hs'])
     
     df = ts_utils.call_stock_qfq(stock_code, ipo_date, aday)
     
