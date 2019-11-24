@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from functools import lru_cache
 import json
 import os
 
@@ -138,6 +139,7 @@ def call_stock_qfq(ts_code, start_date, end_date):
     return make(df)
 
 
+@lru_cache()
 def call_index_v1():
     '''
     获取大盘实时行情    
@@ -159,6 +161,7 @@ def call_index_v1():
     return round(df.loc[0, 'close'])
 
 
+@lru_cache()
 def call_today_all_v1():
     '''
     获取股票实时行情
@@ -182,7 +185,8 @@ def call_today_all_v1():
     df = ts.get_today_all()
     return df
 
- 
+
+@lru_cache() 
 def call_report_v1(year, quarter):
     '''
     code,代码
@@ -210,7 +214,8 @@ def call_report_v1(year, quarter):
         df = pd.read_csv(filePath)
     return df   
 
-    
+
+@lru_cache()   
 def call_stock_v1(ts_code, start_date, end_date):
     if not ts_code.isdigit():
         ts_code = ts_code[:-3]
@@ -232,12 +237,14 @@ def call_stock_v1(ts_code, start_date, end_date):
     return make_v1(df)
 
 
+@lru_cache()
 def call_deposit_rate_v1():
     df = ts.get_deposit_rate()
     df = df [(df.date == df.date.max()) & (df.deposit_type == '定期存款整存整取(一年)')]
     return df['rate'].max()
 
 
+@lru_cache()
 def call_money_supply():
     '''
     返回值说明：
@@ -266,22 +273,26 @@ def call_money_supply():
     return [df.loc[0, 'm0'], df.loc[0, 'm1'], df.loc[0, 'm2']]
 
 
+@lru_cache()
 def call_gdp():
     df = ts.get_gdp_quarter()
     return df
 
 
+@lru_cache()
 def call_cpi():
     df = ts.get_cpi()
     return df.loc[0, 'cpi']
 
 
+@lru_cache()
 def call_ppi():
     df = ts.get_ppi()
     return df 
 
 
-def call_():
+@lru_cache()
+def call_shibor():
     '''
     获取银行间同业拆放利率数据，目前只提供2006年以来的数据。
 
@@ -308,10 +319,12 @@ def call_():
 
 if __name__ == '__main__':
     print(call_money_supply())
+    print(call_index_v1())
+    
 #     print(call_last_trade_day('20191124'))
 #     print(call_stock_info(test_ts_code_1))
 #     print(call_stock_info(test_ts_code_2))
-#     print(call_index_v1())
+    
 #     print(call_today_all_v1())
 #     print(call_report_v1(2019, 2))
 
