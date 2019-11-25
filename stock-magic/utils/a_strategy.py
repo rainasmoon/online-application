@@ -42,8 +42,9 @@ DEBUG = False
 
 def trick(aday):
     
-    print('\n\n******************************************')
+    print('\n\n')
     print('A DAY:', aday)
+    print('******************************************')
     
     df = ts_utils.call_daily(aday)
     if df.empty:
@@ -92,7 +93,6 @@ def trick(aday):
     yesterday_df = ts_utils.call_daily(yesterday)
     
     r = r.join(yesterday_df, lsuffix="_L", rsuffix="_R")
-    print(r)
     r['RESULT'] = round((r['close_R'] - r['close_L']) / r['close_L'] * 100, 2)
     
     r = r[[ 'close_L', 'close_R', 'P_position', 'V_position', 'stock_name', 'stock_industry', 'RESULT']]
@@ -123,11 +123,12 @@ def trick(aday):
     y_roi = 3
     sharpe_ratio = round((r_desc.loc['mean', 'RESULT'] - y_roi) / r_desc.loc['std', 'RESULT'], 2)
     max_lose = r.loc[r['RESULT'].idxmin(), 'RESULT']
+    max_win = r.loc[r['RESULT'].idxmax(), 'RESULT']
     print('胜率：', win_ratio)
     print('赔率：', win_lose_ratio)
     print('最大回撤：', max_lose)
     print('夏普率：', sharpe_ratio)
-    return [aday, rounds, win_ratio, win_lose_ratio, max_lose, sharpe_ratio]
+    return [aday, rounds, win_ratio, win_lose_ratio, max_lose, sharpe_ratio, max_win]
 
     
 if __name__ == '__main__':

@@ -62,7 +62,7 @@ def backward_test_sampledate():
     for day in sample:
         aday = day.strftime("%Y%m%d")
         r_final_report.append(a_strategy.trick(aday))
-    df = pd.DataFrame(r_final_report, columns=['aday', 'rounds', 'win_ratio', 'win_lose_ratio', 'max_lose', 'sharpe_ratio'])   
+    df = pd.DataFrame(r_final_report, columns=['aday', 'rounds', 'win_ratio', 'win_lose_ratio', 'max_lose', 'sharpe_ratio', 'max_win'])   
     print('FINAL SUMMURY:\n', df.dropna())
     print(df.describe())
     print('END.')

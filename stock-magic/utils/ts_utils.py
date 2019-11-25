@@ -5,6 +5,7 @@ import os
 
 import pandas as pd
 import tushare as ts
+from utils import common_utils
 
 COMMEN_FILE_PATH = '../datas/'
 
@@ -43,7 +44,7 @@ def make_v1(df):
     return df
 
 
-def make_index(df):
+def make_ts_code(df):
     df.set_index('ts_code', inplace=True)
     return df
 
@@ -83,7 +84,7 @@ def call_all_stocks():
             print('STORE:', filePath)
     else:
         data = pd.read_csv(filePath)
-    return make_index(data)
+    return make_ts_code(data)
 
 
 def call_stock_info(ts_code):
@@ -106,7 +107,7 @@ def call_daily(aday):
             print('STORE:', filePath)
     else:
         df = pd.read_csv(filePath)
-    return make_index(df)
+    return make_ts_code(df)
 
 
 def call_stock(ts_code, start_date, end_date):
@@ -157,8 +158,8 @@ def call_index_v1():
     
     '''
     df = ts.get_index()
-    
-    return round(df.loc[0, 'close'])
+    df.set_index('code', inplace=True)
+    return df
 
 
 @lru_cache()
@@ -234,7 +235,23 @@ def call_stock_v1(ts_code, start_date, end_date):
             print('STORE:', filePath)
     else:
         df = pd.read_csv(filePath)
-    return make_v1(df)
+    df = make_v1(df)
+    
+    return df
+
+
+def call_sh_index_v1():
+    today = common_utils.today()
+    filePath = COMMEN_FILE_PATH + f'v1_sh_index_{today}.csv'
+    if not os.path.exists(filePath):
+        print('CALL TUSHARE...')
+        df = ts.get_k_data(code='sh', ktype='D',
+          autype='qfq', start='1990-12-20')
+        df.to_csv(filePath)
+    else:
+        df = pd.read_csv(filePath)
+    df = make_v1(df)
+    return df
 
 
 @lru_cache()
@@ -318,7 +335,7 @@ def call_shibor():
 
 
 if __name__ == '__main__':
-    print(call_money_supply())
+    print(call_sh_index_v1())
     print(call_index_v1())
     
 #     print(call_last_trade_day('20191124'))
