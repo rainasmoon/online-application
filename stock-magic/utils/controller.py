@@ -68,5 +68,8 @@ def backward_test_sampledate():
     print('END.')
 
 
+
 backward_test_sampledate()
+
+# TODO: 分板大盘上涨的天数和下跌的天数。
 

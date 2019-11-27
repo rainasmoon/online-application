@@ -143,7 +143,7 @@ def call_stock_qfq(ts_code, start_date, end_date):
 @lru_cache()
 def call_index_v1():
     '''
-    获取大盘实时行情    
+    获取所有指数实时行情
     
     code:指数代码
     name:指数名称
@@ -241,6 +241,7 @@ def call_stock_v1(ts_code, start_date, end_date):
 
 
 def call_sh_index_v1():
+    '''获得上证指数的交易数据'''
     today = common_utils.today()
     filePath = COMMEN_FILE_PATH + f'v1_sh_index_{today}.csv'
     if not os.path.exists(filePath):
