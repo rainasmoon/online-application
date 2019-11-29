@@ -33,9 +33,9 @@ sharp率： （收益-无风险利率）/波动率
 最大回撤
 '''
 
-from utils import a_stock
-from utils import common_utils
-from utils import ts_utils
+import a_stock
+import common_utils
+import ts_utils
 
 DEBUG = False
 

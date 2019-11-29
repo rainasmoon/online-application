@@ -1,6 +1,6 @@
-# -*- coding: utf-8 -*-
+#`-*- coding: utf-8 -*-
 
-from utils import ts_utils
+import ts_utils
 import matplotlib.pyplot as plt
 
 '''
@@ -44,7 +44,7 @@ def show_index_position():
     df['crazy_less'] = 1 - df['crazy_pos']
     print(df)
     print(len(df))
-    df[['crazy_pos', 'crazy_less']].plot()
+    df['crazy_pos'].plot()
     plt.show()
 
 def posibility_day(index, df):

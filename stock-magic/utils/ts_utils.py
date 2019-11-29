@@ -5,7 +5,7 @@ import os
 
 import pandas as pd
 import tushare as ts
-from utils import common_utils
+import common_utils
 
 COMMEN_FILE_PATH = '../datas/'
 

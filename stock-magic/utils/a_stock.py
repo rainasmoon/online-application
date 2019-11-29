@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-from utils import common_utils
-from utils import plt_utils
-from utils import ts_utils
+import common_utils
+import plt_utils
+import ts_utils
 
 test_ts_code_1 = '000001.SZ'
 
