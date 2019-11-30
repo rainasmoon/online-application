@@ -43,7 +43,7 @@ def select_stocks(aday):
     df = ts_utils.call_daily(aday)
     if df.empty:
         print('NO TRADE')
-        return [aday, 'NO TRADE']
+        return
     # ##
     # 1 选出每日涨副在4.5 -5.5之间的
     # ##
@@ -76,7 +76,7 @@ def select_stocks(aday):
     
     if r.empty:
         print('无合适股票')
-        return [aday, '无合适股票']
+        return
     
     if DEBUG:
         print('去掉ST，位置在40以下:\n', t)
@@ -135,6 +135,8 @@ def trick(aday):
     print('A DAY:', aday)
     print('******************************************')
     r = select_stocks(aday)
+    if type(r).__name__ == 'NoneType':
+        return [aday, 'NO TRADE.']
     r = sell_stocks(r)
     summary_info = summary(r)
     return [aday] + summary_info
