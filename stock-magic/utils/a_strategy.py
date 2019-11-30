@@ -125,7 +125,7 @@ def summary(r):
     print('赔率：', win_lose_ratio)
     print('最大回撤：', max_lose)
     print('夏普率：', sharpe_ratio)
-    return [aday, rounds, win_ratio, win_lose_ratio, max_lose, sharpe_ratio, max_win]
+    return [rounds, win_ratio, win_lose_ratio, max_lose, sharpe_ratio, max_win]
 
 
 
@@ -137,7 +137,7 @@ def trick(aday):
     r = select_stocks(aday)
     r = sell_stocks(r)
     summary_info = summary(r)
-    return summary_info
+    return [aday] + summary_info
 
 
 if __name__ == '__main__':
