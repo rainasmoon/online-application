@@ -39,13 +39,7 @@ import ts_utils
 
 DEBUG = False
 
-
-def trick(aday):
-    
-    print('\n\n')
-    print('A DAY:', aday)
-    print('******************************************')
-    
+def select_stocks(aday):
     df = ts_utils.call_daily(aday)
     if df.empty:
         print('NO TRADE')
@@ -56,7 +50,6 @@ def trick(aday):
     today_focus = df[(df.pct_chg > 4.5) & (df.pct_chg < 5.5)].copy()
     if DEBUG:
         print('MGAIC STOCKS:\n', today_focus)
-    
     # 根据ts_code查询股票信息
     today_focus['ts_code_orginal'] = today_focus.index.to_numpy()
     ext_info = today_focus.loc[:, 'ts_code_orginal'].apply(a_stock.a_stock, args=(aday,))
@@ -87,7 +80,10 @@ def trick(aday):
     
     if DEBUG:
         print('去掉ST，位置在40以下:\n', t)
-    
+        
+    return r 
+
+def sell_stocks(r):    
     yesterday = ts_utils.call_last_trade_day(common_utils.yesterday_v1())
     
     yesterday_df = ts_utils.call_daily(yesterday)
@@ -97,7 +93,8 @@ def trick(aday):
     
     r = r[[ 'close_L', 'close_R', 'P_position', 'V_position', 'stock_name', 'stock_industry', 'RESULT']]
     print('最后结果：\n', r)
-    
+    return r
+def summary(r):    
     r_desc = r.describe()
     v_std = r_desc.loc['std', 'RESULT']
     if DEBUG:
@@ -130,6 +127,18 @@ def trick(aday):
     print('夏普率：', sharpe_ratio)
     return [aday, rounds, win_ratio, win_lose_ratio, max_lose, sharpe_ratio, max_win]
 
+
+
+def trick(aday):
     
+    print('\n\n')
+    print('A DAY:', aday)
+    print('******************************************')
+    r = select_stocks(aday)
+    r = sell_stocks(r)
+    summary_info = summary(r)
+    return summary_info
+
+
 if __name__ == '__main__':
     trick('20190613')
