@@ -5,7 +5,7 @@ import os
 
 import pandas as pd
 import tushare as ts
-import common_utils
+from utils import common_utils
 
 COMMEN_FILE_PATH = '../datas/'
 
@@ -128,6 +128,21 @@ def call_stock(ts_code, start_date, end_date):
 def call_stock_qfq(ts_code, start_date, end_date):
     filePath = COMMEN_FILE_PATH + f'stock_qfq_{ts_code}_{start_date}_{end_date}.csv'
     if not os.path.exists(filePath):
+
+        df = ts.pro_bar(ts_code=ts_code, adj='qfq', start_date=start_date, end_date=end_date)
+        if df.empty:
+            return df
+        df.to_csv(filePath)
+        if DEBUG:
+            print('STORE:', filePath)
+    else:
+        df = pd.read_csv(filePath)
+    return make(df)
+
+
+def call_stock_qfq_raw(ts_code, start_date, end_date):
+    filePath = COMMEN_FILE_PATH + f'stock_qfq_{ts_code}_{start_date}_{end_date}.csv'
+    if not os.path.exists(filePath):
         
         df = ts.pro_bar(ts_code=ts_code, adj='qfq', start_date=start_date, end_date=end_date)
         if df.empty:
@@ -137,7 +152,7 @@ def call_stock_qfq(ts_code, start_date, end_date):
             print('STORE:', filePath)
     else:
         df = pd.read_csv(filePath)
-    return make(df)
+    return df
 
 
 @lru_cache()

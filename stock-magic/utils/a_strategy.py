@@ -94,11 +94,12 @@ def sell_stocks(r):
     r = r[[ 'close_L', 'close_R', 'P_position', 'V_position', 'stock_name', 'stock_industry', 'RESULT']]
     print('最后结果：\n', r)
     return r
+
 def summary(r):    
     r_desc = r.describe()
     v_std = r_desc.loc['std', 'RESULT']
     if DEBUG:
-        print('统计：\n', r_desc)
+       print('统计：\n', r_desc)
     
     rounds = len(r)
     win_df = r[r.RESULT > 0]
