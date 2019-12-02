@@ -86,6 +86,11 @@ def test_date():
     print(sample)
     print(len(sample))
 
+
+def test_str():
+    print('abcd.1234'.replace('.', ''))
     
+
 # test_str_format()
-test_date()
+test_str()
+#test_date()
