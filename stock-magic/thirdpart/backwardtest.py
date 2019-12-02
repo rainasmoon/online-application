@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
+
 def Strategy(pdatas, win_long, win_short, lossratio=999):
     # pdatas = datas.copy();win_long = 12;win_short = 6;lossratio = 999;
     """
@@ -12,8 +13,6 @@ def Strategy(pdatas, win_long, win_short, lossratio=999):
     """
 
     pdatas = pdatas.copy()
-
-    print(pdatas)
 
     pdatas['lma'] = pdatas.close.rolling(win_long, min_periods=0).mean()
     pdatas['sma'] = pdatas.close.rolling(win_short, min_periods=0).mean()
@@ -86,7 +85,6 @@ def performace(transactions, strategy):
 
     # 策略逐年表现
 
-    print('strategy', strategy)
     strategy['year'] = strategy.trade_date.apply(lambda x: str(x)[:4])
     nav_peryear = strategy.nav.groupby(strategy.year).last() / strategy.nav.groupby(strategy.year).first() - 1
     benchmark_peryear = strategy.benchmark.groupby(strategy.year).last() / strategy.benchmark.groupby(
@@ -131,11 +129,14 @@ def performace(transactions, strategy):
 
     return result, result_peryear
 
+
 if __name__ == '__main__':
     stock_code = '000001.SZ'
     ipo_date = '20010101'
     aday = '20190101'
     df = ts_utils.call_stock_qfq_raw(stock_code, ipo_date, aday)
-    r = Strategy(pdatas = df, win_long=89, win_short=21,lossratio=999)
-
+    df = df.sort_values(by='trade_date')
+    print(df)
+    r = Strategy(pdatas=df, win_long=89, win_short=21, lossratio=999)
     print(r)
+    plt.show()

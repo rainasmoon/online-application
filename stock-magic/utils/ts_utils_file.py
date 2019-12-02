@@ -1,13 +1,11 @@
 # -*- coding: utf-8 -*-
-
-from sqlalchemy import create_engine
 from functools import lru_cache
 import json
 import os
 
 import pandas as pd
 import tushare as ts
-import common_utils
+from utils import common_utils
 
 COMMEN_FILE_PATH = '../datas/'
 
@@ -349,17 +347,17 @@ def call_shibor():
 
     '''
     df = ts.shibor_data() 
-
-    #追加数据到现有表
-    if type(df).__name__ != 'NoneType':
-        df.to_sql('shibor_data',make_engine(),if_exists='append')
-
     return df
 
-def make_engine():
-    engine = create_engine('mysql://stock:stock@127.0.0.1/stocks?charset=utf8')
-    return engine
 
 if __name__ == '__main__':
-    r = call_ppi()
-    print(r)
+    print(call_sh_index_v1())
+    print(call_index_v1())
+    
+#     print(call_last_trade_day('20191124'))
+#     print(call_stock_info(test_ts_code_1))
+#     print(call_stock_info(test_ts_code_2))
+    
+#     print(call_today_all_v1())
+#     print(call_report_v1(2019, 2))
+
