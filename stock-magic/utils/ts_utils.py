@@ -170,7 +170,6 @@ def call_stock_qfq_raw(ts_code, start_date, end_date):
 def call_stock_qfq(ts_code, start_date, end_date):
     df = make(call_stock_qfq_raw(ts_code, start_date, end_date))
     df = df.sort_index()
-    print(df)
     return df.loc[start_date:end_date]
 
 
