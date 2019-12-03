@@ -111,15 +111,41 @@ def ai_sell(r, buy_date):
 
     yesterday = ts_utils.call_last_tradeday_before(common_utils.yesterday())
     r = r.reset_index()
-    print('HHHHHH:\n', r.head())
-    print(r.dtypes)
+    sell_price = []
     for i in range(len(r)):
         atscode = r.loc[i, 'ts_code']
-        astock_df = ts_utils.call_stock_qfq(atscode, buy_date, yesterday)
+        eyes_on_date = cool_down_day(buy_date)
+        astock_df = ts_utils.call_stock_qfq(atscode, eyes_on_date, yesterday)
         print(astock_df)
-        astock_df['close'].plot()
-        plt.show()
-    return 10
+        #astock_df['close'].plot()
+        #plt.show()
+        astock_df = astock_df.reset_index()
+        astock_df['pre_max'] = r.loc[i, 'close']
+        for j in range(len(astock_df) - 1):
+            astock_df.loc[j+1, 'pre_max'] = max(astock_df.loc[j,'close'],
+                                                astock_df.loc[j, 'pre_max'])
+            if astock_df.loc[j, 'close'] < astock_df.loc[j, 'pre_max']:
+                adrop = (astock_df.loc[j, 'pre_max'] - astock_df.loc[j,
+                                                                 'close'])/astock_df.loc[j,
+                                                                                         'pre_max']
+                if adrop > 0.3:
+                    sell_price.append(astock_df.loc[j, 'close'])
+                    break
+        else:
+            print('*****************************************************')
+            print('*****************************************************')
+            print(astock_df)
+            print('*****************************************************')
+            print('*****************************************************')
+            
+            sell_price.append(astock_df.loc[len(astock_df)-1, 'close'])
+            astock_df['close'].plot()
+            plt.show()
+
+    return sell_price
+
+def cool_down_day(aday):
+    return aday
 
 def summary(r):    
     r_desc = r.describe()
