@@ -36,9 +36,12 @@ sharp率： （收益-无风险利率）/波动率
 import a_stock
 import common_utils
 import ts_utils
+from functools import lru_cache
+import matplotlib.pyplot as plt
 
 DEBUG = False
 
+@lru_cache()
 def select_stocks(aday):
     df = ts_utils.call_daily(aday)
     if df.empty:
@@ -83,7 +86,7 @@ def select_stocks(aday):
         
     return r 
 
-def sell_stocks(r):    
+def sell_stocks_now(r):    
     yesterday = ts_utils.call_last_tradeday_before(common_utils.yesterday())
     
     yesterday_df = ts_utils.call_daily(yesterday)
@@ -92,8 +95,31 @@ def sell_stocks(r):
     r['RESULT'] = round((r['close_R'] - r['close_L']) / r['close_L'] * 100, 2)
     
     r = r[[ 'close_L', 'close_R', 'P_position', 'V_position', 'stock_name', 'stock_industry', 'RESULT']]
-    print('最后结果：\n', r)
     return r
+
+def sell_stocks(r, aday):
+
+    
+    r['close_L']=r['close']
+    r['close_R']=ai_sell(r, aday)
+    r['RESULT'] = round((r['close_R'] - r['close_L']) / r['close_L'] * 100, 2)
+    
+    r = r[[ 'close_L', 'close_R', 'P_position', 'V_position', 'stock_name', 'stock_industry', 'RESULT']]
+    return r
+
+def ai_sell(r, buy_date):
+
+    yesterday = ts_utils.call_last_tradeday_before(common_utils.yesterday())
+    r = r.reset_index()
+    print('HHHHHH:\n', r.head())
+    print(r.dtypes)
+    for i in range(len(r)):
+        atscode = r.loc[i, 'ts_code']
+        astock_df = ts_utils.call_stock_qfq(atscode, buy_date, yesterday)
+        print(astock_df)
+        astock_df['close'].plot()
+        plt.show()
+    return 10
 
 def summary(r):    
     r_desc = r.describe()
@@ -136,12 +162,13 @@ def trick(aday):
     print('A DAY:', aday)
     print('******************************************')
     r = select_stocks(aday)
+
     if type(r).__name__ == 'NoneType':
         return [aday, 'NO TRADE.']
-    r = sell_stocks(r)
+    r = sell_stocks(r, aday)
     summary_info = summary(r)
     return [aday] + summary_info
 
 
 if __name__ == '__main__':
-    trick('20190613')
+    trick('20190102')

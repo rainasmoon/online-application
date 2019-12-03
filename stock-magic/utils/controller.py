@@ -9,7 +9,7 @@ import a_strategy
 
 def backward_test():
     begin = datetime.date(2019, 1, 1)
-    end = datetime.date(2019, 10, 1)
+    end = datetime.date(2019, 1, 10)
 
     for i in range((end - begin).days + 1):
             day = begin + datetime.timedelta(days=i)
@@ -23,7 +23,7 @@ def backward_test_permonth():
 
     r_final_report = []
 
-    for i in range(120):
+    for i in range(10):
         day = begin + datetime.timedelta(days=i * 30)
         aday = day.strftime("%Y%m%d")
         r_final_report.append(a_strategy.trick(aday))
@@ -33,7 +33,7 @@ def backward_test_permonth():
     print('END.')
 
 
-def build_sample():
+def build_sample_day():
     begin = datetime.date(2010, 1, 1)
     end = datetime.date(2019, 11, 1)
     days = []
@@ -69,7 +69,5 @@ def backward_test_sampledate():
 
 
 
-backward_test_sampledate()
-
-# TODO: 分板大盘上涨的天数和下跌的天数。
+backward_test()
 

@@ -63,6 +63,7 @@ def a_stock(stock_code, aday):
     return f'{price_max}, {price_min}, {vol_max}, {vol_min}, {stock_info}'
 
 
+
 if __name__ == '__main__':
     print(a_stock(test_ts_code_1, common_utils.yesterday_v1()))
     
