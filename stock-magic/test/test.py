@@ -89,6 +89,8 @@ def test_date():
 
 def test_str():
     print('abcd.1234'.replace('.', ''))
+    print('000001.sz'[7:9])
+    print('000001.sz'[:6])
     
 
 # test_str_format()

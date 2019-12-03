@@ -1,13 +1,15 @@
 # -*- coding: utf-8 -*-
+
+from sqlalchemy import create_engine
 from functools import lru_cache
 import json
 import os
 
 import pandas as pd
 import tushare as ts
-from utils import common_utils
+import common_utils
 
-COMMEN_FILE_PATH = '../datas/'
+COMMEN_FILE_PATH = '../datas/data_hdf'
 
 f = open('config_api.json', 'r')
 config_jd_api = json.load(f)
@@ -20,6 +22,11 @@ test_ts_code_1 = '000001.SZ'
 test_ts_code_2 = '002018.SZ'
 
 DEBUG = False
+
+
+def make_key(key):
+    key = key.replace('.','')
+    return key
 
 
 def to_date(date):
@@ -74,16 +81,18 @@ def call_all_stocks():
     is_hs     str     是否沪深港通标的，N否 H沪股通 S深股通
     '''
     
-    filePath = COMMEN_FILE_PATH + 'all_stocks.csv'
-    if not os.path.exists(filePath):
+    key = 'all_stocks'
+    stores = pd.HDFStore(COMMEN_FILE_PATH)
+    if key not in stores:
         data = pro.stock_basic(exchange='', list_status='L', fields='ts_code,symbol,name,area,industry,list_date,fullname,enname,market,exchange,curr_type,list_status,delist_date,is_hs')
         if data.empty:
             return data
-        data.to_csv(filePath)
+        stores[key] = data
         if DEBUG: 
             print('STORE:', filePath)
     else:
-        data = pd.read_csv(filePath)
+        data =stores[key]
+    stores.close()
     return make_ts_code(data)
 
 
@@ -96,62 +105,71 @@ def call_stock_info(ts_code):
 
 
 def call_daily(aday):
-    filePath = COMMEN_FILE_PATH + f'daily_{aday}.csv'
-    if not os.path.exists(filePath):
+    key = f'daily_{aday}'
+    stores = pd.HDFStore(COMMEN_FILE_PATH)
+    if key not in stores:
         
         df = pro.daily(trade_date=aday)
         if df.empty:
             return df
-        df.to_csv(filePath)
+        stores[key] = df
         if DEBUG: 
             print('STORE:', filePath)
     else:
-        df = pd.read_csv(filePath)
+        df = stores[key]
+    stores.close()
     return make_ts_code(df)
 
 
 def call_stock(ts_code, start_date, end_date):
-    filePath = COMMEN_FILE_PATH + f'stock_{ts_code}_{start_date}_{end_date}.csv'
-    if not os.path.exists(filePath):
+    key = f'stock_{ts_code}_{start_date}_{end_date}'
+    key = make_key(key)
+    stores = pd.HDFStore(COMMEN_FILE_PATH)
+    if key not in stores:
         
         df = pro.daily(ts_code=ts_code, start_date=start_date, end_date=end_date)
         if df.empty:
             return df
-        df.to_csv(filePath)
+        stores[key] = df
         if DEBUG: 
             print('STORE:', filePath)
     else:
-        df = pd.read_csv(filePath)
+        df = stores[key]
+    stores.close()
     return make(df)
 
 
 def call_stock_qfq(ts_code, start_date, end_date):
-    filePath = COMMEN_FILE_PATH + f'stock_qfq_{ts_code}_{start_date}_{end_date}.csv'
-    if not os.path.exists(filePath):
-
+    key = f'stock_qfq_{ts_code}_{start_date}_{end_date}'
+    key = make_key(key)
+    stores = pd.HDFStore(COMMEN_FILE_PATH)
+    if key not in stores:
         df = ts.pro_bar(ts_code=ts_code, adj='qfq', start_date=start_date, end_date=end_date)
         if df.empty:
             return df
-        df.to_csv(filePath)
+        stores[key] = df
         if DEBUG:
             print('STORE:', filePath)
     else:
-        df = pd.read_csv(filePath)
+        df = stores[key]
+    stores.close()
     return make(df)
 
 
 def call_stock_qfq_raw(ts_code, start_date, end_date):
-    filePath = COMMEN_FILE_PATH + f'stock_qfq_{ts_code}_{start_date}_{end_date}.csv'
-    if not os.path.exists(filePath):
+    key = f'stock_qfq_{ts_code}_{start_date}_{end_date}'
+    stores = pd.HDFStore(COMMEN_FILE_PATH)
+    if key not in stores:
         
         df = ts.pro_bar(ts_code=ts_code, adj='qfq', start_date=start_date, end_date=end_date)
         if df.empty:
             return df
-        df.to_csv(filePath)
+        stores[key] = df
         if DEBUG: 
             print('STORE:', filePath)
     else:
-        df = pd.read_csv(filePath)
+        df = stores[key]
+    stores.close()
     return df
 
 
@@ -218,16 +236,18 @@ def call_report_v1(year, quarter):
     report_date,发布日期
     '''
     
-    filePath = COMMEN_FILE_PATH + f'v1_report_{year}_{quarter}.csv'
-    if not os.path.exists(filePath):
+    key = f'v1_report_{year}_{quarter}'
+    stores = pd.HDFStore(COMMEN_FILE_PATH)
+    if key not in stores:
         df = ts.get_report_data(year, quarter)
         if df.empty:
             return df
-        df.to_csv(filePath)
+        stores[key] = df
         if DEBUG: 
             print('STORE:', filePath)
     else:
-        df = pd.read_csv(filePath)
+        df = stores[key]
+    stores.close()
     return df   
 
 
@@ -235,8 +255,9 @@ def call_report_v1(year, quarter):
 def call_stock_v1(ts_code, start_date, end_date):
     if not ts_code.isdigit():
         ts_code = ts_code[:-3]
-    filePath = COMMEN_FILE_PATH + f'v1_stock_qfq_{ts_code}_{start_date}_{end_date}.csv'
-    if not os.path.exists(filePath):
+    key = f'v1_stock_qfq_{ts_code}_{start_date}_{end_date}'
+    stores = pd.HDFStore(COMMEN_FILE_PATH)
+    if key not in stores:
         # code:股票代码，个股主要使用代码，如‘600000’
         # ktype:'D':日数据；‘m’：月数据，‘Y’:年数据
         # autype:复权选择，默认‘qfq’前复权
@@ -245,11 +266,12 @@ def call_stock_v1(ts_code, start_date, end_date):
         df = ts.get_k_data(code=ts_code, ktype='m', autype='qfq', start=start_date, end=end_date)
         if df.empty:
             return df
-        df.to_csv(filePath)
+        stores[key] = df
         if DEBUG: 
             print('STORE:', filePath)
     else:
-        df = pd.read_csv(filePath)
+        df = stores[key]
+    stores.close()
     df = make_v1(df)
     
     return df
@@ -258,14 +280,16 @@ def call_stock_v1(ts_code, start_date, end_date):
 def call_sh_index_v1():
     '''获得上证指数的交易数据'''
     today = common_utils.today()
-    filePath = COMMEN_FILE_PATH + f'v1_sh_index_{today}.csv'
-    if not os.path.exists(filePath):
+    key = f'v1_sh_index_{today}'
+    stores = pd.HDFStore(COMMEN_FILE_PATH)
+    if not key in stores: 
         print('CALL TUSHARE...')
         df = ts.get_k_data(code='sh', ktype='D',
           autype='qfq', start='1990-12-20')
-        df.to_csv(filePath)
+        stores[key] = df
     else:
-        df = pd.read_csv(filePath)
+        df = stores[key]
+    stores.close()
     df = make_v1(df)
     return df
 
@@ -320,7 +344,15 @@ def call_cpi():
 
 @lru_cache()
 def call_ppi():
-    df = ts.get_ppi()
+    key = 'ppi'
+    stores = pd.HDFStore(COMMEN_FILE_PATH)
+    if key not in stores:
+        print('CALL TS GET PPI...')
+        df = ts.get_ppi()
+        stores[key] = df
+    else:
+        df = stores[key]
+    stores.close()
     return df 
 
 
@@ -347,17 +379,33 @@ def call_shibor():
 
     '''
     df = ts.shibor_data() 
+
+    #追加数据到现有表
+    if type(df).__name__ != 'NoneType':
+        df.to_sql('shibor_data',make_engine(),if_exists='append')
+
     return df
 
+def make_engine():
+    engine = create_engine('mysql://stock:stock@127.0.0.1/stocks?charset=utf8')
+    return engine
 
 if __name__ == '__main__':
-    print(call_sh_index_v1())
-    print(call_index_v1())
-    
-#     print(call_last_trade_day('20191124'))
-#     print(call_stock_info(test_ts_code_1))
-#     print(call_stock_info(test_ts_code_2))
-    
-#     print(call_today_all_v1())
-#     print(call_report_v1(2019, 2))
-
+    r = call_ppi()
+    print(r)
+    r = call_all_stocks()
+    print(r)
+    r = call_daily('20191202')
+    print(r)
+    r = call_stock('000001.sz', '20191101', '20191201')
+    print(r)
+    r = call_stock_qfq('000001.sz', '20191101', '20191201')
+    print(r)
+    r = call_stock_qfq_raw('000001.sz', '20191101', '20191201')
+    print(r)
+    r = call_index_v1()
+    print(r)
+    #r = call_today_all_v1()
+    #print(r)
+    r = call_report_v1(2019, 3)
+    print(r)

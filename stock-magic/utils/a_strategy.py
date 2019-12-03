@@ -84,7 +84,7 @@ def select_stocks(aday):
     return r 
 
 def sell_stocks(r):    
-    yesterday = ts_utils.call_last_trade_day(common_utils.yesterday_v1())
+    yesterday = ts_utils.call_last_tradeday_before(common_utils.yesterday())
     
     yesterday_df = ts_utils.call_daily(yesterday)
     
