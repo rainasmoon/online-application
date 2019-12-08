@@ -150,6 +150,7 @@ def call_stock_qfq_raw(ts_code, start_date, end_date):
     path = COMMEN_FILE_PATH + 'stocks/' + ts_code[:3] + '/' + ts_code + '/'
     yesterday = common_utils.yesterday()
     oldFile = None
+    filePath = None
     if not os.path.exists(path):
         os.makedirs(path)
         filePath = path + f'stock_qfq_{ts_code}_{yesterday}.csv'
@@ -163,6 +164,7 @@ def call_stock_qfq_raw(ts_code, start_date, end_date):
                 oldFile = path + fileName
             else:
                 filePath = path + fileName 
+            break
         else:
             filePath = path + f'stock_qfq_{ts_code}_{yesterday}.csv'
     if not os.path.exists(filePath):

@@ -98,17 +98,13 @@ def sell_stocks_now(r):
     return r
 
 def sell_stocks(r, aday):
-
-    
     r['close_L']=r['close']
     r['close_R']=ai_sell(r, aday)
     r['RESULT'] = round((r['close_R'] - r['close_L']) / r['close_L'] * 100, 2)
-    
     r = r[[ 'close_L', 'close_R', 'P_position', 'V_position', 'stock_name', 'stock_industry', 'RESULT']]
     return r
 
 def ai_sell(r, buy_date):
-
     yesterday = ts_utils.call_last_tradeday_before(common_utils.yesterday())
     r = r.reset_index()
     sell_price = []
@@ -128,7 +124,7 @@ def ai_sell(r, buy_date):
                 adrop = (astock_df.loc[j, 'pre_max'] - astock_df.loc[j,
                                                                  'close'])/astock_df.loc[j,
                                                                                          'pre_max']
-                if adrop > 0.3:
+                if adrop > 0.2:
                     sell_price.append(astock_df.loc[j, 'close'])
                     break
         else:
@@ -139,9 +135,10 @@ def ai_sell(r, buy_date):
             print('*****************************************************')
             
             sell_price.append(astock_df.loc[len(astock_df)-1, 'close'])
-            astock_df['close'].plot()
+            plot_df = astock_df.copy()
+            plot_df.set_index('trade_date', inplace=True)
+            plot_df['close'].plot()
             plt.show()
-
     return sell_price
 
 def cool_down_day(aday):
