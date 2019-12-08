@@ -13,10 +13,10 @@ import time
 from urllib import parse
 from urllib import request
 
-f = open('config_jd_api.json', 'r')
+f = open('config_api.json', 'r')
 config_jd_api = json.load(f)
-app_key = config_jd_api['app_key']
-appsecret = config_jd_api['appsecret']
+app_key = config_jd_api['jd_app_key']
+appsecret = config_jd_api['jd_appsecret']
 site_id = '1728182420'
 position_id = '1915772300'
 access_token = ''
@@ -171,17 +171,6 @@ if __name__ == '__main__':
 #     print(r)
 #     r = call_jd_category(0, 0)
 #     print(r)
-    
-    begin = datetime.date(2019, 1, 1)
-    end = datetime.date(2019, 11, 13)
-    for i in range((end - begin).days + 1):
-        day = begin + datetime.timedelta(days=i)
-        aday = day.strftime("%Y%m%d")
-        for i in range(24):
-            atime = aday + str(i).zfill(2)
-            print("CALL:", atime)
-            r = call_my_orders(atime, 1)
-            print(r)
-    
-#     r = call_jingfen()
-#     print(r)
+   
+     r = call_jingfen()
+     print(r)
