@@ -82,6 +82,20 @@ def make_jd_data():
     print('INSERT PRODUCT, MENU, SET STORE TO DONE SUCCESS.')
 
     
+def make_jd_promotion_url():
+    r_set = db_utils_online_mysql.select_no_promotion_url_product()
+    print('FIND NO promotion url NO....:', len(r_set))
+    for item in r_set:
+        item_id = item[0]
+        sku_id = item[1]
+        promotion_url = jd_api.call_jd_promotion_url(sku_id)
+        if promotion_url:
+            db_utils_online_mysql.update_promotion_url(item_id,
+                                                            promotion_url)
+            print('UPDATE promotion url SUCCESS:', item_id)
+        else:
+            print('SKIP. promotion_url EMPTY,:', promotion_url)
+
 def make_jd_wordcloud_comment():
     r_set = db_utils_online_mysql.select_no_wordcloud_product()
     print('FIND NO CLOUDPIC NO....:', len(r_set))

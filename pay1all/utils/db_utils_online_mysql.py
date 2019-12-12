@@ -76,6 +76,15 @@ def select_search():
     return r 
 
 
+def select_no_promotion_url_product():
+    conn = get_conn()
+    c = conn.cursor()
+    c.execute('select id, product_jd_skuid from products_product where product_promotion_url = \'\'')
+    r = c.fetchall()
+    conn.commit()
+    conn.close()
+    return r 
+
 def select_no_wordcloud_product():
     conn = get_conn()
     c = conn.cursor()
@@ -145,6 +154,13 @@ def update_search_cid(iid, cid):
     conn.commit()
     conn.close() 
 
+
+def update_promotion_url(iid, promotion_url):
+    conn = get_conn()
+    c = conn.cursor()
+    c.execute('update products_product set product_promotion_url  = %s WHERE id = %s', (promotion_url, iid))
+    conn.commit()
+    conn.close()
 
 def update_wordcloud_pic_path(iid, wordcloud_pic_path):
     conn = get_conn()
