@@ -1,0 +1,343 @@
+到底要买哪款笔记本?
+###################
+:date: 2019-03-10 11:42
+:author: rainasmoon
+:category: 好物
+:slug: buy-which-notebook
+:status: published
+
+.. raw:: html
+
+   <figure class="wp-block-image">
+
+| |Choose a great laptop|
+
+.. raw:: html
+
+   <figcaption>
+
+I like GPD
+
+.. raw:: html
+
+   </figcaption>
+   </figure>
+
+先种个草，最近新出的7寸\ `GPD <https://union-click.jd.com/jdc?e=&p=AyIGZR5bFQUbAlMSWCUAEQdSHVgVChYGUSsfSlpMWGVCHlBDUAxLBQNQVk4YDk5ER1xOGVcYWxIEEQddH1oRHUtCCUZrUGJBTBdsHxxicgQoYANQV1JEMx8iZQ4eN1UdWBwCGwRQGFolAhMGVR5YFAsbAWUrWxQyU2lVGFwQBxY3VCtbEQYUAl0TUxUHFwRTK1sdBiJEBUMERUBOWQtEayUyETdlK1slAiJYEUYGJQATBlcZ&t=W1dCFFlQCxxKQgFHRE5XDVULR0UXARIAUxhbHQYTA0pCHklf>`__\ 笔记本真是我的最爱。 8G的内存业界良心。要知道现在一般上网本的配置也只到4G。所以一出来就深受hacker的爱，kali首先支持安装了。比我以前买的华硕思聪上网本，那是好用多了。不过价钱小贵，请点看我的\ `GPD <https://union-click.jd.com/jdc?e=&p=AyIGZR5bFQUbAlMSWCUAEQdSHVgVChYGUSsfSlpMWGVCHlBDUAxLBQNQVk4YDk5ER1xOGVcYWxIEEQddH1oRHUtCCUZrUGJBTBdsHxxicgQoYANQV1JEMx8iZQ4eN1UdWBwCGwRQGFolAhMGVR5YFAsbAWUrWxQyU2lVGFwQBxY3VCtbEQYUAl0TUxUHFwRTK1sdBiJEBUMERUBOWQtEayUyETdlK1slAiJYEUYGJQATBlcZ&t=W1dCFFlQCxxKQgFHRE5XDVULR0UXARIAUxhbHQYTA0pCHklf>`__
+
+笔记本选购指南
+==============
+
+| 
+|  
+|  
+
+到底要买哪款笔记本?您说您中意苹果?我没意见，不过我是程序员，当然不会选Mac系统和Windows系统了。我的电脑都是要可以安装linux的。为什么？性价比高。
+
+.. code:: wp-block-preformatted
+
+    即使是电脑小白用户。也请千万不要去电脑城购买。京东上直接买就好，最次，你还可以7天无理由退货。
+
+选择笔记本，主要看的还是用途，关注使用场合会决定很多因素。
+
+-  是否经常携带？轻便本为主。续航能力。
+-  办公用？集成显卡的即可。
+-  玩游戏？独立显卡。
+-  设计式？大屏，显卡。
+
+由此，记住一点：
+
+.. code:: wp-block-preformatted
+
+    便携性和可玩性是一个矛盾点。二者只能取其一。
+
+有两款笔记本是近两年新兴起的，他们都有很好的品牌知名度和影响力。拥有着不错的固定用户群和热爱者。这两个牌子就是：华为和小米。
+
+华为笔记本选购指南
+------------------
+
+华为的笔记本，超轻薄，用起来绝对有面；全面屏让13.3寸的机身装着14寸的屏。看上去更靓丽。
+
+但是右则出风的设计，如果你用单独鼠标，夏天会很不爽。
+
+`华为HUAWEI MateBook 14 <https://union-click.jd.com/jdc?e=&p=AyIGZRprFQMTBlQYUh0BGgRRKx9KWkxYZUIeUENQDEsFA1BWThgJBABAHUBZCQUdRUFGGRJDD1MdQlUQQwVKDFRXFk8jQA4SBlQaWhYLGgRdGF8lR2hUS0IsZVFxUQlyXRRReX0CQBNjYh4LZRprFQMTB1AYWhwLFDdlG1wlVHwHVBpaFAMXBFETaxQyEgNSHFscBxAHVxJcETIVB1wrGEVaTVcXRwVLXSI3ZRhrJTISN1YrGXtSRwICSQ8dUUIHBU9eEgVHVwASDhAFFQdTT1JFBhQDBytZFAMWDg%3D%3D>`__
+
+华为也有他家笔记本的荣耀系列：
+
+`荣耀MagicBook Pro 16.1英寸全面屏 <https://union-click.jd.com/jdc?e=&p=AyIGZRprFQMTBlQcXRAGEgFWKx9KWkxYZUIeUENQDEsFA1BWThgJBABAHUBZCQUdRUFGGRJDD1MdQlUQQwVKDFRXFk8jQA4SBlQaWhIEFwNVHVgleVcGCEs8UWFyUB0aUmlEYWxQGCBuch4LZRprFQMTB1AYWhwLFDdlG1wlVHwHVBpaFAMTD1QeaxQyEgNSHFscBRMPVBNdHDIVB1wrGEVaTVcXRwVLXSI3ZRhrJTISN1YrGXsAGldSGwkQBkcEBx5eHVUVVFJJWUYLRwQCTlsTARcBVStZFAMWDg%3D%3D>`__
+
+小米笔记本选购指南
+------------------
+
+样子还是不错的，喜欢小米家族的客官，也会喜欢他家的小米笔记本，这大概即是爱屋及屋吧。
+
+`RedmiBook 14英寸全金属超轻薄 <https://union-click.jd.com/jdc?e=&p=AyIGZRprFQMTBlQfUhEAFQVcKx9KWkxYZUIeUENQDEsFA1BWThgJBABAHUBZCQUdRUFGGRJDD1MdQlUQQwVKDFRXFk8jQA4SBlQaWhELFgVSGVIlWRNcMWdSS1BxcAVeExRRdEYJGAtBVB4LZRprFQMTB1AYWhwLFDdlG1wlVHwHVBpaFAMXB1YZaxQyEgNSHFscBxcAXRxbHDIVB1wrGEVaTVcXRwVLXSI3ZRhrJTISN1YrGXtXFVRdGFtHAxUAUx1eR1dCDlUTDhADFFBdG1wUAxIDVStZFAMWDg%3D%3D>`__
+
+三星笔记本选购指南
+------------------
+
+.. raw:: html
+
+   <figure class="wp-block-image">
+
+| |samsung laptop|
+
+.. raw:: html
+
+   <figcaption>
+
+samsung laptop
+
+.. raw:: html
+
+   </figcaption>
+   </figure>
+
+三星的接受程度，知明度似乎不那么高。但我却情有独中，别看三星的手机老出毛病，但我看中的是三星电子的芯片生产能力。想想韩国这家芯片生产厂家，三星的本用自家的内存，芯片，SSD固态硬盘。价钱和成本，质量总是要好一些吧?三星的研发和创新能力，还是排在前面的。并且三星重视外观，大路的产品符合东方人的审美。
+
+.. code:: wp-block-preformatted
+
+    太注重外观，估计外观占去很多成本。
+
+`京东：三星笔记本 <https://item.jd.com/30792394544.html>`__
+
+DELL笔记本选购指南
+------------------
+
+.. raw:: html
+
+   <figure class="wp-block-image">
+
+| |dell laptop|
+
+.. raw:: html
+
+   <figcaption>
+
+dell laptop
+
+.. raw:: html
+
+   </figcaption>
+   </figure>
+
+DELL笔记本，一直被程序员推荐着，感觉有点像手机中的红米。不过公司发的DELL主机箱真是让人惊艳。加装到32G内存，那用起来真是一种享受，身为程序员，不管开哪种大型软件，那叫一个顺。再配个双显示器，因为主机箱自带集成显卡，独立显卡，逼格上档次。但据说DELL的主机箱只有商务的才好，价格都7，8千。要买3到4千的本?还是选三星吧。
+
+.. code:: wp-block-preformatted
+
+    不注重外观。
+
+`京东：DELL XPS <https://union-click.jd.com/jdc?e=&p=AyIGZRtYEQQaA10bXhIyEgZUGloVBxMPXBpaJUZNXwtEa0xHV0YXEEULWldTCQQAQB1AWQkFWxQDEwZVHlodCxMGSkIeSV8iYTVFXG5aEEU2Gi11ZGF1FkdTc2QbUVkXaxUEEQ5VElgQARM3VRpaFQcRBlwSXSUyEgZlTTUVAxMGVBpaFQcTN1QrWxEGFAJdE1MWAhoOXCtbHQYiRAVDBEVATlkLRGslMhE3ZStbJQIiWBFGBiUAEwZXGQ%3D%3D&t=W1dCFFlQCxxKQgFHRE5XDVULR0UVAxMGVBteFAobBlQEAlBeTw%3D%3D>`__
+
+HP（惠普）笔记本选购指南
+------------------------
+
+HP的本?曾经的辉煌，像我的年龄一样已经芳华老去。笑。我曾经用过两款，一款康柏，当时那叫一个好用；第二款当时4000块买的，除了外观不好看，后盖明显的塑料感。不过内里的主板，硬盘，芯片，完全没问题。现在在老家照样用着，只换过一次风扇。前些日子给机械硬盘升级到SSD，又能接着用上许多年了。
+
+.. code:: wp-block-preformatted
+
+    低端本不注重外观，不用塑料能死？HP的散热也为人诟病。
+
+华硕笔记本选购指南
+------------------
+
+.. raw:: html
+
+   <figure class="wp-block-image">
+
+| |asus laptop|
+
+.. raw:: html
+
+   <figcaption>
+
+asus laptop
+
+.. raw:: html
+
+   </figcaption>
+   </figure>
+
+华硕的主版曾经是品质的象征，华硕的本都很大气（实际上它真的模具真的很偏大），散热更是没得说，如果你玩游戏?请选择华硕吧。而我只是在前几年买了它家的1999的思聪本。一直想有个续航好，便携好的本本，1寸的屏也是刚刚好，放在包里面不沉。可是只有2G的内存。又没法子加内存条。win10的系统用了一段时间就无法关机了。不知道是电脑的问题也是win10的问题。鸡肋。后来一直在寻找再次利用的方法。后来换了linux，总算能拿来干点嘛了。
+
+.. code:: wp-block-preformatted
+
+    华硕低端的本没法用。
+
+`京东：华硕吃鸡本 <https://union-click.jd.com/jdc?e=&p=AyIGZRtbEgETA1IZWBMyEQBcHlITAxoOVB9rUV1KWQorAlBHU0VeBUVNR0ZbSkAOClBMW0sYXBwHGwFUE1IUBg1eEEcGJVpPHTNtRWxFcm9WbiZVVVFDPW0ATlQeC2UbXRYLEg5WHlgUMhIGVBteFgMbDlMraxUDIkY7HFkRBhQPZRprFQYWAVATUx0BFwBdEmsVChY3FksDSlJQWwtFBCUyIgRlK2sVMhI3Cl8GSDIQBlQZWQ%3D%3D&t=W1dCFFlQCxxKQgFHRE5XDVULR0UWBRsCXB1aHQsTA0pCHklf>`__
+
+华硕的这款轻薄本，把内存升级到了4G。总算不用使着就会卡了。整个机身不到3斤，太轻了。拿着它到咖啡馆里去打字。不用电源也差不多能用6个小时，当别人都关机没有电时，而你却还能用上好长一段时间，说不出的感觉。
+
+打字，上网，看电影，玩消消乐足够了。
+
+.. code:: wp-block-preformatted
+
+    主打续航能力。
+
+`华硕(ASUS) 思聪本E203MA 11.6英寸 <https://union-click.jd.com/jdc?e=&p=AyIGZRtcEQYbAl0ZXxMyGwVVHVgWBCJDCkMFSjJLQhBaGR4cDF8QTwcKXg1cAAQJS14MQQVYDwtFSlMTBAtHR0pZChUdRUFGfwAXUhcCFARWHWtBZEYFABoMXWdwfVNdUlJ%2BVmQebxplDh43VCtbFAMSAlYaUhwEIjdVHGtGbElSOx0LFwdABgASWEALQlNlGmsVBhUAVRJeEQcbA10aaxICGzcWSwNKUlBbC0UEJTIiBGUraxUyETcXdVxGUEFTXB5aRldGB1BIXBcLQQQAHAxFV0ICAkkIHAMRN1caWhEL>`__
+
+联想笔记本选购指南
+------------------
+
+公司，办公，一般喜欢联想的笔记本。但联想的笔记本性价比并不好。他胜出的原因也许是公司看中的是他家的售后，反正坏了联想有人上门来维修。
+
+要知道，这个世界上也有很多人会去买神舟的笔记本。曾经过马路的时候，就看到一位大爷到电脑城去拿了一台神舟笔记本放到了车框里。
+
+也许是因为熟悉神舟笔记本？也许听了别人的建议？也许那是十几年前就在用神舟笔记本？
+
+然后，我就想，推荐笔记本真的是一件很困难的事情，因为人们很容易形成某种固定的看法后，就会根据自己的看法去接受和筛选遇到的信息。
+
+人们的购买时，到底是一种理智，还是某种冲动？人们是如何受到影响的？我心里面不禁有这们的疑问。难着摆出一大堆的术语和指标对比就是所谓的专家？
+
+撤远了。说说联想的笔记本。
+
+.. code:: wp-block-preformatted
+
+    联想的笔记本性价比并不高。主打商务办公。
+
+`ThinkPad笔记本 联想 E580（20CD）15.6英寸商务办公笔记本 <https://union-click.jd.com/jdc?e=&p=AyIGZRNZEwYQDlwfWyUCEgZRGlMXChoOVysfSlpMWGVCHlBDUAxLBQNQVk4YCQQAQB1AWQkFHUVBRhkSQw9THUJVEEMFSgxUVxZPI0AOEgdUH1odABoPXBlrQQFPZFF4H31hTE8cYztWQkRDImYTZQ4eN1QrWxQDEgJWGlIcBCI3VRxrVGwUBFwaXCUDIgdRHFwVCxQFVh9eEQQiAFUSa1ZSSlgFWQdLXE03ZStYJTIiB2UYa1dsElAGGVIQUBJUBhpTEFAWDl0dXkYLFwZVS1ocVhQBBkhrFwMTA1w%3D>`__
+
+GDP超小笔记本
+-------------
+
+.. raw:: html
+
+   <figure class="wp-block-image">
+
+| |gpd laptop|
+
+.. raw:: html
+
+   <figcaption>
+
+gpd laptop
+
+.. raw:: html
+
+   </figcaption>
+   </figure>
+
+看看他那性感的外观，真叫人爱不释手啊。
+
+.. code:: wp-block-preformatted
+
+    1代产品理念不错，但硬件工艺需要时间检验。软件支持少。
+
+`京东：GPD <https://union-click.jd.com/jdc?e=&p=AyIGZR5bFQUbAlMSWCUAEQdSHVgVChYGUSsfSlpMWGVCHlBDUAxLBQNQVk4YDk5ER1xOGVcYWxIEEQddH1oRHUtCCUZrUGJBTBdsHxxicgQoYANQV1JEMx8iZQ4eN1UdWBwCGwRQGFolAhMGVR5YFAsbAWUrWxQyU2lVGFwQBxY3VCtbEQYUAl0TUxUHFwRTK1sdBiJEBUMERUBOWQtEayUyETdlK1slAiJYEUYGJQATBlcZ&t=W1dCFFlQCxxKQgFHRE5XDVULR0UXARIAUxhbHQYTA0pCHklf>`__
+
+苹果笔记本选购指南
+------------------
+
+苹果的笔记本选起来最简单，他分三个系列：Air，Pro。Air更轻薄，学生会很喜欢。Pro性能更强，xCode程序员，设计人员的最爱。
+
+`Apple Macbook Air 13.3 <https://union-click.jd.com/jdc?e=&p=AyIGZRprEQERA1ceXCVGTV8LRGtMR1dGFxBFC1pXUwkEBwpZRxgHRQcLREJEAQUcTVZUGAVJHk1cTQkTSxhBekcLURhYEQAXAGVYJl5gYGIqWDkSVntwKRgCXAYMYClNVxkyEzdVGloVBxEGXBJdJTISAGVNNRUDEwZUGloVARQ3VCtbEQYbDlAdXxwHFgdTK1wVCyJEBUMERUBOWQtEayUyETdlK1slASJFO08PEQIVVAAdDEBVFAIHSFhGBxRVUh1THAQaBgJPU0JSIgVUGl8c&t=W1dCFFlQCxxKQgFHREkdSVJKSQVJHFRXFk9FUlpGQUpLCVBaTFhbXQtWVmpSWR9YFgYQAlI%3D>`__
+
+`Apple Macbook Pro 13.3 <https://union-click.jd.com/jdc?e=&p=AyIGZRprEwURD1ESUiVGTV8LRGtMR1dGFxBFC1pXUwkEBwpZRxgHRQcLREJEAQUcTVZUGAVJHk1cTQkTSxhBekcLUxxYHQYbDmVnOkBAQEIQSz5PBU57LBoQSWRXAytdVxkyEzdVGloVBxEGXBJdJTISAGVNNRUDEwZUGloVARQ3VCtbEQYbDlAcXxwHEgFVK1wVCyJEBUMERUBOWQtEayUyETdlK1slASJFOx0PQQFADl0TDBILEwJQSQhFBRYAB0kPRgQUAVJICEBQIgVUGl8c&t=W1dCFFlQCxxKQgFHREkdSVJKSQVJHFRXFk9FUlpGQUpLCVBaTFhbXQtWVmpSWR1cFgoWDlw%3D>`__
+
+一些牌子：
+----------
+
+苹果：漂亮，系统闭源。
+
+三星：性价比，有时太注重外观。有时候会在你意想不到的地方翻车。
+
+DELL：硬件好，搭配好，性能强劲，外观差。
+
+HP：曾经很辉煌，\ **发热大**\ 。
+
+华硕：散热好，模具普便偏大。
+
+联想：国产品牌， 全村的骄傲，和同类比\ **价格高**\ 。
+
+京东上的一些推荐：
+------------------
+
+总之，买笔记本还是看用途和预算。
+
+游戏本：
+
+游戏本看重的是：好显卡， 大内存， 大显示屏。
+
+-  `戴尔DELL游匣G3 15.6英寸轻薄游戏笔记本电脑 <https://union-click.jd.com/jdc?e=&p=AyIGZRtYEQQaA10bXhIyEgZUGloRBBECUhNYJUZNXwtEa0xHV0YXEEULWldTCQQHCllHGAdFBwtEQkQBBRxNVlQYBUkeTVxNCRNLGEF6RwtVGloUAxYBVh5cHQEiDyUbHl1FF181QClqX3l1FX0ndl9ZUVkXaxQyEgZUG14WAxsOUytrFQUiUTsbWhQDEwZUG14UMhM3VR9cEgIbD10dWRUDGzdSG1IlQUJfCksZSVxMWGUraxYyIjdVK1glQHwAAhwPEAAWBFJJWUYHEA9VE1pGB0AHVxMPQlVHUlROWyUAEwZREg%3D%3D>`__
+-  `华硕（ASUS）顽石Y4000/Y5000八代i5轻薄窄边14英寸商务独显笔记本电脑游戏 <https://union-click.jd.com/jdc?e=&p=AyIGZRprFgUVAVMYXBQAFQZlXwRNXE03DF4eVEAZGUtDHkFeDVwABAlLXgwEUhxdEwEVBlccWgpbV1sIKzIQAVYdJxgGcFdGfTRFU3JRQQEVWjsZDiIHUxhSFQsRAlYaaxUDEwdQGFocCxQ3ZRtaJUN8BFQSWRMLIgZlG18RBBcPXRNYEwYWAGUbUxEyUVcNRAtXXkxZCitrJQEiN2UbaxUyTUMIRmsXAxMFVw%3D%3D&t=W1dCFFlQCxxKQgFHRE5XDVULR0UWBRUBUxhcFAAVBkpCHklf>`__
+-  `华硕(ASUS)飞行堡垒7九代英特尔酷睿i7 15.6英寸游戏笔记本电脑 <https://union-click.jd.com/jdc?e=&p=AyIGZRtcEQYbAl0ZXxMyEgZUGloRAxIHVxxcJUZNXwtEa0xHV0YXEEULWldTCQQHCllHGAdFBwtEQkQBBRxNVlQYBUkeTVxNCRNLGEF6RwtVGloUAxYGVRtZEgUiUDZMXUdEQHswZSlqd1t7HAUbbxxIZ1kXaxQyEgZUG14WAxsOUytrFQUiVDtADnsEQgVQSVpACxFSXEsPJQMiB1EcXBUKEwRVE1MXCiIAVRJrVlJKWAVZB0tcTTdlK1glMiIHZRhrV2wVUwUfWhcGGwYGSFIQAUUCXBwOFgIXAFwaD0EDG1VXS2sXAxMDXA%3D%3D>`__
+-  `机械师（MACHENIKE）F117-B3 游戏本 <https://union-click.jd.com/jdc?e=&p=AyIGZRprFQMTBlQaWBcAFwVcKx9KWkxYZUIeUENQDEsFA1BWThgJBABAHUBZCQUdRUFGGRJDD1MdQlUQQwVKDFRXFk8jQA4SBlQaWhQBEAVQGVIlWWJTIUYJUAF3dE8dGw9QRGddUA5RRB4LZRprFQMTB1AYWhwLFDdlG1wlVHwHVBpaFAIQAFwbaxQyEgNSHFsdABECVRtYETIVB1wrGEVaTVcXRwVLXSI3ZRhrJTISN1YrGXsLFFddHltHVRAFUBheRgsQVFdOCxZWQgJQTggRVkJXUitZFAMWDg%3D%3D>`__
+-  `神舟(HASEE)战神Z7-CT5NA <https://union-click.jd.com/jdc?e=&p=AyIGZRprFQMTBlQZWhEBEQBTKx9KWkxYZUIeUENQDEsFA1BWThgJBABAHUBZCQUdRUFGGRJDD1MdQlUQQwVKDFRXFk8jQA4SBlQaWhcDFgRWHF0lZ3BlHhghC2p3clIBGX4LaHUeQFoLch4LZRprFQMTB1AYWhwLFDdlG1wlVHwHVBpaFAMTB1EcaxQyEgNSHFsdABAHUBpYFTIVB1wrGEVaTVcXRwVLXSI3ZRhrJTISN1YrGXtXGlQBGgsXBEBUB05eFQoXDgAaC0dWGwABGl9GUhEEUCtZFAMWDg%3D%3D>`__
+-  `雷神(ThundeRobot)911Air星战二代旗舰版 <https://union-click.jd.com/jdc?e=&p=AyIGZRprFQMTBlQfXxULEQNcKx9KWkxYZUIeUENQDEsFA1BWThgJBABAHUBZCQUdRUFGGRJDD1MdQlUQQwVKDFRXFk8jQA4SBlQaWhEGEg5WH1IlexZTDH0YSkpyTCN4UkwFUEIPRwxSRB4LZRprFQMTB1AYWhwLFDdlG1wlVHwHVBpaFAMTAFcfaxQyEgNSHFsdABcHVhlTEzIVB1wrGEVaTVcXRwVLXSI3ZRhrJTISN1YrGXsKQQNSTl0TChpVAhheEAFBDgBLCEBWElVUGV4VURIBUytZFAMWDg%3D%3D>`__
+-  `小米游戏本 15.6英寸 <https://union-click.jd.com/jdc?e=&p=AyIGZRtZEQEXAlQSWRUyEAVXGl0SBhYOVB1rUV1KWQorAlBHU0VeBUVNR0ZbSkdETlcNVQtHRVNSUVNLXANBRA1XB14DS10cQQVYD21XHgVXGVoTBRYDXBpdJVJXXQEcJFZ5cQAvGUFdUFd1Dls9dWIeC2UaaxUDEwdQGFocCxQ3ZRtcJUN8DlQdUxIGIgZlG18SBRIPVxNbHAcaAWUcWxwyUVcNRAtXXkxZCitrJQEiN2UbaxYyUGlVHVxCVUAAVUlcEAAXAVQfUhMBQVVSGwlCVhoCAhNeEzIQBlQfUg%3D%3D>`__
+-  `联想(Lenovo)拯救者Y7000英特尔酷睿i7 15.6英寸 <https://union-click.jd.com/jdc?e=&p=AyIGZRprFQMTBlQaXBUBEg5TKx9KWkxYZUIeUENQDEsFA1BWThgJBABAHUBZCQUdRUFGGRJDD1MdQlUQQwVKDFRXFk8jQA4SBlQaWhQFEgRVEl0lfXYCA1JYVEVxQxEeHVNGG1gWXy1wRB4LZRprFQMTB1AYWhwLFDdlG1wlVHwHVBpaFAMTB1EdaxQyEgNSHFsdBxMAUh1YHTIVB1wrGEVaTVcXRwVLXSI3ZRhrJTISN1YrGXsFRQNSGlMSChVXB09eFlYTVwFICEZXGwJUGgkcA0BXBytZFAMWDg%3D%3D>`__
+-  `机械革命【旗舰店】深海泰坦X3/X9Ti -R144HZ电竞屏学生手提吃鸡游戏 <https://union-click.jd.com/jdc?e=&p=AyIGZRtZEAUUA1MdUhwyFwBXElsSAxQPXB9rUV1KWQorAlBHU0VeBUVNR0ZbSkdETlcNVQtHRVNSUVNLXANBRA1XB14DS10cQQVYD21XHgJSGVIVBRMBXRJfJXlzAzFdC2gGcFlWSwVOZWBENX4obXIeC2UaaxUDEwdQGFocCxQ3ZRtcJUN8DlQTUxYLIgZlG18SBRIPUBtfFwsSB2UcWxwyUVcNRAtXXkxZCitrJQEiN2UbaxYyUGlRElIQUBABUhhYF1AXVVVLCxMAFlJdG1wUC0BQVEkOQTIQBlQfUg%3D%3D>`__
+
+商务本：
+
+-  `戴尔DELL成就5000 英特尔酷睿i7 13.3英寸超轻薄便携 <https://union-click.jd.com/jdc?e=&p=AyIGZRtYEQQaA10bXhIyEgZUGloXBxMAVxxfJUZNXwtEa0xHV0YXEEULWldTCQQHCllHGAdFBwtEQkQBBRxNVlQYBUkeTVxNCRNLGEF6RwtVGloUAxACVBxZEgYiRiNoLF5gF3k3Qi1IQGJ%2FHlkiY2BQd1kXaxQyEgZUG14WAxsOUytrFQUiUTsbWhQDEwZUG14UMhM3VR9cEgIbD10ZWBQBFTdSG1IlQUJfCksZSVxMWGUraxYyIjdVK1glQHwAAhwPEAAWBFJJWUYHEA9VE1pGB0AHVxMPQlVHUlROWyUAEwZREg%3D%3D>`__
+-  `戴尔（DELL） 灵越14E-3480/15E-3576 14英寸商务办公 <https://union-click.jd.com/jdc?e=&p=AyIGZR9eHAAQD1IaXiUAFgBRGF8XAREEUSsfSlpMWGVCHlBDUAxLBQNQVk4YCQQAQB1AWQkFHUVBRhkSQw9THUJVEEMFSgxUVxZPI0AOEANSH1gRABEEVh9rYGR1dCBzJhVgakMdGyZWYFVGPl4kQw4eN1QrWxQDEgJWGlIcBCI3VRxrVGwRB1YbWxMyEzdVH1wSAhoGVBJcEwYbN1IbUiVBQl8KSxlJXExYZStrFjIiN1UrWCVAfAACHA8QABYEUklZRgcQD1UTWkYHQAdXEw9CVUdSVE5bJQATBlES>`__
+-  `华硕（ASUS）灵耀V406轻薄14英寸IPS全高清商务办公学生上网超极本 <https://union-click.jd.com/jdc?e=&p=AyIGZRprFQMVD1MaXBcEFgJlXwRNXE03DF4eVEAZGUtDHkFeDVwABAlLXgwHVBxTEwMVBVMfXgpbV1sIKwFocllsJX8HdwBsBAxoD1RESVpTSx0ZDiIHUxhSFQsRAlYaaxUDEwdQGFocCxQ3ZRtaJUN8BFQSWRMLIgZlG18RBBcPXRNZFgsQBmUbUxEyUVcNRAtXXkxZCitrJQEiN2UbaxUyTUMIRmsXAxMFVw%3D%3D&t=W1dCFFlQCxxKQgFHRE5XDVULR0UVAxUPUxpcFwQWAkpCHklf>`__
+-  `华硕(ASUS) 灵耀S 2代 英特尔酷睿i7 14英寸微边超轻薄笔记本电脑 <https://union-click.jd.com/jdc?e=&p=AyIGZRtcEQYbAl0ZXxMyEgZUGloWBBEBUxNaJUZNXwtEa0xHV0YXEEULWldTCQQHCllHGAdFBwtEQkQBBRxNVlQYBUkeTVxNCRNLGEF6RwtVGloUAxEBVh1dHQMibFAaXGF0EgI1SxtvcHBSFBlbFgMQUVkXaxQyEgZUG14WAxsOUytrFQUiVDtADnsEQgVQSVpACxFSXEsPJQMiB1EcXBUKEwJUGVwWAiIAVRJrVlJKWAVZB0tcTTdlK1glMiIHZRhrV2wVUwUfWhcGGwYGSFIQAUUCXBwOFgIXAFwaD0EDG1VXS2sXAxMDXA%3D%3D>`__
+-  `惠普（HP）战66 二代 14英寸轻薄笔记本电脑 <https://union-click.jd.com/jdc?e=&p=AyIGZRtbEAMVA1ASUxAyEgZUGloWBBIBVR1bJUZNXwtEa0xHV0YXEEULWldTCQQHCllHGAdFBwtEQkQBBRxNVlQYBUkeTVxNCRNLGEF6RwtVGloUAxEBVR1bEwIiXyVwDE1Gc1IwaS1CV1sDFBkLD2Nhd1kXaxQyEgZUG14WAxsOUytrFQUiUTsbWhQDEwZUG18RMhM3VR9cEgIaB1AYUhwCFzdSG1IlQUJfCksZSVxMWGUraxYyIjdVK1glQHwAVRpSFgNABwccXxUHQVMAEw5BUUcBBxkLHQtFAV0eWCUAEwZREg%3D%3D>`__
+-  `华为HUAWEI MateBook X Pro 2019款 英特尔酷睿i5 13.9英寸全面屏 <https://union-click.jd.com/jdc?e=&p=AyIGZRprFQMTBlQeXxcLFwRSKx9KWkxYZUIeUENQDEsFA1BWThgJBABAHUBZCQUdRUFGGRJDD1MdQlUQQwVKDFRXFk8jQA4SBlQaWhAGEA5QGFwlXHYEDF4lFUtxTCMaHUVjQRlRBUVFch4LZRprFQMTB1AYWhwLFDdlG1wlVHwHVBpaFAMXBFETaxQyEgNSHFsdAhQAXRheFTIVB1wrGEVaTVcXRwVLXSI3ZRhrJTISN1YrGXsCFFBST11HChdSUx5eEgNCD11PXBQEE1BSEw4dBxVSUCtZFAMWDg%3D%3D>`__
+
+设计师：
+
+设计师看重的是：大显示屏， 好显卡， 请选苹果。色彩和软件的可用性很重要。苹果似乎成了设计师的代名词了。
+
+-  `Apple 2019新品 Macbook Pro 15.4 <https://union-click.jd.com/jdc?e=&p=AyIGZRprFQMTBlQcWBMDFQVWKx9KWkxYZUIeUENQDEsFA1BWThgJBABAHUBZCQUdRUFGGRJDD1MdQlUQQwVKDFRXFk8jQA4SBlQaWhIBFAZSGVglAxF0XGxdXXZxBFZ9KBAHS3lWaVtcVB4LZRprFQMTB1AYWhwLFDdlG1wlVHwHVBpaFAMTB1YdaxQyEgNSHFsdAxYOXRxTFTIVB1wrGEVaTVcXRwVLXSI3ZRhrJTISN1YrGXtXE1JQGVlGABZUUhteEVAaV1VOX0ALEAEHH1xHBhYOVitZFAMWDg%3D%3D>`__
+
+便携本：
+
+移动办公看重的是：电池续航， 便携性， 外观为重点。选共享显卡的。
+
+-  `华硕(ASUS) 思聪本E203MA 11.6英寸 <https://union-click.jd.com/jdc?e=&p=AyIGZRtcEQYbAl0ZXxMyGwVVHVgWBCJDCkMFSjJLQhBaGR4cDF8QTwcKXg1cAAQJS14MQQVYDwtFSlMTBAtHR0pZChUdRUFGfwAXUhcCFARWHWt8B3UBMk08b2dtHT4ZKXIYEGELXiN1Dh43VCtbFAMSAlYaUhwEIjdVHGtGbElSOx0LFwdABgASWEALQlNlGmsVBhUAVRNaEgoVAlIZaxICGzcWSwNKUlBbC0UEJTIiBGUraxUyETcXdVwcVxJSABJbFlJBVVBMWRJRFQRTGA8WCxJVBkwORQsWN1caWhEL>`__
+-  `三星（SAMSUNG）500R3M超薄本13.3英寸轻薄便携商务本 <https://union-click.jd.com/jdc?e=&p=AyIGZRNYEgATDl0fWCUCEgNRHFsRBhMCVisfSlpMWGVCHlBDUAxLBQNQVk4YCQQAQB1AWQkFHUVBRhkSQw9THUJVEEMFSgxUVxZPI0AOEgdRH1wVBhYGUBhrdlhbUj1iJhJgbV89fxtJXFIHHEwSZQ4eN1QrWxQDEgJWGlIcBCI3VRxrVGwVAlwTXRUyEzdVH1wSAhoGXRpYFgoaN1IbUiVBQl8KSxlJXExYZStrFjIiN1UrWCVAfA5QGg9HABIAAUkLHQdCAQASCEIKRVNSG1xAAhMPVRsJJQATBlES>`__
+-  `小米（MI） 笔记本Air 13.3 12.5英寸全金属轻薄便携商务本 <https://union-click.jd.com/jdc?e=&p=AyIGZRteFQsaB1YYWBUyEAdVElsUBRUHXBprUV1KWQorAlBHU0VeBUVNR0ZbSkdETlcNVQtHRVNSUVNLXANBRA1XB14DS10cQQVYD21XHgVVG1IVAxUAVRJaJXJNeyMSB1JfcmIBQwBgeERTDl4BS3IeC2UaaxUDEwdQGFocCxQ3ZRtcJUN8B1QaWhAGEAVlGmsVBhUAVRNbFgsXAVAZaxICGzcWSwNKUlBbC0UEJTIiBGUraxUyETcXdQhAUUdXBRlZHVUWDlBOWRVSGwQHElxAAkABUEtbFQVCN1caWhEL>`__
+-  `惠普(HP)星 13-an0002TU 13.3英寸轻薄笔记本电脑 <https://union-click.jd.com/jdc?e=&p=AyIGZRtbEAMVA1ASUxAyEgZUGloUBhIHUB1YJUZNXwtEa0xHV0YXEEULWldTCQQHCllHGAdFBwtEQkQBBRxNVlQYBUkeTVxNCRNLGEF6RwtVGloUAxMDVRteEwEiW1dHOlQKWnw2XilLe1oBMFAeEmlAd1kXaxQyEgZUG14WAxsOUytrFQUiUTsbWhQDEwZUG18RMhM3VR9cEgIaB1cTUxYCFDdSG1IlQUJfCksZSVxMWGUraxYyIjdVK1glQHwAVRpSFgNABwccXxUHQVMAEw5BUUcBBxkLHQtFAV0eWCUAEwZREg%3D%3D>`__
+-  `联想(Lenovo)小新Air英特尔酷睿i5 13.3英寸 <https://union-click.jd.com/jdc?e=&p=AyIGZRprFQMTBlQZWB0BFABWKx9KWkxYZUIeUENQDEsFA1BWThgJBABAHUBZCQUdRUFGGRJDD1MdQlUQQwVKDFRXFk8jQA4SBlQaWhcBGgRTHFglQEZ9T20nagFwABUFA3IFa0dXHQ0Pch4LZRprFQMTB1AYWhwLFDdlG1wlVHwHVBpaFAMTB1EdaxQyEgNSHFsdAhUCVR9SETIVB1wrGEVaTVcXRwVLXSI3ZRhrJTISN1YrGXsBFFUGGFhHBRpXVB5eF1cQD1RJXRBWGwQFTw8dVRQEBitZFAMWDg%3D%3D>`__
+
+性价比：
+
+性价比看重的是：请选主流品牌：DELL，三星等，各品牌都会主推自己的一款高性价比机型。
+
+-  `联想ThinkPad E470升级版14英寸E系列 <https://union-click.jd.com/jdc?e=&p=AyIGZRtbEAAaBFwbWRUyEAFRE10cABYEVRlrUV1KWQorAlBHU0VeBUVNR0ZbSkdETlcNVQtHRVNSUVNLXANBRA1XB14DS10cQQVYD21XHgVTH1MTCxADVhtZJXwMBE9OQWNxcQANYCVSd297MGUESkQeC2UaaxUDEwdQGFocCxQ3ZRtcJUN8AVEfUx0EIgZlG18SBRIPVhtcHAIQB2UcWxwyUVcNRAtXXkxZCitrJQEiN2UbaxYyUGlSH14SABEEUUhYRQYXB1NJC0AARlVdTl9HVUEFUx5fQDIQBlQfUg%3D%3D>`__
+-  `华为(HUAWEI)MateBook 13 <https://union-click.jd.com/jdc?e=&p=AyIGZRprFQMTBlQcXxcFFwFWKx9KWkxYZUIeUENQDEsFA1BWThgJBABAHUBZCQUdRUFGGRJDD1MdQlUQQwVKDFRXFk8jQA4SBlQaWhIGEABQHVglGGd3VBMfSwdxGQEBGVFZaXkxQjJJYh4LZRprFQMTB1AYWhwLFDdlG1wlVHwHVBpaFAMXBFETaxQyEgNSHFsdARQHUh5bFDIVB1wrGEVaTVcXRwVLXSI3ZRhrJTISN1YrGXtQQgRVSVgRAxMHUUxeHFBAVFYaCxdVEFdcEloVAUJUUytZFAMWDg%3D%3D>`__
+-  `华硕a豆(adol) 英特尔酷睿i5 13.3英寸 <https://union-click.jd.com/jdc?e=&p=AyIGZRtcEQYbAl0ZXxMyEgZUGloWBxMBUx9SJUZNXwtEa0xHV0YXEEULWldTCQQHCllHGAdFBwtEQkQBBRxNVlQYBUkeTVxNCRNLGEF6RwtVGloUAxECVB1dEQsidFxGJkB2DEAwRiViZ1V0EmEPcnkIZ1kXaxQyEgZUG14WAxsOUytrFQUiVDtADnsEQgVQSVpACxFSXEsPJQMiB1EcXBUKEQFdG18XAyIAVRJrVlJKWAVZB0tcTTdlK1glMiIHZRhrV2wbVQEdXRMKGlMBGAgQVxUBBhxfRQNGVAcfWUBRQgRWSGsXAxMDXA%3D%3D>`__
+-  `宏基蜂鸟Swift3 14英寸全面屏 <https://union-click.jd.com/jdc?e=&p=AyIGZRtYEgYSDlESXBwyEAdSEl0VAhcOVx1rUV1KWQorAlBHU0VeBUVNR0ZbSkdETlcNVQtHRVNSUVNLXANBRA1XB14DS10cQQVYD21XHgVVHFITAhICXBldJWd5bA9yIVRqd3URUw1xaWRPL2w%2FcmIeC2UaaxUDEwdQGFocCxQ3ZRtcJUN8AVwdXBUAIgZlG18SBRIPVhJcEwQSB2UcWxwyUVcNRAtXXkxZCitrJQEiN2UbaxYyUGlRHl8TBUIPVRwJHFIXAgVIUxBRQg8HHl0TBhVXVh1YEzIQBlQfUg%3D%3D>`__
+-  `惠普星14 星系列 青春版 <https://union-click.jd.com/jdc?e=&p=AyIGZRtSEgcSAVcdUhQyFgdUHl4QAxoFUh1rUV1KWQorAlBHU0VeBUVNR0ZbSkdETlcNVQtHRVNSUVNLXANBRA1XB14DS10cQQVYD21XHgNVGl4QBxMPVxxdJUtiXwYBWWl2cXINaVJ0BAxnCx8IUmIeC2UaaxUDEwdQGFocCxQ3ZRtcJUN8B10eWxALIgZlG18SBRIPVhNZFwoWA2UcWxwyUVcNRAtXXkxZCitrJQEiN2UbaxYyUGlVHl4cAxpUARNaFwUXA10cCB0CGgYBHFxBAxcCBR1dEjIQBlQfUg%3D%3D>`__
+-  `联想（Lenovo）小新14性能版轻薄 <https://union-click.jd.com/jdc?e=&p=AyIGZRtZHAMSBV0TWBcyEAZXH18QABcPUh9rUV1KWQorAlBHU0VeBUVNR0ZbSkdETlcNVQtHRVNSUVNLXANBRA1XB14DS10cQQVYD21XHgVUGV8RBxACXRxfJVJUbzx%2BJWp9cVAJeC9MeEl3Fm4rZnIeC2UaaxUDEwdQGFocCxQ3ZRtcJUN8DlUbXh0LIgZlG18SBRIPVxpaFwUUAWUcWxwyUVcNRAtXXkxZCitrJQEiN2UbaxYyUGlWTlIUURcCV0wJEgsXAFUeUkUGEgdVSVgXBkJQVkxdRjIQBlQfUg%3D%3D>`__
+-  `戴尔灵越14燃 英特尔酷睿i5 14英寸 <https://union-click.jd.com/jdc?e=&p=AyIGZRtYEQQaA10bXhIyEgZUGloXBRQHUhNeJUZNXwtEa0xHV0YXEEULWldTCQQHCllHGAdFBwtEQkQBBRxNVlQYBUkeTVxNCRNLGEF6RwtVGloUAxAAUxtcHQcieB4TAlYHW281RwtWVk5EFE1eZmlwUVkXaxQyEgZUG14WAxsOUytrFQUiUTsbWhQDEwZUG14UMhM3VR9cEgIaBVQdWhYGEzdSG1IlQUJfCksZSVxMWGUraxYyIjdVK1glQHwDURJaEQBHAlAcXRMHGlIHEg5CV0YCUhNdEgFAD1QTWiUAEwZREg%3D%3D>`__
+-  `华硕(ASUS) 灵耀S 2代 英特尔酷睿i7 14英寸 <https://union-click.jd.com/jdc?e=&p=AyIGZRtcEQYbAl0ZXxMyEgZUGloWBBEBUxNaJUZNXwtEa0xHV0YXEEULWldTCQQHCllHGAdFBwtEQkQBBRxNVlQYBUkeTVxNCRNLGEF6RwtVGloUAxEBVh1dHQMiVFxyB0BBRAMwQzlqZlJnIRMGShxFZ1kXaxQyEgZUG14WAxsOUytrFQUiVDtADnsEQgVQSVpACxFSXEsPJQMiB1EcXBUKEAdVE1ITCyIAVRJrVlJKWAVZB0tcTTdlK1glMiIHZRhrV2xCD1cSUhNQRgcFT1wQBkBTBhhSEAdHVwUTXEAFElNTGWsXAxMDXA%3D%3D>`__
+
+黑客：
+
+黑客：大内存的，小屏的。
+
+-  `GPD <https://union-click.jd.com/jdc?e=&p=AyIGZR5bFQUbAlMSWCUAEQdSHVgVChYGUSsfSlpMWGVCHlBDUAxLBQNQVk4YDk5ER1xOGVcYWxIEEQddH1oRHUtCCUZrUGJBTBdsHxxicgQoYANQV1JEMx8iZQ4eN1UdWBwCGwRQGFolAhMGVR5YFAsbAWUrWxQyU2lVGFwQBxY3VCtbEQYUAl0TUxUHFwRTK1sdBiJEBUMERUBOWQtEayUyETdlK1slAiJYEUYGJQATBlcZ&t=W1dCFFlQCxxKQgFHRE5XDVULR0UXARIAUxhbHQYTA0pCHklf>`__
+
+顶级的：
+
+请买顶级的台式机。顶级的笔记本实在不知道他的优势在哪里。除了价钱高之外。
+
+2019笔记本热度TOP10：
+---------------------
+
+排行榜按京东近三个月的销量为依据。
+
+#. `联想(Lenovo)拯救者Y7000P 2019英特尔酷睿i7 15.6英寸游戏笔记本 <https://union-click.jd.com/jdc?e=&p=AyIGZRprFQMTBlQeWBADFQJdKx9KWkxYZUIeUENQDEsFA1BWThgJBABAHUBZCQUdRUFGGRJDD1MdQlUQQwVKDFRXFk8jQA4SBlQaWhABFwZSHlMlcWpUKXwvSAB3eCdzUxxXUl1TSyEVVB4LZRprFQMTB1AYWhwLFDdlG1wlVHwHVBpaFAMTB1EdaxQyEgNSHFscBBoCVhhaFjIVB1wrGEVaTVcXRwVLXSI3ZRhrJTISN1YrGXsCFgYFHF0dBhsBXBheEgQWVFUTWRJRF1VTTggSC0FUUCtZFAMWDg%3D%3D>`__
+#. `荣耀MagicBook 14英寸轻薄窄边框笔记本电脑 <https://union-click.jd.com/jdc?e=&p=AyIGZRprFQMTBlQaWRYAFgdUKx9KWkxYZUIeUENQDEsFA1BWThgJBABAHUBZCQUdRUFGGRJDD1MdQlUQQwVKDFRXFk8jQA4SBlQaWhQAEQVRG1oleVZvLHknV0lybBVvWEIKTkNWUhAdVB4LZRprFQMTB1AYWhwLFDdlG1wlVHwHVBpaFAMTD1QeaxQyEgNSHFscBBoAXRJZFjIVB1wrGEVaTVcXRwVLXSI3ZRhrJTISN1YrGXsCFgYFHF0dBhsBXBheEgQWVFUTWRJRF1VTTggSC0FUUCtZFAMWDg%3D%3D>`__
+#. `RedmiBook 14英寸全金属超轻薄 <https://union-click.jd.com/jdc?e=&p=AyIGZRprFQMTBlQcXREEFwdUKx9KWkxYZUIeUENQDEsFA1BWThgJBABAHUBZCQUdRUFGGRJDD1MdQlUQQwVKDFRXFk8jQA4SBlQaWhIEFgFQG1olCm5mEhkeTwF3fgVpUn5bd1otZEVURB4LZRprFQMTB1AYWhwLFDdlG1wlVHwHVBpaFAMXB1YZaxQyEgNSHFscCxMGUxNfETIVB1wrGEVaTVcXRwVLXSI3ZRhrJTISN1YrGXsCFgYFHF0dBhsBXBheEgQWVFUTWRJRF1VTTggSC0FUUCtZFAMWDg%3D%3D>`__
+#. `戴尔DELL游匣G315.6英寸英特尔酷睿i7游戏笔记本电脑 <https://union-click.jd.com/jdc?e=&p=AyIGZRtYEQQaA10bXhIyFANRH1scCiJDCkMFSjJLQhBaGR4cDF8QTwcKXg1cAAQJS14MQQVYDwtFSlMTBAtHR0pZChUdRUFGfwAXXREGFgdcE2t9fVdhDVoPFWdBeVFcRXxSRU9WEzxlDh43VCtbFAMSAlYaUhwEIjdVHGtDbBIGVBpaFAMSAlQrWiUCFgBSG1IcAxcBVxNSJQUSDmVYC01dQkUJRQVKMiI3VitrJQIiBGVZNRUGE1dSHVMRCxQOVh5cEwZBB10ZXEYHQAEASFwcUUECZRlaFAYb>`__
+#. `惠普(HP)暗影精灵5 15.6英寸电竞屏游戏笔记本电脑 <https://union-click.jd.com/jdc?e=&p=AyIGZRtbEAMVA1ASUxAyEgZUGloRBRMFXBtaJUZNXwtEa0xHV0YXEEULWldTCQQHCllHGAdFBwtEQkQBBRxNVlQYBUkeTVxNCRNLGEF6RwtVGloUAxYAVBlSFQMiADN7QVxwYmA2YFhFfkRcUEYEHVkQd1kXaxQyEgZUG14WAxsOUytrFQUiUTsbWhQDEwZUG18RMhM3VR9cEgIbDlQTWxcAGjdSG1IlQUJfCksZSVxMWGUraxYyIjdVK1glQHwHURoLEgQaA1wdUhYHFQFRSFsdABVUUEldQFEVDgZIXiUAEwZREg%3D%3D>`__
+#. `神舟(HASEE)战神Z7M-CT7NK <https://union-click.jd.com/jdc?e=&p=AyIGZRprFQMTBlQfXxMKFQZUKx9KWkxYZUIeUENQDEsFA1BWThgJBABAHUBZCQUdRUFGGRJDD1MdQlUQQwVKDFRXFk8jQA4SBlQaWhEGFA9SGlolYlcBDUYJZlh3AFJrP0tDZ1IIHQ1HRB4LZRprFQMTB1AYWhwLFDdlG1wlVHwHVBpaFAMTB1EcaxQyEgNSHFscCxIFUxJSEDIVB1wrGEVaTVcXRwVLXSI3ZRhrJTISN1YrGXsCGlQFG1kdVkAPUhJeFAJHDlxOWh1VQAFdSAlHVkZVUytZFAMWDg%3D%3D>`__
+#. `Apple MacBook Air 13.3英寸笔记本电脑 <https://union-click.jd.com/jdc?e=&p=AyIGZRprFQMTBlQYXRUGGgRXKx9KWkxYZUIeUENQDEsFA1BWThgJBABAHUBZCQUdRUFGGRJDD1MdQlUQQwVKDFRXFk8jQA4SBlQaWhYEEgNdGFkle01nVGFeUXJxRE9dOBxDG1kcQAJRRB4LZRprFQMTB1AYWhwLFDdlG1wlVHwHVBpaFAMTB1YdaxQyEgNSHFscCxIPVxhfFzIVB1wrGEVaTVcXRwVLXSI3ZRhrJTISN1YrGXsCGlQFG1kdVkAPUhJeFAJHDlxOWh1VQAFdSAlHVkZVUytZFAMWDg%3D%3D>`__
+#. `戴尔灵越14燃 14英寸轻薄窄边框笔记本电脑 <https://union-click.jd.com/jdc?e=&p=AyIGZRtYEQQaA10bXhIyEgZUGloUBxIPUBpTJUZNXwtEa0xHV0YXEEULWldTCQQHCllHGAdFBwtEQkQBBRxNVlQYBUkeTVxNCRNLGEF6RwtVGloUAxMCVRNeFAoiUw9cIkAYYEc3XhtPR2VeUBhfUVAQUVkXaxQyEgZUG14WAxsOUytrFQUiUTsbWhQDEwZUG14UMhM3VR9cEgIbDlYeWBEGGzdSG1IlQUJfCksZSVxMWGUraxYyIjdVK1glQHwHXUgLFQAaUwcTXBwHEwcAElJAAxpQBx1TRlBAUwFJXSUAEwZREg%3D%3D>`__
+#. `机械革命(MECHREVO)X9Ti-R i7 17.3英寸游戏笔记本电脑 <https://union-click.jd.com/jdc?e=&p=AyIGZRtYEAYWD1ATWBIyEgZUGloQChIOUR5YJUZNXwtEa0xHV0YXEEULWldTCQQHCllHGAdFBwtEQkQBBRxNVlQYBUkeTVxNCRNLGEF6RwtVGloUAxcPVRJfEAEiUy5OPBdydU41EylzYXFcHHs5ZUdGd1kXaxQyEgZUG14WAxsOUytrFQUiUTsbWhQDEwZUE14cMhM3VR9cEgIbDlYSXRMLFTdSG1IlQUJfCksZSVxMWGUraxYyIjdVK1glQHxTXRpYR1dBVV0dCEUHRldVE10QVxEBUR1TFgsQB1MeCSUAEwZREg%3D%3D>`__
+#. `Apple 2019款 MacBook Pro 13.3 <https://union-click.jd.com/jdc?e=&p=AyIGZRprFQMTBlQcUhcDEQRcKx9KWkxYZUIeUENQDEsFA1BWThgJBABAHUBZCQUdRUFGGRJDD1MdQlUQQwVKDFRXFk8jQA4SBlQaWhILEAZWGFIlY1t7J30ycwdwfhFnB1BUe1QKBQ5nch4LZRprFQMTB1AYWhwLFDdlG1wlVHwHVBpaFAMTB1YdaxQyEgNSHFscCxAFVBtSFDIVB1wrGEVaTVcXRwVLXSI3ZRhrJTISN1YrGXtWGgZWSQ5GUBoBBkteQVISD1MeDhYEFgFdGFIXAhQCBytZFAMWDg%3D%3D>`__
+
+.. |Choose a great laptop| image:: https://img.rainasmoon.com/wordpress/wp-content/uploads/2019/03/laptop-1209008_640.jpg
+.. |samsung laptop| image:: https://img.rainasmoon.com/wordpress/wp-content/uploads/2019/03/sumsung-laptop1.jpg
+   :target: https://item.jd.com/30792394544.html
+.. |dell laptop| image:: https://img.rainasmoon.com/wordpress/wp-content/uploads/2019/03/dell-laptop1.jpg
+   :target: https://union-click.jd.com/jdc?e=&p=AyIGZRtYEQQaA10bXhIyEgZUGloVBxMPXBpaJUZNXwtEa0xHV0YXEEULWldTCQQAQB1AWQkFWxQDEwZVHlodCxMGSkIeSV8iYTVFXG5aEEU2Gi11ZGF1FkdTc2QbUVkXaxUEEQ5VElgQARM3VRpaFQcRBlwSXSUyEgZlTTUVAxMGVBpaFQcTN1QrWxEGFAJdE1MWAhoOXCtbHQYiRAVDBEVATlkLRGslMhE3ZStbJQIiWBFGBiUAEwZXGQ%3D%3D&t=W1dCFFlQCxxKQgFHRE5XDVULR0UVAxMGVBteFAobBlQEAlBeTw%3D%3D
+.. |asus laptop| image:: https://img.rainasmoon.com/wordpress/wp-content/uploads/2019/03/unnamed-file.jpg
+   :target: https://union-click.jd.com/jdc?e=&p=AyIGZRtbEgETA1IZWBMyEQBcHlITAxoOVB9rUV1KWQorAlBHU0VeBUVNR0ZbSkAOClBMW0sYXBwHGwFUE1IUBg1eEEcGJVpPHTNtRWxFcm9WbiZVVVFDPW0ATlQeC2UbXRYLEg5WHlgUMhIGVBteFgMbDlMraxUDIkY7HFkRBhQPZRprFQYWAVATUx0BFwBdEmsVChY3FksDSlJQWwtFBCUyIgRlK2sVMhI3Cl8GSDIQBlQZWQ%3D%3D&t=W1dCFFlQCxxKQgFHRE5XDVULR0UWBRsCXB1aHQsTA0pCHklf
+.. |gpd laptop| image:: https://img.rainasmoon.com/wordpress/wp-content/uploads/2019/03/GPD-laptop1.jpg
+   :target: https://union-click.jd.com/jdc?e=&p=AyIGZR5bFQUbAlMSWCUAEQdSHVgVChYGUSsfSlpMWGVCHlBDUAxLBQNQVk4YDk5ER1xOGVcYWxIEEQddH1oRHUtCCUZrUGJBTBdsHxxicgQoYANQV1JEMx8iZQ4eN1UdWBwCGwRQGFolAhMGVR5YFAsbAWUrWxQyU2lVGFwQBxY3VCtbEQYUAl0TUxUHFwRTK1sdBiJEBUMERUBOWQtEayUyETdlK1slAiJYEUYGJQATBlcZ&t=W1dCFFlQCxxKQgFHRE5XDVULR0UXARIAUxhbHQYTA0pCHklf
