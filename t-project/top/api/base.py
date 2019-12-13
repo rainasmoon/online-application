@@ -249,10 +249,8 @@ class RestApi(object):
             body = str(form)
             header['Content-type'] = form.get_content_type()
         else:
-            print('CALL TB:', application_parameter)
             body = urllib.parse.urlencode(application_parameter)
             
-        print('CALL TB OUT:', N_REST, sys_parameters)
         url = N_REST + "?" + urllib.parse.urlencode(sys_parameters)
         connection.request(self.__httpmethod, url, body=body, headers=header)
         response = connection.getresponse();
@@ -293,8 +291,3 @@ class RestApi(object):
         return application_parameter
 
 
-if __name__ == '__main__':
-    secrect = '123456'
-    parameters = {'b': 2, 'a':1}
-    s = sign(secret, parameters)
-    print(s)

@@ -35,12 +35,9 @@ def call_tb_search(search_content):
 
     try:
         resp= req.getResponse()
-        print(type(resp))
         inner_r = resp['tbk_dg_material_optional_response']
-        print(inner_r['total_results'])
+        print('TOTALS:', inner_r['total_results'])
         items = inner_r['result_list']['map_data']
-        print(len(items))
-        print(type(items))
         for item in items:
             print(item['title'])
     except Exception as e:
