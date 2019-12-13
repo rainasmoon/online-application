@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 '''
-Created on 2018-9-17
+Created on 2012-7-3
 
-@author: xiaoxuan.lp
+@author: lihao
 '''
 
 try: import httplib
@@ -12,20 +12,19 @@ import urllib
 import time
 import hashlib
 import json
-import dingtalk
+import top
 import itertools
 import mimetypes
-import hmac
-import base64
 
 '''
 定义一些系统变量
 '''
 
-SYSTEM_GENERATE_VERSION = "taobao-sdk-python-dynamicVersionNo"
+SYSTEM_GENERATE_VERSION = "taobao-sdk-python-20191213"
 
 P_APPKEY = "app_key"
 P_API = "method"
+P_SESSION = "session"
 P_ACCESS_TOKEN = "access_token"
 P_VERSION = "v"
 P_FORMAT = "format"
@@ -34,8 +33,13 @@ P_SIGN = "sign"
 P_SIGN_METHOD = "sign_method"
 P_PARTNER_ID = "partner_id"
 
-P_CODE = 'errcode'
-P_MSG = 'errmsg'
+P_CODE = 'code'
+P_SUB_CODE = 'sub_code'
+P_MSG = 'msg'
+P_SUB_MSG = 'sub_msg'
+
+
+N_REST = '/router/rest'
 
 def sign(secret, parameters):
     #===========================================================================
@@ -46,20 +50,17 @@ def sign(secret, parameters):
     #===========================================================================
     # 如果parameters 是字典类的话
     if hasattr(parameters, "items"):
-        keys = parameters.keys()
-        keys.sort()
+        keys = sorted(parameters)
         
         parameters = "%s%s%s" % (secret,
             str().join('%s%s' % (key, parameters[key]) for key in keys),
             secret)
-    sign = hashlib.md5(parameters).hexdigest().upper()
+    sign = hashlib.md5(parameters.encode("utf-8")).hexdigest().upper()
     return sign
 
 def mixStr(pstr):
     if(isinstance(pstr, str)):
         return pstr
-    elif(isinstance(pstr, unicode)):
-        return pstr.encode('utf-8')
     else:
         return str(pstr)
     
@@ -78,7 +79,7 @@ class MultiPartForm(object):
         return
     
     def get_content_type(self):
-        return 'multipart/form-data;charset=UTF-8; boundary=%s' % self.boundary
+        return 'multipart/form-data; boundary=%s' % self.boundary
 
     def add_field(self, name, value):
         """Add a simple field to the form data."""
@@ -116,7 +117,7 @@ class MultiPartForm(object):
         # Add the files to upload
         parts.extend(
             [ part_boundary,
-              'Content-Disposition: form-data; name="%s"; filename="%s"' % \
+              'Content-Disposition: file; name="%s"; filename="%s"' % \
                  (field_name, filename),
               'Content-Type: %s' % content_type,
               'Content-Transfer-Encoding: binary',
@@ -138,14 +139,18 @@ class TopException(Exception):
     # 业务异常类
     #===========================================================================
     def __init__(self):
-        self.errcode = None
-        self.errmsg = None
+        self.errorcode = None
+        self.message = None
+        self.subcode = None
+        self.submsg = None
         self.application_host = None
         self.service_host = None
     
     def __str__(self, *args, **kwargs):
-        sb = "errcode=" + mixStr(self.errcode) +\
-            " errmsg=" + mixStr(self.errmsg) +\
+        sb = "errorcode=" + mixStr(self.errorcode) +\
+            " message=" + mixStr(self.message) +\
+            " subcode=" + mixStr(self.subcode) +\
+            " submsg=" + mixStr(self.submsg) +\
             " application_host=" + mixStr(self.application_host) +\
             " service_host=" + mixStr(self.service_host)
         return sb
@@ -161,42 +166,34 @@ class RestApi(object):
     # Rest api的基类
     #===========================================================================
     
-    def __init__(self, url=None):
+    def __init__(self, domain='gw.api.taobao.com', port = 80):
         #=======================================================================
         # 初始化基类
         # Args @param domain: 请求的域名或者ip
         #      @param port: 请求的端口
         #=======================================================================
-        if(url == None):
-            raise RequestException("domain must not be empty.")
-        if(url.find('http://') >= 0):
-            self.__port = 80
-            pathUrl = url.replace('http://','')
-        elif(url.find('https://') >= 0):
-            self.__port = 443
-            pathUrl = url.replace('https://','')
-        else:
-            raise RequestException("http protocol is not validate.")
-        
-        index = pathUrl.find('/')
-        if(index > 0):
-            self.__domain = pathUrl[0:index]
-            self.__path = pathUrl[index:]
-        else:
-            self.__domain = pathUrl
-            self.__path = ''
-
-        # print("domain:" + self.__domain + ",path:" + self.__path + ",port:" + str(self.__port))
+        self.__domain = domain
+        self.__port = port
+        self.__httpmethod = "POST"
+        if(top.getDefaultAppInfo()):
+            self.__app_key = top.getDefaultAppInfo().appkey
+            self.__secret = top.getDefaultAppInfo().secret
         
     def get_request_header(self):
         return {
-            'Content-type': 'application/json;charset=UTF-8',
-            "Cache-Control": "no-cache",
-            "Connection": "Keep-Alive",
+                 'Content-type': 'application/x-www-form-urlencoded;charset=UTF-8',
+                 "Cache-Control": "no-cache",
+                 "Connection": "Keep-Alive",
         }
-
-    def getHttpMethod(self):
-        return "GET"
+        
+    def set_app_info(self, appinfo):
+        #=======================================================================
+        # 设置请求的app信息
+        # @param appinfo: import top
+        #                 appinfo top.appinfo(appkey,secret)
+        #=======================================================================
+        self.__app_key = appinfo.appkey
+        self.__secret = appinfo.secret
         
     def getapiname(self):
         return ""
@@ -210,22 +207,35 @@ class RestApi(object):
     def _check_requst(self):
         pass
     
-    def getResponse(self, authrize='',accessKey='',accessSecret='',suiteTicket='',corpId='', timeout=30):
+    def getResponse(self, authrize=None, timeout=30):
         #=======================================================================
         # 获取response结果
         #=======================================================================
         if(self.__port == 443):
-            connection = httplib.HTTPSConnection(self.__domain, self.__port, None, None, False, timeout)
+            connection = httplib.HTTPSConnection(host=self.__domain, port=self.__port,
+                                                 key_file=None, cert_file=None,
+                                                 timeout=timeout
+                                                 )
         else:
-            connection = httplib.HTTPConnection(self.__domain, self.__port, False, timeout)
+            connection = httplib.HTTPConnection(host=self.__domain, port=self.__port,
+                                                timeout=timeout
+                                                )
         sys_parameters = {
+            P_FORMAT: 'json',
+            P_APPKEY: self.__app_key,
+            P_SIGN_METHOD: "md5",
+            P_VERSION: '2.0',
+            P_TIMESTAMP: str(int(time.time() * 1000)),
             P_PARTNER_ID: SYSTEM_GENERATE_VERSION,
+            P_API: self.getapiname(),
         }
         if authrize is not None:
-            sys_parameters[P_ACCESS_TOKEN] = authrize
+            sys_parameters[P_SESSION] = authrize
         application_parameter = self.getApplicationParameters()
         sign_parameter = sys_parameters.copy()
         sign_parameter.update(application_parameter)
+        sys_parameters[P_SIGN] = sign(self.__secret, sign_parameter)
+        connection.connect()
         
         header = self.get_request_header();
         if(self.getMultipartParas()):
@@ -239,77 +249,36 @@ class RestApi(object):
             body = str(form)
             header['Content-type'] = form.get_content_type()
         else:
-            body = urllib.urlencode(application_parameter)
-        
-        if(accessKey != ''):
-            timestamp = str(int(round(time.time()))) + '000'
-            print("timestamp:" + timestamp)
-            canonicalString = self.getCanonicalStringForIsv(timestamp, suiteTicket)
-            print("canonicalString:" + canonicalString)
-            print("accessSecret:" + accessSecret)
-            signature = self.computeSignature(accessSecret, canonicalString)
-            print("signature:" + signature)
-            ps = {}
-            ps["accessKey"] = accessKey
-            ps["signature"] = signature
-            ps["timestamp"] = timestamp
-            if(suiteTicket != ''):
-			    ps["suiteTicket"] = suiteTicket
-            if(corpId != ''):
-			    ps["corpId"] = corpId
-            queryStr = urllib.urlencode(ps)
-            if (self.__path.find("?") > 0):
-                fullPath = self.__path + "&" + queryStr
-            else:
-                fullPath = self.__path + "?" + queryStr
-            print("fullPath:" + fullPath)
-        else:
-            if (self.__path.find("?") > 0):
-                fullPath = (self.__path + "&access_token=" + str(authrize)) if len(str(authrize)) > 0 else self.__path
-            else:
-                fullPath = (self.__path + "?access_token=" + str(authrize)) if len(str(authrize)) > 0 else self.__path
-
-        if(self.getHttpMethod() == "GET"):
-            if (fullPath.find("?") > 0):
-                fullPath = fullPath + "&" + body;
-            else:
-                fullPath = fullPath + "?" + body
-            connection.request(self.getHttpMethod(), fullPath, headers=header)
-        else:
-            if (self.getMultipartParas()):
-                body = body
-            else:
-                body = json.dumps(application_parameter)
-            connection.request(self.getHttpMethod(), fullPath, body=body, headers=header)
+            print('CALL TB:', application_parameter)
+            body = urllib.parse.urlencode(application_parameter)
+            
+        print('CALL TB OUT:', N_REST, sys_parameters)
+        url = N_REST + "?" + urllib.parse.urlencode(sys_parameters)
+        connection.request(self.__httpmethod, url, body=body, headers=header)
         response = connection.getresponse();
         if response.status is not 200:
             raise RequestException('invalid http status ' + str(response.status) + ',detail body:' + response.read())
         result = response.read()
-        # print("result:" + result)
         jsonobj = json.loads(result)
-        if jsonobj.has_key(P_CODE) and jsonobj[P_CODE] != 0:
+        if "error_response" in jsonobj:
             error = TopException()
-            error.errcode = jsonobj[P_CODE]
-            error.errmsg = jsonobj[P_MSG]
+            if P_CODE in jsonobj["error_response"] :
+                error.errorcode = jsonobj["error_response"][P_CODE]
+            if P_MSG in jsonobj["error_response"] :
+                error.message = jsonobj["error_response"][P_MSG]
+            if P_SUB_CODE in jsonobj["error_response"] :
+                error.subcode = jsonobj["error_response"][P_SUB_CODE]
+            if P_SUB_MSG in jsonobj["error_response"] :
+                error.submsg = jsonobj["error_response"][P_SUB_MSG]
             error.application_host = response.getheader("Application-Host", "")
             error.service_host = response.getheader("Location-Host", "")
             raise error
         return jsonobj
     
-    def getCanonicalStringForIsv(self, timestamp, suiteTicket):
-        if(suiteTicket != ''):
-            return timestamp + '\n' + suiteTicket
-        else:
-            return timestamp
-
-    def computeSignature(self, secret, canonicalString):
-        message = canonicalString.encode(encoding="utf-8")
-        sec = secret.encode(encoding="utf-8")
-        return str(base64.b64encode(hmac.new(sec, message, digestmod=hashlib.sha256).digest()))
     
     def getApplicationParameters(self):
         application_parameter = {}
-        for key, value in self.__dict__.iteritems():
+        for key, value in self.__dict__.items():
             if not key.startswith("__") and not key in self.getMultipartParas() and not key.startswith("_RestApi__") and value is not None :
                 if(key.startswith("_")):
                     application_parameter[key[1:]] = value
@@ -317,8 +286,15 @@ class RestApi(object):
                     application_parameter[key] = value
         #查询翻译字典来规避一些关键字属性
         translate_parameter = self.getTranslateParas()
-        for key, value in application_parameter.iteritems():
+        for key, value in application_parameter.items():
             if key in translate_parameter:
                 application_parameter[translate_parameter[key]] = application_parameter[key]
                 del application_parameter[key]
         return application_parameter
+
+
+if __name__ == '__main__':
+    secrect = '123456'
+    parameters = {'b': 2, 'a':1}
+    s = sign(secret, parameters)
+    print(s)
