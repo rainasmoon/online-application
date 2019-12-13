@@ -9,7 +9,7 @@ secret = config_jd_api['tb_appsecret']
 
 url = 'gw.api.taobao.com'
 port = '80'
-
+ADZONE_ID = 109847100359
 
 def call_tb_kouling():
     req=top.api.TbkTpwdCreateRequest(url, port)
@@ -22,25 +22,31 @@ def call_tb_kouling():
     req.ext="{}"
     try:
         resp= req.getResponse()
-        print(resp)
     except Exception as e:
         print(e)
 
 
-def call_tb_search():
+def call_tb_search(search_content):
     req=top.api.TbkDgMaterialOptionalRequest(url,port)
     req.set_app_info(top.appinfo(appkey,secret))
 
-    req.adzone_id=109847100359
-    req.q='洛天依cos'
+    req.adzone_id=ADZONE_ID
+    req.q=search_content
 
     try:
         resp= req.getResponse()
-        print(resp)
+        print(type(resp))
+        inner_r = resp['tbk_dg_material_optional_response']
+        print(inner_r['total_results'])
+        items = inner_r['result_list']['map_data']
+        print(len(items))
+        print(type(items))
+        for item in items:
+            print(item['title'])
     except Exception as e:
         print(e)
 
 
 if __name__ == '__main__':
     #call_tb_kouling()
-    call_tb_search()
+    call_tb_search('洛天依cos服')
