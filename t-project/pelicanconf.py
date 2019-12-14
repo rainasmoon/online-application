@@ -34,3 +34,12 @@ DEFAULT_PAGINATION = False
 
 
 THEME = 'themes/notmyidea' 
+
+EXTRA_PATH_METADATA = {
+        'extra/robots.txt': {'path': 'robots.txt'},
+        }
+
+STATIC_PATHS = [
+        'pictures',
+        'extra/robots.txt',
+        ]
