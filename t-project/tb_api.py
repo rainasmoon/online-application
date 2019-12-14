@@ -55,7 +55,7 @@ def make_out_file(keyword):
     f.write('The List of Taobao OTAKU:' + keyword + '\n')
     f.write('#########################' + '##' * len(keyword) + '\n')
     f.write('\n')
-    f.write(':date: 2019-10-10 10:10\n')
+    f.write(':date: 2019-12-14 10:10\n')
     f.write(':category: + ' + keyword + '\n')
     f.write('\n')
     if not r:
@@ -82,7 +82,8 @@ def make_out_file(keyword):
 
 if __name__ == '__main__':
     #call_tb_kouling()
-    keys = ['洛天依', '第5人格', '王者荣耀', '崩坏三', '血小板', '初音未来']
+    keys = ['洛天依', '第5人格', '王者荣耀', '崩坏三', '血小板', '初音未来',
+            'lolita', '斗罗大陆', '阴阳师', 'JK制服', '未闻花名']
     for k in keys:
         make_out_file(k)
 
