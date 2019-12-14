@@ -3,7 +3,7 @@
 from __future__ import unicode_literals
 
 AUTHOR = 'rainasmoon'
-SITENAME = 'COSPLAY'
+SITENAME = 'COSPLAY「cos服」'
 SITEURL = ''
 
 PATH = 'content'
@@ -33,4 +33,4 @@ DEFAULT_PAGINATION = False
 #RELATIVE_URLS = True
 
 
-THEME = 'themes/notmyidea'
+THEME = 'themes/notmyidea' 
