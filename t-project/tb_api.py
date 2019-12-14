@@ -37,7 +37,7 @@ def call_tb_search(search_content):
         rr = []
         resp= req.getResponse()
         inner_r = resp['tbk_dg_material_optional_response']
-        print('TOTALS:', inner_r['total_results'])
+        print(f'KEY:{search_content}, TOTALS:', inner_r['total_results'])
         items = inner_r['result_list']['map_data']
         for item in items:
             row = [item['item_id'], item['title'], item['pict_url'], \
@@ -50,6 +50,10 @@ def call_tb_search(search_content):
         print(e)
       
 def make_out_file(keyword):      
+
+    if keyword == '':
+        return
+
     r = call_tb_search(keyword+ 'cos服')
     f = open('./content/work-' + keyword + '.rst', 'w')
     f.write('The List of Taobao OTAKU:' + keyword + '\n')
@@ -80,10 +84,11 @@ def make_out_file(keyword):
     f.write('this is the end.')
     f.close()
 
+def do_job():
+    f = open('keyword.txt', 'r')
+    for key in f.readlines():
+        make_out_file(key.strip())
+
 if __name__ == '__main__':
     #call_tb_kouling()
-    keys = ['洛天依', '第5人格', '王者荣耀', '崩坏三', '血小板', '初音未来',
-            'lolita', '斗罗大陆', '阴阳师', 'JK制服', '未闻花名']
-    for k in keys:
-        make_out_file(k)
-
+    do_job() 
