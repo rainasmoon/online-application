@@ -1,3 +1,4 @@
+config_api.json
 /output/
 __pycache__
 *.pyc
