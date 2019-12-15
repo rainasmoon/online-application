@@ -43,7 +43,9 @@ def call_tb_search(search_content):
             row = [item['item_id'], item['title'], item['pict_url'], \
                     item['url'], item['reserve_price'], \
                     item['level_one_category_id'], item['category_id'], \
-                    item['level_one_category_name'], item['category_name']]
+                    item['level_one_category_name'], item['category_name'], \
+                    item['short_title'], item['item_description'] \
+                  ]
             rr.append(row)
         return rr
     except Exception as e:
@@ -56,8 +58,8 @@ def make_out_file(keyword):
 
     r = call_tb_search(keyword+ 'cos服')
     f = open('./content/work-' + keyword + '.rst', 'w')
-    f.write('The List of Taobao OTAKU:' + keyword + '\n')
-    f.write('#########################' + '##' * len(keyword) + '\n')
+    f.write('Taobao:' + keyword + '\n')
+    f.write('#######' + '##' * len(keyword) + '\n')
     f.write('\n')
     f.write(':date: 2019-12-14 10:10\n')
     f.write(':category: + ' + keyword + '\n')
@@ -70,7 +72,7 @@ def make_out_file(keyword):
 
     for i in range(len(r)):
         item = r[i]
-        title = item[8] + ' - ' + item[7]
+        title = item[8] + ' - ' + item[9]
         f.write(title + '\n')
         f.write('=' * len(title) * 2 + '\n')
         f.write('\n')
@@ -78,6 +80,8 @@ def make_out_file(keyword):
         f.write('   :alt: ' + item[1] + '\n')
         f.write('\n')
         f.write('\\ `' + item[1] + ' <' + item[3] + '>`__' + '\n')
+        f.write('\n')
+        f.write('Description: ' + item[10] + '\n')
         f.write('\n')
         f.write('------------------------\n')
         f.write('\n')

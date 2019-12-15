@@ -3,7 +3,7 @@
 from __future__ import unicode_literals
 
 AUTHOR = 'rainasmoon'
-SITENAME = 'COSPLAY「cos服」'
+SITENAME = 'COSPLAY'
 SITEURL = ''
 
 PATH = 'content'
@@ -35,6 +35,10 @@ DEFAULT_PAGINATION = False
 
 THEME = 'themes/notmyidea' 
 
+DISCLAIMER = '<p>备案号：冀ICP备15002959号-1  <a href="http://he.beian.miit.gov.cn/state/outPortal/loginPortal.action">河北备案网站</a></p>'
+
+COPYRIGHT = 'I will try it 1stly and think it 2ndly.'
+
 EXTRA_PATH_METADATA = {
         'extra/robots.txt': {'path': 'robots.txt'},
         }
@@ -43,3 +47,5 @@ STATIC_PATHS = [
         'pictures',
         'extra/robots.txt',
         ]
+
+
