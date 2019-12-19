@@ -32,8 +32,12 @@ DEFAULT_PAGINATION = False
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
 
+JINJA_ENVIRONMENT = {'extensions': ['jinja2.ext.i18n']}
 
-THEME = 'themes/notmyidea' 
+PLUGIN_PATHS = ['/home/hht/git/pelican-plugins']
+PLUGINS = ['i18n_subsites',]
+
+THEME = 'themes/pelican-bootstrap3' 
 
 DISCLAIMER = '<p>备案号：冀ICP备15002959号-1  <a href="http://he.beian.miit.gov.cn/state/outPortal/loginPortal.action">河北备案网站</a></p>'
 
