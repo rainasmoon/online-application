@@ -90,8 +90,11 @@ def make_out_file(keyword):
 
 def do_job():
     f = open('keyword.txt', 'r')
+    s = set()
     for key in f.readlines():
-        make_out_file(key.strip())
+        s.add(key.strip())
+    for key in s:    
+        make_out_file(key)
 
 if __name__ == '__main__':
     #call_tb_kouling()
