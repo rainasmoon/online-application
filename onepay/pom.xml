@@ -22,7 +22,7 @@
 
 		<!-- Spring -->
 		<spring-framework.version>4.1.4.RELEASE</spring-framework.version>
-		<spring-data-jpa.version>1.9.4.RELEASE</spring-data-jpa.version>
+		<spring-data-jpa.version>1.11.23.RELEASE</spring-data-jpa.version>
 
 		<!-- Java EE / Java SE dependencies -->
 		<tomcat.servlet.version>8.0.32</tomcat.servlet.version>
