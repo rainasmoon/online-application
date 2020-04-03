@@ -65,6 +65,6 @@ def a_stock(stock_code, aday):
 
 
 if __name__ == '__main__':
-    print(a_stock(test_ts_code_1, common_utils.yesterday_v1()))
+    print(a_stock(test_ts_code_1, common_utils.yesterday()))
     
-    show_a_stock(test_ts_code_1, common_utils.yesterday_v1())
+    show_a_stock(test_ts_code_1, common_utils.yesterday())
