@@ -119,9 +119,10 @@ def init_jd_myorder():
 def query_jd_myorder():
     yesterday = datetime.date.today() - datetime.timedelta(days=1)
     recent = db_utils_online_mysql.get_recent_order_time()
-    begin = datetime.date.fromtimestamp(recent / 1000)
-    print('QUERY JD MYORDER', begin, yesterday)
-    inner_init_jd_myorder(begin, yesterday)
+    if recent:
+        begin = datetime.date.fromtimestamp(recent / 1000)
+        print('QUERY JD MYORDER', begin, yesterday)
+        inner_init_jd_myorder(begin, yesterday)
 
     
 def inner_init_jd_myorder(begin, end):
