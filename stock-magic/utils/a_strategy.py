@@ -134,11 +134,15 @@ def ai_sell(r, buy_date):
             print('*****************************************************')
             print('*****************************************************')
             
-            sell_price.append(astock_df.loc[len(astock_df)-1, 'close'])
-            plot_df = astock_df.copy()
-            plot_df.set_index('trade_date', inplace=True)
-            plot_df['close'].plot()
-            plt.show()
+            if not astock_df.empty:
+                sell_price.append(astock_df.loc[len(astock_df)-1, 'close'])
+                plot_df = astock_df.copy()
+                plot_df.set_index('trade_date', inplace=True)
+                plot_df['close'].plot()
+                plt.show()
+            else:
+                sell_price.append(0)
+
     return sell_price
 
 def cool_down_day(aday):
@@ -194,4 +198,4 @@ def trick(aday):
 
 
 if __name__ == '__main__':
-    trick('20190102')
+    trick('20200402')

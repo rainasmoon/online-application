@@ -9,7 +9,6 @@ test_ts_code_1 = '000001.SZ'
 def show_a_stock(stock_code, end_date):
     print('A STOCK:', stock_code)
     astock = ts_utils.call_stock_info(stock_code)
-    print('BASIC:\n', astock)
     
     ipo_date = str(astock['list_date'])
     stock_info = '{0}-{1}-{2}'.format(astock['name'], astock['industry'], astock['symbol'])
@@ -17,11 +16,7 @@ def show_a_stock(stock_code, end_date):
     
     df = ts_utils.call_stock_qfq(stock_code, ipo_date, end_date)
     
-    print('ALL TRADE:\n', df)
-    print('All Columns:\n', df.dtypes)
-    
     main_info = df.describe().round(2)
-    print('MAIN INFO:\n', main_info)
     
     price_max = main_info.loc['max', 'high']
     price_min = main_info.loc['min', 'low']
@@ -60,11 +55,14 @@ def a_stock(stock_code, aday):
     price_min = main_info.loc['min', 'low']
     vol_max = main_info.loc['max', 'vol']
     vol_min = main_info.loc['min', 'vol']
-    return f'{price_max}, {price_min}, {vol_max}, {vol_min}, {stock_info}'
-
-
+    price = df.loc[aday, 'close']
+    vol = df.loc[aday, 'vol']
+    price_pos = (price - price_min) / (price_max - price_min)
+    vol_pos = (vol - vol_min) / (vol_max - vol_min)
+    return f'{price_max}, {price_min}, {vol_max}, {vol_min}, {stock_info}, {price_pos}, {vol_pos}'
 
 if __name__ == '__main__':
-    print(a_stock(test_ts_code_1, common_utils.yesterday()))
-    
-    show_a_stock(test_ts_code_1, common_utils.yesterday())
+    stock_1 = '002024.SZ'
+    stock_2 = '300024.SZ'
+    print(a_stock(stock_1, common_utils.yesterday()))
+    print(a_stock(stock_2, common_utils.yesterday()))
