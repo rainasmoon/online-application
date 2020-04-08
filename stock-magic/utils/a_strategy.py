@@ -51,14 +51,13 @@ def select_stocks(aday):
     # 1 选出每日涨副在4.5 -5.5之间的
     # ##
     today_focus = df[(df.pct_chg > 4.5) & (df.pct_chg < 5.5)].copy()
-    if DEBUG:
-        print('MGAIC STOCKS:\n', today_focus)
     # 根据ts_code查询股票信息
     today_focus['ts_code_orginal'] = today_focus.index.to_numpy()
     ext_info = today_focus.loc[:, 'ts_code_orginal'].apply(a_stock.a_stock, args=(aday,))
     # 把返回的结果扩展拆分成列
     df_ext = ext_info.str.split(',', expand=True)
-    today_focus[['price_max', 'price_min', 'vol_max', 'vol_min', 'stock_name', 'stock_industry', 'stock_hs']] = df_ext
+    today_focus[['price_max', 'price_min', 'vol_max', 'vol_min', 'stock_name',
+                 'stock_industry', 'stock_hs', 'p_pos', 'v_pos']] = df_ext
     today_focus[['price_max', 'price_min', 'vol_max', 'vol_min']] = today_focus[['price_max', 'price_min', 'vol_max', 'vol_min']].applymap(float)
     
     # 计算价格和成交量的位置
@@ -198,4 +197,5 @@ def trick(aday):
 
 
 if __name__ == '__main__':
-    trick('20200402')
+    r = select_stocks('20200402')
+    print(r)
