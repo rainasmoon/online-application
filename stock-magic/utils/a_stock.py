@@ -2,6 +2,7 @@
 import common_utils
 import plt_utils
 import ts_utils
+import pandas as pd
 
 test_ts_code_1 = '000001.SZ'
 
