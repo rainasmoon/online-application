@@ -30,7 +30,7 @@ def summury_env(aday):
     vol_min = df.loc['min', 'volume']
     index_position = round((sh_index - low) / (high - low) * 100, 2)
     sh_vol_position = round((sh_vol - vol_min) / (vol_max - vol_min) * 100, 2)
-    print(f'一年存款利率：{y_roi},\n 上证指数：{sh_index},\n 位置：{index_position}%,\n 成交量：{sh_vol},\n 位置：{sh_vol_position}%,\n CPI: {cpi},\n M: {m}\n')
+    rint(f'一年存款利率：{y_roi},\n 上证指数：{sh_index},\n 位置：{index_position}%,\n 成交量：{sh_vol},\n 位置：{sh_vol_position}%,\n CPI: {cpi},\n M: {m}\n')
     return [y_roi]
 
 def show_index_position():
@@ -42,13 +42,20 @@ def show_index_position():
     df['crazy_pos'] = df['close'].apply(posibility_day, args=(df,))
     all_num = len(df)
     df['crazy_pos'] = round(df['crazy_pos']/all_num, 2)
-    # 以0.48 为基准重新计算概率
-    df['crazy_pos'] = round(df['crazy_pos']/0.48,2)
+    # 以0.49 为基准重新计算概率
+    df['crazy_pos'] = round(df['crazy_pos']/0.49,2)
     df['crazy_vol'] = df['volume'].apply(posibility_vol, args=(df,))
     df['crazy_vol'] = round(df['crazy_vol']/all_num, 2)
 
-    print(df)
-    print(df.loc[pd.to_datetime(['19940728', '20050606', '20081028', '20130625', '20160127']),:])
+    print('pos & trust')
+    final_df = pd.DataFrame()
+    final_df['close'] = df['close']
+    final_df['vol'] = df['volume']
+    final_df['pos'] = df['crazy_pos']
+    final_df['trust'] = df['crazy_vol']
+    print(final_df.tail())
+    print('HISTORY must be remembered.')
+    print(final_df.loc[pd.to_datetime(['19940728', '20050606', '20081028', '20130625', '20160127']),:])
 
 def posibility_vol(index, df):
     great_df = df[df.volume > index]

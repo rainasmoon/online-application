@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+
 import common_utils
 import plt_utils
 import ts_utils
@@ -59,6 +59,8 @@ def a_stock(stock_code, aday):
     vol = df.loc[aday, 'vol']
     price_pos = (price - price_min) / (price_max - price_min)
     vol_pos = (vol - vol_min) / (vol_max - vol_min)
+    price_pos = round(price_pos, 2)
+    vol_pos = round(vol_pos, 2)
     return f'{price_max}, {price_min}, {vol_max}, {vol_min}, {stock_info}, {price_pos}, {vol_pos}'
 
 if __name__ == '__main__':
