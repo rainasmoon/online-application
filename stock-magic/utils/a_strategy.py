@@ -47,7 +47,8 @@ def make_position(df, aday):
     ext_info = today_focus.loc[:, 'ts_code_orginal'].apply(a_stock.a_stock, args=(aday,))
     # 把返回的结果扩展拆分成列
     df_ext = ext_info.str.split(',', expand=True)
-    today_focus[['price_max', 'price_min', 'vol_max', 'vol_min', 'stock_name', 'stock_industry', 'stock_hs']] = df_ext
+    today_focus[['price_max', 'price_min', 'vol_max', 'vol_min', 'stock_name',
+                 'stock_industry', 'stock_hs', 'p_pos', 'v_pos']] = df_ext
     today_focus[['price_max', 'price_min', 'vol_max', 'vol_min']] = today_focus[['price_max', 'price_min', 'vol_max', 'vol_min']].applymap(float)
     
     # 计算价格和成交量的位置
@@ -138,11 +139,15 @@ def ai_sell(r, buy_date):
             print('*****************************************************')
             print('*****************************************************')
             
-            sell_price.append(astock_df.loc[len(astock_df)-1, 'close'])
-            plot_df = astock_df.copy()
-            plot_df.set_index('trade_date', inplace=True)
-            plot_df['close'].plot()
-            plt.show()
+            if not astock_df.empty:
+                sell_price.append(astock_df.loc[len(astock_df)-1, 'close'])
+                plot_df = astock_df.copy()
+                plot_df.set_index('trade_date', inplace=True)
+                plot_df['close'].plot()
+                plt.show()
+            else:
+                sell_price.append(0)
+
     return sell_price
 
 def cool_down_day(aday):
@@ -207,5 +212,6 @@ def show_my_stock():
 
 
 if __name__ == '__main__':
-    #trick('20190102')
     show_my_stock()
+    r = select_stocks('20200402')
+    print(r)
