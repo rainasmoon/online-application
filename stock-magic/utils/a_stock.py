@@ -16,10 +16,6 @@ def show_a_stock(stock_code, end_date):
     print('STOCKNAME:', stock_info)
     
     df = ts_utils.call_stock_qfq(stock_code, ipo_date, end_date)
-    
-    print('ALL TRADE:\n', df)
-    print('All Columns:\n', df.dtypes)
-    
     main_info = df.describe().round(2)
     print('MAIN INFO:\n', main_info)
     
@@ -65,6 +61,6 @@ def a_stock(stock_code, aday):
 
 
 if __name__ == '__main__':
-    print(a_stock(test_ts_code_1, common_utils.yesterday_v1()))
+    print(a_stock(test_ts_code_1, common_utils.yesterday()))
     
-    show_a_stock(test_ts_code_1, common_utils.yesterday_v1())
+#    show_a_stock(test_ts_code_1, common_utils.yesterday())

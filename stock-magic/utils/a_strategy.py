@@ -41,19 +41,8 @@ import matplotlib.pyplot as plt
 
 DEBUG = False
 
-@lru_cache()
-def select_stocks(aday):
-    df = ts_utils.call_daily(aday)
-    if df.empty:
-        print('NO TRADE')
-        return
-    # ##
-    # 1 选出每日涨副在4.5 -5.5之间的
-    # ##
-    today_focus = df[(df.pct_chg > 4.5) & (df.pct_chg < 5.5)].copy()
-    if DEBUG:
-        print('MGAIC STOCKS:\n', today_focus)
-    # 根据ts_code查询股票信息
+def make_position(df, aday):
+    today_focus = df.copy()
     today_focus['ts_code_orginal'] = today_focus.index.to_numpy()
     ext_info = today_focus.loc[:, 'ts_code_orginal'].apply(a_stock.a_stock, args=(aday,))
     # 把返回的结果扩展拆分成列
@@ -68,7 +57,22 @@ def select_stocks(aday):
     
     if DEBUG:
         print('价格和成交量的位置:\n', t)
-    
+    return t
+
+@lru_cache()
+def select_stocks(aday):
+    df = ts_utils.call_daily(aday)
+    if df.empty:
+        print('NO TRADE')
+        return
+    # ##
+    # 1 选出每日涨副在4.5 -5.5之间的
+    # ##
+    today_focus = df[(df.pct_chg > 4.5) & (df.pct_chg < 5.5)].copy()
+    if DEBUG:
+        print('MGAIC STOCKS:\n', today_focus)
+    # 根据ts_code查询股票信息
+    t = make_position(today_focus, aday)
     # 去掉ST
     t = t[~(t.stock_name.str.contains(r'ST'))].copy()
     
@@ -192,6 +196,16 @@ def trick(aday):
     summary_info = summary(r)
     return [aday] + summary_info
 
+def show_my_stock():
+    aday = common_utils.last_tradeday()
+    df = ts_utils.call_daily(aday)
+    df = df.loc[['002024.SZ', '300024.SZ', '601633.SH']]
+    df = make_position(df, aday)
+    print(df.dtypes)
+    r = df[['trade_date', 'stock_name', 'P_position', 'V_position']]
+    print(r)
+
 
 if __name__ == '__main__':
-    trick('20190102')
+    #trick('20190102')
+    show_my_stock()

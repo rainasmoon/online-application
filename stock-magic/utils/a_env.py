@@ -43,11 +43,12 @@ def show_index_position():
     all_num = len(df)
     df['crazy_pos'] = round(df['crazy_pos']/all_num, 2)
     # 以0.48 为基准重新计算概率
-    df['crazy_pos'] = round(df['crazy_pos']/0.48,2)
+    df['crazy_pos'] = round(df['crazy_pos']/0.27,2)*100
     df['crazy_vol'] = df['volume'].apply(posibility_vol, args=(df,))
-    df['crazy_vol'] = round(df['crazy_vol']/all_num, 2)
+    df['crazy_vol'] = round(df['crazy_vol']/all_num, 2)*100
 
-    print(df)
+    df = df[['close', 'crazy_pos', 'crazy_vol']]
+    print(df.tail())
     print(df.loc[pd.to_datetime(['19940728', '20050606', '20081028', '20130625', '20160127']),:])
 
 def posibility_vol(index, df):

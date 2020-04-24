@@ -37,7 +37,7 @@ JINJA_ENVIRONMENT = {'extensions': ['jinja2.ext.i18n']}
 PLUGIN_PATHS = ['/home/hht/git/pelican-plugins']
 PLUGINS = ['i18n_subsites',]
 
-THEME = 'themes/pelican-bootstrap3' 
+THEME = 'themes/notmyidea' 
 
 DISCLAIMER = '<p>备案号：冀ICP备15002959号-1  <a href="http://he.beian.miit.gov.cn/state/outPortal/loginPortal.action">河北备案网站</a></p>'
 
