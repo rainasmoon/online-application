@@ -1,6 +1,0 @@
-__pycache__
-.pyc
-/lib/
-config_api.json
-.settings
-*.sqlite3

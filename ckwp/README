@@ -1,1 +1,0 @@
-mysqldump -u wp -p -h 172.31.21.200 wordpress > rainasmoon-wp.sql
