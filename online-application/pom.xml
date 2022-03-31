@@ -27,7 +27,7 @@
 		<dozer.version>5.4.0</dozer.version>
 
 		<!-- Spring -->
-		<spring-framework.version>4.0.3.RELEASE</spring-framework.version>
+		<spring-framework.version>5.3.18</spring-framework.version>
 		<spring-data-jpa.version>1.5.1.RELEASE</spring-data-jpa.version>
 
 		<!-- Java EE / Java SE dependencies -->
